@@ -1,18 +1,16 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'pd-card',
-  styleUrl: 'card.scss',
-  shadow: true
+    tag: 'pd-card',
+    styleUrl: 'card.scss',
+    shadow: true,
 })
 export class Card {
-
-  render() {
-    return (
-      <Host>
-        <slot></slot>
-      </Host>
-    );
-  }
-
+    render() {
+        return (
+            <Host>
+                <slot></slot>
+            </Host>
+        );
+    }
 }
