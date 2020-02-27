@@ -10,7 +10,24 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface PdButton {}
+  interface PdButton {
+    /**
+    * Sets button to disbaled state
+    */
+    'disabled': boolean;
+    /**
+    * Set href to create a link button
+    */
+    'href': string;
+    /**
+    * Sets target for link button e.g. '_blank'
+    */
+    'target': string;
+    /**
+    * Sets button type |text|submit|reset|
+    */
+    'type': string;
+  }
   interface PdCard {}
   interface PdCheckbox {}
   interface PdColumn {}
@@ -163,7 +180,24 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface PdButton {}
+  interface PdButton {
+    /**
+    * Sets button to disbaled state
+    */
+    'disabled'?: boolean;
+    /**
+    * Set href to create a link button
+    */
+    'href'?: string;
+    /**
+    * Sets target for link button e.g. '_blank'
+    */
+    'target'?: string;
+    /**
+    * Sets button type |text|submit|reset|
+    */
+    'type'?: string;
+  }
   interface PdCard {}
   interface PdCheckbox {}
   interface PdColumn {}
