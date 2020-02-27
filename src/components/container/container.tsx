@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'pd-container',
-  styleUrl: 'container.css',
+  styleUrl: 'container.scss',
   shadow: true
 })
 export class Container {

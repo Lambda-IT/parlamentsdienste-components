@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'pd-navbar',
-  styleUrl: 'navbar.css',
+  styleUrl: 'navbar.scss',
   shadow: true
 })
 export class Navbar {

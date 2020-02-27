@@ -10,53 +10,197 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
+  interface PdButton {}
+  interface PdCard {}
+  interface PdCheckbox {}
+  interface PdColumn {}
+  interface PdContainer {}
+  interface PdDatepicker {}
+  interface PdDropdown {}
+  interface PdFooter {}
+  interface PdInput {}
+  interface PdModal {}
+  interface PdNavbar {}
+  interface PdNotification {}
+  interface PdProgressBar {}
+  interface PdRadio {}
+  interface PdSlider {}
+  interface PdTable {}
+  interface PdTag {}
+  interface PdTimeline {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {}
+  var HTMLPdButtonElement: {
+    prototype: HTMLPdButtonElement;
+    new (): HTMLPdButtonElement;
+  };
+
+  interface HTMLPdCardElement extends Components.PdCard, HTMLStencilElement {}
+  var HTMLPdCardElement: {
+    prototype: HTMLPdCardElement;
+    new (): HTMLPdCardElement;
+  };
+
+  interface HTMLPdCheckboxElement extends Components.PdCheckbox, HTMLStencilElement {}
+  var HTMLPdCheckboxElement: {
+    prototype: HTMLPdCheckboxElement;
+    new (): HTMLPdCheckboxElement;
+  };
+
+  interface HTMLPdColumnElement extends Components.PdColumn, HTMLStencilElement {}
+  var HTMLPdColumnElement: {
+    prototype: HTMLPdColumnElement;
+    new (): HTMLPdColumnElement;
+  };
+
+  interface HTMLPdContainerElement extends Components.PdContainer, HTMLStencilElement {}
+  var HTMLPdContainerElement: {
+    prototype: HTMLPdContainerElement;
+    new (): HTMLPdContainerElement;
+  };
+
+  interface HTMLPdDatepickerElement extends Components.PdDatepicker, HTMLStencilElement {}
+  var HTMLPdDatepickerElement: {
+    prototype: HTMLPdDatepickerElement;
+    new (): HTMLPdDatepickerElement;
+  };
+
+  interface HTMLPdDropdownElement extends Components.PdDropdown, HTMLStencilElement {}
+  var HTMLPdDropdownElement: {
+    prototype: HTMLPdDropdownElement;
+    new (): HTMLPdDropdownElement;
+  };
+
+  interface HTMLPdFooterElement extends Components.PdFooter, HTMLStencilElement {}
+  var HTMLPdFooterElement: {
+    prototype: HTMLPdFooterElement;
+    new (): HTMLPdFooterElement;
+  };
+
+  interface HTMLPdInputElement extends Components.PdInput, HTMLStencilElement {}
+  var HTMLPdInputElement: {
+    prototype: HTMLPdInputElement;
+    new (): HTMLPdInputElement;
+  };
+
+  interface HTMLPdModalElement extends Components.PdModal, HTMLStencilElement {}
+  var HTMLPdModalElement: {
+    prototype: HTMLPdModalElement;
+    new (): HTMLPdModalElement;
+  };
+
+  interface HTMLPdNavbarElement extends Components.PdNavbar, HTMLStencilElement {}
+  var HTMLPdNavbarElement: {
+    prototype: HTMLPdNavbarElement;
+    new (): HTMLPdNavbarElement;
+  };
+
+  interface HTMLPdNotificationElement extends Components.PdNotification, HTMLStencilElement {}
+  var HTMLPdNotificationElement: {
+    prototype: HTMLPdNotificationElement;
+    new (): HTMLPdNotificationElement;
+  };
+
+  interface HTMLPdProgressBarElement extends Components.PdProgressBar, HTMLStencilElement {}
+  var HTMLPdProgressBarElement: {
+    prototype: HTMLPdProgressBarElement;
+    new (): HTMLPdProgressBarElement;
+  };
+
+  interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {}
+  var HTMLPdRadioElement: {
+    prototype: HTMLPdRadioElement;
+    new (): HTMLPdRadioElement;
+  };
+
+  interface HTMLPdSliderElement extends Components.PdSlider, HTMLStencilElement {}
+  var HTMLPdSliderElement: {
+    prototype: HTMLPdSliderElement;
+    new (): HTMLPdSliderElement;
+  };
+
+  interface HTMLPdTableElement extends Components.PdTable, HTMLStencilElement {}
+  var HTMLPdTableElement: {
+    prototype: HTMLPdTableElement;
+    new (): HTMLPdTableElement;
+  };
+
+  interface HTMLPdTagElement extends Components.PdTag, HTMLStencilElement {}
+  var HTMLPdTagElement: {
+    prototype: HTMLPdTagElement;
+    new (): HTMLPdTagElement;
+  };
+
+  interface HTMLPdTimelineElement extends Components.PdTimeline, HTMLStencilElement {}
+  var HTMLPdTimelineElement: {
+    prototype: HTMLPdTimelineElement;
+    new (): HTMLPdTimelineElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'pd-button': HTMLPdButtonElement;
+    'pd-card': HTMLPdCardElement;
+    'pd-checkbox': HTMLPdCheckboxElement;
+    'pd-column': HTMLPdColumnElement;
+    'pd-container': HTMLPdContainerElement;
+    'pd-datepicker': HTMLPdDatepickerElement;
+    'pd-dropdown': HTMLPdDropdownElement;
+    'pd-footer': HTMLPdFooterElement;
+    'pd-input': HTMLPdInputElement;
+    'pd-modal': HTMLPdModalElement;
+    'pd-navbar': HTMLPdNavbarElement;
+    'pd-notification': HTMLPdNotificationElement;
+    'pd-progress-bar': HTMLPdProgressBarElement;
+    'pd-radio': HTMLPdRadioElement;
+    'pd-slider': HTMLPdSliderElement;
+    'pd-table': HTMLPdTableElement;
+    'pd-tag': HTMLPdTagElement;
+    'pd-timeline': HTMLPdTimelineElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface PdButton {}
+  interface PdCard {}
+  interface PdCheckbox {}
+  interface PdColumn {}
+  interface PdContainer {}
+  interface PdDatepicker {}
+  interface PdDropdown {}
+  interface PdFooter {}
+  interface PdInput {}
+  interface PdModal {}
+  interface PdNavbar {}
+  interface PdNotification {}
+  interface PdProgressBar {}
+  interface PdRadio {}
+  interface PdSlider {}
+  interface PdTable {}
+  interface PdTag {}
+  interface PdTimeline {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'pd-button': PdButton;
+    'pd-card': PdCard;
+    'pd-checkbox': PdCheckbox;
+    'pd-column': PdColumn;
+    'pd-container': PdContainer;
+    'pd-datepicker': PdDatepicker;
+    'pd-dropdown': PdDropdown;
+    'pd-footer': PdFooter;
+    'pd-input': PdInput;
+    'pd-modal': PdModal;
+    'pd-navbar': PdNavbar;
+    'pd-notification': PdNotification;
+    'pd-progress-bar': PdProgressBar;
+    'pd-radio': PdRadio;
+    'pd-slider': PdSlider;
+    'pd-table': PdTable;
+    'pd-tag': PdTag;
+    'pd-timeline': PdTimeline;
   }
 }
 
@@ -66,7 +210,24 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'pd-button': LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
+      'pd-card': LocalJSX.PdCard & JSXBase.HTMLAttributes<HTMLPdCardElement>;
+      'pd-checkbox': LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
+      'pd-column': LocalJSX.PdColumn & JSXBase.HTMLAttributes<HTMLPdColumnElement>;
+      'pd-container': LocalJSX.PdContainer & JSXBase.HTMLAttributes<HTMLPdContainerElement>;
+      'pd-datepicker': LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
+      'pd-dropdown': LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
+      'pd-footer': LocalJSX.PdFooter & JSXBase.HTMLAttributes<HTMLPdFooterElement>;
+      'pd-input': LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+      'pd-modal': LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
+      'pd-navbar': LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
+      'pd-notification': LocalJSX.PdNotification & JSXBase.HTMLAttributes<HTMLPdNotificationElement>;
+      'pd-progress-bar': LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
+      'pd-radio': LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
+      'pd-slider': LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
+      'pd-table': LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
+      'pd-tag': LocalJSX.PdTag & JSXBase.HTMLAttributes<HTMLPdTagElement>;
+      'pd-timeline': LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
     }
   }
 }

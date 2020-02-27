@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'pd-radio',
-  styleUrl: 'radio.css',
+  styleUrl: 'radio.scss',
   shadow: true
 })
 export class Radio {

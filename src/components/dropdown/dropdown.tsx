@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'pd-dropdown',
-  styleUrl: 'dropdown.css',
+  styleUrl: 'dropdown.scss',
   shadow: true
 })
 export class Dropdown {

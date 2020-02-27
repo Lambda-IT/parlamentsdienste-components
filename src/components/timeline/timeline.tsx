@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'pd-timeline',
-  styleUrl: 'timeline.css',
+  styleUrl: 'timeline.scss',
   shadow: true
 })
 export class Timeline {

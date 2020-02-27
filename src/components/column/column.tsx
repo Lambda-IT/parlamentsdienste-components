@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'pd-column',
-  styleUrl: 'column.css',
+  styleUrl: 'column.scss',
   shadow: true
 })
 export class Column {
