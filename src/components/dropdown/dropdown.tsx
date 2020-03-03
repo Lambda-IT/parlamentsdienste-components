@@ -9,6 +9,7 @@ export class Dropdown {
     render() {
         return (
             <Host>
+                Dropdown
                 <slot></slot>
             </Host>
         );

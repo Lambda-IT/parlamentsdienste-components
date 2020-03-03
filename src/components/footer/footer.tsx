@@ -9,6 +9,7 @@ export class Footer {
     render() {
         return (
             <Host>
+                Footer
                 <slot></slot>
             </Host>
         );

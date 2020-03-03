@@ -9,6 +9,7 @@ export class Timeline {
     render() {
         return (
             <Host>
+                Timeline
                 <slot></slot>
             </Host>
         );

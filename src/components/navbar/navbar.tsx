@@ -9,6 +9,7 @@ export class Navbar {
     render() {
         return (
             <Host>
+                Navbar
                 <slot></slot>
             </Host>
         );

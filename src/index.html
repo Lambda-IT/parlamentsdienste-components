@@ -7,25 +7,40 @@
 
         <script type="module" src="/build/componentlibrary.esm.js"></script>
         <script nomodule src="/build/componentlibrary.js"></script>
+
+        <style>
+            .example-components > * {
+                margin: 20px 10px;
+            }
+        </style>
     </head>
     <body>
-        <pd-button><span slot="icon">😎</span><span>Text</span></pd-button>
-        <pd-card></pd-card>
-        <pd-checkbox></pd-checkbox>
-        <pd-column></pd-column>
-        <pd-container></pd-container>
-        <pd-datepicker></pd-datepicker>
-        <pd-dropdown></pd-dropdown>
-        <pd-footer></pd-footer>
-        <pd-input></pd-input>
-        <pd-modal></pd-modal>
-        <pd-navbar></pd-navbar>
-        <pd-notification></pd-notification>
-        <pd-progress-bar></pd-progress-bar>
-        <pd-radio></pd-radio>
-        <pd-slider></pd-slider>
-        <pd-table></pd-table>
-        <pd-tag></pd-tag>
-        <pd-timeline></pd-timeline>
+        <div class="example-components">
+            <pd-button><span slot="icon">😎</span><span>Text</span></pd-button>
+            <pd-card></pd-card>
+            <pd-checkbox text="checkbox"></pd-checkbox>
+            <pd-column></pd-column>
+            <pd-container></pd-container>
+            <pd-datepicker></pd-datepicker>
+            <pd-dropdown></pd-dropdown>
+            <pd-footer></pd-footer>
+            <pd-input id="pd-input-0"></pd-input>
+            <pd-modal></pd-modal>
+            <pd-navbar></pd-navbar>
+            <pd-notification></pd-notification>
+            <pd-progress-bar id="pd-progress-0"></pd-progress-bar>
+            <pd-radio></pd-radio>
+            <pd-slider></pd-slider>
+            <pd-table></pd-table>
+            <pd-tag></pd-tag>
+            <pd-timeline></pd-timeline>
+        </div>
+        <script>
+            var pdInput = document.getElementById('pd-input-0');
+            var pdProgress = document.getElementById('pd-progress-0');
+            pdInput.addEventListener('pdOnChange', value => {
+                pdProgress.setAttribute('value', parseFloat(value.detail.value));
+            });
+        </script>
     </body>
 </html>

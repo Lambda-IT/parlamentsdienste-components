@@ -9,6 +9,7 @@ export class Modal {
     render() {
         return (
             <Host>
+                Modal
                 <slot></slot>
             </Host>
         );

@@ -9,6 +9,7 @@ export class Column {
     render() {
         return (
             <Host>
+                Column
                 <slot></slot>
             </Host>
         );

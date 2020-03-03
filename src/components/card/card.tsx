@@ -9,6 +9,7 @@ export class Card {
     render() {
         return (
             <Host>
+                Card
                 <slot></slot>
             </Host>
         );

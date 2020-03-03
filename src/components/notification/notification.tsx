@@ -9,6 +9,7 @@ export class Notification {
     render() {
         return (
             <Host>
+                Notification
                 <slot></slot>
             </Host>
         );

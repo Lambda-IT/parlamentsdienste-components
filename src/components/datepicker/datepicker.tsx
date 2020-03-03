@@ -9,6 +9,7 @@ export class Datepicker {
     render() {
         return (
             <Host>
+                Datepicker
                 <slot></slot>
             </Host>
         );

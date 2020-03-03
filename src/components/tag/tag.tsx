@@ -9,6 +9,7 @@ export class Tag {
     render() {
         return (
             <Host>
+                Tag
                 <slot></slot>
             </Host>
         );

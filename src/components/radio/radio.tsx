@@ -9,6 +9,7 @@ export class Radio {
     render() {
         return (
             <Host>
+                Radio
                 <slot></slot>
             </Host>
         );

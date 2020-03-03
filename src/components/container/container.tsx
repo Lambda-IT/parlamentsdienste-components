@@ -9,6 +9,7 @@ export class Container {
     render() {
         return (
             <Host>
+                Container
                 <slot></slot>
             </Host>
         );
