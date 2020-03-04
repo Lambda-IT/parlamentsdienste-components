@@ -29,17 +29,29 @@
             <pd-navbar></pd-navbar>
             <pd-notification></pd-notification>
             <pd-progress-bar id="pd-progress-0"></pd-progress-bar>
-            <pd-radio></pd-radio>
+            <pd-radio-group id="pd-radio-group-0" value="0.80">
+                <pd-radio value="0" label="0%"></pd-radio>
+                <pd-radio value="0.25" label="25%"></pd-radio>
+                <pd-radio value="0.50" label="50%"></pd-radio>
+                <pd-radio value="0.80" label="80%"></pd-radio>
+                <pd-radio value="1" label="100%"></pd-radio>
+            </pd-radio-group>
             <pd-slider></pd-slider>
             <pd-table></pd-table>
             <pd-tag></pd-tag>
             <pd-timeline></pd-timeline>
         </div>
         <script>
-            var pdInput = document.getElementById('pd-input-0');
-            var pdProgress = document.getElementById('pd-progress-0');
+            let pdInput = document.getElementById('pd-input-0');
+            let pdProgress = document.getElementById('pd-progress-0');
+            let pdRadioGroup = document.getElementById('pd-radio-group-0');
             pdInput.addEventListener('pdOnChange', value => {
-                pdProgress.setAttribute('value', parseFloat(value.detail.value));
+                pdProgress.setAttribute('value', value.detail.value);
+                pdRadioGroup.setAttribute('value', value.detail.value);
+            });
+            pdRadioGroup.addEventListener('pdChange', value => {
+                pdInput.setAttribute('value', value.detail.value);
+                pdProgress.setAttribute('value', value.detail.value);
             });
         </script>
     </body>

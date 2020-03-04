@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-import { clamp, findItemLabel } from '../../utils/helpers';
+import { clamp } from '../../utils/helpers';
 
 @Component({
     tag: 'pd-progress-bar',

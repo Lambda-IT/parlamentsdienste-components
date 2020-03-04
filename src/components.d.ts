@@ -11,6 +11,9 @@ import {
   InputChangeEventDetail,
   TextFieldTypes,
 } from './interface';
+import {
+  RadioGroupChangeEventDetail,
+} from './components/radio-group/radio-group.interface';
 
 export namespace Components {
   interface PdButton {
@@ -163,7 +166,20 @@ export namespace Components {
     'type': 'determinate' | 'indeterminate';
     'value': number;
   }
-  interface PdRadio {}
+  interface PdRadio {
+    'label'?: string | null;
+    'value'?: any | null;
+  }
+  interface PdRadioGroup {
+    /**
+    * If `true`, the radios can be deselected.
+    */
+    'allowEmptySelection': boolean;
+    /**
+    * the value of the radio group.
+    */
+    'value'?: any | null;
+  }
   interface PdSlider {
     'disabled': any;
     'max': number;
@@ -264,6 +280,12 @@ declare global {
     new (): HTMLPdRadioElement;
   };
 
+  interface HTMLPdRadioGroupElement extends Components.PdRadioGroup, HTMLStencilElement {}
+  var HTMLPdRadioGroupElement: {
+    prototype: HTMLPdRadioGroupElement;
+    new (): HTMLPdRadioGroupElement;
+  };
+
   interface HTMLPdSliderElement extends Components.PdSlider, HTMLStencilElement {}
   var HTMLPdSliderElement: {
     prototype: HTMLPdSliderElement;
@@ -302,6 +324,7 @@ declare global {
     'pd-notification': HTMLPdNotificationElement;
     'pd-progress-bar': HTMLPdProgressBarElement;
     'pd-radio': HTMLPdRadioElement;
+    'pd-radio-group': HTMLPdRadioGroupElement;
     'pd-slider': HTMLPdSliderElement;
     'pd-table': HTMLPdTableElement;
     'pd-tag': HTMLPdTagElement;
@@ -473,7 +496,24 @@ declare namespace LocalJSX {
     'type'?: 'determinate' | 'indeterminate';
     'value'?: number;
   }
-  interface PdRadio {}
+  interface PdRadio {
+    'label'?: string | null;
+    'value'?: any | null;
+  }
+  interface PdRadioGroup {
+    /**
+    * If `true`, the radios can be deselected.
+    */
+    'allowEmptySelection'?: boolean;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onPdChange'?: (event: CustomEvent<RadioGroupChangeEventDetail>) => void;
+    /**
+    * the value of the radio group.
+    */
+    'value'?: any | null;
+  }
   interface PdSlider {
     'disabled'?: any;
     'max'?: number;
@@ -502,6 +542,7 @@ declare namespace LocalJSX {
     'pd-notification': PdNotification;
     'pd-progress-bar': PdProgressBar;
     'pd-radio': PdRadio;
+    'pd-radio-group': PdRadioGroup;
     'pd-slider': PdSlider;
     'pd-table': PdTable;
     'pd-tag': PdTag;
@@ -529,6 +570,7 @@ declare module "@stencil/core" {
       'pd-notification': LocalJSX.PdNotification & JSXBase.HTMLAttributes<HTMLPdNotificationElement>;
       'pd-progress-bar': LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
       'pd-radio': LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
+      'pd-radio-group': LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
       'pd-slider': LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
       'pd-table': LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
       'pd-tag': LocalJSX.PdTag & JSXBase.HTMLAttributes<HTMLPdTagElement>;
