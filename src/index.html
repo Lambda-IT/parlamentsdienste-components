@@ -36,7 +36,7 @@
                 <pd-radio value="0.80" label="80%"></pd-radio>
                 <pd-radio value="1" label="100%"></pd-radio>
             </pd-radio-group>
-            <pd-slider></pd-slider>
+            <pd-slider id="pd-slider-0"></pd-slider>
             <pd-table></pd-table>
             <pd-tag></pd-tag>
             <pd-timeline></pd-timeline>
@@ -45,6 +45,7 @@
             let pdInput = document.getElementById('pd-input-0');
             let pdProgress = document.getElementById('pd-progress-0');
             let pdRadioGroup = document.getElementById('pd-radio-group-0');
+            let pdSlider = document.getElementById('pd-slider-0');
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
                 pdRadioGroup.setAttribute('value', value.detail.value);
@@ -52,6 +53,11 @@
             pdRadioGroup.addEventListener('pdChange', value => {
                 pdInput.setAttribute('value', value.detail.value);
                 pdProgress.setAttribute('value', value.detail.value);
+                pdSlider.setAttribute('value', value.detail.value * 100);
+            });
+            pdSlider.addEventListener('pdOnInput', value => {
+                pdProgress.setAttribute('value', value.detail.value / 100);
+                pdRadioGroup.setAttribute('value', parseInt(value.detail.value / 100));
             });
         </script>
     </body>

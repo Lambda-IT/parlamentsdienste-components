@@ -186,7 +186,7 @@ export namespace Components {
     'min': number;
     'name': string;
     'step': number;
-    'value': number;
+    'value'?: number | null;
   }
   interface PdTable {}
   interface PdTag {}
@@ -519,9 +519,16 @@ declare namespace LocalJSX {
     'max'?: number;
     'min'?: number;
     'name'?: string;
-    'onPdChange'?: (event: CustomEvent<number>) => void;
+    /**
+    * Emitted when slider has been released.
+    */
+    'onPdOnChange'?: (event: CustomEvent<InputChangeEventDetail>) => void;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onPdOnInput'?: (event: CustomEvent<InputChangeEventDetail>) => void;
     'step'?: number;
-    'value'?: number;
+    'value'?: number | null;
   }
   interface PdTable {}
   interface PdTag {}

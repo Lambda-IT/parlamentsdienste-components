@@ -1,30 +1,151 @@
 :host {
     display: flex;
-    position: relative;
 }
 
-.slider-background {
-    background-color: gray;
-    position: absolute;
-    width: 100%;
-    height: 6px;
+// Styling Cross-Browser Compatible Range Inputs with Sass
+// Github: https://github.com/darlanrod/input-range-sass
+// Author: Darlan Rod https://github.com/darlanrod
+// Version 1.4.1
+// MIT License
+
+// Styling Cross-Browser Compatible Range Inputs with Sass
+// Github: https://github.com/darlanrod/input-range-sass
+// Author: Darlan Rod https://github.com/darlanrod
+// Version 1.5.2
+// MIT License
+
+$slider-track-color: gray !default;
+$slider-thumb-color: red !default;
+
+$slider-thumb-height: 16px !default;
+$slider-thumb-width: 16px !default;
+$slider-thumb-radius: 100% !default;
+$slider-thumb-shadow-size: 4px !default;
+$slider-thumb-shadow-blur: 4px !default;
+$slider-thumb-shadow-color: rgba(0, 0, 0, 0.2) !default;
+$slider-thumb-border: none !default;
+
+$slider-track-width: 100% !default;
+$slider-track-height: 15px !default;
+$slider-track-shadow-size: 0 !default;
+$slider-track-shadow-blur: 0 !default;
+$slider-track-shadow-color: rgba(0, 0, 0, 0.2) !default;
+$slider-track-border: none !default;
+
+$slider-track-radius: 0 !default;
+$contrast: 5% !default;
+
+$ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
+
+@mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
+    box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color, 0 0 $shadow-size lighten($shadow-color, 5%);
 }
 
-.slider-bar {
-    background-color: red;
-    position: absolute;
-    width: 30%;
-    height: 6px;
+@mixin track {
+    cursor: default;
+    height: $slider-track-height;
+    transition: all 0.2s ease;
+    width: $slider-track-width;
 }
 
-.slider-knob {
-    background-color: blue;
-    position: relative;
-    border-radius: 100%;
-    width: 14px;
-    height: 14px;
-    margin-left: -4px;
-    margin-top: -4px;
-    left: 30%;
+@mixin thumb {
+    @include shadow($slider-thumb-shadow-size, $slider-thumb-shadow-blur, $slider-thumb-shadow-color);
+    background: $slider-thumb-color;
+    border: $slider-thumb-border;
+    border-radius: $slider-thumb-radius;
+    box-sizing: border-box;
     cursor: pointer;
+    height: $slider-thumb-height;
+    width: $slider-thumb-width;
+}
+
+[type='range'] {
+    -webkit-appearance: none;
+    background: transparent;
+    margin: $slider-thumb-height / 2 0;
+    width: $slider-track-width;
+
+    &::-moz-focus-outer {
+        border: 0;
+    }
+
+    &:focus {
+        outline: 0;
+
+        &::-webkit-slider-runnable-track {
+            background: lighten($slider-track-color, $contrast);
+        }
+
+        &::-ms-fill-lower {
+            background: $slider-track-color;
+        }
+
+        &::-ms-fill-upper {
+            background: lighten($slider-track-color, $contrast);
+        }
+    }
+
+    &::-webkit-slider-runnable-track {
+        @include track;
+        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+        background: $slider-track-color;
+        border: $slider-track-border;
+        border-radius: $slider-track-radius;
+    }
+
+    &::-webkit-slider-thumb {
+        @include thumb;
+        -webkit-appearance: none;
+    }
+
+    &::-moz-range-track {
+        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+        @include track;
+        background: $slider-track-color;
+        border: $slider-track-border;
+        border-radius: $slider-track-radius;
+        height: $slider-track-height / 2;
+    }
+
+    &::-moz-range-thumb {
+        @include thumb;
+    }
+
+    &::-ms-track {
+        @include track;
+        background: transparent;
+        border-color: transparent;
+        border-width: ($slider-thumb-height / 2) 0;
+        color: transparent;
+    }
+
+    &::-ms-fill-lower {
+        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+        background: $ie-bottom-track-color;
+        border: $slider-track-border;
+        border-radius: ($slider-track-radius * 2);
+    }
+
+    &::-ms-fill-upper {
+        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+        background: $slider-track-color;
+        border: $slider-track-border;
+        border-radius: ($slider-track-radius * 2);
+    }
+
+    &::-ms-thumb {
+        @include thumb;
+        margin-top: $slider-track-height / 4;
+    }
+
+    &:disabled {
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb,
+        &::-ms-thumb,
+        &::-webkit-slider-runnable-track,
+        &::-ms-fill-lower,
+        &::-ms-fill-upper {
+            cursor: not-allowed;
+        }
+    }
 }

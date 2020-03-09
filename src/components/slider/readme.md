@@ -14,14 +14,15 @@
 | `min`      | `min`      |             | `number` | `0`         |
 | `name`     | `name`     |             | `string` | `''`        |
 | `step`     | `step`     |             | `number` | `1`         |
-| `value`    | `value`    |             | `number` | `0`         |
+| `value`    | `value`    |             | `number` | `null`      |
 
 
 ## Events
 
-| Event      | Description | Type                  |
-| ---------- | ----------- | --------------------- |
-| `pdChange` |             | `CustomEvent<number>` |
+| Event        | Description                            | Type                                  |
+| ------------ | -------------------------------------- | ------------------------------------- |
+| `pdOnChange` | Emitted when slider has been released. | `CustomEvent<InputChangeEventDetail>` |
+| `pdOnInput`  | Emitted when the value has changed.    | `CustomEvent<InputChangeEventDetail>` |
 
 
 ----------------------------------------------
