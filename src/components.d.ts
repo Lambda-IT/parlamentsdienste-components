@@ -16,6 +16,12 @@ import {
 } from './components/radio-group/radio-group.interface';
 
 export namespace Components {
+  interface PdBackdrop {
+    /**
+    * Invisible backdrop when set to false
+    */
+    'visible': boolean;
+  }
   interface PdButton {
     /**
     * Sets button to disbaled state
@@ -32,7 +38,7 @@ export namespace Components {
     /**
     * Sets button type |text|submit|reset|
     */
-    'type': string;
+    'type': 'button'|'text'|'submit';
   }
   interface PdCard {}
   interface PdCheckbox {
@@ -158,7 +164,10 @@ export namespace Components {
     */
     'value'?: string | number | null;
   }
-  interface PdModal {}
+  interface PdModal {
+    'closeModal': () => Promise<boolean>;
+    'openModal': () => Promise<void>;
+  }
   interface PdNavbar {}
   interface PdNotification {}
   interface PdProgressBar {
@@ -195,6 +204,12 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLPdBackdropElement extends Components.PdBackdrop, HTMLStencilElement {}
+  var HTMLPdBackdropElement: {
+    prototype: HTMLPdBackdropElement;
+    new (): HTMLPdBackdropElement;
+  };
 
   interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {}
   var HTMLPdButtonElement: {
@@ -310,6 +325,7 @@ declare global {
     new (): HTMLPdTimelineElement;
   };
   interface HTMLElementTagNameMap {
+    'pd-backdrop': HTMLPdBackdropElement;
     'pd-button': HTMLPdButtonElement;
     'pd-card': HTMLPdCardElement;
     'pd-checkbox': HTMLPdCheckboxElement;
@@ -333,6 +349,13 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface PdBackdrop {
+    'onPdOnTap'?: (event: CustomEvent<void>) => void;
+    /**
+    * Invisible backdrop when set to false
+    */
+    'visible'?: boolean;
+  }
   interface PdButton {
     /**
     * Sets button to disbaled state
@@ -349,7 +372,7 @@ declare namespace LocalJSX {
     /**
     * Sets button type |text|submit|reset|
     */
-    'type'?: string;
+    'type'?: 'button'|'text'|'submit';
   }
   interface PdCard {}
   interface PdCheckbox {
@@ -535,6 +558,7 @@ declare namespace LocalJSX {
   interface PdTimeline {}
 
   interface IntrinsicElements {
+    'pd-backdrop': PdBackdrop;
     'pd-button': PdButton;
     'pd-card': PdCard;
     'pd-checkbox': PdCheckbox;
@@ -563,6 +587,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'pd-backdrop': LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
       'pd-button': LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
       'pd-card': LocalJSX.PdCard & JSXBase.HTMLAttributes<HTMLPdCardElement>;
       'pd-checkbox': LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;

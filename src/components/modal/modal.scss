@@ -1,3 +1,18 @@
 :host {
-    display: block;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.modal-wrapper {
+    min-width: 100px;
+    max-width: 100px;
+    background-color: #fff;
+    z-index: 10;
+    padding: 10px;
 }

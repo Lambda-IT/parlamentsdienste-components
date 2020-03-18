@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="example-components">
-            <pd-button><span slot="icon">😎</span><span>Text</span></pd-button>
+            <pd-button id="pd-button-0"><span slot="icon">😎</span><span>Text</span></pd-button>
             <pd-card></pd-card>
             <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-column></pd-column>
@@ -25,7 +25,6 @@
             <pd-dropdown></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-input id="pd-input-0"></pd-input>
-            <pd-modal></pd-modal>
             <pd-navbar></pd-navbar>
             <pd-notification></pd-notification>
             <pd-progress-bar id="pd-progress-0"></pd-progress-bar>
@@ -46,6 +45,9 @@
             let pdProgress = document.getElementById('pd-progress-0');
             let pdRadioGroup = document.getElementById('pd-radio-group-0');
             let pdSlider = document.getElementById('pd-slider-0');
+            let pdBackdrop = document.getElementById('pd-backdrop-0');
+            let pdButton = document.getElementById('pd-button-0');
+
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
                 pdRadioGroup.setAttribute('value', value.detail.value);
@@ -59,6 +61,20 @@
                 pdProgress.setAttribute('value', value.detail.value / 100);
                 pdRadioGroup.setAttribute('value', parseInt(value.detail.value / 100));
             });
+
+            pdButton.addEventListener('click', () => {
+                console.log('LOG: addEventListener');
+                presentModal();
+            });
+
+            function presentModal() {
+                console.log('LOG: presentModal -> presentModal');
+                // create the modal with the `modal-page` component
+                const modalElement = document.createElement('pd-modal');
+
+                // present the modal
+                document.body.appendChild(modalElement);
+            }
         </script>
     </body>
 </html>

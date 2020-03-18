@@ -14,7 +14,7 @@ export class Button {
     /**
      * Sets button type |text|submit|reset|
      */
-    @Prop() type: string = 'button';
+    @Prop() type: 'button'|'text'|'submit' = 'button';
 
     /**
      * Set href to create a link button
@@ -27,12 +27,12 @@ export class Button {
     @Prop() target: string;
 
     render() {
-        const TagType = this.href ? 'a' : 'button';
-
-        const attrs = TagType === 'button' ? { type: this.type } : { href: this.href, target: this.target };
+        const { href, target, type, disabled } = this;
+        const TagType = href ? 'a' : 'button';
+        const typeAttrs = TagType === 'button' ? { type } : { href, target };
 
         return (
-            <TagType {...attrs} disabled={this.disabled}>
+            <TagType {...typeAttrs} disabled={disabled}>
                 <slot name="icon"></slot>
                 <slot></slot>
             </TagType>

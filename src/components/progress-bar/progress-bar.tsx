@@ -15,18 +15,17 @@ export class ProgressBar {
 
     render() {
         return (
-            <Host>{this.type === 'determinate' ? renderProgress(this.value, this.decimals) : renderDeterminate()}</Host>
+            <Host>{this.type === 'determinate' ? renderDeterminate(this.value, this.decimals) : renderInDeterminate()}</Host>
         );
     }
 }
 
-const renderDeterminate = () => {
+const renderInDeterminate = () => {
     return <div>indeterminate</div>;
 };
 
-const renderProgress = (value: number, decimals: number = 2) => {
+const renderDeterminate = (value: number, decimals: number = 2) => {
     const finalValue = clamp(0, value, 1) || 0;
-
     const percent = parseFloat((finalValue * 100).toFixed(decimals));
 
     return [
