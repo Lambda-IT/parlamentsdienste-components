@@ -14,7 +14,13 @@ export class Backdrop {
      */
     @Prop() visible = true;
 
-    @Event() pdOnTap: EventEmitter<void>;
+    @Event({
+        eventName: 'pdOnTap',
+        composed: true,
+        cancelable: true,
+        bubbles: true,
+    })
+    pdOnTap: EventEmitter<void>;
 
     @Listen('touchstart', { passive: false, capture: true })
     protected onTouchStart(ev: TouchEvent) {

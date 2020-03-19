@@ -1,4 +1,4 @@
-import { Component, Host, h, Method, Element } from '@stencil/core';
+import { Component, Host, h, Method, Element, Listen } from '@stencil/core';
 
 @Component({
     tag: 'pd-modal',
@@ -19,6 +19,11 @@ export class Modal {
     async closeModal() {
         const dismissed = await this.dismiss(this);
         return dismissed;
+    }
+
+    @Listen('pdOnTap', { passive: false, capture: true })
+    async backdropClick() {
+        await this.dismiss(this);
     }
 
     // remove element from body
