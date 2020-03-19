@@ -166,6 +166,7 @@ export namespace Components {
   }
   interface PdModal {
     'closeModal': () => Promise<boolean>;
+    'component': any;
     'openModal': () => Promise<void>;
   }
   interface PdNavbar {}
@@ -511,7 +512,9 @@ declare namespace LocalJSX {
     */
     'value'?: string | number | null;
   }
-  interface PdModal {}
+  interface PdModal {
+    'component'?: any;
+  }
   interface PdNavbar {}
   interface PdNotification {}
   interface PdProgressBar {

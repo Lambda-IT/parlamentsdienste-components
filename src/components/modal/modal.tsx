@@ -1,4 +1,4 @@
-import { Component, Host, h, Method, Element, Listen } from '@stencil/core';
+import { Component, Host, h, Method, Element, Listen, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-modal',
@@ -6,13 +6,18 @@ import { Component, Host, h, Method, Element, Listen } from '@stencil/core';
     shadow: true,
 })
 export class Modal {
+    // Reference to the user's provided modal content
+    private userComponent?: HTMLElement;
+
     @Element() element!: HTMLElement;
 
-    constructor() {}
+    @Prop() component;
 
     @Method()
-    async openModal() {
-        console.log('modal opened');
+    async openModal(): Promise<void> {
+        const modalContent = this.element.shadowRoot.querySelector(`.modal-content`);
+        this.userComponent = modalContent.ownerDocument.createElement(this.component);
+        modalContent.appendChild(this.userComponent);
     }
 
     @Method()
@@ -27,8 +32,8 @@ export class Modal {
     }
 
     // remove element from body
-    private async dismiss(overlay): Promise<boolean> {
-        overlay.element.remove();
+    private async dismiss(modal): Promise<boolean> {
+        modal.element.remove();
         return true;
     }
 
@@ -37,7 +42,7 @@ export class Modal {
             <Host>
                 <pd-backdrop></pd-backdrop>
                 <div role="dialog" class="modal-wrapper">
-                    <div class="modal-content">Lorem Ipsum</div>
+                    <div class="modal-content"></div>
                     <pd-button onClick={() => this.closeModal()}>Close</pd-button>
                 </div>
             </Host>

@@ -66,12 +66,26 @@
                 presentModal();
             });
 
+            customElements.define(
+                'user-content',
+                class extends HTMLElement {
+                    connectedCallback() {
+                        this.innerHTML = `
+                            <p>this is some content</p>
+                            <button onClick="closeModal()">content button</button>
+                        `;
+                    }
+                },
+            );
+            console.log('LOG: cust', cust);
+
             function presentModal() {
                 // create the modal with the `modal-page` component
                 const modalElement = document.createElement('pd-modal');
-
+                modalElement.component = 'user-content';
                 // present the modal
                 document.body.appendChild(modalElement);
+                return modalElement.openModal();
             }
         </script>
     </body>
