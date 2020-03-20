@@ -1,3 +1,8 @@
+@import '../../../node_modules/bootstrap/scss/_buttons.scss';
+
+@mixin reset {
+}
+
 :host {
-    display: block;
+    display: inline-block;
 }

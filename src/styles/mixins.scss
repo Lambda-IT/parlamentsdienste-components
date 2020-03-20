@@ -1,0 +1,9 @@
+@import '../../node_modules/bootstrap/scss/_mixins.scss';
+
+@mixin reset {
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+}

@@ -38,7 +38,7 @@ export namespace Components {
     /**
     * Sets button type |text|submit|reset|
     */
-    'type': 'button'|'text'|'submit';
+    'type': 'button' | 'text' | 'submit';
   }
   interface PdCard {}
   interface PdCheckbox {
@@ -373,7 +373,7 @@ declare namespace LocalJSX {
     /**
     * Sets button type |text|submit|reset|
     */
-    'type'?: 'button'|'text'|'submit';
+    'type'?: 'button' | 'text' | 'submit';
   }
   interface PdCard {}
   interface PdCheckbox {
