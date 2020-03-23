@@ -57,6 +57,7 @@ export namespace Components {
     'text': string;
     'value': string;
   }
+  interface PdCol {}
   interface PdColumn {}
   interface PdContainer {}
   interface PdDatepicker {}
@@ -178,7 +179,12 @@ export namespace Components {
   }
   interface PdRadio {
     'label'?: string | null;
+    'name': string;
     'value'?: any | null;
+  }
+  interface PdRadioAlt {
+    'name': string;
+    'options': string;
   }
   interface PdRadioGroup {
     /**
@@ -190,6 +196,7 @@ export namespace Components {
     */
     'value'?: any | null;
   }
+  interface PdRow {}
   interface PdSlider {
     'disabled': any;
     'max': number;
@@ -228,6 +235,12 @@ declare global {
   var HTMLPdCheckboxElement: {
     prototype: HTMLPdCheckboxElement;
     new (): HTMLPdCheckboxElement;
+  };
+
+  interface HTMLPdColElement extends Components.PdCol, HTMLStencilElement {}
+  var HTMLPdColElement: {
+    prototype: HTMLPdColElement;
+    new (): HTMLPdColElement;
   };
 
   interface HTMLPdColumnElement extends Components.PdColumn, HTMLStencilElement {}
@@ -296,10 +309,22 @@ declare global {
     new (): HTMLPdRadioElement;
   };
 
+  interface HTMLPdRadioAltElement extends Components.PdRadioAlt, HTMLStencilElement {}
+  var HTMLPdRadioAltElement: {
+    prototype: HTMLPdRadioAltElement;
+    new (): HTMLPdRadioAltElement;
+  };
+
   interface HTMLPdRadioGroupElement extends Components.PdRadioGroup, HTMLStencilElement {}
   var HTMLPdRadioGroupElement: {
     prototype: HTMLPdRadioGroupElement;
     new (): HTMLPdRadioGroupElement;
+  };
+
+  interface HTMLPdRowElement extends Components.PdRow, HTMLStencilElement {}
+  var HTMLPdRowElement: {
+    prototype: HTMLPdRowElement;
+    new (): HTMLPdRowElement;
   };
 
   interface HTMLPdSliderElement extends Components.PdSlider, HTMLStencilElement {}
@@ -330,6 +355,7 @@ declare global {
     'pd-button': HTMLPdButtonElement;
     'pd-card': HTMLPdCardElement;
     'pd-checkbox': HTMLPdCheckboxElement;
+    'pd-col': HTMLPdColElement;
     'pd-column': HTMLPdColumnElement;
     'pd-container': HTMLPdContainerElement;
     'pd-datepicker': HTMLPdDatepickerElement;
@@ -341,7 +367,9 @@ declare global {
     'pd-notification': HTMLPdNotificationElement;
     'pd-progress-bar': HTMLPdProgressBarElement;
     'pd-radio': HTMLPdRadioElement;
+    'pd-radio-alt': HTMLPdRadioAltElement;
     'pd-radio-group': HTMLPdRadioGroupElement;
+    'pd-row': HTMLPdRowElement;
     'pd-slider': HTMLPdSliderElement;
     'pd-table': HTMLPdTableElement;
     'pd-tag': HTMLPdTagElement;
@@ -393,6 +421,7 @@ declare namespace LocalJSX {
     'text'?: string;
     'value'?: string;
   }
+  interface PdCol {}
   interface PdColumn {}
   interface PdContainer {}
   interface PdDatepicker {}
@@ -524,7 +553,12 @@ declare namespace LocalJSX {
   }
   interface PdRadio {
     'label'?: string | null;
+    'name'?: string;
     'value'?: any | null;
+  }
+  interface PdRadioAlt {
+    'name'?: string;
+    'options'?: string;
   }
   interface PdRadioGroup {
     /**
@@ -540,6 +574,7 @@ declare namespace LocalJSX {
     */
     'value'?: any | null;
   }
+  interface PdRow {}
   interface PdSlider {
     'disabled'?: any;
     'max'?: number;
@@ -565,6 +600,7 @@ declare namespace LocalJSX {
     'pd-button': PdButton;
     'pd-card': PdCard;
     'pd-checkbox': PdCheckbox;
+    'pd-col': PdCol;
     'pd-column': PdColumn;
     'pd-container': PdContainer;
     'pd-datepicker': PdDatepicker;
@@ -576,7 +612,9 @@ declare namespace LocalJSX {
     'pd-notification': PdNotification;
     'pd-progress-bar': PdProgressBar;
     'pd-radio': PdRadio;
+    'pd-radio-alt': PdRadioAlt;
     'pd-radio-group': PdRadioGroup;
+    'pd-row': PdRow;
     'pd-slider': PdSlider;
     'pd-table': PdTable;
     'pd-tag': PdTag;
@@ -594,6 +632,7 @@ declare module "@stencil/core" {
       'pd-button': LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
       'pd-card': LocalJSX.PdCard & JSXBase.HTMLAttributes<HTMLPdCardElement>;
       'pd-checkbox': LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
+      'pd-col': LocalJSX.PdCol & JSXBase.HTMLAttributes<HTMLPdColElement>;
       'pd-column': LocalJSX.PdColumn & JSXBase.HTMLAttributes<HTMLPdColumnElement>;
       'pd-container': LocalJSX.PdContainer & JSXBase.HTMLAttributes<HTMLPdContainerElement>;
       'pd-datepicker': LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
@@ -605,7 +644,9 @@ declare module "@stencil/core" {
       'pd-notification': LocalJSX.PdNotification & JSXBase.HTMLAttributes<HTMLPdNotificationElement>;
       'pd-progress-bar': LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
       'pd-radio': LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
+      'pd-radio-alt': LocalJSX.PdRadioAlt & JSXBase.HTMLAttributes<HTMLPdRadioAltElement>;
       'pd-radio-group': LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
+      'pd-row': LocalJSX.PdRow & JSXBase.HTMLAttributes<HTMLPdRowElement>;
       'pd-slider': LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
       'pd-table': LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
       'pd-tag': LocalJSX.PdTag & JSXBase.HTMLAttributes<HTMLPdTagElement>;

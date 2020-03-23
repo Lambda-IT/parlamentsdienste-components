@@ -23,7 +23,7 @@ export class Dropdown {
                     <pd-button
                         type="button"
                         aria-haspopup="true"
-                        aria-expanded="false"
+                        aria-expanded={`${this.show}`}
                         onClick={() => (this.show = !this.show)}
                     >
                         Dropdown

@@ -3,7 +3,7 @@ import { Component, Host, h, Prop, Element, State } from '@stencil/core';
 @Component({
     tag: 'pd-radio',
     styleUrl: 'radio.scss',
-    shadow: true,
+    // shadow: true,
 })
 export class Radio {
     private inputId = `pd-radio-${radioButtonIds++}`;
@@ -16,6 +16,8 @@ export class Radio {
     @Prop() value?: any | null;
 
     @Prop() label?: string | null = null;
+
+    @Prop() name: string = '';
 
     connectedCallback() {
         if (this.value === undefined) {
@@ -47,13 +49,13 @@ export class Radio {
     };
 
     render() {
-        const { inputId } = this;
+        const { inputId, name, value, label, checked } = this;
         const labelId = inputId + '-lbl';
 
         return (
             <Host role="radio" aria-labeledby={labelId}>
-                <input type="radio" checked={this.checked} name="x" value={this.value} />
-                <label>{this.label}</label>
+                <input type="radio" checked={checked} name={name} value={value} />
+                <label class="rad">{label}</label>
             </Host>
         );
     }

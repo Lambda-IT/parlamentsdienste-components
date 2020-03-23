@@ -3,6 +3,7 @@ import { RadioGroupChangeEventDetail } from './radio-group.interface';
 
 @Component({
     tag: 'pd-radio-group',
+    shadow: true,
 })
 export class RadioGroup {
     /**
@@ -39,6 +40,10 @@ export class RadioGroup {
     };
 
     render() {
-        return <Host role="radiogroup" onClick={this.onClick}></Host>;
+        return (
+            <Host role="radiogroup" onClick={this.onClick}>
+                <slot></slot>
+            </Host>
+        );
     }
 }
