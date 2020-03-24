@@ -9,7 +9,6 @@ export class Table {
     render() {
         return (
             <Host>
-                Table
                 <slot></slot>
             </Host>
         );
