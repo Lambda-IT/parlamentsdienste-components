@@ -1,1 +1,6 @@
 @import '../../node_modules/bootstrap/scss/_functions.scss';
+
+// Our function for shorter usage of map-get();
+@function setcolor($scheme, $tone: base) {
+    @return map-get(map-get($colorscheme, $scheme), $tone);
+}

@@ -10,10 +10,17 @@ export default {
     },
 };
 
-export const primary = () => {
+export const states = () => {
+    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
+    const size = radios('size', { larger: 'large', small: 'small' }, 'large');
     return `
-        <pd-button>I'm a button</pd-button>
-        <pd-button disabled>I'm a button (disabled)</pd-button>
+        <pd-button ${disabled} size=${size} color="primary">Primary</pd-button>
+        <pd-button ${disabled} size=${size} color="success">Success</pd-button>
+        <pd-button ${disabled} size=${size} color="danger">Danger</pd-button>
+        <pd-button ${disabled} size=${size} color="warning">Warning</pd-button>
+        <pd-button ${disabled} size=${size} color="info">Info</pd-button>
+        <pd-button ${disabled} size=${size} color="light">Light</pd-button>
+        <pd-button ${disabled} size=${size} color="dark">Dark</pd-button>
     `;
 };
 

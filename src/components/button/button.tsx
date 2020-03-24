@@ -16,6 +16,10 @@ export class Button {
      */
     @Prop() type: 'button' | 'text' | 'submit' = 'button';
 
+    @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
+
+    @Prop() size: 'small' | 'large' = 'large';
+
     /**
      * Set href to create a link button
      */
@@ -32,7 +36,7 @@ export class Button {
         const typeAttrs = TagType === 'button' ? { type } : { href, target };
 
         return (
-            <TagType {...typeAttrs} disabled={disabled} class="btn btn-primary">
+            <TagType {...typeAttrs} disabled={disabled} class={`btn btn-primary ${this.color} ${this.size}`}>
                 <slot name="icon"></slot>
                 <slot></slot>
             </TagType>

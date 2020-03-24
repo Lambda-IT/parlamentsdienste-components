@@ -23,6 +23,7 @@ export namespace Components {
     'visible': boolean;
   }
   interface PdButton {
+    'color': 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
     /**
     * Sets button to disbaled state
     */
@@ -31,6 +32,7 @@ export namespace Components {
     * Set href to create a link button
     */
     'href': string;
+    'size': 'small' | 'large';
     /**
     * Sets target for link button e.g. '_blank'
     */
@@ -386,6 +388,7 @@ declare namespace LocalJSX {
     'visible'?: boolean;
   }
   interface PdButton {
+    'color'?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
     /**
     * Sets button to disbaled state
     */
@@ -394,6 +397,7 @@ declare namespace LocalJSX {
     * Set href to create a link button
     */
     'href'?: string;
+    'size'?: 'small' | 'large';
     /**
     * Sets target for link button e.g. '_blank'
     */

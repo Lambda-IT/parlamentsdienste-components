@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property    | Attribute   | Description | Type  | Default     |
+| ----------- | ----------- | ----------- | ----- | ----------- |
+| `component` | `component` |             | `any` | `undefined` |
+
+
 ## Methods
 
 ### `closeModal() => Promise<boolean>`
