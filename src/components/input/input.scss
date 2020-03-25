@@ -1,3 +1,48 @@
+@include reset;
+
+* {
+    @include avenir-roman;
+}
+
 :host {
     display: block;
+}
+
+:host(.error) {
+    input {
+        border: 2px solid setcolor(danger, base);
+    }
+
+    .helper {
+        color: setcolor(danger, base);
+    }
+}
+
+input {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 4px;
+    border: 2px solid setcolor(primary, base);
+    width: 100%;
+
+    &:hover:enabled {
+        border: 2px solid setcolor(primary, hover);
+    }
+
+    &:disabled {
+        border: 2px solid setcolor(primary, disabled);
+        background-color: transparent;
+        color: $gray;
+    }
+}
+
+.label {
+    padding-bottom: 5px;
+}
+
+.helper {
+    margin-left: 14px;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
 }

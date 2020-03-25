@@ -12,15 +12,29 @@ export default {
 
 export const states = () => {
     const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
-    const size = radios('size', { larger: 'large', small: 'small' }, 'large');
+    const size = radios('size', { large: 'large', normal: 'normal', small: 'small' }, 'normal');
     return `
-        <pd-button ${disabled} size=${size} color="primary">Primary</pd-button>
+        <pd-button ${disabled} size=${size}>Primary</pd-button>
         <pd-button ${disabled} size=${size} color="success">Success</pd-button>
         <pd-button ${disabled} size=${size} color="danger">Danger</pd-button>
         <pd-button ${disabled} size=${size} color="warning">Warning</pd-button>
         <pd-button ${disabled} size=${size} color="info">Info</pd-button>
         <pd-button ${disabled} size=${size} color="light">Light</pd-button>
         <pd-button ${disabled} size=${size} color="dark">Dark</pd-button>
+    `;
+};
+
+export const outline = () => {
+    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
+    const size = radios('size', { large: 'large', normal: 'normal', small: 'small' }, 'normal');
+    return `
+        <pd-button outline ${disabled} size=${size}>Primary</pd-button>
+        <pd-button outline ${disabled} size=${size} color="success">Success</pd-button>
+        <pd-button outline ${disabled} size=${size} color="danger">Danger</pd-button>
+        <pd-button outline ${disabled} size=${size} color="warning">Warning</pd-button>
+        <pd-button outline ${disabled} size=${size} color="info">Info</pd-button>
+        <pd-button outline ${disabled} size=${size} color="light">Light</pd-button>
+        <pd-button outline ${disabled} size=${size} color="dark">Dark</pd-button>
     `;
 };
 
@@ -34,6 +48,6 @@ export const icon = () => {
 export const link = () => {
     const href = text('href', 'http://www.google.ch');
     return `
-      <pd-button href="${href}" target="_blank">google link</pd-button>
+      <pd-button href="${href}" target="_blank">external link</pd-button>
   `;
 };

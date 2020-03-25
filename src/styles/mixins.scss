@@ -7,3 +7,53 @@
         margin: 0;
     }
 }
+
+@mixin avenir-roman {
+    font: 16px/24px Avenir-Roman;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.19px;
+}
+
+@mixin button-scheme($colorscheme) {
+    background-color: setcolor($colorscheme, base);
+    border: none;
+
+    &:hover:enabled {
+        background-color: setcolor($colorscheme, hover);
+    }
+
+    &:disabled {
+        background-color: setcolor(primary, disabled);
+    }
+
+    &:active:enabled {
+        background-color: setcolor($colorscheme, pressed);
+        color: $white;
+    }
+
+    &.outline {
+        background-color: transparent;
+        border: 2px solid setcolor($colorscheme, base);
+        color: setcolor($colorscheme, base);
+
+        &:hover:enabled {
+            background-color: transparent;
+            border: 2px solid setcolor($colorscheme, hover);
+            color: setcolor($colorscheme, hover);
+        }
+
+        &:disabled {
+            background-color: transparent;
+            border: 2px solid setcolor($colorscheme, disabled);
+            color: setcolor($colorscheme, disabled);
+        }
+
+        &:active:enabled {
+            background-color: transparent;
+            border: 2px solid setcolor($colorscheme, pressed);
+            color: setcolor($colorscheme, pressed);
+        }
+    }
+}

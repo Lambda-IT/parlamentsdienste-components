@@ -4,134 +4,50 @@
     display: inline-block;
 }
 
+* {
+    @include avenir-roman;
+}
+
 button {
-    background-color: setcolor(primary, base);
+    @include button-scheme(primary);
     color: $white;
-    border: none;
     border-radius: 4px;
-    padding: 12px 20px;
+    padding: 7px 12px;
+
+    &.large {
+        padding: 12px 22px;
+    }
 
     &.small {
-        padding: 5px 11px;
-    }
-
-    &:hover {
-        background-color: setcolor(primary, hover);
-    }
-
-    &:disabled {
-        background-color: setcolor(primary, disabled);
-    }
-
-    &:active {
-        background-color: setcolor(primary, pressed);
-        color: $cyan-9;
-    }
-
-    &:focus {
-        outline: 4px solid $yellow-4;
+        padding: 4px 11px;
     }
 
     &.success {
-        background-color: setcolor(success, base);
-
-        &:hover {
-            background-color: setcolor(success, hover);
-        }
-
-        &:disabled {
-            background-color: setcolor(primary, disabled);
-        }
-
-        &:active {
-            background-color: setcolor(success, pressed);
-            color: $white;
-        }
+        @include button-scheme(success);
     }
 
     &.danger {
-        background-color: setcolor(danger, base);
-
-        &:hover {
-            background-color: setcolor(danger, hover);
-        }
-
-        &:disabled {
-            background-color: setcolor(primary, disabled);
-        }
-
-        &:active {
-            background-color: setcolor(danger, pressed);
-            color: $white;
-        }
+        @include button-scheme(danger);
     }
 
     &.warning {
-        background-color: setcolor(warning, base);
-
-        &:hover {
-            background-color: setcolor(warning, hover);
-        }
-
-        &:disabled {
-            background-color: setcolor(primary, disabled);
-        }
-
-        &:active {
-            background-color: setcolor(warning, pressed);
-            color: $white;
-        }
+        @include button-scheme(warning);
     }
 
     &.info {
-        background-color: setcolor(info, base);
-
-        &:hover {
-            background-color: setcolor(info, hover);
-        }
-
-        &:disabled {
-            background-color: setcolor(primary, disabled);
-        }
-
-        &:active {
-            background-color: setcolor(info, pressed);
-            color: $white;
-        }
+        @include button-scheme(info);
     }
 
     &.light {
-        background-color: setcolor(light, base);
-        color: $black;
-
-        &:hover {
-            background-color: setcolor(light, hover);
-        }
-
-        &:disabled {
-            background-color: setcolor(primary, disabled);
-        }
-
-        &:active {
-            background-color: setcolor(light, pressed);
-            color: $white;
-        }
+        @include button-scheme(light);
     }
 
     &.dark {
-        background-color: setcolor(dark, base);
-
-        &:hover {
-            background-color: setcolor(dark, hover);
-        }
-
-        &:disabled {
-            background-color: setcolor(primary, disabled);
-        }
-
-        &:active {
-            background-color: setcolor(dark, pressed);
-            color: $white;
-        }
+        @include button-scheme(dark);
     }
+}
+
+a {
+    color: $cyan-9;
+    text-decoration: none;
 }

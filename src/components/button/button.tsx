@@ -16,9 +16,20 @@ export class Button {
      */
     @Prop() type: 'button' | 'text' | 'submit' = 'button';
 
+    /**
+     * Color schema used for the button
+     */
     @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
 
-    @Prop() size: 'small' | 'large' = 'large';
+    /**
+     * Button size
+     */
+    @Prop() size: 'normal' | 'small' | 'large' = 'normal';
+
+    /**
+     * Use outline schema
+     */
+    @Prop() outline: boolean = false;
 
     /**
      * Set href to create a link button
@@ -36,7 +47,11 @@ export class Button {
         const typeAttrs = TagType === 'button' ? { type } : { href, target };
 
         return (
-            <TagType {...typeAttrs} disabled={disabled} class={`btn btn-primary ${this.color} ${this.size}`}>
+            <TagType
+                {...typeAttrs}
+                disabled={disabled}
+                class={`btn btn-primary ${this.color} ${this.size} ${this.outline ? 'outline' : ''}`}
+            >
                 <slot name="icon"></slot>
                 <slot></slot>
             </TagType>

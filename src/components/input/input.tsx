@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Watch, Method } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Watch, Method, Host } from '@stencil/core';
 import { TextFieldTypes, InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -133,6 +133,12 @@ export class Input {
      */
     @Prop({ mutable: true }) value?: string | number | null = '';
 
+    @Prop() label?: string;
+
+    @Prop() error: boolean = false;
+
+    @Prop() helperText?: string;
+
     /**
      * Emitted when a keyboard input occurred.
      */
@@ -200,36 +206,42 @@ export class Input {
         const labelId = this.inputId + '-lbl';
 
         return (
-            <input
-                ref={input => (this.nativeInput = input)}
-                aria-labelledby={labelId}
-                disabled={this.disabled}
-                accept={this.accept}
-                autoCapitalize={this.autocapitalize}
-                autoComplete={this.autocomplete}
-                autoCorrect={this.autocorrect}
-                autoFocus={this.autofocus}
-                inputMode={this.inputmode}
-                min={this.min}
-                max={this.max}
-                minLength={this.minlength}
-                maxLength={this.maxlength}
-                multiple={this.multiple}
-                name={this.name}
-                pattern={this.pattern}
-                placeholder={this.placeholder || ''}
-                readOnly={this.readonly}
-                required={this.required}
-                spellCheck={this.spellcheck}
-                step={this.step}
-                size={this.size}
-                type={this.type}
-                value={value}
-                onInput={this.onInput}
-                onBlur={this.onBlur}
-                onFocus={this.onFocus}
-                onKeyDown={this.onKeydown}
-            />
+            <Host class={this.error ? 'error' : ''}>
+                <label>
+                    {this.label ? <div class="label">{this.label}</div> : ''}
+                    <input
+                        ref={input => (this.nativeInput = input)}
+                        aria-labelledby={labelId}
+                        disabled={this.disabled}
+                        accept={this.accept}
+                        autoCapitalize={this.autocapitalize}
+                        autoComplete={this.autocomplete}
+                        autoCorrect={this.autocorrect}
+                        autoFocus={this.autofocus}
+                        inputMode={this.inputmode}
+                        min={this.min}
+                        max={this.max}
+                        minLength={this.minlength}
+                        maxLength={this.maxlength}
+                        multiple={this.multiple}
+                        name={this.name}
+                        pattern={this.pattern}
+                        placeholder={this.placeholder || ''}
+                        readOnly={this.readonly}
+                        required={this.required}
+                        spellCheck={this.spellcheck}
+                        step={this.step}
+                        size={this.size}
+                        type={this.type}
+                        value={value}
+                        onInput={this.onInput}
+                        onBlur={this.onBlur}
+                        onFocus={this.onFocus}
+                        onKeyDown={this.onKeydown}
+                    />
+                </label>
+                {this.helperText ? <span class="helper">{this.helperText}</span> : ''}
+            </Host>
         );
     }
 }

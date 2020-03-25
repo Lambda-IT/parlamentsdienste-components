@@ -23,6 +23,9 @@ export namespace Components {
     'visible': boolean;
   }
   interface PdButton {
+    /**
+    * Color schema used for the button
+    */
     'color': 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
     /**
     * Sets button to disbaled state
@@ -32,7 +35,14 @@ export namespace Components {
     * Set href to create a link button
     */
     'href': string;
-    'size': 'small' | 'large';
+    /**
+    * Use outline schema
+    */
+    'outline': boolean;
+    /**
+    * Button size
+    */
+    'size': 'normal' | 'small' | 'large';
     /**
     * Sets target for link button e.g. '_blank'
     */
@@ -98,10 +108,13 @@ export namespace Components {
     * If `true`, the user cannot interact with the input.
     */
     'disabled': boolean;
+    'error': boolean;
+    'helperText'?: string;
     /**
     * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
     */
     'inputmode'?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+    'label'?: string;
     /**
     * The maximum value, which must not be less than its minimum (min attribute) value.
     */
@@ -388,6 +401,9 @@ declare namespace LocalJSX {
     'visible'?: boolean;
   }
   interface PdButton {
+    /**
+    * Color schema used for the button
+    */
     'color'?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
     /**
     * Sets button to disbaled state
@@ -397,7 +413,14 @@ declare namespace LocalJSX {
     * Set href to create a link button
     */
     'href'?: string;
-    'size'?: 'small' | 'large';
+    /**
+    * Use outline schema
+    */
+    'outline'?: boolean;
+    /**
+    * Button size
+    */
+    'size'?: 'normal' | 'small' | 'large';
     /**
     * Sets target for link button e.g. '_blank'
     */
@@ -464,10 +487,13 @@ declare namespace LocalJSX {
     * If `true`, the user cannot interact with the input.
     */
     'disabled'?: boolean;
+    'error'?: boolean;
+    'helperText'?: string;
     /**
     * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
     */
     'inputmode'?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+    'label'?: string;
     /**
     * The maximum value, which must not be less than its minimum (min attribute) value.
     */
