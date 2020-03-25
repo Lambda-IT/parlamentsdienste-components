@@ -53,6 +53,9 @@ export namespace Components {
     'type': 'button' | 'text' | 'submit';
   }
   interface PdCard {}
+  interface PdCardContent {}
+  interface PdCardFooter {}
+  interface PdCardHeader {}
   interface PdCheckbox {
     /**
     * Sets check state of the checkbox true/false
@@ -246,6 +249,24 @@ declare global {
     new (): HTMLPdCardElement;
   };
 
+  interface HTMLPdCardContentElement extends Components.PdCardContent, HTMLStencilElement {}
+  var HTMLPdCardContentElement: {
+    prototype: HTMLPdCardContentElement;
+    new (): HTMLPdCardContentElement;
+  };
+
+  interface HTMLPdCardFooterElement extends Components.PdCardFooter, HTMLStencilElement {}
+  var HTMLPdCardFooterElement: {
+    prototype: HTMLPdCardFooterElement;
+    new (): HTMLPdCardFooterElement;
+  };
+
+  interface HTMLPdCardHeaderElement extends Components.PdCardHeader, HTMLStencilElement {}
+  var HTMLPdCardHeaderElement: {
+    prototype: HTMLPdCardHeaderElement;
+    new (): HTMLPdCardHeaderElement;
+  };
+
   interface HTMLPdCheckboxElement extends Components.PdCheckbox, HTMLStencilElement {}
   var HTMLPdCheckboxElement: {
     prototype: HTMLPdCheckboxElement;
@@ -369,6 +390,9 @@ declare global {
     'pd-backdrop': HTMLPdBackdropElement;
     'pd-button': HTMLPdButtonElement;
     'pd-card': HTMLPdCardElement;
+    'pd-card-content': HTMLPdCardContentElement;
+    'pd-card-footer': HTMLPdCardFooterElement;
+    'pd-card-header': HTMLPdCardHeaderElement;
     'pd-checkbox': HTMLPdCheckboxElement;
     'pd-col': HTMLPdColElement;
     'pd-column': HTMLPdColumnElement;
@@ -431,6 +455,9 @@ declare namespace LocalJSX {
     'type'?: 'button' | 'text' | 'submit';
   }
   interface PdCard {}
+  interface PdCardContent {}
+  interface PdCardFooter {}
+  interface PdCardHeader {}
   interface PdCheckbox {
     /**
     * Sets check state of the checkbox true/false
@@ -629,6 +656,9 @@ declare namespace LocalJSX {
     'pd-backdrop': PdBackdrop;
     'pd-button': PdButton;
     'pd-card': PdCard;
+    'pd-card-content': PdCardContent;
+    'pd-card-footer': PdCardFooter;
+    'pd-card-header': PdCardHeader;
     'pd-checkbox': PdCheckbox;
     'pd-col': PdCol;
     'pd-column': PdColumn;
@@ -661,6 +691,9 @@ declare module "@stencil/core" {
       'pd-backdrop': LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
       'pd-button': LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
       'pd-card': LocalJSX.PdCard & JSXBase.HTMLAttributes<HTMLPdCardElement>;
+      'pd-card-content': LocalJSX.PdCardContent & JSXBase.HTMLAttributes<HTMLPdCardContentElement>;
+      'pd-card-footer': LocalJSX.PdCardFooter & JSXBase.HTMLAttributes<HTMLPdCardFooterElement>;
+      'pd-card-header': LocalJSX.PdCardHeader & JSXBase.HTMLAttributes<HTMLPdCardHeaderElement>;
       'pd-checkbox': LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
       'pd-col': LocalJSX.PdCol & JSXBase.HTMLAttributes<HTMLPdColElement>;
       'pd-column': LocalJSX.PdColumn & JSXBase.HTMLAttributes<HTMLPdColumnElement>;

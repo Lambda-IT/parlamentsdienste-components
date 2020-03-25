@@ -1,3 +1,69 @@
 :host {
     display: block;
 }
+
+label > input {
+    position: absolute;
+    height: 0;
+    width: 0;
+    opacity: 0;
+
+    &:checked {
+        & + .radio-inner {
+            &:after {
+                border: 6px solid setcolor(primary, base);
+                border-radius: 100%;
+            }
+
+            &:hover {
+                &:after {
+                    border: 6px solid setcolor(primary, hover);
+                }
+            }
+
+            &:active {
+                &:after {
+                    border: 6px solid setcolor(primary, pressed);
+                }
+            }
+        }
+    }
+
+    & + .radio-inner {
+        position: relative;
+        width: 20px;
+        height: 20px;
+
+        &:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &:before {
+            content: '';
+            background-color: transparent;
+        }
+
+        &:after {
+            content: '';
+            border: 2px solid setcolor(primary, base);
+            border-radius: 100%;
+        }
+
+        &:hover {
+            &:after {
+                border: 2px solid setcolor(primary, hover);
+            }
+        }
+
+        &:active {
+            &:after {
+                border: 2px solid setcolor(primary, pressed);
+            }
+        }
+    }
+}

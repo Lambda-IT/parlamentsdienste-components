@@ -1,0 +1,9 @@
+@include reset;
+
+:host {
+    display: block;
+    border-top: 2px solid $gray-3;
+    padding: 8px 20px;
+    min-height: 48px;
+    box-sizing: border-box;
+}

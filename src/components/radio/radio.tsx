@@ -54,8 +54,11 @@ export class Radio {
 
         return (
             <Host role="radio" aria-labeledby={labelId}>
-                <input type="radio" checked={checked} name={name} value={value} />
-                <label class="rad">{label}</label>
+                <label>
+                    {label}
+                    <input type="radio" checked={checked} name={name} value={value} />
+                    <div class="radio-inner"></div>
+                </label>
             </Host>
         );
     }

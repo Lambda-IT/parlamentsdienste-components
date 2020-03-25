@@ -1,4 +1,12 @@
+@include reset;
+
 :host {
+    box-sizing: border-box;
     display: block;
-    font-family: Avenir-Black;
+    background-color: $white;
+    border-radius: 4px;
+}
+
+* {
+    @include avenir-roman;
 }

@@ -27,11 +27,12 @@
         "@babel/core": "^7.9.0",
         "@stencil/core": "1.8.11",
         "@stencil/sass": "^1.1.1",
-        "@storybook/html": "^5.3.17",
         "@storybook/addon-actions": "^5.3.17",
+        "@storybook/addon-backgrounds": "^5.3.17",
         "@storybook/addon-knobs": "^5.3.17",
         "@storybook/addon-notes": "^5.3.17",
         "@storybook/addons": "^5.3.17",
+        "@storybook/html": "^5.3.17",
         "babel-loader": "^8.1.0",
         "prettier": "1.19.1"
     },

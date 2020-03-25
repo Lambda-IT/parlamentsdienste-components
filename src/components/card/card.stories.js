@@ -9,6 +9,10 @@ export default {
 
 export const primary = () => {
     return `
-        <pd-card></pd-card>
+        <pd-card>
+            <pd-card-header>Header</pd-card-header>
+            <pd-card-content>Content</pd-card-content>
+            <pd-card-footer></pd-card-footer>
+        </pd-card>
     `;
 };
