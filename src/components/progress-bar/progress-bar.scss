@@ -1,3 +1,9 @@
+@include reset;
+
+* {
+    @include avenir-roman;
+}
+
 $progress-height: 30px;
 
 :host {
@@ -6,14 +12,14 @@ $progress-height: 30px;
 }
 
 .progress-background {
-    background-color: gray;
+    background-color: $gray;
     position: absolute;
     width: 100%;
     height: $progress-height;
 }
 
 .progress-bar {
-    background-color: red;
+    background-color: $blue-whale;
     position: absolute;
     width: 100%;
     height: $progress-height;

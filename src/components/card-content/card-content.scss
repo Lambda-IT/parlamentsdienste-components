@@ -7,4 +7,8 @@ pd-card-content {
     padding: 20px;
     display: block;
     position: relative;
+
+    &.collapsed {
+        display: none;
+    }
 }

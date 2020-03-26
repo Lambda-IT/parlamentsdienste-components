@@ -1,3 +1,14 @@
+@include reset;
+
+* {
+    @include avenir-roman;
+}
+
 :host {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-height: 68px;
+    background-color: $blue-whale;
+    color: $white;
+    padding: 0 100px;
 }

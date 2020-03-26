@@ -52,10 +52,16 @@ export namespace Components {
     */
     'type': 'button' | 'text' | 'submit';
   }
-  interface PdCard {}
-  interface PdCardContent {}
+  interface PdCard {
+    'collapsed': boolean;
+  }
+  interface PdCardContent {
+    'collapsed': boolean;
+  }
   interface PdCardFooter {}
-  interface PdCardHeader {}
+  interface PdCardHeader {
+    'collapsed': boolean;
+  }
   interface PdCheckbox {
     /**
     * Sets check state of the checkbox true/false
@@ -454,10 +460,20 @@ declare namespace LocalJSX {
     */
     'type'?: 'button' | 'text' | 'submit';
   }
-  interface PdCard {}
-  interface PdCardContent {}
+  interface PdCard {
+    'collapsed'?: boolean;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onPdCollapsed'?: (event: CustomEvent<any>) => void;
+  }
+  interface PdCardContent {
+    'collapsed'?: boolean;
+  }
   interface PdCardFooter {}
-  interface PdCardHeader {}
+  interface PdCardHeader {
+    'collapsed'?: boolean;
+  }
   interface PdCheckbox {
     /**
     * Sets check state of the checkbox true/false

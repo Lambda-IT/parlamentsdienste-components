@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop, Element, EventEmitter, Event, Watch } from '@stencil/core';
 
 @Component({
     tag: 'pd-card',
@@ -6,12 +6,29 @@ import { Component, Host, h } from '@stencil/core';
     shadow: true,
 })
 export class Card {
+    @Element() element!: HTMLElement;
+
+    @Prop() collapsed: boolean = false;
+
+    /**
+     * Emitted when the value has changed.
+     */
+    @Event() pdCollapsed!: EventEmitter<any>;
+
+    @Watch('collapsed')
+    valueChanged(collapsed: boolean) {
+        this.pdCollapsed.emit({ collapsed });
+    }
+
+    componentWillLoad() {
+        const content = this.element.querySelector('pd-card-content');
+        console.log('LOG: Card -> componentWillLoad -> content', content);
+    }
+
     render() {
         return (
             <Host>
-                <slot name="header"></slot>
                 <slot></slot>
-                <slot name="footer"></slot>
             </Host>
         );
     }
