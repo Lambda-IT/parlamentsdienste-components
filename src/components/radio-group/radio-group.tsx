@@ -3,6 +3,7 @@ import { RadioGroupChangeEventDetail } from './radio-group.interface';
 
 @Component({
     tag: 'pd-radio-group',
+    styleUrl: 'radio-group.scss',
     shadow: true,
 })
 export class RadioGroup {

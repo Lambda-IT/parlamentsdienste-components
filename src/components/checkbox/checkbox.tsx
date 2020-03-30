@@ -45,7 +45,7 @@ export class Checkbox {
                         onClick={() => this.handleChanged()}
                     ></input>
                     <div class="checkbox-inner"></div>
-                    {this.text}
+                    <div class="text">{this.text}</div>
                 </label>
             </Host>
         );

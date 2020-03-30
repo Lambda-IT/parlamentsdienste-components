@@ -1,9 +1,5 @@
 @include reset;
 
-* {
-    @include avenir-roman;
-}
-
 $progress-height: 30px;
 
 :host {

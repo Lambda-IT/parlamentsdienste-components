@@ -9,6 +9,8 @@ export default {
 
 export const primary = () => {
     return `
-        <pd-navbar></pd-navbar>
+        <pd-navbar>
+            <pd-navbar-item>Item</pd-navbar-item>
+        </pd-navbar>
     `;
 };

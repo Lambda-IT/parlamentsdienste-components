@@ -37,16 +37,14 @@
                 <pd-card-content>Content</pd-card-content>
                 <pd-card-footer></pd-card-footer>
             </pd-card>
-            <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-column></pd-column>
             <pd-container></pd-container>
             <pd-datepicker></pd-datepicker>
             <pd-dropdown></pd-dropdown>
             <pd-footer></pd-footer>
-            <pd-input value="asdf" id="pd-input-0" helperText="asdf"></pd-input>
-            <pd-navbar>Navbar</pd-navbar>
-            <pd-notification></pd-notification>
-            <pd-progress-bar id="pd-progress-0"></pd-progress-bar>
+            <pd-checkbox text="checkbox"></pd-checkbox>
+            <pd-checkbox disabled text="checkbox"></pd-checkbox>
+            <pd-checkbox disabled checked text="checkbox"></pd-checkbox>
             <pd-radio-group id="pd-radio-group-0" value="0.80">
                 <pd-radio class="radio-x" name="x" value="0" label="0%"></pd-radio>
                 <pd-radio class="radio-x" name="x" value="0.25" label="25%"></pd-radio>
@@ -54,6 +52,20 @@
                 <pd-radio class="radio-x" name="x" value="0.80" label="80%"></pd-radio>
                 <pd-radio class="radio-x" name="x" value="1" label="100%"></pd-radio>
             </pd-radio-group>
+            <pd-input value="asdf" id="pd-input-0" helperText="asdf"></pd-input>
+            <pd-navbar>
+                <pd-navbar-item>Startseite</pd-navbar-item>
+                <pd-navbar-item>Geschäfte suchen</pd-navbar-item>
+                <pd-navbar-item>VORSTOSSplus</pd-navbar-item>
+            </pd-navbar>
+            <pd-sidebar>
+                <pd-sidebar-item text="Mitteilungen"><img src="assets/icons/icon-new_post.svg"></img></pd-sidebar-item>
+                <pd-sidebar-item text="Meine Ablage">Icon</pd-sidebar-item>
+                <pd-sidebar-item enabled text="Recherchen">Icon</pd-sidebar-item>
+                <pd-sidebar-item text="Parlaments- Wörterbuch">Icon</pd-sidebar-item>
+            </pd-sidebar>
+            <pd-notification></pd-notification>
+            <pd-progress-bar id="pd-progress-0"></pd-progress-bar>
             <pd-radio name="x" value="1" label="100%"></pd-radio>
             <pd-radio-alt
                 name="test"

@@ -195,6 +195,7 @@ export namespace Components {
     'openModal': () => Promise<void>;
   }
   interface PdNavbar {}
+  interface PdNavbarItem {}
   interface PdNotification {}
   interface PdProgressBar {
     'decimals': number;
@@ -221,6 +222,11 @@ export namespace Components {
     'value'?: any | null;
   }
   interface PdRow {}
+  interface PdSidebar {}
+  interface PdSidebarItem {
+    'enabled': boolean;
+    'text': string;
+  }
   interface PdSlider {
     'disabled': any;
     'max': number;
@@ -333,6 +339,12 @@ declare global {
     new (): HTMLPdNavbarElement;
   };
 
+  interface HTMLPdNavbarItemElement extends Components.PdNavbarItem, HTMLStencilElement {}
+  var HTMLPdNavbarItemElement: {
+    prototype: HTMLPdNavbarItemElement;
+    new (): HTMLPdNavbarItemElement;
+  };
+
   interface HTMLPdNotificationElement extends Components.PdNotification, HTMLStencilElement {}
   var HTMLPdNotificationElement: {
     prototype: HTMLPdNotificationElement;
@@ -367,6 +379,18 @@ declare global {
   var HTMLPdRowElement: {
     prototype: HTMLPdRowElement;
     new (): HTMLPdRowElement;
+  };
+
+  interface HTMLPdSidebarElement extends Components.PdSidebar, HTMLStencilElement {}
+  var HTMLPdSidebarElement: {
+    prototype: HTMLPdSidebarElement;
+    new (): HTMLPdSidebarElement;
+  };
+
+  interface HTMLPdSidebarItemElement extends Components.PdSidebarItem, HTMLStencilElement {}
+  var HTMLPdSidebarItemElement: {
+    prototype: HTMLPdSidebarItemElement;
+    new (): HTMLPdSidebarItemElement;
   };
 
   interface HTMLPdSliderElement extends Components.PdSlider, HTMLStencilElement {}
@@ -409,12 +433,15 @@ declare global {
     'pd-input': HTMLPdInputElement;
     'pd-modal': HTMLPdModalElement;
     'pd-navbar': HTMLPdNavbarElement;
+    'pd-navbar-item': HTMLPdNavbarItemElement;
     'pd-notification': HTMLPdNotificationElement;
     'pd-progress-bar': HTMLPdProgressBarElement;
     'pd-radio': HTMLPdRadioElement;
     'pd-radio-alt': HTMLPdRadioAltElement;
     'pd-radio-group': HTMLPdRadioGroupElement;
     'pd-row': HTMLPdRowElement;
+    'pd-sidebar': HTMLPdSidebarElement;
+    'pd-sidebar-item': HTMLPdSidebarItemElement;
     'pd-slider': HTMLPdSliderElement;
     'pd-table': HTMLPdTableElement;
     'pd-tag': HTMLPdTagElement;
@@ -618,6 +645,7 @@ declare namespace LocalJSX {
     'component'?: any;
   }
   interface PdNavbar {}
+  interface PdNavbarItem {}
   interface PdNotification {}
   interface PdProgressBar {
     'decimals'?: number;
@@ -648,6 +676,11 @@ declare namespace LocalJSX {
     'value'?: any | null;
   }
   interface PdRow {}
+  interface PdSidebar {}
+  interface PdSidebarItem {
+    'enabled'?: boolean;
+    'text'?: string;
+  }
   interface PdSlider {
     'disabled'?: any;
     'max'?: number;
@@ -685,12 +718,15 @@ declare namespace LocalJSX {
     'pd-input': PdInput;
     'pd-modal': PdModal;
     'pd-navbar': PdNavbar;
+    'pd-navbar-item': PdNavbarItem;
     'pd-notification': PdNotification;
     'pd-progress-bar': PdProgressBar;
     'pd-radio': PdRadio;
     'pd-radio-alt': PdRadioAlt;
     'pd-radio-group': PdRadioGroup;
     'pd-row': PdRow;
+    'pd-sidebar': PdSidebar;
+    'pd-sidebar-item': PdSidebarItem;
     'pd-slider': PdSlider;
     'pd-table': PdTable;
     'pd-tag': PdTag;
@@ -720,12 +756,15 @@ declare module "@stencil/core" {
       'pd-input': LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
       'pd-modal': LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
       'pd-navbar': LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
+      'pd-navbar-item': LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
       'pd-notification': LocalJSX.PdNotification & JSXBase.HTMLAttributes<HTMLPdNotificationElement>;
       'pd-progress-bar': LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
       'pd-radio': LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
       'pd-radio-alt': LocalJSX.PdRadioAlt & JSXBase.HTMLAttributes<HTMLPdRadioAltElement>;
       'pd-radio-group': LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
       'pd-row': LocalJSX.PdRow & JSXBase.HTMLAttributes<HTMLPdRowElement>;
+      'pd-sidebar': LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
+      'pd-sidebar-item': LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
       'pd-slider': LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
       'pd-table': LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
       'pd-tag': LocalJSX.PdTag & JSXBase.HTMLAttributes<HTMLPdTagElement>;

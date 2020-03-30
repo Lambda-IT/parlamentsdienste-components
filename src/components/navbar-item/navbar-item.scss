@@ -1,0 +1,26 @@
+@include reset;
+
+:host {
+    display: block;
+    padding: 0 16px;
+}
+
+* {
+    font: 16px/24px Avenir-Black;
+}
+
+.item {
+    background-color: transparent;
+    border: none;
+    color: $cyan-3;
+    font: 16px/24px Avenir-Black;
+    text-decoration: none;
+
+    &:hover {
+        color: $white;
+    }
+
+    &:active {
+        color: $cyan-6;
+    }
+}

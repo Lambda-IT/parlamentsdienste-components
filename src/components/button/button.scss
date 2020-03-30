@@ -5,7 +5,11 @@
 }
 
 * {
-    @include avenir-roman;
+    font: 16px/24px Avenir-Black;
+}
+
+.outline {
+    font: 16px/24px Avenir-Medium;
 }
 
 button {
