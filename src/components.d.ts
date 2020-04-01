@@ -234,6 +234,7 @@ export namespace Components {
     * The name of the control, which is submitted with the form data.
     */
     'name': string;
+    'open': boolean;
     /**
     * Instructional text that shows before the input has a value.
     */
@@ -740,6 +741,7 @@ declare namespace LocalJSX {
     * Emitted when the input has focus.
     */
     'onPdOnFocus'?: (event: CustomEvent<void>) => void;
+    'open'?: boolean;
     /**
     * Instructional text that shows before the input has a value.
     */

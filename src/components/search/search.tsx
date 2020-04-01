@@ -1,4 +1,4 @@
-import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -9,7 +9,7 @@ import { InputChangeEventDetail } from '../../interface';
 export class Search {
     private nativeInput?: HTMLInputElement;
     private inputId = `pd-input-${inputIds++}`;
-
+    @Prop() open: boolean = false; // temp prop
     private searchStrings: string[] = [
         'Krankenkasse',
         'Krankenkasse kündingen',
@@ -111,7 +111,14 @@ export class Search {
     }
 
     private renderDropdownItems() {
-        return this.searchStrings.map(searchString => <div class="dropdown-item">{searchString}</div>);
+        if (!this.open) return;
+        return (
+            <div class="dropdown">
+                {this.searchStrings.map(searchString => (
+                    <div class="dropdown-item">{searchString}</div>
+                ))}
+            </div>
+        );
     }
 
     render() {
@@ -138,7 +145,7 @@ export class Search {
                     </div>
                     <button class="search" type="submit" tabIndex={-1}></button>
                 </label>
-                <div class="dropdown">{this.renderDropdownItems()}</div>
+                {this.renderDropdownItems()}
             </Host>
         );
     }
