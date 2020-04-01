@@ -222,6 +222,35 @@ export namespace Components {
     'value'?: any | null;
   }
   interface PdRow {}
+  interface PdSearch {
+    /**
+    * If `true`, the user cannot interact with the input.
+    */
+    'disabled': boolean;
+    'error': boolean;
+    'helperText'?: string;
+    'label'?: string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    /**
+    * Instructional text that shows before the input has a value.
+    */
+    'placeholder'?: string | null;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly': boolean;
+    /**
+    * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
+    */
+    'setFocus': () => Promise<void>;
+    /**
+    * The value of the input.
+    */
+    'value'?: string | number | null;
+  }
   interface PdSidebar {}
   interface PdSidebarItem {
     'enabled': boolean;
@@ -381,6 +410,12 @@ declare global {
     new (): HTMLPdRowElement;
   };
 
+  interface HTMLPdSearchElement extends Components.PdSearch, HTMLStencilElement {}
+  var HTMLPdSearchElement: {
+    prototype: HTMLPdSearchElement;
+    new (): HTMLPdSearchElement;
+  };
+
   interface HTMLPdSidebarElement extends Components.PdSidebar, HTMLStencilElement {}
   var HTMLPdSidebarElement: {
     prototype: HTMLPdSidebarElement;
@@ -440,6 +475,7 @@ declare global {
     'pd-radio-alt': HTMLPdRadioAltElement;
     'pd-radio-group': HTMLPdRadioGroupElement;
     'pd-row': HTMLPdRowElement;
+    'pd-search': HTMLPdSearchElement;
     'pd-sidebar': HTMLPdSidebarElement;
     'pd-sidebar-item': HTMLPdSidebarItemElement;
     'pd-slider': HTMLPdSliderElement;
@@ -676,6 +712,47 @@ declare namespace LocalJSX {
     'value'?: any | null;
   }
   interface PdRow {}
+  interface PdSearch {
+    /**
+    * If `true`, the user cannot interact with the input.
+    */
+    'disabled'?: boolean;
+    'error'?: boolean;
+    'helperText'?: string;
+    'label'?: string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name'?: string;
+    /**
+    * Emitted when a keyboard input occurred.
+    */
+    'onPdInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    /**
+    * Emitted when the input loses focus.
+    */
+    'onPdOnBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onPdOnChange'?: (event: CustomEvent<InputChangeEventDetail>) => void;
+    /**
+    * Emitted when the input has focus.
+    */
+    'onPdOnFocus'?: (event: CustomEvent<void>) => void;
+    /**
+    * Instructional text that shows before the input has a value.
+    */
+    'placeholder'?: string | null;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly'?: boolean;
+    /**
+    * The value of the input.
+    */
+    'value'?: string | number | null;
+  }
   interface PdSidebar {}
   interface PdSidebarItem {
     'enabled'?: boolean;
@@ -725,6 +802,7 @@ declare namespace LocalJSX {
     'pd-radio-alt': PdRadioAlt;
     'pd-radio-group': PdRadioGroup;
     'pd-row': PdRow;
+    'pd-search': PdSearch;
     'pd-sidebar': PdSidebar;
     'pd-sidebar-item': PdSidebarItem;
     'pd-slider': PdSlider;
@@ -763,6 +841,7 @@ declare module "@stencil/core" {
       'pd-radio-alt': LocalJSX.PdRadioAlt & JSXBase.HTMLAttributes<HTMLPdRadioAltElement>;
       'pd-radio-group': LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
       'pd-row': LocalJSX.PdRow & JSXBase.HTMLAttributes<HTMLPdRowElement>;
+      'pd-search': LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
       'pd-sidebar': LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
       'pd-sidebar-item': LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
       'pd-slider': LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;

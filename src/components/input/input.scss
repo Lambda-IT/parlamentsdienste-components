@@ -30,6 +30,10 @@ input {
         background-color: transparent;
         color: $gray;
     }
+
+    &:focus:enabled {
+        border: 2px solid $yellow-4;
+    }
 }
 
 .label {

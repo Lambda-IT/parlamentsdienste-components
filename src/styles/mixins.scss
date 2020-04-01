@@ -11,6 +11,7 @@
 @mixin button-scheme($colorscheme) {
     background-color: setcolor($colorscheme, base);
     border: none;
+    transition: box-shadow 0.15s ease-in-out;
 
     &:hover:enabled {
         background-color: setcolor($colorscheme, hover);
@@ -23,6 +24,10 @@
     &:active:enabled {
         background-color: setcolor($colorscheme, pressed);
         color: $white;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 4px $yellow-4;
     }
 
     &.outline {

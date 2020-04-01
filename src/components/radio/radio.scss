@@ -35,6 +35,23 @@ label > input {
         }
     }
 
+    &:focus {
+        & + .radio-inner {
+            &:after {
+                content: '';
+                border: 6px solid $yellow-4;
+                border-radius: 100%;
+            }
+            &:before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                margin: 5px;
+                background-color: setcolor(primary, base);
+            }
+        }
+    }
+
     & + .radio-inner {
         position: relative;
         width: 20px;
