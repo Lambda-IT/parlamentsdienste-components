@@ -84,8 +84,11 @@ export namespace Components {
     interface PdDropdown {
         "helperText": string;
         "label": string;
+        "value": string;
     }
     interface PdDropdownItem {
+        "selected": boolean;
+        "value": string;
     }
     interface PdFooter {
     }
@@ -262,6 +265,7 @@ export namespace Components {
           * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
+        "searchStrings": string[];
         /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
@@ -611,8 +615,11 @@ declare namespace LocalJSX {
     interface PdDropdown {
         "helperText"?: string;
         "label"?: string;
+        "value"?: string;
     }
     interface PdDropdownItem {
+        "selected"?: boolean;
+        "value"?: string;
     }
     interface PdFooter {
     }
@@ -819,6 +826,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
+        "searchStrings"?: string[];
         /**
           * The value of the input.
          */

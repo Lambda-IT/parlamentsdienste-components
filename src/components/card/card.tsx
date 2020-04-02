@@ -20,11 +20,6 @@ export class Card {
         this.pdCollapsed.emit({ collapsed });
     }
 
-    componentWillLoad() {
-        const content = this.element.querySelector('pd-card-content');
-        console.log('LOG: Card -> componentWillLoad -> content', content);
-    }
-
     render() {
         return (
             <Host>

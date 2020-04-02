@@ -74,6 +74,7 @@ input {
     background-color: setcolor(primary, enabled);
     border: 2px solid setcolor(primary, enabled);
     border-left: none;
+    cursor: pointer;
 
     &:hover:active {
         background-color: setcolor(primary, pressed);
@@ -95,6 +96,7 @@ input {
         border: 2px solid $gray;
         width: 26px;
         height: 26px;
+        cursor: pointer;
     }
 }
 
@@ -110,4 +112,6 @@ input {
     width: 100%;
     border: 2px solid setcolor(primary, enabled);
     border-radius: 4px;
+    overflow-y: auto;
+    max-height: calc(48px * 8 + 4px);
 }

@@ -12,14 +12,30 @@ export class Dropdown {
 
     @Prop() helperText: string = '';
 
-    @State() show: boolean = false;
+    @Prop() value: string = 'Placeholder';
+
+    @State() open: boolean = false;
 
     @Listen('click', { target: 'body' })
     handleClick(ev: MouseEvent) {
         if (ev.target !== this.element) {
-            this.show = false;
+            this.open = false;
         }
     }
+
+    @Listen('keydown')
+    handleKeyDown(ev: KeyboardEvent) {
+        if (ev.key === 'ArrowDown') {
+            this.open = true;
+        }
+    }
+
+    private selectItem = (ev: Event) => {
+        const selectedItem = ev.target && (ev.target as HTMLElement).closest('pd-dropdown-item');
+        this.value = selectedItem.value;
+        this.open = false;
+    };
+
     render() {
         return (
             <Host>
@@ -27,10 +43,10 @@ export class Dropdown {
                 <pd-button
                     type="button"
                     aria-haspopup="true"
-                    aria-expanded={`${this.show}`}
-                    onClick={() => (this.show = !this.show)}
+                    aria-expanded={`${this.open}`}
+                    onClick={() => (this.open = !this.open)}
                 >
-                    Dropdown
+                    {this.value}
                 </pd-button>
                 {this.renderDropDown()}
                 {this.helperText ? <span class="helper-text">{this.helperText}</span> : ''}
@@ -39,13 +55,13 @@ export class Dropdown {
     }
 
     private renderDropDown() {
-        if (!this.show) return;
+        if (!this.open) return;
 
         return (
-            <div class={`dropdown-menu`}>
-                <pd-dropdown-item>Action</pd-dropdown-item>
-                <pd-dropdown-item class="dropdown-item">Another action</pd-dropdown-item>
-                <pd-dropdown-item class="dropdown-item">Something else here</pd-dropdown-item>
+            <div class={`dropdown-menu`} onClick={this.selectItem}>
+                <pd-dropdown-item value="Action"></pd-dropdown-item>
+                <pd-dropdown-item value="Another action"></pd-dropdown-item>
+                <pd-dropdown-item value="Something else here"></pd-dropdown-item>
             </div>
         );
     }

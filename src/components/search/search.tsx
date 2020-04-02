@@ -1,4 +1,4 @@
-import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -9,8 +9,9 @@ import { InputChangeEventDetail } from '../../interface';
 export class Search {
     private nativeInput?: HTMLInputElement;
     private inputId = `pd-input-${inputIds++}`;
-    @Prop() open: boolean = true; // temp prop
-    private searchStrings: string[] = [
+    @Element() element!: HTMLElement;
+    @Prop() open: boolean = false; // temp prop
+    @Prop() searchStrings: string[] = [
         'Krankenkasse',
         'Krankenkasse kündingen',
         'Krankentaggeldversicherung',
@@ -74,6 +75,28 @@ export class Search {
     @Watch('value')
     protected valueChanged() {
         this.pdOnChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        if (this.value) this.searchStrings = [...this.searchStrings, `${this.value}`]; // TODO: remove
+    }
+
+    @Watch('searchStrings')
+    protected searchStringsChanged() {
+        this.open = true;
+    }
+
+    @Listen('keydown')
+    handleKeyDown(ev: KeyboardEvent) {
+        if (ev.key === 'ArrowDown') {
+            if (this.open) {
+                console.log('arrow');
+            }
+        }
+    }
+
+    @Listen('click', { target: 'body' })
+    handleClick(ev: MouseEvent) {
+        if (ev.target !== this.element) {
+            this.open = false;
+        }
     }
 
     /**
@@ -110,15 +133,15 @@ export class Search {
         return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
     }
 
-    private renderDropdownItems() {
-        if (!this.open) return;
-        return (
-            <div class="dropdown">
-                {this.searchStrings.map(searchString => (
-                    <pd-dropdown-item>{searchString}</pd-dropdown-item>
-                ))}
-            </div>
-        );
+    private selectItem = (ev: Event) => {
+        const selectedItem = ev.target && (ev.target as HTMLElement).closest('pd-dropdown-item');
+        this.value = selectedItem.value;
+        this.open = false;
+    };
+
+    private reset() {
+        this.value = '';
+        this.open = false;
     }
 
     render() {
@@ -140,13 +163,24 @@ export class Search {
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
                     />
-                    <div class="clear">
+                    <div class="clear" onClick={() => this.reset()}>
                         <div class="clear-icon"></div>
                     </div>
                     <button class="search" type="submit" tabIndex={-1}></button>
                 </label>
                 {this.renderDropdownItems()}
             </Host>
+        );
+    }
+
+    private renderDropdownItems() {
+        if (!this.open) return;
+        return (
+            <div class="dropdown" onClick={this.selectItem}>
+                {this.searchStrings.map(searchString => (
+                    <pd-dropdown-item value={searchString}></pd-dropdown-item>
+                ))}
+            </div>
         );
     }
 }
