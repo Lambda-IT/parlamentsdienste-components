@@ -5,9 +5,7 @@ import notes from './readme.md';
 export default {
     title: 'Button',
     decorators: [withActions('click', 'click'), withKnobs()],
-    parameters: {
-        notes,
-    },
+    parameters: { notes },
 };
 
 export const states = () => {
@@ -50,4 +48,16 @@ export const link = () => {
     return `
       <pd-button href="${href}" target="_blank">external link</pd-button>
   `;
+};
+
+export const group = () => {
+    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
+    const size = radios('size', { large: 'large', normal: 'normal', small: 'small' }, 'normal');
+    return `
+        <pd-button-group>
+            <pd-button ${disabled} size=${size}>Primary</pd-button>
+            <pd-button ${disabled} size=${size}>Success</pd-button>
+            <pd-button ${disabled} size=${size}>Danger</pd-button>
+        <pd-button-group>
+    `;
 };

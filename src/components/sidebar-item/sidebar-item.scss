@@ -15,6 +15,8 @@
     border: none;
     overflow: hidden;
     text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
 
     & * {
         font: 9px/11px Avenir-Black;
@@ -32,11 +34,16 @@
 
     &.enabled {
         background-color: $wild-sand;
+        cursor: default;
 
         &:hover {
-            // background-color: $cyan-6;
+            background-color: $cyan-6;
             color: $blue-whale;
         }
+    }
+
+    &:focus {
+        background-color: $yellow-1;
     }
 }
 

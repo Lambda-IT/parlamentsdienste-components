@@ -4,3 +4,27 @@
     display: inline-block;
     box-sizing: border-box;
 }
+
+.dropdown-menu {
+    position: absolute;
+    background-color: $white;
+    border: 2px solid $cyan-9;
+    border-radius: 4px;
+    z-index: 100;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+}
+
+.label-text {
+    padding-bottom: 5px;
+}
+
+.helper-text {
+    margin-left: 14px;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+}

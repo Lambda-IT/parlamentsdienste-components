@@ -208,7 +208,7 @@ export class Input {
         return (
             <Host class={this.error ? 'error' : ''}>
                 <label>
-                    {this.label ? <div class="label">{this.label}</div> : ''}
+                    {this.label ? <div class="label-text">{this.label}</div> : ''}
                     <input
                         ref={input => (this.nativeInput = input)}
                         aria-labelledby={labelId}
@@ -240,7 +240,7 @@ export class Input {
                         onKeyDown={this.onKeydown}
                     />
                 </label>
-                {this.helperText ? <span class="helper">{this.helperText}</span> : ''}
+                {this.helperText ? <span class="helper-text">{this.helperText}</span> : ''}
             </Host>
         );
     }

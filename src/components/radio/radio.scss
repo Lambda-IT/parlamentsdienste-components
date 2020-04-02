@@ -1,3 +1,7 @@
+pd-radio {
+    display: block;
+}
+
 :host {
     display: inline-block;
 }
@@ -17,7 +21,7 @@ label > input {
     &:checked {
         & + .radio-inner {
             &:after {
-                border: 6px solid setcolor(primary, base);
+                border: 6px solid setcolor(primary, enabled);
                 border-radius: 100%;
             }
 
@@ -33,21 +37,31 @@ label > input {
                 }
             }
         }
+
+        &:focus {
+            & + .radio-inner {
+                &:after {
+                    content: '';
+                    border: 6px solid $yellow-4;
+                    border-radius: 100%;
+                }
+                &:before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    margin: 5px;
+                    background-color: setcolor(primary, enabled);
+                }
+            }
+        }
     }
 
     &:focus {
         & + .radio-inner {
             &:after {
                 content: '';
-                border: 6px solid $yellow-4;
+                border: 2px solid $yellow-4;
                 border-radius: 100%;
-            }
-            &:before {
-                content: '';
-                width: 10px;
-                height: 10px;
-                margin: 5px;
-                background-color: setcolor(primary, base);
             }
         }
     }
@@ -73,7 +87,7 @@ label > input {
 
         &:after {
             content: '';
-            border: 2px solid setcolor(primary, base);
+            border: 2px solid setcolor(primary, enabled);
             border-radius: 100%;
         }
 

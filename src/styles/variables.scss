@@ -30,7 +30,7 @@ $lime-9: #5c940d;
 $lime-6: #82c91e;
 $lime-3: #c0eb75;
 
-$yellow-9: #e67700;
+$yellow-9: #e17700;
 $yellow-6: #fab005;
 $yellow-3: #ffe066;
 
@@ -74,45 +74,73 @@ $green-3: #8ce99a;
 
 $colorscheme: (
     primary: (
-        base: $cyan-9,
+        enabled: $cyan-9,
+        enabled-contrast: $white,
         disabled: $gray-6,
+        disabled-contrast: $white,
         hover: $cyan-6,
+        hover-contrast: $white,
         pressed: $cyan-3,
+        pressed-contrast: $white,
     ),
     success: (
-        base: $lime-9,
+        enabled: $lime-9,
+        enabled-contrast: $white,
         disabled: $gray-6,
+        disabled-contrast: $white,
         hover: $lime-6,
+        hover-contrast: $white,
         pressed: $lime-3,
+        pressed-contrast: $white,
     ),
     danger: (
-        base: $red-9,
+        enabled: $red-9,
+        enabled-contrast: $white,
         disabled: $gray-6,
+        disabled-contrast: $white,
         hover: $red-6,
+        hover-contrast: $white,
         pressed: $red-3,
+        pressed-contrast: $white,
     ),
     warning: (
-        base: $yellow-9,
+        enabled: $yellow-9,
+        enabled-contrast: $white,
         disabled: $gray-6,
+        disabled-contrast: $white,
         hover: $yellow-6,
+        hover-contrast: $white,
         pressed: $yellow-3,
+        pressed-contrast: $white,
     ),
     info: (
-        base: $blue-6,
+        enabled: $blue-6,
+        enabled-contrast: $white,
         disabled: $gray-6,
+        disabled-contrast: $white,
         hover: $blue-9,
+        hover-contrast: $white,
         pressed: $blue-3,
+        pressed-contrast: $white,
     ),
     light: (
-        base: $gray-3,
-        disabled: $gray-6,
-        hover: $gray-6,
+        enabled: $athens-gray,
+        enabled-contrast: $black,
+        disabled: $athens-gray,
+        disabled-contrast: $gray-6,
+        hover: $gray-3,
+        hover-contrast: $black,
         pressed: $gray-3,
+        pressed-contrast: $black,
     ),
     dark: (
-        base: $gray-9,
+        enabled: #343a40,
+        enabled-contrast: $white,
         disabled: $gray-6,
+        disabled-contrast: $white,
         hover: $gray-6,
+        hover-contrast: #343a40,
         pressed: $gray-3,
+        pressed-contrast: #343a40,
     ),
 );

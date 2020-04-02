@@ -7,11 +7,11 @@
 
 :host(.error) {
     input {
-        border: 2px solid setcolor(danger, base);
+        border: 2px solid setcolor(danger, enabled);
     }
 
     .helper {
-        color: setcolor(danger, base);
+        color: setcolor(danger, enabled);
     }
 }
 
@@ -51,7 +51,7 @@ input {
     padding-right: 60px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
-    border: 2px solid setcolor(primary, base);
+    border: 2px solid setcolor(primary, enabled);
     border-right: none;
     width: 100%;
 
@@ -71,8 +71,8 @@ input {
     height: 100%;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    background-color: setcolor(primary, base);
-    border: 2px solid setcolor(primary, base);
+    background-color: setcolor(primary, enabled);
+    border: 2px solid setcolor(primary, enabled);
     border-left: none;
 
     &:hover:active {
@@ -108,24 +108,6 @@ input {
     z-index: 100;
     top: 50px;
     width: 100%;
-    border: 2px solid setcolor(primary, base);
+    border: 2px solid setcolor(primary, enabled);
     border-radius: 4px;
-}
-
-.dropdown-item {
-    width: 100%;
-    padding: 11px 14px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    &:hover {
-        background-color: setcolor(primary, base);
-        color: $white;
-    }
-
-    &:active {
-        background-color: setcolor(primary, pressed);
-        color: $black;
-    }
 }

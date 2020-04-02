@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-navbar-item',
@@ -6,13 +6,29 @@ import { Component, Host, h } from '@stencil/core';
     shadow: true,
 })
 export class NavbarItem {
+    @Prop() text: string = '';
+
+    @Prop() enabled: boolean = false;
+
+    /**
+     * Set href to create a link button
+     */
+    @Prop() href: string;
+
+    /**
+     * Sets target for link button e.g. '_blank'
+     */
+    @Prop() target: string;
+
     render() {
+        const { href, enabled, target, text } = this;
+        const TagType = href ? 'a' : 'button';
+        const typeAttrs = TagType === 'button' ? {} : { href, target };
+
         return (
-            <Host>
-                <button class="item">
-                    <slot></slot>
-                </button>
-            </Host>
+            <TagType {...typeAttrs} class={`item ${enabled ? 'enabled' : ''}`}>
+                <div class="text">{text}</div>{' '}
+            </TagType>
         );
     }
 }

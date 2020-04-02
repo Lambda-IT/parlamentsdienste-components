@@ -9,21 +9,27 @@
 }
 
 .outline {
-    font: 16px/24px Avenir-Medium;
+    * {
+        font: 16px/24px Avenir-Medium;
+        letter-spacing: 0.22px;
+    }
 }
 
 button {
     @include button-scheme(primary);
-    color: $white;
-    border-radius: 4px;
-    padding: 7px 12px;
+    border-top-left-radius: var(--pd-button-left-radius, 4px);
+    border-bottom-left-radius: var(--pd-button-left-radius, 4px);
+    border-top-right-radius: var(--pd-button-right-radius, 4px);
+    border-bottom-right-radius: var(--pd-button-right-radius, 4px);
+    padding: 5px 10px;
+    cursor: pointer;
 
     &.large {
-        padding: 12px 22px;
+        padding: 10px 20px;
     }
 
     &.small {
-        padding: 4px 11px;
+        padding: 2px 9px;
     }
 
     &.success {

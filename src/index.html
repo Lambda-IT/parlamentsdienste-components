@@ -26,12 +26,20 @@
             <pd-button color="warning">Button</pd-button>
             <pd-button color="danger">Button</pd-button>
             <pd-button color="info">Button</pd-button>
+            <pd-button color="light">Button</pd-button>
+            <pd-button color="dark">Button</pd-button>
             <pd-button outline color="primary">Button</pd-button>
             <pd-button outline color="success">Button</pd-button>
             <pd-button outline color="warning">Button</pd-button>
             <pd-button outline color="danger">Button</pd-button>
             <pd-button outline color="info">Button</pd-button>
-            <pd-button disabled>Button</pd-button>
+            <pd-button outline color="light">Button</pd-button>
+            <pd-button outline color="dark">Button</pd-button>
+            <pd-button-group>
+                <pd-button>Button</pd-button>
+                <pd-button>Button</pd-button>
+                <pd-button>Button</pd-button>
+            </pd-button-group>
             <pd-search></pd-search>
             <pd-card>
                 <pd-card-header>Header</pd-card-header>
@@ -41,29 +49,28 @@
             <pd-column></pd-column>
             <pd-container></pd-container>
             <pd-datepicker></pd-datepicker>
-            <pd-dropdown></pd-dropdown>
+            <pd-dropdown label="dropdown label" helper-text="dropdown helper text"></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-checkbox disabled text="checkbox"></pd-checkbox>
             <pd-checkbox disabled checked text="checkbox"></pd-checkbox>
-            <pd-radio-group id="pd-radio-group-0" value="0.80">
                 <pd-radio class="radio-x" name="x" value="0" label="0%"></pd-radio>
                 <pd-radio class="radio-x" name="x" value="0.25" label="25%"></pd-radio>
                 <pd-radio class="radio-x" name="x" value="0.50" label="50%"></pd-radio>
                 <pd-radio class="radio-x" name="x" value="0.80" label="80%"></pd-radio>
                 <pd-radio class="radio-x" name="x" value="1" label="100%"></pd-radio>
-            </pd-radio-group>
-            <pd-input value="asdf" id="pd-input-0" helperText="asdf"></pd-input>
+            <pd-input value="asdf" label="asdf" error id="pd-input-0" helper-text="asdf-asdf"></pd-input>
             <pd-navbar>
-                <pd-navbar-item>Startseite</pd-navbar-item>
-                <pd-navbar-item>Geschäfte suchen</pd-navbar-item>
-                <pd-navbar-item>VORSTOSSplus</pd-navbar-item>
+                <pd-navbar-item text="Startseite"></pd-navbar-item>
+                <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
+                <pd-navbar-item href="http://www.google.ch" target="_blank" text="VORSTOSSplus"></pd-navbar-item>
             </pd-navbar>
             <pd-sidebar>
                 <pd-sidebar-item text="Mitteilungen"><img src="assets/icons/icon-new_post.svg"></img></pd-sidebar-item>
                 <pd-sidebar-item text="Meine Ablage">Icon</pd-sidebar-item>
                 <pd-sidebar-item enabled text="Recherchen">Icon</pd-sidebar-item>
                 <pd-sidebar-item text="Parlaments- Wörterbuch">Icon</pd-sidebar-item>
+                <pd-sidebar-item href="http://www.google.ch" target="_blank" text="External Link">Icon</pd-sidebar-item>
             </pd-sidebar>
             <pd-notification></pd-notification>
             <pd-progress-bar id="pd-progress-0"></pd-progress-bar>

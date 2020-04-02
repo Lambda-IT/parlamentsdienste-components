@@ -1,0 +1,23 @@
+@include reset;
+
+:host {
+    display: block;
+}
+
+.dropdown-item {
+    width: 100%;
+    padding: 11px 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: setcolor(primary, enabled);
+        color: $white;
+    }
+
+    &:active {
+        background-color: setcolor(primary, pressed);
+        color: $black;
+    }
+}

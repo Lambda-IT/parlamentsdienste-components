@@ -6,11 +6,15 @@
 
 :host(.error) {
     input {
-        border: 2px solid setcolor(danger, base);
+        border: 2px solid setcolor(danger, enabled);
+
+        &:hover:enabled {
+            border: 2px solid setcolor(danger, hover);
+        }
     }
 
-    .helper {
-        color: setcolor(danger, base);
+    .helper-text {
+        color: setcolor(danger, enabled);
     }
 }
 
@@ -18,7 +22,7 @@ input {
     display: block;
     padding: 11px 14px;
     border-radius: 4px;
-    border: 2px solid setcolor(primary, base);
+    border: 2px solid setcolor(primary, enabled);
     width: 100%;
 
     &:hover:enabled {
@@ -36,11 +40,11 @@ input {
     }
 }
 
-.label {
+.label-text {
     padding-bottom: 5px;
 }
 
-.helper {
+.helper-text {
     margin-left: 14px;
     margin-top: 5px;
     font-size: 14px;

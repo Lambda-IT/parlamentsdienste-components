@@ -3,7 +3,7 @@ import { Component, Host, h, Element, Prop, getAssetPath } from '@stencil/core';
 @Component({
     tag: 'pd-card-header',
     styleUrl: 'card-header.scss',
-    assetsDirs: ['assets'],
+    assetsDirs: ['./assets'],
     shadow: true,
 })
 export class CardHeader {

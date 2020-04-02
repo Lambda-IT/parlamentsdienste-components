@@ -9,7 +9,7 @@ import { InputChangeEventDetail } from '../../interface';
 export class Search {
     private nativeInput?: HTMLInputElement;
     private inputId = `pd-input-${inputIds++}`;
-    @Prop() open: boolean = false; // temp prop
+    @Prop() open: boolean = true; // temp prop
     private searchStrings: string[] = [
         'Krankenkasse',
         'Krankenkasse kündingen',
@@ -115,7 +115,7 @@ export class Search {
         return (
             <div class="dropdown">
                 {this.searchStrings.map(searchString => (
-                    <div class="dropdown-item">{searchString}</div>
+                    <pd-dropdown-item>{searchString}</pd-dropdown-item>
                 ))}
             </div>
         );

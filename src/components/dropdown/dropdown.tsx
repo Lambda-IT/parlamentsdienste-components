@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Listen, Element } from '@stencil/core';
+import { Component, Host, h, State, Listen, Element, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-dropdown',
@@ -7,6 +7,10 @@ import { Component, Host, h, State, Listen, Element } from '@stencil/core';
 })
 export class Dropdown {
     @Element() element;
+
+    @Prop() label: string = '';
+
+    @Prop() helperText: string = '';
 
     @State() show: boolean = false;
 
@@ -19,28 +23,30 @@ export class Dropdown {
     render() {
         return (
             <Host>
-                <div class="dropdown">
-                    <pd-button
-                        type="button"
-                        aria-haspopup="true"
-                        aria-expanded={`${this.show}`}
-                        onClick={() => (this.show = !this.show)}
-                    >
-                        Dropdown
-                    </pd-button>
-                    <div class={`dropdown-menu ${this.show ? 'show' : ''}`}>
-                        <a class="dropdown-item" href="#">
-                            Action
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Another action
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Something else here
-                        </a>
-                    </div>
-                </div>
+                <label class="dropdown">{this.label ? <div class="label-text">{this.label}</div> : ''}</label>
+                <pd-button
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={`${this.show}`}
+                    onClick={() => (this.show = !this.show)}
+                >
+                    Dropdown
+                </pd-button>
+                {this.renderDropDown()}
+                {this.helperText ? <span class="helper-text">{this.helperText}</span> : ''}
             </Host>
+        );
+    }
+
+    private renderDropDown() {
+        if (!this.show) return;
+
+        return (
+            <div class={`dropdown-menu`}>
+                <pd-dropdown-item>Action</pd-dropdown-item>
+                <pd-dropdown-item class="dropdown-item">Another action</pd-dropdown-item>
+                <pd-dropdown-item class="dropdown-item">Something else here</pd-dropdown-item>
+            </div>
         );
     }
 }

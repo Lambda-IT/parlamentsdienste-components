@@ -14,7 +14,7 @@
 | `helperText`  | `helper-text` |                                                                 | `string`           | `undefined`    |
 | `label`       | `label`       |                                                                 | `string`           | `undefined`    |
 | `name`        | `name`        | The name of the control, which is submitted with the form data. | `string`           | `this.inputId` |
-| `open`        | `open`        |                                                                 | `boolean`          | `false`        |
+| `open`        | `open`        |                                                                 | `boolean`          | `true`         |
 | `placeholder` | `placeholder` | Instructional text that shows before the input has a value.     | `string`           | `undefined`    |
 | `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                    | `boolean`          | `false`        |
 | `value`       | `value`       | The value of the input.                                         | `number \| string` | `''`           |
@@ -43,6 +43,19 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [pd-dropdown-item](../dropdown-item)
+
+### Graph
+```mermaid
+graph TD;
+  pd-search --> pd-dropdown-item
+  style pd-search fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

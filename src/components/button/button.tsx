@@ -50,7 +50,7 @@ export class Button {
             <TagType
                 {...typeAttrs}
                 disabled={disabled}
-                class={`btn btn-primary ${this.color} ${this.size} ${this.outline ? 'outline' : ''}`}
+                class={`${this.color} ${this.size} ${this.outline ? 'outline' : ''}`}
             >
                 <slot name="icon"></slot>
                 <slot></slot>

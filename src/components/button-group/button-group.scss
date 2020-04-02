@@ -1,0 +1,16 @@
+pd-button-group {
+    display: inline-flex;
+
+    pd-button {
+        --pd-button-right-radius: 0px;
+        --pd-button-left-radius: 0px;
+    }
+
+    :first-child {
+        --pd-button-left-radius: 4px;
+    }
+
+    :last-child {
+        --pd-button-right-radius: 4px;
+    }
+}
