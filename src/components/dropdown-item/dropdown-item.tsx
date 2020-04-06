@@ -17,7 +17,7 @@ export class DropdownItem implements ComponentInterface {
     }
 
     @Listen('selected')
-    handleClick(x) {}
+    handleClick() {}
 
     render() {
         return (
