@@ -20,4 +20,12 @@
         background-color: setcolor(primary, pressed);
         color: $black;
     }
+
+    strong {
+        font-weight: bold;
+    }
+
+    span {
+        white-space: pre;
+    }
 }

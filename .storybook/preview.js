@@ -11,5 +11,3 @@ addParameters({
         viewports: MINIMAL_VIEWPORTS, // newViewports would be an ViewportMap. (see below for examples)
     },
 });
-
-configure(require.context('../src/components', true, /\.stories\.js$/), module);
