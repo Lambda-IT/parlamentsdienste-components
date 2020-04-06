@@ -17,22 +17,25 @@ export class DropdownItem implements ComponentInterface {
     }
 
     @Listen('selected')
-    handleClick(x) {
-        console.log('LOG: DropdownItem -> handleClick -> x', x);
-    }
-
-    connectedCallback() {
-        const dropdown = this.element.closest('pd-dropdown');
-        console.log('LOG: DropdownItem -> connectedCallback -> dropdown', dropdown);
-    }
+    handleClick(x) {}
 
     render() {
         return (
             <Host>
                 <div class={`dropdown-item ${this.selected ? 'selected' : ''}`} onClick={() => this.setSelected()}>
-                    {this.value}
+                    {this.strong(this.value, 'examp')}
                 </div>
             </Host>
         );
     }
+
+    // Todo: WIP
+    private setStrong = text => <strong>{text}</strong>;
+    private setSpan = text => <span>{text}</span>;
+    private strong = (value: string, strong: string = undefined) => {
+        if (!strong || strong.length === 0) return value;
+        const split = value.split(strong);
+        const span = split.map(n => this.setSpan(n));
+        return [].concat(...span.map(n => [n, this.setStrong(strong)])).slice(0, -1);
+    };
 }

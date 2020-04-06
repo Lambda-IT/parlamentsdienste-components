@@ -1,9 +1,22 @@
-import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element } from '@stencil/core';
+import {
+    Component,
+    Host,
+    h,
+    Event,
+    EventEmitter,
+    Watch,
+    Method,
+    Prop,
+    Listen,
+    Element,
+    getAssetPath,
+} from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({
     tag: 'pd-search',
     styleUrl: 'search.scss',
+    assetsDirs: ['assets-search'],
     shadow: true,
 })
 export class Search {
@@ -11,12 +24,7 @@ export class Search {
     private inputId = `pd-input-${inputIds++}`;
     @Element() element!: HTMLElement;
     @Prop() open: boolean = false; // temp prop
-    @Prop() searchStrings: string[] = [
-        'Krankenkasse',
-        'Krankenkasse kündingen',
-        'Krankentaggeldversicherung',
-        'Krankenkassen vergleichen',
-    ];
+    @Prop() searchStrings: string[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
@@ -93,7 +101,7 @@ export class Search {
     }
 
     @Listen('click', { target: 'body' })
-    handleClick(ev: MouseEvent) {
+    handleClickOutside(ev: MouseEvent) {
         if (ev.target !== this.element) {
             this.open = false;
         }
@@ -109,6 +117,12 @@ export class Search {
             this.nativeInput.focus();
         }
     }
+
+    private onClickInput = () => {
+        if (this.searchStrings && this.searchStrings.length > 0) {
+            this.open = true;
+        }
+    };
 
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
@@ -158,15 +172,18 @@ export class Search {
                         disabled={this.disabled}
                         placeholder={this.placeholder || ''}
                         value={value}
+                        onClick={this.onClickInput}
                         onInput={this.onInput}
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
                     />
                     <div class="clear" onClick={() => this.reset()}>
-                        <div class="clear-icon"></div>
+                        <img class="clear-icon" src={getAssetPath(`./assets-search/icon_cancel.svg`)}></img>
                     </div>
-                    <button class="search" type="submit" tabIndex={-1}></button>
+                    <button class="search" type="submit" tabIndex={-1}>
+                        <img src={getAssetPath(`./assets-search/icon_search.svg`)}></img>
+                    </button>
                 </label>
                 {this.renderDropdownItems()}
             </Host>

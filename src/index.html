@@ -40,7 +40,8 @@
                 <pd-button>Button</pd-button>
                 <pd-button>Button</pd-button>
             </pd-button-group>
-            <pd-search></pd-search>
+            <pd-button href="http://www.google.ch" target="_blank">external Link</pd-button>
+            <pd-search id="pd-search-0"></pd-search>
             <pd-card>
                 <pd-card-header>Header</pd-card-header>
                 <pd-card-content>Content</pd-card-content>
@@ -98,27 +99,25 @@
         <script>
             let pdInput = document.getElementById('pd-input-0');
             let pdProgress = document.getElementById('pd-progress-0');
-            let pdRadioGroup = document.getElementById('pd-radio-group-0');
             let pdSlider = document.getElementById('pd-slider-0');
             let pdBackdrop = document.getElementById('pd-backdrop-0');
             let pdButton = document.getElementById('pd-button-0');
+            let pdSearch = document.getElementById('pd-search-0');
 
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
-                pdRadioGroup.setAttribute('value', value.detail.value);
-            });
-            pdRadioGroup.addEventListener('pdChange', value => {
-                pdInput.setAttribute('value', value.detail.value);
-                pdProgress.setAttribute('value', value.detail.value);
-                pdSlider.setAttribute('value', value.detail.value * 100);
+                pdSearch.searchStrings = ['asdf'];
             });
             pdSlider.addEventListener('pdOnInput', value => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
-                pdRadioGroup.setAttribute('value', parseInt(value.detail.value / 100));
             });
 
             pdButton.addEventListener('click', () => {
                 presentModal();
+            });
+
+            pdSearch.addEventListener('pdOnChange', value => {
+                pdSearch.searchStrings = ['Some example search 1', 'Some example search 2', 'Some example search 3'];
             });
 
             customElements.define(
@@ -132,7 +131,6 @@
                     }
                 },
             );
-            console.log('LOG: cust', cust);
 
             function presentModal() {
                 // create the modal with the `modal-page` component

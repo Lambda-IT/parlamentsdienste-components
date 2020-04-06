@@ -15,6 +15,12 @@
     }
 }
 
+a {
+    * {
+        font: 16px/24px Avenir-Medium;
+    }
+}
+
 button {
     @include button-scheme(primary);
     border-top-left-radius: var(--pd-button-left-radius, 4px);

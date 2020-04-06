@@ -67,6 +67,8 @@ input {
 }
 
 .search {
+    display: flex;
+    justify-content: center;
     width: 48px;
     height: 100%;
     border-top-right-radius: 4px;
@@ -92,8 +94,6 @@ input {
     width: 26px;
 
     .clear-icon {
-        border-radius: 100%;
-        border: 2px solid $gray;
         width: 26px;
         height: 26px;
         cursor: pointer;
