@@ -597,7 +597,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         "name"?: string;
-        "onPdChanged"?: (event: CustomEvent<any>) => void;
+        "onPd-checked"?: (event: CustomEvent<any>) => void;
         /**
           * Checkbox description text
          */
@@ -690,7 +690,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPdInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onPd-input"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the input loses focus.
          */

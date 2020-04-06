@@ -7,17 +7,18 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                     | Type               | Default        |
-| ------------- | ------------- | --------------------------------------------------------------- | ------------------ | -------------- |
-| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.             | `boolean`          | `false`        |
-| `error`       | `error`       |                                                                 | `boolean`          | `false`        |
-| `helperText`  | `helper-text` |                                                                 | `string`           | `undefined`    |
-| `label`       | `label`       |                                                                 | `string`           | `undefined`    |
-| `name`        | `name`        | The name of the control, which is submitted with the form data. | `string`           | `this.inputId` |
-| `open`        | `open`        |                                                                 | `boolean`          | `true`         |
-| `placeholder` | `placeholder` | Instructional text that shows before the input has a value.     | `string`           | `undefined`    |
-| `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                    | `boolean`          | `false`        |
-| `value`       | `value`       | The value of the input.                                         | `number \| string` | `''`           |
+| Property        | Attribute     | Description                                                     | Type               | Default                                                                                                                                        |
+| --------------- | ------------- | --------------------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disabled`      | `disabled`    | If `true`, the user cannot interact with the input.             | `boolean`          | `false`                                                                                                                                        |
+| `error`         | `error`       |                                                                 | `boolean`          | `false`                                                                                                                                        |
+| `helperText`    | `helper-text` |                                                                 | `string`           | `undefined`                                                                                                                                    |
+| `label`         | `label`       |                                                                 | `string`           | `undefined`                                                                                                                                    |
+| `name`          | `name`        | The name of the control, which is submitted with the form data. | `string`           | `this.inputId`                                                                                                                                 |
+| `open`          | `open`        |                                                                 | `boolean`          | `false`                                                                                                                                        |
+| `placeholder`   | `placeholder` | Instructional text that shows before the input has a value.     | `string`           | `undefined`                                                                                                                                    |
+| `readonly`      | `readonly`    | If `true`, the user cannot modify the value.                    | `boolean`          | `false`                                                                                                                                        |
+| `searchStrings` | --            |                                                                 | `string[]`         | `[         'Krankenkasse',         'Krankenkasse kündingen',         'Krankentaggeldversicherung',         'Krankenkassen vergleichen',     ]` |
+| `value`         | `value`       | The value of the input.                                         | `number \| string` | `''`                                                                                                                                           |
 
 
 ## Events

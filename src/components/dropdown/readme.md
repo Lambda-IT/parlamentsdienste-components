@@ -12,22 +12,24 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property     | Attribute     | Description | Type     | Default |
-| ------------ | ------------- | ----------- | -------- | ------- |
-| `helperText` | `helper-text` |             | `string` | `''`    |
-| `label`      | `label`       |             | `string` | `''`    |
+| Property     | Attribute     | Description | Type     | Default         |
+| ------------ | ------------- | ----------- | -------- | --------------- |
+| `helperText` | `helper-text` |             | `string` | `''`            |
+| `label`      | `label`       |             | `string` | `''`            |
+| `value`      | `value`       |             | `string` | `'Placeholder'` |
+
 
 ## Dependencies
 
 ### Depends on
 
--   [pd-button](../button)
--   [pd-dropdown-item](../dropdown-item)
+- [pd-button](../button)
+- [pd-dropdown-item](../dropdown-item)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-dropdown --> pd-button
@@ -35,6 +37,6 @@ graph TD;
   style pd-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

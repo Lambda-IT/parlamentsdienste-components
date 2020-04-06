@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            function async(u, c) {
+                var d = document,
+                    t = 'script',
+                    o = d.createElement(t),
+                    s = d.getElementsByTagName(t)[0];
+                o.src = u;
+                if (c) {
+                    o.addEventListener(
+                        'load',
+                        function(e) {
+                            c(null, e);
+                        },
+                        false,
+                    );
+                }
+                s.parentNode.insertBefore(o, s);
+            }
+
+            async('vue.min.js', function() {
+                async('../../www/build/componentlibrary.js', function() {
+                    Vue.config.ignoredElements = [/^pd-/];
+                    //- applyPolyfills().then(() => {
+                    //-     defineCustomElements(window);
+                    //- });
+                    var app = new Vue({
+                        el: '#app',
+                        data: {
+                            config : {
+                                button:  {
+                                    caption :'click here',
+                                    color :'success',
+                                    disabled: false, 
+                                    type:'button'
+                                }
+                            }
+                        },
+                        methods: {
+                            click: function(e) {
+                                console.log('vue click', e.target);
+                                console.log('vue event: ', e);
+                            },
+                            input: function(e) {
+                                console.log('vue input', e.target);
+                                console.log('vue input value', e.value);
+                                console.log('vue input data', e.data);
+                                console.log('vue event: ', e);
+                            },
+                        },
+                        computed: {
+
+                        }
+
+                    });
+                });
+            });
+
+            function vanillaclick(e) {
+                console.log('vanilla clicked', e.target);
+                console.log('event: ', e);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Test</h1>
+
+        <div id="app">
+            <h3>pd-button</h3>
+            <pd-input inputmode="text" label="button text" :value="config.button.caption" @pd-input="config.button.caption = $event.target.value" ></pd-input>
+            <pd-input inputmode="text" pattern="button|type|submit" label="button type" :value="config.button.type" @pd-input="config.button.type = $event.target.value" ></pd-input>
+            <pd-checkbox text="button disabled" v-model="config.button.disabled" :value="config.button.disabled" @pd-checked="config.button.disabled = $event.target.checked"  ></pd-checkbox>
+            <pd-input inputmode="text" pattern="danger|dark|info|light|primary|success|warning" label="button color" :value="config.button.color" @pd-input="config.button.color = $event.target.value" ></pd-input>
+            <h4>{{config.button.color}}</h4>
+            <pre>
+                &lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;
+            </pre>
+
+            
+
+            <pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color' >{{config.button.caption}}</pd-button>
+
+        </div>
+    </body>
+</html>
