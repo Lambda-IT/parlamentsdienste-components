@@ -25,11 +25,11 @@ export class Checkbox {
 
     @Prop() name: string = '';
 
-    @Event() pdChanged: EventEmitter<any>;
+    @Event({eventName:'pd-checked'}) pdChecked: EventEmitter<any>;
 
-    handleChanged() {
+    private onClick = (ev: Event) => {
         this.checked = !this.checked;
-        this.pdChanged.emit(this.checked);
+        this.pdChecked.emit(ev);
     }
 
     render() {
@@ -42,7 +42,7 @@ export class Checkbox {
                         disabled={this.disabled}
                         value={this.value}
                         name={this.name}
-                        onClick={() => this.handleChanged()}
+                        onClick={this.onClick}
                     ></input>
                     <div class="checkbox-inner"></div>
                     <div class="text">{this.text}</div>

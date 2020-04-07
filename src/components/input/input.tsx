@@ -142,7 +142,7 @@ export class Input {
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event() pdInput!: EventEmitter<KeyboardEvent>;
+    @Event({eventName: 'pd-input'}) pdInput!: EventEmitter<KeyboardEvent>;
 
     /**
      * Emitted when the value has changed.
@@ -183,7 +183,6 @@ export class Input {
         if (input) {
             this.value = input.value || '';
         }
-
         this.pdInput.emit(ev as KeyboardEvent);
     };
 
