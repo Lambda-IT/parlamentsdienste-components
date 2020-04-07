@@ -81,28 +81,63 @@
                 options='[{"label": "name 1", "value": "name1", "checked": true}, {"label": "name 2", "value": "name2"}]'
             ></pd-radio-alt>
             <pd-slider id="pd-slider-0"></pd-slider>
-            <pd-table>
-                <pd-row>
-                    <pd-col>1-1</pd-col>
-                    <pd-col>1-2</pd-col>
-                    <pd-col>1-3</pd-col>
-                </pd-row>
-                <pd-row>
-                    <pd-col>2-1</pd-col>
-                    <pd-col>2-2</pd-col>
-                    <pd-col>2-3</pd-col>
-                </pd-row>
+            <pd-table id="pd-table-0" header-style="dark">
+            </pd-table>
+            <pd-table id="pd-table-1" header-style="light">
+            </pd-table>
+            <pd-table id="pd-table-2" header-style="gray">
             </pd-table>
             <pd-tag></pd-tag>
             <pd-timeline></pd-timeline>
         </div>
         <script>
-            let pdInput = document.getElementById('pd-input-0');
-            let pdProgress = document.getElementById('pd-progress-0');
-            let pdSlider = document.getElementById('pd-slider-0');
-            let pdBackdrop = document.getElementById('pd-backdrop-0');
-            let pdButton = document.getElementById('pd-button-0');
-            let pdSearch = document.getElementById('pd-search-0');
+            const pdInput = document.getElementById('pd-input-0');
+            const pdProgress = document.getElementById('pd-progress-0');
+            const pdSlider = document.getElementById('pd-slider-0');
+            const pdBackdrop = document.getElementById('pd-backdrop-0');
+            const pdButton = document.getElementById('pd-button-0');
+            const pdSearch = document.getElementById('pd-search-0');
+
+            const pdTable0 = document.getElementById('pd-table-0');
+            const pdTable1 = document.getElementById('pd-table-1');
+            const pdTable2 = document.getElementById('pd-table-2');
+
+            const columns = [
+                {
+                    columnName: 'no',
+                    label: '#',
+                    width: 50,
+                    bold: true,
+                },
+                {
+                    columnName: 'column1',
+                    label: 'Col1',
+                    width: 300,
+                },
+                {
+                    columnName: 'column2',
+                    label: 'Col2',
+                    width: 200,
+                },
+                {
+                    columnName: 'column3',
+                    label: 'Col3',
+                    width: 0, // auto
+                    sort: 'desc', // optional
+                },
+            ];
+
+            const rows = [
+                { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 'Cell3' },
+                { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 'Cell6' },
+            ];
+
+            pdTable0.columns = columns;
+            pdTable0.rows = rows;
+            pdTable1.columns = columns;
+            pdTable1.rows = rows;
+            pdTable2.columns = columns;
+            pdTable2.rows = rows;
 
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);

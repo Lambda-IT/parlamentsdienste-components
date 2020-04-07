@@ -9,10 +9,6 @@ import { Component, Host, h, State, Listen, Element, Prop, getAssetPath } from '
 export class Dropdown {
     @Element() element;
 
-    @Prop() label: string = '';
-
-    @Prop() helperText: string = '';
-
     @Prop() value: string = 'Placeholder';
 
     @State() open: boolean = false;
@@ -40,22 +36,23 @@ export class Dropdown {
     render() {
         return (
             <Host>
-                <label class="dropdown">{this.label ? <div class="label-text">{this.label}</div> : ''}</label>
-                <button
-                    type="button"
-                    aria-haspopup="true"
-                    aria-expanded={`${this.open}`}
-                    onClick={() => (this.open = !this.open)}
-                >
-                    <span class="text">{this.value}</span>
-                    <img
-                        class="caret"
-                        src={getAssetPath(`./assets-dropdown/icon-right_button.svg`)}
-                        style={{ transform: `rotate(${this.open ? '270deg' : '90deg'})` }}
-                    ></img>
-                </button>
-                {this.renderDropDown()}
-                {this.helperText ? <span class="helper-text">{this.helperText}</span> : ''}
+                <div class="dropdown">
+                    <button
+                        class="dropdown-button"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded={`${this.open}`}
+                        onClick={() => (this.open = !this.open)}
+                    >
+                        <span class="text">{this.value}</span>
+                        <img
+                            class="caret"
+                            src={getAssetPath(`./assets-dropdown/icon-right_button.svg`)}
+                            style={{ transform: `rotate(${this.open ? '270deg' : '90deg'})` }}
+                        ></img>
+                    </button>
+                    {this.renderDropDown()}
+                </div>
             </Host>
         );
     }

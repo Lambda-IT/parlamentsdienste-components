@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { InputChangeEventDetail, TextFieldTypes, } from "./interface";
+import { InputChangeEventDetail, PdColumn, TextFieldTypes, } from "./interface";
 import { RadioGroupChangeEventDetail, } from "./components/radio-group/radio-group.interface";
 export namespace Components {
     interface PdBackdrop {
@@ -73,8 +73,6 @@ export namespace Components {
         "text": string;
         "value": string;
     }
-    interface PdCol {
-    }
     interface PdColumn {
     }
     interface PdContainer {
@@ -82,8 +80,6 @@ export namespace Components {
     interface PdDatepicker {
     }
     interface PdDropdown {
-        "helperText": string;
-        "label": string;
         "value": string;
     }
     interface PdDropdownItem {
@@ -242,8 +238,6 @@ export namespace Components {
          */
         "value"?: any | null;
     }
-    interface PdRow {
-    }
     interface PdSearch {
         /**
           * If `true`, the user cannot interact with the input.
@@ -298,6 +292,12 @@ export namespace Components {
         "value"?: number | null;
     }
     interface PdTable {
+        "columns": PdColumn[];
+        "headerHeight": string;
+        "headerStyle": "light" | "dark" | "gray";
+        "minWidth": string;
+        "rowHeight": string;
+        "rows": any[];
     }
     interface PdTag {
     }
@@ -352,12 +352,6 @@ declare global {
     var HTMLPdCheckboxElement: {
         prototype: HTMLPdCheckboxElement;
         new (): HTMLPdCheckboxElement;
-    };
-    interface HTMLPdColElement extends Components.PdCol, HTMLStencilElement {
-    }
-    var HTMLPdColElement: {
-        prototype: HTMLPdColElement;
-        new (): HTMLPdColElement;
     };
     interface HTMLPdColumnElement extends Components.PdColumn, HTMLStencilElement {
     }
@@ -449,12 +443,6 @@ declare global {
         prototype: HTMLPdRadioGroupElement;
         new (): HTMLPdRadioGroupElement;
     };
-    interface HTMLPdRowElement extends Components.PdRow, HTMLStencilElement {
-    }
-    var HTMLPdRowElement: {
-        prototype: HTMLPdRowElement;
-        new (): HTMLPdRowElement;
-    };
     interface HTMLPdSearchElement extends Components.PdSearch, HTMLStencilElement {
     }
     var HTMLPdSearchElement: {
@@ -506,7 +494,6 @@ declare global {
         "pd-card-footer": HTMLPdCardFooterElement;
         "pd-card-header": HTMLPdCardHeaderElement;
         "pd-checkbox": HTMLPdCheckboxElement;
-        "pd-col": HTMLPdColElement;
         "pd-column": HTMLPdColumnElement;
         "pd-container": HTMLPdContainerElement;
         "pd-datepicker": HTMLPdDatepickerElement;
@@ -522,7 +509,6 @@ declare global {
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-alt": HTMLPdRadioAltElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
-        "pd-row": HTMLPdRowElement;
         "pd-search": HTMLPdSearchElement;
         "pd-sidebar": HTMLPdSidebarElement;
         "pd-sidebar-item": HTMLPdSidebarItemElement;
@@ -604,8 +590,6 @@ declare namespace LocalJSX {
         "text"?: string;
         "value"?: string;
     }
-    interface PdCol {
-    }
     interface PdColumn {
     }
     interface PdContainer {
@@ -613,8 +597,6 @@ declare namespace LocalJSX {
     interface PdDatepicker {
     }
     interface PdDropdown {
-        "helperText"?: string;
-        "label"?: string;
         "value"?: string;
     }
     interface PdDropdownItem {
@@ -787,8 +769,6 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
-    interface PdRow {
-    }
     interface PdSearch {
         /**
           * If `true`, the user cannot interact with the input.
@@ -863,6 +843,12 @@ declare namespace LocalJSX {
         "value"?: number | null;
     }
     interface PdTable {
+        "columns"?: PdColumn[];
+        "headerHeight"?: string;
+        "headerStyle"?: "light" | "dark" | "gray";
+        "minWidth"?: string;
+        "rowHeight"?: string;
+        "rows"?: any[];
     }
     interface PdTag {
     }
@@ -877,7 +863,6 @@ declare namespace LocalJSX {
         "pd-card-footer": PdCardFooter;
         "pd-card-header": PdCardHeader;
         "pd-checkbox": PdCheckbox;
-        "pd-col": PdCol;
         "pd-column": PdColumn;
         "pd-container": PdContainer;
         "pd-datepicker": PdDatepicker;
@@ -893,7 +878,6 @@ declare namespace LocalJSX {
         "pd-radio": PdRadio;
         "pd-radio-alt": PdRadioAlt;
         "pd-radio-group": PdRadioGroup;
-        "pd-row": PdRow;
         "pd-search": PdSearch;
         "pd-sidebar": PdSidebar;
         "pd-sidebar-item": PdSidebarItem;
@@ -915,7 +899,6 @@ declare module "@stencil/core" {
             "pd-card-footer": LocalJSX.PdCardFooter & JSXBase.HTMLAttributes<HTMLPdCardFooterElement>;
             "pd-card-header": LocalJSX.PdCardHeader & JSXBase.HTMLAttributes<HTMLPdCardHeaderElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
-            "pd-col": LocalJSX.PdCol & JSXBase.HTMLAttributes<HTMLPdColElement>;
             "pd-column": LocalJSX.PdColumn & JSXBase.HTMLAttributes<HTMLPdColumnElement>;
             "pd-container": LocalJSX.PdContainer & JSXBase.HTMLAttributes<HTMLPdContainerElement>;
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
@@ -931,7 +914,6 @@ declare module "@stencil/core" {
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-alt": LocalJSX.PdRadioAlt & JSXBase.HTMLAttributes<HTMLPdRadioAltElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
-            "pd-row": LocalJSX.PdRow & JSXBase.HTMLAttributes<HTMLPdRowElement>;
             "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
             "pd-sidebar": LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;

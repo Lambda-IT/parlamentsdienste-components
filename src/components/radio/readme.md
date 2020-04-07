@@ -7,6 +7,7 @@ _Styles might be overwritten by global styles!_
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description | Type     | Default     |
@@ -15,6 +16,7 @@ _Styles might be overwritten by global styles!_
 | `name`   | `name`    |             | `string` | `''`        |
 | `value`  | `value`   |             | `any`    | `undefined` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
