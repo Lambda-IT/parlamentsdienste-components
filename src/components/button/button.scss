@@ -8,7 +8,7 @@
     font: 16px/24px Avenir-Black;
 }
 
-.outline {
+.pd-button-outline {
     * {
         font: 16px/24px Avenir-Medium;
         letter-spacing: 0.22px;
@@ -30,35 +30,35 @@
     padding: 5px 10px;
     cursor: pointer;
 
-    &.large {
+    &.pd-button-large {
         padding: 10px 20px;
     }
 
-    &.small {
+    &.pd-button-small {
         padding: 2px 9px;
     }
 
-    &.success {
+    &.pd-button-success {
         @include button-scheme(success);
     }
 
-    &.danger {
+    &.pd-button-danger {
         @include button-scheme(danger);
     }
 
-    &.warning {
+    &.pd-button-warning {
         @include button-scheme(warning);
     }
 
-    &.info {
+    &.pd-button-info {
         @include button-scheme(info);
     }
 
-    &.light {
+    &.pd-button-light {
         @include button-scheme(light);
     }
 
-    &.dark {
+    &.pd-button-dark {
         @include button-scheme(dark);
     }
 }
