@@ -4,7 +4,7 @@
     display: block;
 }
 
-:host(.error) {
+:host(.pd-input-error) {
     input {
         border: 2px solid setcolor(danger, enabled);
 
@@ -13,7 +13,7 @@
         }
     }
 
-    .helper-text {
+    .pd-input-helper-text {
         color: setcolor(danger, enabled);
     }
 }
@@ -40,11 +40,11 @@ input {
     }
 }
 
-.label-text {
+.pd-input-label-text {
     padding-bottom: 5px;
 }
 
-.helper-text {
+.pd-input-helper-text {
     margin-left: 14px;
     margin-top: 5px;
     font-size: 14px;

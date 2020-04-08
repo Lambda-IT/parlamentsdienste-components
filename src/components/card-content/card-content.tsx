@@ -22,6 +22,6 @@ export class CardContent {
     }
 
     render() {
-        return <Host class={this.collapsed ? 'collapsed' : ''}>{this.collapsed}</Host>;
+        return <Host class={this.collapsed ? 'pd-card-content-collapsed' : ''}>{this.collapsed}</Host>;
     }
 }

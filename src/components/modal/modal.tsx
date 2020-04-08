@@ -41,8 +41,8 @@ export class Modal {
         return (
             <Host>
                 <pd-backdrop></pd-backdrop>
-                <div role="dialog" class="modal-wrapper">
-                    <div class="modal-content"></div>
+                <div role="dialog" class="pd-modal-wrapper">
+                    <div class="pd-modal-content"></div>
                     <pd-button onClick={() => this.closeModal()}>Close</pd-button>
                 </div>
             </Host>

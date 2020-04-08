@@ -25,13 +25,13 @@ export class Checkbox {
 
     @Prop() name: string = '';
 
-    @Event({eventName:'pd-checked'}) pdChecked: EventEmitter<any>;
+    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<any>;
 
     private onClick = (ev: Event) => {
         this.checked = !this.checked;
         this.value = this.checked;
         this.pdChecked.emit(ev);
-    }
+    };
 
     render() {
         return (
@@ -45,8 +45,8 @@ export class Checkbox {
                         name={this.name}
                         onClick={this.onClick}
                     ></input>
-                    <div class="checkbox-inner"></div>
-                    <div class="text">{this.text}</div>
+                    <div class="pd-checkbox-inner"></div>
+                    <div class="pd-checkbox-text">{this.text}</div>
                 </label>
             </Host>
         );

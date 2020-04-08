@@ -7,14 +7,14 @@ $progress-height: 30px;
     position: relative;
 }
 
-.progress-background {
+.pd-progress-bar-background {
     background-color: $gray;
     position: absolute;
     width: 100%;
     height: $progress-height;
 }
 
-.progress-bar {
+.pd-progress-bar {
     background-color: $blue-whale;
     position: absolute;
     width: 100%;
@@ -23,7 +23,7 @@ $progress-height: 30px;
     transition: transform 200ms linear;
 }
 
-.progress-text {
+.pd-progress-bar-text {
     color: white;
     position: relative;
     border-radius: 100%;

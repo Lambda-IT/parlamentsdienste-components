@@ -32,7 +32,7 @@ export class CardHeader {
     render() {
         return (
             <Host>
-                <div class="header">
+                <div class="pd-card-header">
                     <slot></slot>
                 </div>
                 <div style={{ float: 'right' }} onClick={() => this.toggle()}>

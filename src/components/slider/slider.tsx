@@ -56,7 +56,7 @@ export class Slider {
         return (
             <Host>
                 <input
-                    class="slider"
+                    class="pd-slider"
                     type="range"
                     multiple
                     min={this.min}

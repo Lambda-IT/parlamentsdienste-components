@@ -9,3 +9,11 @@ export interface InputChangeEventDetail {
 export interface StyleEventDetail {
     [styleName: string]: boolean;
 }
+
+export interface PdColumn {
+    columnName: string;
+    label: string;
+    width: number;
+    bold?: boolean;
+    sort?: 'desc' | 'asc';
+}

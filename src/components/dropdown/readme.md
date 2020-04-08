@@ -15,24 +15,20 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type     | Default         |
-| ------------ | ------------- | ----------- | -------- | --------------- |
-| `helperText` | `helper-text` |             | `string` | `''`            |
-| `label`      | `label`       |             | `string` | `''`            |
-| `value`      | `value`       |             | `string` | `'Placeholder'` |
+| Property | Attribute | Description | Type     | Default         |
+| -------- | --------- | ----------- | -------- | --------------- |
+| `value`  | `value`   |             | `string` | `'Placeholder'` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [pd-button](../button)
 - [pd-dropdown-item](../dropdown-item)
 
 ### Graph
 ```mermaid
 graph TD;
-  pd-dropdown --> pd-button
   pd-dropdown --> pd-dropdown-item
   style pd-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```

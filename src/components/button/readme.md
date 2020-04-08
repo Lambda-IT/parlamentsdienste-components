@@ -51,13 +51,11 @@
 
 ### Used by
 
- - [pd-dropdown](../dropdown)
  - [pd-modal](../modal)
 
 ### Graph
 ```mermaid
 graph TD;
-  pd-dropdown --> pd-button
   pd-modal --> pd-button
   style pd-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

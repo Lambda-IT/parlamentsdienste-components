@@ -15,7 +15,9 @@ export class ProgressBar {
 
     render() {
         return (
-            <Host>{this.type === 'determinate' ? renderDeterminate(this.value, this.decimals) : renderInDeterminate()}</Host>
+            <Host>
+                {this.type === 'determinate' ? renderDeterminate(this.value, this.decimals) : renderInDeterminate()}
+            </Host>
         );
     }
 }
@@ -29,8 +31,8 @@ const renderDeterminate = (value: number, decimals: number = 2) => {
     const percent = parseFloat((finalValue * 100).toFixed(decimals));
 
     return [
-        <div class="progress-background"></div>,
-        <div class="progress-bar" style={{ transform: `scaleX(${finalValue})` }}></div>,
-        <div class="progress-text">{percent}%</div>,
+        <div class="pd-progress-bar-background"></div>,
+        <div class="pd-progress-bar" style={{ transform: `scaleX(${finalValue})` }}></div>,
+        <div class="pd-progress-bar-text">{percent}%</div>,
     ];
 };

@@ -1,16 +1,13 @@
-import { Component, Host, h, State, Listen, Element, Prop } from '@stencil/core';
+import { Component, Host, h, State, Listen, Element, Prop, getAssetPath } from '@stencil/core';
 
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'dropdown.scss',
+    assetsDirs: ['assets-dropdown'],
     shadow: true,
 })
 export class Dropdown {
     @Element() element;
-
-    @Prop() label: string = '';
-
-    @Prop() helperText: string = '';
 
     @Prop() value: string = 'Placeholder';
 
@@ -39,17 +36,23 @@ export class Dropdown {
     render() {
         return (
             <Host>
-                <label class="dropdown">{this.label ? <div class="label-text">{this.label}</div> : ''}</label>
-                <pd-button
-                    type="button"
-                    aria-haspopup="true"
-                    aria-expanded={`${this.open}`}
-                    onClick={() => (this.open = !this.open)}
-                >
-                    {this.value}
-                </pd-button>
-                {this.renderDropDown()}
-                {this.helperText ? <span class="helper-text">{this.helperText}</span> : ''}
+                <div class="pd-dropdown">
+                    <button
+                        class="pd-dropdown-button"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded={`${this.open}`}
+                        onClick={() => (this.open = !this.open)}
+                    >
+                        <span class="pd-dropdown-text">{this.value}</span>
+                        <img
+                            class="pd-dropdown-caret"
+                            src={getAssetPath(`./assets-dropdown/icon-right_button.svg`)}
+                            style={{ transform: `rotate(${this.open ? '270deg' : '90deg'})` }}
+                        ></img>
+                    </button>
+                    {this.renderDropDown()}
+                </div>
             </Host>
         );
     }
@@ -58,7 +61,7 @@ export class Dropdown {
         if (!this.open) return;
 
         return (
-            <div class={`dropdown-menu`} onClick={this.selectItem}>
+            <div class={`pd-dropdown-menu`} onClick={this.selectItem}>
                 <pd-dropdown-item value="Action"></pd-dropdown-item>
                 <pd-dropdown-item value="Another action"></pd-dropdown-item>
                 <pd-dropdown-item value="Something else here"></pd-dropdown-item>

@@ -26,8 +26,8 @@ export class NavbarItem {
         const typeAttrs = TagType === 'button' ? {} : { href, target };
 
         return (
-            <TagType {...typeAttrs} class={`item ${enabled ? 'enabled' : ''}`}>
-                <div class="text">{text}</div>{' '}
+            <TagType {...typeAttrs} class={`pd-navbar-item ${enabled ? 'pd-navbar-enabled' : ''}`}>
+                <div class="pd-navbar-text">{text}</div>{' '}
             </TagType>
         );
     }

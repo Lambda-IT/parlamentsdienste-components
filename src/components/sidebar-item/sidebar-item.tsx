@@ -26,11 +26,11 @@ export class SidebarItem {
         const typeAttrs = TagType === 'button' ? {} : { href, target };
 
         return (
-            <TagType {...typeAttrs} class={`item ${enabled ? 'enabled' : ''}`}>
-                <div class="icon">
+            <TagType {...typeAttrs} class={`pd-sidebar-item ${enabled ? 'pd-sidebar-enabled' : ''}`}>
+                <div class="pd-sidebar-icon">
                     <slot></slot>
                 </div>
-                <div class="text">{text}</div>
+                <div class="pd-sidebar-text">{text}</div>
             </TagType>
         );
     }

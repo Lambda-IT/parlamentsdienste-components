@@ -163,9 +163,9 @@ export class Search {
         const labelId = this.inputId + '-lbl';
 
         return (
-            <Host class={this.error ? 'error' : ''}>
-                <label class={this.disabled ? 'disabled' : ''}>
-                    {this.label ? <div class="label-text">{this.label}</div> : ''}
+            <Host class={this.error ? 'pd-search-error' : ''}>
+                <label class={this.disabled ? 'pd-search-disabled' : ''}>
+                    {this.label ? <div class="pd-search-label-text">{this.label}</div> : ''}
                     <input
                         ref={input => (this.nativeInput = input)}
                         aria-labelledby={labelId}
@@ -178,10 +178,10 @@ export class Search {
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
                     />
-                    <div class="clear" onClick={() => this.reset()}>
-                        <img class="clear-icon" src={getAssetPath(`./assets-search/icon_cancel.svg`)}></img>
+                    <div class="pd-search-clear" onClick={() => this.reset()}>
+                        <img class="pd-search-clear-icon" src={getAssetPath(`./assets-search/icon_cancel.svg`)}></img>
                     </div>
-                    <button class="search" type="submit" tabIndex={-1}>
+                    <button class="pd-search-button" type="submit" tabIndex={-1}>
                         <img src={getAssetPath(`./assets-search/icon_search.svg`)}></img>
                     </button>
                 </label>
@@ -193,7 +193,7 @@ export class Search {
     private renderDropdownItems() {
         if (!this.open) return;
         return (
-            <div class="dropdown" onClick={this.selectItem}>
+            <div class="pd-search-dropdown" onClick={this.selectItem}>
                 {this.searchStrings.map(searchString => (
                     <pd-dropdown-item value={searchString}></pd-dropdown-item>
                 ))}

@@ -142,7 +142,7 @@ export class Input {
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event({eventName: 'pd-input'}) pdInput!: EventEmitter<KeyboardEvent>;
+    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
 
     /**
      * Emitted when the value has changed.
@@ -205,9 +205,9 @@ export class Input {
         const labelId = this.inputId + '-lbl';
 
         return (
-            <Host class={this.error ? 'error' : ''}>
+            <Host class={this.error ? 'pd-input-error' : ''}>
                 <label>
-                    {this.label ? <div class="label-text">{this.label}</div> : ''}
+                    {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
                         ref={input => (this.nativeInput = input)}
                         aria-labelledby={labelId}
@@ -239,7 +239,7 @@ export class Input {
                         onKeyDown={this.onKeydown}
                     />
                 </label>
-                {this.helperText ? <span class="helper-text">{this.helperText}</span> : ''}
+                {this.helperText ? <span class="pd-input-helper-text">{this.helperText}</span> : ''}
             </Host>
         );
     }
