@@ -1,14 +1,16 @@
 import notes from './readme.md';
+import { withKnobs, object, array, radios } from '@storybook/addon-knobs';
 
 export default {
     title: 'Table',
+    decorators: [withKnobs()],
     parameters: {
         notes,
     },
 };
 
 export const primary = () => {
-    const columns = [
+    const columnsData = [
         {
             columnName: 'no',
             label: '#',
@@ -33,31 +35,52 @@ export const primary = () => {
         },
     ];
 
-    const rows = [
+    const rowsData = [
         { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 'Cell3' },
         { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 'Cell6' },
     ];
 
-    function init() {
-        const table0 = document.getElementById('pd-table-0');
-        const table1 = document.getElementById('pd-table-1');
-        const table2 = document.getElementById('pd-table-2');
-        table0.columns = columns;
-        table0.rows = rows;
-        table1.columns = columns;
-        table1.rows = rows;
-        table2.columns = columns;
-        table2.rows = rows;
-    }
+    const rows = object('rows', rowsData);
+    const columns = object('columns', columnsData);
+    const size = radios('size', { large: ['large'], normal: ['normal'], small: ['small'] }, 'normal');
 
-    document.addEventListener('DOMContentLoaded', init);
+    const headerDark = document.createElement('h3');
+    headerDark.innerHTML = 'Dark';
+    const table0 = document.createElement('pd-table');
+    table0.rows = rows;
+    table0.columns = columns;
+    table0.setAttribute('header-style', 'dark');
 
-    return `
+    const headerLight = document.createElement('h3');
+    headerLight.innerHTML = 'Light';
+    const table1 = document.createElement('pd-table');
+    table1.rows = rows;
+    table1.columns = columns;
+    table1.setAttribute('header-style', 'light');
+
+    const headerGray = document.createElement('h3');
+    headerGray.innerHTML = 'Gray';
+    const table2 = document.createElement('pd-table');
+    table2.rows = rows;
+    table2.columns = columns;
+    table2.setAttribute('header-style', 'gray');
+
+    const wrapper = document.createElement('div');
+    wrapper.append(headerDark);
+    wrapper.append(table0);
+    wrapper.append(headerLight);
+    wrapper.append(table1);
+    wrapper.append(headerGray);
+    wrapper.append(table2);
+
+    return wrapper;
+
+    /*return `
         <h3>Dark</h3>
-        <pd-table header-style="dark" id="pd-table-0"></pd-table>
+        <pd-table header-style="dark" id="pd-table-1"></pd-table>
         <h3>Light</h3>
         <pd-table header-style="light" id="pd-table-1"></pd-table>
         <h3>Gray</h3>
         <pd-table header-style="gray" id="pd-table-2"></pd-table>
-    `;
+    `;*/
 };

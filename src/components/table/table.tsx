@@ -17,7 +17,7 @@ export class Table {
 
     @Prop() columns: PdColumn[] = [];
 
-    @Prop() rows: any[] = [];
+    @Prop() rows: any = [];
 
     render() {
         const headerStyle = {
@@ -37,6 +37,7 @@ export class Table {
     }
 
     private renderHeader() {
+        console.log(this.columns, this.rows);
         return this.columns.map(headerCol => {
             const flex = headerCol.width === 0 ? '1 1 auto' : `0 1 ${headerCol.width}px`;
             return (
