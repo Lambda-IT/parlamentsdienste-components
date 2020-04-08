@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" ></script>
         <script>
             function async(u, c) {
                 var d = document,
@@ -26,9 +27,14 @@
                     //- applyPolyfills().then(() => {
                     //-     defineCustomElements(window);
                     //- });
+
+                    const wm = new WeakMap();
+
+
                     var app = new Vue({
                         el: '#app',
                         data: {
+                            test: 'start',
                             config : {
                                 button:  {
                                     caption :'click here',
@@ -52,9 +58,48 @@
                         },
                         computed: {
 
+                        },
+
+                        directives : {
+                            'model-pd' : {
+                                bind(el, binding, vnode) {
+                                    console.log("bind -> el", el)
+                                    const inputHandler = event => {
+                                        console.log("bind -> event", event);
+                                        console.log("bind -> vnode.context", vnode.context);
+                                        console.log("bind -> binding.expression", binding.expression);
+                                        console.log("bind -> event.target.value", event.target.value);
+                                            
+                                        // Vue.set(vnode.context, binding.expression, event.target.value);
+                                        var value = event.target.value;
+                                        if(''+ event.target.value === 'true') value = true;
+                                        if(''+ event.target.value === 'false') value = false;
+                                        _.set(vnode.context, binding.expression, value)
+                                    }
+                                    wm.set(el, inputHandler);
+                                    el.value = binding.value;
+                                    el.addEventListener('input', inputHandler);
+                                },
+
+                                componentUpdated(el, binding) {
+                                    console.log("componentUpdated -> el", {el,binding})
+                                    el.value = binding.value;
+                                },
+
+                                update(el, binding) {
+                                    console.log("update -> el", {el,binding})
+                                },
+
+                                unbind(el) {
+                                    console.log("unbind -> el", el)
+                                    const inputHandler = wm.get(el);
+                                    el.removeEventListener(el, inputHandler);
+                                }
+                            }
                         }
 
                     });
+
                 });
             });
 
@@ -69,10 +114,11 @@
 
         <div id="app">
             <h3>pd-button</h3>
-            <pd-input inputmode="text" label="button text" :value="config.button.caption" @pd-input="config.button.caption = $event.target.value" ></pd-input>
-            <pd-input inputmode="text" pattern="button|type|submit" label="button type" :value="config.button.type" @pd-input="config.button.type = $event.target.value" ></pd-input>
-            <pd-checkbox text="button disabled" v-model="config.button.disabled" :value="config.button.disabled" @pd-checked="config.button.disabled = $event.target.checked"  ></pd-checkbox>
-            <pd-input inputmode="text" pattern="danger|dark|info|light|primary|success|warning" label="button color" :value="config.button.color" @pd-input="config.button.color = $event.target.value" ></pd-input>
+            <pd-input v-model-pd="config.button.caption"  inputmode="text" label="button text"  ></pd-input>
+            <h4>{{config.button.caption}}</h4>
+            <pd-input inputmode="text" pattern="button|type|submit" label="button type" v-model-pd="config.button.type" ></pd-input>
+            <pd-checkbox text="button disabled" v-model="config.button.disabled" v-model-pd="config.button.disabled" ></pd-checkbox>
+            <pd-input inputmode="text" pattern="danger|dark|info|light|primary|success|warning" label="button color" v-model-pd="config.button.color" ></pd-input>
             <h4>{{config.button.color}}</h4>
             <pre>
                 &lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;

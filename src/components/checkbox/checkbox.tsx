@@ -21,7 +21,7 @@ export class Checkbox {
      */
     @Prop() checked: boolean = false;
 
-    @Prop() value: string = '';
+    @Prop() value: boolean = false;
 
     @Prop() name: string = '';
 
@@ -29,6 +29,7 @@ export class Checkbox {
 
     private onClick = (ev: Event) => {
         this.checked = !this.checked;
+        this.value = this.checked;
         this.pdChecked.emit(ev);
     }
 
@@ -40,7 +41,7 @@ export class Checkbox {
                         type="Checkbox"
                         checked={this.checked}
                         disabled={this.disabled}
-                        value={this.value}
+                        value={`${this.value}`}
                         name={this.name}
                         onClick={this.onClick}
                     ></input>

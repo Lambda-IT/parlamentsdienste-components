@@ -13,7 +13,7 @@
 | `disabled` | `disabled` | Sets checkbox to disabled state             | `boolean` | `false` |
 | `name`     | `name`     |                                             | `string`  | `''`    |
 | `text`     | `text`     | Checkbox description text                   | `string`  | `''`    |
-| `value`    | `value`    |                                             | `string`  | `''`    |
+| `value`    | `value`    |                                             | `boolean` | `false` |
 
 
 ## Events
