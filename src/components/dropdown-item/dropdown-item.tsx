@@ -22,7 +22,7 @@ export class DropdownItem implements ComponentInterface {
     render() {
         return (
             <Host>
-                <div class={`dropdown-item ${this.selected ? 'selected' : ''}`} onClick={() => this.setSelected()}>
+                <div class={`pd-dropdown-item ${this.selected ? 'selected' : ''}`} onClick={() => this.setSelected()}>
                     {this.strong(this.value, 'examp')}
                 </div>
             </Host>

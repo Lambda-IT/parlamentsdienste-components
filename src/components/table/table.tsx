@@ -26,11 +26,11 @@ export class Table {
 
         return (
             <Host>
-                <div class="table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
-                    <div class={`header-row ${this.headerStyle}`} role="row" style={headerStyle}>
+                <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
+                    <div class={`pd-table-header-row ${this.headerStyle}`} role="row" style={headerStyle}>
                         {this.renderHeader()}
                     </div>
-                    <div class="table-body">{this.renderRows()}</div>
+                    <div class="pd-table-body">{this.renderRows()}</div>
                 </div>
             </Host>
         );
@@ -40,7 +40,7 @@ export class Table {
         return this.columns.map(headerCol => {
             const flex = headerCol.width === 0 ? '1 1 auto' : `0 1 ${headerCol.width}px`;
             return (
-                <div class="cell bold" role="cell" style={{ flex }}>
+                <div class="pd-table-cell pd-table-cell-bold" role="cell" style={{ flex }}>
                     {headerCol.label}
                 </div>
             );
@@ -53,7 +53,7 @@ export class Table {
         };
 
         return this.rows.map(row => (
-            <div class="row" role="row" style={rowStyle}>
+            <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.columns.map(col => this.renderColumn(row, col))}
             </div>
         ));
@@ -63,7 +63,7 @@ export class Table {
         const flex = col.width === 0 ? '1 1 auto' : `0 1 ${col.width}px`;
 
         return (
-            <div class={`cell ${col.bold ? 'bold' : ''}`} role="cell" style={{ flex }}>
+            <div class={`pd-table-cell ${col.bold ? 'pd-table-cell-bold' : ''}`} role="cell" style={{ flex }}>
                 {row[col.columnName]}
             </div>
         );

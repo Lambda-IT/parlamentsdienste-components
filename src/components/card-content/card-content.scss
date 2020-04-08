@@ -8,7 +8,7 @@ pd-card-content {
     display: block;
     position: relative;
 
-    &.collapsed {
+    &.pd-card-content-collapsed {
         display: none;
     }
 }

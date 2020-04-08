@@ -10,11 +10,11 @@
     font: 16px/24px Avenir-Black;
 }
 
-.dropdown {
+.pd-dropdown {
     position: relative;
 }
 
-.dropdown-menu {
+.pd-dropdown-menu {
     position: absolute;
     background-color: $white;
     border: 2px solid $cyan-9;
@@ -24,7 +24,7 @@
     left: 0;
 }
 
-.dropdown-button {
+.pd-dropdown-button {
     @include button-scheme(primary);
     border-radius: 4px;
     padding: 10px 12px;
@@ -32,12 +32,12 @@
     display: flex;
     width: 100%;
 
-    .text {
+    .pd-dropdown-text {
         flex: 1 1 auto;
         text-align: start;
     }
 
-    .caret {
+    .pd-dropdown-caret {
         margin-left: 12px;
         flex: 0 0 auto;
     }

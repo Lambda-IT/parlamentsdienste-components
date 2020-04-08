@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { InputChangeEventDetail, PdColumn, TextFieldTypes, } from "./interface";
-import { RadioGroupChangeEventDetail, } from "./components/radio-group/radio-group.interface";
 export namespace Components {
     interface PdBackdrop {
         /**
@@ -224,20 +223,6 @@ export namespace Components {
         "name": string;
         "value"?: any | null;
     }
-    interface PdRadioAlt {
-        "name": string;
-        "options": string;
-    }
-    interface PdRadioGroup {
-        /**
-          * If `true`, the radios can be deselected.
-         */
-        "allowEmptySelection": boolean;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
-    }
     interface PdSearch {
         /**
           * If `true`, the user cannot interact with the input.
@@ -431,18 +416,6 @@ declare global {
         prototype: HTMLPdRadioElement;
         new (): HTMLPdRadioElement;
     };
-    interface HTMLPdRadioAltElement extends Components.PdRadioAlt, HTMLStencilElement {
-    }
-    var HTMLPdRadioAltElement: {
-        prototype: HTMLPdRadioAltElement;
-        new (): HTMLPdRadioAltElement;
-    };
-    interface HTMLPdRadioGroupElement extends Components.PdRadioGroup, HTMLStencilElement {
-    }
-    var HTMLPdRadioGroupElement: {
-        prototype: HTMLPdRadioGroupElement;
-        new (): HTMLPdRadioGroupElement;
-    };
     interface HTMLPdSearchElement extends Components.PdSearch, HTMLStencilElement {
     }
     var HTMLPdSearchElement: {
@@ -507,8 +480,6 @@ declare global {
         "pd-notification": HTMLPdNotificationElement;
         "pd-progress-bar": HTMLPdProgressBarElement;
         "pd-radio": HTMLPdRadioElement;
-        "pd-radio-alt": HTMLPdRadioAltElement;
-        "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-search": HTMLPdSearchElement;
         "pd-sidebar": HTMLPdSidebarElement;
         "pd-sidebar-item": HTMLPdSidebarItemElement;
@@ -751,24 +722,6 @@ declare namespace LocalJSX {
         "name"?: string;
         "value"?: any | null;
     }
-    interface PdRadioAlt {
-        "name"?: string;
-        "options"?: string;
-    }
-    interface PdRadioGroup {
-        /**
-          * If `true`, the radios can be deselected.
-         */
-        "allowEmptySelection"?: boolean;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onPdChange"?: (event: CustomEvent<RadioGroupChangeEventDetail>) => void;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
-    }
     interface PdSearch {
         /**
           * If `true`, the user cannot interact with the input.
@@ -876,8 +829,6 @@ declare namespace LocalJSX {
         "pd-notification": PdNotification;
         "pd-progress-bar": PdProgressBar;
         "pd-radio": PdRadio;
-        "pd-radio-alt": PdRadioAlt;
-        "pd-radio-group": PdRadioGroup;
         "pd-search": PdSearch;
         "pd-sidebar": PdSidebar;
         "pd-sidebar-item": PdSidebarItem;
@@ -912,8 +863,6 @@ declare module "@stencil/core" {
             "pd-notification": LocalJSX.PdNotification & JSXBase.HTMLAttributes<HTMLPdNotificationElement>;
             "pd-progress-bar": LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
-            "pd-radio-alt": LocalJSX.PdRadioAlt & JSXBase.HTMLAttributes<HTMLPdRadioAltElement>;
-            "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
             "pd-sidebar": LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;

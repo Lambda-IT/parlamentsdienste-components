@@ -10,7 +10,7 @@ export class Navbar {
     render() {
         return (
             <Host>
-                <img class="icon" src={getAssetPath(`./assets-navbar/logo_parlament.svg`)}></img>
+                <img class="pd-navbar-icon" src={getAssetPath(`./assets-navbar/logo_parlament.svg`)}></img>
                 <slot></slot>
             </Host>
         );

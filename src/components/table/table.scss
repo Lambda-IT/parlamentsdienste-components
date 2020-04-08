@@ -6,11 +6,11 @@
     overflow: auto;
 }
 
-.bold {
+.pd-table-cell-bold {
     font: 16px/24px Avenir-Black;
 }
 
-.header-row {
+.pd-table-header-row {
     display: flex;
     flex-direction: row;
     height: 48px;
@@ -36,8 +36,8 @@
     }
 }
 
-.table-body {
-    .row {
+.pd-table-body {
+    .pd-table-row {
         display: flex;
         flex-direction: row;
         height: 48px;
@@ -49,7 +49,7 @@
     }
 }
 
-.cell {
+.pd-table-cell {
     display: flex;
     justify-content: center;
     align-items: center;

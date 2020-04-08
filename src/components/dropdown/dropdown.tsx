@@ -36,17 +36,17 @@ export class Dropdown {
     render() {
         return (
             <Host>
-                <div class="dropdown">
+                <div class="pd-dropdown">
                     <button
-                        class="dropdown-button"
+                        class="pd-dropdown-button"
                         type="button"
                         aria-haspopup="true"
                         aria-expanded={`${this.open}`}
                         onClick={() => (this.open = !this.open)}
                     >
-                        <span class="text">{this.value}</span>
+                        <span class="pd-dropdown-text">{this.value}</span>
                         <img
-                            class="caret"
+                            class="pd-dropdown-caret"
                             src={getAssetPath(`./assets-dropdown/icon-right_button.svg`)}
                             style={{ transform: `rotate(${this.open ? '270deg' : '90deg'})` }}
                         ></img>
@@ -61,7 +61,7 @@ export class Dropdown {
         if (!this.open) return;
 
         return (
-            <div class={`dropdown-menu`} onClick={this.selectItem}>
+            <div class={`pd-dropdown-menu`} onClick={this.selectItem}>
                 <pd-dropdown-item value="Action"></pd-dropdown-item>
                 <pd-dropdown-item value="Another action"></pd-dropdown-item>
                 <pd-dropdown-item value="Something else here"></pd-dropdown-item>

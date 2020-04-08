@@ -5,12 +5,12 @@
     position: relative;
 }
 
-:host(.error) {
+:host(.pd-search-error) {
     input {
         border: 2px solid setcolor(danger, enabled);
     }
 
-    .helper {
+    .pd-search-helper {
         color: setcolor(danger, enabled);
     }
 }
@@ -22,7 +22,7 @@ label {
     min-width: $min-screen-width;
 
     &:hover {
-        .search {
+        .pd-search-button {
             background-color: setcolor(primary, hover);
         }
     }
@@ -33,7 +33,7 @@ label {
             border-right: none;
         }
 
-        .search {
+        .pd-search-button {
             border: 2px solid setcolor(primary, disabled);
             background-color: setcolor(primary, disabled);
         }
@@ -60,14 +60,14 @@ input {
         border: 2px solid $yellow-4;
         border-right: none;
 
-        & ~ .search {
+        & ~ .pd-search-button {
             border: 2px solid $yellow-4;
             border-left: none;
         }
     }
 }
 
-.search {
+.pd-search-button {
     display: flex;
     justify-content: center;
     flex: 0 0 48px;
@@ -84,7 +84,7 @@ input {
     }
 }
 
-.clear {
+.pd-search-clear {
     position: absolute;
     display: flex;
     align-items: center;
@@ -94,18 +94,18 @@ input {
     height: 48px;
     width: 26px;
 
-    .clear-icon {
+    .pd-search-clear-icon {
         width: 26px;
         height: 26px;
         cursor: pointer;
     }
 }
 
-.label-text {
+.pd-search-label-text {
     padding-bottom: 5px;
 }
 
-.dropdown {
+.pd-search-dropdown {
     position: absolute;
     background-color: $white;
     z-index: 100;

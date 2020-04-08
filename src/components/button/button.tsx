@@ -50,7 +50,9 @@ export class Button {
             <TagType
                 {...typeAttrs}
                 disabled={disabled}
-                class={`${this.color} ${this.size} ${this.outline ? 'outline' : ''}`}
+                class={`${TagType === 'button' ? 'pd-button' : 'pd-link'} ${this.color} ${this.size} ${
+                    this.outline ? 'outline' : ''
+                }`}
             >
                 <slot name="icon"></slot>
                 <slot></slot>
