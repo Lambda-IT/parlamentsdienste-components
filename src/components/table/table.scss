@@ -46,6 +46,12 @@
             }
         }
 
+        span {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
         &.dark {
             background-color: $blue-whale;
             border-bottom: 2px solid $blue-whale;
@@ -118,7 +124,12 @@
     align-items: center;
     padding: 0 10px;
     border-bottom: 2px solid $gray-3;
-    overflow: hidden;
+
+    span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 }
 
 .pd-table-cell-bold {

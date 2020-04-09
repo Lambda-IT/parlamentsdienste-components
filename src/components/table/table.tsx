@@ -33,6 +33,12 @@ export class Table {
         }
     }
 
+    private calcFixedMinWidth(columns: PdColumn[]) {
+        const fixedCols = columns.filter(c => c.fixed);
+        const minWidth = fixedCols.map(c => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
+        return minWidth === 0 ? '0' : `${minWidth}px`;
+    }
+
     private calcScrollFlex(columns: PdColumn[]) {
         const fixedCols = columns.filter(c => !c.fixed);
         const hasAuto = fixedCols.findIndex(c => c.width === 0) !== -1;
@@ -72,6 +78,7 @@ export class Table {
 
         const fixedStyle = {
             flex: this.calcFixedFlex(this.columns),
+            minWidth: this.calcFixedMinWidth(this.columns),
         };
 
         const scrollStyle = {
@@ -102,8 +109,8 @@ export class Table {
             .filter(c => (c.fixed || false) === fixed)
             .map(headerCol => {
                 const headerCellStyle = {
-                    flex: headerCol.width === 0 ? '1 1 auto' : `0 0 ${headerCol.width}px`,
-                    minWidth: headerCol.minWidth ? `${headerCol.minWidth}px` : 'auto',
+                    flex: headerCol.width === 0 ? `1 1 ${headerCol.minWidth || 0}px` : `0 0 ${headerCol.width}px`,
+                    minWidth: `${headerCol.minWidth || headerCol.width || 0}px`,
                     justifyContent: this.getTextAlign(headerCol),
                 };
                 const nextSortDir = this.nextColumnSortDir[headerCol.columnName];
@@ -118,7 +125,7 @@ export class Table {
                         style={headerCellStyle}
                         onClick={() => this.sort(headerCol)}
                     >
-                        {headerCol.label}
+                        <span>{headerCol.label}</span>
                     </div>
                 );
             });
@@ -138,14 +145,14 @@ export class Table {
 
     private renderColumn(row, col) {
         const cellStyle = {
-            flex: col.width === 0 ? '1 1 auto' : `0 0 ${col.width}px`,
-            minWidth: col.minWidth ? `${col.minWidth}px` : 'auto',
+            flex: col.width === 0 ? `1 1 ${col.minWidth || 0}px` : `0 0 ${col.width}px`,
+            minWidth: `${col.minWidth || col.width || 0}px`,
             justifyContent: this.getTextAlign(col),
         };
 
         return (
             <div class={`pd-table-cell ${col.bold ? 'pd-table-cell-bold' : ''}`} role="cell" style={cellStyle}>
-                {row[col.columnName]}
+                <span>{row[col.columnName]}</span>
             </div>
         );
     }

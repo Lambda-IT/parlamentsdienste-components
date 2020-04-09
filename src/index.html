@@ -101,8 +101,8 @@
                 {
                     columnName: 'no',
                     label: '#',
-                    width: 50,
-                    minWidth: 50,
+                    width: 0,
+                    minWidth: 100,
                     bold: true,
                     fixed: true,
                 },
@@ -110,13 +110,15 @@
                     columnName: 'column1',
                     label: 'Col1',
                     width: 0,
-                    minWidth: 500,
-                    textAlign: 'left'
+                    minWidth: 400,
+                    textAlign: 'left',
+                    fixed: true,
                 },
                 {
                     columnName: 'column2',
                     label: 'Col2',
-                    width: 100,
+                    width: 0,
+                    minWidth: 100,
                     sortable: true,
                     sortDir: 'asc',
                 },
@@ -133,7 +135,7 @@
             const rows = [
                 { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 0.12 },
                 { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 411.21 },
-                { no: 10, column1: 'Cell2', column2: 'Cell5', column3: 871 },
+                { no: '10 10 10 10 10', column1: 'Cell2', column2: 'Cell5', column3: 871 },
                 { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563 },
             ];
 
