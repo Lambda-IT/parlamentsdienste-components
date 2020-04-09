@@ -123,6 +123,7 @@ export class Table {
                         }`}
                         role="cell"
                         style={headerCellStyle}
+                        title={headerCol.label}
                         onClick={() => this.sort(headerCol)}
                     >
                         <span>{headerCol.label}</span>
@@ -151,7 +152,12 @@ export class Table {
         };
 
         return (
-            <div class={`pd-table-cell ${col.bold ? 'pd-table-cell-bold' : ''}`} role="cell" style={cellStyle}>
+            <div
+                class={`pd-table-cell ${col.bold ? 'pd-table-cell-bold' : ''}`}
+                role="cell"
+                style={cellStyle}
+                title={row[col.columnName]}
+            >
                 <span>{row[col.columnName]}</span>
             </div>
         );
