@@ -70,7 +70,7 @@ export namespace Components {
           * Checkbox description text
          */
         "text": string;
-        "value": string;
+        "value": boolean;
     }
     interface PdColumn {
     }
@@ -559,7 +559,7 @@ declare namespace LocalJSX {
           * Checkbox description text
          */
         "text"?: string;
-        "value"?: string;
+        "value"?: boolean;
     }
     interface PdColumn {
     }
