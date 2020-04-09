@@ -14,7 +14,7 @@
 | `headerStyle`  | `header-style`  |             | `"dark" \| "gray" \| "light"` | `'dark'` |
 | `minWidth`     | `min-width`     |             | `string`                      | `'300'`  |
 | `rowHeight`    | `row-height`    |             | `string`                      | `'48'`   |
-| `rows`         | --              |             | `any[]`                       | `[]`     |
+| `rows`         | `rows`          |             | `any`                         | `[]`     |
 
 
 ----------------------------------------------

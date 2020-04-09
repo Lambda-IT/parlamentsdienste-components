@@ -101,15 +101,17 @@
                 {
                     columnName: 'no',
                     label: '#',
-                    width: 100,
+                    width: 50,
+                    minWidth: 50,
                     bold: true,
-                    // fixed: true,
+                    fixed: true,
                 },
                 {
                     columnName: 'column1',
                     label: 'Col1',
                     width: 0,
-                    minWidth: 200
+                    minWidth: 500,
+                    textAlign: 'left'
                 },
                 {
                     columnName: 'column2',
@@ -117,24 +119,22 @@
                     width: 100,
                     sortable: true,
                     sortDir: 'asc',
-                    // minWidth: 200
                 },
                 {
                     columnName: 'column3',
                     label: 'Col3',
-                    width: 0, // auto
-                    minWidth: 100,
+                    width: 200,
                     sortable: true,
                     sortDir: 'asc',
-                    // fixed: true,
+                    textAlign: 'right'
                 },
             ];
 
             const rows = [
-                { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 'Cell3' },
-                { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 'Cell6' },
-                { no: 10, column1: 'Cell2', column2: 'Cell5', column3: 'Cell6' },
-                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 'Cell6' },
+                { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 0.12 },
+                { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 411.21 },
+                { no: 10, column1: 'Cell2', column2: 'Cell5', column3: 871 },
+                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563 },
             ];
 
             pdTable0.columns = columns;

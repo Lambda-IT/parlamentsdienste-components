@@ -45,26 +45,22 @@ export class Table {
         }
     }
 
-    private sort = (headerCol: PdColumn) => {
-        if (!headerCol.sortable) return;
+    private getTextAlign = (headerCol: PdColumn) =>
+        headerCol.textAlign === 'left' ? 'flex-start' : headerCol.textAlign === 'right' ? 'flex-end' : 'center';
 
-        const order = this.nextColumnSortDir[headerCol.columnName] || 'asc';
-        this.nextColumnSortDir[headerCol.columnName] = order === 'asc' ? 'desc' : 'asc';
+    private sort = (headerCol: PdColumn) => {
+        const { columnName, sortable } = headerCol;
+        if (!sortable) return;
+
+        const order = this.nextColumnSortDir[columnName] || 'asc';
+        this.nextColumnSortDir[columnName] = order === 'asc' ? 'desc' : 'asc';
 
         this.rows = [
             ...this.rows.sort((a, b) => {
                 if (order === 'asc')
-                    return a[headerCol.columnName] === b[headerCol.columnName]
-                        ? 0
-                        : a[headerCol.columnName] < b[headerCol.columnName]
-                        ? -1
-                        : 1;
+                    return a[columnName] === b[columnName] ? 0 : a[columnName] < b[columnName] ? -1 : 1;
                 else if (order === 'desc')
-                    return a[headerCol.columnName] === b[headerCol.columnName]
-                        ? 0
-                        : a[headerCol.columnName] > b[headerCol.columnName]
-                        ? -1
-                        : 1;
+                    return a[columnName] === b[columnName] ? 0 : a[columnName] > b[columnName] ? -1 : 1;
             }),
         ];
     };
@@ -108,12 +104,16 @@ export class Table {
                 const headerCellStyle = {
                     flex: headerCol.width === 0 ? '1 1 auto' : `0 0 ${headerCol.width}px`,
                     minWidth: headerCol.minWidth ? `${headerCol.minWidth}px` : 'auto',
+                    justifyContent: this.getTextAlign(headerCol),
                 };
+                const nextSortDir = this.nextColumnSortDir[headerCol.columnName];
                 return (
                     <div
                         class={`pd-table-header-cell pd-table-cell-bold ${
                             headerCol.sortable ? 'pd-table-sortable' : ''
-                        } ${headerCol.sortDir ? `pd-table-sort-${headerCol.sortDir}` : ''} ${this.headerStyle}`}
+                        } ${nextSortDir ? `pd-table-sort-${nextSortDir === 'asc' ? 'desc' : 'asc'}` : ''} ${
+                            this.headerStyle
+                        }`}
                         role="cell"
                         style={headerCellStyle}
                         onClick={() => this.sort(headerCol)}
@@ -140,6 +140,7 @@ export class Table {
         const cellStyle = {
             flex: col.width === 0 ? '1 1 auto' : `0 0 ${col.width}px`,
             minWidth: col.minWidth ? `${col.minWidth}px` : 'auto',
+            justifyContent: this.getTextAlign(col),
         };
 
         return (

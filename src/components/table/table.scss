@@ -8,10 +8,6 @@
 .pd-table {
     display: flex;
 
-    .pd-table-fixed {
-        background-color: red;
-    }
-
     .pd-table-horizontal-scroll {
         overflow: auto;
 
@@ -33,7 +29,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 6px;
+        padding: 0 10px;
+
+        &.pd-table-sortable {
+            user-select: none;
+            cursor: pointer;
+
+            &.pd-table-sort-asc::after {
+                padding-left: 5px;
+                content: '🠟';
+            }
+
+            &.pd-table-sort-desc::after {
+                padding-left: 5px;
+                content: '🠝';
+            }
+        }
 
         &.dark {
             background-color: $blue-whale;
@@ -41,8 +52,6 @@
             border-top: 2px solid $blue-whale;
 
             &.pd-table-sortable {
-                cursor: pointer;
-
                 &:hover {
                     background-color: $cyan-9;
                 }
@@ -59,8 +68,6 @@
             color: $black;
 
             &.pd-table-sortable {
-                cursor: pointer;
-
                 &:hover {
                     background-color: $gray-3;
                 }
@@ -78,8 +85,6 @@
             color: $black;
 
             &.pd-table-sortable {
-                cursor: pointer;
-
                 &:hover {
                     background-color: $bon-jour;
                 }
@@ -111,7 +116,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 6px;
+    padding: 0 10px;
     border-bottom: 2px solid $gray-3;
     overflow: hidden;
 }

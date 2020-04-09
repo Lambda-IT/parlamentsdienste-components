@@ -19,4 +19,5 @@ export interface PdColumn {
     sortDir?: 'desc' | 'asc';
     sortable?: boolean;
     fixed?: boolean;
+    textAlign?: 'left' | 'right' | 'center';
 }

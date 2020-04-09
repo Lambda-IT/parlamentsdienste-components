@@ -16,33 +16,47 @@ export const primary = () => {
             label: '#',
             width: 50,
             bold: true,
+            fixed: true,
+            sortable: true,
         },
         {
             columnName: 'column1',
-            label: 'Col1',
-            width: 300,
+            label: 'Referenz',
+            width: 150,
+            textAlign: 'right',
         },
         {
             columnName: 'column2',
-            label: 'Col2',
-            width: 200,
-        },
-        {
-            columnName: 'column3',
-            label: 'Col3',
-            width: 0, // auto
-            sort: 'desc', // optional
+            label: 'Thema',
+            width: 0,
+            minWidth: 500,
+            sortable: true,
+            sortDir: 'asc',
+            textAlign: 'left',
         },
     ];
 
     const rowsData = [
-        { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 'Cell3' },
-        { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 'Cell6' },
+        { no: 1, column1: 'SiK/CPS-19-01', column2: 'Mitteilungen' },
+        { no: 2, column1: 'SiK/CPS-19-34', column2: 'Aktuelles as dem VBS, Information und Diskussion' },
+        { no: 3, column1: 'SiK/CPS-19-12', column2: 'NKF, Evaluationsverfahren, Information und Diskussion' },
+        { no: 4, column1: 'SiK/CPS-19-65', column2: 'Gesamtkonzeption Boden, Präsentation und Diskussion' },
+        {
+            no: 5,
+            column1: 'SiK/CPS-19-101',
+            column2: 'Politisches Controlling, Präsentation, Diskussion und Beschluss',
+        },
+        { no: 6, column1: '18.445', column2: 'Pa.lv. Semadenbi. Fakultatives' },
+        {
+            no: 7,
+            column1: 'WBK/CSEC-19-02',
+            column2: 'Referendum für die Unterstützung Olympischer Spiele durch den Bund',
+        },
+        { no: 8, column1: '19.040', column2: 'Controlling, Präsentation, Diskussion und Beschluss' },
     ];
 
     const rows = object('rows', rowsData);
     const columns = object('columns', columnsData);
-    const size = radios('size', { large: ['large'], normal: ['normal'], small: ['small'] }, 'normal');
 
     const headerDark = document.createElement('h3');
     headerDark.innerHTML = 'Dark';
@@ -74,13 +88,4 @@ export const primary = () => {
     wrapper.append(table2);
 
     return wrapper;
-
-    /*return `
-        <h3>Dark</h3>
-        <pd-table header-style="dark" id="pd-table-1"></pd-table>
-        <h3>Light</h3>
-        <pd-table header-style="light" id="pd-table-1"></pd-table>
-        <h3>Gray</h3>
-        <pd-table header-style="gray" id="pd-table-2"></pd-table>
-    `;*/
 };
