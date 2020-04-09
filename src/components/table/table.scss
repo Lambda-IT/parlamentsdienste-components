@@ -3,11 +3,23 @@
 :host {
     display: block;
     flex: 1;
-    overflow: auto;
 }
 
-.pd-table-cell-bold {
-    font: 16px/24px Avenir-Black;
+.pd-table {
+    display: flex;
+
+    .pd-table-fixed {
+        background-color: red;
+    }
+
+    .pd-table-horizontal-scroll {
+        overflow: auto;
+
+        .pd-table-row,
+        .pd-table-header-row {
+            overflow: visible;
+        }
+    }
 }
 
 .pd-table-header-row {
@@ -15,24 +27,68 @@
     flex-direction: row;
     height: 48px;
     color: $white;
+    overflow: hidden;
 
-    &.dark {
-        background-color: $blue-whale;
-        border-bottom: 2px solid $blue-whale;
-        border-top: 2px solid $blue-whale;
-    }
+    .pd-table-header-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 6px;
 
-    &.light {
-        border-bottom: 2px solid $blue-whale;
-        border-top: 2px solid $blue-whale;
-        color: $black;
-    }
+        &.dark {
+            background-color: $blue-whale;
+            border-bottom: 2px solid $blue-whale;
+            border-top: 2px solid $blue-whale;
 
-    &.gray {
-        background-color: $gray-3;
-        border-bottom: 2px solid $gray-3;
-        border-top: 2px solid $gray-3;
-        color: $black;
+            &.pd-table-sortable {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $cyan-9;
+                }
+
+                &:active {
+                    background-color: $cyan-6;
+                }
+            }
+        }
+
+        &.light {
+            border-bottom: 2px solid $blue-whale;
+            border-top: 2px solid $blue-whale;
+            color: $black;
+
+            &.pd-table-sortable {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $gray-3;
+                }
+
+                &:active {
+                    background-color: $cyan-6;
+                }
+            }
+        }
+
+        &.gray {
+            background-color: $gray-3;
+            border-bottom: 2px solid $gray-3;
+            border-top: 2px solid $gray-3;
+            color: $black;
+
+            &.pd-table-sortable {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $bon-jour;
+                }
+
+                &:active {
+                    background-color: $cyan-6;
+                }
+            }
+        }
     }
 }
 
@@ -41,10 +97,12 @@
         display: flex;
         flex-direction: row;
         height: 48px;
-        border-bottom: 2px solid $gray-3;
+        overflow: hidden;
 
         &:last-child {
-            border-bottom: none;
+            .pd-table-cell {
+                border-bottom: none;
+            }
         }
     }
 }
@@ -54,4 +112,10 @@
     justify-content: center;
     align-items: center;
     padding: 0 6px;
+    border-bottom: 2px solid $gray-3;
+    overflow: hidden;
+}
+
+.pd-table-cell-bold {
+    font: 16px/24px Avenir-Black;
 }

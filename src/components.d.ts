@@ -282,7 +282,7 @@ export namespace Components {
         "headerStyle": "light" | "dark" | "gray";
         "minWidth": string;
         "rowHeight": string;
-        "rows": any[];
+        "rows": any;
     }
     interface PdTag {
     }
@@ -801,7 +801,7 @@ declare namespace LocalJSX {
         "headerStyle"?: "light" | "dark" | "gray";
         "minWidth"?: string;
         "rowHeight"?: string;
-        "rows"?: any[];
+        "rows"?: any;
     }
     interface PdTag {
     }

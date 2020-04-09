@@ -14,6 +14,9 @@ export interface PdColumn {
     columnName: string;
     label: string;
     width: number;
+    minWidth: number;
     bold?: boolean;
-    sort?: 'desc' | 'asc';
+    sortDir?: 'desc' | 'asc';
+    sortable?: boolean;
+    fixed?: boolean;
 }

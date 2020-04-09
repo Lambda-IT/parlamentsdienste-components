@@ -21,6 +21,12 @@
     <body>
         <div class="example-components">
             <h1>Header 1</h1>
+            <pd-table id="pd-table-0" header-style="dark">
+            </pd-table>
+            <pd-table id="pd-table-1" header-style="light">
+            </pd-table>
+            <pd-table id="pd-table-2" header-style="gray">
+            </pd-table>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning">Button</pd-button>
@@ -76,12 +82,6 @@
             <pd-notification></pd-notification>
             <pd-progress-bar id="pd-progress-0"></pd-progress-bar>
             <pd-slider id="pd-slider-0"></pd-slider>
-            <pd-table id="pd-table-0" header-style="dark">
-            </pd-table>
-            <pd-table id="pd-table-1" header-style="light">
-            </pd-table>
-            <pd-table id="pd-table-2" header-style="gray">
-            </pd-table>
             <pd-tag></pd-tag>
             <pd-timeline></pd-timeline>
         </div>
@@ -101,30 +101,40 @@
                 {
                     columnName: 'no',
                     label: '#',
-                    width: 50,
+                    width: 100,
                     bold: true,
+                    // fixed: true,
                 },
                 {
                     columnName: 'column1',
                     label: 'Col1',
-                    width: 300,
+                    width: 0,
+                    minWidth: 200
                 },
                 {
                     columnName: 'column2',
                     label: 'Col2',
-                    width: 200,
+                    width: 100,
+                    sortable: true,
+                    sortDir: 'asc',
+                    // minWidth: 200
                 },
                 {
                     columnName: 'column3',
                     label: 'Col3',
                     width: 0, // auto
-                    sort: 'desc', // optional
+                    minWidth: 100,
+                    sortable: true,
+                    sortDir: 'asc',
+                    // fixed: true,
                 },
             ];
 
             const rows = [
                 { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 'Cell3' },
                 { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 'Cell6' },
+                { no: 10, column1: 'Cell2', column2: 'Cell5', column3: 'Cell6' },
+                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 'Cell6' },
             ];
 
             pdTable0.columns = columns;
