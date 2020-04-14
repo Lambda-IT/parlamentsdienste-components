@@ -15,12 +15,13 @@
         "loader/"
     ],
     "scripts": {
-        "build": "stencil build --docs",
+        "build": "stencil build --docs && npm run build-css",
+        "build-css": "sass src/styles/pd-bootstrap.scss dist/styles/pd-bootstrap.css",
         "start": "stencil build --dev --watch --serve",
         "test": "stencil test --spec --e2e",
         "test.watch": "stencil test --spec --e2e --watchAll",
         "generate": "stencil generate",
-        "storybook": "start-storybook -s ./dist,./src/assets",
+        "storybook": "start-storybook -s ./dist,./src/assets,./dist/styles,",
         "build-storybook": "build-storybook"
     },
     "devDependencies": {
@@ -35,7 +36,8 @@
         "@storybook/addons": "^5.3.18",
         "@storybook/html": "^5.3.18",
         "babel-loader": "^8.1.0",
-        "prettier": "1.19.1"
+        "prettier": "1.19.1",
+        "sass": "^1.26.3"
     },
     "license": "MIT",
     "dependencies": {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
         <script>
             function async(u, c) {
                 var d = document,
@@ -30,19 +30,18 @@
 
                     const wm = new WeakMap();
 
-
                     var app = new Vue({
                         el: '#app',
                         data: {
                             test: 'start',
-                            config : {
-                                button:  {
-                                    caption :'click here',
-                                    color :'success',
-                                    disabled: false, 
-                                    type:'button'
-                                }
-                            }
+                            config: {
+                                button: {
+                                    caption: 'click here',
+                                    color: 'success',
+                                    disabled: false,
+                                    type: 'button',
+                                },
+                            },
                         },
                         methods: {
                             click: function(e) {
@@ -56,50 +55,46 @@
                                 console.log('vue event: ', e);
                             },
                         },
-                        computed: {
+                        computed: {},
 
-                        },
-
-                        directives : {
-                            'model-pd' : {
+                        directives: {
+                            'model-pd': {
                                 bind(el, binding, vnode) {
-                                    console.log("bind -> el", el)
+                                    console.log('bind -> el', el);
                                     const inputHandler = event => {
-                                        console.log("bind -> event", event);
-                                        console.log("bind -> vnode.context", vnode.context);
-                                        console.log("bind -> binding.expression", binding.expression);
-                                        console.log("bind -> event.target.value", event.target.value);
-                                            
+                                        console.log('bind -> event', event);
+                                        console.log('bind -> vnode.context', vnode.context);
+                                        console.log('bind -> binding.expression', binding.expression);
+                                        console.log('bind -> event.target.value', event.target.value);
+
                                         // Vue.set(vnode.context, binding.expression, event.target.value);
                                         var value = event.target.value;
-                                        if(''+ event.target.value === 'true') value = true;
-                                        if(''+ event.target.value === 'false') value = false;
-                                        _.set(vnode.context, binding.expression, value)
-                                    }
+                                        if ('' + event.target.value === 'true') value = true;
+                                        if ('' + event.target.value === 'false') value = false;
+                                        _.set(vnode.context, binding.expression, value);
+                                    };
                                     wm.set(el, inputHandler);
                                     el.value = binding.value;
                                     el.addEventListener('input', inputHandler);
                                 },
 
                                 componentUpdated(el, binding) {
-                                    console.log("componentUpdated -> el", {el,binding})
+                                    console.log('componentUpdated -> el', { el, binding });
                                     el.value = binding.value;
                                 },
 
                                 update(el, binding) {
-                                    console.log("update -> el", {el,binding})
+                                    console.log('update -> el', { el, binding });
                                 },
 
                                 unbind(el) {
-                                    console.log("unbind -> el", el)
+                                    console.log('unbind -> el', el);
                                     const inputHandler = wm.get(el);
                                     el.removeEventListener(el, inputHandler);
-                                }
-                            }
-                        }
-
+                                },
+                            },
+                        },
                     });
-
                 });
             });
 
@@ -108,26 +103,77 @@
                 console.log('event: ', e);
             }
         </script>
+        <link href="../../dist/styles/pd-bootstrap.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Test</h1>
+        <pd-navbar>
+            <pd-navbar-item text="Startseite"></pd-navbar-item>
+            <pd-navbar-item text="Organe"></pd-navbar-item>
+            <pd-navbar-item text="Vorst&ouml;sse"></pd-navbar-item>
+            <pd-navbar-item text="Gesch&auml;ft suchen" href="http://www.google.ch" target="_blank"></pd-navbar-item>
+        </pd-navbar>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    <pd-sidebar>
+                        <pd-sidebar-item text="Mitteilungen"
+                            ><img src="../../www/assets/icons/icon-new_post.svg"
+                        /></pd-sidebar-item>
+                        <pd-sidebar-item text="Item 2"
+                            ><img src="../../www/assets/icons/icon-new_post.svg"
+                        /></pd-sidebar-item>
+                        <pd-sidebar-item text="Item 3" href="http://www.google.ch" target="_blank"
+                            ><img src="../../www/assets/icons/icon-new_post.svg"
+                        /></pd-sidebar-item>
+                    </pd-sidebar>
+                </div>
+                <div class="col-11">
+                    <pd-card>
+                        <h1>Test</h1>
 
-        <div id="app">
-            <h3>pd-button</h3>
-            <pd-input v-model-pd="config.button.caption"  inputmode="text" label="button text"  ></pd-input>
-            <h4>{{config.button.caption}}</h4>
-            <pd-input inputmode="text" pattern="button|type|submit" label="button type" v-model-pd="config.button.type" ></pd-input>
-            <pd-checkbox text="button disabled" v-model="config.button.disabled" v-model-pd="config.button.disabled" ></pd-checkbox>
-            <pd-input inputmode="text" pattern="danger|dark|info|light|primary|success|warning" label="button color" v-model-pd="config.button.color" ></pd-input>
-            <h4>{{config.button.color}}</h4>
-            <pre>
-                &lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;
-            </pre>
+                        <div id="app">
+                            <form>
+                            <h3>pd-button</h3>
+                            <pd-input
+                                v-model-pd="config.button.caption"
+                                inputmode="text"
+                                label="button text"
+                            ></pd-input>
+                            <h4>{{config.button.caption}}</h4>
+                            <pd-input
+                                inputmode="text"
+                                pattern="button|type|submit"
+                                label="button type"
+                                v-model-pd="config.button.type"
+                            ></pd-input>
+                            <pd-checkbox
+                                text="button disabled"
+                                v-model="config.button.disabled"
+                                v-model-pd="config.button.disabled"
+                            ></pd-checkbox>
+                            <pd-input
+                                inputmode="text"
+                                pattern="danger|dark|info|light|primary|success|warning"
+                                label="button color"
+                                v-model-pd="config.button.color"
+                            ></pd-input>
+                            <h4>{{config.button.color}}</h4>
+                        </form>
+                        <pre>
+                            <code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></br>
+                    </pre>
 
-            
-
-            <pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color' >{{config.button.caption}}</pd-button>
-
+                            <pd-button
+                                @click="click"
+                                :type="config.button.type"
+                                :disabled="config.button.disabled"
+                                :color="config.button.color"
+                                >{{config.button.caption}}</pd-button
+                            >
+                        </div>
+                    </pd-card>
+                </div>
+            </div>
         </div>
     </body>
 </html>
