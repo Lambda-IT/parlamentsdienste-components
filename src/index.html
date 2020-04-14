@@ -21,12 +21,9 @@
     <body>
         <div class="example-components">
             <h1>Header 1</h1>
-            <pd-table id="pd-table-0" header-style="dark">
-            </pd-table>
-            <pd-table id="pd-table-1" header-style="light">
-            </pd-table>
-            <pd-table id="pd-table-2" header-style="gray">
-            </pd-table>
+            <pd-table id="pd-table-0" header-style="dark"> </pd-table>
+            <pd-table id="pd-table-1" header-style="light"> </pd-table>
+            <pd-table id="pd-table-2" header-style="gray"> </pd-table>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning">Button</pd-button>
@@ -53,7 +50,6 @@
                 <pd-card-content>Content</pd-card-content>
                 <pd-card-footer></pd-card-footer>
             </pd-card>
-            <pd-column></pd-column>
             <pd-container></pd-container>
             <pd-datepicker></pd-datepicker>
             <pd-dropdown label="dropdown label" helper-text="dropdown helper text"></pd-dropdown>
@@ -73,7 +69,7 @@
                 <pd-navbar-item href="http://www.google.ch" target="_blank" text="VORSTOSSplus"></pd-navbar-item>
             </pd-navbar>
             <pd-sidebar>
-                <pd-sidebar-item text="Mitteilungen"><img src="assets/icons/icon-new_post.svg"></img></pd-sidebar-item>
+                <pd-sidebar-item text="Mitteilungen" icon="/assets/icons/icon-new_post.svg"></pd-sidebar-item>
                 <pd-sidebar-item text="Meine Ablage">Icon</pd-sidebar-item>
                 <pd-sidebar-item enabled text="Recherchen">Icon</pd-sidebar-item>
                 <pd-sidebar-item text="Parlaments- Wörterbuch">Icon</pd-sidebar-item>
@@ -128,7 +124,7 @@
                     width: 200,
                     sortable: true,
                     sortDir: 'asc',
-                    textAlign: 'right'
+                    textAlign: 'right',
                 },
             ];
 

@@ -72,8 +72,6 @@ export namespace Components {
         "text": string;
         "value": boolean;
     }
-    interface PdColumn {
-    }
     interface PdContainer {
     }
     interface PdDatepicker {
@@ -86,6 +84,12 @@ export namespace Components {
         "value": string;
     }
     interface PdFooter {
+    }
+    interface PdIcon {
+        /**
+          * Specifies the exact `src` of an SVG file to use.
+         */
+        "src"?: string;
     }
     interface PdInput {
         /**
@@ -262,6 +266,7 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
+        "icon": string;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -338,12 +343,6 @@ declare global {
         prototype: HTMLPdCheckboxElement;
         new (): HTMLPdCheckboxElement;
     };
-    interface HTMLPdColumnElement extends Components.PdColumn, HTMLStencilElement {
-    }
-    var HTMLPdColumnElement: {
-        prototype: HTMLPdColumnElement;
-        new (): HTMLPdColumnElement;
-    };
     interface HTMLPdContainerElement extends Components.PdContainer, HTMLStencilElement {
     }
     var HTMLPdContainerElement: {
@@ -373,6 +372,12 @@ declare global {
     var HTMLPdFooterElement: {
         prototype: HTMLPdFooterElement;
         new (): HTMLPdFooterElement;
+    };
+    interface HTMLPdIconElement extends Components.PdIcon, HTMLStencilElement {
+    }
+    var HTMLPdIconElement: {
+        prototype: HTMLPdIconElement;
+        new (): HTMLPdIconElement;
     };
     interface HTMLPdInputElement extends Components.PdInput, HTMLStencilElement {
     }
@@ -467,12 +472,12 @@ declare global {
         "pd-card-footer": HTMLPdCardFooterElement;
         "pd-card-header": HTMLPdCardHeaderElement;
         "pd-checkbox": HTMLPdCheckboxElement;
-        "pd-column": HTMLPdColumnElement;
         "pd-container": HTMLPdContainerElement;
         "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-footer": HTMLPdFooterElement;
+        "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
@@ -561,8 +566,6 @@ declare namespace LocalJSX {
         "text"?: string;
         "value"?: boolean;
     }
-    interface PdColumn {
-    }
     interface PdContainer {
     }
     interface PdDatepicker {
@@ -575,6 +578,12 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PdFooter {
+    }
+    interface PdIcon {
+        /**
+          * Specifies the exact `src` of an SVG file to use.
+         */
+        "src"?: string;
     }
     interface PdInput {
         /**
@@ -773,6 +782,7 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
+        "icon"?: string;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -816,12 +826,12 @@ declare namespace LocalJSX {
         "pd-card-footer": PdCardFooter;
         "pd-card-header": PdCardHeader;
         "pd-checkbox": PdCheckbox;
-        "pd-column": PdColumn;
         "pd-container": PdContainer;
         "pd-datepicker": PdDatepicker;
         "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
         "pd-footer": PdFooter;
+        "pd-icon": PdIcon;
         "pd-input": PdInput;
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
@@ -850,12 +860,12 @@ declare module "@stencil/core" {
             "pd-card-footer": LocalJSX.PdCardFooter & JSXBase.HTMLAttributes<HTMLPdCardFooterElement>;
             "pd-card-header": LocalJSX.PdCardHeader & JSXBase.HTMLAttributes<HTMLPdCardHeaderElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
-            "pd-column": LocalJSX.PdColumn & JSXBase.HTMLAttributes<HTMLPdColumnElement>;
             "pd-container": LocalJSX.PdContainer & JSXBase.HTMLAttributes<HTMLPdContainerElement>;
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-footer": LocalJSX.PdFooter & JSXBase.HTMLAttributes<HTMLPdFooterElement>;
+            "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;

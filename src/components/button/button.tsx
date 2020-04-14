@@ -44,7 +44,8 @@ export class Button {
     render() {
         const { href, target, type, disabled } = this;
         const TagType = href ? 'a' : 'button';
-        const typeAttrs = TagType === 'button' ? { type } : { href, target };
+        const role = 'button';
+        const typeAttrs = TagType === 'button' ? { type, role } : { href, target };
 
         return (
             <TagType

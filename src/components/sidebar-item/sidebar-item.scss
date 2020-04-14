@@ -18,6 +18,10 @@
     background-color: transparent;
     cursor: pointer;
 
+    pd-icon {
+        fill: $blue-whale;
+    }
+
     & * {
         font: 9px/11px Avenir-Black;
     }
@@ -25,6 +29,9 @@
     &:hover {
         background-color: $cyan-6;
         color: $white;
+        pd-icon {
+            fill: $white;
+        }
     }
 
     &:focus {
@@ -32,6 +39,10 @@
 
         &:hover {
             color: $blue-whale;
+
+            pd-icon {
+                fill: $blue-whale;
+            }
         }
     }
 
