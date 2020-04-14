@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core';
 export class Footer {
     render() {
         return (
-            <Host>
+            <Host role="contentinfo">
                 Footer
                 <slot></slot>
             </Host>

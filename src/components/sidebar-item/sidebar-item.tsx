@@ -15,6 +15,8 @@ export class SidebarItem {
      */
     @Prop() href: string;
 
+    @Prop() icon: string;
+
     /**
      * Sets target for link button e.g. '_blank'
      */
@@ -27,11 +29,13 @@ export class SidebarItem {
 
         return (
             <TagType {...typeAttrs} class={`pd-sidebar-item ${enabled ? 'pd-sidebar-enabled' : ''}`}>
-                <div class="pd-sidebar-icon">
-                    <slot></slot>
-                </div>
+                <div class="pd-sidebar-icon">{this.renderIcon(this.icon)}</div>
                 <div class="pd-sidebar-text">{text}</div>
             </TagType>
         );
+    }
+
+    private renderIcon(src) {
+        return <pd-icon src={src}></pd-icon>;
     }
 }

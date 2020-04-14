@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core';
 export class Sidebar {
     render() {
         return (
-            <Host>
+            <Host role="navigation">
                 <slot></slot>
             </Host>
         );

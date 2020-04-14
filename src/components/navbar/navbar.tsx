@@ -9,7 +9,7 @@ import { Component, Host, h, getAssetPath } from '@stencil/core';
 export class Navbar {
     render() {
         return (
-            <Host>
+            <Host role="navigation">
                 <img class="pd-navbar-icon" src={getAssetPath(`./assets-navbar/logo_parlament.svg`)}></img>
                 <slot></slot>
             </Host>

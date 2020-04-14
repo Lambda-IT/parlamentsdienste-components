@@ -163,7 +163,7 @@ export class Search {
         const labelId = this.inputId + '-lbl';
 
         return (
-            <Host class={this.error ? 'pd-search-error' : ''}>
+            <Host class={this.error ? 'pd-search-error' : ''} role="search">
                 <label class={this.disabled ? 'pd-search-disabled' : ''}>
                     {this.label ? <div class="pd-search-label-text">{this.label}</div> : ''}
                     <input

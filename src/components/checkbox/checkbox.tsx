@@ -35,7 +35,11 @@ export class Checkbox {
 
     render() {
         return (
-            <Host>
+            <Host
+                role="checkbox"
+                aria-checked={this.checked ? 'true' : 'false'}
+                aria-disabled={this.disabled ? 'true' : 'false'}
+            >
                 <label>
                     <input
                         type="Checkbox"

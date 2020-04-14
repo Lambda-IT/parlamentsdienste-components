@@ -86,16 +86,16 @@ export class Table {
         };
 
         return (
-            <Host>
+            <Host role="table">
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
-                        <div class={`pd-table-header-row`} role="row" style={headerStyle}>
+                        <div class={`pd-table-header-row`} role="rowheader" style={headerStyle}>
                             {this.renderHeader(true)}
                         </div>
                         <div class="pd-table-body">{this.renderRows(true)}</div>
                     </div>
                     <div class="pd-table-horizontal-scroll" style={scrollStyle}>
-                        <div class={`pd-table-header-row ${this.headerStyle}`} role="row" style={headerStyle}>
+                        <div class={`pd-table-header-row ${this.headerStyle}`} role="rowheader" style={headerStyle}>
                             {this.renderHeader(false)}
                         </div>
                         <div class="pd-table-body">{this.renderRows(false)}</div>

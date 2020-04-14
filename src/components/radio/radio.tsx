@@ -53,7 +53,7 @@ export class Radio {
         const labelId = inputId + '-lbl';
 
         return (
-            <Host role="pd-radio" aria-labeledby={labelId}>
+            <Host role="radio" aria-labeledby={labelId} aria-checked={checked}>
                 <label>
                     <input type="radio" checked={checked} name={name} value={value} />
                     <div class="pd-radio-inner"></div>
