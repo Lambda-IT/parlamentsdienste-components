@@ -224,21 +224,23 @@
                 </div>
                 <div class="col-7">
                     
-                    <pd-card> 
+                    <pd-card> <pd-card-header name="header">Sample Table</pd-card-header>
+                        <pd-card-content>
                         <pd-table v-array:rows="table.rows" v-array:columns="table.columns" ></pd-table>
-                        <div>
+                    </pd-card-content>
+                        <pd-card-footer name="footer">
                             <pd-button
                                     @click="addRow"
                                     type="button"
                                     color="primary"
                                     >Add Row</pd-button
                                 >
-                        </div>
+                        </pd-card-footer>
                     </pd-card>
                 </div>
                 <div class="col-4">
                     <pd-card>
-                        <h1>Test</h1>
+                        <pd-card> <pd-card-header name="header">Sample Form</pd-card-header>
 
                         
                             <form>
@@ -271,15 +273,18 @@
                         <pre>
                             <code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></br>
                     </pre>
-
-                            <pd-button
+                </pd-card-content>
+                <pd-card-footer name="footer">
+                    <pd-button
                                 @click="click"
                                 :type="config.button.type"
                                 :disabled="config.button.disabled"
                                 :color="config.button.color"
                                 >{{config.button.caption}}</pd-button
                             >
-                        </div>
+                </pd-card-footer>
+                            
+              
                     </pd-card>
                 </div>
             </div>
