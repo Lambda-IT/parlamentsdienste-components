@@ -2,8 +2,10 @@
 <html lang="en">
     <head>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+        <script type="module" src="./build/parlamentsdienstecore.esm.js"></script>
+        <script nomodule src="./build/parlamentsdienstecore.js"></script>
         <script>
-            function async(u, c) {
+             function async(u, c) {
                 var d = document,
                     t = 'script',
                     o = d.createElement(t),
@@ -21,8 +23,7 @@
                 s.parentNode.insertBefore(o, s);
             }
 
-            async('vue.min.js', function() {
-                async('../../www/build/componentlibrary.js', function() {
+            async('./assets/js/vue.min.js', function() {
                     Vue.config.ignoredElements = [/^pd-/];
                     //  applyPolyfills().then(() => {
                     //      defineCustomElements(window);
@@ -102,7 +103,7 @@
                             },
                             addRow: function() {
                                 const ix = this.table.rows.length;
-                                this.table.rows.push({...this.table.rows[0], id:ix + 1})
+                                this.table.rows = [...this.table.rows, {...this.table.rows[0], id:ix + 1}]
                             }
                         },
                         computed: {},
@@ -188,7 +189,6 @@
                         },
                     });
                 });
-            });
 
             function vanillaclick(e) {
                 console.log('vanilla clicked', e.target);
@@ -196,7 +196,7 @@
             }
         </script>
        
-        <link href="../../dist/styles/pd-bootstrap.css" rel="stylesheet" />
+        <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
     </head>
     <body>
         <div id="app">
@@ -211,22 +211,17 @@
             <div class="row">
                 <div class="col-1">
                     <pd-sidebar>
-                        <pd-sidebar-item text="Mitteilungen"
-                            ><img src="../../www/assets/icons/icon-new_post.svg"
-                        /></pd-sidebar-item>
-                        <pd-sidebar-item text="Item 2"
-                            ><img src="../../www/assets/icons/icon-new_post.svg"
-                        /></pd-sidebar-item>
-                        <pd-sidebar-item text="Item 3" href="http://www.google.ch" target="_blank"
-                            ><img src="../../www/assets/icons/icon-new_post.svg"
-                        /></pd-sidebar-item>
+                        <pd-sidebar-item text="Mitteilungen" icon="./assets/icons/icon-new_post.svg"                             ></pd-sidebar-item>
+                        <pd-sidebar-item text="Item 2" icon="./assets/icons/icon-new_post.svg"                             ></pd-sidebar-item>
+                        <pd-sidebar-item text="Item 3" href="http://www.google.ch" target="_blank" icon="./assets/icons/icon-new_post.svg"                             >
+                        </pd-sidebar-item>
                     </pd-sidebar>
                 </div>
                 <div class="col-7">
                     
                     <pd-card> <pd-card-header slot="header">Sample Table</pd-card-header>
                         <pd-card-content>
-                        <pd-table v-array:rows="table.rows" v-array:columns="table.columns" ></pd-table>
+                        <pd-table :rows.prop="table.rows" :columns.prop="table.columns" ></pd-table>
                     </pd-card-content>
                         <pd-card-footer slot="footer">
                             <pd-button
