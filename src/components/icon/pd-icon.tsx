@@ -3,7 +3,7 @@ import { getSvgContent, iconContent } from '../../utils/svg';
 
 @Component({
     tag: 'pd-icon',
-    styleUrl: 'pd-icon.css',
+    styleUrl: 'pd-icon.scss',
     shadow: true,
 })
 export class PdIcon implements ComponentInterface {
@@ -77,9 +77,9 @@ export class PdIcon implements ComponentInterface {
         return (
             <Host role="img">
                 {this.svgContent ? (
-                    <div class="icon-inner" innerHTML={this.svgContent}></div>
+                    <div class="pd-icon-inner" innerHTML={this.svgContent}></div>
                 ) : (
-                    <div class="icon-inner"></div>
+                    <div class="pd-icon-inner"></div>
                 )}
             </Host>
         );

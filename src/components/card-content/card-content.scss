@@ -4,11 +4,7 @@
 }
 
 pd-card-content {
-    padding: 20px;
     display: block;
     position: relative;
-
-    &.pd-card-content-collapsed {
-        display: none;
-    }
+    padding: var(--pd-card-content-padding, 20px);
 }

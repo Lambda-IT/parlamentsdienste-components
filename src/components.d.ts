@@ -46,15 +46,17 @@ export namespace Components {
     interface PdButtonGroup {
     }
     interface PdCard {
+        /**
+          * Expands / collapses the card content
+         */
         "collapsed": boolean;
     }
     interface PdCardContent {
-        "collapsed": boolean;
+        "padding": "none" | "vertical" | "horizontal";
     }
     interface PdCardFooter {
     }
     interface PdCardHeader {
-        "collapsed": boolean;
     }
     interface PdCheckbox {
         /**
@@ -282,11 +284,29 @@ export namespace Components {
         "value"?: number | null;
     }
     interface PdTable {
+        /**
+          * A definition for each column of the table
+         */
         "columns": PdColumn[];
+        /**
+          * Height of header cells
+         */
         "headerHeight": string;
+        /**
+          * The table style
+         */
         "headerStyle": "light" | "dark" | "gray";
+        /**
+          * The minimum width the table should take
+         */
         "minWidth": string;
+        /**
+          * Height of rows
+         */
         "rowHeight": string;
+        /**
+          * The data definition for each row to display
+         */
         "rows": any;
     }
     interface PdTag {
@@ -535,6 +555,9 @@ declare namespace LocalJSX {
     interface PdButtonGroup {
     }
     interface PdCard {
+        /**
+          * Expands / collapses the card content
+         */
         "collapsed"?: boolean;
         /**
           * Emitted when the value has changed.
@@ -542,12 +565,11 @@ declare namespace LocalJSX {
         "onPdCollapsed"?: (event: CustomEvent<any>) => void;
     }
     interface PdCardContent {
-        "collapsed"?: boolean;
+        "padding"?: "none" | "vertical" | "horizontal";
     }
     interface PdCardFooter {
     }
     interface PdCardHeader {
-        "collapsed"?: boolean;
     }
     interface PdCheckbox {
         /**
@@ -806,11 +828,29 @@ declare namespace LocalJSX {
         "value"?: number | null;
     }
     interface PdTable {
+        /**
+          * A definition for each column of the table
+         */
         "columns"?: PdColumn[];
+        /**
+          * Height of header cells
+         */
         "headerHeight"?: string;
+        /**
+          * The table style
+         */
         "headerStyle"?: "light" | "dark" | "gray";
+        /**
+          * The minimum width the table should take
+         */
         "minWidth"?: string;
+        /**
+          * Height of rows
+         */
         "rowHeight"?: string;
+        /**
+          * The data definition for each row to display
+         */
         "rows"?: any;
     }
     interface PdTag {

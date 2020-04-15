@@ -1,9 +1,12 @@
 # pd-card-content
 
+## Styles
 
+| Style                       | Default | Description                                         |
+| --------------------------- | ------- | --------------------------------------------------- |
+| `--pd-card-content-padding` | `20px`  | horizontal and vertical padding of card content box |
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -11,7 +14,6 @@
 | ----------- | ----------- | ----------- | --------- | ------- |
 | `collapsed` | `collapsed` |             | `boolean` | `false` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

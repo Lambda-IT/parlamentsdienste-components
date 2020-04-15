@@ -7,3 +7,13 @@
     border-radius: 4px;
     min-width: $min-screen-width;
 }
+
+.pd-card-content-wrapper {
+    transition: max-height 0.4s ease-in-out;
+    height: auto;
+    overflow: hidden;
+
+    &.pd-card-content-collapsed {
+        max-height: 0 !important;
+    }
+}

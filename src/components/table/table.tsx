@@ -7,16 +7,34 @@ import { PdColumn } from '../../interface';
     shadow: true,
 })
 export class Table {
+    /**
+     * Height of header cells
+     */
     @Prop() headerHeight: string = '48';
 
+    /**
+     * Height of rows
+     */
     @Prop() rowHeight: string = '48';
 
+    /**
+     * The minimum width the table should take
+     */
     @Prop() minWidth: string = '300';
 
+    /**
+     * The table style
+     */
     @Prop() headerStyle: 'light' | 'dark' | 'gray' = 'dark';
 
+    /**
+     * A definition for each column of the table
+     */
     @Prop() columns: PdColumn[] = [];
 
+    /**
+     * The data definition for each row to display
+     */
     @Prop() rows: any = [];
 
     private nextColumnSortDir = {};
