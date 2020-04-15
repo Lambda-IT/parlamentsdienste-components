@@ -76,6 +76,16 @@ $green-3: #8ce99a;
 $focus: $yellow-4;
 $min-component-width: 300px;
 
+// bootstrap
+$primary : $cyan-9;
+$secondary: $athens-gray;
+$success: $lime-9;
+$danger : $red-9;
+$warning: $yellow-9;
+$info : $blue-6;
+$light: $athens-gray;
+$dark:$blue-whale;
+
 $colorscheme: (
     primary: (
         enabled: $cyan-9,
@@ -138,13 +148,16 @@ $colorscheme: (
         pressed-contrast: $black,
     ),
     dark: (
-        enabled: #343a40,
+        enabled: $blue-whale,
         enabled-contrast: $white,
         disabled: $gray-6,
         disabled-contrast: $white,
         hover: $gray-6,
-        hover-contrast: #343a40,
+        hover-contrast:$blue-whale,
         pressed: $gray-3,
-        pressed-contrast: #343a40,
+        pressed-contrast:$blue-whale,
     ),
 );
+
+$font-family-base: 'Avenir-Roman';
+$font-family-sans-serif: 'Avenir-Roman';
