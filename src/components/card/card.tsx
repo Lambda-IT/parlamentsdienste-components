@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, Host, h, Prop, Element, EventEmitter, Event, Watch, State } from '@stencil/core';
 
 @Component({
     tag: 'pd-card',
@@ -7,7 +7,12 @@ import { Component, Host, h, Prop, Element, EventEmitter, Event, Watch } from '@
 })
 export class Card {
     @Element() element!: HTMLElement;
+    private contentWrapper: HTMLElement;
+    @State() contentWrapperHeight: string;
 
+    /**
+     * Expands / collapses the card content
+     */
     @Prop() collapsed: boolean = false;
 
     /**
@@ -18,12 +23,28 @@ export class Card {
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
         this.pdCollapsed.emit({ collapsed });
+        this.contentWrapperHeight = `${this.contentWrapper.scrollHeight}px`;
+    }
+
+    componentDidLoad() {
+        this.contentWrapper = this.element.shadowRoot.querySelector('.pd-card-content-wrapper');
+        this.contentWrapperHeight = `${this.contentWrapper.scrollHeight}px`;
     }
 
     render() {
         return (
             <Host>
-                <slot></slot>
+                <slot name="header"></slot>
+                <div
+                    class={`pd-card-content-wrapper ${
+                        this.collapsed ? 'pd-card-content-collapsed' : 'pd-card-content-expanded'
+                    }`}
+                    style={{ maxHeight: this.contentWrapperHeight }}
+                    aria-expanded={this.collapsed ? 'false' : 'true'}
+                >
+                    <slot></slot>
+                    <slot name="footer"></slot>
+                </div>
             </Host>
         );
     }

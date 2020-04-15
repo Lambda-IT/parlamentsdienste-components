@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, getAssetPath } from '@stencil/core';
+import { Component, Host, h, Element, getAssetPath } from '@stencil/core';
 
 @Component({
     tag: 'pd-card-header',
@@ -9,8 +9,7 @@ import { Component, Host, h, Element, Prop, getAssetPath } from '@stencil/core';
 export class CardHeader {
     @Element() element!: HTMLElement;
 
-    @Prop() collapsed: boolean = false;
-
+    private collapsed: boolean = false;
     private card: any | null = null;
 
     connectedCallback() {
