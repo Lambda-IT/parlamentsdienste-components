@@ -5,7 +5,7 @@
         <script type="module" src="./build/parlamentsdienstecore.esm.js"></script>
         <script nomodule src="./build/parlamentsdienstecore.js"></script>
         <script>
-             function async(u, c) {
+            function async(u, c) {
                 var d = document,
                     t = 'script',
                     o = d.createElement(t),
@@ -24,265 +24,302 @@
             }
 
             async('./assets/js/vue.min.js', function() {
-                    Vue.config.ignoredElements = [/^pd-/];
-                    //  applyPolyfills().then(() => {
-                    //      defineCustomElements(window);
-                    //  });
+                Vue.config.ignoredElements = [/^pd-/];
+                //  applyPolyfills().then(() => {
+                //      defineCustomElements(window);
+                //  });
 
-                    const wm = new WeakMap();
+                const wm = new WeakMap();
 
-                    var app = new Vue({
-                        el: '#app',
-                        data: {
-                            test: 'start',
-                            table : {
-                                    rows: [
-                                        {id:1,colName:'test',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 1},
-                                        {id:2,colName:'test 1',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 11},
-                                        {id:3,colName:'test 2',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 21},
-                                        {id:4,colName:'test 3',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 31}
-                                    ],
-                                    columns: [
-                                        {
-                                            "columnName": "id",
-                                            "label": "#",
-                                            "width": 50,
-                                            "bold": true,
-                                            "sortable": true,
-                                            "sortDir": "desc",
-                                        },
-                                        {
-                                            "columnName": "colName",
-                                            "label": "name",
-                                            "width": 100,
-                                            "bold": true,
-                                            "textAlign": "right"
-                                        },
-                                        {
-                                            "columnName": "colText",
-                                            "label": "text",
-                                            "width": 0,
-                                            "bold": false,
-                                            "textAlign": "left"
-                                        },
-                                        {
-                                            "columnName": "colDate",
-                                            "label": "created",
-                                            "width": 100,
-                                            "bold": false
-                                        },
-                                        {
-                                            "columnName": "colNumber",
-                                            "label": "count",
-                                            "width": 100,
-                                            "bold": false,
-                                            "sortable": true,
-                                        },
-                                    ]
+                var app = new Vue({
+                    el: '#app',
+                    data: {
+                        test: 'start',
+                        table: {
+                            rows: [
+                                {
+                                    id: 1,
+                                    colName: 'test',
+                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                    colDate: new Date(),
+                                    colNumber: 1,
                                 },
-                            config: {
-                                button: {
-                                    caption: 'click here',
-                                    color: 'success',
-                                    disabled: false,
-                                    type: 'button',
+                                {
+                                    id: 2,
+                                    colName: 'test 1',
+                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                    colDate: new Date(),
+                                    colNumber: 11,
                                 },
-                                
+                                {
+                                    id: 3,
+                                    colName: 'test 2',
+                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                    colDate: new Date(),
+                                    colNumber: 21,
+                                },
+                                {
+                                    id: 4,
+                                    colName: 'test 3',
+                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                    colDate: new Date(),
+                                    colNumber: 31,
+                                },
+                            ],
+                            columns: [
+                                {
+                                    columnName: 'id',
+                                    label: '#',
+                                    width: 50,
+                                    bold: true,
+                                    sortable: true,
+                                    sortDir: 'desc',
+                                },
+                                {
+                                    columnName: 'colName',
+                                    label: 'name',
+                                    width: 100,
+                                    bold: true,
+                                    textAlign: 'right',
+                                },
+                                {
+                                    columnName: 'colText',
+                                    label: 'text',
+                                    width: 0,
+                                    bold: false,
+                                    textAlign: 'left',
+                                },
+                                {
+                                    columnName: 'colDate',
+                                    label: 'created',
+                                    width: 100,
+                                    bold: false,
+                                },
+                                {
+                                    columnName: 'colNumber',
+                                    label: 'count',
+                                    width: 100,
+                                    bold: false,
+                                    sortable: true,
+                                },
+                            ],
+                        },
+                        config: {
+                            button: {
+                                caption: 'click here',
+                                color: 'success',
+                                disabled: false,
+                                type: 'button',
                             },
                         },
-                        methods: {
-                            click: function(e) {
-                                console.log('vue click', e.target);
-                                console.log('vue event: ', e);
-                            },
-                            input: function(e) {
-                                console.log('vue input', e.target);
-                                console.log('vue input value', e.value);
-                                console.log('vue input data', e.data);
-                                console.log('vue event: ', e);
-                            },
-                            addRow: function() {
-                                const ix = this.table.rows.length;
-                                this.table.rows = [...this.table.rows, {...this.table.rows[0], id:ix + 1}]
-                            }
+                    },
+                    methods: {
+                        click: function(e) {
+                            console.log('vue click', e.target);
+                            console.log('vue event: ', e);
                         },
-                        computed: {},
+                        input: function(e) {
+                            console.log('vue input', e.target);
+                            console.log('vue input value', e.value);
+                            console.log('vue input data', e.data);
+                            console.log('vue event: ', e);
+                        },
+                        addRow: function() {
+                            const ix = this.table.rows.length;
+                            this.table.rows = [...this.table.rows, { ...this.table.rows[0], id: ix + 1 }];
+                        },
+                    },
+                    computed: {},
 
-                        directives: {
-                            'model-pd': {
-                                bind(el, binding, vnode) {
-                                    console.log('bind -> el', el);
-                                    const inputHandler = event => {
-                                        console.log('bind -> event', event);
-                                        console.log('bind -> vnode.context', vnode.context);
-                                        console.log('bind -> binding.expression', binding.expression);
-                                        console.log('bind -> event.target.value', event.target.value);
+                    directives: {
+                        'model-pd': {
+                            bind(el, binding, vnode) {
+                                console.log('bind -> el', el);
+                                const inputHandler = event => {
+                                    console.log('bind -> event', event);
+                                    console.log('bind -> vnode.context', vnode.context);
+                                    console.log('bind -> binding.expression', binding.expression);
+                                    console.log('bind -> event.target.value', event.target.value);
 
-                                        // Vue.set(vnode.context, binding.expression, event.target.value);
-                                        var value = event.target.value;
-                                        if ('' + event.target.value === 'true') value = true;
-                                        if ('' + event.target.value === 'false') value = false;
-                                        _.set(vnode.context, binding.expression, value);
-                                    };
-                                    wm.set(el, inputHandler);
-                                    el.value = binding.value;
-                                    el.addEventListener('input', inputHandler);
-                                },
-
-                                componentUpdated(el, binding) {
-                                    console.log('componentUpdated -> el', { el, binding });
-                                    el.value = binding.value;
-                                },
-
-                                update(el, binding) {
-                                    console.log('update -> el', { el, binding });
-                                },
-
-                                unbind(el) {
-                                    console.log('unbind -> el', el);
-                                    const inputHandler = wm.get(el);
-                                    el.removeEventListener(el, inputHandler);
-                                },
+                                    // Vue.set(vnode.context, binding.expression, event.target.value);
+                                    var value = event.target.value;
+                                    if ('' + event.target.value === 'true') value = true;
+                                    if ('' + event.target.value === 'false') value = false;
+                                    _.set(vnode.context, binding.expression, value);
+                                };
+                                wm.set(el, inputHandler);
+                                el.value = binding.value;
+                                el.addEventListener('input', inputHandler);
                             },
-                            
-                            'log-pd': {
-                                bind(el, binding, vnode) {
-                                    console.log('log -> bind -> el', el);
-                                    console.log('log -> bind -> binding', binding);
-                                    console.log('log -> bind -> context', vnode.context);
-                                },
 
-                                componentUpdated(el, binding) {
-                                    console.log('log -> componentUpdated -> el', { el, binding });
-                                },
-
-                                update(el, binding) {
-                                    console.log('log -> update -> el', { el, binding });
-                                },
-
-                                unbind(el) {
-                                    console.log('log -> unbind -> el', el);
-                                },
+                            componentUpdated(el, binding) {
+                                console.log('componentUpdated -> el', { el, binding });
+                                el.value = binding.value;
                             },
-                            'array': {
-                                bind(el, binding, vnode) {
-                                    console.log('array -> bind -> el', el);
-                                    console.log('array -> bind -> binding', binding);
-                                    console.log('array -> bind -> context', vnode.context);
 
-                                    el[binding.arg] = binding.value;
-                                },
+                            update(el, binding) {
+                                console.log('update -> el', { el, binding });
+                            },
 
-                                componentUpdated(el, binding) {
-                                    console.log('array -> componentUpdated -> el', { el, binding });
-                                    el[binding.arg] = [...binding.value];
-                                },
-
-                                update(el, binding) {
-                                    console.log('array -> update -> el', { el, binding });
-                                },
-
-                                unbind(el) {
-                                    console.log('array -> unbind -> el', el);
-                                },
+                            unbind(el) {
+                                console.log('unbind -> el', el);
+                                const inputHandler = wm.get(el);
+                                el.removeEventListener(el, inputHandler);
                             },
                         },
-                    });
+
+                        'log-pd': {
+                            bind(el, binding, vnode) {
+                                console.log('log -> bind -> el', el);
+                                console.log('log -> bind -> binding', binding);
+                                console.log('log -> bind -> context', vnode.context);
+                            },
+
+                            componentUpdated(el, binding) {
+                                console.log('log -> componentUpdated -> el', { el, binding });
+                            },
+
+                            update(el, binding) {
+                                console.log('log -> update -> el', { el, binding });
+                            },
+
+                            unbind(el) {
+                                console.log('log -> unbind -> el', el);
+                            },
+                        },
+                        array: {
+                            bind(el, binding, vnode) {
+                                console.log('array -> bind -> el', el);
+                                console.log('array -> bind -> binding', binding);
+                                console.log('array -> bind -> context', vnode.context);
+
+                                el[binding.arg] = binding.value;
+                            },
+
+                            componentUpdated(el, binding) {
+                                console.log('array -> componentUpdated -> el', { el, binding });
+                                el[binding.arg] = [...binding.value];
+                            },
+
+                            update(el, binding) {
+                                console.log('array -> update -> el', { el, binding });
+                            },
+
+                            unbind(el) {
+                                console.log('array -> unbind -> el', el);
+                            },
+                        },
+                    },
                 });
+            });
 
             function vanillaclick(e) {
                 console.log('vanilla clicked', e.target);
                 console.log('event: ', e);
             }
         </script>
-       
+
         <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
+        <style>
+            pd-card {
+                margin-top: 20px;
+            }
+
+            pd-sidebar {
+                margin-left: -15px;
+            }
+
+        </style>
     </head>
     <body>
         <div id="app">
-        <pd-navbar>
-            <pd-navbar-item text="Startseite"></pd-navbar-item>
-            <pd-navbar-item text="Organe"></pd-navbar-item>
-            <pd-navbar-item text="Vorst&ouml;sse"></pd-navbar-item>
-            <pd-navbar-item text="Gesch&auml;ft suchen" href="http://www.google.ch" target="_blank"></pd-navbar-item>
-        </pd-navbar>
-        
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-1">
-                    <pd-sidebar>
-                        <pd-sidebar-item text="Mitteilungen" icon="./assets/icons/icon-new_post.svg"                             ></pd-sidebar-item>
-                        <pd-sidebar-item text="Item 2" icon="./assets/icons/icon-new_post.svg"                             ></pd-sidebar-item>
-                        <pd-sidebar-item text="Item 3" href="http://www.google.ch" target="_blank" icon="./assets/icons/icon-new_post.svg"                             >
-                        </pd-sidebar-item>
-                    </pd-sidebar>
-                </div>
-                <div class="col-7">
-                    
-                    <pd-card> <pd-card-header slot="header">Sample Table</pd-card-header>
-                        <pd-card-content>
-                        <pd-table :rows.prop="table.rows" :columns.prop="table.columns" ></pd-table>
-                    </pd-card-content>
-                        <pd-card-footer slot="footer">
-                            <pd-button
-                                    @click="addRow"
-                                    type="button"
-                                    color="primary"
-                                    >Add Row</pd-button
-                                >
-                        </pd-card-footer>
-                    </pd-card>
-                </div>
-                <div class="col-4">
-                    <pd-card>
-                        <pd-card> <pd-card-header slot="header">Sample Form</pd-card-header>
+            <pd-navbar>
+                <pd-navbar-item text="Startseite"></pd-navbar-item>
+                <pd-navbar-item text="Organe"></pd-navbar-item>
+                <pd-navbar-item text="Vorst&ouml;sse"></pd-navbar-item>
+                <pd-navbar-item
+                    text="Gesch&auml;ft suchen"
+                    href="http://www.google.ch"
+                    target="_blank"
+                ></pd-navbar-item>
+            </pd-navbar>
 
-                        
-                            <form>
-                            <h3>pd-button</h3>
-                            <pd-input
-                                v-model-pd="config.button.caption"
-                                inputmode="text"
-                                label="button text"
-                            ></pd-input>
-                            <h4>{{config.button.caption}}</h4>
-                            <pd-input
-                                inputmode="text"
-                                pattern="button|type|submit"
-                                label="button type"
-                                v-model-pd="config.button.type"
-                            ></pd-input>
-                            <pd-checkbox
-                                text="button disabled"
-                                v-model="config.button.disabled"
-                                v-model-pd="config.button.disabled"
-                            ></pd-checkbox>
-                            <pd-input
-                                inputmode="text"
-                                pattern="danger|dark|info|light|primary|success|warning"
-                                label="button color"
-                                v-model-pd="config.button.color"
-                            ></pd-input>
-                            <h4>{{config.button.color}}</h4>
-                        </form>
-                        <pre>
-                            <code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></br>
-                    </pre>
-                </pd-card-content>
-                <pd-card-footer slot="footer">
-                    <pd-button
-                                @click="click"
-                                :type="config.button.type"
-                                :disabled="config.button.disabled"
-                                :color="config.button.color"
-                                >{{config.button.caption}}</pd-button
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-1">
+                        <pd-sidebar>
+                            <pd-sidebar-item
+                                text="Mitteilungen"
+                                icon="./assets/icons/icon-new_post.svg"
+                            ></pd-sidebar-item>
+                            <pd-sidebar-item text="Item 2" icon="./assets/icons/icon-new_post.svg"></pd-sidebar-item>
+                            <pd-sidebar-item
+                                text="Item 3"
+                                href="http://www.google.ch"
+                                target="_blank"
+                                icon="./assets/icons/icon-new_post.svg"
                             >
-                </pd-card-footer>
-                            
-              
-                    </pd-card>
+                            </pd-sidebar-item>
+                        </pd-sidebar>
+                    </div>
+                    <div class="col-7">
+                        <pd-card>
+                            <pd-card-header slot="header">Sample Table</pd-card-header>
+                            <pd-card-content>
+                                <pd-table :rows.prop="table.rows" :columns.prop="table.columns"></pd-table>
+                            </pd-card-content>
+                            <pd-card-footer slot="footer">
+                                <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
+                            </pd-card-footer>
+                        </pd-card>
+                    </div>
+                    <div class="col-4">
+                        <pd-card>
+                            <pd-card-header slot="header">Sample Form</pd-card-header>
+
+                            <pd-card-content>
+                                <form>
+                                    <h3>pd-button</h3>
+                                    <pd-input
+                                        v-model-pd="config.button.caption"
+                                        inputmode="text"
+                                        label="button text"
+                                    ></pd-input>
+                                    <h4>{{config.button.caption}}</h4>
+                                    <pd-input
+                                        inputmode="text"
+                                        pattern="button|type|submit"
+                                        label="button type"
+                                        v-model-pd="config.button.type"
+                                    ></pd-input>
+                                    <pd-checkbox
+                                        text="button disabled"
+                                        v-model="config.button.disabled"
+                                        v-model-pd="config.button.disabled"
+                                    ></pd-checkbox>
+                                    <pd-input
+                                        inputmode="text"
+                                        pattern="danger|dark|info|light|primary|success|warning"
+                                        label="button color"
+                                        v-model-pd="config.button.color"
+                                    ></pd-input>
+                                    <h4>{{config.button.color}}</h4>
+                                </form>
+                                <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
+                            </pd-card-content>
+                            <pd-card-footer slot="footer">
+                                <pd-button
+                                    @click="click"
+                                    :type="config.button.type"
+                                    :disabled="config.button.disabled"
+                                    :color="config.button.color"
+                                    >{{config.button.caption}}</pd-button
+                                >
+                            </pd-card-footer>
+                        </pd-card>
+                    </div>
                 </div>
             </div>
-        </div></div>
+        </div>
     </body>
 </html>
