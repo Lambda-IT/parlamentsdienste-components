@@ -224,11 +224,11 @@
                 </div>
                 <div class="col-7">
                     
-                    <pd-card> <pd-card-header name="header">Sample Table</pd-card-header>
+                    <pd-card> <pd-card-header slot="header">Sample Table</pd-card-header>
                         <pd-card-content>
                         <pd-table v-array:rows="table.rows" v-array:columns="table.columns" ></pd-table>
                     </pd-card-content>
-                        <pd-card-footer name="footer">
+                        <pd-card-footer slot="footer">
                             <pd-button
                                     @click="addRow"
                                     type="button"
@@ -240,7 +240,7 @@
                 </div>
                 <div class="col-4">
                     <pd-card>
-                        <pd-card> <pd-card-header name="header">Sample Form</pd-card-header>
+                        <pd-card> <pd-card-header slot="header">Sample Form</pd-card-header>
 
                         
                             <form>
@@ -274,7 +274,7 @@
                             <code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></br>
                     </pre>
                 </pd-card-content>
-                <pd-card-footer name="footer">
+                <pd-card-footer slot="footer">
                     <pd-button
                                 @click="click"
                                 :type="config.button.type"

@@ -72,6 +72,16 @@ $green-9: #2b8a3e;
 $green-6: #40c057;
 $green-3: #8ce99a;
 
+$primary : $cyan-9;
+$secondary: $athens-gray;
+$success: $lime-9;
+$danger : $red-9;
+$warning: $yellow-9;
+$info : $blue-6;
+$light: $athens-gray;
+$dark:$blue-whale;
+
+
 $colorscheme: (
     primary: (
         enabled: $cyan-9,
@@ -134,18 +144,18 @@ $colorscheme: (
         pressed-contrast: $black,
     ),
     dark: (
-        enabled: #343a40,
+        enabled: $blue-whale,
         enabled-contrast: $white,
         disabled: $gray-6,
         disabled-contrast: $white,
         hover: $gray-6,
-        hover-contrast: #343a40,
+        hover-contrast:$blue-whale,
         pressed: $gray-3,
-        pressed-contrast: #343a40,
+        pressed-contrast:$blue-whale,
     ),
 );
 
 $min-screen-width: 300px;
 
-$font-family-base: 'Avenir';
-$font-family-sans-serif: 'Avenir';
+$font-family-base: 'Avenir-Roman';
+$font-family-sans-serif: 'Avenir-Roman';
