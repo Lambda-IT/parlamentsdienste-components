@@ -1,13 +1,3 @@
-@mixin reset {
-    * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        letter-spacing: 0.19px;
-        font: 16px/24px Avenir-Roman;
-    }
-}
-
 @mixin button-scheme($colorscheme) {
     transition: box-shadow 0.15s ease-in-out;
     background-color: setcolor($colorscheme, enabled);
