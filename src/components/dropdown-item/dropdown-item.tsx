@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, Prop, Element, Listen } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Prop, Element } from '@stencil/core';
 
 @Component({
     tag: 'pd-dropdown-item',
@@ -16,16 +16,13 @@ export class DropdownItem implements ComponentInterface {
         this.selected = true;
     }
 
-    @Listen('selected')
-    handleClick(x) {
-    console.log("DropdownItem -> handleClick -> x", x)
-        
-    }
-
     render() {
         return (
             <Host>
-                <div class={`pd-dropdown-item ${this.selected ? 'selected' : ''}`} onClick={() => this.setSelected()}>
+                <div
+                    class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}
+                    onClick={() => this.setSelected()}
+                >
                     {this.strong(this.value, 'examp')}
                 </div>
             </Host>

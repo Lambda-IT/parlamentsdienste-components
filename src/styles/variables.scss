@@ -72,6 +72,10 @@ $green-9: #2b8a3e;
 $green-6: #40c057;
 $green-3: #8ce99a;
 
+// shortcuts
+$focus: $yellow-4;
+$min-component-width: 300px;
+
 $colorscheme: (
     primary: (
         enabled: $cyan-9,
@@ -144,5 +148,3 @@ $colorscheme: (
         pressed-contrast: #343a40,
     ),
 );
-
-$min-screen-width: 300px;

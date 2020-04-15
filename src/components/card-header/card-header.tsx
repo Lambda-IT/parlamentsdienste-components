@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, getAssetPath } from '@stencil/core';
+import { Component, Host, h, Element, getAssetPath, State } from '@stencil/core';
 
 @Component({
     tag: 'pd-card-header',
@@ -9,11 +9,10 @@ import { Component, Host, h, Element, getAssetPath } from '@stencil/core';
 export class CardHeader {
     @Element() element!: HTMLElement;
 
-    private collapsed: boolean = false;
+    @State() collapsed: boolean = false;
     private card: any | null = null;
 
     connectedCallback() {
-        // set the radio-group to closest parent and add eventlistener for value change
         this.card = this.element.closest('pd-card');
         if (this.card) {
             this.collapsed = this.card.collapsed;

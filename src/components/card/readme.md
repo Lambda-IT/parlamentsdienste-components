@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type      | Default |
-| ----------- | ----------- | ----------- | --------- | ------- |
-| `collapsed` | `collapsed` |             | `boolean` | `false` |
+| Property    | Attribute   | Description                          | Type      | Default |
+| ----------- | ----------- | ------------------------------------ | --------- | ------- |
+| `collapsed` | `collapsed` | Expands / collapses the card content | `boolean` | `false` |
 
 
 ## Events

@@ -3,11 +3,7 @@
 ## Usage
 
 ```html
-<pd-dropdown>
-    <pd-dropdown-item>item 1</pd-dropdown-item>
-    <pd-dropdown-item>item 1</pd-dropdown-item>
-    <pd-dropdown-item>item 1</pd-dropdown-item>
-</pd-dropdown>
+<pd-dropdown items="..."></pd-dropdown>
 ```
 
 <!-- Auto Generated Below -->
@@ -15,9 +11,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default         |
-| -------- | --------- | ----------- | -------- | --------------- |
-| `value`  | `value`   |             | `string` | `'Placeholder'` |
+| Property      | Attribute     | Description | Type             | Default         |
+| ------------- | ------------- | ----------- | ---------------- | --------------- |
+| `items`       | --            |             | `DropdownItem[]` | `[]`            |
+| `placeholder` | `placeholder` |             | `string`         | `'Placeholder'` |
 
 
 ## Dependencies

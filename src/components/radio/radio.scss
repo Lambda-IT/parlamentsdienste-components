@@ -42,7 +42,7 @@ label > input {
             & + .pd-radio-inner {
                 &:after {
                     content: '';
-                    border: 6px solid $yellow-4;
+                    border: 6px solid $focus;
                     border-radius: 100%;
                 }
                 &:before {
@@ -60,7 +60,7 @@ label > input {
         & + .pd-radio-inner {
             &:after {
                 content: '';
-                border: 2px solid $yellow-4;
+                border: 2px solid $focus;
                 border-radius: 100%;
             }
         }

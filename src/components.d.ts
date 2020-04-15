@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { DropdownItem, } from "./components/dropdown/dropdown";
 import { InputChangeEventDetail, PdColumn, TextFieldTypes, } from "./interface";
 export namespace Components {
     interface PdBackdrop {
@@ -79,7 +80,8 @@ export namespace Components {
     interface PdDatepicker {
     }
     interface PdDropdown {
-        "value": string;
+        "items": DropdownItem[];
+        "placeholder": string;
     }
     interface PdDropdownItem {
         "selected": boolean;
@@ -593,7 +595,8 @@ declare namespace LocalJSX {
     interface PdDatepicker {
     }
     interface PdDropdown {
-        "value"?: string;
+        "items"?: DropdownItem[];
+        "placeholder"?: string;
     }
     interface PdDropdownItem {
         "selected"?: boolean;

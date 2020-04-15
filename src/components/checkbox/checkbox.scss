@@ -41,8 +41,8 @@ label > input {
         &:focus {
             & + .pd-checkbox-inner {
                 &:after {
-                    border: 2px solid $yellow-4;
-                    background-color: $yellow-4;
+                    border: 2px solid $focus;
+                    background-color: $focus;
                     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.343 11.293l3.89 3.889 7.424-7.425' fill='none' stroke='%23033840' stroke-width='3'/%3E%3C/svg%3E");
                 }
             }
@@ -52,7 +52,7 @@ label > input {
     &:focus {
         & + .pd-checkbox-inner {
             &:after {
-                border: 2px solid $yellow-4;
+                border: 2px solid $focus;
             }
         }
     }

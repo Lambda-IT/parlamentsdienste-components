@@ -27,5 +27,21 @@
 
     span {
         white-space: pre;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &.pd-dropdown-item-selected {
+        background-color: $focus;
+        color: $black;
+
+        &:hover {
+            background-color: setcolor(primary, enabled);
+            color: $white;
+        }
+
+        &:active {
+            background-color: setcolor(primary, pressed);
+        }
     }
 }

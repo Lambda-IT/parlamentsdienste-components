@@ -52,7 +52,7 @@
             </pd-card>
             <pd-container></pd-container>
             <pd-datepicker></pd-datepicker>
-            <pd-dropdown label="dropdown label" helper-text="dropdown helper text"></pd-dropdown>
+            <pd-dropdown id="pd-dropdown-0" label="dropdown label" helper-text="dropdown helper text"></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-checkbox disabled text="checkbox"></pd-checkbox>
@@ -88,6 +88,7 @@
             const pdBackdrop = document.getElementById('pd-backdrop-0');
             const pdButton = document.getElementById('pd-button-0');
             const pdSearch = document.getElementById('pd-search-0');
+            const pdDropDown = document.getElementById('pd-dropdown-0');
 
             const pdTable0 = document.getElementById('pd-table-0');
             const pdTable1 = document.getElementById('pd-table-1');
@@ -157,6 +158,18 @@
             pdSearch.addEventListener('pdOnChange', value => {
                 pdSearch.searchStrings = ['Some example search 1', 'Some example search 2', 'Some example search 3'];
             });
+
+            pdDropDown.items = [
+                { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
+                { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
+                { id: '3', label: 'Referendum für die Unterstützung Olympischer Spiele durch den Bund', value: 'a3' },
+                { id: '4', label: 'Gesamtkonzeption, Präsentation und Diskussion', value: 'a4' },
+                { id: '5', label: 'Controlling, Präsentation, Diskussion und Beschluss', value: 'a5' },
+                { id: '6', label: 'Mitteilungen', value: 'a6' },
+                { id: '7', label: 'Aktuelles aus dem VBS, Information und Diskussion', value: 'a7' },
+                { id: '8', label: 'NKF. Evaluationsverfahren, Information und Diskussion', value: 'a8' },
+                { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
+            ];
 
             customElements.define(
                 'user-content',

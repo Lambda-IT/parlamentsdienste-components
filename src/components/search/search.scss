@@ -19,7 +19,7 @@ label {
     position: relative;
     flex: 1;
     display: flex;
-    min-width: $min-screen-width;
+    min-width: $min-component-width;
 
     &:hover {
         .pd-search-button {
@@ -41,7 +41,7 @@ label {
 
     &:focus {
         input {
-            border: 2px solid $yellow-4;
+            border: 2px solid $focus;
         }
     }
 }
@@ -57,11 +57,11 @@ input {
     border-right: none;
 
     &:focus {
-        border: 2px solid $yellow-4;
+        border: 2px solid $focus;
         border-right: none;
 
         & ~ .pd-search-button {
-            border: 2px solid $yellow-4;
+            border: 2px solid $focus;
             border-left: none;
         }
     }
