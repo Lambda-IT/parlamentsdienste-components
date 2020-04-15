@@ -24,9 +24,9 @@
             async('vue.min.js', function() {
                 async('../../www/build/componentlibrary.js', function() {
                     Vue.config.ignoredElements = [/^pd-/];
-                    //- applyPolyfills().then(() => {
-                    //-     defineCustomElements(window);
-                    //- });
+                    //  applyPolyfills().then(() => {
+                    //      defineCustomElements(window);
+                    //  });
 
                     const wm = new WeakMap();
 
@@ -34,6 +34,51 @@
                         el: '#app',
                         data: {
                             test: 'start',
+                            table : {
+                                    rows: [
+                                        {id:1,colName:'test',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 1},
+                                        {id:2,colName:'test 1',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 11},
+                                        {id:3,colName:'test 2',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 21},
+                                        {id:4,colName:'test 3',colText:'s sd saldjsladklsadk öaskdsöaldksaö dsakdöas' ,colDate: new Date(), colNumber: 31}
+                                    ],
+                                    columns: [
+                                        {
+                                            "columnName": "id",
+                                            "label": "#",
+                                            "width": 50,
+                                            "bold": true,
+                                            "sortable": true,
+                                            "sortDir": "desc",
+                                        },
+                                        {
+                                            "columnName": "colName",
+                                            "label": "name",
+                                            "width": 100,
+                                            "bold": true,
+                                            "textAlign": "right"
+                                        },
+                                        {
+                                            "columnName": "colText",
+                                            "label": "text",
+                                            "width": 0,
+                                            "bold": false,
+                                            "textAlign": "left"
+                                        },
+                                        {
+                                            "columnName": "colDate",
+                                            "label": "created",
+                                            "width": 100,
+                                            "bold": false
+                                        },
+                                        {
+                                            "columnName": "colNumber",
+                                            "label": "count",
+                                            "width": 100,
+                                            "bold": false,
+                                            "sortable": true,
+                                        },
+                                    ]
+                                },
                             config: {
                                 button: {
                                     caption: 'click here',
@@ -41,6 +86,7 @@
                                     disabled: false,
                                     type: 'button',
                                 },
+                                
                             },
                         },
                         methods: {
@@ -54,6 +100,10 @@
                                 console.log('vue input data', e.data);
                                 console.log('vue event: ', e);
                             },
+                            addRow: function() {
+                                const ix = this.table.rows.length;
+                                this.table.rows.push({...this.table.rows[0], id:ix + 1})
+                            }
                         },
                         computed: {},
 
@@ -93,6 +143,48 @@
                                     el.removeEventListener(el, inputHandler);
                                 },
                             },
+                            
+                            'log-pd': {
+                                bind(el, binding, vnode) {
+                                    console.log('log -> bind -> el', el);
+                                    console.log('log -> bind -> binding', binding);
+                                    console.log('log -> bind -> context', vnode.context);
+                                },
+
+                                componentUpdated(el, binding) {
+                                    console.log('log -> componentUpdated -> el', { el, binding });
+                                },
+
+                                update(el, binding) {
+                                    console.log('log -> update -> el', { el, binding });
+                                },
+
+                                unbind(el) {
+                                    console.log('log -> unbind -> el', el);
+                                },
+                            },
+                            'array': {
+                                bind(el, binding, vnode) {
+                                    console.log('array -> bind -> el', el);
+                                    console.log('array -> bind -> binding', binding);
+                                    console.log('array -> bind -> context', vnode.context);
+
+                                    el[binding.arg] = binding.value;
+                                },
+
+                                componentUpdated(el, binding) {
+                                    console.log('array -> componentUpdated -> el', { el, binding });
+                                    el[binding.arg] = [...binding.value];
+                                },
+
+                                update(el, binding) {
+                                    console.log('array -> update -> el', { el, binding });
+                                },
+
+                                unbind(el) {
+                                    console.log('array -> unbind -> el', el);
+                                },
+                            },
                         },
                     });
                 });
@@ -103,15 +195,18 @@
                 console.log('event: ', e);
             }
         </script>
+       
         <link href="../../dist/styles/pd-bootstrap.css" rel="stylesheet" />
     </head>
     <body>
+        <div id="app">
         <pd-navbar>
             <pd-navbar-item text="Startseite"></pd-navbar-item>
             <pd-navbar-item text="Organe"></pd-navbar-item>
             <pd-navbar-item text="Vorst&ouml;sse"></pd-navbar-item>
             <pd-navbar-item text="Gesch&auml;ft suchen" href="http://www.google.ch" target="_blank"></pd-navbar-item>
         </pd-navbar>
+        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-1">
@@ -127,11 +222,25 @@
                         /></pd-sidebar-item>
                     </pd-sidebar>
                 </div>
-                <div class="col-11">
+                <div class="col-7">
+                    
+                    <pd-card> 
+                        <pd-table v-array:rows="table.rows" v-array:columns="table.columns" ></pd-table>
+                        <div>
+                            <pd-button
+                                    @click="addRow"
+                                    type="button"
+                                    color="primary"
+                                    >Add Row</pd-button
+                                >
+                        </div>
+                    </pd-card>
+                </div>
+                <div class="col-4">
                     <pd-card>
                         <h1>Test</h1>
 
-                        <div id="app">
+                        
                             <form>
                             <h3>pd-button</h3>
                             <pd-input
@@ -174,6 +283,6 @@
                     </pd-card>
                 </div>
             </div>
-        </div>
+        </div></div>
     </body>
 </html>

@@ -72,6 +72,11 @@ export class Table {
     };
 
     render() {
+        // console.log("Table -> render -> this.rows", JSON.stringify(this.rows))
+
+        // console.log("Table -> render -> this.columns", JSON.stringify(this.columns))
+        // console.log("Table -> render -> typeof this.columns", typeof this.columns)
+        
         const headerStyle = {
             height: `${this.headerHeight}px`,
         };
@@ -137,11 +142,17 @@ export class Table {
             height: `${this.rowHeight}px`,
         };
 
+        // console.log("Table -> renderRows -> this.rows", this.rows)
+
+        // console.log("Table -> renderRows -> typeof this.rows", typeof this.rows)
+
+
         return this.rows.map(row => (
             <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.columns.filter(c => (c.fixed || false) === fixed).map(col => this.renderColumn(row, col))}
             </div>
         ));
+        
     }
 
     private renderColumn(row, col) {
@@ -151,14 +162,22 @@ export class Table {
             justifyContent: this.getTextAlign(col),
         };
 
+        let value = row[col.columnName];
+        if(value && typeof value.getMonth === 'function') {
+            const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(value)
+            const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(value)
+            const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(value)
+            value = `${da}.${mo}.${ye}`
+        }
+
         return (
             <div
                 class={`pd-table-cell ${col.bold ? 'pd-table-cell-bold' : ''}`}
                 role="cell"
                 style={cellStyle}
-                title={row[col.columnName]}
+                title={value}
             >
-                <span>{row[col.columnName]}</span>
+                <span>{value}</span>
             </div>
         );
     }
