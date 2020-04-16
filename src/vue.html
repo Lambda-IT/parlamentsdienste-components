@@ -74,6 +74,7 @@
                                     bold: true,
                                     sortable: true,
                                     sortDir: 'desc',
+                                    fixed: true,
                                 },
                                 {
                                     columnName: 'colName',
@@ -81,11 +82,13 @@
                                     width: 100,
                                     bold: true,
                                     textAlign: 'right',
+                                    fixed: true,
                                 },
                                 {
                                     columnName: 'colText',
                                     label: 'Text',
                                     width: 0,
+                                    minWidth: 300,
                                     bold: false,
                                     textAlign: 'left',
                                 },
@@ -229,7 +232,6 @@
             pd-sidebar {
                 margin-left: -15px;
             }
-
         </style>
     </head>
     <body>
@@ -271,9 +273,14 @@
                                     <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
                                     <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
                                     <p>Freitag, 28. Juni 2019, 10.15-18.30 Uhr</p>
-                                    <a href="lambda-it.ch">Zur Sitzungsansicht</a><p><br></p>
+                                    <a href="lambda-it.ch">Zur Sitzungsansicht</a>
+                                    <p><br /></p>
                                 </div>
-                                <pd-table header-style="light" :rows.prop="table.rows" :columns.prop="table.columns"></pd-table>
+                                <pd-table
+                                    header-style="light"
+                                    :rows.prop="table.rows"
+                                    :columns.prop="table.columns"
+                                ></pd-table>
                             </pd-card-content>
                             <pd-card-footer slot="footer">
                                 <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>

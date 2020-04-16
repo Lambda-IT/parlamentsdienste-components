@@ -23,8 +23,9 @@ export const config: Config = {
     plugins: [
         sass({
             injectGlobalPaths: [
-                'node_modules/bootstrap/scss/variables',
+                'node_modules/bootstrap/scss/functions',
                 'src/styles/variables.scss',
+                'node_modules/bootstrap/scss/variables',
                 'src/styles/functions.scss',
                 'src/styles/mixins.scss',
             ],
