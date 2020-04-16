@@ -3,15 +3,13 @@
     padding: 0 16px;
 }
 
-* {
-    font: 16px/24px Avenir-Black;
-}
-
 .pd-navbar-item {
     background-color: transparent;
     border: none;
     color: $cyan-3;
-    font: 16px/24px Avenir-Black;
+    font-weight: 700;
+    font-size: $font-size-base;
+    letter-spacing: 0.19px;
     text-decoration: none;
     cursor: pointer;
 

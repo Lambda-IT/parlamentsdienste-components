@@ -3,19 +3,20 @@
 }
 
 * {
-    font: 16px/24px Avenir-Black;
+    font-weight: 700;
+    line-height: $input-btn-line-height;
 }
 
 .pd-button-outline {
     * {
-        font: 16px/24px Avenir-Medium;
+        font-weight: 500;
         letter-spacing: 0.22px;
     }
 }
 
 .pd-link {
     * {
-        font: 16px/24px Avenir-Medium;
+        font-weight: 500;
     }
 }
 
@@ -27,6 +28,7 @@
     border-bottom-right-radius: var(--pd-button-right-radius, 4px);
     padding: 5px 10px;
     cursor: pointer;
+    
 
     &.pd-button-large {
         padding: 10px 20px;

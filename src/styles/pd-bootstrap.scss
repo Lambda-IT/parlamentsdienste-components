@@ -24,10 +24,14 @@
  @import "../../node_modules/bootstrap/scss/print";
 
  html {
-    font-size: 16px/24px;
+    font: 16px/24px Avenir;
+    letter-spacing: 0.19px;
  }
 
  body {
     letter-spacing: 0.19px;
  }
-        
+
+ a {
+    font-weight: 500;
+ }

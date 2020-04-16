@@ -3,39 +3,47 @@
 $font-path: '../assets/fonts';
 
 @font-face {
-    font-family: 'Avenir-Light';
+    font-family: 'Avenir';
     src: url('#{$font-path}/AvenirLTW02-35Light.eot?#iefix');
     src: url('#{$font-path}/AvenirLTW02-35Light.eot?#iefix') format('eot'),
         url('#{$font-path}/AvenirLTW02-35Light.woff2') format('woff2'),
         url('#{$font-path}/AvenirLTW02-35Light.woff') format('woff'),
         url('#{$font-path}/AvenirLTW02-35Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir-Roman';
+    font-family: 'Avenir';
     src: url('#{$font-path}/AvenirLTW02-55Roman.eot?#iefix');
     src: url('#{$font-path}/AvenirLTW02-55Roman.eot?#iefix') format('eot'),
         url('#{$font-path}/AvenirLTW02-55Roman.woff2') format('woff2'),
         url('#{$font-path}/AvenirLTW02-55Roman.woff') format('woff'),
         url('#{$font-path}/AvenirLTW02-55Roman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir-Medium';
+    font-family: 'Avenir';
     src: url('#{$font-path}/AvenirLTW02-65Medium.eot?#iefix');
     src: url('#{$font-path}/AvenirLTW02-65Medium.eot?#iefix') format('eot'),
         url('#{$font-path}/AvenirLTW02-65Medium.woff2') format('woff2'),
         url('#{$font-path}/AvenirLTW02-65Medium.woff') format('woff'),
         url('#{$font-path}/AvenirLTW02-65Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir-Black';
+    font-family: 'Avenir';
     src: url('#{$font-path}/AvenirLTW02-95Black.eot?#iefix');
     src: url('#{$font-path}/AvenirLTW02-95Black.eot?#iefix') format('eot'),
         url('#{$font-path}/AvenirLTW02-95Black.woff2') format('woff2'),
         url('#{$font-path}/AvenirLTW02-95Black.woff') format('woff'),
         url('#{$font-path}/AvenirLTW02-95Black.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
 }
 
 h1 {

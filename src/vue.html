@@ -48,21 +48,21 @@
                                     id: 2,
                                     colName: 'test 1',
                                     colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date(),
-                                    colNumber: 11,
+                                    colDate: new Date('2001-01-02'),
+                                    colNumber: 3,
                                 },
                                 {
                                     id: 3,
                                     colName: 'test 2',
                                     colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date(),
+                                    colDate: new Date('2021-02-02'),
                                     colNumber: 21,
                                 },
                                 {
                                     id: 4,
                                     colName: 'test 3',
                                     colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date(),
+                                    colDate: new Date('2001-02-02'),
                                     colNumber: 31,
                                 },
                             ],
@@ -77,27 +77,28 @@
                                 },
                                 {
                                     columnName: 'colName',
-                                    label: 'name',
+                                    label: 'Name',
                                     width: 100,
                                     bold: true,
                                     textAlign: 'right',
                                 },
                                 {
                                     columnName: 'colText',
-                                    label: 'text',
+                                    label: 'Text',
                                     width: 0,
                                     bold: false,
                                     textAlign: 'left',
                                 },
                                 {
                                     columnName: 'colDate',
-                                    label: 'created',
+                                    label: 'Created',
                                     width: 100,
+                                    sortable: true,
                                     bold: false,
                                 },
                                 {
                                     columnName: 'colNumber',
-                                    label: 'count',
+                                    label: 'Count',
                                     width: 100,
                                     bold: false,
                                     sortable: true,
@@ -266,7 +267,13 @@
                         <pd-card>
                             <pd-card-header slot="header">Sample Table</pd-card-header>
                             <pd-card-content>
-                                <pd-table :rows.prop="table.rows" :columns.prop="table.columns"></pd-table>
+                                <div>
+                                    <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
+                                    <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
+                                    <p>Freitag, 28. Juni 2019, 10.15-18.30 Uhr</p>
+                                    <a href="lambda-it.ch">Zur Sitzungsansicht</a><p><br></p>
+                                </div>
+                                <pd-table header-style="light" :rows.prop="table.rows" :columns.prop="table.columns"></pd-table>
                             </pd-card-content>
                             <pd-card-footer slot="footer">
                                 <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
@@ -279,7 +286,10 @@
 
                             <pd-card-content>
                                 <form>
-                                    <h3>pd-button</h3>
+                                    <h1>Heading 1</h1>
+                                    <h2>Heading 2</h2>
+                                    <h3>Heading 3</h3>
+                                    <p>Form</p>
                                     <pd-input
                                         v-model-pd="config.button.caption"
                                         inputmode="text"
