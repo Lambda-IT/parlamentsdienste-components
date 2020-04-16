@@ -107,6 +107,7 @@
                     columnName: 'column1',
                     label: 'Col1',
                     width: 0,
+                    inPercent: true,
                     minWidth: 400,
                     textAlign: 'left',
                     fixed: true,
@@ -126,6 +127,10 @@
                     sortable: true,
                     sortDir: 'asc',
                     textAlign: 'right',
+                    sortFunc: (a, b, dir) => {
+                        if (dir === 'asc') return a % 2 === b % 2 ? 0 : a % 2 < b % 2 ? 1 : 0;
+                        else return a % 2 === b % 2 ? 0 : a % 2 > b % 2 ? 1 : 0;
+                    },
                 },
             ];
 
