@@ -46,3 +46,10 @@
         }
     }
 }
+
+@mixin resetControlFonts() {
+    input, a, button {
+        font: 16px/24px Avenir;
+        letter-spacing: 0.19px;
+      }
+}

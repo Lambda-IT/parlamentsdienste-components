@@ -1,3 +1,5 @@
+@include resetControlFonts();
+
 :host {
     display: inline-block;
     border: none; // fixes border issue in firefox
