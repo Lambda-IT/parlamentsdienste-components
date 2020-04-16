@@ -6,3 +6,9 @@
     height: 100%;
     align-items: center;
 }
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}

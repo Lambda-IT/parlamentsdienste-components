@@ -9,6 +9,12 @@
     left: 0;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 .pd-modal-wrapper {
     min-width: 100px;
     max-width: 100px;

@@ -5,6 +5,12 @@ $progress-height: 30px;
     position: relative;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 .pd-progress-bar-background {
     background-color: $gray;
     position: absolute;

@@ -2,9 +2,12 @@
     display: inline-block;
 }
 
-* {
+*,
+::before,
+::after {
     font-weight: 700;
     line-height: $input-btn-line-height;
+    box-sizing: border-box;
 }
 
 .pd-button-outline {
@@ -28,7 +31,6 @@
     border-bottom-right-radius: var(--pd-button-right-radius, 4px);
     padding: 5px 10px;
     cursor: pointer;
-    
 
     &.pd-button-large {
         padding: 10px 20px;

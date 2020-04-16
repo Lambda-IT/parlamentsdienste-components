@@ -2,6 +2,12 @@
     display: flex;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 // Styling Cross-Browser Compatible Range Inputs with Sass
 // Github: https://github.com/darlanrod/input-range-sass
 // Author: Darlan Rod https://github.com/darlanrod
@@ -53,7 +59,6 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
     background: $slider-thumb-color;
     border: $slider-thumb-border;
     border-radius: $slider-thumb-radius;
-    box-sizing: border-box;
     cursor: pointer;
     height: $slider-thumb-height;
     width: $slider-thumb-width;

@@ -1,6 +1,7 @@
 :host {
     display: flex;
     position: relative;
+    min-width: $min-component-width;
 }
 
 :host(.pd-search-error) {
@@ -13,11 +14,16 @@
     }
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 label {
     position: relative;
     flex: 1;
     display: flex;
-    min-width: $min-component-width;
 
     &:hover {
         .pd-search-button {

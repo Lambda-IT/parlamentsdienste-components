@@ -13,3 +13,9 @@
 :host(.pd-backdrop-hide) {
     background: transparent;
 }
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}

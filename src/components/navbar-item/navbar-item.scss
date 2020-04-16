@@ -3,6 +3,12 @@
     padding: 0 16px;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 .pd-navbar-item {
     background-color: transparent;
     border: none;

@@ -17,10 +17,7 @@ export const config: Config = {
         {
             type: 'www',
             serviceWorker: null, // disable service workers
-            copy: [
-                { src: 'vue.html' },
-                { src: 'index.html' },
-              ]
+            copy: [{ src: 'vue.html' }, { src: 'index.html' }],
         },
     ],
     plugins: [

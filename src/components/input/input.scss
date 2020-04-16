@@ -1,5 +1,12 @@
 :host {
     display: block;
+    min-width: $min-component-width;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
 }
 
 :host(.pd-input-error) {

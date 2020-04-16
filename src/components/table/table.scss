@@ -3,6 +3,12 @@
     flex: 1;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 .pd-table {
     display: flex;
 

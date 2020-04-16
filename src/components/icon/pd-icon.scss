@@ -2,6 +2,12 @@
     display: block;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 .pd-icon-inner,
 svg {
     display: block;

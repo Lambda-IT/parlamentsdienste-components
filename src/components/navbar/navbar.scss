@@ -8,6 +8,12 @@
     padding: 0 100px;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 .pd-navbar-icon {
     min-width: 34px;
 }

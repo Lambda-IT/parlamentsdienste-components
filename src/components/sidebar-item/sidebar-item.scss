@@ -1,6 +1,11 @@
 :host {
     display: block;
-    background-color: transparent;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
 }
 
 .pd-sidebar-item {
