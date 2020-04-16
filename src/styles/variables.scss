@@ -86,6 +86,11 @@ $info : $blue-6;
 $light: $athens-gray;
 $dark:$blue-whale;
 
+$link-color:$primary;
+$link-hover-color:  darken($link-color, 15%);
+$link-decoration:                         none;
+$link-hover-decoration: none;
+
 $colorscheme: (
     primary: (
         enabled: $cyan-9,
@@ -163,20 +168,25 @@ $font-family-base: 'Avenir';
 $font-family-sans-serif: 'Avenir';
 $font-size-base: 1rem;
 
-$h1-font-size:                $font-size-base * 1.25 !default;
-$h2-font-size:                $font-size-base  !default;
-$h3-font-size:                $font-size-base  !default;
-$h4-font-size:                $font-size-base !default;
-$h5-font-size:                $font-size-base  !default;
-$h6-font-size:                $font-size-base !default;
+$h1-font-size:                $font-size-base * 1.25 ;
+$h2-font-size:                $font-size-base ;
+$h3-font-size:                $font-size-base ;
+$h4-font-size:                $font-size-base ;
+$h5-font-size:                $font-size-base ;
+$h6-font-size:                $font-size-base ;
 
-$headings-font-family:        null !default;
-$headings-font-weight:        700 !default;
-$headings-line-height:        1.2 !default;
+$headings-font-family:        null ;
+$headings-font-weight:        700 ;
+$headings-line-height:        1.2 ;
 $headings-color:              $blue-whale;
 
-$lead-font-size:              $font-size-base !default;
-$lead-font-weight:            700 !default;
+$lead-font-size:              $font-size-base ;
+$lead-font-weight:            700 ;
 
 $input-btn-line-height: 2;
 $paragraph-margin-bottom: 0;
+
+$body-bg: $wild-sand;
+$body-color: $black;
+
+$list-group-bg:$wild-sand;

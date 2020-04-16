@@ -32,6 +32,8 @@
     letter-spacing: 0.19px;
  }
 
+ @include resetControlFonts();
+
  a {
     font-weight: 500;
  }
