@@ -1,5 +1,4 @@
 :host {
-    font: 16px/32px Avenir-Black;
     display: flex;
     align-items: center;
     background-color: $blue-whale;
@@ -9,6 +8,7 @@
     border-top-right-radius: 4px;
     box-sizing: border-box;
     min-height: 48px;
+    font-weight: 700;
 }
 
 .pd-card-header {
