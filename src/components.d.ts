@@ -75,8 +75,6 @@ export namespace Components {
         "text": string;
         "value": boolean;
     }
-    interface PdContainer {
-    }
     interface PdDatepicker {
     }
     interface PdDropdown {
@@ -365,12 +363,6 @@ declare global {
         prototype: HTMLPdCheckboxElement;
         new (): HTMLPdCheckboxElement;
     };
-    interface HTMLPdContainerElement extends Components.PdContainer, HTMLStencilElement {
-    }
-    var HTMLPdContainerElement: {
-        prototype: HTMLPdContainerElement;
-        new (): HTMLPdContainerElement;
-    };
     interface HTMLPdDatepickerElement extends Components.PdDatepicker, HTMLStencilElement {
     }
     var HTMLPdDatepickerElement: {
@@ -494,7 +486,6 @@ declare global {
         "pd-card-footer": HTMLPdCardFooterElement;
         "pd-card-header": HTMLPdCardHeaderElement;
         "pd-checkbox": HTMLPdCheckboxElement;
-        "pd-container": HTMLPdContainerElement;
         "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
@@ -589,8 +580,6 @@ declare namespace LocalJSX {
          */
         "text"?: string;
         "value"?: boolean;
-    }
-    interface PdContainer {
     }
     interface PdDatepicker {
     }
@@ -869,7 +858,6 @@ declare namespace LocalJSX {
         "pd-card-footer": PdCardFooter;
         "pd-card-header": PdCardHeader;
         "pd-checkbox": PdCheckbox;
-        "pd-container": PdContainer;
         "pd-datepicker": PdDatepicker;
         "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
@@ -903,7 +891,6 @@ declare module "@stencil/core" {
             "pd-card-footer": LocalJSX.PdCardFooter & JSXBase.HTMLAttributes<HTMLPdCardFooterElement>;
             "pd-card-header": LocalJSX.PdCardHeader & JSXBase.HTMLAttributes<HTMLPdCardHeaderElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
-            "pd-container": LocalJSX.PdContainer & JSXBase.HTMLAttributes<HTMLPdContainerElement>;
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;

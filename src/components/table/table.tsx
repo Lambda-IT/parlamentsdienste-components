@@ -39,6 +39,8 @@ export class Table {
 
     private nextColumnSortDir = {};
 
+    // claculate flex for left side (fixed) of table
+    // has a fixed width when no column is auto
     private calcFixedFlex(columns: PdColumn[]) {
         const fixedCols = columns.filter(c => c.fixed);
         const hasAuto = fixedCols.findIndex(c => c.width === 0) !== -1;
@@ -51,12 +53,9 @@ export class Table {
         }
     }
 
-    private calcFixedMinWidth(columns: PdColumn[]) {
-        const fixedCols = columns.filter(c => c.fixed);
-        const minWidth = fixedCols.map(c => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
-        return minWidth === 0 ? '0' : `${minWidth}px`;
-    }
-
+    // calculate flex for right side (scroll) of table
+    // has a fixed width when no column is auto
+    // TODO: merge with prev function
     private calcScrollFlex(columns: PdColumn[]) {
         const fixedCols = columns.filter(c => !c.fixed);
         const hasAuto = fixedCols.findIndex(c => c.width === 0) !== -1;
@@ -69,32 +68,38 @@ export class Table {
         }
     }
 
+    // calculte min-width for left side (fixed) of table
+    // sum of width/min-width of all fixed columns
+    private calcFixedMinWidth(columns: PdColumn[]) {
+        const fixedCols = columns.filter(c => c.fixed);
+        const minWidth = fixedCols.map(c => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
+        return minWidth === 0 ? '0' : `${minWidth}px`;
+    }
+
     private getTextAlign = (headerCol: PdColumn) =>
         headerCol.textAlign === 'left' ? 'flex-start' : headerCol.textAlign === 'right' ? 'flex-end' : 'center';
+
+    private defaultSortFunc = (a, b, dir) => {
+        if (dir === 'asc') return a === b ? 0 : a < b ? -1 : 1;
+        else if (dir === 'desc') return a === b ? 0 : a > b ? -1 : 1;
+    };
 
     private sort = (headerCol: PdColumn) => {
         const { columnName, sortable } = headerCol;
         if (!sortable) return;
 
-        const order = this.nextColumnSortDir[columnName] || 'asc';
-        this.nextColumnSortDir[columnName] = order === 'asc' ? 'desc' : 'asc';
+        const dir = this.nextColumnSortDir[columnName] || 'asc';
+        this.nextColumnSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
 
-        this.rows = [
-            ...this.rows.sort((a, b) => {
-                if (order === 'asc')
-                    return a[columnName] === b[columnName] ? 0 : a[columnName] < b[columnName] ? -1 : 1;
-                else if (order === 'desc')
-                    return a[columnName] === b[columnName] ? 0 : a[columnName] > b[columnName] ? -1 : 1;
-            }),
-        ];
+        // TODO: use copy of rows to sort on
+        this.rows = [...this.rows].sort((a, b) =>
+            headerCol.sortFunc
+                ? headerCol.sortFunc(a[columnName], b[columnName], dir)
+                : this.defaultSortFunc(a[columnName], b[columnName], dir),
+        );
     };
 
     render() {
-        // console.log("Table -> render -> this.rows", JSON.stringify(this.rows))
-
-        // console.log("Table -> render -> this.columns", JSON.stringify(this.columns))
-        // console.log("Table -> render -> typeof this.columns", typeof this.columns)
-        
         const headerStyle = {
             height: `${this.headerHeight}px`,
         };
@@ -160,17 +165,11 @@ export class Table {
             height: `${this.rowHeight}px`,
         };
 
-        // console.log("Table -> renderRows -> this.rows", this.rows)
-
-        // console.log("Table -> renderRows -> typeof this.rows", typeof this.rows)
-
-
         return this.rows.map(row => (
             <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.columns.filter(c => (c.fixed || false) === fixed).map(col => this.renderColumn(row, col))}
             </div>
         ));
-        
     }
 
     private renderColumn(row, col) {
@@ -181,11 +180,11 @@ export class Table {
         };
 
         let value = row[col.columnName];
-        if(value && typeof value.getMonth === 'function') {
-            const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(value)
-            const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(value)
-            const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(value)
-            value = `${da}.${mo}.${ye}`
+        if (value && typeof value.getMonth === 'function') {
+            const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(value);
+            const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(value);
+            const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(value);
+            value = `${da}.${mo}.${ye}`;
         }
 
         return (
