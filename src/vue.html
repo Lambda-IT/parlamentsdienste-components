@@ -35,13 +35,15 @@
                     el: '#app',
                     data: {
                         test: 'start',
-                        stateItems: [{ label: 'danger', value:'danger', id:0},
-                        { label: 'dark', value:'dark', id:1},
-                        { label: 'info', value:'info', id:2},
-                        { label: 'light', value:'light', id:3},
-                        { label: 'primary', value:'primary', id:4},
-                        { label: 'success', value:'success', id:5, selected:true},
-                        { label: 'warning', value:'warning', id:6}],
+                        stateItems: [
+                            { label: 'danger', value: 'danger', id: 0 },
+                            { label: 'dark', value: 'dark', id: 1 },
+                            { label: 'info', value: 'info', id: 2 },
+                            { label: 'light', value: 'light', id: 3 },
+                            { label: 'primary', value: 'primary', id: 4 },
+                            { label: 'success', value: 'success', id: 5, selected: true },
+                            { label: 'warning', value: 'warning', id: 6 },
+                        ],
                         table: {
                             rows: [
                                 {
@@ -142,9 +144,9 @@
                     },
                     computed: {
                         selectedStateItem: function() {
-                            console.log("stateItems", this.stateItems)
-                            return this.stateItems.find(x=>x.selected);
-                        }
+                            console.log('stateItems', this.stateItems);
+                            return this.stateItems.find(x => x.selected);
+                        },
                     },
 
                     directives: {
@@ -237,10 +239,6 @@
 
         <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
         <style>
-            pd-card {
-                margin-top: 20px;
-            }
-
             pd-sidebar {
                 margin-left: -15px;
             }
@@ -261,13 +259,16 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-1 d-none d-md-block">
                         <pd-sidebar>
                             <pd-sidebar-item
                                 text="Mitteilungen"
                                 icon="./assets/icons/icon-new_post.svg"
                             ></pd-sidebar-item>
-                            <pd-sidebar-item text="Meine Ablage" icon="./assets/icons/icon_ablage.svg"></pd-sidebar-item>
+                            <pd-sidebar-item
+                                text="Meine Ablage"
+                                icon="./assets/icons/icon_ablage.svg"
+                            ></pd-sidebar-item>
                             <pd-sidebar-item
                                 text="Recherchen"
                                 href="https://lambda-it.ch"
@@ -277,15 +278,15 @@
                             </pd-sidebar-item>
                         </pd-sidebar>
                     </div>
-                    <div class="col-7">
-                        <pd-card>
+                    <div class="col-md-7">
+                        <pd-card class="mt-4">
                             <pd-card-header slot="header">Sample Table</pd-card-header>
                             <pd-card-content>
-                                <div>
+                                <div class="mb-4">
                                     <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
                                     <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
                                     <p>Freitag, 28. Juni 2019, 10.15-18.30 Uhr</p>
-                                    <a href="https://lambda-it.ch" target="_blank">Zur Sitzungsansicht</a><p><br></p>
+                                    <a href="https://lambda-it.ch" target="_blank">Zur Sitzungsansicht</a>
                                 </div>
                                 <pd-table
                                     header-style="light"
@@ -297,41 +298,112 @@
                                 <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
                             </pd-card-footer>
                         </pd-card>
-                        <pd-card>
-                            <pd-card-header slot="header">Session – Eintritt in virtuellen Beratungsraum</pd-card-header>
+                        <pd-card class="mt-4">
+                            <pd-card-header slot="header"
+                                >Session – Eintritt in virtuellen Beratungsraum</pd-card-header
+                            >
                             <pd-card-content>
-                                
                                 <div class="row">
                                     <pd-card class="col-sm-6">
                                         <pd-card-header slot="header">Ratsunterlagen</pd-card-header>
                                         <pd-card-content>
-                                            <div >Ratsunterlagen
-                                            </div>
+                                            <div>Ratsunterlagen</div>
                                         </pd-card-content>
-                                        
-                                    </pd-card><pd-card class="col-sm-6">
+                                    </pd-card>
+                                    <pd-card class="col-sm-6">
                                         <pd-card-header slot="header">Aktuelle Rednerliste</pd-card-header>
-                                        <pd-card-content>
-                                                <div class="list-group">
-                                                    <div class="list-group-item list-group-item-action active">
-                                                      <div class="d-flex w-100 justify-content-between">
-                                                        <h5 class="mb-1">List group item heading</h5>
-                                                        <small>3 days ago</small>
-                                                      </div>
-                                                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                                      <small>Donec id elit non mi porta.</small>
+                                        <pd-card-content padding="none" style="--pd-card-content-padding: 0;">
+                                            <div class="list-group">
+                                                <div class="list-group-item list-group-item-action">
+                                                    <div class="d-flex flex-row align-items-stretch">
+                                                        <div class="w-25 d-flex ">
+                                                            <div
+                                                                class="align-self-center mx-auto"
+                                                                style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_gruen.svg') 0% 0% no-repeat padding-box;"
+                                                            ></div>
+                                                        </div>
+
+                                                        <div class="flex-fill">
+                                                            <p class="mb-1">18.426</p>
+                                                            <h5 class="mb-1">Jagdgesetz.</h5>
+                                                            <p class="mb-1">
+                                                                Änderung Kategorie IIIb
+                                                            </p>
+                                                        </div>
                                                     </div>
+                                                </div>
+                                                <div class="list-group-item list-group-item-action">
+                                                    <div class="d-flex flex-row align-items-stretch">
+                                                        <div class="w-25 d-flex ">
+                                                            <div
+                                                                class="align-self-center mx-auto"
+                                                                style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_rot.svg') 0% 0% no-repeat padding-box;"
+                                                            ></div>
+                                                        </div>
+
+                                                        <div class="flex-fill">
+                                                            <p class="mb-1">19.426</p>
+                                                            <h5 class="mb-1">Waffengesetz.</h5>
+                                                            <p class="mb-1">
+                                                                Änderung Kategorie IIIb
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </pd-card-content>
-                                        
                                     </pd-card>
                                 </div>
                             </pd-card-content>
-                            
                         </pd-card>
                     </div>
-                    <div class="col-4">
-                        <pd-card>
+                    <div class="col-md-4">
+                        <pd-card class="mt-4">
+                            <pd-card-header slot="header">Meine Anträge</pd-card-header>
+                            <pd-card-content padding="none" style="--pd-card-content-padding: 0;">
+                                <div class="list-group">
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="d-flex flex-row align-items-stretch">
+                                            <div class="w-25 d-flex ">
+                                                <div
+                                                    class="align-self-center mx-auto"
+                                                    style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_gruen.svg') 0% 0% no-repeat padding-box;"
+                                                ></div>
+                                            </div>
+
+                                            <div class="flex-fill">
+                                                <p class="mb-1">18.3708</p>
+                                                <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="d-flex flex-row align-items-stretch">
+                                            <div class="w-25 d-flex ">
+                                                <div
+                                                    class="align-self-center mx-auto"
+                                                    style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_rot.svg') 0% 0% no-repeat padding-box;"
+                                                ></div>
+                                            </div>
+
+                                            <div class="flex-fill">
+                                                <p class="mb-1">16.3112</p>
+                                                <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </pd-card-content>
+                            <pd-card-footer slot="footer">
+                                <pd-button href="https://lambda-it.ch" target="_blank" type="text"
+                                    >Zur Antragsverwaltung<pd-icon
+                                        style="height: 38px;display: inline-block;fill: var(--primary);vertical-align: middle;font-weight: 300;"
+                                        src="./assets/icons/icon_link_intern.svg"
+                                    ></pd-icon
+                                ></pd-button>
+                            </pd-card-footer>
+                        </pd-card>
+                        <pd-card class="mt-4">
                             <pd-card-header slot="header">Sample Form</pd-card-header>
 
                             <pd-card-content>
@@ -357,10 +429,7 @@
                                         v-model="config.button.disabled"
                                         v-model-pd="config.button.disabled"
                                     ></pd-checkbox>
-                                    <pd-dropdown
-                                        :items.prop="stateItems"
-                                        label="button color"
-                                    ></pd-dropdown>
+                                    <pd-dropdown :items.prop="stateItems" label="button color"></pd-dropdown>
                                     <h4>{{selectedStateItem.label}}</h4>
                                 </form>
                                 <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>

@@ -86,6 +86,17 @@ $info : $blue-6;
 $light: $athens-gray;
 $dark:$blue-whale;
 
+$theme-colors:  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  );
+
 $link-color:$primary;
 $link-hover-color:  darken($link-color, 15%);
 $link-decoration:                         none;
@@ -190,3 +201,6 @@ $body-bg: $wild-sand;
 $body-color: $black;
 
 $list-group-bg:$wild-sand;
+$list-group-border-radius: 0;
+// $list-group-item-padding-y:         .75rem !default;
+$list-group-item-padding-x: 0;
