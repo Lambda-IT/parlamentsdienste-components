@@ -49,7 +49,9 @@ export class Checkbox {
                         name={this.name}
                         onClick={this.onClick}
                     ></input>
-                    <div class="pd-checkbox-inner"></div>
+                    <div class="pd-checkbox-inner">
+                        <div class="pd-checkbox-checkmark"></div>
+                    </div>
                     <div class="pd-checkbox-text">{this.text}</div>
                 </label>
             </Host>

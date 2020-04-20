@@ -225,6 +225,11 @@ export namespace Components {
         "value": number;
     }
     interface PdRadio {
+        "checked": boolean;
+        /**
+          * Sets radio to disabled state
+         */
+        "disabled": boolean;
         "label"?: string | null;
         "name": string;
         "value"?: any | null;
@@ -741,6 +746,11 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface PdRadio {
+        "checked"?: boolean;
+        /**
+          * Sets radio to disabled state
+         */
+        "disabled"?: boolean;
         "label"?: string | null;
         "name"?: string;
         "value"?: any | null;

@@ -18,55 +18,8 @@ label > input {
     width: 0;
     opacity: 0;
 
-    &:checked {
-        & + .pd-radio-inner {
-            &:after {
-                border: 6px solid setcolor(primary, enabled);
-                border-radius: 100%;
-            }
-
-            &:hover {
-                &:after {
-                    border: 6px solid setcolor(primary, hover);
-                }
-            }
-
-            &:active {
-                &:after {
-                    border: 6px solid setcolor(primary, pressed);
-                }
-            }
-        }
-
-        &:focus {
-            & + .pd-radio-inner {
-                &:after {
-                    content: '';
-                    border: 6px solid $focus;
-                    border-radius: 100%;
-                }
-                &:before {
-                    content: '';
-                    width: 10px;
-                    height: 10px;
-                    margin: 5px;
-                    background-color: setcolor(primary, enabled);
-                }
-            }
-        }
-    }
-
-    &:focus {
-        & + .pd-radio-inner {
-            &:after {
-                content: '';
-                border: 2px solid $focus;
-                border-radius: 100%;
-            }
-        }
-    }
-
     & + .pd-radio-inner {
+        cursor: pointer;
         position: relative;
         width: 20px;
         height: 20px;
@@ -90,16 +43,88 @@ label > input {
             border: 2px solid setcolor(primary, enabled);
             border-radius: 100%;
         }
+    }
 
-        &:hover {
+    &:hover:enabled {
+        & + .pd-radio-inner {
             &:after {
                 border: 2px solid setcolor(primary, hover);
             }
         }
+    }
 
-        &:active {
+    &:active:enabled {
+        & + .pd-radio-inner {
             &:after {
                 border: 2px solid setcolor(primary, pressed);
+            }
+        }
+    }
+
+    &:focus:enabled {
+        & + .pd-radio-inner {
+            &:after {
+                content: '';
+                border: 2px solid $focus;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    &:disabled {
+        & + .pd-radio-inner {
+            &:after {
+                border: 2px solid setcolor(primary, disabled);
+            }
+        }
+    }
+
+    &:disabled:checked {
+        & + .pd-radio-inner {
+            &:after {
+                background-color: setcolor(primary, disabled);
+            }
+        }
+    }
+
+    &:checked {
+        & + .pd-radio-inner {
+            &:after {
+                border: 6px solid setcolor(primary, enabled);
+                border-radius: 100%;
+            }
+        }
+
+        &:hover:enabled {
+            & + .pd-radio-inner {
+                &:after {
+                    border: 6px solid setcolor(primary, hover);
+                }
+            }
+        }
+
+        &:active:enabled {
+            & + .pd-radio-inner {
+                &:after {
+                    border: 6px solid setcolor(primary, pressed);
+                }
+            }
+        }
+
+        &:focus:enabled {
+            & + .pd-radio-inner {
+                &:after {
+                    content: '';
+                    border: 6px solid $focus;
+                    border-radius: 100%;
+                }
+                &:before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    margin: 5px;
+                    background-color: setcolor(primary, enabled);
+                }
             }
         }
     }

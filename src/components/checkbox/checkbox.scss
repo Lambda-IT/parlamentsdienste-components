@@ -19,65 +19,8 @@ label > input {
     width: 0;
     opacity: 0;
 
-    &:checked {
-        & + .pd-checkbox-inner {
-            &:after {
-                background-color: setcolor(primary, enabled);
-                background-size: 20px 20px;
-                background-position-x: -2px;
-                background-position-y: -2px;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.343 11.293l3.89 3.889 7.424-7.425' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E");
-            }
-
-            &:hover:enabled {
-                &:after {
-                    background-color: setcolor(primary, hover);
-                }
-            }
-
-            &:active:enabled {
-                &:after {
-                    background-color: setcolor(primary, pressed);
-                }
-            }
-        }
-
-        &:focus {
-            & + .pd-checkbox-inner {
-                &:after {
-                    border: 2px solid $focus;
-                    background-color: $focus;
-                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.343 11.293l3.89 3.889 7.424-7.425' fill='none' stroke='%23033840' stroke-width='3'/%3E%3C/svg%3E");
-                }
-            }
-        }
-    }
-
-    &:focus {
-        & + .pd-checkbox-inner {
-            &:after {
-                border: 2px solid $focus;
-            }
-        }
-    }
-
-    &:disabled {
-        & + .pd-checkbox-inner {
-            &:after {
-                border: 2px solid setcolor(primary, disabled);
-            }
-        }
-    }
-
-    &:disabled:checked {
-        & + .pd-checkbox-inner {
-            &:after {
-                background-color: setcolor(primary, disabled);
-            }
-        }
-    }
-
     & + .pd-checkbox-inner {
+        cursor: pointer;
         position: relative;
         width: 20px;
         height: 20px;
@@ -101,16 +44,92 @@ label > input {
             border: 2px solid setcolor(primary, enabled);
             border-radius: 4px;
         }
+    }
 
-        &:hover:enabled {
+    &:hover:enabled {
+        & + .pd-checkbox-inner {
             &:after {
                 border: 2px solid setcolor(primary, hover);
             }
         }
+    }
 
-        &:active:enabled {
+    &:active:enabled {
+        & + .pd-checkbox-inner {
             &:after {
                 border: 2px solid setcolor(primary, pressed);
+            }
+        }
+    }
+
+    &:focus:enabled {
+        & + .pd-checkbox-inner {
+            &:after {
+                border: 2px solid $focus;
+            }
+        }
+    }
+
+    &:disabled {
+        & + .pd-checkbox-inner {
+            &:after {
+                border: 2px solid setcolor(primary, disabled);
+            }
+        }
+    }
+
+    &:disabled:checked {
+        & + .pd-checkbox-inner {
+            &:after {
+                background-color: setcolor(primary, disabled);
+            }
+        }
+    }
+
+    &:checked {
+        & + .pd-checkbox-inner {
+            position: relative;
+            background-color: setcolor(primary, enabled);
+            border-radius: 4px;
+
+            .pd-checkbox-checkmark {
+                position: absolute;
+                display: inline-block;
+                transform: rotate(45deg);
+                height: 11px;
+                width: 7px;
+                top: 3px;
+                left: 7px;
+                border-bottom: 2px solid $white;
+                border-right: 2px solid $white;
+            }
+        }
+
+        &:hover:enabled {
+            & + .pd-checkbox-inner {
+                background-color: setcolor(primary, hover);
+
+                .pd-checkbox-checkmark {
+                    border-bottom: 2px solid $white;
+                    border-right: 2px solid $white;
+                }
+            }
+        }
+
+        &:active:enabled {
+            & + .pd-checkbox-inner {
+                background-color: setcolor(primary, pressed);
+            }
+        }
+
+        &:focus:enabled {
+            & + .pd-checkbox-inner {
+                background-color: $focus;
+
+                .pd-checkbox-checkmark {
+                    border-bottom: 2px solid $cyan-9;
+                    border-right: 2px solid $cyan-9;
+                }
             }
         }
     }

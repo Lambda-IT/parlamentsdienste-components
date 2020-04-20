@@ -7,11 +7,10 @@ import { Component, Host, h, Prop, Element, State } from '@stencil/core';
 })
 export class Radio {
     private inputId = `pd-radio-${radioButtonIds++}`;
-    private radioGroup: any | null = null;
 
     @Element() element!: HTMLElement;
 
-    @State() checked: boolean = false;
+    @Prop() checked: boolean = false;
 
     @Prop() value?: any | null;
 
@@ -19,43 +18,24 @@ export class Radio {
 
     @Prop() name: string = '';
 
-    connectedCallback() {
-        if (this.value === undefined) {
-            this.value = this.inputId;
-        }
-
-        // set the radio-group to closest parent and add eventlistener for value change
-        const radioGroup = (this.radioGroup = this.element.closest('pd-radio-group'));
-        if (radioGroup) {
-            this.updateState();
-            radioGroup.addEventListener('pdChange', this.updateState);
-        }
-    }
-
-    disconnectedCallback() {
-        // remove value event listener
-        const radioGroup = this.radioGroup;
-        if (radioGroup) {
-            radioGroup.removeEventListener('pdChange', this.updateState);
-            this.radioGroup = null;
-        }
-    }
-
-    private updateState = () => {
-        // set radio-group value to current selected radio
-        if (this.radioGroup) {
-            this.checked = this.radioGroup.value === this.value;
-        }
-    };
+    /**
+     * Sets radio to disabled state
+     */
+    @Prop() disabled: boolean = false;
 
     render() {
         const { inputId, name, value, label, checked } = this;
         const labelId = inputId + '-lbl';
 
         return (
-            <Host role="radio" aria-labeledby={labelId} aria-checked={checked}>
+            <Host
+                role="radio"
+                aria-labeledby={labelId}
+                aria-checked={this.checked ? 'true' : 'false'}
+                aria-disabled={this.disabled ? 'true' : 'false'}
+            >
                 <label>
-                    <input type="radio" checked={checked} name={name} value={value} />
+                    <input type="radio" checked={checked} name={name} value={value} disabled={this.disabled} />
                     <div class="pd-radio-inner"></div>
                     <div class="pd-radio-text">{label}</div>
                 </label>
