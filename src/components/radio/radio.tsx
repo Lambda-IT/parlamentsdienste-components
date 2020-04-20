@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, State } from '@stencil/core';
+import { Component, Host, h, Prop, Element } from '@stencil/core';
 
 @Component({
     tag: 'pd-radio',

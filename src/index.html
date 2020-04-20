@@ -57,9 +57,9 @@
             <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-checkbox disabled text="checkbox"></pd-checkbox>
             <pd-checkbox disabled checked text="checkbox"></pd-checkbox>
-            <pd-radio disabled name="x" value="0" label="0%"></pd-radio>
+            <pd-radio name="x" value="0" label="0%"></pd-radio>
             <pd-radio name="x" value="0.25" label="25%"></pd-radio>
-            <pd-radio checked name="x" value="0.50" label="50%"></pd-radio>
+            <pd-radio name="x" value="0.50" label="50%"></pd-radio>
             <pd-radio name="x" value="0.80" label="80%"></pd-radio>
             <pd-radio name="x" value="1" label="100%"></pd-radio>
             <pd-input value="asdf" label="asdf" error id="pd-input-0" helper-text="asdf-asdf"></pd-input>
@@ -102,6 +102,8 @@
                     minWidth: 100,
                     bold: true,
                     fixed: true,
+                    textAlign: 'right',
+                    displayFunc: value => `ITM-${value}`,
                 },
                 {
                     columnName: 'column1',
@@ -119,6 +121,7 @@
                     minWidth: 100,
                     sortable: true,
                     sortDir: 'asc',
+                    displayFunc: value => value.toUpperCase(),
                 },
                 {
                     columnName: 'column3',
@@ -131,6 +134,7 @@
                         if (dir === 'asc') return a % 2 === b % 2 ? 0 : a % 2 < b % 2 ? 1 : 0;
                         else return a % 2 === b % 2 ? 0 : a % 2 > b % 2 ? 1 : 0;
                     },
+                    displayFunc: value => value * 10,
                 },
             ];
 

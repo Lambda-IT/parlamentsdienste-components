@@ -10,11 +10,13 @@ _Styles might be overwritten by global styles!_
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `label`  | `label`   |             | `string` | `null`      |
-| `name`   | `name`    |             | `string` | `''`        |
-| `value`  | `value`   |             | `any`    | `undefined` |
+| Property   | Attribute  | Description                  | Type      | Default     |
+| ---------- | ---------- | ---------------------------- | --------- | ----------- |
+| `checked`  | `checked`  |                              | `boolean` | `false`     |
+| `disabled` | `disabled` | Sets radio to disabled state | `boolean` | `false`     |
+| `label`    | `label`    |                              | `string`  | `null`      |
+| `name`     | `name`     |                              | `string`  | `''`        |
+| `value`    | `value`    |                              | `any`     | `undefined` |
 
 
 ----------------------------------------------
