@@ -20,6 +20,36 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-card>
+                <pd-card-header slot="header">Header</pd-card-header>
+                <pd-card-content style="padding: 0px">
+                    <pd-list>
+                        <pd-list-item status="unset">
+                            <p class="mb-1">18.3708</p>
+                            <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
+                        </pd-list-item>
+                        <pd-list-item status="success">
+                            <p class="mb-1">16.3112</p>
+                            <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
+                        </pd-list-item>
+                        <pd-list-item status="danger">
+                            <p class="mb-1">18.426</p>
+                            <h5 class="mb-1">Jagdgesetz.</h5>
+                            <p class="mb-1">
+                                Änderung Kategorie IIIb
+                            </p>
+                        </pd-list-item>
+                        <pd-list-item>
+                            <p class="mb-1">19.426</p>
+                            <h5 class="mb-1">Waffengesetz.</h5>
+                            <p class="mb-1">
+                                Änderung Kategorie IIIb
+                            </p>
+                        </pd-list-item>
+                    </pd-list>
+                </pd-card-content>
+                <pd-card-footer slot="footer"></pd-card-footer>
+            </pd-card>
             <h1>Header 1</h1>
             <pd-table id="pd-table-0" header-style="dark"> </pd-table>
             <pd-table id="pd-table-1" header-style="light"> </pd-table>
@@ -45,11 +75,7 @@
             </pd-button-group>
             <pd-button href="http://www.google.ch" target="_blank">external Link</pd-button>
             <pd-search id="pd-search-0"></pd-search>
-            <pd-card>
-                <pd-card-header slot="header">Header</pd-card-header>
-                <pd-card-content><div class="x">Content</div></pd-card-content>
-                <pd-card-footer slot="footer"></pd-card-footer>
-            </pd-card>
+
             <pd-container></pd-container>
             <pd-datepicker></pd-datepicker>
             <pd-dropdown id="pd-dropdown-0" label="dropdown label" helper-text="dropdown helper text"></pd-dropdown>

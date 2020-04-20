@@ -95,7 +95,7 @@ input {
     justify-content: center;
     right: 64px;
     top: 1px;
-    height: 48px;
+    height: calc(100% - 2px);
     width: 26px;
 
     .pd-search-clear-icon {

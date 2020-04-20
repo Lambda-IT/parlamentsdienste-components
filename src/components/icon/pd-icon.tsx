@@ -1,10 +1,11 @@
-import { Component, ComponentInterface, Host, h, Element, State, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Element, State, Prop, Watch, getAssetPath } from '@stencil/core';
 import { getSvgContent, iconContent } from '../../utils/svg';
 
 @Component({
     tag: 'pd-icon',
     styleUrl: 'pd-icon.scss',
     shadow: true,
+    assetsDirs: ['assets-icon'],
 })
 export class PdIcon implements ComponentInterface {
     private io?: IntersectionObserver;
@@ -18,6 +19,11 @@ export class PdIcon implements ComponentInterface {
      * Specifies the exact `src` of an SVG file to use.
      */
     @Prop() src?: string;
+
+    /**
+     * Name of an icon from the provided gallery
+     */
+    @Prop() name?: string;
 
     connectedCallback() {
         // purposely do not return the promise here because loading
@@ -58,9 +64,10 @@ export class PdIcon implements ComponentInterface {
     }
 
     @Watch('src')
+    @Watch('name')
     private loadIcon() {
         if (this.isVisible) {
-            const url = this.src;
+            const url = this.src || (this.name ? getAssetPath(`./assets-icon/icon-${this.name}.svg`) : null);
             if (url) {
                 if (iconContent.has(url)) {
                     // sync if it's already loaded

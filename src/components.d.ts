@@ -89,6 +89,10 @@ export namespace Components {
     }
     interface PdIcon {
         /**
+          * Name of an icon from the provided gallery
+         */
+        "name"?: string;
+        /**
           * Specifies the exact `src` of an SVG file to use.
          */
         "src"?: string;
@@ -201,6 +205,7 @@ export namespace Components {
     interface PdList {
     }
     interface PdListItem {
+        "status": "success" | "danger" | "unset";
     }
     interface PdModal {
         "closeModal": () => Promise<boolean>;
@@ -618,6 +623,10 @@ declare namespace LocalJSX {
     }
     interface PdIcon {
         /**
+          * Name of an icon from the provided gallery
+         */
+        "name"?: string;
+        /**
           * Specifies the exact `src` of an SVG file to use.
          */
         "src"?: string;
@@ -742,6 +751,7 @@ declare namespace LocalJSX {
     interface PdList {
     }
     interface PdListItem {
+        "status"?: "success" | "danger" | "unset";
     }
     interface PdModal {
         "component"?: any;
