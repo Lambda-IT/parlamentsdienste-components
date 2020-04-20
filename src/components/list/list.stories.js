@@ -32,7 +32,6 @@ export const statusList = () => {
         <pd-list>
             <pd-list-item status="success">
                 <div>18.3708</div>
-                <h1>asdf</h1>
                 <a>SiK-NR: Antrag auf Annahme</a>
             </pd-list-item>
             <pd-list-item status="unset">
