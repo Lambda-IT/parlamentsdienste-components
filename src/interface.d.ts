@@ -21,4 +21,5 @@ export interface PdColumn {
     fixed?: boolean;
     textAlign?: 'left' | 'right' | 'center';
     sortFunc?: (a: any, b: any, dir: string) => number;
+    displayFunc?: (value: any) => any;
 }

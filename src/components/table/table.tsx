@@ -172,7 +172,7 @@ export class Table {
         ));
     }
 
-    private renderColumn(row, col) {
+    private renderColumn(row, col: PdColumn) {
         const cellStyle = {
             flex: col.width === 0 ? `1 1 ${col.minWidth || 0}px` : `0 0 ${col.width}px`,
             minWidth: `${col.minWidth || col.width || 0}px`,
@@ -194,8 +194,12 @@ export class Table {
                 style={cellStyle}
                 title={value}
             >
-                <span>{value}</span>
+                {this.renderValue(col, value)}
             </div>
         );
+    }
+
+    renderValue(col: PdColumn, value) {
+        return <span class="pd-table-cell-value" innerHTML={col.displayFunc ? col.displayFunc(value) : value}></span>;
     }
 }
