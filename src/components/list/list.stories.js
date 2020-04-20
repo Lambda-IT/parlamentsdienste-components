@@ -10,7 +10,6 @@ export default {
 };
 
 export const primary = () => {
-    const open = radios('open', { yes: 'open', no: '' }, '');
     return `
         <pd-list>
             <pd-list-item>
@@ -27,7 +26,6 @@ export const primary = () => {
 };
 
 export const statusList = () => {
-    const open = radios('open', { yes: 'open', no: '' }, '');
     return `
         <pd-list>
             <pd-list-item status="success">

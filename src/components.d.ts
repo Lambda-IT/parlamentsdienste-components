@@ -53,7 +53,6 @@ export namespace Components {
         "collapsed": boolean;
     }
     interface PdCardContent {
-        "padding": "none" | "vertical" | "horizontal";
     }
     interface PdCardFooter {
     }
@@ -586,7 +585,6 @@ declare namespace LocalJSX {
         "onPdCollapsed"?: (event: CustomEvent<any>) => void;
     }
     interface PdCardContent {
-        "padding"?: "none" | "vertical" | "horizontal";
     }
     interface PdCardFooter {
     }

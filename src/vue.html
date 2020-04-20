@@ -312,45 +312,23 @@
                                     </pd-card>
                                     <pd-card class="col-sm-6">
                                         <pd-card-header slot="header">Aktuelle Rednerliste</pd-card-header>
-                                        <pd-card-content padding="none" style="--pd-card-content-padding: 0;">
-                                            <div class="list-group">
-                                                <div class="list-group-item list-group-item-action">
-                                                    <div class="d-flex flex-row align-items-stretch">
-                                                        <div class="w-25 d-flex ">
-                                                            <div
-                                                                class="align-self-center mx-auto"
-                                                                style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_gruen.svg') 0% 0% no-repeat padding-box;"
-                                                            ></div>
-                                                        </div>
-
-                                                        <div class="flex-fill">
-                                                            <p class="mb-1">18.426</p>
-                                                            <h5 class="mb-1">Jagdgesetz.</h5>
-                                                            <p class="mb-1">
-                                                                Änderung Kategorie IIIb
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="list-group-item list-group-item-action">
-                                                    <div class="d-flex flex-row align-items-stretch">
-                                                        <div class="w-25 d-flex ">
-                                                            <div
-                                                                class="align-self-center mx-auto"
-                                                                style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_rot.svg') 0% 0% no-repeat padding-box;"
-                                                            ></div>
-                                                        </div>
-
-                                                        <div class="flex-fill">
-                                                            <p class="mb-1">19.426</p>
-                                                            <h5 class="mb-1">Waffengesetz.</h5>
-                                                            <p class="mb-1">
-                                                                Änderung Kategorie IIIb
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <pd-card-content style="--pd-card-content-padding: 0;">
+                                            <pd-list>
+                                                <pd-list-item status="success">
+                                                    <p class="mb-1">18.426</p>
+                                                    <h5 class="mb-1">Jagdgesetz.</h5>
+                                                    <p class="mb-1">
+                                                        Änderung Kategorie IIIb
+                                                    </p>
+                                                </pd-list-item>
+                                                <pd-list-item status="danger">
+                                                    <p class="mb-1">19.426</p>
+                                                    <h5 class="mb-1">Waffengesetz.</h5>
+                                                    <p class="mb-1">
+                                                        Änderung Kategorie IIIb
+                                                    </p>
+                                                </pd-list-item>
+                                            </pd-list>
                                         </pd-card-content>
                                     </pd-card>
                                 </div>
@@ -360,39 +338,21 @@
                     <div class="col-md-4">
                         <pd-card class="mt-4">
                             <pd-card-header slot="header">Meine Anträge</pd-card-header>
-                            <pd-card-content padding="none" style="--pd-card-content-padding: 0;">
-                                <div class="list-group">
-                                    <div class="list-group-item list-group-item-action">
-                                        <div class="d-flex flex-row align-items-stretch">
-                                            <div class="w-25 d-flex ">
-                                                <div
-                                                    class="align-self-center mx-auto"
-                                                    style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_gruen.svg') 0% 0% no-repeat padding-box;"
-                                                ></div>
-                                            </div>
-
-                                            <div class="flex-fill">
-                                                <p class="mb-1">18.3708</p>
-                                                <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-item list-group-item-action">
-                                        <div class="d-flex flex-row align-items-stretch">
-                                            <div class="w-25 d-flex ">
-                                                <div
-                                                    class="align-self-center mx-auto"
-                                                    style="width:20px;height:20px;background: transparent url('./assets/icons/icon_status_rot.svg') 0% 0% no-repeat padding-box;"
-                                                ></div>
-                                            </div>
-
-                                            <div class="flex-fill">
-                                                <p class="mb-1">16.3112</p>
-                                                <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <pd-card-content style="--pd-card-content-padding: 0;">
+                                <pd-list>
+                                    <pd-list-item status="success">
+                                        <p class="mb-1">18.3708</p>
+                                        <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
+                                    </pd-list-item>
+                                    <pd-list-item status="danger">
+                                        <p class="mb-1">16.3112</p>
+                                        <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
+                                    </pd-list-item>
+                                    <pd-list-item status="unset">
+                                        <p class="mb-1">17.4654</p>
+                                        <a class="mb-1">SRB-NR: Antrag auf Ablehnung </a>
+                                    </pd-list-item>
+                                </pd-list>
                             </pd-card-content>
                             <pd-card-footer slot="footer">
                                 <pd-button href="https://lambda-it.ch" target="_blank" type="text"
