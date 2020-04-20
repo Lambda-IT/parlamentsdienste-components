@@ -198,6 +198,10 @@ export namespace Components {
          */
         "value"?: string | number | null;
     }
+    interface PdList {
+    }
+    interface PdListItem {
+    }
     interface PdModal {
         "closeModal": () => Promise<boolean>;
         "component": any;
@@ -404,6 +408,18 @@ declare global {
         prototype: HTMLPdInputElement;
         new (): HTMLPdInputElement;
     };
+    interface HTMLPdListElement extends Components.PdList, HTMLStencilElement {
+    }
+    var HTMLPdListElement: {
+        prototype: HTMLPdListElement;
+        new (): HTMLPdListElement;
+    };
+    interface HTMLPdListItemElement extends Components.PdListItem, HTMLStencilElement {
+    }
+    var HTMLPdListItemElement: {
+        prototype: HTMLPdListItemElement;
+        new (): HTMLPdListItemElement;
+    };
     interface HTMLPdModalElement extends Components.PdModal, HTMLStencilElement {
     }
     var HTMLPdModalElement: {
@@ -497,6 +513,8 @@ declare global {
         "pd-footer": HTMLPdFooterElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
+        "pd-list": HTMLPdListElement;
+        "pd-list-item": HTMLPdListItemElement;
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
@@ -721,6 +739,10 @@ declare namespace LocalJSX {
          */
         "value"?: string | number | null;
     }
+    interface PdList {
+    }
+    interface PdListItem {
+    }
     interface PdModal {
         "component"?: any;
     }
@@ -874,6 +896,8 @@ declare namespace LocalJSX {
         "pd-footer": PdFooter;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
+        "pd-list": PdList;
+        "pd-list-item": PdListItem;
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
@@ -907,6 +931,8 @@ declare module "@stencil/core" {
             "pd-footer": LocalJSX.PdFooter & JSXBase.HTMLAttributes<HTMLPdFooterElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+            "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
+            "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;

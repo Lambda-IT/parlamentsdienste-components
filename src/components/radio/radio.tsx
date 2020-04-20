@@ -34,7 +34,7 @@ export class Radio {
                 aria-checked={this.checked ? 'true' : 'false'}
                 aria-disabled={this.disabled ? 'true' : 'false'}
             >
-                <label>
+                <label class="pd-radio-label">
                     <input type="radio" checked={checked} name={name} value={value} disabled={this.disabled} />
                     <div class="pd-radio-inner"></div>
                     <div class="pd-radio-text">{label}</div>
