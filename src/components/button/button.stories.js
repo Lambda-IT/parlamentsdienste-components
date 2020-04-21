@@ -1,4 +1,4 @@
-import { withKnobs, select, text, radios } from '@storybook/addon-knobs';
+import { withKnobs, text, radios } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 import notes from './readme.md';
 
@@ -37,16 +37,28 @@ export const outline = () => {
 };
 
 export const icon = () => {
-    const icon = radios('icons', { '😎': '😎', '👍': '👍', '😉': '😉' }, '👍');
+    const location = radios('location', { left: 'left', right: 'right' }, 'left');
     return `
-        <pd-button><span slot="icon">${icon}</span><span>I'm a button with an icon</span></pd-button>
+        <div>
+            <pd-button icon-location="${location}">
+                <pd-icon size="small" style="fill: white" slot="icon" name="link"></pd-icon>
+                button
+            </pd-button>
+        </div>
+        <div>
+            <pd-button  icon-location="${location}" href="http://www.google.ch" target="_blank">
+                <pd-icon size="small" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
+                external link
+            </pd-button>
+        </div>
     `;
 };
 
 export const link = () => {
     const href = text('href', 'http://www.google.ch');
+    const target = text('target', '_blank');
     return `
-      <pd-button href="${href}" target="_blank">external link</pd-button>
+      <pd-button href="${href}" target="${target}">external link</pd-button>
   `;
 };
 
@@ -58,6 +70,6 @@ export const group = () => {
             <pd-button ${disabled} size=${size}>Primary</pd-button>
             <pd-button ${disabled} size=${size}>Success</pd-button>
             <pd-button ${disabled} size=${size}>Danger</pd-button>
-        <pd-button-group>
+        </pd-button-group>
     `;
 };
