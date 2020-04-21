@@ -27,6 +27,7 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
+        "iconLocation": "left" | "right";
         /**
           * Use outline schema
          */
@@ -96,7 +97,7 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Rotation in degrees
+          * Rotation in 'deg'
          */
         "rotate": number;
         /**
@@ -112,7 +113,7 @@ export namespace Components {
          */
         "spinReverse": boolean;
         /**
-          * Specifies the exact `src` of an SVG file to use.
+          * Specifies the `src` url of an SVG file to use.
          */
         "src"?: string;
     }
@@ -575,6 +576,7 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
+        "iconLocation"?: "left" | "right";
         /**
           * Use outline schema
          */
@@ -649,7 +651,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Rotation in degrees
+          * Rotation in 'deg'
          */
         "rotate"?: number;
         /**
@@ -665,7 +667,7 @@ declare namespace LocalJSX {
          */
         "spinReverse"?: boolean;
         /**
-          * Specifies the exact `src` of an SVG file to use.
+          * Specifies the `src` url of an SVG file to use.
          */
         "src"?: string;
     }

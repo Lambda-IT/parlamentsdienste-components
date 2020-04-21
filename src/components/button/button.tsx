@@ -41,6 +41,8 @@ export class Button {
      */
     @Prop() target: string;
 
+    @Prop() iconLocation: 'left' | 'right' = 'left';
+
     render() {
         const { href, target, type, disabled } = this;
         const TagType = href ? 'a' : 'button';
@@ -55,9 +57,19 @@ export class Button {
                     this.size
                 } ${this.outline ? 'pd-button-outline' : ''}`}
             >
-                <slot name="icon"></slot>
+                {this.renderIcon('left')}
                 <slot></slot>
+                {this.renderIcon('right')}
             </TagType>
+        );
+    }
+
+    renderIcon(location: 'left' | 'right') {
+        if (location !== this.iconLocation) return;
+        return (
+            <span class={`pd-button-icon-${location}`}>
+                <slot name="icon"></slot>
+            </span>
         );
     }
 }
