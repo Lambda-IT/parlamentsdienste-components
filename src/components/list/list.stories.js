@@ -28,13 +28,17 @@ export const primary = () => {
 export const statusList = () => {
     return `
         <pd-list>
+            <pd-list-item status="unset">
+                <div>16.3112</div>
+                <a>WBK-NR: Antrag auf Ablehnung </a>
+            </pd-list-item>
             <pd-list-item status="success">
                 <div>18.3708</div>
                 <a>SiK-NR: Antrag auf Annahme</a>
             </pd-list-item>
-            <pd-list-item status="unset">
-                <div>16.3112</div>
-                <a>WBK-NR: Antrag auf Ablehnung </a>
+            <pd-list-item status="warning">
+                <div>16.845</div>
+                <a>Änderung Kategorie IVIb</a>
             </pd-list-item>
             <pd-list-item status="danger">
                 <div>18.426</div>

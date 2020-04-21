@@ -1,5 +1,5 @@
 import notes from './readme.md';
-import { withKnobs, radios, number, select } from '@storybook/addon-knobs';
+import { withKnobs, radios, number, select, text } from '@storybook/addon-knobs';
 
 export default {
     title: 'Icon',
@@ -38,38 +38,40 @@ const iconMap = {
     search: 'search',
     support: 'support',
     profile: 'profile',
+    minus: 'minus',
 };
 
 export const primary = () => {
     return `
-    <pd-icon name="calendar"></pd-icon>
+    <pd-icon name="parlament"></pd-icon>
+    <pd-icon name="checkmark"></pd-icon>
     <pd-icon name="cancel"></pd-icon>
-    <pd-icon name="cancel-ring"></pd-icon>
-    <pd-icon name="caret"></pd-icon>
+    <pd-icon name="minus"></pd-icon>
     <pd-icon name="checkbox-default"></pd-icon>
     <pd-icon name="checkbox-checked"></pd-icon>
-    <pd-icon name="checkmark"></pd-icon>
-    <pd-icon name="configuration"></pd-icon>
-    <pd-icon name="contacts"></pd-icon>
+    <pd-icon name="radio-default"></pd-icon>
+    <pd-icon name="radio-checked"></pd-icon>
+    <pd-icon name="cancel-ring"></pd-icon>
+    <pd-icon name="calendar"></pd-icon>
+    <pd-icon name="profile"></pd-icon>
     <pd-icon name="dictionary"></pd-icon>
+    <pd-icon name="contacts"></pd-icon>
+    <pd-icon name="search"></pd-icon>
+    <pd-icon name="caret"></pd-icon>
     <pd-icon name="expand"></pd-icon>
     <pd-icon name="explorer"></pd-icon>
     <pd-icon name="folder"></pd-icon>
     <pd-icon name="folder-in"></pd-icon>
-    <pd-icon name="grid"></pd-icon>
     <pd-icon name="link"></pd-icon>
+    <pd-icon name="grid"></pd-icon>
+    <pd-icon name="configuration"></pd-icon>
     <pd-icon name="list"></pd-icon>
-    <pd-icon name="mail"></pd-icon>
     <pd-icon name="menu"></pd-icon>
+    <pd-icon name="mail"></pd-icon>
     <pd-icon name="money"></pd-icon>
-    <pd-icon name="parlament"></pd-icon>
     <pd-icon name="press"></pd-icon>
     <pd-icon name="print"></pd-icon>
-    <pd-icon name="radio-default"></pd-icon>
-    <pd-icon name="radio-checked"></pd-icon>
-    <pd-icon name="search"></pd-icon>
     <pd-icon name="support"></pd-icon>
-    <pd-icon name="profile"></pd-icon>
     `;
 };
 
@@ -87,10 +89,11 @@ export const size = () => {
 };
 
 export const color = () => {
+    const color = text('fill', '#0b7285');
     const icons = select('icons', iconMap, 'parlament');
 
     return `
-    <pd-icon name="${icons}" style="fill: #0b7285" size="large"></pd-icon>
+    <pd-icon name="${icons}" style="fill: ${color}" size="large"></pd-icon>
     <pd-icon name="${icons}" style="fill: red"></pd-icon>
     <pd-icon name="${icons}" style="fill: blue"></pd-icon>
     <pd-icon name="${icons}" style="fill: lime"></pd-icon>
@@ -129,14 +132,17 @@ export const flip = () => {
 
 export const spin = () => {
     const speed = number('ms', 0);
+    const direction = radios('direction', { Clockwise: 'false', 'Counter-clockwise': 'true' }, 'false');
     const icons = select('icons', iconMap, 'parlament');
     return `
-    <h3>${speed}ms</h3>
-    <pd-icon name="${icons}" spin="${speed}"></pd-icon>
+    <h3>${speed}ms ${direction === 'false' ? '(cw)' : '(ccw)'}</h3>
+    <pd-icon name="${icons}" spin="${speed}" spin-reverse="${direction}"></pd-icon>
     <h3>500ms</h3>
     <pd-icon name="${icons}" spin="500"></pd-icon>
     <h3>1000ms</h3>
     <pd-icon name="${icons}" spin="1000"></pd-icon>
     <h3>5000ms</h3>
-    <pd-icon name="${icons}" spin="5000"></pd-icon>`;
+    <pd-icon name="${icons}" spin="5000"></pd-icon>
+    <h3>5000ms (ccw)</h3>
+    <pd-icon name="${icons}" spin="5000" spin-reverse></pd-icon>`;
 };

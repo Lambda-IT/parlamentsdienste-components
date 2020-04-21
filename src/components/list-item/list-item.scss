@@ -27,6 +27,9 @@
         &.pd-list-item-status-danger {
             background-color: $red-9;
         }
+        &.pd-list-item-status-warning {
+            background-color: $yellow-9;
+        }
         &.pd-list-item-status-unset {
             background-color: $gray-3;
         }

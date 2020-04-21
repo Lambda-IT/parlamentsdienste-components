@@ -7,7 +7,7 @@ import { Component, Host, h, Prop } from '@stencil/core';
     assetsDirs: ['assets-list-item'],
 })
 export class PdListItem {
-    @Prop() status: 'success' | 'danger' | 'unset';
+    @Prop() status: 'success' | 'danger' | 'warning' | 'unset';
     render() {
         return (
             <Host>
@@ -34,6 +34,8 @@ export class PdListItem {
         switch (this.status) {
             case 'success':
                 return <pd-icon name="checkmark"></pd-icon>;
+            case 'warning':
+                return <pd-icon name="minus"></pd-icon>;
             case 'danger':
                 return <pd-icon name="cancel"></pd-icon>;
             default:

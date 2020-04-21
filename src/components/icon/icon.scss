@@ -34,8 +34,14 @@ svg {
     -moz-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
 }
-@-webkit-keyframes spin {
+@keyframes spin {
     100% {
         -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-reverse {
+    100% {
+        -webkit-transform: rotate(-360deg);
     }
 }

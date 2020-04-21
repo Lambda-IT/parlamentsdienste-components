@@ -16,7 +16,7 @@ export class PdIcon implements ComponentInterface {
     @State() private isVisible = false;
 
     /**
-     * Specifies the exact `src` of an SVG file to use.
+     * Specifies the `src` url of an SVG file to use.
      */
     @Prop() src?: string;
 
@@ -31,7 +31,7 @@ export class PdIcon implements ComponentInterface {
     @Prop() size?: 'normal' | 'default' | 'large' = 'default';
 
     /**
-     * Rotation in degrees
+     * Rotation in 'deg'
      */
     @Prop() rotate: number = 0;
 
@@ -44,6 +44,9 @@ export class PdIcon implements ComponentInterface {
      * Spin animation in ms per rotation
      */
     @Prop() spin: number;
+
+    /** change animation direction */
+    @Prop() spinReverse: boolean = false;
 
     connectedCallback() {
         // purposely do not return the promise here because loading
@@ -117,6 +120,7 @@ export class PdIcon implements ComponentInterface {
                 style={{
                     transform: transformStyle ?? null,
                     animationDuration: this.spin ? `${this.spin}ms` : null,
+                    animationName: this.spinReverse ? `spin-reverse` : null,
                 }}
             >
                 {this.svgContent ? (

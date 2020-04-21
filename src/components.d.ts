@@ -108,6 +108,10 @@ export namespace Components {
          */
         "spin": number;
         /**
+          * change animation direction
+         */
+        "spinReverse": boolean;
+        /**
           * Specifies the exact `src` of an SVG file to use.
          */
         "src"?: string;
@@ -220,7 +224,7 @@ export namespace Components {
     interface PdList {
     }
     interface PdListItem {
-        "status": "success" | "danger" | "unset";
+        "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
         "closeModal": () => Promise<boolean>;
@@ -657,6 +661,10 @@ declare namespace LocalJSX {
          */
         "spin"?: number;
         /**
+          * change animation direction
+         */
+        "spinReverse"?: boolean;
+        /**
           * Specifies the exact `src` of an SVG file to use.
          */
         "src"?: string;
@@ -781,7 +789,7 @@ declare namespace LocalJSX {
     interface PdList {
     }
     interface PdListItem {
-        "status"?: "success" | "danger" | "unset";
+        "status"?: "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
         "component"?: any;

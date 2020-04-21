@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                               | Default     |
-| -------- | --------- | ----------- | ---------------------------------- | ----------- |
-| `status` | `status`  |             | `"danger" \| "success" \| "unset"` | `undefined` |
+| Property | Attribute | Description | Type                                            | Default     |
+| -------- | --------- | ----------- | ----------------------------------------------- | ----------- |
+| `status` | `status`  |             | `"danger" \| "success" \| "unset" \| "warning"` | `undefined` |
 
 
 ## Dependencies
