@@ -1,0 +1,41 @@
+:host {
+    display: inline-block;
+    width: 3em; // 1em
+    height: 3em; // 1em
+}
+
+:host(.pd-icon-default) {
+    font-size: 1em;
+}
+
+:host(.pd-icon-small) {
+    font-size: 0.5em;
+}
+
+:host(.pd-icon-large) {
+    font-size: 2em;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+.pd-icon-inner,
+svg {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+:host(.spin) {
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}

@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdIcon } from '../pd-icon';
+import { PdIcon } from '../icon';
 
 describe('pd-icon', () => {
   it('renders', async () => {

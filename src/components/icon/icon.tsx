@@ -3,7 +3,7 @@ import { getSvgContent, iconContent } from '../../utils/svg';
 
 @Component({
     tag: 'pd-icon',
-    styleUrl: 'pd-icon.scss',
+    styleUrl: 'icon.scss',
     shadow: true,
     assetsDirs: ['assets-icon'],
 })
@@ -24,6 +24,26 @@ export class PdIcon implements ComponentInterface {
      * Name of an icon from the provided gallery
      */
     @Prop() name?: string;
+
+    /**
+     * Size of the icon
+     */
+    @Prop() size?: 'normal' | 'default' | 'large' = 'default';
+
+    /**
+     * Rotation in degrees
+     */
+    @Prop() rotate: number = 0;
+
+    /**
+     * Flip in X/Y direction
+     */
+    @Prop() flip: 'x' | 'y' | 'xy';
+
+    /**
+     * Spin animation in ms per rotation
+     */
+    @Prop() spin: number;
 
     connectedCallback() {
         // purposely do not return the promise here because loading
@@ -81,8 +101,24 @@ export class PdIcon implements ComponentInterface {
     }
 
     render() {
+        const flipX = this.flip?.includes('x') ? 'scaleX(-1)' : undefined;
+        const flipY = this.flip?.includes('y') ? 'scaleY(-1)' : undefined;
+        const rotate = this.rotate ? `rotate(${this.rotate}deg` : undefined;
+
+        const transformStyle = [flipX, flipY, rotate].filter(x => x !== undefined).join(' ');
+
         return (
-            <Host role="img">
+            <Host
+                role="img"
+                class={{
+                    [`pd-icon-${this.size}`]: !!this.size,
+                    spin: !!this.spin,
+                }}
+                style={{
+                    transform: transformStyle ?? null,
+                    animationDuration: this.spin ? `${this.spin}ms` : null,
+                }}
+            >
                 {this.svgContent ? (
                     <div class="pd-icon-inner" innerHTML={this.svgContent}></div>
                 ) : (

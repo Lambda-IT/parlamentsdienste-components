@@ -88,9 +88,25 @@ export namespace Components {
     }
     interface PdIcon {
         /**
+          * Flip in X/Y direction
+         */
+        "flip": "x" | "y" | "xy";
+        /**
           * Name of an icon from the provided gallery
          */
         "name"?: string;
+        /**
+          * Rotation in degrees
+         */
+        "rotate": number;
+        /**
+          * Size of the icon
+         */
+        "size"?: "normal" | "default" | "large";
+        /**
+          * Spin animation in ms per rotation
+         */
+        "spin": number;
         /**
           * Specifies the exact `src` of an SVG file to use.
          */
@@ -621,9 +637,25 @@ declare namespace LocalJSX {
     }
     interface PdIcon {
         /**
+          * Flip in X/Y direction
+         */
+        "flip"?: "x" | "y" | "xy";
+        /**
           * Name of an icon from the provided gallery
          */
         "name"?: string;
+        /**
+          * Rotation in degrees
+         */
+        "rotate"?: number;
+        /**
+          * Size of the icon
+         */
+        "size"?: "normal" | "default" | "large";
+        /**
+          * Spin animation in ms per rotation
+         */
+        "spin"?: number;
         /**
           * Specifies the exact `src` of an SVG file to use.
          */
