@@ -9,18 +9,11 @@ import flatpickr from 'flatpickr';
 export class Datepicker {
     @Element() element: HTMLElement;
 
-    private picker;
-
     constructor() {}
 
     componentDidLoad() {
         const element = this.element.shadowRoot.querySelector('.wrapper');
-        this.picker = flatpickr(element, { wrap: true /*, clickOpens: false*/ });
-        console.log(`Datepicker -> componentDidLoad -> flatpickr`, flatpickr);
-    }
-
-    private open() {
-        //this.picker.toggle();
+        flatpickr(element, { wrap: true });
     }
 
     render() {
