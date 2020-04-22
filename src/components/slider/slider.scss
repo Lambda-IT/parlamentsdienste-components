@@ -20,25 +20,27 @@
 // Version 1.5.2
 // MIT License
 
-$slider-track-color: $gray !default;
-$slider-thumb-color: $blue-whale !default;
+$slider-track-color: $gray-3 !default;
+$slider-thumb-color: $cyan-9 !default;
+$slider-thumb-color-hover: $cyan-6 !default;
+$slider-thumb-color-active: $cyan-3 !default;
+$slider-thumb-color-disabled: $gray !default;
 
 $slider-thumb-height: 16px !default;
 $slider-thumb-width: 16px !default;
 $slider-thumb-radius: 100% !default;
-$slider-thumb-shadow-size: 4px !default;
-$slider-thumb-shadow-blur: 4px !default;
+$slider-thumb-shadow-size: 0px !default;
+$slider-thumb-shadow-blur: 0px !default;
 $slider-thumb-shadow-color: rgba(0, 0, 0, 0.2) !default;
-$slider-thumb-border: none !default;
 
 $slider-track-width: 100% !default;
-$slider-track-height: 15px !default;
+$slider-track-height: 8px !default;
 $slider-track-shadow-size: 0 !default;
 $slider-track-shadow-blur: 0 !default;
 $slider-track-shadow-color: rgba(0, 0, 0, 0.2) !default;
 $slider-track-border: none !default;
 
-$slider-track-radius: 0 !default;
+$slider-track-radius: 8px !default;
 $contrast: 5% !default;
 
 $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
@@ -57,11 +59,21 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
 @mixin thumb {
     @include shadow($slider-thumb-shadow-size, $slider-thumb-shadow-blur, $slider-thumb-shadow-color);
     background: $slider-thumb-color;
-    border: $slider-thumb-border;
+    border: 2px solid $slider-thumb-color;
     border-radius: $slider-thumb-radius;
     cursor: pointer;
     height: $slider-thumb-height;
     width: $slider-thumb-width;
+
+    &:hover {
+        background: $slider-thumb-color-hover;
+        border: 2px solid $slider-thumb-color-hover;
+    }
+
+    &:active {
+        background: $slider-thumb-color-active;
+        border: 2px solid $slider-thumb-color-active;
+    }
 }
 
 [type='range'] {
@@ -75,18 +87,17 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
     }
 
     &:focus {
-        outline: 0;
-
-        &::-webkit-slider-runnable-track {
-            background: lighten($slider-track-color, $contrast);
+        &::-webkit-slider-thumb {
+            background: $slider-thumb-color-hover;
+            border: 2px solid $focus;
         }
-
-        &::-ms-fill-lower {
-            background: $slider-track-color;
+        &::-moz-range-thumb {
+            background: $slider-thumb-color-hover;
+            border: 2px solid $focus;
         }
-
-        &::-ms-fill-upper {
-            background: lighten($slider-track-color, $contrast);
+        &::-ms-thumb {
+            background: $slider-thumb-color-hover;
+            border: 2px solid $focus;
         }
     }
 
@@ -109,7 +120,7 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
         background: $slider-track-color;
         border: $slider-track-border;
         border-radius: $slider-track-radius;
-        height: $slider-track-height / 2;
+        height: $slider-track-height;
     }
 
     &::-moz-range-thumb {
