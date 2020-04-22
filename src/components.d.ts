@@ -249,7 +249,10 @@ export namespace Components {
     interface PdNotification {
     }
     interface PdProgressBar {
+        "color": "primary" | "success" | "danger" | "warning" | "info";
         "decimals": number;
+        "label": boolean;
+        "striped": boolean;
         "type": "determinate" | "indeterminate";
         "value": number;
     }
@@ -813,7 +816,10 @@ declare namespace LocalJSX {
     interface PdNotification {
     }
     interface PdProgressBar {
+        "color"?: "primary" | "success" | "danger" | "warning" | "info";
         "decimals"?: number;
+        "label"?: boolean;
+        "striped"?: boolean;
         "type"?: "determinate" | "indeterminate";
         "value"?: number;
     }
