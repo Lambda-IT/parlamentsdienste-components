@@ -44,6 +44,18 @@
     &.pd-alert-light {
         color: $black;
         background-color: setcolor(light, enabled);
+
+        .pd-alert-action .pd-alert-action-text {
+            color: $black;
+        }
+
+        .pd-alert-action-cancel {
+            fill: $black;
+
+            &:hover {
+                fill: $gray;
+            }
+        }
     }
 }
 

@@ -44,7 +44,7 @@
 | `iconLocation` | `icon-location` |                                           | `"left" \| "right"`                                                              | `'left'`    |
 | `outline`      | `outline`       | Use outline schema                        | `boolean`                                                                        | `false`     |
 | `size`         | `size`          | Button size                               | `"large" \| "normal" \| "small"`                                                 | `'normal'`  |
-| `target`       | `target`        | Sets target for link button e.g. '_blank' | `string`                                                                         | `undefined` |
+| `target`       | `target`        | Sets target for link button e.g. '_blank' | `string`                                                                         | `'_blank'`  |
 | `type`         | `type`          | Sets button type \|text\|submit\|reset\|  | `"button" \| "submit" \| "text"`                                                 | `'button'`  |
 
 
