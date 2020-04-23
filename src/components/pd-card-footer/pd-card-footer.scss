@@ -1,9 +1,9 @@
 :host {
     display: flex;
     align-items: center;
-    border-top: 2px solid $gray-3;
-    padding: 0 20px;
-    min-height: 48px;
+    border-top: 0.125em solid $gray-3;
+    padding: 0 1.25em;
+    min-height: 3em;
 }
 
 *,

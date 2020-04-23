@@ -25,7 +25,7 @@
 .pd-table-header-row {
     display: flex;
     flex-direction: row;
-    height: 48px;
+    height: 3em;
     color: $white;
     overflow: hidden;
 
@@ -33,19 +33,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 0.625em;
 
         &.pd-table-sortable {
             user-select: none;
             cursor: pointer;
 
             &.pd-table-sort-asc::after {
-                padding-left: 5px;
+                padding-left: 0.25em;
                 content: '🠟';
             }
 
             &.pd-table-sort-desc::after {
-                padding-left: 5px;
+                padding-left: 0.25em;
                 content: '🠝';
             }
         }
@@ -58,8 +58,8 @@
 
         &.dark {
             background-color: $blue-whale;
-            border-bottom: 2px solid $blue-whale;
-            border-top: 2px solid $blue-whale;
+            border-bottom: 0.125em solid $blue-whale;
+            border-top: 0.125em solid $blue-whale;
 
             &.pd-table-sortable {
                 &:hover {
@@ -73,8 +73,8 @@
         }
 
         &.light {
-            border-bottom: 2px solid $blue-whale;
-            border-top: 2px solid $blue-whale;
+            border-bottom: 0.125em solid $blue-whale;
+            border-top: 0.125em solid $blue-whale;
             color: $black;
 
             &.pd-table-sortable {
@@ -90,8 +90,8 @@
 
         &.gray {
             background-color: $gray-3;
-            border-bottom: 2px solid $gray-3;
-            border-top: 2px solid $gray-3;
+            border-bottom: 0.125em solid $gray-3;
+            border-top: 0.125em solid $gray-3;
             color: $black;
 
             &.pd-table-sortable {
@@ -111,7 +111,7 @@
     .pd-table-row {
         display: flex;
         flex-direction: row;
-        height: 48px;
+        height: 3em;
         overflow: hidden;
 
         &:last-child {
@@ -126,8 +126,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 10px;
-    border-bottom: 2px solid $gray-3;
+    padding: 0 0.625em;
+    border-bottom: 0.125em solid $gray-3;
 
     span {
         white-space: nowrap;

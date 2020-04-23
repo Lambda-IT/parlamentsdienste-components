@@ -9,7 +9,7 @@ pd-radio {
 .pd-radio-label {
     display: flex;
     align-items: center;
-    margin: 6px 0;
+    margin: 0.375em 0;
 }
 
 label > input {
@@ -21,8 +21,8 @@ label > input {
     & + .pd-radio-inner {
         cursor: pointer;
         position: relative;
-        width: 20px;
-        height: 20px;
+        width: 1.25em;
+        height: 1.25em;
 
         &:before,
         &:after {
@@ -40,7 +40,7 @@ label > input {
 
         &:after {
             content: '';
-            border: 2px solid setcolor(primary, enabled);
+            border: 0.125em solid setcolor(primary, enabled);
             border-radius: 100%;
         }
     }
@@ -48,7 +48,7 @@ label > input {
     &:hover:enabled {
         & + .pd-radio-inner {
             &:after {
-                border: 2px solid setcolor(primary, hover);
+                border: 0.125em solid setcolor(primary, hover);
             }
         }
     }
@@ -56,7 +56,7 @@ label > input {
     &:active:enabled {
         & + .pd-radio-inner {
             &:after {
-                border: 2px solid setcolor(primary, pressed);
+                border: 0.125em solid setcolor(primary, pressed);
             }
         }
     }
@@ -65,7 +65,7 @@ label > input {
         & + .pd-radio-inner {
             &:after {
                 content: '';
-                border: 2px solid $focus;
+                border: 0.125em solid $focus;
                 border-radius: 100%;
             }
         }
@@ -74,7 +74,7 @@ label > input {
     &:disabled {
         & + .pd-radio-inner {
             &:after {
-                border: 2px solid setcolor(primary, disabled);
+                border: 0.125em solid setcolor(primary, disabled);
             }
         }
     }
@@ -90,7 +90,7 @@ label > input {
     &:checked {
         & + .pd-radio-inner {
             &:after {
-                border: 6px solid setcolor(primary, enabled);
+                border: 0.375em solid setcolor(primary, enabled);
                 border-radius: 100%;
             }
         }
@@ -98,7 +98,7 @@ label > input {
         &:hover:enabled {
             & + .pd-radio-inner {
                 &:after {
-                    border: 6px solid setcolor(primary, hover);
+                    border: 0.375em solid setcolor(primary, hover);
                 }
             }
         }
@@ -106,7 +106,7 @@ label > input {
         &:active:enabled {
             & + .pd-radio-inner {
                 &:after {
-                    border: 6px solid setcolor(primary, pressed);
+                    border: 0.375em solid setcolor(primary, pressed);
                 }
             }
         }
@@ -115,14 +115,14 @@ label > input {
             & + .pd-radio-inner {
                 &:after {
                     content: '';
-                    border: 6px solid $focus;
+                    border: 0.375em solid $focus;
                     border-radius: 100%;
                 }
                 &:before {
                     content: '';
-                    width: 10px;
-                    height: 10px;
-                    margin: 5px;
+                    width: 0.625em;
+                    height: 0.625em;
+                    margin: 0.3em;
                     background-color: setcolor(primary, enabled);
                 }
             }
@@ -131,5 +131,5 @@ label > input {
 }
 
 .pd-radio-text {
-    padding-left: 10px;
+    padding-left: 0.625em;
 }

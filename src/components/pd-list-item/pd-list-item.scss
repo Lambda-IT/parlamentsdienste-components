@@ -4,7 +4,7 @@
 }
 
 .pd-list-item-status {
-    width: 50px;
+    width: 3.125em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,8 +13,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20px;
-        height: 20px;
+        width: 1.25em;
+        height: 1.25em;
         border-radius: 100%;
         fill: $white;
 
@@ -32,16 +32,16 @@
         }
 
         pd-icon {
-            height: 9px;
+            height: 0.6em;
         }
     }
 }
 
 .pd-list-item-content {
-    padding: 12px;
+    padding: 0.75em;
     flex: 1 1 auto;
 }
 
 .pd-list-item-status + .pd-list-item-content {
-    padding: 12px 12px 12px 0;
+    padding: 0.75em 0.75em 0.75em 0;
 }

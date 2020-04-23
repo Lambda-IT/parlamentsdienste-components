@@ -12,8 +12,8 @@
 
 .pd-alert {
     color: white;
-    border-radius: 4px;
-    padding: 14px 20px;
+    border-radius: 0.25em;
+    padding: 0.875em 1.25em;
     font-weight: 700;
     display: flex;
 
@@ -71,7 +71,7 @@
 
     .pd-alert-action-text {
         color: $white;
-        margin-left: 10px;
+        margin-left: 0.625em;
         white-space: nowrap;
     }
 
@@ -85,7 +85,7 @@
 
     .pd-alert-action-cancel {
         fill: $white;
-        margin-left: 10px;
+        margin-left: 0.625em;
         cursor: pointer;
 
         &:hover {

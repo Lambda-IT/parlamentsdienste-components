@@ -15,8 +15,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
+    width: 5em;
+    height: 5em;
     color: $blue-whale;
     border: none;
     overflow: hidden;
@@ -29,8 +29,8 @@
     }
 
     & * {
-        font-size: 9px;
-        line-height: 11px;
+        font-size: 0.55rem;
+        line-height: 0.75rem;
         font-weight: 700;
     }
 
@@ -72,10 +72,11 @@
 
 .pd-sidebar-text {
     text-align: center;
-    padding: 0 6px;
+    padding: 0 0.375em;
 }
 
 .pd-sidebar-icon {
-    padding: 6px;
+    padding: 0.375em;
     font-weight: normal;
+    font-size: 1em;
 }

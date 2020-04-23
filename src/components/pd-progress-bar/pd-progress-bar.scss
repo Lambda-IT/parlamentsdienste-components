@@ -1,4 +1,6 @@
-$progress-height: 16px;
+@include resetControlFonts();
+
+$progress-height: 1rem;
 
 :host {
     display: flex;
@@ -15,10 +17,10 @@ $progress-height: 16px;
     display: flex;
     height: $progress-height;
     overflow: hidden;
-    font-size: 12px;
+    font-size: 0.75em;
     line-height: $progress-height;
     background-color: $gray-3;
-    border-radius: 4px;
+    border-radius: 0.25em;
     width: 100%;
     color: $white;
 }
@@ -65,12 +67,4 @@ $progress-height: 16px;
         transparent
     );
     background-size: 1rem 1rem;
-}
-
-.pd-progress-bar-text {
-    color: white;
-    position: relative;
-    border-radius: 100%;
-    margin-left: -5px;
-    left: 50%;
 }

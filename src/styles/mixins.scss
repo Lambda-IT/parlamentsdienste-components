@@ -1,29 +1,29 @@
 @mixin button-scheme($colorscheme) {
     transition: box-shadow 0.15s ease-in-out;
     background-color: setcolor($colorscheme, enabled);
-    border: 2px solid setcolor($colorscheme, enabled);
+    border: 0.125em solid setcolor($colorscheme, enabled);
     color: setcolor($colorscheme, enabled-contrast);
 
     &:hover:enabled {
         background-color: setcolor($colorscheme, hover);
-        border: 2px solid setcolor($colorscheme, hover);
+        border: 0.125em solid setcolor($colorscheme, hover);
         color: setcolor($colorscheme, hover-contrast);
     }
 
     &:disabled {
         background-color: setcolor($colorscheme, disabled);
-        border: 2px solid setcolor($colorscheme, disabled);
+        border: 0.125em solid setcolor($colorscheme, disabled);
         color: setcolor($colorscheme, disabled-contrast);
     }
 
     &:active:enabled {
         background-color: setcolor($colorscheme, pressed);
-        border: 2px solid setcolor($colorscheme, pressed);
+        border: 0.125em solid setcolor($colorscheme, pressed);
         color: setcolor($colorscheme, pressed-contrast);
     }
 
     &:focus {
-        box-shadow: 0 0 0 4px $focus;
+        box-shadow: 0 0 0 0.25em $focus;
         z-index: 2;
     }
 
@@ -52,7 +52,7 @@
     input,
     a,
     button {
-        font: 16px/24px Avenir;
+        font: 1rem/1.5rem Avenir;
         letter-spacing: 0.19px;
     }
 }

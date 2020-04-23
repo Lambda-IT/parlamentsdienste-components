@@ -2,7 +2,7 @@
 
 :host {
     display: block;
-    padding: 0 16px;
+    padding: 0 1em;
 }
 
 *,
@@ -16,8 +16,6 @@
     border: none;
     color: $cyan-3;
     font-weight: 700;
-    font-size: $font-size-base;
-    letter-spacing: 0.19px;
     text-decoration: none;
     cursor: pointer;
 
