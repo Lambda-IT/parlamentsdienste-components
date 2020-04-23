@@ -5,9 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DropdownItem, } from "./components/dropdown/dropdown";
+import { DropdownItem, } from "./components/pd-dropdown/pd-dropdown";
 import { InputChangeEventDetail, PdColumn, TextFieldTypes, } from "./interface";
 export namespace Components {
+    interface PdAlert {
+    }
     interface PdBackdrop {
         /**
           * Invisible backdrop when set to false
@@ -250,8 +252,6 @@ export namespace Components {
         "target": string;
         "text": string;
     }
-    interface PdNotification {
-    }
     interface PdProgressBar {
         "color": "primary" | "success" | "danger" | "warning" | "info";
         "decimals": number;
@@ -354,8 +354,16 @@ export namespace Components {
     }
     interface PdTimeline {
     }
+    interface PdToast {
+    }
 }
 declare global {
+    interface HTMLPdAlertElement extends Components.PdAlert, HTMLStencilElement {
+    }
+    var HTMLPdAlertElement: {
+        prototype: HTMLPdAlertElement;
+        new (): HTMLPdAlertElement;
+    };
     interface HTMLPdBackdropElement extends Components.PdBackdrop, HTMLStencilElement {
     }
     var HTMLPdBackdropElement: {
@@ -470,12 +478,6 @@ declare global {
         prototype: HTMLPdNavbarItemElement;
         new (): HTMLPdNavbarItemElement;
     };
-    interface HTMLPdNotificationElement extends Components.PdNotification, HTMLStencilElement {
-    }
-    var HTMLPdNotificationElement: {
-        prototype: HTMLPdNotificationElement;
-        new (): HTMLPdNotificationElement;
-    };
     interface HTMLPdProgressBarElement extends Components.PdProgressBar, HTMLStencilElement {
     }
     var HTMLPdProgressBarElement: {
@@ -530,7 +532,14 @@ declare global {
         prototype: HTMLPdTimelineElement;
         new (): HTMLPdTimelineElement;
     };
+    interface HTMLPdToastElement extends Components.PdToast, HTMLStencilElement {
+    }
+    var HTMLPdToastElement: {
+        prototype: HTMLPdToastElement;
+        new (): HTMLPdToastElement;
+    };
     interface HTMLElementTagNameMap {
+        "pd-alert": HTMLPdAlertElement;
         "pd-backdrop": HTMLPdBackdropElement;
         "pd-button": HTMLPdButtonElement;
         "pd-button-group": HTMLPdButtonGroupElement;
@@ -550,7 +559,6 @@ declare global {
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
-        "pd-notification": HTMLPdNotificationElement;
         "pd-progress-bar": HTMLPdProgressBarElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-search": HTMLPdSearchElement;
@@ -560,9 +568,12 @@ declare global {
         "pd-table": HTMLPdTableElement;
         "pd-tag": HTMLPdTagElement;
         "pd-timeline": HTMLPdTimelineElement;
+        "pd-toast": HTMLPdToastElement;
     }
 }
 declare namespace LocalJSX {
+    interface PdAlert {
+    }
     interface PdBackdrop {
         "onPdOnTap"?: (event: CustomEvent<void>) => void;
         /**
@@ -821,8 +832,6 @@ declare namespace LocalJSX {
         "target"?: string;
         "text"?: string;
     }
-    interface PdNotification {
-    }
     interface PdProgressBar {
         "color"?: "primary" | "success" | "danger" | "warning" | "info";
         "decimals"?: number;
@@ -945,7 +954,10 @@ declare namespace LocalJSX {
     }
     interface PdTimeline {
     }
+    interface PdToast {
+    }
     interface IntrinsicElements {
+        "pd-alert": PdAlert;
         "pd-backdrop": PdBackdrop;
         "pd-button": PdButton;
         "pd-button-group": PdButtonGroup;
@@ -965,7 +977,6 @@ declare namespace LocalJSX {
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
-        "pd-notification": PdNotification;
         "pd-progress-bar": PdProgressBar;
         "pd-radio": PdRadio;
         "pd-search": PdSearch;
@@ -975,12 +986,14 @@ declare namespace LocalJSX {
         "pd-table": PdTable;
         "pd-tag": PdTag;
         "pd-timeline": PdTimeline;
+        "pd-toast": PdToast;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
             "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
@@ -1000,7 +1013,6 @@ declare module "@stencil/core" {
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
-            "pd-notification": LocalJSX.PdNotification & JSXBase.HTMLAttributes<HTMLPdNotificationElement>;
             "pd-progress-bar": LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
@@ -1010,6 +1022,7 @@ declare module "@stencil/core" {
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-tag": LocalJSX.PdTag & JSXBase.HTMLAttributes<HTMLPdTagElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
+            "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }
     }
 }
