@@ -39,7 +39,7 @@ export class Button {
     /**
      * Sets target for link button e.g. '_blank'
      */
-    @Prop() target: string;
+    @Prop() target: string = '_blank';
 
     @Prop() iconLocation: 'left' | 'right' = 'left';
 

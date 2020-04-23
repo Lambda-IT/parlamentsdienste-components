@@ -12,7 +12,7 @@ export const primary = () => {
         <pd-navbar>
             <pd-navbar-item text="Startseite"></pd-navbar-item>
             <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
-            <pd-navbar-item href="http://www.google.ch" target="_blank" text="VORSTOSSplus"></pd-navbar-item>
+            <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
         </pd-navbar>
     `;
 };

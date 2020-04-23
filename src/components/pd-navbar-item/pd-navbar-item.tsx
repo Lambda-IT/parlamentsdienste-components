@@ -18,7 +18,7 @@ export class NavbarItem {
     /**
      * Sets target for link button e.g. '_blank'
      */
-    @Prop() target: string;
+    @Prop() target: string = '_blank';
 
     render() {
         const { href, enabled, target, text } = this;
