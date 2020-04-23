@@ -16,6 +16,11 @@ export class Card {
     @Prop() collapsed: boolean = false;
 
     /**
+     * Show/hide collapse button
+     */
+    @Prop() collapsible: boolean = false;
+
+    /**
      * Emitted when the value has changed.
      */
     @Event() pdCollapsed!: EventEmitter<any>;
@@ -28,6 +33,10 @@ export class Card {
 
     componentDidLoad() {
         this.contentWrapper = this.element.shadowRoot.querySelector('.pd-card-content-wrapper');
+        // start collapsed
+        if (this.collapsed) {
+            this.contentWrapper.style.height = '0';
+        }
     }
 
     render() {

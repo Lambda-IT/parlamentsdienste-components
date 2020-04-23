@@ -3,7 +3,7 @@ pd-list {
     flex-direction: column;
 
     pd-list-item {
-        border-bottom: 2px solid $gray-3;
+        border-bottom: 2px solid var(--pd-list-border-color, $gray-3);
     }
 
     pd-list-item:last-child {

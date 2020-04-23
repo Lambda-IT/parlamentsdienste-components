@@ -22,9 +22,15 @@
 </pd-list>
 ```
 
+## Styles
+
+| Style                    | Default       | Description                        |
+| ------------------------ | ------------- | ---------------------------------- |
+| `--pd-list-border-color` | `gray-3`      | bottom border color of a list item |
+| `--pd-list-background`   | `transparent` | background color of a list item    |
+
 <!-- Auto Generated Below -->
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

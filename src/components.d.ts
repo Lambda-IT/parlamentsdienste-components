@@ -52,6 +52,10 @@ export namespace Components {
           * Expands / collapses the card content
          */
         "collapsed": boolean;
+        /**
+          * Show/hide collapse button
+         */
+        "collapsible": boolean;
     }
     interface PdCardContent {
     }
@@ -604,6 +608,10 @@ declare namespace LocalJSX {
           * Expands / collapses the card content
          */
         "collapsed"?: boolean;
+        /**
+          * Show/hide collapse button
+         */
+        "collapsible"?: boolean;
         /**
           * Emitted when the value has changed.
          */

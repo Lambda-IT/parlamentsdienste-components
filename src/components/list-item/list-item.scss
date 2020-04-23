@@ -1,9 +1,6 @@
 :host {
     display: flex;
-
-    &:last-child {
-        background-color: red;
-    }
+    background-color: var(--pd-list-background, transparent);
 }
 
 .pd-list-item-status {
