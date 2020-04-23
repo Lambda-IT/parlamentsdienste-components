@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event     | Description | Type                |
-| --------- | ----------- | ------------------- |
-| `pdOnTap` |             | `CustomEvent<void>` |
+| Event       | Description | Type                |
+| ----------- | ----------- | ------------------- |
+| `pd-on-tap` |             | `CustomEvent<void>` |
 
 
 ## Dependencies

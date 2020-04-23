@@ -29,12 +29,12 @@ export class Slider {
     /**
      * Emitted when the value has changed.
      */
-    @Event() pdOnInput!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when slider has been released.
      */
-    @Event() pdOnChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<InputChangeEventDetail>;
 
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;

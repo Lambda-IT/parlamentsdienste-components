@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event         | Description                         | Type               |
-| ------------- | ----------------------------------- | ------------------ |
-| `pdCollapsed` | Emitted when the value has changed. | `CustomEvent<any>` |
+| Event             | Description                         | Type               |
+| ----------------- | ----------------------------------- | ------------------ |
+| `pd-on-collapsed` | Emitted when the value has changed. | `CustomEvent<any>` |
 
 
 ----------------------------------------------

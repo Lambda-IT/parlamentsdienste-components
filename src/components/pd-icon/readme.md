@@ -28,28 +28,34 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                    | Type                               | Default     |
-| ------------- | -------------- | ---------------------------------------------- | ---------------------------------- | ----------- |
-| `flip`        | `flip`         | Flip in X/Y direction                          | `"x" \| "xy" \| "y"`               | `undefined` |
-| `name`        | `name`         | Name of an icon from the provided gallery      | `string`                           | `undefined` |
-| `rotate`      | `rotate`       | Rotation in 'deg'                              | `number`                           | `0`         |
-| `size`        | `size`         | Size of the icon                               | `"default" \| "large" \| "normal"` | `'default'` |
-| `spin`        | `spin`         | Spin animation in ms per rotation              | `number`                           | `undefined` |
-| `spinReverse` | `spin-reverse` | change animation direction                     | `boolean`                          | `false`     |
-| `src`         | `src`          | Specifies the `src` url of an SVG file to use. | `string`                           | `undefined` |
+| Property      | Attribute      | Description                                    | Type                 | Default     |
+| ------------- | -------------- | ---------------------------------------------- | -------------------- | ----------- |
+| `flip`        | `flip`         | Flip in X/Y direction                          | `"x" \| "xy" \| "y"` | `undefined` |
+| `name`        | `name`         | Name of an icon from the provided gallery      | `string`             | `undefined` |
+| `rotate`      | `rotate`       | Rotation in 'deg'                              | `number`             | `0`         |
+| `size`        | `size`         | Size of the icon in 'em'                       | `number`             | `undefined` |
+| `spin`        | `spin`         | Spin animation in ms per rotation              | `number`             | `undefined` |
+| `spinReverse` | `spin-reverse` | change animation direction                     | `boolean`            | `false`     |
+| `src`         | `src`          | Specifies the `src` url of an SVG file to use. | `string`             | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
+ - [pd-alert](../pd-alert)
+ - [pd-card-header](../pd-card-header)
  - [pd-list-item](../pd-list-item)
+ - [pd-navbar](../pd-navbar)
  - [pd-sidebar-item](../pd-sidebar-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  pd-alert --> pd-icon
+  pd-card-header --> pd-icon
   pd-list-item --> pd-icon
+  pd-navbar --> pd-icon
   pd-sidebar-item --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

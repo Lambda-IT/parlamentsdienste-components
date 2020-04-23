@@ -23,11 +23,11 @@ export class Card {
     /**
      * Emitted when the value has changed.
      */
-    @Event() pdCollapsed!: EventEmitter<any>;
+    @Event({ eventName: 'pd-on-collapsed' }) pdOnCollapsed!: EventEmitter<any>;
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
-        this.pdCollapsed.emit({ collapsed });
+        this.pdOnCollapsed.emit({ collapsed });
         collapsed ? collapse(this.contentWrapper) : expand(this.contentWrapper);
     }
 

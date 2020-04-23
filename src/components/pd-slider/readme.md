@@ -19,10 +19,10 @@
 
 ## Events
 
-| Event        | Description                            | Type                                  |
-| ------------ | -------------------------------------- | ------------------------------------- |
-| `pdOnChange` | Emitted when slider has been released. | `CustomEvent<InputChangeEventDetail>` |
-| `pdOnInput`  | Emitted when the value has changed.    | `CustomEvent<InputChangeEventDetail>` |
+| Event          | Description                            | Type                                  |
+| -------------- | -------------------------------------- | ------------------------------------- |
+| `pd-on-change` | Emitted when slider has been released. | `CustomEvent<InputChangeEventDetail>` |
+| `pd-on-input`  | Emitted when the value has changed.    | `CustomEvent<InputChangeEventDetail>` |
 
 
 ----------------------------------------------

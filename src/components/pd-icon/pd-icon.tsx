@@ -26,9 +26,9 @@ export class PdIcon implements ComponentInterface {
     @Prop() name?: string;
 
     /**
-     * Size of the icon
+     * Size of the icon in 'em'
      */
-    @Prop() size?: 'normal' | 'default' | 'large' = 'default';
+    @Prop() size?: number;
 
     /**
      * Rotation in 'deg'
@@ -114,10 +114,10 @@ export class PdIcon implements ComponentInterface {
             <Host
                 role="img"
                 class={{
-                    [`pd-icon-${this.size}`]: !!this.size,
                     spin: !!this.spin,
                 }}
                 style={{
+                    fontSize: `${this.size}em` ?? null,
                     transform: transformStyle ?? null,
                     animationDuration: this.spin ? `${this.spin}ms` : null,
                     animationName: this.spinReverse ? `spin-reverse` : null,

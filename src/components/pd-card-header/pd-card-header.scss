@@ -16,6 +16,12 @@
     box-sizing: border-box;
 }
 
-.pd-card-header {
-    width: 100%;
+.pd-card-header-content {
+    flex: 1 1 auto;
+}
+.pd-card-header-collapse {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    fill: $white;
 }

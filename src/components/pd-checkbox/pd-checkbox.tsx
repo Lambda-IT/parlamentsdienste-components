@@ -25,12 +25,12 @@ export class Checkbox {
 
     @Prop() name: string = '';
 
-    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<any>;
+    @Event({ eventName: 'pd-on-checked' }) pdOnChecked: EventEmitter<any>;
 
     private onClick = (ev: Event) => {
         this.checked = !this.checked;
         this.value = this.checked;
-        this.pdChecked.emit(ev);
+        this.pdOnChecked.emit(ev);
     };
 
     render() {

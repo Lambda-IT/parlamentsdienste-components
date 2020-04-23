@@ -32,24 +32,24 @@ $progress-height: 16px;
     white-space: nowrap;
     width: 100%;
     height: $progress-height;
-    background-color: $cyan-9;
+    background-color: setcolor(primary, enabled);
     transform-origin: left top;
     transition: width 200ms ease;
 
     &.pd-progress-bar-success {
-        background-color: $lime-9;
+        background-color: setcolor(success, enabled);
     }
 
     &.pd-progress-bar-warning {
-        background-color: $yellow-9;
+        background-color: setcolor(warning, enabled);
     }
 
     &.pd-progress-bar-danger {
-        background-color: $red-9;
+        background-color: setcolor(danger, enabled);
     }
 
     &.pd-progress-bar-info {
-        background-color: $blue-9;
+        background-color: setcolor(info, enabled);
     }
 }
 

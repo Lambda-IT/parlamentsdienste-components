@@ -24,7 +24,26 @@
     </head>
     <body>
         <div class="example-components">
-            <pd-alert></pd-alert>
+            <pd-alert href="http://www.google.ch" closable color="primary"
+                >A simple primary alert—check it out!</pd-alert
+            >
+            <pd-alert color="alert" action action-text="a link to click" closable
+                >A simple primary alert—check it out!</pd-alert
+            >
+            <pd-alert
+                color="success"
+                action
+                action-text="a external link to click"
+                action-href="http://www.google.ch"
+                closable
+                >A simple primary alert—check it out!</pd-alert
+            >
+            <pd-alert color="warning" action action-text="a link to click"
+                >A simple primary alert—check it out!</pd-alert
+            >
+            <pd-alert color="info">A simple primary alert—check it out!</pd-alert>
+            <pd-alert color="dark">A simple primary alert—check it out!</pd-alert>
+            <pd-alert color="light">A simple primary alert—check it out!</pd-alert>
             <pd-toast></pd-toast>
             <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
             <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
@@ -38,9 +57,9 @@
             <pd-progress-bar value="0.5" label striped color="info" id="pd-progress-3"></pd-progress-bar>
             <pd-datepicker></pd-datepicker>
             <div>
-                <pd-icon size="small" name="press"></pd-icon>
-                <pd-icon size="default" name="press"></pd-icon>
-                <pd-icon size="large" name="press"></pd-icon>
+                <pd-icon size="1" name="press"></pd-icon>
+                <pd-icon size="2" name="press"></pd-icon>
+                <pd-icon size="3" name="press"></pd-icon>
             </div>
             <div>
                 <pd-icon style="fill: red" flip="x" name="calendar"></pd-icon>
@@ -73,7 +92,7 @@
                 <pd-icon style="fill: red" rotate="180" name="profile"></pd-icon>
                 <pd-icon style="fill: red" rotate="180" name="minus"></pd-icon>
             </div>
-            <pd-card>
+            <pd-card collapsible>
                 <pd-card-header slot="header">Header</pd-card-header>
                 <pd-card-content style="padding: 0px">
                     <pd-list>

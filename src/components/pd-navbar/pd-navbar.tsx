@@ -1,4 +1,4 @@
-import { Component, Host, h, getAssetPath } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 
 @Component({
     tag: 'pd-navbar',
@@ -10,7 +10,7 @@ export class Navbar {
     render() {
         return (
             <Host role="navigation">
-                <img class="pd-navbar-icon" src={getAssetPath(`./assets-navbar/logo_parlament.svg`)}></img>
+                <pd-icon class="pd-navbar-icon" name="parlament" size={3}></pd-icon>
                 <slot></slot>
             </Host>
         );

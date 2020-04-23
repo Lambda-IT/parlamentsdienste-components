@@ -60,22 +60,22 @@ export class Search {
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event() pdInput!: EventEmitter<KeyboardEvent>;
+    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<KeyboardEvent>;
 
     /**
      * Emitted when the value has changed.
      */
-    @Event() pdOnChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when the input loses focus.
      */
-    @Event() pdOnBlur!: EventEmitter<void>;
+    @Event({ eventName: 'pd-on-blur' }) pdOnBlur!: EventEmitter<void>;
 
     /**
      * Emitted when the input has focus.
      */
-    @Event() pdOnFocus!: EventEmitter<void>;
+    @Event({ eventName: 'pd-on-focus' }) pdOnFocus!: EventEmitter<void>;
 
     /**
      * Update the native input element when the value changes
@@ -130,7 +130,7 @@ export class Search {
             this.value = input.value || '';
         }
 
-        this.pdInput.emit(ev as KeyboardEvent);
+        this.pdOnInput.emit(ev as KeyboardEvent);
     };
 
     private onBlur = () => {

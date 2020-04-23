@@ -9,6 +9,30 @@ import { DropdownItem, } from "./components/pd-dropdown/pd-dropdown";
 import { InputChangeEventDetail, PdColumn, TextFieldTypes, } from "./interface";
 export namespace Components {
     interface PdAlert {
+        /**
+          * Show action
+         */
+        "action": boolean;
+        /**
+          * A link displayed to the right side of the alert
+         */
+        "actionHref": string;
+        /**
+          * Target for action href (eg. _blank)
+         */
+        "actionTarget": string;
+        /**
+          * Text to show on action
+         */
+        "actionText": string;
+        /**
+          * Display an option to close the alert
+         */
+        "closable": boolean;
+        /**
+          * Color schema used for the alert
+         */
+        "color": "primary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
     }
     interface PdBackdrop {
         /**
@@ -107,9 +131,9 @@ export namespace Components {
          */
         "rotate": number;
         /**
-          * Size of the icon
+          * Size of the icon in 'em'
          */
-        "size"?: "normal" | "default" | "large";
+        "size"?: number;
         /**
           * Spin animation in ms per rotation
          */
@@ -573,9 +597,37 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PdAlert {
+        /**
+          * Show action
+         */
+        "action"?: boolean;
+        /**
+          * A link displayed to the right side of the alert
+         */
+        "actionHref"?: string;
+        /**
+          * Target for action href (eg. _blank)
+         */
+        "actionTarget"?: string;
+        /**
+          * Text to show on action
+         */
+        "actionText"?: string;
+        /**
+          * Display an option to close the alert
+         */
+        "closable"?: boolean;
+        /**
+          * Color schema used for the alert
+         */
+        "color"?: "primary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+        /**
+          * Emitted when action closed button was pressed.
+         */
+        "onPd-on-closed"?: (event: CustomEvent<MouseEvent>) => void;
     }
     interface PdBackdrop {
-        "onPdOnTap"?: (event: CustomEvent<void>) => void;
+        "onPd-on-tap"?: (event: CustomEvent<void>) => void;
         /**
           * Invisible backdrop when set to false
          */
@@ -626,13 +678,14 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onPdCollapsed"?: (event: CustomEvent<any>) => void;
+        "onPd-on-collapsed"?: (event: CustomEvent<any>) => void;
     }
     interface PdCardContent {
     }
     interface PdCardFooter {
     }
     interface PdCardHeader {
+        "onPd-on-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdCheckbox {
         /**
@@ -644,7 +697,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         "name"?: string;
-        "onPd-checked"?: (event: CustomEvent<any>) => void;
+        "onPd-on-checked"?: (event: CustomEvent<any>) => void;
         /**
           * Checkbox description text
          */
@@ -677,9 +730,9 @@ declare namespace LocalJSX {
          */
         "rotate"?: number;
         /**
-          * Size of the icon
+          * Size of the icon in 'em'
          */
-        "size"?: "normal" | "default" | "large";
+        "size"?: number;
         /**
           * Spin animation in ms per rotation
          */
@@ -758,21 +811,21 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onPd-input"?: (event: CustomEvent<KeyboardEvent>) => void;
-        /**
           * Emitted when the input loses focus.
          */
-        "onPdOnBlur"?: (event: CustomEvent<void>) => void;
+        "onPd-on-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPdOnChange"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-on-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPdOnFocus"?: (event: CustomEvent<void>) => void;
+        "onPd-on-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */
@@ -863,21 +916,21 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onPdInput"?: (event: CustomEvent<KeyboardEvent>) => void;
-        /**
           * Emitted when the input loses focus.
          */
-        "onPdOnBlur"?: (event: CustomEvent<void>) => void;
+        "onPd-on-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPdOnChange"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-on-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPdOnFocus"?: (event: CustomEvent<void>) => void;
+        "onPd-on-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
         "open"?: boolean;
         /**
           * Instructional text that shows before the input has a value.
@@ -916,11 +969,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when slider has been released.
          */
-        "onPdOnChange"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-on-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPdOnInput"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-on-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         "step"?: number;
         "value"?: number | null;
     }

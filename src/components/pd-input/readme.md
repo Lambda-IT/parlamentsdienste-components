@@ -40,12 +40,12 @@
 
 ## Events
 
-| Event        | Description                             | Type                                  |
-| ------------ | --------------------------------------- | ------------------------------------- |
-| `pd-input`   | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>`          |
-| `pdOnBlur`   | Emitted when the input loses focus.     | `CustomEvent<void>`                   |
-| `pdOnChange` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
-| `pdOnFocus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
+| Event          | Description                             | Type                                  |
+| -------------- | --------------------------------------- | ------------------------------------- |
+| `pd-on-blur`   | Emitted when the input loses focus.     | `CustomEvent<void>`                   |
+| `pd-on-change` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
+| `pd-on-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
+| `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>`          |
 
 
 ## Methods

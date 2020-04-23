@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, getAssetPath, State } from '@stencil/core';
+import { Component, Host, h, Element, State, EventEmitter, Event } from '@stencil/core';
 
 @Component({
     tag: 'pd-card-header',
@@ -14,6 +14,8 @@ export class CardHeader {
 
     private collapsible: boolean = false;
 
+    @Event({ eventName: 'pd-on-collapsed' }) pdOnCollapsed!: EventEmitter<boolean>;
+
     connectedCallback() {
         this.card = this.element.closest('pd-card') as HTMLPdCardElement;
         if (this.card) {
@@ -28,12 +30,13 @@ export class CardHeader {
     private toggle() {
         this.collapsed = !this.collapsed;
         this.card.collapsed = this.collapsed;
+        this.pdOnCollapsed.emit(this.collapsed);
     }
 
     render() {
         return (
             <Host>
-                <div class="pd-card-header">
+                <div class="pd-card-header-content">
                     <slot></slot>
                 </div>
                 {this.rendercollapsible()}
@@ -45,11 +48,8 @@ export class CardHeader {
         if (!this.collapsible) return;
 
         return (
-            <div style={{ float: 'right' }} onClick={() => this.toggle()}>
-                <img
-                    src={getAssetPath(`./assets-card-header/icon_collapse.svg`)}
-                    style={{ transform: `rotate(${this.collapsed ? '180deg' : '0deg'})` }}
-                ></img>
+            <div class="pd-card-header-collapse" onClick={() => this.toggle()}>
+                <pd-icon name="caret" size={1.2} rotate={this.collapsed ? 180 : 0}></pd-icon>
             </div>
         );
     }

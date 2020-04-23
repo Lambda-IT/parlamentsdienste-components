@@ -36,6 +36,6 @@ export class SidebarItem {
     }
 
     private renderIcon(src) {
-        return <pd-icon src={src}></pd-icon>;
+        return <pd-icon src={src} size={3}></pd-icon>;
     }
 }

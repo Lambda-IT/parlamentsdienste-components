@@ -19,13 +19,13 @@
         fill: $white;
 
         &.pd-list-item-status-success {
-            background-color: $lime-9;
+            background-color: setcolor(success, enabled);
         }
         &.pd-list-item-status-danger {
-            background-color: $red-9;
+            background-color: setcolor(danger, enabled);
         }
         &.pd-list-item-status-warning {
-            background-color: $yellow-9;
+            background-color: setcolor(warning, enabled);
         }
         &.pd-list-item-status-unset {
             background-color: $gray-3;

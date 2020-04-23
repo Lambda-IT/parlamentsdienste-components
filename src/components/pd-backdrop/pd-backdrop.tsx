@@ -15,7 +15,7 @@ export class Backdrop {
     @Prop() visible = true;
 
     @Event({
-        eventName: 'pdOnTap',
+        eventName: 'pd-on-tap',
         composed: true,
         cancelable: true,
         bubbles: true,

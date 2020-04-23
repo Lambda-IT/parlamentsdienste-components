@@ -1,0 +1,83 @@
+@include resetControlFonts();
+
+:host {
+    display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+.pd-alert {
+    color: white;
+    border-radius: 4px;
+    padding: 14px 20px;
+    font-weight: 700;
+    display: flex;
+
+    &.pd-alert-primary {
+        background-color: setcolor(primary, enabled);
+    }
+
+    &.pd-alert-alert {
+        background-color: setcolor(danger, enabled);
+    }
+
+    &.pd-alert-warning {
+        background-color: setcolor(warning, enabled);
+    }
+
+    &.pd-alert-info {
+        background-color: setcolor(info, enabled);
+    }
+
+    &.pd-alert-success {
+        background-color: setcolor(success, enabled);
+    }
+
+    &.pd-alert-dark {
+        background-color: setcolor(dark, enabled);
+    }
+
+    &.pd-alert-light {
+        color: $black;
+        background-color: setcolor(light, enabled);
+    }
+}
+
+.pd-alert-text {
+    flex: 1 1 auto;
+}
+
+.pd-alert-action {
+    display: flex;
+    margin: -14px 0;
+    align-items: center;
+    text-decoration: underline;
+
+    .pd-alert-action-text {
+        color: $white;
+        margin-left: 10px;
+        white-space: nowrap;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+        font-weight: 700 !important;
+        background-color: transparent;
+        border: none;
+    }
+
+    .pd-alert-action-cancel {
+        fill: $white;
+        margin-left: 10px;
+        cursor: pointer;
+
+        &:hover {
+            fill: $bon-jour;
+        }
+    }
+}

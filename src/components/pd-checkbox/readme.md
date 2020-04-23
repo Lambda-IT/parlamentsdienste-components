@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `pd-checked` |             | `CustomEvent<any>` |
+| Event           | Description | Type               |
+| --------------- | ----------- | ------------------ |
+| `pd-on-checked` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------
