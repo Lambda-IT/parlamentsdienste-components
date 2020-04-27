@@ -167,7 +167,7 @@
                                 },
                                 addRow: function() {
                                     const ix = this.table.rows.length;
-                                    this.table.rows = [...this.table.rows, { ...this.table.rows[0], id: ix + 1 }];
+                                    this.table.rows = [].concat(this.table.rows).push(Object.assign({},this.table.rows[0], { id: ix + 1 }));
                                 },
                             },
                             computed: {
@@ -307,132 +307,149 @@
                             </pd-sidebar-item>
                         </pd-sidebar>
                     </div>
-                    <div class="col-md-7">
-                        <pd-card class="mt-4" collapsible>
-                            <pd-card-header slot="header">Sample Table</pd-card-header>
-                            <pd-card-content>
-                                <div class="mb-4">
-                                    <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
-                                    <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
-                                    <p>Freitag, 28. Juni 2019, 10.15-18.30 Uhr</p>
-                                    <a href="https://lambda-it.ch">Zur Sitzungsansicht</a>
-                                </div>
-                                <pd-table
-                                    header-style="light"
-                                    :rows.prop="table.rows"
-                                    :columns.prop="table.columns"
-                                ></pd-table>
-                            </pd-card-content>
-                            <pd-card-footer slot="footer">
-                                <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
-                            </pd-card-footer>
-                        </pd-card>
-                        <pd-card class="mt-4" collapsible>
-                            <pd-card-header slot="header"
-                                >Session – Eintritt in virtuellen Beratungsraum</pd-card-header
-                            >
-                            <pd-card-content>
-                                <div class="row">
-                                    <pd-card class="col-sm-6">
-                                        <pd-card-header slot="header">Ratsunterlagen</pd-card-header>
-                                        <pd-card-content>
-                                            <div>Ratsunterlagen</div>
-                                        </pd-card-content>
-                                    </pd-card>
-                                    <pd-card
-                                        class="col-sm-6"
-                                        style="--pd-list-background: #f8f9fa; --pd-list-border-color: white"
+                    <div class="col-11">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Start</a></li>
+                                <li class="breadcrumb-item"><a href="#">Ablage</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Meine Ablage</li>
+                            </ol>
+                        </nav>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <pd-card class="mt-4" collapsible>
+                                    <pd-card-header slot="header">Sample Table</pd-card-header>
+                                    <pd-card-content>
+                                        <div class="mb-4">
+                                            <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
+                                            <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
+                                            <p>Freitag, 28. Juni 2019, 10.15-18.30 Uhr</p>
+                                            <a href="https://lambda-it.ch">Zur Sitzungsansicht</a>
+                                        </div>
+                                        <pd-table
+                                            header-style="light"
+                                            :rows.prop="table.rows"
+                                            :columns.prop="table.columns"
+                                        ></pd-table>
+                                    </pd-card-content>
+                                    <pd-card-footer slot="footer">
+                                        <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
+                                    </pd-card-footer>
+                                </pd-card>
+                                <pd-card class="mt-4" collapsible>
+                                    <pd-card-header slot="header"
+                                        >Session – Eintritt in virtuellen Beratungsraum</pd-card-header
                                     >
-                                        <pd-card-header slot="header">Aktuelle Rednerliste</pd-card-header>
-                                        <pd-card-content style="--pd-card-content-padding: 0;" >
-                                                <pd-list ><draggable v-model="rednerListe" @start="drag=true" @end="drag=false">
-                                                    <pd-list-item
-                                                        v-for="redner in rednerListe"
-                                                        :key="redner.id"
-                                                        :status="redner.status"
-                                                    >
-                                                        <p class="mb-1">{{redner.id}}</p>
-                                                        <h5 class="mb-1">{{redner.title}}</h5>
-                                                        <p class="mb-1">{{redner.description}}</p>
-                                                    </pd-list-item></draggable>
-                                                </pd-list>
-                                        </pd-card-content>
-                                    </pd-card>
-                                </div>
-                            </pd-card-content>
-                        </pd-card>
-                    </div>
-                    <div class="col-md-4">
-                        <pd-card class="mt-4" collapsible>
-                            <pd-card-header slot="header">Meine Anträge</pd-card-header>
-                            <pd-card-content style="--pd-card-content-padding: 0;">
-                                <pd-list>
-                                    <pd-list-item status="success">
-                                        <p class="mb-1">18.3708</p>
-                                        <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
-                                    </pd-list-item>
-                                    <pd-list-item status="danger">
-                                        <p class="mb-1">16.3112</p>
-                                        <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                                    </pd-list-item>
-                                    <pd-list-item status="unset">
-                                        <p class="mb-1">17.4654</p>
-                                        <a class="mb-1">SRB-NR: Antrag auf Ablehnung </a>
-                                    </pd-list-item>
-                                </pd-list>
-                            </pd-card-content>
-                            <pd-card-footer slot="footer">
-                                <pd-button href="https://lambda-it.ch" type="text" icon-location="right"
-                                    >Zur Antragsverwaltung<pd-icon
-                                        slot="icon"
-                                        size="2"
-                                        style="fill: var(--primary); vertical-align: bottom;"
-                                        src="./assets/icons/icon_link_intern.svg"
-                                    ></pd-icon
-                                ></pd-button>
-                            </pd-card-footer>
-                        </pd-card>
-                        <pd-card class="mt-4" collapsible>
-                            <pd-card-header slot="header">Sample Form</pd-card-header>
+                                    <pd-card-content>
+                                        <div class="row">
+                                            <pd-card class="col-sm-6">
+                                                <pd-card-header slot="header">Ratsunterlagen</pd-card-header>
+                                                <pd-card-content>
+                                                    <div>Ratsunterlagen</div>
+                                                </pd-card-content>
+                                            </pd-card>
+                                            <pd-card
+                                                class="col-sm-6"
+                                                style="--pd-list-background: #f8f9fa; --pd-list-border-color: white"
+                                            >
+                                                <pd-card-header slot="header">Aktuelle Rednerliste</pd-card-header>
+                                                <pd-card-content style="--pd-card-content-padding: 0;">
+                                                    <pd-list
+                                                        ><draggable
+                                                            v-model="rednerListe"
+                                                            @start="drag=true"
+                                                            @end="drag=false"
+                                                        >
+                                                            <pd-list-item
+                                                                v-for="redner in rednerListe"
+                                                                :key="redner.id"
+                                                                :status="redner.status"
+                                                            >
+                                                                <p class="mb-1">{{redner.id}}</p>
+                                                                <h5 class="mb-1">{{redner.title}}</h5>
+                                                                <p class="mb-1">{{redner.description}}</p>
+                                                            </pd-list-item></draggable
+                                                        >
+                                                    </pd-list>
+                                                </pd-card-content>
+                                            </pd-card>
+                                        </div>
+                                    </pd-card-content>
+                                </pd-card>
+                            </div>
+                            <div class="col-md-4">
+                                <pd-card class="mt-4" collapsible>
+                                    <pd-card-header slot="header">Meine Anträge</pd-card-header>
+                                    <pd-card-content style="--pd-card-content-padding: 0;">
+                                        <pd-list>
+                                            <pd-list-item status="success">
+                                                <p class="mb-1">18.3708</p>
+                                                <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
+                                            </pd-list-item>
+                                            <pd-list-item status="danger">
+                                                <p class="mb-1">16.3112</p>
+                                                <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
+                                            </pd-list-item>
+                                            <pd-list-item status="unset">
+                                                <p class="mb-1">17.4654</p>
+                                                <a class="mb-1">SRB-NR: Antrag auf Ablehnung </a>
+                                            </pd-list-item>
+                                        </pd-list>
+                                    </pd-card-content>
+                                    <pd-card-footer slot="footer">
+                                        <pd-button href="https://lambda-it.ch" type="text" icon-location="right"
+                                            >Zur Antragsverwaltung<pd-icon
+                                                slot="icon"
+                                                size="2"
+                                                style="fill: var(--primary); vertical-align: bottom;"
+                                                src="./assets/icons/icon_link_intern.svg"
+                                            ></pd-icon
+                                        ></pd-button>
+                                    </pd-card-footer>
+                                </pd-card>
+                                <pd-card class="mt-4" collapsible>
+                                    <pd-card-header slot="header">Sample Form</pd-card-header>
 
-                            <pd-card-content>
-                                <form>
-                                    <h1>Heading 1</h1>
-                                    <h2>Heading 2</h2>
-                                    <h3>Heading 3</h3>
-                                    <p>Form</p>
-                                    <pd-input
-                                        v-model-pd="config.button.caption"
-                                        inputmode="text"
-                                        label="button text"
-                                    ></pd-input>
-                                    <h4>{{config.button.caption}}</h4>
-                                    <pd-input
-                                        inputmode="text"
-                                        pattern="button|type|submit"
-                                        label="button type"
-                                        v-model-pd="config.button.type"
-                                    ></pd-input>
-                                    <pd-checkbox
-                                        text="button disabled"
-                                        v-model="config.button.disabled"
-                                        v-model-pd="config.button.disabled"
-                                    ></pd-checkbox>
-                                    <pd-dropdown :items.prop="stateItems" label="button color"></pd-dropdown>
-                                    <h4>{{selectedStateItem.label}}</h4>
-                                </form>
-                                <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
-                            </pd-card-content>
-                            <pd-card-footer slot="footer">
-                                <pd-button
-                                    @click="click"
-                                    :type="config.button.type"
-                                    :disabled="config.button.disabled"
-                                    :color="config.button.color"
-                                    >{{config.button.caption}}</pd-button
-                                >
-                            </pd-card-footer>
-                        </pd-card>
+                                    <pd-card-content>
+                                        <form>
+                                            <h1>Heading 1</h1>
+                                            <h2>Heading 2</h2>
+                                            <h3>Heading 3</h3>
+                                            <p>Form</p>
+                                            <pd-input
+                                                v-model-pd="config.button.caption"
+                                                inputmode="text"
+                                                label="button text"
+                                            ></pd-input>
+                                            <h4>{{config.button.caption}}</h4>
+                                            <pd-input
+                                                inputmode="text"
+                                                pattern="button|type|submit"
+                                                label="button type"
+                                                v-model-pd="config.button.type"
+                                            ></pd-input>
+                                            <pd-checkbox
+                                                text="button disabled"
+                                                v-model="config.button.disabled"
+                                                v-model-pd="config.button.disabled"
+                                            ></pd-checkbox>
+                                            <pd-dropdown :items.prop="stateItems" label="button color"></pd-dropdown>
+                                            <h4>{{selectedStateItem.label}}</h4>
+                                        </form>
+                                        <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
+                                    </pd-card-content>
+                                    <pd-card-footer slot="footer">
+                                        <pd-button
+                                            @click="click"
+                                            :type="config.button.type"
+                                            :disabled="config.button.disabled"
+                                            :color="config.button.color"
+                                            >{{config.button.caption}}</pd-button
+                                        >
+                                    </pd-card-footer>
+                                </pd-card>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
