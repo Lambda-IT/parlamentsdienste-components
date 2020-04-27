@@ -9,7 +9,7 @@ export class PdToast {
     /**
      * The Toast title
      */
-    @Prop() title: string;
+    @Prop() header: string;
 
     /**
      * Additional toast information (e.g. 11 minutes ago)
@@ -35,7 +35,7 @@ export class PdToast {
             >
                 <div class="pd-toast-header">
                     <div class="pd-toast-header-left">
-                        <span class="pd-toast-title">{this.title}</span>
+                        <span class="pd-toast-title">{this.header}</span>
                     </div>
                     <div class="pd-toast-header-right">
                         {this.renderInfo()}

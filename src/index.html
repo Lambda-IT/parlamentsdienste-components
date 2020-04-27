@@ -24,10 +24,14 @@
     </head>
     <body>
         <div class="example-components">
-            <pd-toast title="Toast title goes here in case there is enough space otherwise it breaks" info="5min ago" size="large">
+            <pd-toast
+                header="Toast title goes here in case there is enough space otherwise it breaks"
+                info="5min ago"
+                size="large"
+            >
                 Toast body text goes here
             </pd-toast>
-            <pd-toast title="Toast Title" info="11 minutes ago" size="small">
+            <pd-toast header="Toast Title" info="11 minutes ago" size="small">
                 Toast body text goes here
             </pd-toast>
             <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
@@ -58,7 +62,6 @@
                 closable
                 >A simple primary alert—check it out!</pd-alert
             >
-            <pd-toast></pd-toast>
             <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
             <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
             <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>

@@ -383,6 +383,10 @@ export namespace Components {
     }
     interface PdToast {
         /**
+          * The Toast title
+         */
+        "header": string;
+        /**
           * Additional toast information (e.g. 11 minutes ago)
          */
         "info": string;
@@ -390,10 +394,6 @@ export namespace Components {
           * Changes max-with of the toast
          */
         "size": "small" | "large";
-        /**
-          * The Toast title
-         */
-        "title": string;
     }
 }
 declare global {
@@ -1035,6 +1035,10 @@ declare namespace LocalJSX {
     }
     interface PdToast {
         /**
+          * The Toast title
+         */
+        "header"?: string;
+        /**
           * Additional toast information (e.g. 11 minutes ago)
          */
         "info"?: string;
@@ -1046,10 +1050,6 @@ declare namespace LocalJSX {
           * Changes max-with of the toast
          */
         "size"?: "small" | "large";
-        /**
-          * The Toast title
-         */
-        "title"?: string;
     }
     interface IntrinsicElements {
         "pd-alert": PdAlert;

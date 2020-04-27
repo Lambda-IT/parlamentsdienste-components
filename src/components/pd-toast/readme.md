@@ -9,9 +9,9 @@
 
 | Property | Attribute | Description                                        | Type                 | Default     |
 | -------- | --------- | -------------------------------------------------- | -------------------- | ----------- |
+| `header` | `header`  | The Toast title                                    | `string`             | `undefined` |
 | `info`   | `info`    | Additional toast information (e.g. 11 minutes ago) | `string`             | `undefined` |
 | `size`   | `size`    | Changes max-with of the toast                      | `"large" \| "small"` | `'large'`   |
-| `title`  | `title`   | The Toast title                                    | `string`             | `undefined` |
 
 
 ## Events

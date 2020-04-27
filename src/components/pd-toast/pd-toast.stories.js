@@ -11,13 +11,13 @@ export default {
 };
 
 export const primary = () => {
-    const title = text('title', 'Toast Title');
+    const header = text('header', 'Toast Title');
     const info = text('info', '11 minutes ago');
     const body = text('body', 'Toast body text goes here');
     const size = radios('size', ['large', 'small'], 'large');
 
     return `
-    <pd-toast title="${title}" info="${info}" size="${size}">
+    <pd-toast header="${header}" info="${info}" size="${size}">
         ${body}
     </pd-toast>
     `;
