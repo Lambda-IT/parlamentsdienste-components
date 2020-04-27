@@ -24,6 +24,7 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
             <pd-alert href="http://www.google.ch" closable color="primary"
                 >A simple primary alert—check it out!</pd-alert
             >
@@ -186,6 +187,7 @@
         </div>
         <script>
             const pdInput = document.getElementById('pd-input-0');
+            const pdBreadcrumbs = document.getElementById('pd-breadcrumbs-0');
             const pdProgress = document.getElementById('pd-progress-0');
             const pdSlider = document.getElementById('pd-slider-0');
             const pdBackdrop = document.getElementById('pd-backdrop-0');
@@ -255,6 +257,15 @@
             pdTable2.columns = columns;
             pdTable2.rows = rows;
 
+            pdBreadcrumbs.items = [
+                'Startseite',
+                'Organe',
+                'Kommissionen',
+                'SiK-NR',
+                'Sitzungen',
+                'Sitzung der SiK-NR vom 24./25. Juni 2019',
+            ];
+
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
                 pdSearch.searchStrings = ['asdf'];
@@ -269,6 +280,10 @@
 
             pdSearch.addEventListener('pdOnChange', value => {
                 pdSearch.searchStrings = ['Some example search 1', 'Some example search 2', 'Some example search 3'];
+            });
+
+            pdBreadcrumbs.addEventListener('pd-on-navigated', value => {
+                console.log('LOG: value', value);
             });
 
             pdDropDown.items = [

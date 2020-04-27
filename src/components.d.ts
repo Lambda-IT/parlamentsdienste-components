@@ -40,6 +40,9 @@ export namespace Components {
          */
         "visible": boolean;
     }
+    interface PdBreadcrumbs {
+        "items": string[];
+    }
     interface PdButton {
         /**
           * Color schema used for the button
@@ -394,6 +397,12 @@ declare global {
         prototype: HTMLPdBackdropElement;
         new (): HTMLPdBackdropElement;
     };
+    interface HTMLPdBreadcrumbsElement extends Components.PdBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLPdBreadcrumbsElement: {
+        prototype: HTMLPdBreadcrumbsElement;
+        new (): HTMLPdBreadcrumbsElement;
+    };
     interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {
     }
     var HTMLPdButtonElement: {
@@ -565,6 +574,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-backdrop": HTMLPdBackdropElement;
+        "pd-breadcrumbs": HTMLPdBreadcrumbsElement;
         "pd-button": HTMLPdButtonElement;
         "pd-button-group": HTMLPdButtonGroupElement;
         "pd-card": HTMLPdCardElement;
@@ -632,6 +642,10 @@ declare namespace LocalJSX {
           * Invisible backdrop when set to false
          */
         "visible"?: boolean;
+    }
+    interface PdBreadcrumbs {
+        "items"?: string[];
+        "onPd-on-navigated"?: (event: CustomEvent<any>) => void;
     }
     interface PdButton {
         /**
@@ -1012,6 +1026,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-backdrop": PdBackdrop;
+        "pd-breadcrumbs": PdBreadcrumbs;
         "pd-button": PdButton;
         "pd-button-group": PdButtonGroup;
         "pd-card": PdCard;
@@ -1048,6 +1063,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
             "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
+            "pd-breadcrumbs": LocalJSX.PdBreadcrumbs & JSXBase.HTMLAttributes<HTMLPdBreadcrumbsElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
             "pd-card": LocalJSX.PdCard & JSXBase.HTMLAttributes<HTMLPdCardElement>;

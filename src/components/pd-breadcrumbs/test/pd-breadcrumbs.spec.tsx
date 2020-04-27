@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdToast } from '../pd-toast';
+import { PdBreadcrumbs } from '../pd-breadcrumbs';
 
-describe('pd-toast', () => {
+describe('pd-breadcrumbs', () => {
     it('renders', async () => {
         const page = await newSpecPage({
-            components: [PdToast],
-            html: `<pd-toast></pd-toast>`,
+            components: [PdBreadcrumbs],
+            html: `<pd-breadcrumbs></pd-breadcrumbs>`,
         });
         expect(page.root).toEqualHtml(`
-      <pd-toast>
+      <pd-breadcrumbs>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </pd-toast>
+      </pd-breadcrumbs>
     `);
     });
 });

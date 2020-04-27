@@ -32,7 +32,7 @@ body {
     letter-spacing: 0.19px;
 }
 
-@include resetControlFonts();
+@include resetControlFonts;
 
 a {
     font-weight: 500;

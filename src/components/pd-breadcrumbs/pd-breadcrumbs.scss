@@ -1,0 +1,23 @@
+@include resetControlFonts;
+
+:host {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pd-breadcrumbs-item {
+    border: none;
+    background: none;
+    font-weight: 700;
+    color: $cyan-9;
+    padding: 0 0.75em;
+
+    &.pd-breadcrumbs-item-last {
+        color: $blue-whale;
+    }
+}
+
+.pd-breadcrumbs-arrow {
+    fill: $gray;
+}
