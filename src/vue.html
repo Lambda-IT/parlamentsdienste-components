@@ -24,210 +24,244 @@
             }
 
             async('./assets/js/vue.min.js', function() {
-                Vue.config.ignoredElements = [/^pd-/];
-                //  applyPolyfills().then(() => {
-                //      defineCustomElements(window);
-                //  });
+                async('//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js', function() {
+                    async('//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js', function() {
+                        Vue.config.ignoredElements = [/^pd-/];
+                        //  applyPolyfills().then(() => {
+                        //      defineCustomElements(window);
+                        //  });
 
-                const wm = new WeakMap();
+                        const wm = new WeakMap();
 
-                var app = new Vue({
-                    el: '#app',
-                    data: {
-                        test: 'start',
-                        stateItems: [
-                            { label: 'danger', value: 'danger', id: 0 },
-                            { label: 'dark', value: 'dark', id: 1 },
-                            { label: 'info', value: 'info', id: 2 },
-                            { label: 'light', value: 'light', id: 3 },
-                            { label: 'primary', value: 'primary', id: 4 },
-                            { label: 'success', value: 'success', id: 5, selected: true },
-                            { label: 'warning', value: 'warning', id: 6 },
-                        ],
-                        table: {
-                            rows: [
-                                {
-                                    id: 1,
-                                    colName: 'test',
-                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date(),
-                                    colNumber: 1,
+                        var app = new Vue({
+                            el: '#app',
+                            data: {
+                                test: 'start',
+                                stateItems: [
+                                    { label: 'danger', value: 'danger', id: 0 },
+                                    { label: 'dark', value: 'dark', id: 1 },
+                                    { label: 'info', value: 'info', id: 2 },
+                                    { label: 'light', value: 'light', id: 3 },
+                                    { label: 'primary', value: 'primary', id: 4 },
+                                    { label: 'success', value: 'success', id: 5, selected: true },
+                                    { label: 'warning', value: 'warning', id: 6 },
+                                ],
+                                table: {
+                                    rows: [
+                                        {
+                                            id: 1,
+                                            colName: 'test',
+                                            colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                            colDate: new Date(),
+                                            colNumber: 1,
+                                        },
+                                        {
+                                            id: 2,
+                                            colName: 'test 1',
+                                            colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                            colDate: new Date('2001-01-02'),
+                                            colNumber: 3,
+                                        },
+                                        {
+                                            id: 3,
+                                            colName: 'test 2',
+                                            colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                            colDate: new Date('2021-02-02'),
+                                            colNumber: 21,
+                                        },
+                                        {
+                                            id: 4,
+                                            colName: 'test 3',
+                                            colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                                            colDate: new Date('2001-02-02'),
+                                            colNumber: 31,
+                                        },
+                                    ],
+                                    columns: [
+                                        {
+                                            columnName: 'id',
+                                            label: '#',
+                                            width: 50,
+                                            bold: true,
+                                            sortable: true,
+                                            sortDir: 'desc',
+                                            fixed: true,
+                                        },
+                                        {
+                                            columnName: 'colName',
+                                            label: 'Name',
+                                            width: 100,
+                                            bold: true,
+                                            textAlign: 'right',
+                                            fixed: true,
+                                        },
+                                        {
+                                            columnName: 'colText',
+                                            label: 'Text',
+                                            width: 0,
+                                            minWidth: 300,
+                                            bold: false,
+                                            textAlign: 'left',
+                                        },
+                                        {
+                                            columnName: 'colDate',
+                                            label: 'Created',
+                                            width: 100,
+                                            sortable: true,
+                                            bold: false,
+                                        },
+                                        {
+                                            columnName: 'colNumber',
+                                            label: 'Count',
+                                            width: 100,
+                                            bold: false,
+                                            sortable: true,
+                                        },
+                                    ],
                                 },
-                                {
-                                    id: 2,
-                                    colName: 'test 1',
-                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date('2001-01-02'),
-                                    colNumber: 3,
+                                config: {
+                                    button: {
+                                        caption: 'click here',
+                                        color: 'success',
+                                        disabled: false,
+                                        type: 'button',
+                                    },
                                 },
-                                {
-                                    id: 3,
-                                    colName: 'test 2',
-                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date('2021-02-02'),
-                                    colNumber: 21,
+                                rednerListe: [
+                                    {
+                                        id: 18.426,
+                                        title: 'Jagdgesetz.',
+                                        description: 'Änderung Kategorie IIIb',
+                                        status: 'success',
+                                    },
+                                    {
+                                        id: 123.426,
+                                        title: 'Waffengesetz.',
+                                        description: 'WBK-NR: Antrag auf Ablehnung',
+                                        status: 'danger',
+                                    },
+                                    {
+                                        id: 21.426,
+                                        title: 'Umweltgesetz.',
+                                        description: 'Änderung Kategorie IIIb, weitere Beschreibung',
+                                        status: 'success',
+                                    },
+                                    {
+                                        id: 231.426,
+                                        title: 'Strafgesetz.',
+                                        description: 'Änderung Kategorie XXIb, weitere Beschreibung',
+                                        status: 'unset',
+                                    },
+                                ],
+                            },
+                            methods: {
+                                click: function(e) {
+                                    console.log('vue click', e.target);
+                                    console.log('vue event: ', e);
                                 },
-                                {
-                                    id: 4,
-                                    colName: 'test 3',
-                                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
-                                    colDate: new Date('2001-02-02'),
-                                    colNumber: 31,
+                                input: function(e) {
+                                    console.log('vue input', e.target);
+                                    console.log('vue input value', e.value);
+                                    console.log('vue input data', e.data);
+                                    console.log('vue event: ', e);
                                 },
-                            ],
-                            columns: [
-                                {
-                                    columnName: 'id',
-                                    label: '#',
-                                    width: 50,
-                                    bold: true,
-                                    sortable: true,
-                                    sortDir: 'desc',
-                                    fixed: true,
+                                addRow: function() {
+                                    const ix = this.table.rows.length;
+                                    this.table.rows = [...this.table.rows, { ...this.table.rows[0], id: ix + 1 }];
                                 },
-                                {
-                                    columnName: 'colName',
-                                    label: 'Name',
-                                    width: 100,
-                                    bold: true,
-                                    textAlign: 'right',
-                                    fixed: true,
+                            },
+                            computed: {
+                                selectedStateItem: function() {
+                                    console.log('stateItems', this.stateItems);
+                                    return this.stateItems.find(x => x.selected);
                                 },
-                                {
-                                    columnName: 'colText',
-                                    label: 'Text',
-                                    width: 0,
-                                    minWidth: 300,
-                                    bold: false,
-                                    textAlign: 'left',
+                            },
+
+                            components: {
+                                draggable: vuedraggable
+                            },
+
+                            directives: {
+                                'model-pd': {
+                                    bind(el, binding, vnode) {
+                                        console.log('bind -> el', el);
+                                        const inputHandler = event => {
+                                            console.log('bind -> event', event);
+                                            console.log('bind -> vnode.context', vnode.context);
+                                            console.log('bind -> binding.expression', binding.expression);
+                                            console.log('bind -> event.target.value', event.target.value);
+
+                                            // Vue.set(vnode.context, binding.expression, event.target.value);
+                                            var value = event.target.value;
+                                            if ('' + event.target.value === 'true') value = true;
+                                            if ('' + event.target.value === 'false') value = false;
+                                            _.set(vnode.context, binding.expression, value);
+                                        };
+                                        wm.set(el, inputHandler);
+                                        el.value = binding.value;
+                                        el.addEventListener('input', inputHandler);
+                                    },
+
+                                    componentUpdated(el, binding) {
+                                        console.log('componentUpdated -> el', { el, binding });
+                                        el.value = binding.value;
+                                    },
+
+                                    update(el, binding) {
+                                        console.log('update -> el', { el, binding });
+                                    },
+
+                                    unbind(el) {
+                                        console.log('unbind -> el', el);
+                                        const inputHandler = wm.get(el);
+                                        el.removeEventListener(el, inputHandler);
+                                    },
                                 },
-                                {
-                                    columnName: 'colDate',
-                                    label: 'Created',
-                                    width: 100,
-                                    sortable: true,
-                                    bold: false,
+
+                                'log-pd': {
+                                    bind(el, binding, vnode) {
+                                        console.log('log -> bind -> el', el);
+                                        console.log('log -> bind -> binding', binding);
+                                        console.log('log -> bind -> context', vnode.context);
+                                    },
+
+                                    componentUpdated(el, binding) {
+                                        console.log('log -> componentUpdated -> el', { el, binding });
+                                    },
+
+                                    update(el, binding) {
+                                        console.log('log -> update -> el', { el, binding });
+                                    },
+
+                                    unbind(el) {
+                                        console.log('log -> unbind -> el', el);
+                                    },
                                 },
-                                {
-                                    columnName: 'colNumber',
-                                    label: 'Count',
-                                    width: 100,
-                                    bold: false,
-                                    sortable: true,
+                                array: {
+                                    bind(el, binding, vnode) {
+                                        console.log('array -> bind -> el', el);
+                                        console.log('array -> bind -> binding', binding);
+                                        console.log('array -> bind -> context', vnode.context);
+
+                                        el[binding.arg] = binding.value;
+                                    },
+
+                                    componentUpdated(el, binding) {
+                                        console.log('array -> componentUpdated -> el', { el, binding });
+                                        el[binding.arg] = [...binding.value];
+                                    },
+
+                                    update(el, binding) {
+                                        console.log('array -> update -> el', { el, binding });
+                                    },
+
+                                    unbind(el) {
+                                        console.log('array -> unbind -> el', el);
+                                    },
                                 },
-                            ],
-                        },
-                        config: {
-                            button: {
-                                caption: 'click here',
-                                color: 'success',
-                                disabled: false,
-                                type: 'button',
                             },
-                        },
-                    },
-                    methods: {
-                        click: function(e) {
-                            console.log('vue click', e.target);
-                            console.log('vue event: ', e);
-                        },
-                        input: function(e) {
-                            console.log('vue input', e.target);
-                            console.log('vue input value', e.value);
-                            console.log('vue input data', e.data);
-                            console.log('vue event: ', e);
-                        },
-                        addRow: function() {
-                            const ix = this.table.rows.length;
-                            this.table.rows = [...this.table.rows, { ...this.table.rows[0], id: ix + 1 }];
-                        },
-                    },
-                    computed: {
-                        selectedStateItem: function() {
-                            console.log('stateItems', this.stateItems);
-                            return this.stateItems.find(x => x.selected);
-                        },
-                    },
-
-                    directives: {
-                        'model-pd': {
-                            bind(el, binding, vnode) {
-                                console.log('bind -> el', el);
-                                const inputHandler = event => {
-                                    console.log('bind -> event', event);
-                                    console.log('bind -> vnode.context', vnode.context);
-                                    console.log('bind -> binding.expression', binding.expression);
-                                    console.log('bind -> event.target.value', event.target.value);
-
-                                    // Vue.set(vnode.context, binding.expression, event.target.value);
-                                    var value = event.target.value;
-                                    if ('' + event.target.value === 'true') value = true;
-                                    if ('' + event.target.value === 'false') value = false;
-                                    _.set(vnode.context, binding.expression, value);
-                                };
-                                wm.set(el, inputHandler);
-                                el.value = binding.value;
-                                el.addEventListener('input', inputHandler);
-                            },
-
-                            componentUpdated(el, binding) {
-                                console.log('componentUpdated -> el', { el, binding });
-                                el.value = binding.value;
-                            },
-
-                            update(el, binding) {
-                                console.log('update -> el', { el, binding });
-                            },
-
-                            unbind(el) {
-                                console.log('unbind -> el', el);
-                                const inputHandler = wm.get(el);
-                                el.removeEventListener(el, inputHandler);
-                            },
-                        },
-
-                        'log-pd': {
-                            bind(el, binding, vnode) {
-                                console.log('log -> bind -> el', el);
-                                console.log('log -> bind -> binding', binding);
-                                console.log('log -> bind -> context', vnode.context);
-                            },
-
-                            componentUpdated(el, binding) {
-                                console.log('log -> componentUpdated -> el', { el, binding });
-                            },
-
-                            update(el, binding) {
-                                console.log('log -> update -> el', { el, binding });
-                            },
-
-                            unbind(el) {
-                                console.log('log -> unbind -> el', el);
-                            },
-                        },
-                        array: {
-                            bind(el, binding, vnode) {
-                                console.log('array -> bind -> el', el);
-                                console.log('array -> bind -> binding', binding);
-                                console.log('array -> bind -> context', vnode.context);
-
-                                el[binding.arg] = binding.value;
-                            },
-
-                            componentUpdated(el, binding) {
-                                console.log('array -> componentUpdated -> el', { el, binding });
-                                el[binding.arg] = [...binding.value];
-                            },
-
-                            update(el, binding) {
-                                console.log('array -> update -> el', { el, binding });
-                            },
-
-                            unbind(el) {
-                                console.log('array -> unbind -> el', el);
-                            },
-                        },
-                    },
+                        });
+                    });
                 });
             });
 
@@ -310,23 +344,18 @@
                                         style="--pd-list-background: #f8f9fa; --pd-list-border-color: white"
                                     >
                                         <pd-card-header slot="header">Aktuelle Rednerliste</pd-card-header>
-                                        <pd-card-content style="--pd-card-content-padding: 0;">
-                                            <pd-list>
-                                                <pd-list-item status="success">
-                                                    <p class="mb-1">18.426</p>
-                                                    <h5 class="mb-1">Jagdgesetz.</h5>
-                                                    <p class="mb-1">
-                                                        Änderung Kategorie IIIb
-                                                    </p>
-                                                </pd-list-item>
-                                                <pd-list-item status="danger">
-                                                    <p class="mb-1">19.426</p>
-                                                    <h5 class="mb-1">Waffengesetz.</h5>
-                                                    <p class="mb-1">
-                                                        Änderung Kategorie IIIb
-                                                    </p>
-                                                </pd-list-item>
-                                            </pd-list>
+                                        <pd-card-content style="--pd-card-content-padding: 0;" >
+                                                <pd-list ><draggable v-model="rednerListe" @start="drag=true" @end="drag=false">
+                                                    <pd-list-item
+                                                        v-for="redner in rednerListe"
+                                                        :key="redner.id"
+                                                        :status="redner.status"
+                                                    >
+                                                        <p class="mb-1">{{redner.id}}</p>
+                                                        <h5 class="mb-1">{{redner.title}}</h5>
+                                                        <p class="mb-1">{{redner.description}}</p>
+                                                    </pd-list-item></draggable>
+                                                </pd-list>
                                         </pd-card-content>
                                     </pd-card>
                                 </div>
@@ -356,8 +385,8 @@
                                 <pd-button href="https://lambda-it.ch" type="text" icon-location="right"
                                     >Zur Antragsverwaltung<pd-icon
                                         slot="icon"
-                                        size="small"
-                                        style="fill: var(--primary);"
+                                        size="2"
+                                        style="fill: var(--primary); vertical-align: bottom;"
                                         src="./assets/icons/icon_link_intern.svg"
                                     ></pd-icon
                                 ></pd-button>
