@@ -44,19 +44,23 @@
 ### Used by
 
  - [pd-alert](../pd-alert)
+ - [pd-breadcrumbs](../pd-breadcrumbs)
  - [pd-card-header](../pd-card-header)
  - [pd-list-item](../pd-list-item)
  - [pd-navbar](../pd-navbar)
  - [pd-sidebar-item](../pd-sidebar-item)
+ - [pd-toast](../pd-toast)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
+  pd-breadcrumbs --> pd-icon
   pd-card-header --> pd-icon
   pd-list-item --> pd-icon
   pd-navbar --> pd-icon
   pd-sidebar-item --> pd-icon
+  pd-toast --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

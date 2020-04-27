@@ -382,6 +382,18 @@ export namespace Components {
     interface PdTimeline {
     }
     interface PdToast {
+        /**
+          * Additional toast information (e.g. 11 minutes ago)
+         */
+        "info": string;
+        /**
+          * Changes max-with of the toast
+         */
+        "size": "small" | "large";
+        /**
+          * The Toast title
+         */
+        "title": string;
     }
 }
 declare global {
@@ -1022,6 +1034,22 @@ declare namespace LocalJSX {
     interface PdTimeline {
     }
     interface PdToast {
+        /**
+          * Additional toast information (e.g. 11 minutes ago)
+         */
+        "info"?: string;
+        /**
+          * When closing the toast using the close icon
+         */
+        "onPd-on-closed"?: (event: CustomEvent<any>) => void;
+        /**
+          * Changes max-with of the toast
+         */
+        "size"?: "small" | "large";
+        /**
+          * The Toast title
+         */
+        "title"?: string;
     }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
