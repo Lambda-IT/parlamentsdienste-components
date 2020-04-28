@@ -56,7 +56,7 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
-        "iconLocation": "left" | "right";
+        "iconLocation": "left" | "right" | "none";
         /**
           * Use outline schema
          */
@@ -673,7 +673,7 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
-        "iconLocation"?: "left" | "right";
+        "iconLocation"?: "left" | "right" | "none";
         /**
           * Use outline schema
          */
