@@ -5,6 +5,7 @@ export const collapse = element => {
     // remove transition from element
     var elementTransition = element.style.transition;
     element.style.transition = '';
+    element.style.overflow = 'hidden';
 
     // in next frame, set height from auto to actual height of element and add transition again
     requestAnimationFrame(function() {
@@ -31,5 +32,6 @@ export const expand = element => {
         element.removeEventListener('transitionend', transitionDone);
         // set height back to auto when transition is done
         element.style.height = null;
+        element.style.overflow = 'visible';
     });
 };
