@@ -7,20 +7,28 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type  | Default     |
-| ----------- | ----------- | ----------- | ----- | ----------- |
-| `component` | `component` |             | `any` | `undefined` |
+| Property | Attribute | Description | Type                                                                                                                                                        | Default     |
+| -------- | --------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `config` | --        |             | `{ component: string; title: string; minWidth: string; maxWidth: string; minHeight: string; maxHeight: string; backdropVisible: boolean; zIndex: string; }` | `undefined` |
+| `data`   | `data`    |             | `any`                                                                                                                                                       | `undefined` |
+
+
+## Events
+
+| Event                  | Description | Type               |
+| ---------------------- | ----------- | ------------------ |
+| `pd-modal-when-closed` |             | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `closeModal() => Promise<boolean>`
+### `closeModal(returnData?: any) => Promise<void>`
 
 
 
 #### Returns
 
-Type: `Promise<boolean>`
+Type: `Promise<void>`
 
 
 
@@ -34,19 +42,29 @@ Type: `Promise<void>`
 
 
 
+### `whenClosed() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
 
 ## Dependencies
 
 ### Depends on
 
 - [pd-backdrop](../pd-backdrop)
-- [pd-button](../pd-button)
+- [pd-icon](../pd-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-modal --> pd-backdrop
-  pd-modal --> pd-button
+  pd-modal --> pd-icon
   style pd-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

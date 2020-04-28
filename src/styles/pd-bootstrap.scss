@@ -32,6 +32,11 @@ html {
 
 body {
     letter-spacing: 0.19px;
+
+    // used by overlays
+    &.no-scroll {
+        overflow: hidden;
+    }
 }
 
 @include resetControlFonts;

@@ -309,6 +309,7 @@
             pdButton.addEventListener('click', () => {
                 presentModal();
             });
+
             customElements.define(
                 'user-content',
                 class extends HTMLElement {
@@ -316,33 +317,53 @@
                         const modal = document.querySelector('pd-modal');
                         const data = modal.data;
 
-                        this.innerHTML = `
-                            <p>this is some content with data: ${data.first} ${data.second}</p>
-                            <button onClick="run()">content button</button>
-                        `;
+                        const closeButton = document.createElement('pd-button');
+                        closeButton.innerHTML = 'close';
+                        closeButton.addEventListener('click', () =>
+                            modal.closeModal({
+                                returnData: modal.data.first + modal.data.second,
+                            }),
+                        );
+
+                        const paragraph = document.createElement('p');
+                        paragraph.innerHTML = `<p>this returns: ${data.first} + ${data.second} =</p>`;
+
+                        this.append(paragraph);
+                        this.append(closeButton);
                     }
                 },
             );
 
-            async function done() {
-                console.log('LOG: extends -> closeModal -> closeModal');
-                const modal = document.querySelector('pd-modal');
-                await modal.closeModal({
-                    dismissed: true,
-                });
-            }
-
             function presentModal() {
                 // create the modal with the `modal-page` component
-                const modalElement = document.createElement('pd-modal');
-                modalElement.component = 'user-content';
-                modalElement.data = {
+                const modal = document.createElement('pd-modal');
+                modal.config = {
+                    component: 'user-content',
+                    title: 'Modal Title',
+                    minWidth: '500px',
+                    minHeight: '250px',
+                    maxWidth: '80%',
+                    backdropVisible: false,
+                    zIndex: 10000,
+                };
+
+                modal.data = {
                     first: 10,
                     second: 20,
                 };
+
+                // 1st way to get return data
+                modal.whenClosed().then(returnData => {
+                    console.log('return', returnData);
+                });
+
+                // 2st way to get return data
+                modal.addEventListener('pd-modal-when-closed', event => console.log('eventData', event));
+
                 // present the modal
-                document.body.appendChild(modalElement);
-                return modalElement.openModal();
+                document.body.appendChild(modal);
+
+                modal.openModal();
             }
         </script>
     </body>

@@ -245,9 +245,20 @@ export namespace Components {
         "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "closeModal": () => Promise<boolean>;
-        "component": any;
+        "closeModal": (returnData?: any) => Promise<void>;
+        "config": {
+            component: string; // element name to add as content
+            title: string;
+            minWidth: string;
+            maxWidth: string;
+            minHeight: string;
+            maxHeight: string;
+            backdropVisible: boolean; // default false
+            zIndex: string; // default 1000
+        };
+        "data": any;
         "openModal": () => Promise<void>;
+        "whenClosed": () => Promise<any>;
     }
     interface PdNavbar {
     }
@@ -874,7 +885,18 @@ declare namespace LocalJSX {
         "status"?: "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "component"?: any;
+        "config"?: {
+            component: string; // element name to add as content
+            title: string;
+            minWidth: string;
+            maxWidth: string;
+            minHeight: string;
+            maxHeight: string;
+            backdropVisible: boolean; // default false
+            zIndex: string; // default 1000
+        };
+        "data"?: any;
+        "onPd-modal-when-closed"?: (event: CustomEvent<any>) => void;
     }
     interface PdNavbar {
     }
