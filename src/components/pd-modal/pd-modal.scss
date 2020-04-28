@@ -1,6 +1,6 @@
 :host {
     display: flex;
-    position: absolute;
+    position: fixed;
     align-items: center;
     justify-content: center;
     top: 0;
@@ -21,6 +21,7 @@
     box-shadow: 0px 0px 8px #00000066;
     z-index: 10;
     padding: 1.25em;
+    position: relative;
 }
 
 .pd-modal-header {

@@ -319,17 +319,23 @@
 
                         const closeButton = document.createElement('pd-button');
                         closeButton.innerHTML = 'close';
-                        closeButton.addEventListener('click', () =>
+                        closeButton.setAttribute('outline', true);
+                        closeButton.addEventListener('click', () => modal.closeModal());
+
+                        const paragraph = document.createElement('p');
+                        paragraph.innerHTML = `<p>this returns: ${data.first} + ${data.second} =</p>`;
+
+                        const saveButton = document.createElement('pd-button');
+                        saveButton.innerHTML = 'save';
+                        saveButton.addEventListener('click', () =>
                             modal.closeModal({
                                 returnData: modal.data.first + modal.data.second,
                             }),
                         );
 
-                        const paragraph = document.createElement('p');
-                        paragraph.innerHTML = `<p>this returns: ${data.first} + ${data.second} =</p>`;
-
                         this.append(paragraph);
                         this.append(closeButton);
+                        this.append(saveButton);
                     }
                 },
             );
