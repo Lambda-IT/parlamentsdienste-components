@@ -167,7 +167,8 @@
                                 },
                                 addRow: function() {
                                     const ix = this.table.rows.length;
-                                    this.table.rows = [].concat(this.table.rows).push(Object.assign({},this.table.rows[0], { id: ix + 1 }));
+                                    this.table.rows.push(Object.assign({},this.table.rows[0], { id: ix + 1 }));
+                                    this.table.rows = [].concat(this.table.rows);
                                 },
                             },
                             computed: {
