@@ -245,9 +245,8 @@ export namespace Components {
         "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "closeModal": (data?: any) => Promise<boolean>;
+        "closeModal": () => Promise<boolean>;
         "component": any;
-        "data": any;
         "openModal": () => Promise<void>;
     }
     interface PdNavbar {
@@ -876,7 +875,6 @@ declare namespace LocalJSX {
     }
     interface PdModal {
         "component"?: any;
-        "data"?: any;
     }
     interface PdNavbar {
     }
