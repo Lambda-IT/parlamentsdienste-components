@@ -1,3 +1,56 @@
 :host {
-  display: block;
+    display: block;
+    padding: 1.25em;
+    box-shadow: 0 0 0.5em #00000066;
+    border-radius: 0.25em;
+    background-color: $white;
+}
+
+.pd-toast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.375em;
+
+    .pd-toast-title {
+        font-weight: 700;
+    }
+
+    .pd-toast-header-left {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pd-toast-header-right {
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+
+        .pd-toast-info {
+            font-size: 0.875em;
+            margin-left: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .pd-toast-close {
+            fill: setcolor(primary, enabled);
+            margin-left: 1em;
+            cursor: pointer;
+            min-width: 1em;
+
+            &:hover {
+                fill: setcolor(primary, hover);
+            }
+
+            &:active {
+                fill: setcolor(primary, pressed);
+            }
+        }
+    }
+}
+
+.pd-toast-body {
+    overflow: hidden;
 }

@@ -178,12 +178,12 @@ export class Search {
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
                     />
-                    <div class="pd-search-clear" onClick={() => this.reset()}>
-                        <img class="pd-search-clear-icon" src={getAssetPath(`./assets-search/icon_cancel.svg`)}></img>
+                    <div class="pd-search-clear" role="button" onClick={() => this.reset()}>
+                        <pd-icon class="pd-search-clear-icon" name="cancel-ring" size={2.4}></pd-icon>
                     </div>
-                    <button class="pd-search-button" type="submit" tabIndex={-1}>
-                        <img src={getAssetPath(`./assets-search/icon_search.svg`)}></img>
-                    </button>
+                    <div class="pd-search-button" role="button">
+                        <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
+                    </div>
                 </label>
                 {this.renderDropdownItems()}
             </Host>
