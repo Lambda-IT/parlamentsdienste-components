@@ -153,6 +153,7 @@
                                         status: 'unset',
                                     },
                                 ],
+                                alerts:[]
                             },
                             methods: {
                                 click: function(e) {
@@ -170,6 +171,16 @@
                                     this.table.rows.push(Object.assign({},this.table.rows[0], { id: ix + 1 }));
                                     this.table.rows = [].concat(this.table.rows);
                                 },
+                                alert: function(status) {
+                                    if(status==='success')
+                                        this.alerts.push({message:"Gespeichert und alles OK... " + new Date().toISOString(), status});
+                                    else
+                                        this.alerts.push({message:"Ups, es ist etwas Schlimmes vorgefallen... " + new Date().toISOString(), status});
+                                },
+                                removeAlert: function(ele) {
+                                    console.log("alert ele", ele)
+                                    this.alerts = this.alerts.filter(x=>x.message !== ele.target.textContent);
+                                }
                             },
                             computed: {
                                 selectedStateItem: function() {
@@ -277,6 +288,12 @@
             pd-sidebar {
                 margin-left: -15px;
             }
+            pd-card-footer   pd-button {
+                margin: .25rem;
+            }
+            pd-alert {
+                margin-top: .25rem;
+            }
         </style>
     </head>
     <body>
@@ -287,7 +304,7 @@
                 <pd-navbar-item text="Vorst&ouml;sse"></pd-navbar-item>
                 <pd-navbar-item text="Gesch&auml;ft suchen" href="https://lambda-it.ch"></pd-navbar-item>
             </pd-navbar>
-
+            
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-1 d-none d-md-block">
@@ -316,6 +333,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Meine Ablage</li>
                             </ol>
                         </nav>
+                        <pd-alert v-for="alert in alerts" :key="alert.message" :color="alert.status" closable="true" @pd-on-closed="removeAlert">{{alert.message}}</pd-alert>
                         <div class="row">
                             <div class="col-md-8">
                                 <pd-card class="mt-4" collapsible>
@@ -334,6 +352,9 @@
                                         ></pd-table>
                                     </pd-card-content>
                                     <pd-card-footer slot="footer">
+                                        <pd-button @click="alert('success')" type="button" color="success">Success</pd-button>
+                                        <pd-button @click="alert('warning')" type="button" color="warning">Warning</pd-button>
+                                        <pd-button @click="alert('danger')" type="button" color="danger">Danger</pd-button>
                                         <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
                                     </pd-card-footer>
                                 </pd-card>
