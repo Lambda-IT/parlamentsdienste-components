@@ -24,6 +24,7 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
                 info="5min ago"
@@ -109,9 +110,9 @@
                 <pd-icon style="fill: red" rotate="180" name="profile"></pd-icon>
                 <pd-icon style="fill: red" rotate="180" name="minus"></pd-icon>
             </div>
-            <pd-card collapsible>
-                <pd-card-header slot="header">Header</pd-card-header>
-                <pd-card-content style="padding: 0px">
+            <pd-panel collapsible>
+                <pd-panel-header slot="header">Header</pd-panel-header>
+                <pd-panel-content style="padding: 0px">
                     <pd-list>
                         <pd-list-item status="unset">
                             <p class="mb-1">18.3708</p>
@@ -136,14 +137,13 @@
                             </p>
                         </pd-list-item>
                     </pd-list>
-                </pd-card-content>
-                <pd-card-footer slot="footer"></pd-card-footer>
-            </pd-card>
+                </pd-panel-content>
+                <pd-panel-footer slot="footer"></pd-panel-footer>
+            </pd-panel>
             <h1>Header 1</h1>
             <pd-table id="pd-table-0" header-style="dark"> </pd-table>
             <pd-table id="pd-table-1" header-style="light"> </pd-table>
             <pd-table id="pd-table-2" header-style="gray"> </pd-table>
-            <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning">Button</pd-button>
             <pd-button color="danger">Button</pd-button>
@@ -200,7 +200,6 @@
             const pdProgress = document.getElementById('pd-progress-0');
             const pdSlider = document.getElementById('pd-slider-0');
             const pdBackdrop = document.getElementById('pd-backdrop-0');
-            const pdButton = document.getElementById('pd-button-0');
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
 
@@ -283,10 +282,6 @@
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
 
-            pdButton.addEventListener('click', () => {
-                presentModal();
-            });
-
             pdSearch.addEventListener('pdOnChange', value => {
                 pdSearch.searchStrings = ['Some example search 1', 'Some example search 2', 'Some example search 3'];
             });
@@ -307,22 +302,44 @@
                 { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
             ];
 
+            /*** Modal ***/
+
+            const pdButton = document.getElementById('pd-button-0');
+
+            pdButton.addEventListener('click', () => {
+                presentModal();
+            });
             customElements.define(
                 'user-content',
                 class extends HTMLElement {
                     connectedCallback() {
+                        const modal = document.querySelector('pd-modal');
+                        const data = modal.data;
+
                         this.innerHTML = `
-                            <p>this is some content</p>
-                            <button onClick="closeModal()">content button</button>
+                            <p>this is some content with data: ${data.first} ${data.second}</p>
+                            <button onClick="run()">content button</button>
                         `;
                     }
                 },
             );
 
+            async function done() {
+                console.log('LOG: extends -> closeModal -> closeModal');
+                const modal = document.querySelector('pd-modal');
+                await modal.closeModal({
+                    dismissed: true,
+                });
+            }
+
             function presentModal() {
                 // create the modal with the `modal-page` component
                 const modalElement = document.createElement('pd-modal');
                 modalElement.component = 'user-content';
+                modalElement.data = {
+                    first: 10,
+                    second: 20,
+                };
                 // present the modal
                 document.body.appendChild(modalElement);
                 return modalElement.openModal();

@@ -1,16 +1,4 @@
-import {
-    Component,
-    Host,
-    h,
-    Event,
-    EventEmitter,
-    Watch,
-    Method,
-    Prop,
-    Listen,
-    Element,
-    getAssetPath,
-} from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({

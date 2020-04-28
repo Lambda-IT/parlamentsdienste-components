@@ -1,11 +1,10 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-    tag: 'pd-card-footer',
-    styleUrl: 'pd-card-footer.scss',
-    shadow: true,
+    tag: 'pd-panel-content',
+    styleUrl: 'pd-panel-content.scss',
 })
-export class CardFooter {
+export class PanelContent {
     render() {
         return (
             <Host>

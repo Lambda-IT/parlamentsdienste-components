@@ -49,11 +49,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [pd-icon](../pd-icon)
 - [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  pd-search --> pd-icon
   pd-search --> pd-dropdown-item
   style pd-search fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -1,16 +1,14 @@
-# pd-card
-
-
+# pd-panel
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property      | Attribute     | Description                          | Type      | Default |
-| ------------- | ------------- | ------------------------------------ | --------- | ------- |
-| `collapsed`   | `collapsed`   | Expands / collapses the card content | `boolean` | `false` |
-| `collapsible` | `collapsible` | Show/hide collapse button            | `boolean` | `false` |
+| Property      | Attribute     | Description                           | Type      | Default |
+| ------------- | ------------- | ------------------------------------- | --------- | ------- |
+| `collapsed`   | `collapsed`   | Expands / collapses the panel content | `boolean` | `false` |
+| `collapsible` | `collapsible` | Show/hide collapse button             | `boolean` | `false` |
 
 
 ## Events

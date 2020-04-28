@@ -153,7 +153,7 @@
                                         status: 'unset',
                                     },
                                 ],
-                                alerts:[]
+                                alerts: [],
                             },
                             methods: {
                                 click: function(e) {
@@ -168,19 +168,27 @@
                                 },
                                 addRow: function() {
                                     const ix = this.table.rows.length;
-                                    this.table.rows.push(Object.assign({},this.table.rows[0], { id: ix + 1 }));
+                                    this.table.rows.push(Object.assign({}, this.table.rows[0], { id: ix + 1 }));
                                     this.table.rows = [].concat(this.table.rows);
                                 },
                                 alert: function(status) {
-                                    if(status==='success')
-                                        this.alerts.push({message:"Gespeichert und alles OK... " + new Date().toISOString(), status});
+                                    if (status === 'success')
+                                        this.alerts.push({
+                                            message: 'Gespeichert und alles OK... ' + new Date().toISOString(),
+                                            status,
+                                        });
                                     else
-                                        this.alerts.push({message:"Ups, es ist etwas Schlimmes vorgefallen... " + new Date().toISOString(), status});
+                                        this.alerts.push({
+                                            message:
+                                                'Ups, es ist etwas Schlimmes vorgefallen... ' +
+                                                new Date().toISOString(),
+                                            status,
+                                        });
                                 },
                                 removeAlert: function(ele) {
-                                    console.log("alert ele", ele)
-                                    this.alerts = this.alerts.filter(x=>x.message !== ele.target.textContent);
-                                }
+                                    console.log('alert ele', ele);
+                                    this.alerts = this.alerts.filter(x => x.message !== ele.target.textContent);
+                                },
                             },
                             computed: {
                                 selectedStateItem: function() {
@@ -190,7 +198,7 @@
                             },
 
                             components: {
-                                draggable: vuedraggable
+                                draggable: vuedraggable,
                             },
 
                             directives: {
@@ -288,11 +296,11 @@
             pd-sidebar {
                 margin-left: -15px;
             }
-            pd-card-footer   pd-button {
-                margin: .25rem;
+            pd-panel-footer pd-button {
+                margin: 0.25rem;
             }
             pd-alert {
-                margin-top: .25rem;
+                margin-top: 0.25rem;
             }
         </style>
     </head>
@@ -304,7 +312,7 @@
                 <pd-navbar-item text="Vorst&ouml;sse"></pd-navbar-item>
                 <pd-navbar-item text="Gesch&auml;ft suchen" href="https://lambda-it.ch"></pd-navbar-item>
             </pd-navbar>
-            
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-1 d-none d-md-block">
@@ -333,12 +341,19 @@
                                 <li class="breadcrumb-item active" aria-current="page">Meine Ablage</li>
                             </ol>
                         </nav>
-                        <pd-alert v-for="alert in alerts" :key="alert.message" :color="alert.status" closable="true" @pd-on-closed="removeAlert">{{alert.message}}</pd-alert>
+                        <pd-alert
+                            v-for="alert in alerts"
+                            :key="alert.message"
+                            :color="alert.status"
+                            closable="true"
+                            @pd-on-closed="removeAlert"
+                            >{{alert.message}}</pd-alert
+                        >
                         <div class="row">
                             <div class="col-md-8">
-                                <pd-card class="mt-4" collapsible>
-                                    <pd-card-header slot="header">Sample Table</pd-card-header>
-                                    <pd-card-content>
+                                <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header">Sample Table</pd-panel-header>
+                                    <pd-panel-content>
                                         <div class="mb-4">
                                             <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
                                             <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
@@ -350,32 +365,38 @@
                                             :rows.prop="table.rows"
                                             :columns.prop="table.columns"
                                         ></pd-table>
-                                    </pd-card-content>
-                                    <pd-card-footer slot="footer">
-                                        <pd-button @click="alert('success')" type="button" color="success">Success</pd-button>
-                                        <pd-button @click="alert('warning')" type="button" color="warning">Warning</pd-button>
-                                        <pd-button @click="alert('danger')" type="button" color="danger">Danger</pd-button>
+                                    </pd-panel-content>
+                                    <pd-panel-footer slot="footer">
+                                        <pd-button @click="alert('success')" type="button" color="success"
+                                            >Success</pd-button
+                                        >
+                                        <pd-button @click="alert('warning')" type="button" color="warning"
+                                            >Warning</pd-button
+                                        >
+                                        <pd-button @click="alert('danger')" type="button" color="danger"
+                                            >Danger</pd-button
+                                        >
                                         <pd-button @click="addRow" type="button" color="primary">Add Row</pd-button>
-                                    </pd-card-footer>
-                                </pd-card>
-                                <pd-card class="mt-4" collapsible>
-                                    <pd-card-header slot="header"
-                                        >Session – Eintritt in virtuellen Beratungsraum</pd-card-header
+                                    </pd-panel-footer>
+                                </pd-panel>
+                                <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header"
+                                        >Session – Eintritt in virtuellen Beratungsraum</pd-panel-header
                                     >
-                                    <pd-card-content>
+                                    <pd-panel-content>
                                         <div class="row">
-                                            <pd-card class="col-sm-6">
-                                                <pd-card-header slot="header">Ratsunterlagen</pd-card-header>
-                                                <pd-card-content>
+                                            <pd-panel class="col-sm-6">
+                                                <pd-panel-header slot="header">Ratsunterlagen</pd-panel-header>
+                                                <pd-panel-content>
                                                     <div>Ratsunterlagen</div>
-                                                </pd-card-content>
-                                            </pd-card>
-                                            <pd-card
+                                                </pd-panel-content>
+                                            </pd-panel>
+                                            <pd-panel
                                                 class="col-sm-6"
                                                 style="--pd-list-background: #f8f9fa; --pd-list-border-color: white"
                                             >
-                                                <pd-card-header slot="header">Aktuelle Rednerliste</pd-card-header>
-                                                <pd-card-content style="--pd-card-content-padding: 0;">
+                                                <pd-panel-header slot="header">Aktuelle Rednerliste</pd-panel-header>
+                                                <pd-panel-content style="--pd-panel-content-padding: 0;">
                                                     <pd-list
                                                         ><draggable
                                                             v-model="rednerListe"
@@ -393,16 +414,16 @@
                                                             </pd-list-item></draggable
                                                         >
                                                     </pd-list>
-                                                </pd-card-content>
-                                            </pd-card>
+                                                </pd-panel-content>
+                                            </pd-panel>
                                         </div>
-                                    </pd-card-content>
-                                </pd-card>
+                                    </pd-panel-content>
+                                </pd-panel>
                             </div>
                             <div class="col-md-4">
-                                <pd-card class="mt-4" collapsible>
-                                    <pd-card-header slot="header">Meine Anträge</pd-card-header>
-                                    <pd-card-content style="--pd-card-content-padding: 0;">
+                                <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header">Meine Anträge</pd-panel-header>
+                                    <pd-panel-content style="--pd-panel-content-padding: 0;">
                                         <pd-list>
                                             <pd-list-item status="success">
                                                 <p class="mb-1">18.3708</p>
@@ -417,8 +438,8 @@
                                                 <a class="mb-1">SRB-NR: Antrag auf Ablehnung </a>
                                             </pd-list-item>
                                         </pd-list>
-                                    </pd-card-content>
-                                    <pd-card-footer slot="footer">
+                                    </pd-panel-content>
+                                    <pd-panel-footer slot="footer">
                                         <pd-button href="https://lambda-it.ch" type="text" icon-location="right"
                                             >Zur Antragsverwaltung<pd-icon
                                                 slot="icon"
@@ -427,12 +448,12 @@
                                                 src="./assets/icons/icon_link_intern.svg"
                                             ></pd-icon
                                         ></pd-button>
-                                    </pd-card-footer>
-                                </pd-card>
-                                <pd-card class="mt-4" collapsible>
-                                    <pd-card-header slot="header">Sample Form</pd-card-header>
+                                    </pd-panel-footer>
+                                </pd-panel>
+                                <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header">Sample Form</pd-panel-header>
 
-                                    <pd-card-content>
+                                    <pd-panel-content>
                                         <form>
                                             <h1>Heading 1</h1>
                                             <h2>Heading 2</h2>
@@ -459,8 +480,8 @@
                                             <h4>{{selectedStateItem.label}}</h4>
                                         </form>
                                         <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
-                                    </pd-card-content>
-                                    <pd-card-footer slot="footer">
+                                    </pd-panel-content>
+                                    <pd-panel-footer slot="footer">
                                         <pd-button
                                             @click="click"
                                             :type="config.button.type"
@@ -468,8 +489,8 @@
                                             :color="config.button.color"
                                             >{{config.button.caption}}</pd-button
                                         >
-                                    </pd-card-footer>
-                                </pd-card>
+                                    </pd-panel-footer>
+                                </pd-panel>
                             </div>
                         </div>
                     </div>

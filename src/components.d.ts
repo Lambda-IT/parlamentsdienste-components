@@ -76,22 +76,6 @@ export namespace Components {
     }
     interface PdButtonGroup {
     }
-    interface PdCard {
-        /**
-          * Expands / collapses the card content
-         */
-        "collapsed": boolean;
-        /**
-          * Show/hide collapse button
-         */
-        "collapsible": boolean;
-    }
-    interface PdCardContent {
-    }
-    interface PdCardFooter {
-    }
-    interface PdCardHeader {
-    }
     interface PdCheckbox {
         /**
           * Sets check state of the checkbox true/false
@@ -261,8 +245,9 @@ export namespace Components {
         "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "closeModal": () => Promise<boolean>;
+        "closeModal": (data?: any) => Promise<boolean>;
         "component": any;
+        "data": any;
         "openModal": () => Promise<void>;
     }
     interface PdNavbar {
@@ -278,6 +263,22 @@ export namespace Components {
          */
         "target": string;
         "text": string;
+    }
+    interface PdPanel {
+        /**
+          * Expands / collapses the panel content
+         */
+        "collapsed": boolean;
+        /**
+          * Show/hide collapse button
+         */
+        "collapsible": boolean;
+    }
+    interface PdPanelContent {
+    }
+    interface PdPanelFooter {
+    }
+    interface PdPanelHeader {
     }
     interface PdProgressBar {
         "color": "primary" | "success" | "danger" | "warning" | "info";
@@ -427,30 +428,6 @@ declare global {
         prototype: HTMLPdButtonGroupElement;
         new (): HTMLPdButtonGroupElement;
     };
-    interface HTMLPdCardElement extends Components.PdCard, HTMLStencilElement {
-    }
-    var HTMLPdCardElement: {
-        prototype: HTMLPdCardElement;
-        new (): HTMLPdCardElement;
-    };
-    interface HTMLPdCardContentElement extends Components.PdCardContent, HTMLStencilElement {
-    }
-    var HTMLPdCardContentElement: {
-        prototype: HTMLPdCardContentElement;
-        new (): HTMLPdCardContentElement;
-    };
-    interface HTMLPdCardFooterElement extends Components.PdCardFooter, HTMLStencilElement {
-    }
-    var HTMLPdCardFooterElement: {
-        prototype: HTMLPdCardFooterElement;
-        new (): HTMLPdCardFooterElement;
-    };
-    interface HTMLPdCardHeaderElement extends Components.PdCardHeader, HTMLStencilElement {
-    }
-    var HTMLPdCardHeaderElement: {
-        prototype: HTMLPdCardHeaderElement;
-        new (): HTMLPdCardHeaderElement;
-    };
     interface HTMLPdCheckboxElement extends Components.PdCheckbox, HTMLStencilElement {
     }
     var HTMLPdCheckboxElement: {
@@ -523,6 +500,30 @@ declare global {
         prototype: HTMLPdNavbarItemElement;
         new (): HTMLPdNavbarItemElement;
     };
+    interface HTMLPdPanelElement extends Components.PdPanel, HTMLStencilElement {
+    }
+    var HTMLPdPanelElement: {
+        prototype: HTMLPdPanelElement;
+        new (): HTMLPdPanelElement;
+    };
+    interface HTMLPdPanelContentElement extends Components.PdPanelContent, HTMLStencilElement {
+    }
+    var HTMLPdPanelContentElement: {
+        prototype: HTMLPdPanelContentElement;
+        new (): HTMLPdPanelContentElement;
+    };
+    interface HTMLPdPanelFooterElement extends Components.PdPanelFooter, HTMLStencilElement {
+    }
+    var HTMLPdPanelFooterElement: {
+        prototype: HTMLPdPanelFooterElement;
+        new (): HTMLPdPanelFooterElement;
+    };
+    interface HTMLPdPanelHeaderElement extends Components.PdPanelHeader, HTMLStencilElement {
+    }
+    var HTMLPdPanelHeaderElement: {
+        prototype: HTMLPdPanelHeaderElement;
+        new (): HTMLPdPanelHeaderElement;
+    };
     interface HTMLPdProgressBarElement extends Components.PdProgressBar, HTMLStencilElement {
     }
     var HTMLPdProgressBarElement: {
@@ -589,10 +590,6 @@ declare global {
         "pd-breadcrumbs": HTMLPdBreadcrumbsElement;
         "pd-button": HTMLPdButtonElement;
         "pd-button-group": HTMLPdButtonGroupElement;
-        "pd-card": HTMLPdCardElement;
-        "pd-card-content": HTMLPdCardContentElement;
-        "pd-card-footer": HTMLPdCardFooterElement;
-        "pd-card-header": HTMLPdCardHeaderElement;
         "pd-checkbox": HTMLPdCheckboxElement;
         "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown": HTMLPdDropdownElement;
@@ -605,6 +602,10 @@ declare global {
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
+        "pd-panel": HTMLPdPanelElement;
+        "pd-panel-content": HTMLPdPanelContentElement;
+        "pd-panel-footer": HTMLPdPanelFooterElement;
+        "pd-panel-header": HTMLPdPanelHeaderElement;
         "pd-progress-bar": HTMLPdProgressBarElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-search": HTMLPdSearchElement;
@@ -691,27 +692,6 @@ declare namespace LocalJSX {
         "type"?: "button" | "text" | "submit";
     }
     interface PdButtonGroup {
-    }
-    interface PdCard {
-        /**
-          * Expands / collapses the card content
-         */
-        "collapsed"?: boolean;
-        /**
-          * Show/hide collapse button
-         */
-        "collapsible"?: boolean;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onPd-on-collapsed"?: (event: CustomEvent<any>) => void;
-    }
-    interface PdCardContent {
-    }
-    interface PdCardFooter {
-    }
-    interface PdCardHeader {
-        "onPd-on-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdCheckbox {
         /**
@@ -896,6 +876,7 @@ declare namespace LocalJSX {
     }
     interface PdModal {
         "component"?: any;
+        "data"?: any;
     }
     interface PdNavbar {
     }
@@ -910,6 +891,27 @@ declare namespace LocalJSX {
          */
         "target"?: string;
         "text"?: string;
+    }
+    interface PdPanel {
+        /**
+          * Expands / collapses the panel content
+         */
+        "collapsed"?: boolean;
+        /**
+          * Show/hide collapse button
+         */
+        "collapsible"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-on-collapsed"?: (event: CustomEvent<any>) => void;
+    }
+    interface PdPanelContent {
+    }
+    interface PdPanelFooter {
+    }
+    interface PdPanelHeader {
+        "onPd-on-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdProgressBar {
         "color"?: "primary" | "success" | "danger" | "warning" | "info";
@@ -1057,10 +1059,6 @@ declare namespace LocalJSX {
         "pd-breadcrumbs": PdBreadcrumbs;
         "pd-button": PdButton;
         "pd-button-group": PdButtonGroup;
-        "pd-card": PdCard;
-        "pd-card-content": PdCardContent;
-        "pd-card-footer": PdCardFooter;
-        "pd-card-header": PdCardHeader;
         "pd-checkbox": PdCheckbox;
         "pd-datepicker": PdDatepicker;
         "pd-dropdown": PdDropdown;
@@ -1073,6 +1071,10 @@ declare namespace LocalJSX {
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
+        "pd-panel": PdPanel;
+        "pd-panel-content": PdPanelContent;
+        "pd-panel-footer": PdPanelFooter;
+        "pd-panel-header": PdPanelHeader;
         "pd-progress-bar": PdProgressBar;
         "pd-radio": PdRadio;
         "pd-search": PdSearch;
@@ -1094,10 +1096,6 @@ declare module "@stencil/core" {
             "pd-breadcrumbs": LocalJSX.PdBreadcrumbs & JSXBase.HTMLAttributes<HTMLPdBreadcrumbsElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
-            "pd-card": LocalJSX.PdCard & JSXBase.HTMLAttributes<HTMLPdCardElement>;
-            "pd-card-content": LocalJSX.PdCardContent & JSXBase.HTMLAttributes<HTMLPdCardContentElement>;
-            "pd-card-footer": LocalJSX.PdCardFooter & JSXBase.HTMLAttributes<HTMLPdCardFooterElement>;
-            "pd-card-header": LocalJSX.PdCardHeader & JSXBase.HTMLAttributes<HTMLPdCardHeaderElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
@@ -1110,6 +1108,10 @@ declare module "@stencil/core" {
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
+            "pd-panel": LocalJSX.PdPanel & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
+            "pd-panel-content": LocalJSX.PdPanelContent & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
+            "pd-panel-footer": LocalJSX.PdPanelFooter & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;
+            "pd-panel-header": LocalJSX.PdPanelHeader & JSXBase.HTMLAttributes<HTMLPdPanelHeaderElement>;
             "pd-progress-bar": LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;

@@ -2,16 +2,16 @@ import { Component, Host, h, Prop, Element, EventEmitter, Event, Watch } from '@
 import { expand, collapse } from '../../utils/animation';
 
 @Component({
-    tag: 'pd-card',
-    styleUrl: 'pd-card.scss',
+    tag: 'pd-panel',
+    styleUrl: 'pd-panel.scss',
     shadow: true,
 })
-export class Card {
+export class Panel {
     @Element() element!: HTMLElement;
     private contentWrapper: HTMLElement;
 
     /**
-     * Expands / collapses the card content
+     * Expands / collapses the panel content
      */
     @Prop() collapsed: boolean = false;
 
@@ -32,7 +32,7 @@ export class Card {
     }
 
     componentDidLoad() {
-        this.contentWrapper = this.element.shadowRoot.querySelector('.pd-card-content-wrapper');
+        this.contentWrapper = this.element.shadowRoot.querySelector('.pd-panel-content-wrapper');
         // start collapsed
         if (this.collapsed) {
             this.contentWrapper.style.height = '0';
@@ -44,8 +44,8 @@ export class Card {
             <Host>
                 <slot name="header"></slot>
                 <div
-                    class={`pd-card-content-wrapper ${
-                        this.collapsed ? 'pd-card-content-collapsed' : 'pd-card-content-expanded'
+                    class={`pd-panel-content-wrapper ${
+                        this.collapsed ? 'pd-panel-content-collapsed' : 'pd-panel-content-expanded'
                     }`}
                     aria-expanded={this.collapsed ? 'false' : 'true'}
                 >

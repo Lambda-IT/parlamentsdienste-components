@@ -1,6 +1,4 @@
-# pd-card-header
-
-
+# pd-panel-header
 
 <!-- Auto Generated Below -->
 
@@ -21,8 +19,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  pd-card-header --> pd-icon
-  style pd-card-header fill:#f9f,stroke:#333,stroke-width:4px
+  pd-panel-header --> pd-icon
+  style pd-panel-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

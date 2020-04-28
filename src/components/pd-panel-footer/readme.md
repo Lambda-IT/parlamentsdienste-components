@@ -1,6 +1,4 @@
-# pd-card-footer
-
-
+# pd-panel-footer
 
 <!-- Auto Generated Below -->
 
