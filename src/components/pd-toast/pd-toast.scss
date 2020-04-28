@@ -23,7 +23,7 @@
 
     .pd-toast-header-right {
         display: flex;
-        align-items: center;
+        align-self: flex-start;
         max-width: 50%;
 
         .pd-toast-info {
