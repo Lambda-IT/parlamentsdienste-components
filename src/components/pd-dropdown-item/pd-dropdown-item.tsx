@@ -12,6 +12,8 @@ export class DropdownItem implements ComponentInterface {
 
     @Prop() selected: boolean = false;
 
+    @Prop() mark: string | number;
+
     private setSelected() {
         this.selected = true;
     }
@@ -23,13 +25,13 @@ export class DropdownItem implements ComponentInterface {
                     class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}
                     onClick={() => this.setSelected()}
                 >
-                    {this.strong(this.value, 'examp')}
+                    {this.strong(this.value, this.mark?.toString())}
                 </div>
             </Host>
         );
     }
 
-    // Todo: WIP
+    // Todo: removes whitespace at the end of mark
     private setStrong = text => <strong>{text}</strong>;
     private setSpan = text => <span>{text}</span>;
     private strong = (value: string, strong: string = undefined) => {

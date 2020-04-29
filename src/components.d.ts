@@ -117,6 +117,7 @@ export namespace Components {
         "placeholder": string;
     }
     interface PdDropdownItem {
+        "mark": string | number;
         "selected": boolean;
         "value": string;
     }
@@ -338,7 +339,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "open": boolean;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -764,6 +764,7 @@ declare namespace LocalJSX {
         "placeholder"?: string;
     }
     interface PdDropdownItem {
+        "mark"?: string | number;
         "selected"?: boolean;
         "value"?: string;
     }
@@ -1016,7 +1017,6 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
-        "open"?: boolean;
         /**
           * Instructional text that shows before the input has a value.
          */
