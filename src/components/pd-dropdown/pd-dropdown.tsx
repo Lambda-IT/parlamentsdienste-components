@@ -115,9 +115,8 @@ export class Dropdown {
     private inputTime: number = 0;
 
     private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
-        console.log('LOG: Dropdown -> selectItem -> closeDropdown', closeDropdown);
         this.selectedItem = item;
-        this.open = !closeDropdown;
+        if (closeDropdown) this.open = false;
         this.pdOnChange.emit(item);
     }
 
@@ -146,7 +145,8 @@ export class Dropdown {
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
         dropdownItemNodes.forEach(item => {
-            if (item.selected) menu.scrollTop = item.offsetTop - 48 * 2;
+            const centerItem = Math.ceil(this.itemCount / 2) - 1;
+            if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
     }
 
