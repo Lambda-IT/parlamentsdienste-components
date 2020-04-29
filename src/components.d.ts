@@ -95,7 +95,25 @@ export namespace Components {
     interface PdDatepicker {
     }
     interface PdDropdown {
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": DropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Items to display and select in dropdown
+         */
         "items": DropdownItem[];
+        /**
+          * Placeholder when no item is selected
+         */
         "placeholder": string;
     }
     interface PdDropdownItem {
@@ -723,7 +741,26 @@ declare namespace LocalJSX {
     interface PdDatepicker {
     }
     interface PdDropdown {
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: DropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Items to display and select in dropdown
+         */
         "items"?: DropdownItem[];
+        "onPd-on-change"?: (event: CustomEvent<DropdownItem>) => void;
+        /**
+          * Placeholder when no item is selected
+         */
         "placeholder"?: string;
     }
     interface PdDropdownItem {

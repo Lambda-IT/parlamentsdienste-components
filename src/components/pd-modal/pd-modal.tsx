@@ -25,7 +25,7 @@ export class Modal {
     @Prop() data: any;
 
     @Method()
-    openModal() {
+    async openModal() {
         const modalContent = this.element.shadowRoot.querySelector(`.pd-modal-content`);
         this.userComponent = modalContent.ownerDocument.createElement(this.config?.component);
         modalContent.appendChild(this.userComponent);
@@ -35,7 +35,7 @@ export class Modal {
     @Event({ eventName: 'pd-modal-when-closed' }) pdModalWhenClosed!: EventEmitter<any>;
 
     @Method()
-    closeModal(returnData?: any) {
+    async closeModal(returnData?: any) {
         this.pdModalWhenClosed.emit(returnData);
         this.element.remove();
         document.body.classList.remove('no-scroll');

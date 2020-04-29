@@ -166,7 +166,12 @@
             <pd-search id="pd-search-0"></pd-search>
 
             <pd-container></pd-container>
-            <pd-dropdown id="pd-dropdown-0" label="dropdown label" helper-text="dropdown helper text"></pd-dropdown>
+            <pd-dropdown
+                id="pd-dropdown-0"
+                label="dropdown label"
+                helper-text="dropdown helper text"
+                empty-item
+            ></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-checkbox disabled text="checkbox"></pd-checkbox>
@@ -281,6 +286,8 @@
             pdSlider.addEventListener('pdOnInput', value => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
+
+            pdDropDown.addEventListener('pd-on-change', value => console.log('onCHnage', value.detail));
 
             pdSearch.addEventListener('pdOnChange', value => {
                 pdSearch.searchStrings = ['Some example search 1', 'Some example search 2', 'Some example search 3'];
