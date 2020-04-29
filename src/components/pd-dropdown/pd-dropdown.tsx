@@ -1,4 +1,5 @@
 import { Component, Host, h, State, Listen, Element, Prop, getAssetPath } from '@stencil/core';
+import { createPopper } from '@popperjs/core';
 
 // TODO: move out of file
 export interface DropdownItem {
@@ -104,12 +105,25 @@ export class Dropdown {
         if (!this.open) return;
 
         const menu = this.element.shadowRoot.querySelector('.pd-dropdown-menu') as HTMLElement;
+        const button = this.element.shadowRoot.querySelector('.pd-dropdown-button') as HTMLElement;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
 
+        this.scrollToSelected(dropdownItemNodes, menu);
+        this.createMenuPopper(button, menu);
+    }
+
+    private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
         dropdownItemNodes.forEach(item => {
             if (item.selected) menu.scrollTop = item.offsetTop - 48 * 2;
+        });
+    }
+
+    // create a popper js element for the menu
+    private createMenuPopper(button, menu) {
+        createPopper(button, menu, {
+            placement: 'bottom',
         });
     }
 

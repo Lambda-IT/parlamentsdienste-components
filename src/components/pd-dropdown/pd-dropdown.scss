@@ -16,13 +16,11 @@
 }
 
 .pd-dropdown-menu {
-    position: absolute;
     background-color: $white;
     border: 0.125em solid $cyan-9;
     border-radius: 0.25em;
     z-index: 100;
     width: 100%;
-    left: 0;
     max-height: calc(3em * 5 + 0.25em);
     overflow: auto;
 }
