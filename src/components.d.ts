@@ -276,6 +276,7 @@ export namespace Components {
             zIndex: string; // default 1000
         };
         "data": any;
+        "open": boolean;
         "openModal": () => Promise<void>;
         "whenClosed": () => Promise<any>;
     }
@@ -935,6 +936,7 @@ declare namespace LocalJSX {
         };
         "data"?: any;
         "onPd-modal-when-closed"?: (event: CustomEvent<any>) => void;
+        "open"?: boolean;
     }
     interface PdNavbar {
     }
