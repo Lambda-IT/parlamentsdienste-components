@@ -33,6 +33,34 @@
 
                         const wm = new WeakMap();
 
+                        var SurveyModal = {
+                                    name: 'SurveyModal',
+                                    props: [ 'title' ,'lastname' ],
+                                    data: function () {
+                                        return {
+                                            firstname: 'x',
+                                            lastname: '',
+                                            state: 'nok'
+                                        }
+                                    },
+                                    methods: {
+                                        ok: function () {
+                                            this.state = 'ok';
+                                            this.$refs.modal.closeModal();
+                                        },
+                                        cancel: function () {
+                                            this.state = 'cancelled';
+                                            this.$refs.modal.closeModal();
+                                        },
+                                        closed: function () {
+                                            console.log("state", this.state)
+                                            console.log("firstname", this.firstname)
+                                            this.$emit('modal-close',this.$data)
+                                        }
+                                    },
+                                    template: '#survey-template'
+                                };
+
                         var app = new Vue({
                             el: '#app',
                             data: {
@@ -189,6 +217,24 @@
                                     console.log('alert ele', ele);
                                     this.alerts = this.alerts.filter(x => x.message !== ele.target.textContent);
                                 },
+                                modalClosed: function (params) {
+                                    console.log("modalClosed params", params)
+                                    if(params.state === 'ok') {
+                                        this.alerts.push({
+                                            message: 'Hallo ' + params.firstname + " "   + params.lastname,
+                                            status: 'success',
+                                        });
+                                    }
+                                },
+                                openModal: function(title) {
+                                    var SurveyModalClass = Vue.extend(SurveyModal)
+                                    var instance = new SurveyModalClass({
+                                        propsData: { title }
+                                    })
+                                    instance.$once('modal-close',this.modalClosed)
+                                    instance.$mount() // pass nothing
+                                    this.$el.appendChild(instance.$el)
+                                }
                             },
                             computed: {
                                 selectedStateItem: function() {
@@ -289,6 +335,39 @@
                 console.log('vanilla clicked', e.target);
                 console.log('event: ', e);
             }
+        </script>
+
+        <script type="text/x-template" id="survey-template">
+            <pd-modal ref="modal" open="true" @pd-modal-when-closed ="closed()">
+                <div slot="header">
+                    <h5>{{title}}</h5>
+                </div>
+                <div>
+                    <form>
+                        <pd-input class="form-group"
+                            v-model-pd="firstname"
+                            inputmode="text"
+                            label="Vorname"
+                            ></pd-input>
+                        <pd-input class="form-group"
+                            v-model-pd="lastname"
+                            inputmode="text"
+                            label="Name"
+                        ></pd-input>
+                        <!-- <input type="text" v-model="lastname" name="lastname2" />
+                        <input type="text" v-model="state" name="state" /> -->
+                    </form>
+                </div>
+
+                <div slot="footer">
+                    <pd-button @click="cancel()" type="button" color="light"
+                                            >Cancel</pd-button
+                                        >
+                                        <pd-button @click="ok()" type="button" color="primary"
+                                            >Übernehmen</pd-button
+                                        >
+                </div>
+            </pd-modal>
         </script>
 
         <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
@@ -510,6 +589,33 @@
                                                 src="./assets/icons/icon_link_intern.svg"
                                             ></pd-icon
                                         ></pd-button>
+                                    </pd-panel-footer>
+                                </pd-panel>
+                                <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header">Umfragen</pd-panel-header>
+                                    <pd-panel-content style="--pd-panel-content-padding: 0;">
+                                        <pd-list>
+                                            <pd-list-item >
+                                        <pd-button  type="button" icon-location="right" @click="openModal('Umfrage 1')"
+                                            >Zur Umfrage 1 <pd-icon
+                                                slot="icon"
+                                                size="2"
+                                                style="fill: var(--primary); vertical-align: bottom;"
+                                                src="./assets/icons/icon_lmessage.svg"
+                                            ></pd-icon
+                                        ></pd-button></pd-list-item>
+                                        <pd-list-item>
+                                        <pd-button  type="button" icon-location="right" @click="openModal('Umfrage 2')"
+                                            >Zur Umfrage 2 <pd-icon
+                                                slot="icon"
+                                                size="2"
+                                                style="fill: var(--primary); vertical-align: bottom;"
+                                                src="./assets/icons/icon_lmessage.svg"
+                                            ></pd-icon
+                                        ></pd-button></pd-list-item>
+                                    </pd-panel-content>
+                                    <pd-panel-footer slot="footer">
+                                        
                                     </pd-panel-footer>
                                 </pd-panel>
                                 <pd-panel class="mt-4" collapsible>

@@ -266,7 +266,7 @@ export namespace Components {
     interface PdModal {
         "closeModal": (returnData?: any) => Promise<void>;
         "config": {
-            component: string; // element name to add as content
+            // component: string; // element name to add as content
             title: string;
             minWidth: string;
             maxWidth: string;
@@ -340,6 +340,7 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        "open": boolean;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -925,7 +926,7 @@ declare namespace LocalJSX {
     }
     interface PdModal {
         "config"?: {
-            component: string; // element name to add as content
+            // component: string; // element name to add as content
             title: string;
             minWidth: string;
             maxWidth: string;
@@ -1019,6 +1020,7 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "open"?: boolean;
         /**
           * Instructional text that shows before the input has a value.
          */
