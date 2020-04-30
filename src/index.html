@@ -24,6 +24,7 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-search id="pd-search-0"></pd-search>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
@@ -163,7 +164,6 @@
                 <pd-button>Button</pd-button>
             </pd-button-group>
             <pd-button href="http://www.google.ch">external Link</pd-button>
-            <pd-search id="pd-search-0"></pd-search>
 
             <pd-container></pd-container>
             <pd-dropdown
@@ -198,6 +198,14 @@
             <pd-slider id="pd-slider-0"></pd-slider>
             <pd-tag></pd-tag>
             <pd-timeline></pd-timeline>
+            <template id="pd-modal-template">
+                <span class="content-text">Currently open modals:</span>
+                <span class="content-modal-count"></span>
+                <div slot="footer">
+                    <pd-button class="close-button" outline>close</pd-button>
+                    <pd-button class="save-button">save</pd-button>
+                </div>
+            </template>
         </div>
         <script>
             const pdInput = document.getElementById('pd-input-0');
@@ -279,18 +287,23 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
+            pdSearch.searchStrings = [
+                'Some example search 1',
+                'Some example search 2',
+                'Some example search 3',
+                'Some example search 4',
+                'Some example search 5',
+                'Some example search 6',
+                'Some example search 7',
+                'Some example search 8',
+                'Some example search 9',
+            ];
+
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
-                pdSearch.searchStrings = ['asdf'];
             });
             pdSlider.addEventListener('pdOnInput', value => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
-            });
-
-            pdDropDown.addEventListener('pd-on-change', value => console.log('onCHnage', value.detail));
-
-            pdSearch.addEventListener('pdOnChange', value => {
-                pdSearch.searchStrings = ['Some example search 1', 'Some example search 2', 'Some example search 3'];
             });
 
             pdBreadcrumbs.addEventListener('pd-on-navigated', value => {
@@ -317,41 +330,13 @@
                 presentModal();
             });
 
-            customElements.define(
-                'user-content',
-                class extends HTMLElement {
-                    connectedCallback() {
-                        const modal = document.querySelector('pd-modal');
-                        const data = modal.data;
-
-                        const closeButton = document.createElement('pd-button');
-                        closeButton.innerHTML = 'close';
-                        closeButton.setAttribute('outline', true);
-                        closeButton.addEventListener('click', () => modal.closeModal());
-
-                        const paragraph = document.createElement('p');
-                        paragraph.innerHTML = `<p>this returns: ${data.first} + ${data.second} =</p>`;
-
-                        const saveButton = document.createElement('pd-button');
-                        saveButton.innerHTML = 'save';
-                        saveButton.addEventListener('click', () =>
-                            modal.closeModal({
-                                returnData: modal.data.first + modal.data.second,
-                            }),
-                        );
-
-                        this.append(paragraph);
-                        this.append(closeButton);
-                        this.append(saveButton);
-                    }
-                },
-            );
-
             function presentModal() {
                 // create the modal with the `modal-page` component
                 const modal = document.createElement('pd-modal');
+                const modalCount = document.querySelectorAll('pd-modal').length + 1;
+
                 modal.config = {
-                    component: 'user-content',
+                    // component: 'user-content',
                     title: 'Modal Title',
                     minWidth: '500px',
                     minHeight: '250px',
@@ -365,18 +350,38 @@
                     second: 20,
                 };
 
+                const contentTemplate = document.querySelector('#pd-modal-template').content.cloneNode(true);
+                const closeButton = contentTemplate.querySelector('.close-button');
+                closeButton.addEventListener('click', () => modal.closeModal());
+
+                const saveButton = contentTemplate.querySelector('.save-button');
+                saveButton.addEventListener('click', () =>
+                    modal.closeModal({
+                        add: modal.data.first + modal.data.second,
+                        modalCount: modalCount,
+                    }),
+                );
+
+                const contentModalCount = contentTemplate.querySelector('.content-modal-count');
+                contentModalCount.innerHTML = modalCount;
+
+                modal.append(contentTemplate);
+
                 // 1st way to get return data
                 modal.whenClosed().then(returnData => {
-                    console.log('return', returnData);
+                    console.log('whenClosed method', returnData);
                 });
 
                 // 2st way to get return data
-                modal.addEventListener('pd-modal-when-closed', event => console.log('eventData', event));
+                modal.addEventListener('pd-modal-when-closed', event =>
+                    console.log('pd-modal-when-closed event', event.detail),
+                );
 
                 // present the modal
                 document.body.appendChild(modal);
 
-                modal.openModal();
+                // modal.openModal();
+                modal.open = true;
             }
         </script>
     </body>

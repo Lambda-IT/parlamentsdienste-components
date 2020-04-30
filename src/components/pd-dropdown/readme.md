@@ -11,10 +11,20 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type             | Default         |
-| ------------- | ------------- | ----------- | ---------------- | --------------- |
-| `items`       | --            |             | `DropdownItem[]` | `[]`            |
-| `placeholder` | `placeholder` |             | `string`         | `'Placeholder'` |
+| Property        | Attribute     | Description                             | Type             | Default                                                             |
+| --------------- | ------------- | --------------------------------------- | ---------------- | ------------------------------------------------------------------- |
+| `emptyItem`     | `empty-item`  | Enable selection of an empty item       | `boolean`        | `false`                                                             |
+| `emptyItemData` | --            | Data used for the empty item            | `DropdownItem`   | `{         id: '0',         label: '-',         value: null,     }` |
+| `itemCount`     | `item-count`  | Items visible in dropdown               | `number`         | `5`                                                                 |
+| `items`         | --            | Items to display and select in dropdown | `DropdownItem[]` | `[]`                                                                |
+| `placeholder`   | `placeholder` | Placeholder when no item is selected    | `string`         | `'Placeholder'`                                                     |
+
+
+## Events
+
+| Event          | Description | Type                        |
+| -------------- | ----------- | --------------------------- |
+| `pd-on-change` |             | `CustomEvent<DropdownItem>` |
 
 
 ## Dependencies

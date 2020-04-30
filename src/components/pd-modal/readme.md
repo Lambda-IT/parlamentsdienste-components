@@ -11,6 +11,7 @@
 | -------- | --------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `config` | --        |             | `{ component: string; title: string; minWidth: string; maxWidth: string; minHeight: string; maxHeight: string; backdropVisible: boolean; zIndex: string; }` | `undefined` |
 | `data`   | `data`    |             | `any`                                                                                                                                                       | `undefined` |
+| `open`   | `open`    |             | `boolean`                                                                                                                                                   | `false`     |
 
 
 ## Events
