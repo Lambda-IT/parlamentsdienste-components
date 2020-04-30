@@ -56,7 +56,7 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
-        "iconLocation": "left" | "right";
+        "iconLocation": "left" | "right" | "none";
         /**
           * Use outline schema
          */
@@ -95,10 +95,29 @@ export namespace Components {
     interface PdDatepicker {
     }
     interface PdDropdown {
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": DropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Items to display and select in dropdown
+         */
         "items": DropdownItem[];
+        /**
+          * Placeholder when no item is selected
+         */
         "placeholder": string;
     }
     interface PdDropdownItem {
+        "mark": string | number;
         "selected": boolean;
         "value": string;
     }
@@ -245,9 +264,20 @@ export namespace Components {
         "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "closeModal": () => Promise<boolean>;
-        "component": any;
+        "closeModal": (returnData?: any) => Promise<void>;
+        "config": {
+            component: string; // element name to add as content
+            title: string;
+            minWidth: string;
+            maxWidth: string;
+            minHeight: string;
+            maxHeight: string;
+            backdropVisible: boolean; // default false
+            zIndex: string; // default 1000
+        };
+        "data": any;
         "openModal": () => Promise<void>;
+        "whenClosed": () => Promise<any>;
     }
     interface PdNavbar {
     }
@@ -309,7 +339,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "open": boolean;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -672,7 +701,7 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
-        "iconLocation"?: "left" | "right";
+        "iconLocation"?: "left" | "right" | "none";
         /**
           * Use outline schema
          */
@@ -712,10 +741,30 @@ declare namespace LocalJSX {
     interface PdDatepicker {
     }
     interface PdDropdown {
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: DropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Items to display and select in dropdown
+         */
         "items"?: DropdownItem[];
+        "onPd-on-change"?: (event: CustomEvent<DropdownItem>) => void;
+        /**
+          * Placeholder when no item is selected
+         */
         "placeholder"?: string;
     }
     interface PdDropdownItem {
+        "mark"?: string | number;
         "selected"?: boolean;
         "value"?: string;
     }
@@ -874,7 +923,18 @@ declare namespace LocalJSX {
         "status"?: "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "component"?: any;
+        "config"?: {
+            component: string; // element name to add as content
+            title: string;
+            minWidth: string;
+            maxWidth: string;
+            minHeight: string;
+            maxHeight: string;
+            backdropVisible: boolean; // default false
+            zIndex: string; // default 1000
+        };
+        "data"?: any;
+        "onPd-modal-when-closed"?: (event: CustomEvent<any>) => void;
     }
     interface PdNavbar {
     }
@@ -957,7 +1017,6 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
-        "open"?: boolean;
         /**
           * Instructional text that shows before the input has a value.
          */

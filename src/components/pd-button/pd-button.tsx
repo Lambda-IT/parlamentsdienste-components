@@ -41,7 +41,7 @@ export class Button {
      */
     @Prop() target: string = '_blank';
 
-    @Prop() iconLocation: 'left' | 'right' = 'left';
+    @Prop() iconLocation: 'left' | 'right' | 'none' = 'none';
 
     render() {
         const { href, target, type, disabled } = this;
@@ -64,7 +64,7 @@ export class Button {
         );
     }
 
-    renderIcon(location: 'left' | 'right') {
+    renderIcon(location: 'left' | 'right' | 'none') {
         if (location !== this.iconLocation) return;
         return (
             <span class={`pd-button-icon-${location}`}>

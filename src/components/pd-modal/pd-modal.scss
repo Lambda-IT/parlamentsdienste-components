@@ -1,12 +1,13 @@
 :host {
     display: flex;
-    position: absolute;
+    position: fixed;
     align-items: center;
     justify-content: center;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
+    z-index: 1000;
 }
 
 *,
@@ -16,9 +17,36 @@
 }
 
 .pd-modal-wrapper {
-    min-width: 6.25em;
-    max-width: 6.25em;
     background-color: #fff;
+    box-shadow: 0px 0px 8px #00000066;
     z-index: 10;
-    padding: 0.625em;
+    padding: 1.25em;
+    position: relative;
+}
+
+.pd-modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.875em;
+
+    .pd-modal-title {
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pd-modal-close {
+        fill: setcolor(primary, enabled);
+        margin-left: 1em;
+        cursor: pointer;
+        min-width: 1em;
+
+        &:hover {
+            fill: setcolor(primary, hover);
+        }
+
+        &:active {
+            fill: setcolor(primary, pressed);
+        }
+    }
 }

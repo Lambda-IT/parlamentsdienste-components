@@ -46,7 +46,7 @@ export class Backdrop {
             <Host
                 tabindex="-1"
                 class={{
-                    'pd-backdrop-hide': !this.visible,
+                    'pd-backdrop-visible': this.visible,
                 }}
             ></Host>
         );

@@ -1,17 +1,17 @@
 :host {
-    background-color: #000000;
+    background-color: transparent;
     display: block;
-    cursor: pointer;
     opacity: 0.2;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
 }
 
-:host(.pd-backdrop-hide) {
-    background: transparent;
+:host(.pd-backdrop-visible) {
+    background-color: $black;
+    cursor: pointer;
 }
 
 *,

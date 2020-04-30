@@ -46,6 +46,7 @@
  - [pd-alert](../pd-alert)
  - [pd-breadcrumbs](../pd-breadcrumbs)
  - [pd-list-item](../pd-list-item)
+ - [pd-modal](../pd-modal)
  - [pd-navbar](../pd-navbar)
  - [pd-panel-header](../pd-panel-header)
  - [pd-search](../pd-search)
@@ -58,6 +59,7 @@ graph TD;
   pd-alert --> pd-icon
   pd-breadcrumbs --> pd-icon
   pd-list-item --> pd-icon
+  pd-modal --> pd-icon
   pd-navbar --> pd-icon
   pd-panel-header --> pd-icon
   pd-search --> pd-icon
