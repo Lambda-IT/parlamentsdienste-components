@@ -1,5 +1,6 @@
 import { Component, Host, h, Method, Element, Listen, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import '@a11y/focus-trap';
+import { PdModalConfig } from '../../interface';
 
 @Component({
     tag: 'pd-modal',
@@ -7,48 +8,66 @@ import '@a11y/focus-trap';
     shadow: true,
 })
 export class Modal {
-    // Reference to the user's provided modal content
-    // private userComponent?: HTMLElement;
-
     @Element() element!: HTMLElement;
 
-    @Prop() config: {
-        // component: string; // element name to add as content
-        title: string;
-        minWidth: string;
-        maxWidth: string;
-        minHeight: string;
-        maxHeight: string;
-        backdropVisible: boolean; // default false
-        zIndex: string; // default 1000
-    };
+    /**
+     * Configuration properties
+     */
+    @Prop() config: PdModalConfig;
 
     @Prop() data: any;
 
+    /**
+     * This triggers the modal to visually open / close
+     * Alternatively the openModal() method can be called to trigger this
+     */
     @Prop() open: boolean = false;
 
+    /**
+     * This triggers the modal to visually open
+     * Alternatively the open property can be set to 'true' to trigger this
+     */
     @Method()
     async openModal() {
+        // Just change 'open' to true in case the function was called directly, this will trigger @Watch(open)
+        // @Watch(open) will call openModal again because 'open' changes here
+        if (!this.open) {
+            this.open = true;
+            return;
+        }
+        // The rest will only be executed when the function is call from @Watch(open)
+        // This is to prevent the function from running twice because @Watch(open) also triggers it
         this.element.style.display = 'flex';
-        // const modalContent = this.element.shadowRoot.querySelector(`.pd-modal-content`);
         const wrapper = this.element.shadowRoot.querySelector(`.pd-modal-wrapper`) as HTMLElement;
-        // this.userComponent = modalContent.ownerDocument.createElement(this.config?.component);
-        // modalContent.appendChild(this.userComponent);
         document.body.classList.add('no-scroll');
         wrapper.focus();
     }
 
+    /**
+     * Event with returnData that will be executed when the modal is closed
+     */
     @Event({ eventName: 'pd-modal-when-closed' }) pdModalWhenClosed!: EventEmitter<any>;
 
+    /**
+     * This triggers the modal to visually close
+     * Alternatively the open property can be set to 'false' to trigger this
+     * returnData: will be added to 'pdModalWhenClosed' Event or 'whenClosed' method
+     */
     @Method()
     async closeModal(returnData?: any) {
-        this.pdModalWhenClosed.emit(returnData);
-        this.element.remove();
-        document.body.classList.remove('no-scroll');
+        if (this.open) {
+            // TODO: This will not work when called from @Watch(!open)
+            this.pdModalWhenClosed.emit(returnData);
+            this.element.remove();
+            document.body.classList.remove('no-scroll');
+        }
     }
 
+    /**
+     * Returns a promise that will be resolved with modal 'returnData' when the modal is closed
+     */
     @Method()
-    whenClosed(): Promise<any> {
+    async whenClosed(): Promise<any> {
         let resolve: (detail) => void;
         const promise = new Promise<any>(r => (resolve = r));
         const el = this.element;

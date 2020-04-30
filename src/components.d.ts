@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { DropdownItem, } from "./components/pd-dropdown/pd-dropdown";
-import { InputChangeEventDetail, PdColumn, TextFieldTypes, } from "./interface";
+import { InputChangeEventDetail, PdColumn, PdModalConfig, TextFieldTypes, } from "./interface";
 export namespace Components {
     interface PdAlert {
         /**
@@ -264,20 +264,26 @@ export namespace Components {
         "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
+        /**
+          * This triggers the modal to visually close Alternatively the open property can be set to 'false' to trigger this returnData: will be added to 'pdModalWhenClosed' Event or 'whenClosed' method
+         */
         "closeModal": (returnData?: any) => Promise<void>;
-        "config": {
-            component: string; // element name to add as content
-            title: string;
-            minWidth: string;
-            maxWidth: string;
-            minHeight: string;
-            maxHeight: string;
-            backdropVisible: boolean; // default false
-            zIndex: string; // default 1000
-        };
+        /**
+          * Configuration properties
+         */
+        "config": PdModalConfig;
         "data": any;
+        /**
+          * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
+         */
         "open": boolean;
+        /**
+          * This triggers the modal to visually open Alternatively the open property can be set to 'true' to trigger this
+         */
         "openModal": () => Promise<void>;
+        /**
+          * Returns a promise that will be resolved with modal 'returnData' when the modal is closed
+         */
         "whenClosed": () => Promise<any>;
     }
     interface PdNavbar {
@@ -924,18 +930,18 @@ declare namespace LocalJSX {
         "status"?: "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
-        "config"?: {
-            component: string; // element name to add as content
-            title: string;
-            minWidth: string;
-            maxWidth: string;
-            minHeight: string;
-            maxHeight: string;
-            backdropVisible: boolean; // default false
-            zIndex: string; // default 1000
-        };
+        /**
+          * Configuration properties
+         */
+        "config"?: PdModalConfig;
         "data"?: any;
+        /**
+          * Event with returnData that will be executed when the modal is closed
+         */
         "onPd-modal-when-closed"?: (event: CustomEvent<any>) => void;
+        /**
+          * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
+         */
         "open"?: boolean;
     }
     interface PdNavbar {
