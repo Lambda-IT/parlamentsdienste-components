@@ -23,3 +23,13 @@ export interface PdColumn {
     sortFunc?: (a: any, b: any, dir: string) => number;
     displayFunc?: (value: any) => any;
 }
+
+export interface PdModalConfig {
+    title: string;
+    minWidth: string;
+    maxWidth: string;
+    minHeight: string;
+    maxHeight: string;
+    backdropVisible: boolean;
+    zIndex: string;
+}

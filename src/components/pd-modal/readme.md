@@ -7,25 +7,27 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                                                                                                                                        | Default     |
-| -------- | --------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `config` | --        |             | `{ component: string; title: string; minWidth: string; maxWidth: string; minHeight: string; maxHeight: string; backdropVisible: boolean; zIndex: string; }` | `undefined` |
-| `data`   | `data`    |             | `any`                                                                                                                                                       | `undefined` |
-| `open`   | `open`    |             | `boolean`                                                                                                                                                   | `false`     |
+| Property | Attribute | Description                                                                                                         | Type            | Default     |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------------- | --------------- | ----------- |
+| `config` | --        | Configuration properties                                                                                            | `PdModalConfig` | `undefined` |
+| `data`   | `data`    |                                                                                                                     | `any`           | `undefined` |
+| `open`   | `open`    | This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this | `boolean`       | `false`     |
 
 
 ## Events
 
-| Event                  | Description | Type               |
-| ---------------------- | ----------- | ------------------ |
-| `pd-modal-when-closed` |             | `CustomEvent<any>` |
+| Event                  | Description                                                          | Type               |
+| ---------------------- | -------------------------------------------------------------------- | ------------------ |
+| `pd-modal-when-closed` | Event with returnData that will be executed when the modal is closed | `CustomEvent<any>` |
 
 
 ## Methods
 
 ### `closeModal(returnData?: any) => Promise<void>`
 
-
+This triggers the modal to visually close
+Alternatively the open property can be set to 'false' to trigger this
+returnData: will be added to 'pdModalWhenClosed' Event or 'whenClosed' method
 
 #### Returns
 
@@ -35,7 +37,8 @@ Type: `Promise<void>`
 
 ### `openModal() => Promise<void>`
 
-
+This triggers the modal to visually open
+Alternatively the open property can be set to 'true' to trigger this
 
 #### Returns
 
@@ -45,7 +48,7 @@ Type: `Promise<void>`
 
 ### `whenClosed() => Promise<any>`
 
-
+Returns a promise that will be resolved with modal 'returnData' when the modal is closed
 
 #### Returns
 
