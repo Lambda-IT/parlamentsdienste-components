@@ -521,24 +521,24 @@
                                             <h2>Heading 2</h2>
                                             <h3>Heading 3</h3>
                                             <p>Form</p>
-                                            <pd-input
+                                            <pd-input class="form-group"
                                                 v-model-pd="config.button.caption"
                                                 inputmode="text"
                                                 label="button text"
                                             ></pd-input>
                                             <h4>{{config.button.caption}}</h4>
-                                            <pd-input
+                                            <pd-input class="form-group"
                                                 inputmode="text"
                                                 pattern="button|type|submit"
                                                 label="button type"
                                                 v-model-pd="config.button.type"
                                             ></pd-input>
-                                            <pd-checkbox
+                                            <pd-checkbox class="form-group"
                                                 text="button disabled"
                                                 v-model="config.button.disabled"
                                                 v-model-pd="config.button.disabled"
                                             ></pd-checkbox>
-                                            <pd-dropdown :items.prop="stateItems" label="button color"></pd-dropdown>
+                                            <pd-dropdown class="form-group" :items.prop="stateItems" label="button color"></pd-dropdown>
                                             <h4>{{selectedStateItem.label}}</h4>
                                         </form>
                                         <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
