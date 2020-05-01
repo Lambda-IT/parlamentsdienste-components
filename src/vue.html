@@ -49,15 +49,17 @@
                                             _.set(vnode.context, binding.expression, value);
                                         };
                                         wm.set(el, inputHandler);
-                                        if(el.nodeName !== 'PD-RADIO')
-                                        el.value = binding.value;
+                                        if(el.nodeName !== 'PD-RADIO') {
+                                            el.value = binding.value;
+                                        }
                                         el.addEventListener('input', inputHandler);
                                     },
 
                                     componentUpdated(el, binding) {
                                         console.log('componentUpdated -> el', { el, binding });
-                                        if(el.nodeName !== 'PD-RADIO')
-                                        el.value = binding.value;
+                                        if(el.nodeName !== 'PD-RADIO') {
+                                            el.value = binding.value;
+                                        }
                                     },
 
                                     update(el, binding) {
@@ -253,7 +255,7 @@
                                     else
                                         this.alerts.push({
                                             message:
-                                                'Ups, es ist etwas Schlimmes vorgefallen... ' +
+                                                'Ups, es ist etwas Unvorhergesehenes vorgefallen... ' +
                                                 new Date().toISOString(),
                                             status,
                                         });
@@ -263,6 +265,7 @@
                                     this.alerts = this.alerts.filter(x => x.message !== ele.target.textContent);
                                 },
                                 modalClosed: function (params) {
+                                    // modal has removed itself from DOM
                                     console.log("modalClosed params", params)
                                     if(params.state === 'ok') {
                                         if(params.happy) {
@@ -279,12 +282,16 @@
                                     }
                                 },
                                 openModal: function(title) {
+                                    // dynamic instancing of componentents, for modaldialogs
                                     var SurveyModalClass = Vue.extend(SurveyModal)
                                     var instance = new SurveyModalClass({
                                         propsData: { title }
                                     })
+                                    // register close handler for data
                                     instance.$once('modal-close',this.modalClosed)
+                                    // mount
                                     instance.$mount() // pass nothing
+                                    // insert into DOM
                                     this.$el.appendChild(instance.$el)
                                 }
                             },
@@ -552,6 +559,7 @@
                                     <pd-panel-content style="--pd-panel-content-padding: 0;">
                                         <pd-list>
                                             <pd-list-item >
+                                                <p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Umfrage starten.</p>
                                         <pd-button  type="button" icon-location="right" @click="openModal('Umfrage 1')"
                                             >Zur Umfrage 1 <pd-icon
                                                 slot="icon"
@@ -560,7 +568,7 @@
                                                 src="./assets/icons/icon_message.svg"
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
-                                        <pd-list-item>
+                                        <pd-list-item><p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Umfrage starten.</p>
                                         <pd-button  type="button" icon-location="right" @click="openModal('Umfrage 2')"
                                             >Zur Umfrage 2 <pd-icon
                                                 slot="icon"
