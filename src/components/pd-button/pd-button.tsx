@@ -41,7 +41,7 @@ export class Button {
      */
     @Prop() target: string = '_blank';
 
-    @Prop() iconLocation: 'left' | 'right' | 'none' = 'none';
+    @Prop({attribute:"icon-location"}) iconLocation: 'left' | 'right' | 'none' = 'none';
 
     render() {
         const { href, target, type, disabled } = this;

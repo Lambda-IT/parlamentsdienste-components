@@ -33,14 +33,58 @@
 
                         const wm = new WeakMap();
 
+                        Vue.directive('model-pd',{
+                                    bind(el, binding, vnode) {
+                                        console.log('bind -> el', el);
+                                        const inputHandler = event => {
+                                            console.log('bind -> event', event);
+                                            console.log('bind -> vnode.context', vnode.context);
+                                            console.log('bind -> binding.expression', binding.expression);
+                                            console.log('bind -> event.target.value', event.target.value);
+
+                                            // Vue.set(vnode.context, binding.expression, event.target.value);
+                                            var value = event.target.value;
+                                            if ('' + event.target.value === 'true') value = true;
+                                            if ('' + event.target.value === 'false') value = false;
+                                            _.set(vnode.context, binding.expression, value);
+                                        };
+                                        wm.set(el, inputHandler);
+                                        if(el.nodeName !== 'PD-RADIO')
+                                        el.value = binding.value;
+                                        el.addEventListener('input', inputHandler);
+                                    },
+
+                                    componentUpdated(el, binding) {
+                                        console.log('componentUpdated -> el', { el, binding });
+                                        if(el.nodeName !== 'PD-RADIO')
+                                        el.value = binding.value;
+                                    },
+
+                                    update(el, binding) {
+                                        console.log('update -> el', { el, binding });
+                                    },
+
+                                    unbind(el) {
+                                        console.log('unbind -> el', el);
+                                        const inputHandler = wm.get(el);
+                                        el.removeEventListener(el, inputHandler);
+                                    },
+                                });
+
+
                         var SurveyModal = {
                                     name: 'SurveyModal',
                                     props: [ 'title' ,'lastname' ],
                                     data: function () {
                                         return {
-                                            firstname: 'x',
+                                            firstname: '',
                                             lastname: '',
-                                            state: 'nok'
+                                            state: '',
+                                            happy: false,
+                                            config: {
+                                                title: this.$props.title,
+                                                backdropVisible:true
+                                            }
                                         }
                                     },
                                     methods: {
@@ -53,9 +97,10 @@
                                             this.$refs.modal.closeModal();
                                         },
                                         closed: function () {
-                                            console.log("state", this.state)
-                                            console.log("firstname", this.firstname)
-                                            this.$emit('modal-close',this.$data)
+                                            // console.log("state", this.state)
+                                            // console.log("firstname", this.firstname)
+                                             console.log("happy", this.happy)
+                                            this.$emit('modal-close',{ firstname: this.firstname, lastname: this.lastname, state: this.state, happy:this.happy});
                                         }
                                     },
                                     template: '#survey-template'
@@ -220,10 +265,17 @@
                                 modalClosed: function (params) {
                                     console.log("modalClosed params", params)
                                     if(params.state === 'ok') {
-                                        this.alerts.push({
-                                            message: 'Hallo ' + params.firstname + " "   + params.lastname,
-                                            status: 'success',
-                                        });
+                                        if(params.happy) {
+                                            this.alerts.push({
+                                                message: 'Hallo ' + params.firstname + " "   + params.lastname + ', schön dass Sie zufrieden sind.',
+                                                status: 'success',
+                                            });
+                                        } else {
+                                            this.alerts.push({
+                                                message: 'Hallo ' + params.firstname + " "   + params.lastname + ', schade dass Sie unzufrieden sind.' ,
+                                                status: 'warning',
+                                            });
+                                        }
                                     }
                                 },
                                 openModal: function(title) {
@@ -246,86 +298,6 @@
                             components: {
                                 draggable: vuedraggable,
                             },
-
-                            directives: {
-                                'model-pd': {
-                                    bind(el, binding, vnode) {
-                                        console.log('bind -> el', el);
-                                        const inputHandler = event => {
-                                            console.log('bind -> event', event);
-                                            console.log('bind -> vnode.context', vnode.context);
-                                            console.log('bind -> binding.expression', binding.expression);
-                                            console.log('bind -> event.target.value', event.target.value);
-
-                                            // Vue.set(vnode.context, binding.expression, event.target.value);
-                                            var value = event.target.value;
-                                            if ('' + event.target.value === 'true') value = true;
-                                            if ('' + event.target.value === 'false') value = false;
-                                            _.set(vnode.context, binding.expression, value);
-                                        };
-                                        wm.set(el, inputHandler);
-                                        el.value = binding.value;
-                                        el.addEventListener('input', inputHandler);
-                                    },
-
-                                    componentUpdated(el, binding) {
-                                        console.log('componentUpdated -> el', { el, binding });
-                                        el.value = binding.value;
-                                    },
-
-                                    update(el, binding) {
-                                        console.log('update -> el', { el, binding });
-                                    },
-
-                                    unbind(el) {
-                                        console.log('unbind -> el', el);
-                                        const inputHandler = wm.get(el);
-                                        el.removeEventListener(el, inputHandler);
-                                    },
-                                },
-
-                                'log-pd': {
-                                    bind(el, binding, vnode) {
-                                        console.log('log -> bind -> el', el);
-                                        console.log('log -> bind -> binding', binding);
-                                        console.log('log -> bind -> context', vnode.context);
-                                    },
-
-                                    componentUpdated(el, binding) {
-                                        console.log('log -> componentUpdated -> el', { el, binding });
-                                    },
-
-                                    update(el, binding) {
-                                        console.log('log -> update -> el', { el, binding });
-                                    },
-
-                                    unbind(el) {
-                                        console.log('log -> unbind -> el', el);
-                                    },
-                                },
-                                array: {
-                                    bind(el, binding, vnode) {
-                                        console.log('array -> bind -> el', el);
-                                        console.log('array -> bind -> binding', binding);
-                                        console.log('array -> bind -> context', vnode.context);
-
-                                        el[binding.arg] = binding.value;
-                                    },
-
-                                    componentUpdated(el, binding) {
-                                        console.log('array -> componentUpdated -> el', { el, binding });
-                                        el[binding.arg] = [...binding.value];
-                                    },
-
-                                    update(el, binding) {
-                                        console.log('array -> update -> el', { el, binding });
-                                    },
-
-                                    unbind(el) {
-                                        console.log('array -> unbind -> el', el);
-                                    },
-                                },
-                            },
                         });
                     });
                 });
@@ -338,34 +310,18 @@
         </script>
 
         <script type="text/x-template" id="survey-template">
-            <pd-modal ref="modal" open="true" @pd-modal-when-closed ="closed()">
-                <div slot="header">
-                    <h5>{{title}}</h5>
-                </div>
+            <pd-modal ref="modal" open="true" :config.prop="config" @pd-modal-when-closed ="closed()">
                 <div>
                     <form>
-                        <pd-input class="form-group"
-                            v-model-pd="firstname"
-                            inputmode="text"
-                            label="Vorname"
-                            ></pd-input>
-                        <pd-input class="form-group"
-                            v-model-pd="lastname"
-                            inputmode="text"
-                            label="Name"
-                        ></pd-input>
-                        <!-- <input type="text" v-model="lastname" name="lastname2" />
-                        <input type="text" v-model="state" name="state" /> -->
+                        <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
+                        <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
+                        <pd-input class="form-group" v-model-pd="firstname" inputmode="text" label="Vorname" ></pd-input>
+                        <pd-input class="form-group" v-model-pd="lastname" inputmode="text" label="Name" ></pd-input>
                     </form>
                 </div>
-
                 <div slot="footer">
-                    <pd-button @click="cancel()" type="button" color="light"
-                                            >Cancel</pd-button
-                                        >
-                                        <pd-button @click="ok()" type="button" color="primary"
-                                            >Übernehmen</pd-button
-                                        >
+                    <pd-button @click="cancel()" type="button" color="light" >Cancel</pd-button>
+                    <pd-button @click="ok()" type="submit" color="primary" >Übernehmen</pd-button>
                 </div>
             </pd-modal>
         </script>
@@ -600,8 +556,8 @@
                                             >Zur Umfrage 1 <pd-icon
                                                 slot="icon"
                                                 size="2"
-                                                style="fill: var(--primary); vertical-align: bottom;"
-                                                src="./assets/icons/icon_lmessage.svg"
+                                                style="fill: var(--white); vertical-align: bottom;"
+                                                src="./assets/icons/icon_message.svg"
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
                                         <pd-list-item>
@@ -609,8 +565,8 @@
                                             >Zur Umfrage 2 <pd-icon
                                                 slot="icon"
                                                 size="2"
-                                                style="fill: var(--primary); vertical-align: bottom;"
-                                                src="./assets/icons/icon_lmessage.svg"
+                                                style="fill: var(--white); vertical-align: bottom;"
+                                                src="./assets/icons/icon_message.svg"
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
                                     </pd-panel-content>

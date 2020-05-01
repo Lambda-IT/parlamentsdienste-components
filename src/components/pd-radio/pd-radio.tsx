@@ -25,8 +25,9 @@ export class Radio {
 
     render() {
         const { inputId, name, value, label, checked } = this;
+        
         const labelId = inputId + '-lbl';
-
+        console.log("Radio -> render -> value", value)
         return (
             <Host
                 role="radio"
