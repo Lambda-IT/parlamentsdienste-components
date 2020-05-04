@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-        <script type="module" src="./build/parlamentsdienstecore.esm.js"></script>
-        <script nomodule src="./build/parlamentsdienstecore.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+        <script type="module" src="/build/parlamentsdienstecore.esm.js"></script>
+        <script nomodule src="/build/parlamentsdienstecore.js"></script>
         <script>
             function async(u, c) {
                 var d = document,
@@ -23,7 +23,7 @@
                 s.parentNode.insertBefore(o, s);
             }
 
-            async('./assets/js/vue.min.js', function() {
+            async('/assets/js/vue.min.js', function() {
                 async('//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js', function() {
                     async('//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js', function() {
                         Vue.config.ignoredElements = [/^pd-/];
@@ -333,7 +333,7 @@
             </pd-modal>
         </script>
 
-        <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
+        <link href="/build/parlamentsdienstecore.css" rel="stylesheet" />
         <style>
             pd-sidebar {
                 margin-left: -15px;
@@ -361,16 +361,16 @@
                         <pd-sidebar>
                             <pd-sidebar-item
                                 text="Mitteilungen"
-                                icon="./assets/icons/icon-new_post.svg"
+                                icon="/assets/icons/icon-new_post.svg"
                             ></pd-sidebar-item>
                             <pd-sidebar-item
                                 text="Meine Ablage"
-                                icon="./assets/icons/icon_ablage.svg"
+                                icon="/assets/icons/icon_ablage.svg"
                             ></pd-sidebar-item>
                             <pd-sidebar-item
                                 text="Recherchen"
                                 href="https://lambda-it.ch"
-                                icon="./assets/icons/icon_recherche.svg"
+                                icon="/assets/icons/icon_recherche.svg"
                             >
                             </pd-sidebar-item>
                         </pd-sidebar>
@@ -397,7 +397,7 @@
                                     <pd-panel-header slot="header">Sample Table</pd-panel-header>
                                     <pd-panel-content>
                                         <div class="mb-4">
-                                            <p class="lead">Sitzung der WBK-NR vom 27./28. Juni 2019</p>
+                                            <p class="lead">Sitzung der WBK-NR vom 27/28. Juni 2019</p>
                                             <p>Donnerstag, 27. Juni 2019, 10.15-18.30 Uhr</p>
                                             <p>Freitag, 28. Juni 2019, 10.15-18.30 Uhr</p>
                                             <a href="https://lambda-it.ch">Zur Sitzungsansicht</a>
@@ -549,7 +549,7 @@
                                                 slot="icon"
                                                 size="2"
                                                 style="fill: var(--primary); vertical-align: bottom;"
-                                                src="./assets/icons/icon_link_intern.svg"
+                                                src="/assets/icons/icon_link_intern.svg"
                                             ></pd-icon
                                         ></pd-button>
                                     </pd-panel-footer>
@@ -565,7 +565,7 @@
                                                 slot="icon"
                                                 size="2"
                                                 style="fill: var(--white); vertical-align: bottom;"
-                                                src="./assets/icons/icon_message.svg"
+                                                src="/assets/icons/icon_message.svg"
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
                                         <pd-list-item><p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Umfrage starten.</p>
@@ -574,7 +574,7 @@
                                                 slot="icon"
                                                 size="2"
                                                 style="fill: var(--white); vertical-align: bottom;"
-                                                src="./assets/icons/icon_message.svg"
+                                                src="/assets/icons/icon_message.svg"
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
                                     </pd-panel-content>
