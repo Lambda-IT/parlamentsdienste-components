@@ -296,11 +296,13 @@
                                     this.$el.appendChild(instance.$el)
                                 },
                                 suggest: function (text) {
-                                    var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + text + '&limit=10&namespace=0&format=json';
-                                    fetch(url).then(function (response) {
-                                            return response.json();
+                                    console.log("text", text)
+                                    var vm = this;
+                                    var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + text + '&limit=10&namespace=0&format=json';
+                                    fetch(url,{method: "GET"}).then(function (response,e) {
+                                        return response.json();
                                     }).then(function (result) {
-                                        this.suggestions =  result[1];   
+                                        vm.suggestions =  result[1];   
                                     }); 
                                     
                                 }
@@ -587,6 +589,9 @@
                                                 src="/assets/icons/icon_message.svg"
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
+                                        <pd-list-item>
+                                            <pd-search placeholder="Suche" :search-strings.prop="suggestions" @pd-on-change="suggest($event.detail.value)" ></pd-search>
+                                        </pd-list-item>
                                     </pd-panel-content>
                                     <pd-panel-footer slot="footer">
                                         

@@ -17,7 +17,7 @@ export class Search {
     private inputElement: HTMLElement;
     private popper: Instance;
 
-    @Prop() searchStrings: string[] = [];
+    @Prop({ attribute:'search-strings'}) searchStrings: string[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
@@ -79,6 +79,7 @@ export class Search {
     @Watch('searchStrings')
     protected searchStringsChanged() {
         this.selectedIndex = -1;
+        console.log("Search -> searchStringsChanged -> selectedIndex", this.searchStrings)
         this.open = true;
     }
 
@@ -244,6 +245,7 @@ export class Search {
 
     private renderDropdownItems() {
         // if (!this.open) return;
+        console.log("Search -> renderDropdownItems -> searchStrings", this.searchStrings)
         return (
             <div
                 class="pd-search-dropdown"
@@ -259,6 +261,7 @@ export class Search {
                         mark={this.value}
                     ></pd-dropdown-item>
                 ))}
+               
             </div>
         );
     }
