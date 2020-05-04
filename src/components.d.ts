@@ -339,14 +339,12 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
-        "error": boolean;
         "helperText"?: string;
         "label"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "open": boolean;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -1003,7 +1001,6 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
-        "error"?: boolean;
         "helperText"?: string;
         "label"?: string;
         /**
@@ -1026,7 +1023,6 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
-        "open"?: boolean;
         /**
           * Instructional text that shows before the input has a value.
          */

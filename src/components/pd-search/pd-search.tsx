@@ -1,5 +1,6 @@
-import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element, State } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
+import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
     tag: 'pd-search',
@@ -10,8 +11,12 @@ import { InputChangeEventDetail } from '../../interface';
 export class Search {
     private nativeInput?: HTMLInputElement;
     private inputId = `pd-input-${inputIds++}`;
+
     @Element() element!: HTMLElement;
-    @Prop() open: boolean = false; // temp prop
+    private menuElement: HTMLElement;
+    private inputElement: HTMLElement;
+    private popper: Instance;
+
     @Prop() searchStrings: string[] = [];
 
     /**
@@ -41,8 +46,6 @@ export class Search {
 
     @Prop() label?: string;
 
-    @Prop() error: boolean = false;
-
     @Prop() helperText?: string;
 
     /**
@@ -71,19 +74,72 @@ export class Search {
     @Watch('value')
     protected valueChanged() {
         this.pdOnChange.emit({ value: this.value == null ? this.value : this.value.toString() });
-        if (this.value) this.searchStrings = [...this.searchStrings, `${this.value}`]; // TODO: remove
     }
 
     @Watch('searchStrings')
     protected searchStringsChanged() {
+        this.selectedIndex = -1;
         this.open = true;
     }
 
+    @Watch('selectedIndex')
+    protected indexChanged(index: number) {
+        const menu = this.element.shadowRoot.querySelector('.pd-search-dropdown') as HTMLElement;
+        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+            HTMLPdDropdownItemElement
+        >;
+
+        dropdownItemNodes.forEach((item, itemIndex) => {
+            const centerItem = Math.ceil(5 / 2) - 1;
+            if (itemIndex === index) menu.scrollTop = item.offsetTop - 48 * centerItem;
+        });
+    }
+
+    protected componentDidLoad() {
+        this.menuElement = this.element.shadowRoot.querySelector('.pd-search-dropdown') as HTMLElement;
+        this.inputElement = this.element.shadowRoot.querySelector('.pd-search-input') as HTMLElement;
+        this.popper = this.createMenuPopper(this.inputElement, this.menuElement);
+    }
+
+    protected componentDidUpdate() {
+        this.popper.forceUpdate();
+    }
+
+    @State() open: boolean = false;
+    @State() selectedIndex: number = -1;
+
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent) {
-        if (ev.key === 'ArrowDown') {
-            if (this.open) {
-                console.log('arrow');
+        switch (ev.key) {
+            case 'Tab': {
+                this.open = false;
+                break;
+            }
+            case 'Escape':
+            case 'Enter': {
+                ev.preventDefault();
+                this.open = false;
+                break;
+            }
+
+            case 'ArrowDown': {
+                ev.preventDefault();
+                if (!this.open) return;
+                const currentIndex = this.selectedIndex;
+                this.selectedIndex = currentIndex >= this.searchStrings.length - 1 ? currentIndex : currentIndex + 1;
+                this.value = this.searchStrings[this.selectedIndex];
+                break;
+            }
+            case 'ArrowUp': {
+                ev.preventDefault();
+                if (!this.open) return;
+                const currentIndex = this.selectedIndex;
+                this.selectedIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
+                this.value = this.searchStrings[this.selectedIndex];
+                break;
+            }
+            default: {
+                this.selectedIndex = -1;
             }
         }
     }
@@ -107,7 +163,7 @@ export class Search {
     }
 
     private onClickInput = () => {
-        if (this.searchStrings && this.searchStrings.length > 0) {
+        if (this.searchStrings?.length > 0) {
             this.open = true;
         }
     };
@@ -135,8 +191,8 @@ export class Search {
         return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
     }
 
-    private selectItem = (ev: Event) => {
-        const selectedItem = ev.target && (ev.target as HTMLElement).closest('pd-dropdown-item');
+    private selectItemClick = (ev: Event) => {
+        const selectedItem = (ev.target as HTMLElement)?.closest('pd-dropdown-item');
         this.value = selectedItem.value;
         this.open = false;
     };
@@ -146,15 +202,23 @@ export class Search {
         this.open = false;
     }
 
+    // create a popper js element for the menu
+    private createMenuPopper(button, menu): Instance {
+        return createPopper(button, menu, {
+            placement: 'bottom',
+        });
+    }
+
     render() {
         const value = this.getValue();
         const labelId = this.inputId + '-lbl';
 
         return (
-            <Host class={this.error ? 'pd-search-error' : ''} role="search">
+            <Host role="search">
                 <label class={this.disabled ? 'pd-search-disabled' : ''}>
                     {this.label ? <div class="pd-search-label-text">{this.label}</div> : ''}
                     <input
+                        class="pd-search-input"
                         ref={input => (this.nativeInput = input)}
                         aria-labelledby={labelId}
                         disabled={this.disabled}
@@ -179,11 +243,21 @@ export class Search {
     }
 
     private renderDropdownItems() {
-        if (!this.open) return;
+        // if (!this.open) return;
         return (
-            <div class="pd-search-dropdown" onClick={this.selectItem}>
-                {this.searchStrings.map(searchString => (
-                    <pd-dropdown-item value={searchString}></pd-dropdown-item>
+            <div
+                class="pd-search-dropdown"
+                style={{
+                    display: this.open ? 'block' : 'none',
+                }}
+                onClick={this.selectItemClick}
+            >
+                {this.searchStrings.map((searchString, i) => (
+                    <pd-dropdown-item
+                        selected={i === this.selectedIndex}
+                        value={searchString}
+                        mark={this.value}
+                    ></pd-dropdown-item>
                 ))}
             </div>
         );

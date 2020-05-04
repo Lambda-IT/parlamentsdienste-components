@@ -24,7 +24,6 @@
     </head>
     <body>
         <div class="example-components">
-            <pd-search id="pd-search-0"></pd-search>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
@@ -54,6 +53,7 @@
             <pd-alert color="warning" action action-text="a link to click"
                 >A simple primary alert—check it out!</pd-alert
             >
+            <pd-search id="pd-search-0"></pd-search>
             <pd-alert color="info">A simple primary alert—check it out!</pd-alert>
             <pd-alert color="dark">A simple primary alert—check it out!</pd-alert>
             <pd-alert
@@ -304,6 +304,20 @@
             });
             pdSlider.addEventListener('pdOnInput', value => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
+            });
+
+            pdSearch.addEventListener('pd-on-change', value => {
+                console.log('LOG: value', value);
+            });
+
+            pdSearch.addEventListener('pd-on-input', value => {
+                pdSearch.searchStrings = [
+                    Math.random(100) * 100,
+                    Math.random(100) * 100,
+                    Math.random(100) * 100,
+                    Math.random(100) * 100,
+                    Math.random(100) * 100,
+                ];
             });
 
             pdBreadcrumbs.addEventListener('pd-on-navigated', value => {
