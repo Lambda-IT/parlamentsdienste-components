@@ -23,9 +23,9 @@
         "test.watch": "stencil test --spec --e2e --watchAll",
         "generate": "stencil generate",
         "g": "npm run generate",
-        "storybook": "start-storybook -s ./dist,./src/assets,./dist/styles,",
+        "storybook": "start-storybook -s ./dist,./src",
         "s": "npm run storybook",
-        "build-storybook": "build-storybook",
+        "build-storybook": "build-storybook -c .storybook-deploy",
         "bs": "npm run build-storybook"
     },
     "devDependencies": {
