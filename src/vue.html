@@ -229,6 +229,7 @@
                                     },
                                 ],
                                 alerts: [],
+                                suggestions: []
                             },
                             methods: {
                                 click: function(e) {
@@ -293,6 +294,15 @@
                                     instance.$mount() // pass nothing
                                     // insert into DOM
                                     this.$el.appendChild(instance.$el)
+                                },
+                                suggest: function (text) {
+                                    var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + text + '&limit=10&namespace=0&format=json';
+                                    fetch(url).then(function (response) {
+                                            return response.json();
+                                    }).then(function (result) {
+                                        this.suggestions =  result[1];   
+                                    }); 
+                                    
                                 }
                             },
                             computed: {
@@ -608,8 +618,8 @@
                                                 v-model="config.button.disabled"
                                                 v-model-pd="config.button.disabled"
                                             ></pd-checkbox>
-                                            <pd-dropdown class="form-group" :items.prop="stateItems" label="button color"></pd-dropdown>
-                                            <h4>{{selectedStateItem.label}}</h4>
+                                            <pd-dropdown class="form-group" :items.prop="stateItems" label="button color" @pd-on-change="config.button.color=$event.detail.label"></pd-dropdown>
+                                            <h4>{{config.button.color}}</h4>
                                         </form>
                                         <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
                                     </pd-panel-content>
