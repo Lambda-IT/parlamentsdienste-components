@@ -1,5 +1,5 @@
 import { Component, Host, h, State, Listen, Element, Prop, getAssetPath, Event, EventEmitter } from '@stencil/core';
-import { createPopper } from '@popperjs/core';
+import { createPopper, Instance } from '@popperjs/core';
 
 // TODO: move out of file
 export interface DropdownItem {
@@ -17,6 +17,9 @@ export interface DropdownItem {
 })
 export class Dropdown {
     @Element() element;
+    private menuElement: HTMLElement;
+    private buttonElement: HTMLElement;
+    private popper: Instance;
 
     /**
      * Placeholder when no item is selected
@@ -126,21 +129,23 @@ export class Dropdown {
 
     @State() selectedItem: any;
 
-    componentWillLoad() {
+    protected componentWillLoad() {
         this.selectedItem = this.items.find(item => item.selected);
     }
 
-    componentDidUpdate() {
-        if (!this.open) return;
+    protected componentDidLoad() {
+        this.menuElement = this.element.shadowRoot.querySelector('.pd-dropdown-menu') as HTMLElement;
+        this.buttonElement = this.element.shadowRoot.querySelector('.pd-dropdown-button') as HTMLElement;
+        this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+    }
 
-        const menu = this.element.shadowRoot.querySelector('.pd-dropdown-menu') as HTMLElement;
-        const button = this.element.shadowRoot.querySelector('.pd-dropdown-button') as HTMLElement;
+    protected componentDidUpdate() {
+        if (!this.open) return;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
-
-        this.scrollToSelected(dropdownItemNodes, menu);
-        this.createMenuPopper(button, menu);
+        this.scrollToSelected(dropdownItemNodes, this.menuElement);
+        this.popper.forceUpdate();
     }
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
@@ -152,7 +157,7 @@ export class Dropdown {
 
     // create a popper js element for the menu
     private createMenuPopper(button, menu) {
-        createPopper(button, menu, {
+        return createPopper(button, menu, {
             placement: 'bottom',
         });
     }
