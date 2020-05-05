@@ -362,7 +362,7 @@ export namespace Components {
           * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
-        "searchStrings": string[];
+        "results": string[];
         /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
@@ -1040,7 +1040,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onPd-on-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when a search request occurred.
          */
@@ -1053,7 +1053,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
-        "searchStrings"?: string[];
+        "results"?: string[];
         /**
           * The value of the input.
          */

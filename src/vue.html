@@ -631,7 +631,7 @@
                                         ></pd-button></pd-list-item>
                                         <pd-list-item>
                                             <p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Suche starten.</p>
-                                            <pd-search placeholder="Suche" :search-strings.prop="suggestions" @pd-on-change="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)" ></pd-search>
+                                            <pd-search placeholder="Suche" :results.prop="suggestions" @pd-on-input="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)" ></pd-search>
                                         </pd-list-item>
                                         </pd-list>
                                         <pd-modal v-if="searchResults.show" open="true" :config.prop="searchResults.config" >

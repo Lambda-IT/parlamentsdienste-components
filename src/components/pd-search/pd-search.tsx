@@ -17,7 +17,7 @@ export class Search {
     private inputElement: HTMLElement;
     private popper: Instance;
 
-    @Prop({ attribute: 'search-strings' }) searchStrings: string[] = [];
+    @Prop() results: string[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
@@ -54,7 +54,7 @@ export class Search {
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<KeyboardEvent>;
+    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when the value has changed.
@@ -84,13 +84,13 @@ export class Search {
         this.pdOnChange.emit({ value: this.value == null ? this.value : this.value.toString() });
     }
 
-    @Watch('searchStrings')
-    protected searchStringsChanged(searchStrings: any) {
-        this.searchStrings = this.validateSearchStrings(searchStrings);
-        if (this.searchStrings.length > 0) {
+    @Watch('results')
+    protected resultsChanged(results: any) {
+        this.results = this.validateResults(results);
+        if (this.results.length > 0) {
             this.selectedIndex = -1;
             this.open = true;
-        }
+        } else this.open = false;
     }
 
     @Watch('selectedIndex')
@@ -107,7 +107,7 @@ export class Search {
     }
 
     protected componentWillLoad() {
-        this.searchStrings = this.validateSearchStrings(this.searchStrings);
+        this.results = this.validateResults(this.results);
     }
 
     protected componentDidLoad() {
@@ -145,10 +145,14 @@ export class Search {
             }
             case 'ArrowDown': {
                 ev.preventDefault();
-                if (!this.open) return;
+                // try to reopen if there are results
+                if (!this.open && this.results?.length > 0) {
+                    this.open = true;
+                    return;
+                } else if (!this.open) return;
                 const currentIndex = this.selectedIndex;
-                this.selectedIndex = currentIndex >= this.searchStrings.length - 1 ? currentIndex : currentIndex + 1;
-                this.setValue(this.searchStrings[this.selectedIndex]);
+                this.selectedIndex = currentIndex >= this.results.length - 1 ? currentIndex : currentIndex + 1;
+                this.setValue(this.results[this.selectedIndex]);
                 break;
             }
             case 'ArrowUp': {
@@ -156,7 +160,7 @@ export class Search {
                 if (!this.open) return;
                 const currentIndex = this.selectedIndex;
                 this.selectedIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-                this.setValue(this.searchStrings[this.selectedIndex]);
+                this.setValue(this.results[this.selectedIndex]);
                 break;
             }
             default: {
@@ -184,7 +188,7 @@ export class Search {
     }
 
     private onClickInput = () => {
-        if (this.searchStrings?.length > 0) {
+        if (this.results?.length > 0) {
             this.open = true;
         }
     };
@@ -192,7 +196,7 @@ export class Search {
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
         this.setValue(input?.value || '', true);
-        this.pdOnInput.emit(ev as KeyboardEvent);
+        this.pdOnInput.emit({ value: this.value });
     };
 
     private onBlur = () => {
@@ -231,8 +235,8 @@ export class Search {
         this.open = false;
     };
 
-    private validateSearchStrings(searchStrings: any) {
-        return Array.isArray(searchStrings) ? searchStrings : [];
+    private validateResults(results: any) {
+        return Array.isArray(results) ? results : [];
     }
 
     // create a popper js element for the menu
@@ -282,7 +286,7 @@ export class Search {
                     display: this.open ? 'block' : 'none',
                 }}
             >
-                {this.searchStrings.map((searchString, i) => (
+                {this.results.map((searchString, i) => (
                     <pd-dropdown-item
                         selected={i === this.selectedIndex || false}
                         value={searchString}
