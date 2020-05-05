@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type               | Default     |
-| ---------- | ---------- | ----------- | ------------------ | ----------- |
-| `mark`     | `mark`     |             | `number \| string` | `undefined` |
-| `selected` | `selected` |             | `boolean`          | `false`     |
-| `value`    | `value`    |             | `string`           | `''`        |
+| Property    | Attribute   | Description                          | Type               | Default     |
+| ----------- | ----------- | ------------------------------------ | ------------------ | ----------- |
+| `highlight` | `highlight` | Find an highlight this text in value | `number \| string` | `undefined` |
+| `selected`  | `selected`  | Sets this item to selected           | `boolean`          | `false`     |
+| `value`     | `value`     | Value for this item                  | `string`           | `''`        |
 
 
 ## Dependencies

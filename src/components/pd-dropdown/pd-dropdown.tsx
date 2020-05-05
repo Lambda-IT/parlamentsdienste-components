@@ -53,14 +53,14 @@ export class Dropdown {
     @State() open: boolean = false;
 
     @Listen('click', { target: 'body' })
-    handleClick(ev: MouseEvent) {
+    protected handleClick(ev: MouseEvent) {
         if (ev.target !== this.element) {
             this.open = false;
         }
     }
 
     @Listen('keydown')
-    handleKeyDown(ev: KeyboardEvent) {
+    protected handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
                 this.open = false;
@@ -112,7 +112,8 @@ export class Dropdown {
         }
     }
 
-    @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<DropdownItem>;
+    @Event({ eventName: 'pd-on-change' })
+    public pdOnChange!: EventEmitter<DropdownItem>;
 
     private currentSearch: string = '';
     private inputTime: number = 0;
@@ -162,7 +163,7 @@ export class Dropdown {
         });
     }
 
-    render() {
+    public render() {
         return (
             <Host>
                 <div class="pd-dropdown">
