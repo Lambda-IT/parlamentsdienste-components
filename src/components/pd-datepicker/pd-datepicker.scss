@@ -1,5 +1,5 @@
 :host {
-    display: inline-block;
+    display: block;
 }
 
 *,
@@ -9,6 +9,5 @@
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: row;
+    display: block;
 }

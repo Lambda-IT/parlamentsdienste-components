@@ -13,15 +13,18 @@ export class Datepicker {
 
     componentDidLoad() {
         const element = this.element.shadowRoot.querySelector('.wrapper');
-        flatpickr(element, { wrap: true });
+        flatpickr(element, {
+            wrap: true,
+            enableTime: true,
+            time_24hr: true,
+        });
     }
 
     render() {
         return (
             <Host>
                 <div class="wrapper">
-                    <input data-input />
-                    <button data-toggle>toggle</button>
+                    <pd-input data-input />
                 </div>
             </Host>
         );

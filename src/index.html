@@ -24,6 +24,7 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-datepicker></pd-datepicker>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
@@ -74,7 +75,6 @@
             <pd-progress-bar value="0.5" label striped color="danger" id="pd-progress-3"></pd-progress-bar>
             <pd-progress-bar value="0.5" label color="info" id="pd-progress-3"></pd-progress-bar>
             <pd-progress-bar value="0.5" label striped color="info" id="pd-progress-3"></pd-progress-bar>
-            <pd-datepicker></pd-datepicker>
             <div>
                 <pd-icon size="1" name="press"></pd-icon>
                 <pd-icon size="2" name="press"></pd-icon>
@@ -182,6 +182,7 @@
             <pd-radio name="x" value="0.80" label="80%"></pd-radio>
             <pd-radio name="x" value="1" label="100%"></pd-radio>
             <pd-input value="asdf" label="asdf" error id="pd-input-0" helper-text="asdf-asdf"></pd-input>
+            <pd-input value="asdf" label="asdf" error id="pd-input-0" helper-text="asdf-asdf"></pd-input>
             <pd-navbar>
                 <pd-navbar-item text="Startseite"></pd-navbar-item>
                 <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
@@ -287,17 +288,7 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdSearch.searchStrings = [
-                'Some example search 1',
-                'Some example search 2',
-                'Some example search 3',
-                'Some example search 4',
-                'Some example search 5',
-                'Some example search 6',
-                'Some example search 7',
-                'Some example search 8',
-                'Some example search 9',
-            ];
+            pdSearch.searchStrings = 'asdf';
 
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
@@ -306,7 +297,7 @@
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
 
-            pdSearch.addEventListener('pd-on-change', value => {
+            pdSearch.addEventListener('pd-on-search', value => {
                 console.log('LOG: value', value);
             });
 
