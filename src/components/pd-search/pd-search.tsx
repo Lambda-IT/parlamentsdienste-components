@@ -17,7 +17,7 @@ export class Search {
     private inputElement: HTMLElement;
     private popper: Instance;
 
-    @Prop() searchStrings: string[] = [];
+    @Prop({ attribute: 'search-strings' }) searchStrings: string[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
