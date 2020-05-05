@@ -381,6 +381,7 @@ export namespace Components {
          */
         "href": string;
         "icon": string;
+        "size": string;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -1068,6 +1069,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         "icon"?: string;
+        "size"?: string;
         /**
           * Sets target for link button e.g. '_blank'
          */
