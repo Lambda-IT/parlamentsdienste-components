@@ -95,16 +95,13 @@ a {
                 flex: 1 1 auto;
                 padding: 0 0.5rem;
             }
-
-            .numInputWrapper {
-            }
         }
 
         .flatpickr-prev-month,
         .flatpickr-next-month {
             position: initial;
             height: initial;
-            padding: 0;
+            padding: 0 0.4rem;
         }
     }
 
