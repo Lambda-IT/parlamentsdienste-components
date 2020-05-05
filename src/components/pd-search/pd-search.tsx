@@ -14,7 +14,7 @@ export class Search {
 
     @Element() element!: HTMLElement;
     private menuElement: HTMLElement;
-    private inputElement: HTMLElement;
+    private labelElement: HTMLElement;
     private popper: Instance;
 
     @Prop() results: string[] = [];
@@ -112,8 +112,8 @@ export class Search {
 
     protected componentDidLoad() {
         this.menuElement = this.element.shadowRoot.querySelector('.pd-search-dropdown') as HTMLElement;
-        this.inputElement = this.element.shadowRoot.querySelector('label') as HTMLElement;
-        this.popper = this.createMenuPopper(this.inputElement, this.menuElement);
+        this.labelElement = this.element.shadowRoot.querySelector('.pd-search-label') as HTMLElement;
+        this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
     }
 
     protected componentDidUpdate() {
@@ -242,7 +242,7 @@ export class Search {
     // create a popper js element for the menu
     private createMenuPopper(refElement, menu): Instance {
         return createPopper(refElement, menu, {
-            placement: 'bottom-end',
+            placement: 'bottom-start',
         });
     }
 
@@ -252,7 +252,12 @@ export class Search {
 
         return (
             <Host role="search">
-                <label class={this.disabled ? 'pd-search-disabled' : ''}>
+                <label
+                    class={{
+                        'pd-search-label': true,
+                        'pd-search-disabled': this.disabled,
+                    }}
+                >
                     {this.label ? <div class="pd-search-label-text">{this.label}</div> : ''}
                     <input
                         class="pd-search-input"

@@ -159,7 +159,7 @@ export class Dropdown {
     // create a popper js element for the menu
     private createMenuPopper(button, menu) {
         return createPopper(button, menu, {
-            placement: 'bottom',
+            placement: 'bottom-start',
         });
     }
 
