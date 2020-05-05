@@ -288,8 +288,6 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdSearch.searchStrings = 'asdf';
-
             pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
@@ -302,7 +300,7 @@
             });
 
             pdSearch.addEventListener('pd-on-input', value => {
-                pdSearch.searchStrings = [
+                pdSearch.results = [
                     Math.random(100) * 100,
                     Math.random(100) * 100,
                     Math.random(100) * 100,

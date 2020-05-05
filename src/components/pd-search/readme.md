@@ -7,16 +7,16 @@
 
 ## Properties
 
-| Property        | Attribute     | Description                                                     | Type               | Default        |
-| --------------- | ------------- | --------------------------------------------------------------- | ------------------ | -------------- |
-| `disabled`      | `disabled`    | If `true`, the user cannot interact with the input.             | `boolean`          | `false`        |
-| `helperText`    | `helper-text` |                                                                 | `string`           | `undefined`    |
-| `label`         | `label`       |                                                                 | `string`           | `undefined`    |
-| `name`          | `name`        | The name of the control, which is submitted with the form data. | `string`           | `this.inputId` |
-| `placeholder`   | `placeholder` | Instructional text that shows before the input has a value.     | `string`           | `undefined`    |
-| `readonly`      | `readonly`    | If `true`, the user cannot modify the value.                    | `boolean`          | `false`        |
-| `searchStrings` | --            |                                                                 | `string[]`         | `[]`           |
-| `value`         | `value`       | The value of the input.                                         | `number \| string` | `''`           |
+| Property      | Attribute     | Description                                                     | Type               | Default        |
+| ------------- | ------------- | --------------------------------------------------------------- | ------------------ | -------------- |
+| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.             | `boolean`          | `false`        |
+| `helperText`  | `helper-text` |                                                                 | `string`           | `undefined`    |
+| `label`       | `label`       |                                                                 | `string`           | `undefined`    |
+| `name`        | `name`        | The name of the control, which is submitted with the form data. | `string`           | `this.inputId` |
+| `placeholder` | `placeholder` | Instructional text that shows before the input has a value.     | `string`           | `undefined`    |
+| `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                    | `boolean`          | `false`        |
+| `results`     | --            |                                                                 | `string[]`         | `[]`           |
+| `value`       | `value`       | The value of the input.                                         | `number \| string` | `''`           |
 
 
 ## Events
@@ -26,7 +26,7 @@
 | `pd-on-blur`   | Emitted when the input loses focus.     | `CustomEvent<void>`                   |
 | `pd-on-change` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
 | `pd-on-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
-| `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>`          |
+| `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<InputChangeEventDetail>` |
 | `pd-on-search` | Emitted when a search request occurred. | `CustomEvent<InputChangeEventDetail>` |
 
 
