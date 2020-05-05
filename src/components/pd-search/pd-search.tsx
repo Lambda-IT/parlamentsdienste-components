@@ -112,7 +112,7 @@ export class Search {
 
     protected componentDidLoad() {
         this.menuElement = this.element.shadowRoot.querySelector('.pd-search-dropdown') as HTMLElement;
-        this.inputElement = this.element.shadowRoot.querySelector('.pd-search-input') as HTMLElement;
+        this.inputElement = this.element.shadowRoot.querySelector('label') as HTMLElement;
         this.popper = this.createMenuPopper(this.inputElement, this.menuElement);
     }
 
@@ -236,9 +236,9 @@ export class Search {
     }
 
     // create a popper js element for the menu
-    private createMenuPopper(button, menu): Instance {
-        return createPopper(button, menu, {
-            placement: 'bottom',
+    private createMenuPopper(refElement, menu): Instance {
+        return createPopper(refElement, menu, {
+            placement: 'bottom-end',
         });
     }
 
