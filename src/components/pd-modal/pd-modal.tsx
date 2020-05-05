@@ -55,7 +55,11 @@ export class Modal {
      */
     @Method()
     async closeModal(returnData?: any) {
-        if (this.open) {
+        if(this.config.close)  { 
+            // console.log("Modal -> closeModal -> close EXTERNAL")
+            this.config.close();
+        } else if (this.open) {
+            // console.log("Modal -> closeModal -> close INTERNAL")
             // TODO: This will not work when called from @Watch(!open)
             this.pdModalWhenClosed.emit(returnData);
             this.element.remove();

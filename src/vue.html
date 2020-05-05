@@ -232,9 +232,11 @@
                                 suggestions: [],
                                 search:'',
                                 searchResults: {
+                                    show:false,
                                     config: {
                                         title: 'Suchresultate',
-                                        backdropVisible:true
+                                        backdropVisible:true,
+                                        
                                     },
                                     columns: [{
                                             columnName: 'title',
@@ -250,10 +252,14 @@
                                             minWidth: 300,
                                             bold: false,
                                             textAlign: 'left',
+                                            displayFunc: link=> `<pd-button href="${link}" type="text" icon-location="right" class="hydrated">${link}<pd-icon slot="icon" size="2" src="/assets/icons/icon_link_intern.svg" role="img" class="hydrated" style="fill: var(--primary); vertical-align: bottom; font-size: 2em;"></pd-icon></pd-button>`
                                         }],
                                     rows: []
                                 },
-                                showResults : false
+                            },
+                            mounted: function () {
+                                const vm = this;
+                                this.searchResults.config.close= ()=> { vm.searchResults.show = false; }
                             },
                             methods: {
                                 click: function(e) {
@@ -339,7 +345,7 @@
                                         return response.json();
                                     }).then(function (result) {
                                         vm.searchResults.rows =  _.zipWith(result[1],result[3], function(a,b) { return {title:a,url:b };}) || [];
-                                        vm.showResults = true;   
+                                        vm.searchResults.show = true;   
                                     }); 
                                 }
                             },
@@ -628,14 +634,14 @@
                                             <pd-search placeholder="Suche" :search-strings.prop="suggestions" @pd-on-change="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)" ></pd-search>
                                         </pd-list-item>
                                         </pd-list>
-                                        <pd-modal v-if="showResults" open="true" :config.prop="searchResults.config" >
+                                        <pd-modal v-if="searchResults.show" open="true" :config.prop="searchResults.config" >
                                             <pd-table
                                             header-style="gray"
                                             :rows.prop="searchResults.rows"
                                             :columns.prop="searchResults.columns"
                                         ></pd-table>
                                             <div slot="footer">
-                                                <pd-button @click="showResults=false" @keyup.enter="showResults=false"  color="primary" >Schliessen</pd-button>
+                                                <pd-button @click="searchResults.show=false" @keyup.enter="searchResults.show=false"  color="primary" >Schliessen</pd-button>
                                             </div>
                                         </pd-modal>
                                     </pd-panel-content>
