@@ -18,6 +18,7 @@ jobs:
         run: npm run build-storybook
   deployment:
     runs-on: self-hosted
+    needs: build
     steps:
       - name: delete dest
         run: rm -rf /var/www/parlament/*.*
