@@ -262,12 +262,12 @@ export class Search {
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
                     />
-                    <div class="pd-search-clear" role="button" onClick={this.reset}>
+                    <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
                         <pd-icon class="pd-search-clear-icon" name="cancel-ring" size={2.4}></pd-icon>
-                    </div>
-                    <div class="pd-search-button" role="button" onClick={this.search}>
+                    </button>
+                    <button class="pd-search-button" onClick={this.search} tabindex="-1">
                         <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
-                    </div>
+                    </button>
                 </label>
                 {this.renderDropdownItems()}
             </Host>

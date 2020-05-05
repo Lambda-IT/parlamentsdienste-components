@@ -94,6 +94,9 @@ label {
     right: 3.25em;
     height: calc(100% - 0.125em);
     top: 1px; // misaligned icon
+    border: none;
+    padding: 0;
+    background-color: transparent;
 
     .pd-search-clear-icon {
         cursor: pointer;
