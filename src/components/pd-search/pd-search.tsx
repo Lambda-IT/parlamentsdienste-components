@@ -245,7 +245,7 @@ export class Search {
 
     private renderDropdownItems() {
         // if (!this.open) return;
-        console.log("Search -> renderDropdownItems -> searchStrings", this.searchStrings)
+        // console.log("Search -> renderDropdownItems -> searchStrings", this.searchStrings)
         return (
             <div
                 class="pd-search-dropdown"

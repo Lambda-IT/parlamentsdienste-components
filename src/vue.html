@@ -229,7 +229,8 @@
                                     },
                                 ],
                                 alerts: [],
-                                suggestions: []
+                                suggestions: [],
+                                search:''
                             },
                             methods: {
                                 click: function(e) {
@@ -298,11 +299,12 @@
                                 suggest: function (text) {
                                     console.log("text", text)
                                     var vm = this;
+                                    this.search = text;
                                     var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + text + '&limit=10&namespace=0&format=json';
                                     fetch(url,{method: "GET"}).then(function (response,e) {
                                         return response.json();
                                     }).then(function (result) {
-                                        vm.suggestions =  result[1];   
+                                        vm.suggestions =  result[1] || [];   
                                     }); 
                                     
                                 }
@@ -567,7 +569,7 @@
                                     </pd-panel-footer>
                                 </pd-panel>
                                 <pd-panel class="mt-4" collapsible>
-                                    <pd-panel-header slot="header">Umfragen</pd-panel-header>
+                                    <pd-panel-header slot="header">Umfragen und Suche</pd-panel-header>
                                     <pd-panel-content style="--pd-panel-content-padding: 0;">
                                         <pd-list>
                                             <pd-list-item >
@@ -590,7 +592,8 @@
                                             ></pd-icon
                                         ></pd-button></pd-list-item>
                                         <pd-list-item>
-                                            <pd-search placeholder="Suche" :search-strings.prop="suggestions" @pd-on-change="suggest($event.detail.value)" ></pd-search>
+                                            <p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Suche starten.</p>
+                                            <pd-search placeholder="Suche" :search-strings.prop="suggestions" @pd-on-change="suggest($event.detail.value)" :value="search" ></pd-search>
                                         </pd-list-item>
                                     </pd-panel-content>
                                     <pd-panel-footer slot="footer">

@@ -1,0 +1,26 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: build stencil
+        run: npm run build
+      - name: build storybook
+        run: npm run build-storybook
+  deployment:
+    runs-on: self-hosted
+    steps:
+      - name: delete dest
+        run: rm -rf /var/www/parlament/*.*
+      - name: copy storybook
+        run: cp storybook-static /var/www/parlament
+      - name: copy stencil
+        run: cp dist/parlamentsdienstecore /var/www/parlament/build
+      - name: copy assets
+        run: cp src/assets /var/www/parlament/assets
+
