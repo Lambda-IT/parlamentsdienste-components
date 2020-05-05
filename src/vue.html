@@ -35,12 +35,12 @@
 
                         Vue.directive('model-pd',{
                                     bind(el, binding, vnode) {
-                                        console.log('bind -> el', el);
+                                        // console.log('bind -> el', el);
                                         const inputHandler = event => {
-                                            console.log('bind -> event', event);
-                                            console.log('bind -> vnode.context', vnode.context);
-                                            console.log('bind -> binding.expression', binding.expression);
-                                            console.log('bind -> event.target.value', event.target.value);
+                                            // console.log('bind -> event', event);
+                                            // console.log('bind -> vnode.context', vnode.context);
+                                            // console.log('bind -> binding.expression', binding.expression);
+                                            // console.log('bind -> event.target.value', event.target.value);
 
                                             // Vue.set(vnode.context, binding.expression, event.target.value);
                                             var value = event.target.value;
@@ -56,18 +56,18 @@
                                     },
 
                                     componentUpdated(el, binding) {
-                                        console.log('componentUpdated -> el', { el, binding });
+                                        // console.log('componentUpdated -> el', { el, binding });
                                         if(el.nodeName !== 'PD-RADIO') {
                                             el.value = binding.value;
                                         }
                                     },
 
                                     update(el, binding) {
-                                        console.log('update -> el', { el, binding });
+                                        // console.log('update -> el', { el, binding });
                                     },
 
                                     unbind(el) {
-                                        console.log('unbind -> el', el);
+                                        // console.log('unbind -> el', el);
                                         const inputHandler = wm.get(el);
                                         el.removeEventListener(el, inputHandler);
                                     },
@@ -101,7 +101,7 @@
                                         closed: function () {
                                             // console.log("state", this.state)
                                             // console.log("firstname", this.firstname)
-                                             console.log("happy", this.happy)
+                                            //  console.log("happy", this.happy)
                                             this.$emit('modal-close',{ firstname: this.firstname, lastname: this.lastname, state: this.state, happy:this.happy});
                                         }
                                     },
@@ -263,12 +263,12 @@
                                         });
                                 },
                                 removeAlert: function(ele) {
-                                    console.log('alert ele', ele);
+                                    // console.log('alert ele', ele);
                                     this.alerts = this.alerts.filter(x => x.message !== ele.target.textContent);
                                 },
                                 modalClosed: function (params) {
                                     // modal has removed itself from DOM
-                                    console.log("modalClosed params", params)
+                                    // console.log("modalClosed params", params)
                                     if(params.state === 'ok') {
                                         if(params.happy) {
                                             this.alerts.push({
@@ -297,7 +297,7 @@
                                     this.$el.appendChild(instance.$el)
                                 },
                                 suggest: function (text) {
-                                    console.log("text", text)
+                                    // console.log("text", text)
                                     var vm = this;
                                     this.search = text;
                                     var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + text + '&limit=10&namespace=0&format=json';
@@ -306,7 +306,17 @@
                                     }).then(function (result) {
                                         vm.suggestions =  result[1] || [];   
                                     }); 
-                                    
+                                },
+                                search: function (text) {
+                                    // console.log("text", text)
+                                    var vm = this;
+                                    this.search = text;
+                                    var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + text + '&limit=10&namespace=0&format=json';
+                                    fetch(url,{method: "GET"}).then(function (response,e) {
+                                        return response.json();
+                                    }).then(function (result) {
+                                        vm.searchResults =  _.zipWith(result, function(a,b,c) { return {title:a,url:c };}) || [];   
+                                    }); 
                                 }
                             },
                             computed: {
@@ -332,17 +342,15 @@
 
         <script type="text/x-template" id="survey-template">
             <pd-modal ref="modal" open="true" :config.prop="config" @pd-modal-when-closed ="closed()">
-                <div>
-                    <form>
-                        <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
-                        <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
-                        <pd-input class="form-group" v-model-pd="firstname" inputmode="text" label="Vorname" ></pd-input>
-                        <pd-input class="form-group" v-model-pd="lastname" inputmode="text" label="Name" ></pd-input>
-                    </form>
+                <div  @keyup.enter="ok()" >
+                    <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
+                    <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
+                    <pd-input class="form-group" v-model-pd="firstname" inputmode="text" label="Vorname" ></pd-input>
+                    <pd-input class="form-group" v-model-pd="lastname" inputmode="text" label="Name" ></pd-input>
                 </div>
                 <div slot="footer">
                     <pd-button @click="cancel()" type="button" outline color="primary" >Cancel</pd-button>
-                    <pd-button @click="ok()" type="submit" color="primary" >Übernehmen</pd-button>
+                    <pd-button @click="ok()" type="submit" @keyup.enter="ok()"  color="primary" >Übernehmen</pd-button>
                 </div>
             </pd-modal>
         </script>
