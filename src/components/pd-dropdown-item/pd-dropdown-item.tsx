@@ -8,30 +8,32 @@ import { Component, ComponentInterface, Host, h, Prop, Element } from '@stencil/
 export class DropdownItem implements ComponentInterface {
     @Element() element!: HTMLElement;
 
+    /**
+     * Value for this item
+     */
     @Prop() value: string = '';
 
+    /**
+     * Sets this item to selected
+     */
     @Prop() selected: boolean = false;
 
-    @Prop() mark: string | number;
-
-    private setSelected() {
-        this.selected = true;
-    }
+    /**
+     * Find an highlight this text in value
+     */
+    @Prop() highlight: string | number;
 
     render() {
         return (
             <Host>
-                <div
-                    class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}
-                    onClick={() => this.setSelected()}
-                >
-                    {this.strong(this.value, this.mark?.toString())}
+                <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
+                    {this.strong(this.value, this.highlight?.toString())}
                 </div>
             </Host>
         );
     }
 
-    // Todo: removes whitespace at the end of mark
+    // Todo: removes whitespaces at the end of mark
     private setStrong = text => <strong>{text}</strong>;
     private setSpan = text => <span>{text}</span>;
     private strong = (value: string, strong: string = undefined) => {

@@ -17,7 +17,7 @@ export class Search {
     private inputElement: HTMLElement;
     private popper: Instance;
 
-    @Prop({ attribute:'search-strings'}) searchStrings: string[] = [];
+    @Prop({ attribute: 'search-strings' }) searchStrings: string[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
@@ -44,6 +44,9 @@ export class Search {
      */
     @Prop({ mutable: true }) value?: string | number | null = '';
 
+    // used to hold input value in case we need to reset on escape
+    private inputValue?: string | number | null = '';
+
     @Prop() label?: string;
 
     @Prop() helperText?: string;
@@ -57,6 +60,11 @@ export class Search {
      * Emitted when the value has changed.
      */
     @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<InputChangeEventDetail>;
+
+    /**
+     * Emitted when a search request occurred.
+     */
+    @Event({ eventName: 'pd-on-search' }) pdOnSearch!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when the input loses focus.
@@ -77,10 +85,12 @@ export class Search {
     }
 
     @Watch('searchStrings')
-    protected searchStringsChanged() {
-        this.selectedIndex = -1;
-        console.log("Search -> searchStringsChanged -> selectedIndex", this.searchStrings)
-        this.open = true;
+    protected searchStringsChanged(searchStrings: any) {
+        this.searchStrings = this.validateSearchStrings(searchStrings);
+        if (this.searchStrings.length > 0) {
+            this.selectedIndex = -1;
+            this.open = true;
+        }
     }
 
     @Watch('selectedIndex')
@@ -94,6 +104,10 @@ export class Search {
             const centerItem = Math.ceil(5 / 2) - 1;
             if (itemIndex === index) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
+    }
+
+    protected componentWillLoad() {
+        this.searchStrings = this.validateSearchStrings(this.searchStrings);
     }
 
     protected componentDidLoad() {
@@ -110,25 +124,31 @@ export class Search {
     @State() selectedIndex: number = -1;
 
     @Listen('keydown')
-    handleKeyDown(ev: KeyboardEvent) {
+    protected handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
                 this.open = false;
                 break;
             }
-            case 'Escape':
+            case 'Escape': {
+                ev.preventDefault();
+                this.open = false;
+                this.value = this.inputValue;
+                break;
+            }
             case 'Enter': {
                 ev.preventDefault();
                 this.open = false;
+                this.pdOnSearch.emit({ value: this.value });
+                this.inputValue = this.value;
                 break;
             }
-
             case 'ArrowDown': {
                 ev.preventDefault();
                 if (!this.open) return;
                 const currentIndex = this.selectedIndex;
                 this.selectedIndex = currentIndex >= this.searchStrings.length - 1 ? currentIndex : currentIndex + 1;
-                this.value = this.searchStrings[this.selectedIndex];
+                this.setValue(this.searchStrings[this.selectedIndex]);
                 break;
             }
             case 'ArrowUp': {
@@ -136,7 +156,7 @@ export class Search {
                 if (!this.open) return;
                 const currentIndex = this.selectedIndex;
                 this.selectedIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-                this.value = this.searchStrings[this.selectedIndex];
+                this.setValue(this.searchStrings[this.selectedIndex]);
                 break;
             }
             default: {
@@ -146,7 +166,7 @@ export class Search {
     }
 
     @Listen('click', { target: 'body' })
-    handleClickOutside(ev: MouseEvent) {
+    protected handleClickOutside(ev: MouseEvent) {
         if (ev.target !== this.element) {
             this.open = false;
         }
@@ -157,7 +177,7 @@ export class Search {
      * `input.focus()`.
      */
     @Method()
-    async setFocus() {
+    public async setFocus() {
         if (this.nativeInput) {
             this.nativeInput.focus();
         }
@@ -171,10 +191,7 @@ export class Search {
 
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
-        if (input) {
-            this.value = input.value || '';
-        }
-
+        this.setValue(input?.value || '', true);
         this.pdOnInput.emit(ev as KeyboardEvent);
     };
 
@@ -186,21 +203,36 @@ export class Search {
         this.pdOnFocus.emit();
     };
 
-    private onKeydown = () => {};
-
     private getValue(): string {
         return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
     }
 
-    private selectItemClick = (ev: Event) => {
-        const selectedItem = (ev.target as HTMLElement)?.closest('pd-dropdown-item');
-        this.value = selectedItem.value;
+    private setValue(value: string | number | null, isInput: boolean = false): void {
+        this.value = value;
+        if (isInput) this.inputValue = value;
+    }
+
+    private selectItem(value: string, index: number) {
+        this.setValue(value, true);
+        this.selectedIndex = index;
+        this.pdOnSearch.emit({ value: this.value });
+        this.open = false;
+    }
+
+    private reset = (ev: Event) => {
+        ev.preventDefault();
+        this.setValue('', true);
         this.open = false;
     };
 
-    private reset() {
-        this.value = '';
+    private search = (ev: Event) => {
+        ev.preventDefault();
+        this.pdOnSearch.emit({ value: this.value });
         this.open = false;
+    };
+
+    private validateSearchStrings(searchStrings: any) {
+        return Array.isArray(searchStrings) ? searchStrings : [];
     }
 
     // create a popper js element for the menu
@@ -210,7 +242,7 @@ export class Search {
         });
     }
 
-    render() {
+    public render() {
         const value = this.getValue();
         const labelId = this.inputId + '-lbl';
 
@@ -229,12 +261,11 @@ export class Search {
                         onInput={this.onInput}
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
-                        onKeyDown={this.onKeydown}
                     />
-                    <div class="pd-search-clear" role="button" onClick={() => this.reset()}>
+                    <div class="pd-search-clear" role="button" onClick={this.reset}>
                         <pd-icon class="pd-search-clear-icon" name="cancel-ring" size={2.4}></pd-icon>
                     </div>
-                    <div class="pd-search-button" role="button">
+                    <div class="pd-search-button" role="button" onClick={this.search}>
                         <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
                     </div>
                 </label>
@@ -244,24 +275,21 @@ export class Search {
     }
 
     private renderDropdownItems() {
-        // if (!this.open) return;
-        // console.log("Search -> renderDropdownItems -> searchStrings", this.searchStrings)
         return (
             <div
                 class="pd-search-dropdown"
                 style={{
                     display: this.open ? 'block' : 'none',
                 }}
-                onClick={this.selectItemClick}
             >
                 {this.searchStrings.map((searchString, i) => (
                     <pd-dropdown-item
-                        selected={i === this.selectedIndex}
+                        selected={i === this.selectedIndex || false}
                         value={searchString}
-                        mark={this.value}
+                        highlight={this.value}
+                        onClick={() => this.selectItem(searchString, i)}
                     ></pd-dropdown-item>
                 ))}
-               
             </div>
         );
     }

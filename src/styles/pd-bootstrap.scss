@@ -59,4 +59,90 @@ a {
 
 .form-group {
     margin-bottom: $form-group-margin-bottom;
-  }
+}
+
+.flatpickr-calendar {
+    border: 0.125rem solid $cyan-9;
+    box-shadow: none;
+    padding: 1.125rem;
+    width: calc(2.5rem + 7 * 2rem + 14 * 0.125rem);
+    top: (100rem - 3rem);
+    margin-top: -0.125rem;
+
+    &.hasWeeks {
+        width: calc(2.5rem + 7 * 2rem + 14 * 0.125rem + 2.5rem) !important;
+    }
+
+    &.arrowTop::before,
+    &.arrowTop::after {
+        display: none;
+    }
+
+    .flatpickr-months {
+        align-items: center;
+
+        .flatpickr-current-month {
+            width: 100%;
+            position: initial;
+            width: 100%;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0;
+
+            .flatpickr-monthDropdown-months,
+            .numInputWrapper {
+                flex: 1 1 auto;
+                padding: 0 0.5rem;
+            }
+
+            .numInputWrapper {
+            }
+        }
+
+        .flatpickr-prev-month,
+        .flatpickr-next-month {
+            position: initial;
+            height: initial;
+            padding: 0;
+        }
+    }
+
+    .flatpickr-day {
+        border-radius: 0.25rem;
+        border: 0.125rem solid transparent;
+        width: 2rem;
+        max-width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+
+        &.today {
+            border-color: $cyan-9;
+        }
+
+        &.selected {
+            background-color: $cyan-9;
+
+            &:hover {
+                border-color: transparent;
+            }
+        }
+
+        &.prevMonthDay,
+        &.nextMonthDay {
+            border-color: transparent;
+        }
+
+        &:hover {
+            background-color: setcolor(primary, hover);
+            color: $white;
+        }
+    }
+
+    .dayContainer,
+    .flatpickr-days {
+        width: calc(7 * 2rem + 14 * 0.125rem);
+        max-width: calc(7 * 2rem + 14 * 0.125rem);
+        min-width: calc(7 * 2rem + 14 * 0.125rem);
+    }
+}

@@ -117,8 +117,17 @@ export namespace Components {
         "placeholder": string;
     }
     interface PdDropdownItem {
-        "mark": string | number;
+        /**
+          * Find an highlight this text in value
+         */
+        "highlight": string | number;
+        /**
+          * Sets this item to selected
+         */
         "selected": boolean;
+        /**
+          * Value for this item
+         */
         "value": string;
     }
     interface PdFooter {
@@ -770,8 +779,17 @@ declare namespace LocalJSX {
         "placeholder"?: string;
     }
     interface PdDropdownItem {
-        "mark"?: string | number;
+        /**
+          * Find an highlight this text in value
+         */
+        "highlight"?: string | number;
+        /**
+          * Sets this item to selected
+         */
         "selected"?: boolean;
+        /**
+          * Value for this item
+         */
         "value"?: string;
     }
     interface PdFooter {
@@ -1023,6 +1041,10 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Emitted when a search request occurred.
+         */
+        "onPd-on-search"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
