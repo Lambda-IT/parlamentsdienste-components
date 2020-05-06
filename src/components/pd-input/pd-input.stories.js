@@ -18,6 +18,6 @@ export const primary = () => {
     const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
     const error = radios('error', { yes: 'error', no: '' }, '');
     return `
-        <pd-input label="${label}" placeholder="${placeholder}" helper-text="${helperText}" value=${value} ${disabled} ${error}></pd-input>
+        <pd-input class="m-3" label="${label}" placeholder="${placeholder}" helper-text="${helperText}" value=${value} ${disabled} ${error}></pd-input>
     `;
 };

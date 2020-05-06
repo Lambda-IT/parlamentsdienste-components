@@ -12,6 +12,6 @@ export default {
 export const primary = () => {
     const open = radios('open', { yes: 'open', no: '' }, '');
     return `
-        <pd-search ${open}></pd-search>
+        <pd-search class="m-3" ${open}></pd-search>
     `;
 };

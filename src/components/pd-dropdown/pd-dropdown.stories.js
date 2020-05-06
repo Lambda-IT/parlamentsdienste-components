@@ -25,6 +25,7 @@ export const primary = () => {
 
     const pdDropdown = document.createElement('pd-dropdown');
     pdDropdown.items = items;
+    pdDropdown.classList = ['m-3'];
 
     return pdDropdown;
 };

@@ -1,5 +1,5 @@
 import notes from './readme.md';
-import { radios, withKnobs } from '@storybook/addon-knobs';
+import { radios, withKnobs, number } from '@storybook/addon-knobs';
 
 export default {
     title: 'Progress-bar',
@@ -16,7 +16,17 @@ export const primary = () => {
         0.25,
     );
 
+    const striped = radios('striped', { yes: 'striped', no: '' }, '');
+
+    const label = radios('label', { yes: 'label', no: '' }, '');
+
+    const decimals = number('decimals', 2);
+
     return `
-        <pd-progress-bar value=${value}></pd-progress-bar>
+        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="primary" value=${value}></pd-progress-bar>
+        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="success" value=${value}></pd-progress-bar>
+        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="danger" value=${value}></pd-progress-bar>
+        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="warning" value=${value}></pd-progress-bar>
+        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="info" value=${value}></pd-progress-bar>
     `;
 };

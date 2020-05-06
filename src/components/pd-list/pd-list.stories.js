@@ -11,7 +11,7 @@ export default {
 
 export const primary = () => {
     return `
-        <pd-list>
+        <pd-list class="m-3">
             <pd-list-item>
                 <span>List Item 1</span>
             </pd-list-item>
@@ -27,7 +27,7 @@ export const primary = () => {
 
 export const statusList = () => {
     return `
-        <pd-list>
+        <pd-list class="m-3">
             <pd-list-item status="unset">
                 <div>16.3112</div>
                 <a>WBK-NR: Antrag auf Ablehnung </a>

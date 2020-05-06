@@ -15,6 +15,6 @@ export const primary = () => {
     const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
 
     return `
-        <pd-checkbox ${disabled} ${checked} text="checkbox"></pd-checkbox>
+        <pd-checkbox class="m-3" ${disabled} ${checked} text="checkbox"></pd-checkbox>
     `;
 };

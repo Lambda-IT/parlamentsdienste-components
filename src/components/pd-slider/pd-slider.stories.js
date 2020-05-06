@@ -12,6 +12,6 @@ export default {
 
 export const primary = () => {
     return `
-        <pd-slider></pd-slider>
+        <pd-slider class="m-3"></pd-slider>
     `;
 };
