@@ -23,15 +23,21 @@ label {
         }
     }
 
-    &.disabled {
+    &.pd-search-disabled {
         .pd-search-input {
             border: 0.125em solid setcolor(primary, disabled);
             border-right: none;
+            background-color: $white;
+        }
+
+        .pd-search-clear {
+            display: none;
         }
 
         .pd-search-button {
             border: 0.125em solid setcolor(primary, disabled);
-            background-color: setcolor(primary, disabled);
+            background-color: setcolor(primary, disabled) !important;
+            cursor: default;
         }
     }
 
