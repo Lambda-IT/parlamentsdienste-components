@@ -6,7 +6,7 @@ export default {
     title: 'Checkbox',
     parameters: {
         notes,
-        decorators: [withKnobs(), withActions('pdChanged')],
+        decorators: [withKnobs(), withActions('pd-on-checked')],
     },
 };
 

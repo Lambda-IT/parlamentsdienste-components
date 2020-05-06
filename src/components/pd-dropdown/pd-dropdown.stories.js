@@ -1,10 +1,12 @@
 import notes from './readme.md';
 import { object } from '@storybook/addon-knobs';
+import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Dropdown',
     parameters: {
         notes,
+        decorators: [withActions('pd-on-change')],
     },
 };
 

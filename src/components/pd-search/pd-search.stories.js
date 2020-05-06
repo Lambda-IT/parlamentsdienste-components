@@ -1,17 +1,33 @@
 import notes from './readme.md';
-import { withKnobs, radios } from '@storybook/addon-knobs';
+import { withKnobs, radios, array, text } from '@storybook/addon-knobs';
+import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Search',
-    decorators: [withKnobs()],
+    decorators: [withActions('pd-on-input', 'pd-on-change', 'pd-on-search', 'pd-on-focus', 'pd-on-blur'), withKnobs()],
     parameters: {
         notes,
     },
 };
 
 export const primary = () => {
-    const open = radios('open', { yes: 'open', no: '' }, '');
-    return `
-        <pd-search class="m-3" ${open}></pd-search>
-    `;
+    const disabled = radios('disabled', { yes: 'true', no: 'false' }, 'false');
+    const label = text('label', 'Label');
+    const placeholder = text('placeholder', 'search...');
+    const results = array('search results', [
+        'Sample Result 1',
+        'Sample Result 2',
+        'Sample Result 3',
+        'Sample Result 4',
+        'Sample Result 5',
+    ]);
+
+    const search = document.createElement('pd-search');
+    search.classList = ['m-3'];
+    search.results = results;
+    search.disabled = disabled;
+    search.label = label;
+    search.placeholder = placeholder;
+
+    return search;
 };

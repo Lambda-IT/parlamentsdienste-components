@@ -7,16 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                     | Type               | Default        |
-| ------------- | ------------- | --------------------------------------------------------------- | ------------------ | -------------- |
-| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.             | `boolean`          | `false`        |
-| `helperText`  | `helper-text` |                                                                 | `string`           | `undefined`    |
-| `label`       | `label`       |                                                                 | `string`           | `undefined`    |
-| `name`        | `name`        | The name of the control, which is submitted with the form data. | `string`           | `this.inputId` |
-| `placeholder` | `placeholder` | Instructional text that shows before the input has a value.     | `string`           | `undefined`    |
-| `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                    | `boolean`          | `false`        |
-| `results`     | --            |                                                                 | `string[]`         | `[]`           |
-| `value`       | `value`       | The value of the input.                                         | `number \| string` | `''`           |
+| Property      | Attribute     | Description                                                 | Type               | Default     |
+| ------------- | ------------- | ----------------------------------------------------------- | ------------------ | ----------- |
+| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`          | `false`     |
+| `label`       | `label`       |                                                             | `string`           | `undefined` |
+| `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`           | `undefined` |
+| `results`     | --            |                                                             | `string[]`         | `[]`        |
+| `value`       | `value`       | The value of the input.                                     | `number \| string` | `''`        |
 
 
 ## Events

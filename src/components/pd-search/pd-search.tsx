@@ -25,19 +25,9 @@ export class Search {
     @Prop() disabled = false;
 
     /**
-     * The name of the control, which is submitted with the form data.
-     */
-    @Prop() name: string = this.inputId;
-
-    /**
      * Instructional text that shows before the input has a value.
      */
     @Prop() placeholder?: string | null;
-
-    /**
-     * If `true`, the user cannot modify the value.
-     */
-    @Prop() readonly = false;
 
     /**
      * The value of the input.
@@ -48,8 +38,6 @@ export class Search {
     private inputValue?: string | number | null = '';
 
     @Prop() label?: string;
-
-    @Prop() helperText?: string;
 
     /**
      * Emitted when a keyboard input occurred.
