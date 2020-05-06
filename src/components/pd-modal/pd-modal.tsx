@@ -55,7 +55,7 @@ export class Modal {
      */
     @Method()
     async closeModal(returnData?: any) {
-        if (this.config.close) {
+        if (this.config?.close) {
             // console.log("Modal -> closeModal -> close EXTERNAL")
             document.body.classList.remove('no-scroll');
             this.config.close();

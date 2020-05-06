@@ -236,10 +236,12 @@
                                 suggestions: [],
                                 search: '',
                                 searchResults: {
-                                    show: false,
+                                    show:false,
+                                    
                                     config: {
                                         title: 'Suchresultate',
-                                        backdropVisible: true,
+                                        backdropVisible:true,
+                                        close: ()=> {},    
                                     },
                                     columns: [
                                         {
@@ -690,11 +692,7 @@
                                                 ></pd-search>
                                             </pd-list-item>
                                         </pd-list>
-                                        <pd-modal
-                                            v-if="searchResults.show"
-                                            open="true"
-                                            :config.prop="searchResults.config"
-                                        >
+                                        <pd-modal v-if="searchResults.show" :open="searchResults.show" :config.prop="searchResults.config" >
                                             <pd-table
                                                 header-style="gray"
                                                 :rows.prop="searchResults.rows"
