@@ -233,10 +233,11 @@
                                 search:'',
                                 searchResults: {
                                     show:false,
+                                    
                                     config: {
                                         title: 'Suchresultate',
                                         backdropVisible:true,
-                                        
+                                        close: ()=> {},    
                                     },
                                     columns: [{
                                             columnName: 'title',
@@ -635,7 +636,7 @@
                                             <pd-search placeholder="Suche" :results.prop="suggestions" @pd-on-input="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)" ></pd-search>
                                         </pd-list-item>
                                         </pd-list>
-                                        <pd-modal v-if="searchResults.show" open="true" :config.prop="searchResults.config" >
+                                        <pd-modal v-if="searchResults.show" :open="searchResults.show" :config.prop="searchResults.config" >
                                             <pd-table
                                             header-style="gray"
                                             :rows.prop="searchResults.rows"
