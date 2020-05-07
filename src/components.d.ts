@@ -117,7 +117,7 @@ export namespace Components {
         /**
           * Find an highlight this text in value
          */
-        "highlight": string | number;
+        "highlight"?: string | number;
         /**
           * Sets this item to selected
          */
@@ -345,6 +345,10 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Show matching parts in resuls as highlighted
+         */
+        "highlight"?: boolean;
         "label"?: string;
         /**
           * Instructional text that shows before the input has a value.
@@ -996,6 +1000,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Show matching parts in resuls as highlighted
+         */
+        "highlight"?: boolean;
         "label"?: string;
         /**
           * Emitted when the input loses focus.

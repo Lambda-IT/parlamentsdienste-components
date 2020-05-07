@@ -40,6 +40,11 @@ export class Search {
     @Prop() label?: string;
 
     /**
+     * Show matching parts in resuls as highlighted
+     */
+    @Prop() highlight?: boolean = true;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<InputChangeEventDetail>;
@@ -283,7 +288,7 @@ export class Search {
                     <pd-dropdown-item
                         selected={i === this.selectedIndex || false}
                         value={searchString}
-                        highlight={this.inputValue}
+                        highlight={this.highlight ? this.inputValue : ''}
                         onClick={() => this.selectItem(searchString, i)}
                     ></pd-dropdown-item>
                 ))}

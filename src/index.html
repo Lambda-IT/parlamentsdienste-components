@@ -300,7 +300,14 @@
             });
 
             pdSearch.addEventListener('pd-on-input', value => {
-                pdSearch.results = [''];
+                pdSearch.results = [
+                    `Some random results`,
+                    `Some random (results)`,
+                    `Some "random" results`,
+                    `Some random results with random extra words`,
+                    `Some random results with random extra words words words`,
+                    `RanDoM`,
+                ];
             });
 
             pdBreadcrumbs.addEventListener('pd-on-navigated', value => {

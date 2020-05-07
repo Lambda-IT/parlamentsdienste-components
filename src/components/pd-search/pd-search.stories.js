@@ -14,6 +14,7 @@ export const primary = () => {
     const disabled = radios('disabled', { yes: 'true', no: 'false' }, 'false');
     const label = text('label', 'Label');
     const placeholder = text('placeholder', 'search...');
+    const highlight = radios('highlight', { yes: 'true', no: 'false' }, 'false');
     const results = array('search results', [
         'Sample Result 1',
         'Sample Result 2',
@@ -28,6 +29,7 @@ export const primary = () => {
     search.disabled = disabled;
     search.label = label;
     search.placeholder = placeholder;
+    search.highlight = highlight;
 
     return search;
 };

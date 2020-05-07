@@ -10,6 +10,7 @@
 | Property      | Attribute     | Description                                                 | Type               | Default     |
 | ------------- | ------------- | ----------------------------------------------------------- | ------------------ | ----------- |
 | `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`          | `false`     |
+| `highlight`   | `highlight`   | Show matching parts in resuls as highlighted                | `boolean`          | `true`      |
 | `label`       | `label`       |                                                             | `string`           | `undefined` |
 | `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`           | `undefined` |
 | `results`     | --            |                                                             | `string[]`         | `[]`        |
