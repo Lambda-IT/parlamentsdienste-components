@@ -34,12 +34,20 @@ export class DropdownItem implements ComponentInterface {
     }
 
     // Todo: removes whitespaces at the end of mark
-    private setStrong = text => <strong>{text}</strong>;
-    private setSpan = text => <span>{text}</span>;
+    /*private setStrong = text => {
+        const x = text.replace(/ /g, '&nbsp;');
+        const y = <strong innerHTML={x}></strong>;
+        // y.innerHTML = x;
+        return y;
+    };*/
+    // private setSpan = text => <span>{text}</span>;
     private strong = (value: string, strong: string = undefined) => {
-        if (!strong || strong.length === 0) return value;
-        const split = value.split(strong);
-        const span = split.map(n => this.setSpan(n));
-        return [].concat(...span.map(n => [n, this.setStrong(strong)])).slice(0, -1);
+        const b = value.replace(new RegExp(`(.*)(${strong})(.*)`, 'i'), '\1<strong>\2</strong>\3');
+        console.log('BB', b);
+        return b;
+        // if (!strong || strong.length === 0) return value;
+        // const split = value.split(new RegExp(strong, 'i'));
+        // const span = split.map(n => this.setSpan(n));
+        // return [].concat(...span.map(n => [n, this.setStrong(strong)])).slice(0, -1);
     };
 }

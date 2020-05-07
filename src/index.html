@@ -300,13 +300,7 @@
             });
 
             pdSearch.addEventListener('pd-on-input', value => {
-                pdSearch.results = [
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                ];
+                pdSearch.results = [''];
             });
 
             pdBreadcrumbs.addEventListener('pd-on-navigated', value => {

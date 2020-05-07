@@ -283,7 +283,7 @@ export class Search {
                     <pd-dropdown-item
                         selected={i === this.selectedIndex || false}
                         value={searchString}
-                        highlight={this.value}
+                        highlight={this.inputValue}
                         onClick={() => this.selectItem(searchString, i)}
                     ></pd-dropdown-item>
                 ))}
