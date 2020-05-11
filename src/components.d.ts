@@ -40,9 +40,6 @@ export namespace Components {
          */
         "visible": boolean;
     }
-    interface PdBreadcrumbs {
-        "items": string[];
-    }
     interface PdButton {
         /**
           * Color schema used for the button
@@ -120,7 +117,7 @@ export namespace Components {
         /**
           * Find an highlight this text in value
          */
-        "highlight": string | number;
+        "highlight"?: string | number;
         /**
           * Sets this item to selected
          */
@@ -348,20 +345,15 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
-        "helperText"?: string;
-        "label"?: string;
         /**
-          * The name of the control, which is submitted with the form data.
+          * Show matching parts in resuls as highlighted
          */
-        "name": string;
+        "highlight"?: boolean;
+        "label"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
-        /**
-          * If `true`, the user cannot modify the value.
-         */
-        "readonly": boolean;
         "results": string[];
         /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
@@ -453,12 +445,6 @@ declare global {
     var HTMLPdBackdropElement: {
         prototype: HTMLPdBackdropElement;
         new (): HTMLPdBackdropElement;
-    };
-    interface HTMLPdBreadcrumbsElement extends Components.PdBreadcrumbs, HTMLStencilElement {
-    }
-    var HTMLPdBreadcrumbsElement: {
-        prototype: HTMLPdBreadcrumbsElement;
-        new (): HTMLPdBreadcrumbsElement;
     };
     interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {
     }
@@ -631,7 +617,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-backdrop": HTMLPdBackdropElement;
-        "pd-breadcrumbs": HTMLPdBreadcrumbsElement;
         "pd-button": HTMLPdButtonElement;
         "pd-button-group": HTMLPdButtonGroupElement;
         "pd-checkbox": HTMLPdCheckboxElement;
@@ -699,10 +684,6 @@ declare namespace LocalJSX {
           * Invisible backdrop when set to false
          */
         "visible"?: boolean;
-    }
-    interface PdBreadcrumbs {
-        "items"?: string[];
-        "onPd-on-navigated"?: (event: CustomEvent<any>) => void;
     }
     interface PdButton {
         /**
@@ -956,7 +937,7 @@ declare namespace LocalJSX {
         /**
           * Event with returnData that will be executed when the modal is closed
          */
-        "onPd-modal-when-closed"?: (event: CustomEvent<any>) => void;
+        "onPd-on-closed"?: (event: CustomEvent<any>) => void;
         /**
           * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
          */
@@ -995,7 +976,6 @@ declare namespace LocalJSX {
     interface PdPanelFooter {
     }
     interface PdPanelHeader {
-        "onPd-on-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdProgressBar {
         "color"?: "primary" | "success" | "danger" | "warning" | "info";
@@ -1020,12 +1000,11 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
-        "helperText"?: string;
-        "label"?: string;
         /**
-          * The name of the control, which is submitted with the form data.
+          * Show matching parts in resuls as highlighted
          */
-        "name"?: string;
+        "highlight"?: boolean;
+        "label"?: string;
         /**
           * Emitted when the input loses focus.
          */
@@ -1050,10 +1029,6 @@ declare namespace LocalJSX {
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
-        /**
-          * If `true`, the user cannot modify the value.
-         */
-        "readonly"?: boolean;
         "results"?: string[];
         /**
           * The value of the input.
@@ -1143,7 +1118,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-backdrop": PdBackdrop;
-        "pd-breadcrumbs": PdBreadcrumbs;
         "pd-button": PdButton;
         "pd-button-group": PdButtonGroup;
         "pd-checkbox": PdCheckbox;
@@ -1180,7 +1154,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
             "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
-            "pd-breadcrumbs": LocalJSX.PdBreadcrumbs & JSXBase.HTMLAttributes<HTMLPdBreadcrumbsElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;

@@ -17,7 +17,7 @@ export const primary = () => {
     const size = radios('size', ['large', 'small'], 'large');
 
     return `
-    <pd-toast header="${header}" info="${info}" size="${size}">
+    <pd-toast class="m-3" header="${header}" info="${info}" size="${size}">
         ${body}
     </pd-toast>
     `;

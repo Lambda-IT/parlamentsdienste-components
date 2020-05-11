@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event                  | Description                                                          | Type               |
-| ---------------------- | -------------------------------------------------------------------- | ------------------ |
-| `pd-modal-when-closed` | Event with returnData that will be executed when the modal is closed | `CustomEvent<any>` |
+| Event          | Description                                                          | Type               |
+| -------------- | -------------------------------------------------------------------- | ------------------ |
+| `pd-on-closed` | Event with returnData that will be executed when the modal is closed | `CustomEvent<any>` |
 
 
 ## Methods

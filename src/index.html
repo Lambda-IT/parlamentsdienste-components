@@ -301,11 +301,12 @@
 
             pdSearch.addEventListener('pd-on-input', value => {
                 pdSearch.results = [
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
-                    Math.random(100) * 100,
+                    `Some random results`,
+                    `Some random (results)`,
+                    `Some "random" results`,
+                    `Some random results with random extra words`,
+                    `Some random results with random extra words words words`,
+                    `RanDoM`,
                 ];
             });
 
@@ -376,9 +377,7 @@
                 });
 
                 // 2st way to get return data
-                modal.addEventListener('pd-modal-when-closed', event =>
-                    console.log('pd-modal-when-closed event', event.detail),
-                );
+                modal.addEventListener('pd-on-closed', event => console.log('pd-on-closed event', event.detail));
 
                 // present the modal
                 document.body.appendChild(modal);

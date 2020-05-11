@@ -4,7 +4,7 @@ import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Slider',
-    decorators: [withActions('pdOnInput', 'pdOnChange'), withKnobs()],
+    decorators: [withActions('pd-on-input', 'pd-on-change'), withKnobs()],
     parameters: {
         notes,
     },
@@ -12,6 +12,6 @@ export default {
 
 export const primary = () => {
     return `
-        <pd-slider></pd-slider>
+        <pd-slider class="m-3"></pd-slider>
     `;
 };

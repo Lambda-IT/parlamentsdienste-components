@@ -59,22 +59,28 @@ export const primary = () => {
     const columns = object('columns', columnsData);
 
     const headerDark = document.createElement('h3');
+    headerDark.classList = ['m-3'];
     headerDark.innerHTML = 'Dark';
     const table0 = document.createElement('pd-table');
+    table0.classList = ['m-3'];
     table0.rows = rows;
     table0.columns = columns;
     table0.setAttribute('header-style', 'dark');
 
     const headerLight = document.createElement('h3');
+    headerLight.classList = ['m-3'];
     headerLight.innerHTML = 'Light';
     const table1 = document.createElement('pd-table');
+    table1.classList = ['m-3'];
     table1.rows = rows;
     table1.columns = columns;
     table1.setAttribute('header-style', 'light');
 
     const headerGray = document.createElement('h3');
+    headerGray.classList = ['m-3'];
     headerGray.innerHTML = 'Gray';
     const table2 = document.createElement('pd-table');
+    table2.classList = ['m-3'];
     table2.rows = rows;
     table2.columns = columns;
     table2.setAttribute('header-style', 'gray');

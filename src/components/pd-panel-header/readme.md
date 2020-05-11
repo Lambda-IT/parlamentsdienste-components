@@ -3,13 +3,6 @@
 <!-- Auto Generated Below -->
 
 
-## Events
-
-| Event             | Description | Type                   |
-| ----------------- | ----------- | ---------------------- |
-| `pd-on-collapsed` |             | `CustomEvent<boolean>` |
-
-
 ## Dependencies
 
 ### Depends on

@@ -46,7 +46,7 @@ export class Modal {
     /**
      * Event with returnData that will be executed when the modal is closed
      */
-    @Event({ eventName: 'pd-modal-when-closed' }) pdModalWhenClosed!: EventEmitter<any>;
+    @Event({ eventName: 'pd-on-closed' }) pdModalWhenClosed!: EventEmitter<any>;
 
     /**
      * This triggers the modal to visually close
@@ -55,7 +55,7 @@ export class Modal {
      */
     @Method()
     async closeModal(returnData?: any) {
-        if(this.config && this.config.close)  { 
+        if (this.config?.close) {
             // console.log("Modal -> closeModal -> close EXTERNAL")
             document.body.classList.remove('no-scroll');
             this.config.close();
@@ -76,8 +76,8 @@ export class Modal {
         let resolve: (detail) => void;
         const promise = new Promise<any>(r => (resolve = r));
         const el = this.element;
-        el.addEventListener('pd-modal-when-closed', function willDismiss(willDismissEvent: CustomEvent) {
-            el.removeEventListener('pd-modal-when-closed', willDismiss);
+        el.addEventListener('pd-on-closed', function willDismiss(willDismissEvent: CustomEvent) {
+            el.removeEventListener('pd-on-closed', willDismiss);
             resolve(willDismissEvent.detail);
         });
         return promise;

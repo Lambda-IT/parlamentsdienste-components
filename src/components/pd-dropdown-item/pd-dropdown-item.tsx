@@ -21,25 +21,25 @@ export class DropdownItem implements ComponentInterface {
     /**
      * Find an highlight this text in value
      */
-    @Prop() highlight: string | number;
+    @Prop() highlight?: string | number;
 
     render() {
         return (
             <Host>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
-                    {this.strong(this.value, this.highlight?.toString())}
+                    <span innerHTML={this.strong(this.value, this.highlight?.toString())}></span>
                 </div>
             </Host>
         );
     }
 
-    // Todo: removes whitespaces at the end of mark
-    private setStrong = text => <strong>{text}</strong>;
-    private setSpan = text => <span>{text}</span>;
+    private escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+    }
+
     private strong = (value: string, strong: string = undefined) => {
         if (!strong || strong.length === 0) return value;
-        const split = value.split(strong);
-        const span = split.map(n => this.setSpan(n));
-        return [].concat(...span.map(n => [n, this.setStrong(strong)])).slice(0, -1);
+        const regexp = new RegExp(`((.*?)(${this.escapeRegExp(strong)})(.*?))+?`, 'gi');
+        return value.replace(regexp, '$2<strong>$3</strong>$4');
     };
 }

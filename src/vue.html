@@ -465,7 +465,7 @@
         </script>
 
         <script type="text/x-template" id="survey-template">
-            <pd-modal ref="modal" open="true" :config.prop="config" @pd-modal-when-closed ="closed()">
+            <pd-modal ref="modal" open="true" :config.prop="config" @pd-on-closed ="closed()">
                 <div  @keyup.enter="ok()" >
                     <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
                     <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>

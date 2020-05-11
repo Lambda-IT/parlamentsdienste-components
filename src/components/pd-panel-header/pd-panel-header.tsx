@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, EventEmitter, Event } from '@stencil/core';
+import { Component, Host, h, Element, State } from '@stencil/core';
 
 @Component({
     tag: 'pd-panel-header',
@@ -14,8 +14,6 @@ export class PanelHeader {
 
     private collapsible: boolean = false;
 
-    @Event({ eventName: 'pd-on-collapsed' }) pdOnCollapsed!: EventEmitter<boolean>;
-
     connectedCallback() {
         this.panel = this.element.closest('pd-panel') as HTMLPdPanelElement;
         if (this.panel) {
@@ -30,7 +28,6 @@ export class PanelHeader {
     private toggle() {
         this.collapsed = !this.collapsed;
         this.panel.collapsed = this.collapsed;
-        this.pdOnCollapsed.emit(this.collapsed);
     }
 
     render() {

@@ -9,6 +9,6 @@ export default {
 
 export const primary = () => {
     return `
-        <pd-datepicker></pd-datepicker>
+        <pd-datepicker class="m-3"></pd-datepicker>
     `;
 };

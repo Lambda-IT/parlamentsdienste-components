@@ -25,19 +25,9 @@ export class Search {
     @Prop() disabled = false;
 
     /**
-     * The name of the control, which is submitted with the form data.
-     */
-    @Prop() name: string = this.inputId;
-
-    /**
      * Instructional text that shows before the input has a value.
      */
     @Prop() placeholder?: string | null;
-
-    /**
-     * If `true`, the user cannot modify the value.
-     */
-    @Prop() readonly = false;
 
     /**
      * The value of the input.
@@ -49,7 +39,10 @@ export class Search {
 
     @Prop() label?: string;
 
-    @Prop() helperText?: string;
+    /**
+     * Show matching parts in resuls as highlighted
+     */
+    @Prop() highlight?: boolean = true;
 
     /**
      * Emitted when a keyboard input occurred.
@@ -295,7 +288,7 @@ export class Search {
                     <pd-dropdown-item
                         selected={i === this.selectedIndex || false}
                         value={searchString}
-                        highlight={this.value}
+                        highlight={this.highlight ? this.inputValue : ''}
                         onClick={() => this.selectItem(searchString, i)}
                     ></pd-dropdown-item>
                 ))}
