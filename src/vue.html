@@ -33,80 +33,84 @@
 
                         const wm = new WeakMap();
 
-                        Vue.directive('model-pd',{
-                                    bind(el, binding, vnode) {
-                                        // console.log('bind -> el', el);
-                                        const inputHandler = event => {
-                                            // console.log('bind -> event', event);
-                                            // console.log('bind -> vnode.context', vnode.context);
-                                            // console.log('bind -> binding.expression', binding.expression);
-                                            // console.log('bind -> event.target.value', event.target.value);
+                        Vue.directive('model-pd', {
+                            bind(el, binding, vnode) {
+                                // console.log('bind -> el', el);
+                                const inputHandler = event => {
+                                    // console.log('bind -> event', event);
+                                    // console.log('bind -> vnode.context', vnode.context);
+                                    // console.log('bind -> binding.expression', binding.expression);
+                                    // console.log('bind -> event.target.value', event.target.value);
 
-                                            // Vue.set(vnode.context, binding.expression, event.target.value);
-                                            var value = event.target.value;
-                                            if ('' + event.target.value === 'true') value = true;
-                                            if ('' + event.target.value === 'false') value = false;
-                                            _.set(vnode.context, binding.expression, value);
-                                        };
-                                        wm.set(el, inputHandler);
-                                        if(el.nodeName !== 'PD-RADIO') {
-                                            el.value = binding.value;
-                                        }
-                                        el.addEventListener('input', inputHandler);
-                                    },
+                                    // Vue.set(vnode.context, binding.expression, event.target.value);
+                                    var value = event.target.value;
+                                    if ('' + event.target.value === 'true') value = true;
+                                    if ('' + event.target.value === 'false') value = false;
+                                    _.set(vnode.context, binding.expression, value);
+                                };
+                                wm.set(el, inputHandler);
+                                if (el.nodeName !== 'PD-RADIO') {
+                                    el.value = binding.value;
+                                }
+                                el.addEventListener('input', inputHandler);
+                            },
 
-                                    componentUpdated(el, binding) {
-                                        // console.log('componentUpdated -> el', { el, binding });
-                                        if(el.nodeName !== 'PD-RADIO') {
-                                            el.value = binding.value;
-                                        }
-                                    },
+                            componentUpdated(el, binding) {
+                                // console.log('componentUpdated -> el', { el, binding });
+                                if (el.nodeName !== 'PD-RADIO') {
+                                    el.value = binding.value;
+                                }
+                            },
 
-                                    update(el, binding) {
-                                        // console.log('update -> el', { el, binding });
-                                    },
+                            update(el, binding) {
+                                // console.log('update -> el', { el, binding });
+                            },
 
-                                    unbind(el) {
-                                        // console.log('unbind -> el', el);
-                                        const inputHandler = wm.get(el);
-                                        el.removeEventListener(el, inputHandler);
-                                    },
-                                });
-
+                            unbind(el) {
+                                // console.log('unbind -> el', el);
+                                const inputHandler = wm.get(el);
+                                el.removeEventListener(el, inputHandler);
+                            },
+                        });
 
                         var SurveyModal = {
-                                    name: 'SurveyModal',
-                                    props: [ 'title' ,'lastname' ],
-                                    data: function () {
-                                        return {
-                                            firstname: '',
-                                            lastname: '',
-                                            state: '',
-                                            happy: false,
-                                            config: {
-                                                title: this.$props.title,
-                                                backdropVisible:true
-                                            }
-                                        }
+                            name: 'SurveyModal',
+                            props: ['title', 'lastname'],
+                            data: function() {
+                                return {
+                                    firstname: '',
+                                    lastname: '',
+                                    state: '',
+                                    happy: false,
+                                    config: {
+                                        title: this.$props.title,
+                                        backdropVisible: true,
                                     },
-                                    methods: {
-                                        ok: function () {
-                                            this.state = 'ok';
-                                            this.$refs.modal.closeModal();
-                                        },
-                                        cancel: function () {
-                                            this.state = 'cancelled';
-                                            this.$refs.modal.closeModal();
-                                        },
-                                        closed: function () {
-                                            // console.log("state", this.state)
-                                            // console.log("firstname", this.firstname)
-                                            //  console.log("happy", this.happy)
-                                            this.$emit('modal-close',{ firstname: this.firstname, lastname: this.lastname, state: this.state, happy:this.happy});
-                                        }
-                                    },
-                                    template: '#survey-template'
                                 };
+                            },
+                            methods: {
+                                ok: function() {
+                                    this.state = 'ok';
+                                    this.$refs.modal.closeModal();
+                                },
+                                cancel: function() {
+                                    this.state = 'cancelled';
+                                    this.$refs.modal.closeModal();
+                                },
+                                closed: function() {
+                                    // console.log("state", this.state)
+                                    // console.log("firstname", this.firstname)
+                                    //  console.log("happy", this.happy)
+                                    this.$emit('modal-close', {
+                                        firstname: this.firstname,
+                                        lastname: this.lastname,
+                                        state: this.state,
+                                        happy: this.happy,
+                                    });
+                                },
+                            },
+                            template: '#survey-template',
+                        };
 
                         var app = new Vue({
                             el: '#app',
@@ -228,18 +232,57 @@
                                         status: 'unset',
                                     },
                                 ],
+                                geschaeftsListe: [
+                                    {
+                                        id: 18.426,
+                                        title: 'pa. Iv. Schluss mit Wischi-Wirschtaftsverband',
+                                        description: 'Neue Ratsunterlagen',
+                                        status: 'success',
+                                    },
+                                    {
+                                        id: 16.426,
+                                        title: 'Ip. Mitwirkungsrechte des Wirschtaftsverbandes',
+                                        description: 'Annahme im Nationalrat',
+                                        status: 'unset',
+                                    },
+                                    {
+                                        id: 16.426,
+                                        title: 'Bundesgesetz über den Einsatz von Drohnen',
+                                        description: 'Neue Kommissionsunterlagen',
+                                        status: 'unset',
+                                    },
+                                ],
+                                antragsListe: [
+                                    {
+                                        id: 18.3708,
+                                        title: 'SiK-NR: Antrag auf Annahme',
+                                        status: 'success',
+                                    },
+                                    {
+                                        id: 16.3112,
+                                        title: 'WBK-NR: Antrag auf Ablehnung',
+                                        status: 'danger',
+                                    },
+                                    {
+                                        id: 18.081,
+                                        title: 'NR: Ordnungsantrag Rückweisung',
+                                        status: 'unset',
+                                    },
+                                ],
+
                                 alerts: [],
                                 suggestions: [],
-                                search:'',
+                                search: '',
                                 searchResults: {
-                                    show:false,
-                                    
+                                    show: false,
+
                                     config: {
                                         title: 'Suchresultate',
-                                        backdropVisible:true,
-                                        close: ()=> {},    
+                                        backdropVisible: true,
+                                        close: () => {},
                                     },
-                                    columns: [{
+                                    columns: [
+                                        {
                                             columnName: 'title',
                                             label: 'Title',
                                             width: 250,
@@ -253,14 +296,18 @@
                                             minWidth: 300,
                                             bold: false,
                                             textAlign: 'left',
-                                            displayFunc: link=> `<pd-button href="${link}" type="text" icon-location="right" class="hydrated">${link}<pd-icon slot="icon" size="2" src="/assets/icons/icon_link_intern.svg" role="img" class="hydrated" style="fill: var(--primary); vertical-align: bottom; font-size: 2em;"></pd-icon></pd-button>`
-                                        }],
-                                    rows: []
+                                            displayFunc: link =>
+                                                `<pd-button href="${link}" type="text" icon-location="right" class="hydrated">${link}<pd-icon slot="icon" size="2" src="/assets/icons/icon_link_intern.svg" role="img" class="hydrated" style="fill: var(--primary); vertical-align: bottom; font-size: 2em;"></pd-icon></pd-button>`,
+                                        },
+                                    ],
+                                    rows: [],
                                 },
                             },
-                            mounted: function () {
+                            mounted: function() {
                                 const vm = this;
-                                this.searchResults.config.close= ()=> { vm.searchResults.show = false; }
+                                this.searchResults.config.close = () => {
+                                    vm.searchResults.show = false;
+                                };
                             },
                             methods: {
                                 click: function(e) {
@@ -296,18 +343,28 @@
                                     // console.log('alert ele', ele);
                                     this.alerts = this.alerts.filter(x => x.message !== ele.target.textContent);
                                 },
-                                modalClosed: function (params) {
+                                modalClosed: function(params) {
                                     // modal has removed itself from DOM
                                     // console.log("modalClosed params", params)
-                                    if(params.state === 'ok') {
-                                        if(params.happy) {
+                                    if (params.state === 'ok') {
+                                        if (params.happy) {
                                             this.alerts.push({
-                                                message: 'Hallo ' + params.firstname + " "   + params.lastname + ', schön dass Sie zufrieden sind.',
+                                                message:
+                                                    'Hallo ' +
+                                                    params.firstname +
+                                                    ' ' +
+                                                    params.lastname +
+                                                    ', schön dass Sie zufrieden sind.',
                                                 status: 'success',
                                             });
                                         } else {
                                             this.alerts.push({
-                                                message: 'Hallo ' + params.firstname + " "   + params.lastname + ', schade dass Sie unzufrieden sind.' ,
+                                                message:
+                                                    'Hallo ' +
+                                                    params.firstname +
+                                                    ' ' +
+                                                    params.lastname +
+                                                    ', schade dass Sie unzufrieden sind.',
                                                 status: 'warning',
                                             });
                                         }
@@ -315,45 +372,81 @@
                                 },
                                 openModal: function(title) {
                                     // dynamic instancing of componentents, for modaldialogs
-                                    var SurveyModalClass = Vue.extend(SurveyModal)
+                                    var SurveyModalClass = Vue.extend(SurveyModal);
                                     var instance = new SurveyModalClass({
-                                        propsData: { title }
-                                    })
+                                        propsData: { title },
+                                    });
                                     // register close handler for data
-                                    instance.$once('modal-close',this.modalClosed)
+                                    instance.$once('modal-close', this.modalClosed);
                                     // mount
-                                    instance.$mount() // pass nothing
+                                    instance.$mount(); // pass nothing
                                     // insert into DOM
-                                    this.$el.appendChild(instance.$el)
+                                    this.$el.appendChild(instance.$el);
                                 },
-                                suggest: function (text) {
+                                suggest: function(text) {
                                     // console.log("text", text)
                                     var vm = this;
                                     this.search = text;
-                                    var url = 'https://de.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + text + '&limit=10&namespace=0&format=json';
-                                    fetch(url,{method: "GET"}).then(function (response,e) {
-                                        return response.json();
-                                    }).then(function (result) {
-                                        vm.suggestions =  result[1] || [];   
-                                    }); 
+                                    var url =
+                                        'https://de.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' +
+                                        text +
+                                        '&limit=10&namespace=0&format=json';
+                                    fetch(url, { method: 'GET' })
+                                        .then(function(response, e) {
+                                            return response.json();
+                                        })
+                                        .then(function(result) {
+                                            vm.suggestions = result[1] || [];
+                                        });
                                 },
-                                searchText: function (text) {
+                                searchText: function(text) {
                                     // console.log("text", text)
                                     var vm = this;
                                     this.search = text;
-                                    var url = 'https://de.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' + text + '&limit=10&namespace=0&format=json';
-                                    fetch(url,{method: "GET"}).then(function (response,e) {
-                                        return response.json();
-                                    }).then(function (result) {
-                                        vm.searchResults.rows =  _.zipWith(result[1],result[3], function(a,b) { return {title:a,url:b };}) || [];
-                                        vm.searchResults.show = true;   
-                                    }); 
+                                    var url =
+                                        'https://de.wikipedia.org/w/api.php?action=opensearch&origin=*&search=' +
+                                        text +
+                                        '&limit=10&namespace=0&format=json';
+                                    fetch(url, { method: 'GET' })
+                                        .then(function(response, e) {
+                                            return response.json();
+                                        })
+                                        .then(function(result) {
+                                            vm.searchResults.rows =
+                                                _.zipWith(result[1], result[3], function(a, b) {
+                                                    return { title: a, url: b };
+                                                }) || [];
+                                            vm.searchResults.show = true;
+                                        });
+                                },
+                                geschaeftChange: function(params) {
+                                    console.log('geschaeftChange -> params', params);
+                                },
+                                antragChange: function(params) {
+                                    console.log('antragChange -> params', params);
+                                },
+                                onClone(params) {
+                                   console.log("onClone -> params", params)
+                                   return {
+                                       id:params.id,
+                                       title: 'Antrag zu ' + params.title,
+                                       description: params.description,
+                                       status: 'unset',
+                                   }
                                 }
                             },
                             computed: {
                                 selectedStateItem: function() {
                                     console.log('stateItems', this.stateItems);
                                     return this.stateItems.find(x => x.selected);
+                                },
+                                dragOptions() {
+                                    return {
+                                        animation: 0,
+                                        group: "description",
+                                        disabled: false,
+                                        ghostClass: "ghost"
+                                    };
                                 },
                             },
 
@@ -397,6 +490,15 @@
             pd-alert {
                 margin-top: 0.25rem;
             }
+            .sortable-chosen {
+                background-color: whitesmoke;
+                opacity: 1;
+                border: solid 1px #fff9db;
+            }
+            .ghost {
+                opacity: 0.5;
+                background: #fff9db;
+            }
         </style>
     </head>
     <body>
@@ -415,12 +517,9 @@
                             <pd-sidebar-item
                                 text="Mitteilungen"
                                 icon="/assets/icons/icon-new_post.svg"
-                                size='1.5'
+                                size="1.5"
                             ></pd-sidebar-item>
-                            <pd-sidebar-item
-                                text="Meine Ablage"
-                                icon="/assets/icons/icon_ablage.svg"
-                            ></pd-sidebar-item>
+                            <pd-sidebar-item text="Meine Ablage" icon="/assets/icons/icon_ablage.svg"></pd-sidebar-item>
                             <pd-sidebar-item
                                 text="Recherchen"
                                 href="https://lambda-it.ch"
@@ -494,8 +593,9 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title">Präsidentin Isabelle Moret</h5>
                                                                 <p class="card-text">
-                                                                    Nationalrätin aus dem Kanton Waadt, Partei FDP.<br>
-                                                                    Some quick example text to build on the card title and make up the bulk of the card’s content.
+                                                                    Nationalrätin aus dem Kanton Waadt, Partei FDP.<br />
+                                                                    Some quick example text to build on the card title
+                                                                    and make up the bulk of the card’s content.
                                                                 </p>
                                                                 <p class="card-text">
                                                                     <small class="text-muted"
@@ -515,8 +615,9 @@
                                                                     1. Vizepräsident Andreas Aebi
                                                                 </h5>
                                                                 <p class="card-text">
-                                                                    Nationalrat aus dem Kanton Bern, Partei SVP.<br>
-                                                                    Some quick example text to build on the card title and make up the bulk of the card’s content.
+                                                                    Nationalrat aus dem Kanton Bern, Partei SVP.<br />
+                                                                    Some quick example text to build on the card title
+                                                                    and make up the bulk of the card’s content.
                                                                 </p>
                                                                 <p class="card-text">
                                                                     <small class="text-muted"
@@ -536,8 +637,9 @@
                                                                     2. Vizepräsidentin Irène Kälin
                                                                 </h5>
                                                                 <p class="card-text">
-                                                                    Nationalrätin aus dem Kanton Argau, Partei GPS.<br>
-                                                                    Some quick example text to build on the card title and make up the bulk of the card’s content.
+                                                                    Nationalrätin aus dem Kanton Argau, Partei GPS.<br />
+                                                                    Some quick example text to build on the card title
+                                                                    and make up the bulk of the card’s content.
                                                                 </p>
                                                                 <p class="card-text">
                                                                     <small class="text-muted"
@@ -555,23 +657,22 @@
                                             >
                                                 <pd-panel-header slot="header">Aktuelle Rednerliste</pd-panel-header>
                                                 <pd-panel-content style="--pd-panel-content-padding: 0;">
-                                                    <pd-list
-                                                        ><draggable
-                                                            v-model="rednerListe"
-                                                            @start="drag=true"
-                                                            @end="drag=false"
+                                                    <draggable
+                                                        tag="pd-list"
+                                                        v-model="rednerListe"
+                                                        @start="drag=true"
+                                                        @end="drag=false"
+                                                    >
+                                                        <pd-list-item
+                                                            v-for="redner in rednerListe"
+                                                            :key="redner.id"
+                                                            :status="redner.status"
                                                         >
-                                                            <pd-list-item
-                                                                v-for="redner in rednerListe"
-                                                                :key="redner.id"
-                                                                :status="redner.status"
-                                                            >
-                                                                <p class="mb-1">{{redner.id}}</p>
-                                                                <h5 class="mb-1">{{redner.title}}</h5>
-                                                                <p class="mb-1">{{redner.description}}</p>
-                                                            </pd-list-item></draggable
-                                                        >
-                                                    </pd-list>
+                                                            <p class="mb-1">{{redner.id}}</p>
+                                                            <h5 class="mb-1">{{redner.title}}</h5>
+                                                            <p class="mb-1">{{redner.description}}</p>
+                                                        </pd-list-item></draggable
+                                                    >
                                                 </pd-panel-content>
                                             </pd-panel>
                                         </div>
@@ -580,22 +681,57 @@
                             </div>
                             <div class="col-md-4">
                                 <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header">Meine Geschäfte</pd-panel-header>
+                                    <pd-panel-content style="--pd-panel-content-padding: 0;">
+                                        <draggable
+                                            tag="pd-list"
+                                            v-model="geschaeftsListe"
+                                            v-bind="dragOptions"
+                                            :clone="onClone"
+                                            :group="{ name: 'geschaefte', pull: 'clone', put: false }"
+                                            @change="geschaeftChange"
+                                            ><pd-list-item
+                                                v-for="geschaeft in geschaeftsListe"
+                                                
+                                                :key="geschaeft.id"
+                                                :status="geschaeft.status"
+                                            >
+                                                <p class="mb-1">{{geschaeft.id}}</p>
+                                                <h5 class="mb-1">{{geschaeft.title}}</h5>
+                                                <p class="mb-1">{{geschaeft.description}}</p>
+                                            </pd-list-item></draggable
+                                        >
+                                    </pd-panel-content>
+                                    <pd-panel-footer slot="footer">
+                                        <pd-button href="https://lambda-it.ch" type="text" icon-location="right"
+                                            >Zur Übersicht Geschäfte<pd-icon
+                                                slot="icon"
+                                                size="2"
+                                                style="fill: var(--primary); vertical-align: bottom;"
+                                                src="/assets/icons/icon_link_intern.svg"
+                                            ></pd-icon
+                                        ></pd-button>
+                                    </pd-panel-footer>
+                                </pd-panel>
+                                <pd-panel class="mt-4" collapsible>
                                     <pd-panel-header slot="header">Meine Anträge</pd-panel-header>
                                     <pd-panel-content style="--pd-panel-content-padding: 0;">
-                                        <pd-list>
-                                            <pd-list-item status="success">
-                                                <p class="mb-1">18.3708</p>
-                                                <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
-                                            </pd-list-item>
-                                            <pd-list-item status="danger">
-                                                <p class="mb-1">16.3112</p>
-                                                <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                                            </pd-list-item>
-                                            <pd-list-item status="unset">
-                                                <p class="mb-1">17.4654</p>
-                                                <a class="mb-1">SRB-NR: Antrag auf Ablehnung </a>
-                                            </pd-list-item>
-                                        </pd-list>
+                                        <draggable
+                                            tag="pd-list"
+                                            v-model="antragsListe"
+                                            v-bind="dragOptions"
+                                            @change="antragChange"
+                                            group="geschaefte"
+                                        >
+                                            <pd-list-item
+                                                v-for="antrag in antragsListe"
+                                                :key="antrag.id"
+                                                :status="antrag.status"
+                                            >
+                                                <p class="mb-1">{{antrag.id}}</p>
+                                                <h5 class="mb-1">{{antrag.title}}</h5>
+                                            </pd-list-item></draggable
+                                        >
                                     </pd-panel-content>
                                     <pd-panel-footer slot="footer">
                                         <pd-button href="https://lambda-it.ch" type="text" icon-location="right"
@@ -612,42 +748,67 @@
                                     <pd-panel-header slot="header">Umfragen und Suche</pd-panel-header>
                                     <pd-panel-content style="--pd-panel-content-padding: 0;">
                                         <pd-list>
-                                            <pd-list-item >
-                                                <p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Umfrage starten.</p>
-                                        <pd-button  type="button" icon-location="right" @click="openModal('Umfrage 1')"
-                                            >Zur Umfrage 1 <pd-icon
-                                                slot="icon"
-                                                size="2"
-                                                style="fill: var(--white); vertical-align: bottom;"
-                                                src="/assets/icons/icon_message.svg"
-                                            ></pd-icon
-                                        ></pd-button></pd-list-item>
-                                        <pd-list-item><p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Umfrage starten.</p>
-                                        <pd-button  type="button" icon-location="right" @click="openModal('Umfrage 2')"
-                                            >Zur Umfrage 2 <pd-icon
-                                                slot="icon"
-                                                size="2"
-                                                style="fill: var(--white); vertical-align: bottom;"
-                                                src="/assets/icons/icon_message.svg"
-                                            ></pd-icon
-                                        ></pd-button></pd-list-item>
-                                        <pd-list-item>
-                                            <p class="mb-1">Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie eine Suche starten.</p>
-                                            <pd-search placeholder="Suche" :results.prop="suggestions" @pd-on-input="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)" ></pd-search>
-                                        </pd-list-item>
+                                            <pd-list-item>
+                                                <p class="mb-1">
+                                                    Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie
+                                                    eine Umfrage starten.
+                                                </p>
+                                                <pd-button
+                                                    type="button"
+                                                    icon-location="right"
+                                                    @click="openModal('Umfrage 1')"
+                                                    >Zur Umfrage 1
+                                                    <pd-icon
+                                                        slot="icon"
+                                                        size="2"
+                                                        style="fill: var(--white); vertical-align: bottom;"
+                                                        src="/assets/icons/icon_message.svg"
+                                                    ></pd-icon></pd-button
+                                            ></pd-list-item>
+                                            <pd-list-item
+                                                ><p class="mb-1">
+                                                    Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie
+                                                    eine Umfrage starten.
+                                                </p>
+                                                <pd-button
+                                                    type="button"
+                                                    icon-location="right"
+                                                    @click="openModal('Umfrage 2')"
+                                                    >Zur Umfrage 2
+                                                    <pd-icon
+                                                        slot="icon"
+                                                        size="2"
+                                                        style="fill: var(--white); vertical-align: bottom;"
+                                                        src="/assets/icons/icon_message.svg"
+                                                    ></pd-icon></pd-button
+                                            ></pd-list-item>
+                                            <pd-list-item>
+                                                <p class="mb-1">
+                                                    Zur Demonstration von Modaldialogen und ihrem Datenfluss können Sie
+                                                    eine Suche starten.
+                                                </p>
+                                                <pd-search
+                                                    placeholder="Suche"
+                                                    :results.prop="suggestions"
+                                                    @pd-on-input="suggest($event.detail.value)"
+                                                    :value="search"
+                                                    @pd-on-search="searchText($event.detail.value)"
+                                                ></pd-search>
+                                            </pd-list-item>
                                         </pd-list>
-                                        <pd-modal v-if="searchResults.show" :open="searchResults.show" :config.prop="searchResults.config" >
+                                        <pd-modal
+                                            v-if="searchResults.show"
+                                            :open="searchResults.show"
+                                            :config.prop="searchResults.config"
+                                        >
                                             <pd-table
-                                            header-style="gray"
-                                            :rows.prop="searchResults.rows"
-                                            :columns.prop="searchResults.columns"
-                                        ></pd-table>
+                                                header-style="gray"
+                                                :rows.prop="searchResults.rows"
+                                                :columns.prop="searchResults.columns"
+                                            ></pd-table>
                                         </pd-modal>
                                     </pd-panel-content>
-                                    <pd-panel-footer slot="footer">
-                                        
-                                    </pd-panel-footer>
-                                    
+                                    <pd-panel-footer slot="footer"> </pd-panel-footer>
                                 </pd-panel>
                                 <pd-panel class="mt-4" collapsible>
                                     <pd-panel-header slot="header">Sample Form</pd-panel-header>
@@ -658,24 +819,32 @@
                                             <h2>Heading 2</h2>
                                             <h3>Heading 3</h3>
                                             <p>Form</p>
-                                            <pd-input class="form-group"
+                                            <pd-input
+                                                class="form-group"
                                                 v-model-pd="config.button.caption"
                                                 inputmode="text"
                                                 label="button text"
                                             ></pd-input>
                                             <h4>{{config.button.caption}}</h4>
-                                            <pd-input class="form-group"
+                                            <pd-input
+                                                class="form-group"
                                                 inputmode="text"
                                                 pattern="button|type|submit"
                                                 label="button type"
                                                 v-model-pd="config.button.type"
                                             ></pd-input>
-                                            <pd-checkbox class="form-group"
+                                            <pd-checkbox
+                                                class="form-group"
                                                 text="button disabled"
                                                 v-model="config.button.disabled"
                                                 v-model-pd="config.button.disabled"
                                             ></pd-checkbox>
-                                            <pd-dropdown class="form-group" :items.prop="stateItems" label="button color" @pd-on-change="config.button.color=$event.detail.label"></pd-dropdown>
+                                            <pd-dropdown
+                                                class="form-group"
+                                                :items.prop="stateItems"
+                                                label="button color"
+                                                @pd-on-change="config.button.color=$event.detail.label"
+                                            ></pd-dropdown>
                                             <h4>{{config.button.color}}</h4>
                                         </form>
                                         <pre><code>&lt;pd-button @click="click" :type="config.button.type" :disabled="config.button.disabled" :color='config.button.color'&gt;&#123;&#123;config.button.caption&#125;&#125;&lt;/pd-button&gt;</code></pre>
