@@ -1,13 +1,13 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Sidebar',
+    title: 'Layout|Sidebar',
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
         <pd-sidebar>
             <pd-sidebar-item text="Startseite"></pd-sidebar-item>

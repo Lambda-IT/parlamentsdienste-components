@@ -1,13 +1,13 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Navbar',
+    title: 'Layout|Navbar',
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
         <pd-navbar>
             <pd-navbar-item text="Startseite"></pd-navbar-item>

@@ -1,13 +1,13 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Radio',
+    title: 'Forms + Inputs|Radio',
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
         <div class="m-3">
             <pd-radio name="radio-test" value="1" label="radio 1"></pd-radio>

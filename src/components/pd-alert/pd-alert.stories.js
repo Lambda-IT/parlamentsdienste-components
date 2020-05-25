@@ -3,14 +3,14 @@ import { withKnobs, text, radios } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Alert',
+    title: 'Dialogs|Alert',
     decorators: [withActions('pd-on-closed'), withKnobs()],
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     const closeable = radios('closable', { yes: 'closable', no: '' }, '');
     const action = radios('action', { yes: 'action', no: '' }, '');
     const actionText = text('action text', 'this is an action');

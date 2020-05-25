@@ -3,14 +3,14 @@ import { object } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Dropdown',
+    title: 'Forms + Inputs|Dropdown',
     parameters: {
         notes,
         decorators: [withActions('pd-on-change')],
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     const itemData = [
         { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
         { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },

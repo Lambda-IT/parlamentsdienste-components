@@ -1,13 +1,13 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Footer',
+    title: 'Layout|Footer',
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
         <pd-footer></pd-footer>
     `;

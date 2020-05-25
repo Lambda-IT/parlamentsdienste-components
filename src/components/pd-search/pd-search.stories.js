@@ -3,14 +3,14 @@ import { withKnobs, radios, array, text } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Search',
+    title: 'Forms + Inputs|Search',
     decorators: [withActions('pd-on-input', 'pd-on-change', 'pd-on-search', 'pd-on-focus', 'pd-on-blur'), withKnobs()],
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     const disabled = radios('disabled', { yes: 'true', no: 'false' }, 'false');
     const label = text('label', 'Label');
     const placeholder = text('placeholder', 'search...');

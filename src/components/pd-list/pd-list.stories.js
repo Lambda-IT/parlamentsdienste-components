@@ -1,15 +1,15 @@
 import notes from './readme.md';
-import { withKnobs, radios } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-    title: 'List',
+    title: 'Interactions|List',
     decorators: [withKnobs()],
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
         <pd-list class="m-3">
             <pd-list-item>

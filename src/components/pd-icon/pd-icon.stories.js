@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withKnobs, radios, number, select, text } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Icon',
+    title: 'Typography|Icon',
     decorators: [withKnobs()],
     parameters: {
         notes,
@@ -41,7 +41,7 @@ const iconMap = {
     minus: 'minus',
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
     <pd-icon class="mt-3 ml-3" size="1.5" name="parlament"></pd-icon>
     <pd-icon class="mt-3" size="1.5" name="checkmark"></pd-icon>

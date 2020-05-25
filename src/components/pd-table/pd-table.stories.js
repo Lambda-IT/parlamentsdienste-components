@@ -2,14 +2,14 @@ import notes from './readme.md';
 import { withKnobs, object, array, radios } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Table',
+    title: 'Interactions|Table',
     decorators: [withKnobs()],
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     const columnsData = [
         {
             columnName: 'no',

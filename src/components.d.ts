@@ -414,8 +414,6 @@ export namespace Components {
          */
         "rows": any;
     }
-    interface PdTag {
-    }
     interface PdTimeline {
     }
     interface PdToast {
@@ -596,12 +594,6 @@ declare global {
         prototype: HTMLPdTableElement;
         new (): HTMLPdTableElement;
     };
-    interface HTMLPdTagElement extends Components.PdTag, HTMLStencilElement {
-    }
-    var HTMLPdTagElement: {
-        prototype: HTMLPdTagElement;
-        new (): HTMLPdTagElement;
-    };
     interface HTMLPdTimelineElement extends Components.PdTimeline, HTMLStencilElement {
     }
     var HTMLPdTimelineElement: {
@@ -642,7 +634,6 @@ declare global {
         "pd-sidebar-item": HTMLPdSidebarItemElement;
         "pd-slider": HTMLPdSliderElement;
         "pd-table": HTMLPdTableElement;
-        "pd-tag": HTMLPdTagElement;
         "pd-timeline": HTMLPdTimelineElement;
         "pd-toast": HTMLPdToastElement;
     }
@@ -1093,8 +1084,6 @@ declare namespace LocalJSX {
          */
         "rows"?: any;
     }
-    interface PdTag {
-    }
     interface PdTimeline {
     }
     interface PdToast {
@@ -1143,7 +1132,6 @@ declare namespace LocalJSX {
         "pd-sidebar-item": PdSidebarItem;
         "pd-slider": PdSlider;
         "pd-table": PdTable;
-        "pd-tag": PdTag;
         "pd-timeline": PdTimeline;
         "pd-toast": PdToast;
     }
@@ -1179,7 +1167,6 @@ declare module "@stencil/core" {
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
-            "pd-tag": LocalJSX.PdTag & JSXBase.HTMLAttributes<HTMLPdTagElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
             "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }

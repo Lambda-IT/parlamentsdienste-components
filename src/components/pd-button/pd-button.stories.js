@@ -3,7 +3,7 @@ import { withActions } from '@storybook/addon-actions';
 import notes from './readme.md';
 
 export default {
-    title: 'Button',
+    title: 'Interactions|Button',
     decorators: [withActions('click', 'click'), withKnobs()],
     parameters: { notes },
 };

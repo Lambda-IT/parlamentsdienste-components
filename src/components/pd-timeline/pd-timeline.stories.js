@@ -1,13 +1,13 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Timeline',
+    title: 'Interactions|Timeline',
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     return `
         <pd-timeline></pd-timeline>
     `;

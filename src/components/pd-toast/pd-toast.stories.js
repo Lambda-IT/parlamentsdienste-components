@@ -3,14 +3,14 @@ import { withKnobs, text, radios } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Toast',
+    title: 'Dialogs|Toast',
     decorators: [withKnobs(), withActions('pd-on-closed')],
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const basic = () => {
     const header = text('header', 'Toast Title');
     const info = text('info', '11 minutes ago');
     const body = text('body', 'Toast body text goes here');
