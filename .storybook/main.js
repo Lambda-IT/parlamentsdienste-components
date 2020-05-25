@@ -7,5 +7,5 @@ module.exports = {
         '@storybook/addon-viewport/register',
     ],
 
-    stories: ['../src/**/*.(stories|story).(js|ts|tsx)'],
+    stories: ['../src/stories/welcome/welcome.stories.js', '../src/**/*.(stories|story).(js|ts|tsx)'],
 };
