@@ -10,6 +10,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property   | Attribute  | Description                                 | Type      | Default |
@@ -20,12 +21,14 @@
 | `text`     | `text`     | Checkbox description text                   | `string`  | `''`    |
 | `value`    | `value`    |                                             | `boolean` | `false` |
 
+
 ## Events
 
 | Event           | Description | Type               |
 | --------------- | ----------- | ------------------ |
 | `pd-on-checked` |             | `CustomEvent<any>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -8,6 +8,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property         | Attribute        | Description                                                                                                                                                                                                                                                                                                                                          | Type                                                                                            | Default        |
@@ -35,10 +36,10 @@
 | `readonly`       | `readonly`       | If `true`, the user cannot modify the value.                                                                                                                                                                                                                                                                                                         | `boolean`                                                                                       | `false`        |
 | `required`       | `required`       | If `true`, the user must fill in a value before submitting a form.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                       | `false`        |
 | `size`           | `size`           | The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.       | `number`                                                                                        | `undefined`    |
-| `spellcheck`     | `spellcheck`     | If `true`, the element will have its spelling and grammar checked.                                                                                                                                                                                                                                                                                   | `boolean`                                                                                       | `false`        |
 | `step`           | `step`           | Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.                                                                                                                                                                                         | `string`                                                                                        | `undefined`    |
 | `type`           | `type`           | The type of control to display. The default type is text.                                                                                                                                                                                                                                                                                            | `"date" \| "email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "time" \| "url"` | `'text'`       |
 | `value`          | `value`          | The value of the input.                                                                                                                                                                                                                                                                                                                              | `number \| string`                                                                              | `''`           |
+
 
 ## Events
 
@@ -48,6 +49,7 @@
 | `pd-on-change` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
 | `pd-on-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
 | `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>`          |
+
 
 ## Methods
 
@@ -60,20 +62,22 @@ Sets focus on the specified `pd-input`. Use this method instead of the global
 
 Type: `Promise<void>`
 
+
+
+
 ## Dependencies
 
 ### Used by
 
--   [pd-datepicker](../pd-datepicker)
+ - [pd-datepicker](../pd-datepicker)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-datepicker --> pd-input
   style pd-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

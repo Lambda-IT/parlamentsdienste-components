@@ -108,11 +108,6 @@ export class Input {
     @Prop() required = false;
 
     /**
-     * If `true`, the element will have its spelling and grammar checked.
-     */
-    @Prop() spellcheck = false;
-
-    /**
      * Works with the min and max attributes to limit the increments at which a value can be set.
      * Possible values are: `"any"` or a positive floating point number.
      */
@@ -228,7 +223,6 @@ export class Input {
                         placeholder={this.placeholder || ''}
                         readOnly={this.readonly}
                         required={this.required}
-                        spellCheck={this.spellcheck}
                         step={this.step}
                         size={this.size}
                         type={this.type}

@@ -30,6 +30,7 @@ interface DropdownItem {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute     | Description                                                 | Type               | Default     |
@@ -41,6 +42,7 @@ interface DropdownItem {
 | `results`     | --            |                                                             | `string[]`         | `[]`        |
 | `value`       | `value`       | The value of the input.                                     | `number \| string` | `''`        |
 
+
 ## Events
 
 | Event          | Description                             | Type                                  |
@@ -50,6 +52,7 @@ interface DropdownItem {
 | `pd-on-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
 | `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<InputChangeEventDetail>` |
 | `pd-on-search` | Emitted when a search request occurred. | `CustomEvent<InputChangeEventDetail>` |
+
 
 ## Methods
 
@@ -62,15 +65,17 @@ Sets focus on the specified `pd-input`. Use this method instead of the global
 
 Type: `Promise<void>`
 
+
+
+
 ## Dependencies
 
 ### Depends on
 
--   [pd-icon](../pd-icon)
--   [pd-dropdown-item](../pd-dropdown-item)
+- [pd-icon](../pd-icon)
+- [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-search --> pd-icon
@@ -78,6 +83,6 @@ graph TD;
   style pd-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

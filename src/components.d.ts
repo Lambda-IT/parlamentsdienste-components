@@ -246,10 +246,6 @@ export namespace Components {
          */
         "size"?: number;
         /**
-          * If `true`, the element will have its spelling and grammar checked.
-         */
-        "spellcheck": boolean;
-        /**
           * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
          */
         "step"?: string;
@@ -885,10 +881,6 @@ declare namespace LocalJSX {
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */
         "size"?: number;
-        /**
-          * If `true`, the element will have its spelling and grammar checked.
-         */
-        "spellcheck"?: boolean;
         /**
           * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
          */

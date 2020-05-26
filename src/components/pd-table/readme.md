@@ -65,6 +65,7 @@ interface PdColumn {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                 | Type                          | Default  |
@@ -76,6 +77,7 @@ interface PdColumn {
 | `rowHeight`    | `row-height`    | Height of rows                              | `string`                      | `'48'`   |
 | `rows`         | `rows`          | The data definition for each row to display | `any`                         | `[]`     |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
