@@ -10,7 +10,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const slider = () => {
     return `
         <pd-slider class="m-3"></pd-slider>
     `;

@@ -9,7 +9,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const modal = () => {
     return `
         <pd-modal></pd-modal>
     `;

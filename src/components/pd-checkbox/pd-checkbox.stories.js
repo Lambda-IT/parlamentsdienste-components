@@ -10,7 +10,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const checkbox = () => {
     const checked = radios('checked', { yes: 'checked', no: '' }, '');
     const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
 

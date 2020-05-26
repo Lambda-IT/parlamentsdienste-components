@@ -7,7 +7,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const footer = () => {
     return `
         <pd-footer></pd-footer>
     `;

@@ -5,7 +5,7 @@ export default {
     parameters: { notes },
 };
 
-export const basic = () => {
+export const breadcrumb = () => {
     return `
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

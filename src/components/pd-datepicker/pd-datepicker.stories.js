@@ -7,7 +7,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const datepicker = () => {
     return `
         <pd-datepicker class="m-3"></pd-datepicker>
     `;

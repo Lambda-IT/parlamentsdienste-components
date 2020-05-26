@@ -7,7 +7,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const radio = () => {
     return `
         <div class="m-3">
             <pd-radio name="radio-test" value="1" label="radio 1"></pd-radio>

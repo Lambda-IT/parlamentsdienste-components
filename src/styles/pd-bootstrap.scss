@@ -39,6 +39,24 @@ body {
     }
 }
 
+h1 {
+    line-height: 1.75;
+}
+
+h4 {
+    color: #000000;
+}
+
+h5 {
+    color: #000000;
+    font-weight: 500;
+}
+
+h6 {
+    color: #000000;
+    font-weight: 500;
+}
+
 @include resetControlFonts;
 
 a {

@@ -7,7 +7,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const sidebar = () => {
     return `
         <pd-sidebar>
             <pd-sidebar-item text="Startseite"></pd-sidebar-item>

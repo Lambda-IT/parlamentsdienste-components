@@ -10,7 +10,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const search = () => {
     const disabled = radios('disabled', { yes: 'true', no: 'false' }, 'false');
     const label = text('label', 'Label');
     const placeholder = text('placeholder', 'search...');

@@ -7,7 +7,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const navbar = () => {
     return `
         <pd-navbar>
             <pd-navbar-item text="Startseite"></pd-navbar-item>

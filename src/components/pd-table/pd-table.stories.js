@@ -9,7 +9,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const table = () => {
     const columnsData = [
         {
             columnName: 'no',

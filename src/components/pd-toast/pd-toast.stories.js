@@ -10,7 +10,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const toast = () => {
     const header = text('header', 'Toast Title');
     const info = text('info', '11 minutes ago');
     const body = text('body', 'Toast body text goes here');

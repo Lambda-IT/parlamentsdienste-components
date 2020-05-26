@@ -10,7 +10,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const input = () => {
     const label = text('label', 'Label');
     const value = text('value', 'Text');
     const helperText = text('helper-text', 'Helper Text');

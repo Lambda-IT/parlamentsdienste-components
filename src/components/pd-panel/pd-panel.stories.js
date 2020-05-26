@@ -9,7 +9,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const panel = () => {
     return `
         <pd-panel class="m-3" collapsible>
             <pd-panel-header slot="header">Header</pd-panel-header>

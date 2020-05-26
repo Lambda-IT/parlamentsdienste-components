@@ -10,7 +10,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const dropdown = () => {
     const itemData = [
         { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
         { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },

@@ -7,7 +7,7 @@ export default {
     },
 };
 
-export const basic = () => {
+export const timeline = () => {
     return `
         <pd-timeline></pd-timeline>
     `;

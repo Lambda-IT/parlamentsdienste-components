@@ -2,14 +2,14 @@ import notes from './readme.md';
 import { radios, withKnobs, number } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Progress-bar',
+    title: 'Interactions|Progress Bar',
     decorators: [withKnobs()],
     parameters: {
         notes,
     },
 };
 
-export const primary = () => {
+export const progressBar = () => {
     const value = radios(
         'value',
         { '0%': '0', '25%': '0.25', '33.33333%': '0.33333', '50%': '0.5', '75%': '0.75', '100%': '1' },

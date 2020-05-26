@@ -179,17 +179,19 @@ $font-family-base: 'Avenir';
 $font-family-sans-serif: 'Avenir';
 $font-size-base: 1rem;
 
-$h1-font-size:                $font-size-base * 1.25 ;
-$h2-font-size:                $font-size-base ;
-$h3-font-size:                $font-size-base ;
-$h4-font-size:                $font-size-base ;
-$h5-font-size:                $font-size-base ;
-$h6-font-size:                $font-size-base ;
+$h1-font-size:                $font-size-base * 1.25;
+$h2-font-size:                $font-size-base;
+$h3-font-size:                $font-size-base;
+$h4-font-size:                $font-size-base;
+$h5-font-size:                $font-size-base;
+$h6-font-size:                $font-size-base;
 
 $headings-font-family:        null ;
 $headings-font-weight:        700 ;
-$headings-line-height:        1.2 ;
+$headings-line-height:        1.5 ;
 $headings-color:              $blue-whale;
+
+$mark-bg:                     $yellow-2;
 
 $lead-font-size:              $font-size-base ;
 $lead-font-weight:            700 ;
