@@ -7,8 +7,6 @@ import { clamp } from '../../utils/helpers';
     shadow: true,
 })
 export class ProgressBar {
-    @Prop() type: 'determinate' | 'indeterminate' = 'determinate';
-
     @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' = 'primary';
 
     @Prop() value: number = 0.0;
@@ -20,13 +18,7 @@ export class ProgressBar {
     @Prop() striped: boolean = false;
 
     render() {
-        return (
-            <Host>
-                {this.type === 'determinate'
-                    ? this.renderDeterminate(this.value, this.decimals)
-                    : this.renderInDeterminate()}
-            </Host>
-        );
+        return <Host>{this.renderDeterminate(this.value, this.decimals)}</Host>;
     }
 
     private renderDeterminate(value: number, decimals: number = 2) {
@@ -47,8 +39,5 @@ export class ProgressBar {
                 </div>
             </div>
         );
-    }
-    private renderInDeterminate() {
-        return <div>indeterminate</div>;
     }
 }

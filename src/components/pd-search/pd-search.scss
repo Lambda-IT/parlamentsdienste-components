@@ -13,9 +13,9 @@
 }
 
 label {
-    position: relative;
-    flex: 1;
+    flex: 1 1 auto;
     display: flex;
+    flex-direction: column;
 
     &:hover {
         .pd-search-button {
@@ -46,6 +46,11 @@ label {
             border: 0.125em solid $focus;
         }
     }
+}
+
+.pd-search-input-wrapper {
+    display: flex;
+    position: relative;
 }
 
 .pd-search-input {

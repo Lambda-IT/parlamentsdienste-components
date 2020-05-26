@@ -1,9 +1,12 @@
 # pd-input
 
+## Usage
 
+```html
+<pd-input label="label" placeholder="placeholder" helper-text="helper text" value="value"></pd-input>
+```
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -37,7 +40,6 @@
 | `type`           | `type`           | The type of control to display. The default type is text.                                                                                                                                                                                                                                                                                            | `"date" \| "email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "time" \| "url"` | `'text'`       |
 | `value`          | `value`          | The value of the input.                                                                                                                                                                                                                                                                                                                              | `number \| string`                                                                              | `''`           |
 
-
 ## Events
 
 | Event          | Description                             | Type                                  |
@@ -46,7 +48,6 @@
 | `pd-on-change` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
 | `pd-on-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
 | `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<KeyboardEvent>`          |
-
 
 ## Methods
 
@@ -59,22 +60,20 @@ Sets focus on the specified `pd-input`. Use this method instead of the global
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Used by
 
- - [pd-datepicker](../pd-datepicker)
+-   [pd-datepicker](../pd-datepicker)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-datepicker --> pd-input
   style pd-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

@@ -1,9 +1,14 @@
 # pd-checkbox
 
+## Usage
 
+#### Checkbox
+
+```html
+<pd-checkbox checked text="checkbox"></pd-checkbox>
+```
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -15,14 +20,12 @@
 | `text`     | `text`     | Checkbox description text                   | `string`  | `''`    |
 | `value`    | `value`    |                                             | `boolean` | `false` |
 
-
 ## Events
 
 | Event           | Description | Type               |
 | --------------- | ----------- | ------------------ |
 | `pd-on-checked` |             | `CustomEvent<any>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

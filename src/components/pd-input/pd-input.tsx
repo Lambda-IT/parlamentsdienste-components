@@ -239,9 +239,16 @@ export class Input {
                         onKeyDown={this.onKeydown}
                     />
                 </label>
-                {this.helperText ? <span class="pd-input-helper-text">{this.helperText}</span> : ''}
+
+                {this.renderHelperText()}
             </Host>
         );
+    }
+
+    private renderHelperText() {
+        if (!this.helperText) return;
+
+        return <div class="pd-input-helper-text">{this.helperText}</div>;
     }
 }
 

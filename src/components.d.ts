@@ -127,8 +127,6 @@ export namespace Components {
          */
         "value": string;
     }
-    interface PdFooter {
-    }
     interface PdIcon {
         /**
           * Flip in X/Y direction
@@ -327,7 +325,6 @@ export namespace Components {
         "decimals": number;
         "label": boolean;
         "striped": boolean;
-        "type": "determinate" | "indeterminate";
         "value": number;
     }
     interface PdRadio {
@@ -480,12 +477,6 @@ declare global {
         prototype: HTMLPdDropdownItemElement;
         new (): HTMLPdDropdownItemElement;
     };
-    interface HTMLPdFooterElement extends Components.PdFooter, HTMLStencilElement {
-    }
-    var HTMLPdFooterElement: {
-        prototype: HTMLPdFooterElement;
-        new (): HTMLPdFooterElement;
-    };
     interface HTMLPdIconElement extends Components.PdIcon, HTMLStencilElement {
     }
     var HTMLPdIconElement: {
@@ -615,7 +606,6 @@ declare global {
         "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
-        "pd-footer": HTMLPdFooterElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
         "pd-list": HTMLPdListElement;
@@ -764,8 +754,6 @@ declare namespace LocalJSX {
           * Value for this item
          */
         "value"?: string;
-    }
-    interface PdFooter {
     }
     interface PdIcon {
         /**
@@ -973,7 +961,6 @@ declare namespace LocalJSX {
         "decimals"?: number;
         "label"?: boolean;
         "striped"?: boolean;
-        "type"?: "determinate" | "indeterminate";
         "value"?: number;
     }
     interface PdRadio {
@@ -1113,7 +1100,6 @@ declare namespace LocalJSX {
         "pd-datepicker": PdDatepicker;
         "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
-        "pd-footer": PdFooter;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
         "pd-list": PdList;
@@ -1148,7 +1134,6 @@ declare module "@stencil/core" {
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
-            "pd-footer": LocalJSX.PdFooter & JSXBase.HTMLAttributes<HTMLPdFooterElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;

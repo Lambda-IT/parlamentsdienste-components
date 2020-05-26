@@ -251,25 +251,27 @@ export class Search {
                         'pd-search-disabled': this.disabled,
                     }}
                 >
-                    {this.label ? <div class="pd-search-label-text">{this.label}</div> : ''}
-                    <input
-                        class="pd-search-input"
-                        ref={input => (this.nativeInput = input)}
-                        aria-labelledby={labelId}
-                        disabled={this.disabled}
-                        placeholder={this.placeholder || ''}
-                        value={value}
-                        onClick={this.onClickInput}
-                        onInput={this.onInput}
-                        onBlur={this.onBlur}
-                        onFocus={this.onFocus}
-                    />
-                    <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
-                        <pd-icon class="pd-search-clear-icon" name="cancel-ring" size={2.4}></pd-icon>
-                    </button>
-                    <button class="pd-search-button" onClick={this.search} tabindex="-1">
-                        <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
-                    </button>
+                    {this.renderLabel()}
+                    <div class="pd-search-input-wrapper">
+                        <input
+                            class="pd-search-input"
+                            ref={input => (this.nativeInput = input)}
+                            aria-labelledby={labelId}
+                            disabled={this.disabled}
+                            placeholder={this.placeholder || ''}
+                            value={value}
+                            onClick={this.onClickInput}
+                            onInput={this.onInput}
+                            onBlur={this.onBlur}
+                            onFocus={this.onFocus}
+                        />
+                        <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
+                            <pd-icon class="pd-search-clear-icon" name="cancel-ring" size={2.4}></pd-icon>
+                        </button>
+                        <button class="pd-search-button" onClick={this.search} tabindex="-1">
+                            <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
+                        </button>
+                    </div>
                 </label>
                 {this.renderDropdownItems()}
             </Host>
@@ -294,6 +296,12 @@ export class Search {
                 ))}
             </div>
         );
+    }
+
+    private renderLabel() {
+        if (!this.label) return;
+
+        return <div class="pd-search-label-text">{this.label}</div>;
     }
 }
 

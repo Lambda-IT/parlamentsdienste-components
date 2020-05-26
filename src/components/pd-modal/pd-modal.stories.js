@@ -17,7 +17,6 @@ export const modal = () => {
         backdropVisible: true,
     };
 
-    const wrapper = document.createElement('div');
     const openButton = document.createElement('pd-button');
     openButton.classList = 'm-3';
     openButton.innerHTML = 'open Modal';
@@ -38,7 +37,5 @@ export const modal = () => {
         document.body.append(modal);
     });
 
-    wrapper.append(openButton);
-
-    return wrapper;
+    return openButton;
 };

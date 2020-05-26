@@ -1,6 +1,14 @@
 # pd-toast
 
+## Usage
 
+#### Toast
+
+```html
+<pd-toast header="Toast Title" info="11 minutes ago">
+    Toast body text goes here
+</pd-toast>
+```
 
 <!-- Auto Generated Below -->
 

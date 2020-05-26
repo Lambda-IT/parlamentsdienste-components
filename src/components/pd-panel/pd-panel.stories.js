@@ -14,7 +14,7 @@ export const panel = () => {
         <pd-panel class="m-3" collapsible>
             <pd-panel-header slot="header">Header</pd-panel-header>
             <pd-panel-content>Content</pd-panel-content>
-            <pd-panel-footer slot="footer">asdf</pd-panel-footer>
+            <pd-panel-footer slot="footer">Footer</pd-panel-footer>
         </pd-panel>
     `;
 };
