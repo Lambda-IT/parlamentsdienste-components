@@ -11,12 +11,6 @@
 // Styling Cross-Browser Compatible Range Inputs with Sass
 // Github: https://github.com/darlanrod/input-range-sass
 // Author: Darlan Rod https://github.com/darlanrod
-// Version 1.4.1
-// MIT License
-
-// Styling Cross-Browser Compatible Range Inputs with Sass
-// Github: https://github.com/darlanrod/input-range-sass
-// Author: Darlan Rod https://github.com/darlanrod
 // Version 1.5.2
 // MIT License
 
@@ -110,6 +104,7 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
     &::-webkit-slider-thumb {
         @include thumb;
         -webkit-appearance: none;
+        margin-top: (($slider-track-height) / 2 - $slider-thumb-height / 2);
     }
 
     &::-moz-range-track {
