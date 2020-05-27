@@ -41,7 +41,7 @@ export class Button {
      */
     @Prop() target: string = '_blank';
 
-    @Prop({attribute:"icon-location"}) iconLocation: 'left' | 'right' | 'none' = 'none';
+    @Prop({ attribute: 'icon-location' }) iconLocation: 'left' | 'right' | 'none' = 'none';
 
     render() {
         const { href, target, type, disabled } = this;
@@ -67,9 +67,9 @@ export class Button {
     renderIcon(location: 'left' | 'right' | 'none') {
         if (location !== this.iconLocation) return;
         return (
-            <span class={`pd-button-icon-${location}`}>
+            <div class={`pd-button-icon-${location}`}>
                 <slot name="icon"></slot>
-            </span>
+            </div>
         );
     }
 }

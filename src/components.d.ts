@@ -360,13 +360,23 @@ export namespace Components {
     interface PdSidebar {
     }
     interface PdSidebarItem {
-        "enabled": boolean;
+        /**
+          * show an item as active
+         */
+        "active": boolean;
         /**
           * Set href to create a link button
          */
         "href": string;
+        /**
+          * Path to an svg asset
+         */
         "icon": string;
-        "size": string;
+        /**
+          * Name of an icon from the library
+         */
+        "iconName": string;
+        "size": number;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -406,6 +416,8 @@ export namespace Components {
           * The data definition for each row to display
          */
         "rows": any;
+    }
+    interface PdTableFilter {
     }
     interface PdTimeline {
     }
@@ -581,6 +593,12 @@ declare global {
         prototype: HTMLPdTableElement;
         new (): HTMLPdTableElement;
     };
+    interface HTMLPdTableFilterElement extends Components.PdTableFilter, HTMLStencilElement {
+    }
+    var HTMLPdTableFilterElement: {
+        prototype: HTMLPdTableFilterElement;
+        new (): HTMLPdTableFilterElement;
+    };
     interface HTMLPdTimelineElement extends Components.PdTimeline, HTMLStencilElement {
     }
     var HTMLPdTimelineElement: {
@@ -620,6 +638,7 @@ declare global {
         "pd-sidebar-item": HTMLPdSidebarItemElement;
         "pd-slider": HTMLPdSliderElement;
         "pd-table": HTMLPdTableElement;
+        "pd-table-filter": HTMLPdTableFilterElement;
         "pd-timeline": HTMLPdTimelineElement;
         "pd-toast": HTMLPdToastElement;
     }
@@ -1008,13 +1027,23 @@ declare namespace LocalJSX {
     interface PdSidebar {
     }
     interface PdSidebarItem {
-        "enabled"?: boolean;
+        /**
+          * show an item as active
+         */
+        "active"?: boolean;
         /**
           * Set href to create a link button
          */
         "href"?: string;
+        /**
+          * Path to an svg asset
+         */
         "icon"?: string;
-        "size"?: string;
+        /**
+          * Name of an icon from the library
+         */
+        "iconName"?: string;
+        "size"?: number;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -1063,6 +1092,20 @@ declare namespace LocalJSX {
          */
         "rows"?: any;
     }
+    interface PdTableFilter {
+        /**
+          * Emitted when the input was cleared.
+         */
+        "onPdOnClear"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when filter is confirmed.
+         */
+        "onPdOnConfirm"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when filter changes.
+         */
+        "onPdOnSearch"?: (event: CustomEvent<void>) => void;
+    }
     interface PdTimeline {
     }
     interface PdToast {
@@ -1110,6 +1153,7 @@ declare namespace LocalJSX {
         "pd-sidebar-item": PdSidebarItem;
         "pd-slider": PdSlider;
         "pd-table": PdTable;
+        "pd-table-filter": PdTableFilter;
         "pd-timeline": PdTimeline;
         "pd-toast": PdToast;
     }
@@ -1144,6 +1188,7 @@ declare module "@stencil/core" {
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
+            "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
             "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }

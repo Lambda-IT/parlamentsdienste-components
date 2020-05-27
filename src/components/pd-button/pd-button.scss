@@ -20,6 +20,8 @@
 }
 
 .pd-link {
+    display: flex;
+    align-items: center;
     * {
         font-weight: 500;
     }
@@ -27,6 +29,8 @@
 
 .pd-button {
     @include button-scheme(primary);
+    display: flex;
+    align-items: center;
     border-top-left-radius: var(--pd-button-left-radius, 0.25em);
     border-bottom-left-radius: var(--pd-button-left-radius, 0.25em);
     border-top-right-radius: var(--pd-button-right-radius, 0.25em);
@@ -71,6 +75,12 @@
 .pd-link {
     color: $cyan-9;
     text-decoration: none;
+}
+
+.pd-button-icon-left,
+.pd-button-icon-right {
+    display: flex;
+    align-items: center;
 }
 
 .pd-button-icon-left {

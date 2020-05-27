@@ -10,9 +10,9 @@ export default {
 export const sidebar = () => {
     return `
         <pd-sidebar>
-            <pd-sidebar-item text="Startseite"></pd-sidebar-item>
-            <pd-sidebar-item text="Geschäfte suchen"></pd-sidebar-item>
-            <pd-sidebar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-sidebar-item>
+            <pd-sidebar-item icon-name="parlament" text="Startseite"></pd-sidebar-item>
+            <pd-sidebar-item icon-name="search" text="Geschäfte suchen"></pd-sidebar-item>
+            <pd-sidebar-item icon-name="link" href="http://www.google.ch" text="VORSTOSSplus"></pd-sidebar-item>
         </pd-sidebar>
     `;
 };

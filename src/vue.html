@@ -187,12 +187,14 @@
                                             label: 'Created',
                                             width: 100,
                                             sortable: true,
+                                            filter: true,
                                             bold: false,
                                         },
                                         {
                                             columnName: 'colNumber',
                                             label: 'Count',
                                             width: 100,
+                                            filter: true,
                                             bold: false,
                                             sortable: true,
                                         },
@@ -297,7 +299,7 @@
                                             bold: false,
                                             textAlign: 'left',
                                             displayFunc: link =>
-                                                `<pd-button href="${link}" type="text" icon-location="right" class="hydrated">${link}<pd-icon slot="icon" size="2" src="/assets/icons/icon_link_intern.svg" role="img" class="hydrated" style="fill: var(--primary); vertical-align: bottom; font-size: 2em;"></pd-icon></pd-button>`,
+                                                `<pd-button href="${link}" type="text" icon-location="right" class="hydrated">${link}<pd-icon slot="icon" size="2" name="link" role="img" class="hydrated" style="fill: var(--primary); vertical-align: bottom; font-size: 2em;"></pd-icon></pd-button>`,
                                         },
                                     ],
                                     rows: [],
@@ -426,14 +428,14 @@
                                     console.log('antragChange -> params', params);
                                 },
                                 onClone(params) {
-                                   console.log("onClone -> params", params)
-                                   return {
-                                       id:params.id,
-                                       title: 'Antrag zu ' + params.title,
-                                       description: params.description,
-                                       status: 'unset',
-                                   }
-                                }
+                                    console.log('onClone -> params', params);
+                                    return {
+                                        id: params.id,
+                                        title: 'Antrag zu ' + params.title,
+                                        description: params.description,
+                                        status: 'unset',
+                                    };
+                                },
                             },
                             computed: {
                                 selectedStateItem: function() {
@@ -443,9 +445,9 @@
                                 dragOptions() {
                                     return {
                                         animation: 0,
-                                        group: "description",
+                                        group: 'description',
                                         disabled: false,
-                                        ghostClass: "ghost"
+                                        ghostClass: 'ghost',
                                     };
                                 },
                             },
@@ -514,17 +516,9 @@
                 <div class="row">
                     <div class="col-auto d-none d-md-block">
                         <pd-sidebar>
-                            <pd-sidebar-item
-                                text="Mitteilungen"
-                                icon="/assets/icons/icon-new_post.svg"
-                                size="1.5"
-                            ></pd-sidebar-item>
-                            <pd-sidebar-item text="Meine Ablage" icon="/assets/icons/icon_ablage.svg"></pd-sidebar-item>
-                            <pd-sidebar-item
-                                text="Recherchen"
-                                href="https://lambda-it.ch"
-                                icon="/assets/icons/icon_recherche.svg"
-                            >
+                            <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
+                            <pd-sidebar-item text="Meine Ablage" icon-name="ablage"></pd-sidebar-item>
+                            <pd-sidebar-item text="Recherchen" href="https://lambda-it.ch" icon-name="recherche">
                             </pd-sidebar-item>
                         </pd-sidebar>
                     </div>
@@ -692,7 +686,6 @@
                                             @change="geschaeftChange"
                                             ><pd-list-item
                                                 v-for="geschaeft in geschaeftsListe"
-                                                
                                                 :key="geschaeft.id"
                                                 :status="geschaeft.status"
                                             >
@@ -707,8 +700,8 @@
                                             >Zur Übersicht Geschäfte<pd-icon
                                                 slot="icon"
                                                 size="2"
-                                                style="fill: var(--primary); vertical-align: bottom;"
-                                                src="/assets/icons/icon_link_intern.svg"
+                                                style="fill: var(--primary);"
+                                                name="link"
                                             ></pd-icon
                                         ></pd-button>
                                     </pd-panel-footer>
@@ -738,8 +731,8 @@
                                             >Zur Antragsverwaltung<pd-icon
                                                 slot="icon"
                                                 size="2"
-                                                style="fill: var(--primary); vertical-align: bottom;"
-                                                src="/assets/icons/icon_link_intern.svg"
+                                                style="fill: var(--primary);"
+                                                name="link"
                                             ></pd-icon
                                         ></pd-button>
                                     </pd-panel-footer>
@@ -761,8 +754,8 @@
                                                     <pd-icon
                                                         slot="icon"
                                                         size="2"
-                                                        style="fill: var(--white); vertical-align: bottom;"
-                                                        src="/assets/icons/icon_message.svg"
+                                                        style="fill: var(--white);"
+                                                        name="message"
                                                     ></pd-icon></pd-button
                                             ></pd-list-item>
                                             <pd-list-item
@@ -778,8 +771,8 @@
                                                     <pd-icon
                                                         slot="icon"
                                                         size="2"
-                                                        style="fill: var(--white); vertical-align: bottom;"
-                                                        src="/assets/icons/icon_message.svg"
+                                                        style="fill: var(--white);"
+                                                        name="message"
                                                     ></pd-icon></pd-button
                                             ></pd-list-item>
                                             <pd-list-item>

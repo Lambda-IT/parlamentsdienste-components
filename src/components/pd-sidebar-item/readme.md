@@ -11,14 +11,15 @@
 
 ## Properties
 
-| Property  | Attribute | Description                               | Type      | Default     |
-| --------- | --------- | ----------------------------------------- | --------- | ----------- |
-| `enabled` | `enabled` |                                           | `boolean` | `false`     |
-| `href`    | `href`    | Set href to create a link button          | `string`  | `undefined` |
-| `icon`    | `icon`    |                                           | `string`  | `undefined` |
-| `size`    | `size`    |                                           | `string`  | `'2'`       |
-| `target`  | `target`  | Sets target for link button e.g. '_blank' | `string`  | `'_blank'`  |
-| `text`    | `text`    |                                           | `string`  | `''`        |
+| Property   | Attribute   | Description                               | Type      | Default     |
+| ---------- | ----------- | ----------------------------------------- | --------- | ----------- |
+| `active`   | `active`    | show an item as active                    | `boolean` | `false`     |
+| `href`     | `href`      | Set href to create a link button          | `string`  | `undefined` |
+| `icon`     | `icon`      | Path to an svg asset                      | `string`  | `undefined` |
+| `iconName` | `icon-name` | Name of an icon from the library          | `string`  | `undefined` |
+| `size`     | `size`      |                                           | `number`  | `2`         |
+| `target`   | `target`    | Sets target for link button e.g. '_blank' | `string`  | `'_blank'`  |
+| `text`     | `text`      |                                           | `string`  | `''`        |
 
 
 ## Dependencies

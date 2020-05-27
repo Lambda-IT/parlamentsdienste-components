@@ -132,7 +132,7 @@ export class Modal {
                         <div class="pd-modal-header">
                             <span class="pd-modal-title">{this.config?.title}</span>
                             <button class="pd-modal-close" onClick={() => this.closeModal()}>
-                                <pd-icon name="cancel" size={1.4}></pd-icon>
+                                <pd-icon name="close" size={2}></pd-icon>
                             </button>
                         </div>
                         <div class="pd-modal-content">

@@ -5,13 +5,13 @@
 #### With Source File
 
 ```html
-<pd-icon src="/assets/icons/mail.svg"></pd-icon>
+<pd-icon src="/assets/icons/cancel.svg"></pd-icon>
 ```
 
 #### With Name
 
 ```html
-<pd-icon name="mail"></pd-icon>
+<pd-icon name="cancel"></pd-icon>
 ```
 
 ## Available Icon Names
@@ -50,6 +50,8 @@
  - [pd-panel-header](../pd-panel-header)
  - [pd-search](../pd-search)
  - [pd-sidebar-item](../pd-sidebar-item)
+ - [pd-table](../pd-table)
+ - [pd-table-filter](../pd-table-filter)
  - [pd-toast](../pd-toast)
 
 ### Graph
@@ -62,6 +64,8 @@ graph TD;
   pd-panel-header --> pd-icon
   pd-search --> pd-icon
   pd-sidebar-item --> pd-icon
+  pd-table --> pd-icon
+  pd-table-filter --> pd-icon
   pd-toast --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

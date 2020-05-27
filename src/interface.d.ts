@@ -18,6 +18,7 @@ export interface PdColumn {
     bold?: boolean;
     sortDir?: 'desc' | 'asc';
     sortable?: boolean;
+    filter?: boolean;
     fixed?: boolean;
     textAlign?: 'left' | 'right' | 'center';
     sortFunc?: (a: any, b: any, dir: string) => number;

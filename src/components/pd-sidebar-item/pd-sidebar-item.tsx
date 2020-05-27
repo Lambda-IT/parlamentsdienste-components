@@ -8,16 +8,27 @@ import { Component, h, Prop } from '@stencil/core';
 export class SidebarItem {
     @Prop() text: string = '';
 
-    @Prop() enabled: boolean = false;
+    /**
+     * show an item as active
+     */
+    @Prop() active: boolean = false;
 
     /**
      * Set href to create a link button
      */
     @Prop() href: string;
 
+    /**
+     * Path to an svg asset
+     */
     @Prop() icon: string;
 
-    @Prop() size: string = '2';
+    /**
+     * Name of an icon from the library
+     */
+    @Prop() iconName: string;
+
+    @Prop() size: number = 2;
 
     /**
      * Sets target for link button e.g. '_blank'
@@ -25,19 +36,20 @@ export class SidebarItem {
     @Prop() target: string = '_blank';
 
     render() {
-        const { href, enabled, text, target } = this;
+        const { href, active, text, target } = this;
         const TagType = href ? 'a' : 'button';
         const typeAttrs = TagType === 'button' ? {} : { href, target };
 
         return (
-            <TagType {...typeAttrs} class={`pd-sidebar-item ${enabled ? 'pd-sidebar-enabled' : ''}`}>
-                <div class="pd-sidebar-icon">{this.renderIcon(this.icon,this.size)}</div>
+            <TagType {...typeAttrs} class={{ 'pd-sidebar-item': true, 'pd-sidebar-active': active }}>
+                <div class="pd-sidebar-icon">{this.renderIcon()}</div>
                 <div class="pd-sidebar-text">{text}</div>
             </TagType>
         );
     }
 
-    private renderIcon(src,size) {
-        return <pd-icon src={src} size={size}></pd-icon>;
+    private renderIcon() {
+        if (this.iconName) return <pd-icon name={this.iconName} size={this.size}></pd-icon>;
+        return <pd-icon src={this.icon} size={this.size}></pd-icon>;
     }
 }

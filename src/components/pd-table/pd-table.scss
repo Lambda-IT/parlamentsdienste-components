@@ -38,16 +38,6 @@
         &.pd-table-sortable {
             user-select: none;
             cursor: pointer;
-
-            &.pd-table-sort-asc::after {
-                padding-left: 0.25em;
-                content: '🠟';
-            }
-
-            &.pd-table-sort-desc::after {
-                padding-left: 0.25em;
-                content: '🠝';
-            }
         }
 
         span {
@@ -56,7 +46,7 @@
             overflow: hidden;
         }
 
-        &.dark {
+        &.pd-table-dark {
             background-color: $blue-whale;
             border-bottom: 0.125em solid $blue-whale;
             border-top: 0.125em solid $blue-whale;
@@ -72,7 +62,7 @@
             }
         }
 
-        &.light {
+        &.pd-table-light {
             border-bottom: 0.125em solid $blue-whale;
             border-top: 0.125em solid $blue-whale;
             color: $black;
@@ -88,7 +78,7 @@
             }
         }
 
-        &.gray {
+        &.pd-table-gray {
             background-color: $gray-3;
             border-bottom: 0.125em solid $gray-3;
             border-top: 0.125em solid $gray-3;
@@ -138,4 +128,8 @@
 
 .pd-table-cell-bold {
     font-weight: 700;
+}
+
+.pd-table-filter-hidden {
+    display: none;
 }

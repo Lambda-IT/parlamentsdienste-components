@@ -78,6 +78,22 @@ interface PdColumn {
 | `rows`         | `rows`          | The data definition for each row to display | `any`                         | `[]`     |
 
 
+## Dependencies
+
+### Depends on
+
+- [pd-table-filter](../pd-table-filter)
+- [pd-icon](../pd-icon)
+
+### Graph
+```mermaid
+graph TD;
+  pd-table --> pd-table-filter
+  pd-table --> pd-icon
+  pd-table-filter --> pd-icon
+  style pd-table fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

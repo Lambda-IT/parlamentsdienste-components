@@ -41,13 +41,13 @@ export const icon = () => {
     return `
         <div>
             <pd-button class="m-3" icon-location="${location}">
-                <pd-icon size="small" style="fill: white" slot="icon" name="link"></pd-icon>
+                <pd-icon size="2" style="fill: white" slot="icon" name="link"></pd-icon>
                 button
             </pd-button>
         </div>
         <div>
             <pd-button class="m-3" icon-location="${location}" href="http://www.google.ch" target="_blank">
-                <pd-icon size="small" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
+                <pd-icon size="1.2" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
                 external link
             </pd-button>
         </div>

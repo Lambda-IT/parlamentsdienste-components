@@ -1,5 +1,6 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Listen, State } from '@stencil/core';
 import { PdColumn } from '../../interface';
+import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
     tag: 'pd-table',
@@ -7,6 +8,9 @@ import { PdColumn } from '../../interface';
     shadow: true,
 })
 export class Table {
+    @Element() element;
+    private filter: HTMLElement;
+
     /**
      * Height of header cells
      */
@@ -37,7 +41,11 @@ export class Table {
      */
     @Prop() rows: any = [];
 
-    private nextColumnSortDir = {};
+    @State() filterOpen = false;
+
+    private nextSortDir = {};
+    private sortColumn = '';
+    private popper: Instance;
 
     // claculate flex for left side (fixed) of table
     // has a fixed width when no column is auto
@@ -88,16 +96,41 @@ export class Table {
         const { columnName, sortable } = headerCol;
         if (!sortable) return;
 
-        const dir = this.nextColumnSortDir[columnName] || 'asc';
-        this.nextColumnSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
+        this.sortColumn = columnName;
 
-        // TODO: use copy of rows to sort on
+        const dir = this.nextSortDir[columnName] || 'desc';
+        this.nextSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
+
         this.rows = [...this.rows].sort((a, b) =>
             headerCol.sortFunc
                 ? headerCol.sortFunc(a[columnName], b[columnName], dir)
                 : this.defaultSortFunc(a[columnName], b[columnName], dir),
         );
     };
+
+    protected componentDidLoad() {
+        const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
+        this.filter = this.element.shadowRoot.querySelector('.pd-table-filter') as HTMLElement;
+        this.popper = this.createMenuPopper(table, this.filter);
+    }
+
+    protected componentDidUpdate() {
+        if (!this.filterOpen) return;
+        this.popper.forceUpdate();
+    }
+
+    @Listen('click', { target: 'body' })
+    protected handleClick(ev: MouseEvent) {
+        if (ev.target !== this.filter) {
+            // this.filterOpen = false;
+        }
+    }
+
+    private handleFilterChange(ev: CustomEvent) {
+        console.log(`Table -> handleFilterChange -> ev.detail`, ev.detail);
+        this.filterOpen = false;
+        // TODO: filter column
+    }
 
     render() {
         const headerStyle = {
@@ -129,6 +162,11 @@ export class Table {
                         <div class="pd-table-body">{this.renderRows(false)}</div>
                     </div>
                 </div>
+                <pd-table-filter
+                    class={{ 'pd-table-filter-hidden': !this.filterOpen }}
+                    onPdOnSearch={() => console.log('ding')}
+                    onPdOnConfirm={ev => this.handleFilterChange(ev)}
+                ></pd-table-filter>
             </Host>
         );
     }
@@ -141,20 +179,24 @@ export class Table {
                     minWidth: `${headerCol.minWidth || headerCol.width || 0}px`,
                     justifyContent: this.getTextAlign(headerCol),
                 };
-                const nextSortDir = this.nextColumnSortDir[headerCol.columnName];
+                const columnSortDir = this.nextSortDir[headerCol.columnName];
                 return (
                     <div
-                        class={`pd-table-header-cell pd-table-cell-bold ${
-                            headerCol.sortable ? 'pd-table-sortable' : ''
-                        } ${nextSortDir ? `pd-table-sort-${nextSortDir === 'asc' ? 'desc' : 'asc'}` : ''} ${
-                            this.headerStyle
-                        }`}
+                        class={{
+                            'pd-table-header-cell': true,
+                            'pd-table-cell-bold': true,
+                            'pd-table-sortable': headerCol.sortable,
+                            [`pd-table-sort-${columnSortDir === 'asc' ? 'desc' : 'asc'}`]: columnSortDir,
+                            [`pd-table-${this.headerStyle}`]: true,
+                        }}
                         role="cell"
                         style={headerCellStyle}
                         title={headerCol.label}
                         onClick={() => this.sort(headerCol)}
                     >
                         <span>{headerCol.label}</span>
+                        {this.renderSort(columnSortDir, headerCol.columnName)}
+                        {this.renderFilterIcon(headerCol)}
                     </div>
                 );
             });
@@ -199,7 +241,31 @@ export class Table {
         );
     }
 
-    renderValue(col: PdColumn, value) {
+    private renderValue(col: PdColumn, value) {
         return <span class="pd-table-cell-value" innerHTML={col.displayFunc ? col.displayFunc(value) : value}></span>;
+    }
+
+    private renderSort(nextSort, columnName) {
+        if (!nextSort || columnName !== this.sortColumn) return;
+        return <pd-icon name="arrow" size={2} rotate={nextSort === 'asc' ? 180 : 0}></pd-icon>;
+    }
+
+    private renderFilterIcon(headerCol: PdColumn) {
+        if (!headerCol.filter) return;
+        return <pd-icon onClick={ev => this.open(ev)} name="filter" size={2}></pd-icon>;
+    }
+
+    private open(ev) {
+        ev.stopPropagation();
+        this.popper.state.elements.reference = ev.target;
+        this.filterOpen = true;
+        this.popper.update();
+    }
+
+    // create a popper js element for the menu
+    private createMenuPopper(button, menu) {
+        return createPopper(button, menu, {
+            placement: 'bottom',
+        });
     }
 }

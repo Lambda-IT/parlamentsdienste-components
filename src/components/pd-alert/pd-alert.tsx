@@ -72,8 +72,6 @@ export class PdAlert {
 
     renderClose() {
         if (!this.closable) return;
-        return (
-            <pd-icon onClick={this.pdOnClosed.emit} class="pd-alert-action-cancel" name="delete" size={1.2}></pd-icon>
-        );
+        return <pd-icon onClick={this.pdOnClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
     }
 }

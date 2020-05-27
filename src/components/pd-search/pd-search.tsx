@@ -266,7 +266,7 @@ export class Search {
                             onFocus={this.onFocus}
                         />
                         <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
-                            <pd-icon class="pd-search-clear-icon" name="cancel-ring" size={2.4}></pd-icon>
+                            <pd-icon class="pd-search-clear-icon" name="cancel" size={2.4}></pd-icon>
                         </button>
                         <button class="pd-search-button" onClick={this.search} tabindex="-1">
                             <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
