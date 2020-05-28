@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Listen, State } from '@stencil/core';
+import { Component, Host, h, Prop, Element, State } from '@stencil/core';
 import { PdColumn } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
@@ -9,7 +9,6 @@ import { createPopper, Instance } from '@popperjs/core';
 })
 export class Table {
     @Element() element;
-    private filter: HTMLElement;
 
     /**
      * Height of header cells
@@ -43,11 +42,14 @@ export class Table {
 
     @State() filterOpen = false;
 
+    private filter: HTMLPdTableFilterElement;
+    private currentFilter: string;
+    private columnFilters: any = {};
     private nextSortDir = {};
     private sortColumn = '';
     private popper: Instance;
 
-    // claculate flex for left side (fixed) of table
+    // calculate flex for left side (fixed) of table
     // has a fixed width when no column is auto
     private calcFixedFlex(columns: PdColumn[]) {
         const fixedCols = columns.filter(c => c.fixed);
@@ -110,7 +112,7 @@ export class Table {
 
     protected componentDidLoad() {
         const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
-        this.filter = this.element.shadowRoot.querySelector('.pd-table-filter') as HTMLElement;
+        this.filter = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
         this.popper = this.createMenuPopper(table, this.filter);
     }
 
@@ -119,17 +121,9 @@ export class Table {
         this.popper.forceUpdate();
     }
 
-    @Listen('click', { target: 'body' })
-    protected handleClick(ev: MouseEvent) {
-        if (ev.target !== this.filter) {
-            // this.filterOpen = false;
-        }
-    }
-
     private handleFilterChange(ev: CustomEvent) {
-        console.log(`Table -> handleFilterChange -> ev.detail`, ev.detail);
         this.filterOpen = false;
-        // TODO: filter column
+        this.columnFilters[this.currentFilter] = ev.detail;
     }
 
     render() {
@@ -148,6 +142,12 @@ export class Table {
 
         return (
             <Host role="table">
+                <pd-table-filter
+                    class={{ 'pd-table-filter-hidden': !this.filterOpen }}
+                    onPdOnConfirm={ev => this.handleFilterChange(ev)}
+                    onPdOnClose={() => (this.filterOpen = false)}
+                    onPdOnClear={() => (this.filterOpen = false)}
+                ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
                         <div class={`pd-table-header-row`} role="rowheader" style={headerStyle}>
@@ -162,11 +162,6 @@ export class Table {
                         <div class="pd-table-body">{this.renderRows(false)}</div>
                     </div>
                 </div>
-                <pd-table-filter
-                    class={{ 'pd-table-filter-hidden': !this.filterOpen }}
-                    onPdOnSearch={() => console.log('ding')}
-                    onPdOnConfirm={ev => this.handleFilterChange(ev)}
-                ></pd-table-filter>
             </Host>
         );
     }
@@ -206,6 +201,14 @@ export class Table {
         const rowStyle = {
             height: `${this.rowHeight}px`,
         };
+
+        this.rows.filter(row => {
+            Object.keys(this.columnFilters).forEach(key => {
+                const value = row[key];
+                const filter = this.columnFilters[key];
+                console.log(`Table -> renderRows -> filter`, filter, value);
+            });
+        });
 
         return this.rows.map(row => (
             <div class="pd-table-row" role="row" style={rowStyle}>
@@ -252,11 +255,13 @@ export class Table {
 
     private renderFilterIcon(headerCol: PdColumn) {
         if (!headerCol.filter) return;
-        return <pd-icon onClick={ev => this.open(ev)} name="filter" size={2}></pd-icon>;
+        return <pd-icon onClick={ev => this.open(ev, headerCol.columnName)} name="filter" size={2}></pd-icon>;
     }
 
-    private open(ev) {
+    private open(ev, columnName) {
         ev.stopPropagation();
+        this.currentFilter = columnName;
+        this.filter.reset();
         this.popper.state.elements.reference = ev.target;
         this.filterOpen = true;
         this.popper.update();

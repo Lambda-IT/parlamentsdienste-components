@@ -1,4 +1,5 @@
-import { Component, Host, h, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Listen, Element, Method, State } from '@stencil/core';
+import { closestElement } from '../../utils/helpers';
 
 @Component({
     tag: 'pd-table-filter',
@@ -6,7 +7,8 @@ import { Component, Host, h, Event, EventEmitter } from '@stencil/core';
     shadow: true,
 })
 export class PdTableFilter {
-    private filterValue = '';
+    @Element() element;
+    @State() value = '';
 
     /**
      * Emitted when filter changes.
@@ -23,6 +25,16 @@ export class PdTableFilter {
      */
     @Event() pdOnConfirm!: EventEmitter<string>;
 
+    /**
+     * Emitted when filter is confirmed.
+     */
+    @Event() pdOnClose!: EventEmitter<void>;
+
+    @Method()
+    async reset() {
+        this.value = '';
+    }
+
     private onSearch = () => {
         this.pdOnSearch.emit();
     };
@@ -32,23 +44,39 @@ export class PdTableFilter {
     };
 
     private onConfirm = () => {
-        this.pdOnConfirm.emit(this.filterValue);
+        this.pdOnConfirm.emit(this.value);
     };
 
     private handleFilterChange(ev) {
-        this.filterValue = ev.target.value;
-        console.log(`PdTableFilter -> handleFilterChange -> value`, this.filterValue);
+        this.value = ev.target.value;
+    }
+
+    private onSubmit(ev: KeyboardEvent) {
+        if (ev.key !== 'Enter') return;
+
+        this.pdOnConfirm.emit(this.value);
+    }
+
+    @Listen('click', { target: 'body' })
+    protected handleClick(ev: MouseEvent) {
+        // the filter is inside the shadowdom of the table, we need to find the clicked element inside of the shadow dom
+        // ev.target doesn't work because of that
+        if (closestElement('pd-table-filter', ev.composedPath()[0] as HTMLElement) !== this.element) {
+            this.pdOnClose.emit();
+        }
     }
 
     render() {
         return (
-            <Host class="pd-table-filter">
+            <Host>
                 <div class="pd-table-filter-wrapper">
                     <div class="pd-table-search-input-wrapper">
                         <input
                             class="pd-table-search-input"
                             onInput={ev => this.handleFilterChange(ev)}
                             placeholder="Stichwort, Name …"
+                            value={this.value}
+                            onKeyDown={ev => this.onSubmit(ev)}
                         />
                         <button class="pd-table-search-button" onClick={this.onSearch} tabindex="-1">
                             <pd-icon class="pd-table-search-button-icon" name="search" size={2.4}></pd-icon>

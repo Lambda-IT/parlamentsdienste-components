@@ -6,6 +6,7 @@
 ::before,
 ::after {
     box-sizing: border-box;
+    appearance: none;
 }
 
 // Styling Cross-Browser Compatible Range Inputs with Sass

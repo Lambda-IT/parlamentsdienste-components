@@ -9,6 +9,7 @@
 ::before,
 ::after {
     box-sizing: border-box;
+    appearance: none;
 }
 
 :host(.pd-input-error) {

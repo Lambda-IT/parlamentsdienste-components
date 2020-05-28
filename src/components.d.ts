@@ -418,6 +418,7 @@ export namespace Components {
         "rows": any;
     }
     interface PdTableFilter {
+        "reset": () => Promise<void>;
     }
     interface PdTimeline {
     }
@@ -1097,6 +1098,10 @@ declare namespace LocalJSX {
           * Emitted when the input was cleared.
          */
         "onPdOnClear"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when filter is confirmed.
+         */
+        "onPdOnClose"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when filter is confirmed.
          */

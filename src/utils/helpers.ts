@@ -106,3 +106,13 @@ export const debounce = (func: (...args: any[]) => void, wait = 0) => {
 export const hostContext = (selector: string, el: HTMLElement): boolean => {
     return el.closest(selector) !== null;
 };
+
+export function closestElement(selector: string, base: HTMLElement) {
+    function __closestFrom(el: Element | Window | Document): Element {
+        if (!el || el === document || el === window) return null;
+        if ((el as Slotable).assignedSlot) el = (el as Slotable).assignedSlot;
+        let found = (el as Element).closest(selector);
+        return found ? found : __closestFrom(((el as Element).getRootNode() as ShadowRoot).host);
+    }
+    return __closestFrom(base);
+}
