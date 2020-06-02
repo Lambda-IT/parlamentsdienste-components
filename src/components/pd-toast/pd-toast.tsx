@@ -39,7 +39,7 @@ export class PdToast {
                     </div>
                     <div class="pd-toast-header-right">
                         {this.renderInfo()}
-                        <pd-icon onClick={this.pdOnClosed.emit} class="pd-toast-close" name="cancel"></pd-icon>
+                        <pd-icon onClick={this.pdOnClosed.emit} class="pd-toast-close" name="close" size={2}></pd-icon>
                     </div>
                 </div>
                 <div class="pd-toast-body">

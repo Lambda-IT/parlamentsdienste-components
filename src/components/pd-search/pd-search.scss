@@ -11,6 +11,7 @@
 ::after {
     box-sizing: border-box;
     appearance: none;
+    outline: none;
 }
 
 label {
@@ -80,7 +81,6 @@ label {
     justify-content: center;
     align-items: center;
     flex: 0 0 3em;
-    height: 100%;
     border-top-right-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
     background-color: setcolor(primary, enabled);

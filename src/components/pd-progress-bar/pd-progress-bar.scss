@@ -11,6 +11,7 @@ $progress-height: 1rem;
 ::before,
 ::after {
     box-sizing: border-box;
+    outline: none;
 }
 
 .pd-progress-bar-background {

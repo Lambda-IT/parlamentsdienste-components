@@ -1,5 +1,6 @@
-import { Component, Host, h, State, Listen, Element, Prop, getAssetPath, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
+import { closestElement } from '../../utils/helpers';
 
 // TODO: move out of file
 export interface DropdownItem {
@@ -54,7 +55,7 @@ export class Dropdown {
 
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
-        if (ev.target !== this.element) {
+        if (closestElement('pd-dropdown', ev.target as HTMLElement) !== this.element) {
             this.open = false;
         }
     }
@@ -175,11 +176,12 @@ export class Dropdown {
                         onClick={this.openDropdown}
                     >
                         <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
-                        <img
+                        <pd-icon
                             class="pd-dropdown-caret"
-                            src={getAssetPath(`./assets-dropdown/icon-right_button.svg`)}
-                            style={{ transform: `rotate(${this.open ? '270deg' : '90deg'})` }}
-                        ></img>
+                            name="dropdown"
+                            rotate={this.open ? 180 : 0}
+                            size={2}
+                        ></pd-icon>
                     </button>
                     {this.renderDropDown()}
                 </div>

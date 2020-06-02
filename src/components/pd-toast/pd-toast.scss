@@ -37,6 +37,8 @@
         .pd-toast-close {
             fill: setcolor(primary, enabled);
             margin-left: 1em;
+            margin-right: -0.25em;
+            margin-top: -0.25em;
             cursor: pointer;
             min-width: 1em;
 

@@ -1,3 +1,5 @@
+@include resetControlFonts;
+
 :host {
     display: block;
     flex: 1;
@@ -7,6 +9,7 @@
 ::before,
 ::after {
     box-sizing: border-box;
+    outline: none;
 }
 
 .pd-table {
@@ -31,19 +34,34 @@
 
     .pd-table-header-cell {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         padding: 0 0.625em;
+
+        .pd-table-header-cell-text {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            span {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        .pd-table-header-cell-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .pd-table-filter-icon {
+            cursor: pointer;
+        }
 
         &.pd-table-sortable {
             user-select: none;
             cursor: pointer;
-        }
-
-        span {
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
         }
 
         &.pd-table-dark {
@@ -134,11 +152,21 @@
 .pd-table-filter-clear {
     display: flex;
     fill: $white;
-    background-color: $blue-whale;
+    align-items: center;
+    padding: 0.1em;
+    margin-left: 0.2em;
+    background-color: $cyan-9;
     border-radius: 0.25em;
+    border: none;
     cursor: pointer;
 
+    &:focus {
+        background-color: $focus;
+    }
+
     .pd-table-filter-clear-button {
+        display: flex;
+        align-items: center;
         color: $white;
         background-color: transparent;
         border: none;

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, State, Watch } from '@stencil/core';
+import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
 import { PdColumn } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
@@ -49,6 +49,11 @@ export class Table {
     private nextSortDir = {};
     private sortColumn = '';
     private popper: Instance;
+
+    @Listen('keydown')
+    protected handleKeyDown(ev: KeyboardEvent) {
+        if (ev.key === 'Escape') this.filterOpen = false;
+    }
 
     // calculate flex for left side (fixed) of table
     // has a fixed width when no column is auto
@@ -181,7 +186,6 @@ export class Table {
                 const headerCellStyle = {
                     flex: headerCol.width === 0 ? `1 1 ${headerCol.minWidth || 0}px` : `0 0 ${headerCol.width}px`,
                     minWidth: `${headerCol.minWidth || headerCol.width || 0}px`,
-                    justifyContent: this.getTextAlign(headerCol),
                 };
                 const columnSortDir = this.nextSortDir[headerCol.columnName];
                 return (
@@ -199,9 +203,13 @@ export class Table {
                         title={headerCol.label}
                         onClick={() => this.sort(headerCol)}
                     >
-                        <span>{headerCol.label}</span>
-                        {this.renderSort(columnSortDir, headerCol.columnName)}
-                        {this.renderFilterIcon(headerCol)}
+                        <div class="pd-table-header-cell-text" style={{ justifyContent: this.getTextAlign(headerCol) }}>
+                            <span>{headerCol.label}</span>
+                        </div>
+                        <div class="pd-table-header-cell-actions">
+                            {this.renderSort(columnSortDir, headerCol.columnName)}
+                            {this.renderFilterIcon(headerCol)}
+                        </div>
                     </div>
                 );
             });
@@ -260,17 +268,25 @@ export class Table {
 
         if (this.columnFilters[headerCol.columnName])
             return (
-                <div class="pd-table-filter-clear" onClick={ev => this.open(ev, headerCol.columnName)}>
+                <button class="pd-table-filter-clear" onClick={ev => this.open(ev, headerCol.columnName)}>
                     <pd-icon name="filter" size={2}></pd-icon>
                     <button
                         class="pd-table-filter-clear-button"
                         onClick={ev => this.clearFilter(ev, headerCol.columnName)}
                     >
-                        x
+                        <pd-icon size={1.2} name="close"></pd-icon>
                     </button>
-                </div>
+                </button>
             );
-        else return <pd-icon onClick={ev => this.open(ev, headerCol.columnName)} name="filter" size={2}></pd-icon>;
+        else
+            return (
+                <pd-icon
+                    class="pd-table-filter-icon"
+                    onClick={ev => this.open(ev, headerCol.columnName)}
+                    name="filter"
+                    size={2}
+                ></pd-icon>
+            );
     }
 
     private open(ev: MouseEvent, columnName: string) {

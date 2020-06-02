@@ -9,6 +9,7 @@
 ::before,
 ::after {
     box-sizing: border-box;
+    outline: none;
 }
 
 .pd-dropdown {
@@ -30,17 +31,19 @@
     padding: 0.625em 0.75em;
     cursor: pointer;
     display: flex;
+    align-items: center;
     width: 100%;
 
     .pd-dropdown-text {
         flex: 1 1 auto;
-        text-align: start;
+        text-align: left;
         text-overflow: ellipsis;
         overflow-x: hidden;
     }
 
     .pd-dropdown-caret {
-        margin-left: 0.75em;
+        fill: $white;
         flex: 0 0 auto;
+        margin: -0.625em -0.2em;
     }
 }
