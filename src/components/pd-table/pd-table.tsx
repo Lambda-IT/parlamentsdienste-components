@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
+import { Component, Host, h, Prop, Element, State, Listen, Watch } from '@stencil/core';
 import { PdColumn } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
@@ -8,6 +8,10 @@ import { createPopper, Instance } from '@popperjs/core';
     shadow: true,
 })
 export class Table {
+    constructor() {
+        this.filteredRows = [...this.rows];
+    }
+
     @Element() element;
 
     /**
@@ -39,6 +43,13 @@ export class Table {
      * The data definition for each row to display
      */
     @Prop() rows: any = [];
+
+    @Watch('rows')
+    handleRowsChanged() {
+        this.filteredRows = [...this.rows];
+    }
+
+    private filteredRows: any = [];
 
     @State() filterOpen = false;
 
@@ -109,7 +120,7 @@ export class Table {
         const dir = this.nextSortDir[columnName] || 'desc';
         this.nextSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
 
-        this.rows = [...this.rows].sort((a, b) =>
+        this.filteredRows = [...this.filteredRows].sort((a, b) =>
             headerCol.sortFunc
                 ? headerCol.sortFunc(a[columnName], b[columnName], dir)
                 : this.defaultSortFunc(a[columnName], b[columnName], dir),
@@ -128,17 +139,19 @@ export class Table {
         this.filter.focusInput();
     }
 
-    private handleFilterChange(ev: CustomEvent) {
+    private filterConfirm(ev: CustomEvent) {
         this.filterOpen = false;
         this.columnFilters[this.currentFilter] = ev.detail;
+        this.handleFilterChange();
+    }
 
-        /*this.rows.filter(row => {
-            Object.keys(this.columnFilters).forEach(key => {
-                 const value = row[key];
-                const filter = this.columnFilters[key];
-                console.log(`Table -> renderRows -> filter`, filter, value); 
+    private handleFilterChange() {
+        this.filteredRows = [...this.rows].filter(row => {
+            return Object.keys(this.columnFilters).every(key => {
+                if (!this.columnFilters[key]) return true;
+                return row[key].toString().includes(this.columnFilters[key]);
             });
-        });*/
+        });
     }
 
     render() {
@@ -159,7 +172,7 @@ export class Table {
             <Host role="table">
                 <pd-table-filter
                     class={{ 'pd-table-filter-hidden': !this.filterOpen }}
-                    onPdOnConfirm={ev => this.handleFilterChange(ev)}
+                    onPdOnConfirm={ev => this.filterConfirm(ev)}
                     onPdOnClose={() => (this.filterOpen = false)}
                 ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
@@ -220,7 +233,7 @@ export class Table {
             height: `${this.rowHeight}px`,
         };
 
-        return this.rows.map(row => (
+        return this.filteredRows.map(row => (
             <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.columns.filter(c => (c.fixed || false) === fixed).map(col => this.renderColumn(row, col))}
             </div>
@@ -303,6 +316,7 @@ export class Table {
         ev.stopPropagation();
         this.columnFilters = { ...this.columnFilters, [columnName]: undefined };
         this.filterOpen = false;
+        this.handleFilterChange();
     }
 
     // create a popper js element for the menu
