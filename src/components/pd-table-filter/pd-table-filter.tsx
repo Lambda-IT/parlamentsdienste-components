@@ -1,4 +1,4 @@
-import { Component, Host, h, Event, EventEmitter, Listen, Element, Method, State } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Listen, Element, Method, Prop } from '@stencil/core';
 import { closestElement } from '../../utils/helpers';
 
 @Component({
@@ -8,17 +8,14 @@ import { closestElement } from '../../utils/helpers';
 })
 export class PdTableFilter {
     @Element() element;
-    @State() value = '';
+    private inputRef: HTMLInputElement;
+
+    @Prop() value = '';
 
     /**
      * Emitted when filter changes.
      */
     @Event() pdOnSearch!: EventEmitter<void>;
-
-    /**
-     * Emitted when the input was cleared.
-     */
-    @Event() pdOnClear!: EventEmitter<void>;
 
     /**
      * Emitted when filter is confirmed.
@@ -35,12 +32,24 @@ export class PdTableFilter {
         this.value = '';
     }
 
+    @Method()
+    async setValue(value: string) {
+        this.value = value;
+    }
+
+    @Method()
+    async focusInput() {
+        this.inputRef.focus();
+    }
+
     private onSearch = () => {
         this.pdOnSearch.emit();
     };
 
     private onClear = () => {
-        this.pdOnClear.emit();
+        this.value = '';
+        this.inputRef.focus();
+        this.value = this.value;
     };
 
     private onConfirm = () => {
@@ -72,6 +81,7 @@ export class PdTableFilter {
                 <div class="pd-table-filter-wrapper">
                     <div class="pd-table-search-input-wrapper">
                         <input
+                            ref={el => (this.inputRef = el as HTMLInputElement)}
                             class="pd-table-search-input"
                             onInput={ev => this.handleFilterChange(ev)}
                             placeholder="Stichwort, Name …"

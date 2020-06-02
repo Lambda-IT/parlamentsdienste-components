@@ -5,19 +5,45 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type     | Default |
+| -------- | --------- | ----------- | -------- | ------- |
+| `value`  | `value`   |             | `string` | `''`    |
+
+
 ## Events
 
-| Event         | Description                         | Type                  |
-| ------------- | ----------------------------------- | --------------------- |
-| `pdOnClear`   | Emitted when the input was cleared. | `CustomEvent<void>`   |
-| `pdOnClose`   | Emitted when filter is confirmed.   | `CustomEvent<void>`   |
-| `pdOnConfirm` | Emitted when filter is confirmed.   | `CustomEvent<string>` |
-| `pdOnSearch`  | Emitted when filter changes.        | `CustomEvent<void>`   |
+| Event         | Description                       | Type                  |
+| ------------- | --------------------------------- | --------------------- |
+| `pdOnClose`   | Emitted when filter is confirmed. | `CustomEvent<void>`   |
+| `pdOnConfirm` | Emitted when filter is confirmed. | `CustomEvent<string>` |
+| `pdOnSearch`  | Emitted when filter changes.      | `CustomEvent<void>`   |
 
 
 ## Methods
 
+### `focusInput() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `reset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setValue(value: string) => Promise<void>`
 
 
 

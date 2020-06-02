@@ -50,6 +50,7 @@
             background-color: $blue-whale;
             border-bottom: 0.125em solid $blue-whale;
             border-top: 0.125em solid $blue-whale;
+            fill: $white;
 
             &.pd-table-sortable {
                 &:hover {
@@ -128,6 +129,21 @@
 
 .pd-table-cell-bold {
     font-weight: 700;
+}
+
+.pd-table-filter-clear {
+    display: flex;
+    fill: $white;
+    background-color: $blue-whale;
+    border-radius: 0.25em;
+    cursor: pointer;
+
+    .pd-table-filter-clear-button {
+        color: $white;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
 }
 
 .pd-table-filter-hidden {

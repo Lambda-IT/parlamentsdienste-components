@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, State } from '@stencil/core';
+import { Component, Host, h, Prop, Element, State, Watch } from '@stencil/core';
 import { PdColumn } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
@@ -44,7 +44,8 @@ export class Table {
 
     private filter: HTMLPdTableFilterElement;
     private currentFilter: string;
-    private columnFilters: any = {};
+    @State() columnFilters: any = {};
+    private headerRefs: any = {};
     private nextSortDir = {};
     private sortColumn = '';
     private popper: Instance;
@@ -119,11 +120,20 @@ export class Table {
     protected componentDidUpdate() {
         if (!this.filterOpen) return;
         this.popper.forceUpdate();
+        this.filter.focusInput();
     }
 
     private handleFilterChange(ev: CustomEvent) {
         this.filterOpen = false;
         this.columnFilters[this.currentFilter] = ev.detail;
+
+        /*this.rows.filter(row => {
+            Object.keys(this.columnFilters).forEach(key => {
+                 const value = row[key];
+                const filter = this.columnFilters[key];
+                console.log(`Table -> renderRows -> filter`, filter, value); 
+            });
+        });*/
     }
 
     render() {
@@ -146,7 +156,6 @@ export class Table {
                     class={{ 'pd-table-filter-hidden': !this.filterOpen }}
                     onPdOnConfirm={ev => this.handleFilterChange(ev)}
                     onPdOnClose={() => (this.filterOpen = false)}
-                    onPdOnClear={() => (this.filterOpen = false)}
                 ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
@@ -184,6 +193,7 @@ export class Table {
                             [`pd-table-sort-${columnSortDir === 'asc' ? 'desc' : 'asc'}`]: columnSortDir,
                             [`pd-table-${this.headerStyle}`]: true,
                         }}
+                        ref={el => (this.headerRefs[headerCol.columnName] = el as HTMLElement)}
                         role="cell"
                         style={headerCellStyle}
                         title={headerCol.label}
@@ -201,14 +211,6 @@ export class Table {
         const rowStyle = {
             height: `${this.rowHeight}px`,
         };
-
-        this.rows.filter(row => {
-            Object.keys(this.columnFilters).forEach(key => {
-                const value = row[key];
-                const filter = this.columnFilters[key];
-                console.log(`Table -> renderRows -> filter`, filter, value);
-            });
-        });
 
         return this.rows.map(row => (
             <div class="pd-table-row" role="row" style={rowStyle}>
@@ -255,16 +257,36 @@ export class Table {
 
     private renderFilterIcon(headerCol: PdColumn) {
         if (!headerCol.filter) return;
-        return <pd-icon onClick={ev => this.open(ev, headerCol.columnName)} name="filter" size={2}></pd-icon>;
+
+        if (this.columnFilters[headerCol.columnName])
+            return (
+                <div class="pd-table-filter-clear" onClick={ev => this.open(ev, headerCol.columnName)}>
+                    <pd-icon name="filter" size={2}></pd-icon>
+                    <button
+                        class="pd-table-filter-clear-button"
+                        onClick={ev => this.clearFilter(ev, headerCol.columnName)}
+                    >
+                        x
+                    </button>
+                </div>
+            );
+        else return <pd-icon onClick={ev => this.open(ev, headerCol.columnName)} name="filter" size={2}></pd-icon>;
     }
 
-    private open(ev, columnName) {
+    private open(ev: MouseEvent, columnName: string) {
         ev.stopPropagation();
+        this.filter.setValue(this.columnFilters[columnName] || '');
+        this.filter.focusInput();
         this.currentFilter = columnName;
-        this.filter.reset();
-        this.popper.state.elements.reference = ev.target;
+        this.popper.state.elements.reference = this.headerRefs[columnName];
         this.filterOpen = true;
         this.popper.update();
+    }
+
+    private clearFilter(ev: MouseEvent, columnName: string) {
+        ev.stopPropagation();
+        this.columnFilters = { ...this.columnFilters, [columnName]: undefined };
+        this.filterOpen = false;
     }
 
     // create a popper js element for the menu

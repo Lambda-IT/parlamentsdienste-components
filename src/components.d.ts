@@ -418,7 +418,10 @@ export namespace Components {
         "rows": any;
     }
     interface PdTableFilter {
+        "focusInput": () => Promise<void>;
         "reset": () => Promise<void>;
+        "setValue": (value: string) => Promise<void>;
+        "value": string;
     }
     interface PdTimeline {
     }
@@ -1095,10 +1098,6 @@ declare namespace LocalJSX {
     }
     interface PdTableFilter {
         /**
-          * Emitted when the input was cleared.
-         */
-        "onPdOnClear"?: (event: CustomEvent<void>) => void;
-        /**
           * Emitted when filter is confirmed.
          */
         "onPdOnClose"?: (event: CustomEvent<void>) => void;
@@ -1110,6 +1109,7 @@ declare namespace LocalJSX {
           * Emitted when filter changes.
          */
         "onPdOnSearch"?: (event: CustomEvent<void>) => void;
+        "value"?: string;
     }
     interface PdTimeline {
     }
