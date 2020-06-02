@@ -16,15 +16,16 @@
 
 ## Available Icon Names
 
-| []()        |           |           |            |                  |                  |               |               |
-| ----------- | --------- | --------- | ---------- | ---------------- | ---------------- | ------------- | ------------- |
-| parlament   | checkmark | cancel    | minus      | checkbox-default | checkbox-checked | radio-default | radio-checked |
-| cancel-ring | calendar  | profile   | dictionary | contacts         | search           | caret         | expand        |
-| explorer    | folder    | folder-in | link       | grid             | configuration    | list          | menu          |
-| mail        | money     | press     | print      | support          |
+| []()             |             |           |               |               |               |               |                  |
+| ---------------- | ----------- | --------- | ------------- | ------------- | ------------- | ------------- | ---------------- |
+| ablage           | add         | appview   | arrow         | book          | breadcrumb    | cancel        | checkbox-checked |
+| checkbox-default | close-small | close     | collapse      | configuration | confirm       | contacts      | documents        |
+| dropdown         | expand      | filter    | folder-closed | folder-open   | link          | list          | menu             |
+| message          | money       | parlament | press         | print         | profile       | radio-checked | radio-default    |
+| recherche        | reservation | search    | sort          | status-green  | status-orange | status-red    | status-undefined |
+| support          |
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -38,24 +39,24 @@
 | `spinReverse` | `spin-reverse` | change animation direction                     | `boolean`            | `false`     |
 | `src`         | `src`          | Specifies the `src` url of an SVG file to use. | `string`             | `undefined` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [pd-alert](../pd-alert)
- - [pd-dropdown](../pd-dropdown)
- - [pd-list-item](../pd-list-item)
- - [pd-modal](../pd-modal)
- - [pd-navbar](../pd-navbar)
- - [pd-panel-header](../pd-panel-header)
- - [pd-search](../pd-search)
- - [pd-sidebar-item](../pd-sidebar-item)
- - [pd-table](../pd-table)
- - [pd-table-filter](../pd-table-filter)
- - [pd-toast](../pd-toast)
+-   [pd-alert](../pd-alert)
+-   [pd-dropdown](../pd-dropdown)
+-   [pd-list-item](../pd-list-item)
+-   [pd-modal](../pd-modal)
+-   [pd-navbar](../pd-navbar)
+-   [pd-panel-header](../pd-panel-header)
+-   [pd-search](../pd-search)
+-   [pd-sidebar-item](../pd-sidebar-item)
+-   [pd-table](../pd-table)
+-   [pd-table-filter](../pd-table-filter)
+-   [pd-toast](../pd-toast)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
@@ -72,6 +73,6 @@ graph TD;
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
