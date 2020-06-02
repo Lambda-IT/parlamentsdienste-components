@@ -49,13 +49,13 @@ export class Table {
         this.filteredRows = [...this.rows];
     }
 
-    private filteredRows: any = [];
-
     @State() filterOpen = false;
 
-    private filter: HTMLPdTableFilterElement;
-    private currentFilter: string;
     @State() columnFilters: any = {};
+
+    private filteredRows: any = [];
+    private filterElement: HTMLPdTableFilterElement;
+    private currentFilter: string;
     private headerRefs: any = {};
     private nextSortDir = {};
     private sortColumn = '';
@@ -64,6 +64,18 @@ export class Table {
     @Listen('keydown')
     protected handleKeyDown(ev: KeyboardEvent) {
         if (ev.key === 'Escape') this.filterOpen = false;
+    }
+
+    protected componentDidLoad() {
+        const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
+        this.filterElement = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
+        this.popper = this.createMenuPopper(table, this.filterElement);
+    }
+
+    protected componentDidUpdate() {
+        if (!this.filterOpen) return;
+        this.popper.forceUpdate();
+        this.filterElement.focusInput();
     }
 
     // calculate flex for left side (fixed) of table
@@ -82,7 +94,6 @@ export class Table {
 
     // calculate flex for right side (scroll) of table
     // has a fixed width when no column is auto
-    // TODO: merge with prev function
     private calcScrollFlex(columns: PdColumn[]) {
         const fixedCols = columns.filter(c => !c.fixed);
         const hasAuto = fixedCols.findIndex(c => c.width === 0) !== -1;
@@ -111,6 +122,13 @@ export class Table {
         else if (dir === 'desc') return a === b ? 0 : a > b ? -1 : 1;
     };
 
+    /**
+     * filter by string.includes()
+     */
+    private defaultFilterFunc = (value: any, filter: string) => {
+        return value.toString().includes(filter);
+    };
+
     private sort = (headerCol: PdColumn) => {
         const { columnName, sortable } = headerCol;
         if (!sortable) return;
@@ -127,34 +145,70 @@ export class Table {
         );
     };
 
-    protected componentDidLoad() {
-        const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
-        this.filter = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
-        this.popper = this.createMenuPopper(table, this.filter);
-    }
-
-    protected componentDidUpdate() {
-        if (!this.filterOpen) return;
-        this.popper.forceUpdate();
-        this.filter.focusInput();
-    }
-
-    private filterConfirm(ev: CustomEvent) {
-        this.filterOpen = false;
-        this.columnFilters[this.currentFilter] = ev.detail;
-        this.handleFilterChange();
-    }
-
-    private handleFilterChange() {
+    /**
+     * filter all rows by currently set filters
+     */
+    private filter() {
+        const customFilters = this.getCustomFilters(this.columnFilters);
+        // loop all rows
         this.filteredRows = [...this.rows].filter(row => {
+            // loop all current filter columns
             return Object.keys(this.columnFilters).every(key => {
+                // skip if filter is empty
                 if (!this.columnFilters[key]) return true;
-                return row[key].toString().includes(this.columnFilters[key]);
+                // use custom filter or default
+                return customFilters[key]
+                    ? customFilters[key](row[key], this.columnFilters[key])
+                    : this.defaultFilterFunc(row[key], this.columnFilters[key]);
             });
         });
     }
 
-    render() {
+    /**
+     * new filter set
+     */
+    private filterConfirm(ev: CustomEvent) {
+        this.filterOpen = false;
+        this.columnFilters[this.currentFilter] = ev.detail;
+        this.filter();
+    }
+
+    /**
+     * returns all custom filter functions for currently used filter column
+     */
+    private getCustomFilters(columnFilters) {
+        const customFilters = {};
+        Object.keys(columnFilters).forEach(
+            key => (customFilters[key] = this.columns.find(col => col.columnName === key)?.filterFunc),
+        );
+        return customFilters;
+    }
+
+    private openFilter(ev: MouseEvent, columnName: string) {
+        ev.stopPropagation();
+        this.filterElement.setValue(this.columnFilters[columnName] || '');
+        this.filterElement.focusInput();
+        this.currentFilter = columnName;
+        this.popper.state.elements.reference = this.headerRefs[columnName];
+        this.filterOpen = true;
+        this.popper.update();
+    }
+
+    private clearFilter(ev: MouseEvent, columnName: string) {
+        ev.stopPropagation();
+        this.columnFilters = { ...this.columnFilters, [columnName]: undefined };
+        this.filterOpen = false;
+        this.filter();
+    }
+
+    // create a popper js element for the menu
+    private createMenuPopper(button, menu) {
+        return createPopper(button, menu, {
+            placement: 'bottom',
+        });
+    }
+
+    public render() {
         const headerStyle = {
             height: `${this.headerHeight}px`,
         };
@@ -281,7 +335,7 @@ export class Table {
 
         if (this.columnFilters[headerCol.columnName])
             return (
-                <button class="pd-table-filter-clear" onClick={ev => this.open(ev, headerCol.columnName)}>
+                <button class="pd-table-filter-clear" onClick={ev => this.openFilter(ev, headerCol.columnName)}>
                     <pd-icon name="filter" size={2}></pd-icon>
                     <button
                         class="pd-table-filter-clear-button"
@@ -295,34 +349,10 @@ export class Table {
             return (
                 <pd-icon
                     class="pd-table-filter-icon"
-                    onClick={ev => this.open(ev, headerCol.columnName)}
+                    onClick={ev => this.openFilter(ev, headerCol.columnName)}
                     name="filter"
                     size={2}
                 ></pd-icon>
             );
-    }
-
-    private open(ev: MouseEvent, columnName: string) {
-        ev.stopPropagation();
-        this.filter.setValue(this.columnFilters[columnName] || '');
-        this.filter.focusInput();
-        this.currentFilter = columnName;
-        this.popper.state.elements.reference = this.headerRefs[columnName];
-        this.filterOpen = true;
-        this.popper.update();
-    }
-
-    private clearFilter(ev: MouseEvent, columnName: string) {
-        ev.stopPropagation();
-        this.columnFilters = { ...this.columnFilters, [columnName]: undefined };
-        this.filterOpen = false;
-        this.handleFilterChange();
-    }
-
-    // create a popper js element for the menu
-    private createMenuPopper(button, menu) {
-        return createPopper(button, menu, {
-            placement: 'bottom',
-        });
     }
 }

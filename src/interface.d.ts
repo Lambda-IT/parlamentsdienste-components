@@ -23,6 +23,7 @@ export interface PdColumn {
     textAlign?: 'left' | 'right' | 'center';
     sortFunc?: (a: any, b: any, dir: string) => number;
     displayFunc?: (value: any) => any;
+    filterFunc?: (value: any, filter: string) => boolean;
 }
 
 export interface PdModalConfig {
