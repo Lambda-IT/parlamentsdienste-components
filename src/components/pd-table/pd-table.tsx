@@ -8,10 +8,6 @@ import { createPopper, Instance } from '@popperjs/core';
     shadow: true,
 })
 export class Table {
-    constructor() {
-        this.filteredRows = [...this.rows];
-    }
-
     @Element() element;
 
     /**
@@ -50,10 +46,9 @@ export class Table {
     }
 
     @State() filterOpen = false;
-
     @State() columnFilters: any = {};
+    @State() filteredRows: any = [...this.rows];
 
-    private filteredRows: any = [];
     private filterElement: HTMLPdTableFilterElement;
     private currentFilter: string;
     private headerRefs: any = {};
