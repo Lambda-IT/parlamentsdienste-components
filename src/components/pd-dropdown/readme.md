@@ -53,11 +53,13 @@ interface DropdownItem {
 
 ### Depends on
 
+- [pd-icon](../pd-icon)
 - [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  pd-dropdown --> pd-icon
   pd-dropdown --> pd-dropdown-item
   style pd-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```

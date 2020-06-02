@@ -44,6 +44,7 @@
 ### Used by
 
  - [pd-alert](../pd-alert)
+ - [pd-dropdown](../pd-dropdown)
  - [pd-list-item](../pd-list-item)
  - [pd-modal](../pd-modal)
  - [pd-navbar](../pd-navbar)
@@ -58,6 +59,7 @@
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
+  pd-dropdown --> pd-icon
   pd-list-item --> pd-icon
   pd-modal --> pd-icon
   pd-navbar --> pd-icon
