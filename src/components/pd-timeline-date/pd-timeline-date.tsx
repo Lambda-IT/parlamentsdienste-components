@@ -6,12 +6,24 @@ import { Component, Host, h, Prop } from '@stencil/core';
     shadow: true,
 })
 export class PdTimelineDate {
+    /**
+     * Header text
+     */
     @Prop() header: string;
 
+    /**
+     * Header link location
+     */
     @Prop() href: string;
 
+    /**
+     * Header link target
+     */
     @Prop() target: string = '_blank';
 
+    /**
+     * Timeline date
+     */
     @Prop() date: string = '';
 
     public render() {

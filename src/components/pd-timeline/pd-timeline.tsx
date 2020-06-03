@@ -6,8 +6,15 @@ import { Component, Host, h, Prop } from '@stencil/core';
     shadow: true,
 })
 export class Timeline {
-    @Prop() continueStart: boolean = false;
-    @Prop() continueEnd: boolean = false;
+    /**
+     * Adds rounded top of the date line to indicate that the timeline starts here
+     */
+    @Prop() start: boolean = false;
+
+    /**
+     * Adds rounded bottom of the date line to indicate that the timeline ends here
+     */
+    @Prop() end: boolean = false;
 
     render() {
         return (
@@ -15,8 +22,8 @@ export class Timeline {
                 <div
                     class={{
                         'pd-timeline-line': true,
-                        'pd-timeline-continue-start': this.continueStart,
-                        'pd-timeline-continue-end': this.continueEnd,
+                        'pd-timeline-start': this.start,
+                        'pd-timeline-end': this.end,
                     }}
                 ></div>
                 <div class="pd-timeline-container">

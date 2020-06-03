@@ -19,12 +19,12 @@
     background-color: $gray-3;
     z-index: 1;
 
-    &.pd-timeline-continue-start {
+    &.pd-timeline-start {
         border-top-right-radius: 0.5em;
         border-top-left-radius: 0.5em;
     }
 
-    &.pd-timeline-continue-end {
+    &.pd-timeline-end {
         border-bottom-right-radius: 0.5em;
         border-bottom-left-radius: 0.5em;
     }

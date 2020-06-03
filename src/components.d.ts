@@ -424,13 +424,31 @@ export namespace Components {
         "value": string;
     }
     interface PdTimeline {
-        "continueEnd": boolean;
-        "continueStart": boolean;
+        /**
+          * Adds rounded bottom of the date line to indicate that the timeline ends here
+         */
+        "end": boolean;
+        /**
+          * Adds rounded top of the date line to indicate that the timeline starts here
+         */
+        "start": boolean;
     }
     interface PdTimelineDate {
+        /**
+          * Timeline date
+         */
         "date": string;
+        /**
+          * Header text
+         */
         "header": string;
+        /**
+          * Header link location
+         */
         "href": string;
+        /**
+          * Header link target
+         */
         "target": string;
     }
     interface PdToast {
@@ -1127,13 +1145,31 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PdTimeline {
-        "continueEnd"?: boolean;
-        "continueStart"?: boolean;
+        /**
+          * Adds rounded bottom of the date line to indicate that the timeline ends here
+         */
+        "end"?: boolean;
+        /**
+          * Adds rounded top of the date line to indicate that the timeline starts here
+         */
+        "start"?: boolean;
     }
     interface PdTimelineDate {
+        /**
+          * Timeline date
+         */
         "date"?: string;
+        /**
+          * Header text
+         */
         "header"?: string;
+        /**
+          * Header link location
+         */
         "href"?: string;
+        /**
+          * Header link target
+         */
         "target"?: string;
     }
     interface PdToast {
