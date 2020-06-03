@@ -173,7 +173,7 @@
                                             bold: true,
                                             textAlign: 'right',
                                             fixed: true,
-                                            filter: true,
+                                            filter: false,
                                         },
                                         {
                                             columnName: 'colText',
@@ -189,7 +189,7 @@
                                             label: 'Created',
                                             width: 120,
                                             sortable: true,
-                                            filter: true,
+                                            filter: false,
                                             bold: false,
                                             textAlign: 'right',
                                         },
@@ -197,7 +197,7 @@
                                             columnName: 'colNumber',
                                             label: 'Count',
                                             width: 100,
-                                            filter: true,
+                                            filter: false,
                                             bold: false,
                                             sortable: true,
                                         },
@@ -814,7 +814,8 @@
                                             <h1>Heading 1</h1>
                                             <h2>Heading 2</h2>
                                             <h3>Heading 3</h3>
-                                            <p>Form</p>
+                                            <p>Datum</p>
+                                            <pd-datepicker label="Datum"></pd-datepicker>
                                             <pd-input
                                                 class="form-group"
                                                 v-model-pd="config.button.caption"
