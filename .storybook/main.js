@@ -5,6 +5,7 @@ module.exports = {
         '@storybook/addon-actions/register',
         '@storybook/addon-backgrounds/register',
         '@storybook/addon-viewport/register',
+        '@storybook/addon-links/register',
     ],
 
     stories: ['../src/stories/welcome/welcome.stories.js', '../src/**/*.(stories|story).(js|ts|tsx)'],
