@@ -50,6 +50,7 @@
     "dependencies": {
         "@a11y/focus-trap": "^1.0.5",
         "@popperjs/core": "^2.4.0",
+        "@storybook/addon-links": "^5.3.19",
         "flatpickr": "^4.6.3"
     }
 }

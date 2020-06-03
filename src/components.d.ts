@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DropdownItem, } from "./components/pd-dropdown/pd-dropdown";
-import { InputChangeEventDetail, PdColumn, PdModalConfig, TextFieldTypes, } from "./interface";
+import { DropdownItem } from "./components/pd-dropdown/pd-dropdown";
+import { InputChangeEventDetail, PdColumn, PdModalConfig, TextFieldTypes } from "./interface";
 export namespace Components {
     interface PdAlert {
         /**
@@ -32,7 +32,7 @@ export namespace Components {
         /**
           * Color schema used for the alert
          */
-        "color": "primary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
     }
     interface PdBackdrop {
         /**
@@ -44,7 +44,7 @@ export namespace Components {
         /**
           * Color schema used for the button
          */
-        "color": "primary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
           * Sets button to disbaled state
          */
@@ -53,7 +53,7 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
-        "iconLocation": "left" | "right" | "none";
+        "iconLocation": 'left' | 'right' | 'none';
         /**
           * Use outline schema
          */
@@ -61,7 +61,7 @@ export namespace Components {
         /**
           * Button size
          */
-        "size": "normal" | "small" | "large";
+        "size": 'normal' | 'small' | 'large';
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -69,7 +69,7 @@ export namespace Components {
         /**
           * Sets button type |text|submit|reset|
          */
-        "type": "button" | "text" | "submit";
+        "type": 'button' | 'text' | 'submit';
     }
     interface PdButtonGroup {
     }
@@ -131,7 +131,7 @@ export namespace Components {
         /**
           * Flip in X/Y direction
          */
-        "flip": "x" | "y" | "xy";
+        "flip": 'x' | 'y' | 'xy';
         /**
           * Name of an icon from the provided gallery
          */
@@ -169,11 +169,11 @@ export namespace Components {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
-        "autocomplete": "on" | "off";
+        "autocomplete": 'on' | 'off';
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
          */
-        "autocorrect": "on" | "off";
+        "autocorrect": 'on' | 'off';
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -195,7 +195,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         "label"?: string;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -261,7 +261,7 @@ export namespace Components {
     interface PdList {
     }
     interface PdListItem {
-        "status": "success" | "danger" | "warning" | "unset";
+        "status": 'success' | 'danger' | 'warning' | 'unset';
     }
     interface PdModal {
         /**
@@ -317,7 +317,7 @@ export namespace Components {
     interface PdPanelHeader {
     }
     interface PdProgressBar {
-        "color": "primary" | "success" | "danger" | "warning" | "info";
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info';
         "decimals": number;
         "label": boolean;
         "striped": boolean;
@@ -403,7 +403,7 @@ export namespace Components {
         /**
           * The table style
          */
-        "headerStyle": "light" | "dark" | "gray";
+        "headerStyle": 'light' | 'dark' | 'gray';
         /**
           * The minimum width the table should take
          */
@@ -424,6 +424,32 @@ export namespace Components {
         "value": string;
     }
     interface PdTimeline {
+        /**
+          * Adds rounded bottom of the date line to indicate that the timeline ends here
+         */
+        "end": boolean;
+        /**
+          * Adds rounded top of the date line to indicate that the timeline starts here
+         */
+        "start": boolean;
+    }
+    interface PdTimelineDate {
+        /**
+          * Timeline date
+         */
+        "date": string;
+        /**
+          * Header text
+         */
+        "header": string;
+        /**
+          * Header link location
+         */
+        "href": string;
+        /**
+          * Header link target
+         */
+        "target": string;
     }
     interface PdToast {
         /**
@@ -437,7 +463,7 @@ export namespace Components {
         /**
           * Changes max-with of the toast
          */
-        "size": "small" | "large";
+        "size": 'small' | 'large';
     }
 }
 declare global {
@@ -609,6 +635,12 @@ declare global {
         prototype: HTMLPdTimelineElement;
         new (): HTMLPdTimelineElement;
     };
+    interface HTMLPdTimelineDateElement extends Components.PdTimelineDate, HTMLStencilElement {
+    }
+    var HTMLPdTimelineDateElement: {
+        prototype: HTMLPdTimelineDateElement;
+        new (): HTMLPdTimelineDateElement;
+    };
     interface HTMLPdToastElement extends Components.PdToast, HTMLStencilElement {
     }
     var HTMLPdToastElement: {
@@ -644,6 +676,7 @@ declare global {
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
         "pd-timeline": HTMLPdTimelineElement;
+        "pd-timeline-date": HTMLPdTimelineDateElement;
         "pd-toast": HTMLPdToastElement;
     }
 }
@@ -672,7 +705,7 @@ declare namespace LocalJSX {
         /**
           * Color schema used for the alert
          */
-        "color"?: "primary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+        "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
           * Emitted when action closed button was pressed.
          */
@@ -689,7 +722,7 @@ declare namespace LocalJSX {
         /**
           * Color schema used for the button
          */
-        "color"?: "primary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
+        "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
           * Sets button to disbaled state
          */
@@ -698,7 +731,7 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
-        "iconLocation"?: "left" | "right" | "none";
+        "iconLocation"?: 'left' | 'right' | 'none';
         /**
           * Use outline schema
          */
@@ -706,7 +739,7 @@ declare namespace LocalJSX {
         /**
           * Button size
          */
-        "size"?: "normal" | "small" | "large";
+        "size"?: 'normal' | 'small' | 'large';
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -714,7 +747,7 @@ declare namespace LocalJSX {
         /**
           * Sets button type |text|submit|reset|
          */
-        "type"?: "button" | "text" | "submit";
+        "type"?: 'button' | 'text' | 'submit';
     }
     interface PdButtonGroup {
     }
@@ -778,7 +811,7 @@ declare namespace LocalJSX {
         /**
           * Flip in X/Y direction
          */
-        "flip"?: "x" | "y" | "xy";
+        "flip"?: 'x' | 'y' | 'xy';
         /**
           * Name of an icon from the provided gallery
          */
@@ -816,11 +849,11 @@ declare namespace LocalJSX {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
-        "autocomplete"?: "on" | "off";
+        "autocomplete"?: 'on' | 'off';
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
          */
-        "autocorrect"?: "on" | "off";
+        "autocorrect"?: 'on' | 'off';
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -842,7 +875,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         "label"?: string;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -920,7 +953,7 @@ declare namespace LocalJSX {
     interface PdList {
     }
     interface PdListItem {
-        "status"?: "success" | "danger" | "warning" | "unset";
+        "status"?: 'success' | 'danger' | 'warning' | 'unset';
     }
     interface PdModal {
         /**
@@ -972,7 +1005,7 @@ declare namespace LocalJSX {
     interface PdPanelHeader {
     }
     interface PdProgressBar {
-        "color"?: "primary" | "success" | "danger" | "warning" | "info";
+        "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info';
         "decimals"?: number;
         "label"?: boolean;
         "striped"?: boolean;
@@ -1082,7 +1115,7 @@ declare namespace LocalJSX {
         /**
           * The table style
          */
-        "headerStyle"?: "light" | "dark" | "gray";
+        "headerStyle"?: 'light' | 'dark' | 'gray';
         /**
           * The minimum width the table should take
          */
@@ -1112,6 +1145,32 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PdTimeline {
+        /**
+          * Adds rounded bottom of the date line to indicate that the timeline ends here
+         */
+        "end"?: boolean;
+        /**
+          * Adds rounded top of the date line to indicate that the timeline starts here
+         */
+        "start"?: boolean;
+    }
+    interface PdTimelineDate {
+        /**
+          * Timeline date
+         */
+        "date"?: string;
+        /**
+          * Header text
+         */
+        "header"?: string;
+        /**
+          * Header link location
+         */
+        "href"?: string;
+        /**
+          * Header link target
+         */
+        "target"?: string;
     }
     interface PdToast {
         /**
@@ -1129,7 +1188,7 @@ declare namespace LocalJSX {
         /**
           * Changes max-with of the toast
          */
-        "size"?: "small" | "large";
+        "size"?: 'small' | 'large';
     }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
@@ -1160,6 +1219,7 @@ declare namespace LocalJSX {
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
         "pd-timeline": PdTimeline;
+        "pd-timeline-date": PdTimelineDate;
         "pd-toast": PdToast;
     }
 }
@@ -1195,6 +1255,7 @@ declare module "@stencil/core" {
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
+            "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
             "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }
     }

@@ -1,0 +1,92 @@
+:host {
+    display: block;
+}
+
+.pd-timeline-date {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+
+    .pd-timeline-date-dot {
+        width: 0.875em;
+        min-width: 0.875em;
+        height: 0.875em;
+        border-radius: 100%;
+        background-color: $blue-whale;
+        border: 0.0625em solid $white;
+        box-shadow: 0px 0.125em 0.25em #00000067;
+    }
+
+    .pd-timeline-date-text {
+        padding-left: 1em;
+        font-weight: 700;
+    }
+}
+
+.pd-timeline-content {
+    margin-left: 2em;
+    margin-top: 1em;
+    position: relative;
+    padding: 0px;
+    background: #ffffff;
+    border-radius: 0.25em;
+    border: $gray-3 solid 2px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 0 10px 10px;
+        border-color: $wild-sand transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+        top: -10px;
+        left: 0.8125em;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 0 11px 11px;
+        border-color: $gray-3 transparent;
+        display: block;
+        width: 0;
+        z-index: 0;
+        top: -13px;
+        left: 0.75em;
+    }
+
+    &.pd-timeline-content-notitle:after {
+        border-color: $white transparent;
+    }
+
+    .pd-timeline-content-title {
+        padding: 0.45em 0.625em;
+        background-color: $wild-sand;
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        a {
+            text-decoration: none;
+            color: $cyan-9;
+
+            &:hover {
+                color: $cyan-6;
+            }
+
+            &:active {
+                color: $cyan-3;
+            }
+        }
+    }
+
+    .pd-timeline-content-text {
+        padding: 0.625em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
