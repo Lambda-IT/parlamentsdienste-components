@@ -10,6 +10,13 @@
 </pd-toast>
 ```
 
+<br><br>
+### vuejs Sample
+
+```html
+<pd-toast :header="toast.header" info="toast.info" >{{toast.message}}</pd-toast>
+```
+
 <!-- Auto Generated Below -->
 
 

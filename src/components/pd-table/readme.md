@@ -45,6 +45,102 @@ const rowsData = [
 ];
 ```
 
+<br><br>
+### vuejs Sample
+
+```javascript
+var app = new Vue({
+    el: '#app',
+    data: {
+        table: {
+            rows: [
+                {
+                    id: 1,
+                    colName: 'test',
+                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                    colDate: new Date(),
+                    colNumber: 1,
+                },
+                {
+                    id: 2,
+                    colName: 'test 1',
+                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                    colDate: new Date('2001-01-02'),
+                    colNumber: 3,
+                },
+                {
+                    id: 3,
+                    colName: 'test 2',
+                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                    colDate: new Date('2021-02-02'),
+                    colNumber: 21,
+                },
+                {
+                    id: 4,
+                    colName: 'test 3',
+                    colText: 's sd saldjsladklsadk öaskdsöaldksaö dsakdöas',
+                    colDate: new Date('2001-02-02'),
+                    colNumber: 31,
+                },
+            ],
+            columns: [
+                {
+                    columnName: 'id',
+                    label: '#',
+                    width: 50,
+                    bold: true,
+                    sortable: true,
+                    sortDir: 'desc',
+                    fixed: true,
+                },
+                {
+                    columnName: 'colName',
+                    label: 'Name',
+                    width: 100,
+                    bold: true,
+                    textAlign: 'right',
+                    fixed: true,
+                    filter: false,
+                },
+                {
+                    columnName: 'colText',
+                    label: 'Text',
+                    width: 0,
+                    minWidth: 300,
+                    filter: true,
+                    bold: false,
+                    textAlign: 'right',
+                },
+                {
+                    columnName: 'colDate',
+                    label: 'Created',
+                    width: 120,
+                    sortable: true,
+                    filter: false,
+                    bold: false,
+                    textAlign: 'right',
+                },
+                {
+                    columnName: 'colNumber',
+                    label: 'Count',
+                    width: 100,
+                    filter: false,
+                    bold: false,
+                    sortable: true,
+                },
+            ],
+        }
+    }
+});
+```
+
+```html
+<pd-table header-style="light" :rows.prop="table.rows" :columns.prop="table.columns" ></pd-table>
+```
+*To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier.*
+More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
+
+
 ## Interfaces
 
 ```javascript

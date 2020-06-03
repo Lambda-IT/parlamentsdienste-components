@@ -7,6 +7,14 @@
 ```html
 <pd-checkbox checked text="checkbox"></pd-checkbox>
 ```
+<br><br>
+### vuejs Sample
+
+```html
+<pd-checkbox class="form-group" text="button disabled" v-model-pd="checked"></pd-checkbox>
+```
+Webcomponents don't work with v-model out of the box therefore we provide a custom directive which allows the same behaviour.
+For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-directives--model-directive)
 
 <!-- Auto Generated Below -->
 

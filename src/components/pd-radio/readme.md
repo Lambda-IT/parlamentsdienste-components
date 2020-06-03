@@ -13,6 +13,16 @@ _Styles might be overwritten by global styles!_
 <pd-radio name="radio-test" value="3" label="radio 3"></pd-radio>
 ```
 
+<br><br>
+### vuejs Sample
+
+```html
+<pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
+<pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
+```
+Webcomponents don't work with v-model out of the box therefore we provide a custom directive which allows the same behaviour.
+For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-directives--model-directive)
+
 <!-- Auto Generated Below -->
 
 

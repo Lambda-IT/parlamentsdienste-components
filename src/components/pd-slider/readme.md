@@ -6,6 +6,13 @@
 <pd-slider min="10" max="100" value="30"></pd-slider>
 ```
 
+<br><br>
+### vuejs Sample
+
+```html
+<pd-slider @pd-on-input="valueChanged" :value="sliderValue" :min="config.min" :max="config.max" :step="config.step" ></pd-slider>
+```
+
 <!-- Auto Generated Below -->
 
 

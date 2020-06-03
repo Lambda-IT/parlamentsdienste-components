@@ -78,6 +78,89 @@ function presentModal() {
 }
 ```
 
+<br><br>
+### vuejs Sample
+
+```html
+<script type="text/x-template" id="survey-template">
+    <pd-modal ref="modal" open="true" :config.prop="config" @pd-on-closed ="closed()">
+        <div  @keyup.enter="ok()" >
+            <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
+            <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
+            <pd-input class="form-group" v-model-pd="firstname" inputmode="text" label="Vorname" ></pd-input>
+            <pd-input class="form-group" v-model-pd="lastname" inputmode="text" label="Name" ></pd-input>
+        </div>
+        <div slot="footer">
+            <pd-button @click="cancel()" type="button" outline color="primary" >Cancel</pd-button>
+            <pd-button @click="ok()" type="submit" @keyup.enter="ok()"  color="primary" >Übernehmen</pd-button>
+        </div>
+    </pd-modal>
+</script>
+```
+
+```javascript
+var SurveyModal = {
+    name: 'SurveyModal',
+    props: ['title', 'lastname'],
+    data: function() {
+        return {
+            firstname: '',
+            lastname: '',
+            state: '',
+            happy: false,
+            config: {
+                title: this.$props.title,
+                backdropVisible: true,
+            },
+        };
+    },
+    methods: {
+        ok: function() {
+            this.state = 'ok';
+            this.$refs.modal.closeModal();
+        },
+        cancel: function() {
+            this.state = 'cancelled';
+            this.$refs.modal.closeModal();
+        },
+        closed: function() {
+            this.$emit('modal-close', {
+                firstname: this.firstname,
+                lastname: this.lastname,
+                state: this.state,
+                happy: this.happy,
+            });
+        },
+    },
+    template: '#survey-template',
+};
+
+var app = new Vue({
+    el: '#app',
+    data: { }
+    methods: {
+        modalClosed: function(params) {
+            // modal has removed itself from DOM
+            // console.log("modalClosed params", params)
+        },
+        openModal: function(title) {
+            // dynamic instancing of componentents, for modaldialogs
+            var SurveyModalClass = Vue.extend(SurveyModal);
+            var instance = new SurveyModalClass({
+                propsData: { title },
+            });
+            // register close handler for data
+            instance.$once('modal-close', this.modalClosed);
+            // mount
+            instance.$mount(); // pass nothing
+            // insert into DOM
+            this.$el.appendChild(instance.$el);
+        }
+    }
+});
+
+```
+<br><br>
 ## Interfaces
 
 ```javascript

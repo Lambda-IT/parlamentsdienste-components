@@ -17,6 +17,15 @@ const results = [
 ];
 ```
 
+<br><br>
+### vuejs Sample
+
+```html
+<pd-search placeholder="Suche" :results.prop="suggestions" @pd-on-input="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)"></pd-search>
+```
+*To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier.*
+More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
+
 ## Interfaces
 
 ```javascript

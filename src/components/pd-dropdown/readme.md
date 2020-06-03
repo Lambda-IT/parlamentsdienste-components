@@ -28,6 +28,15 @@ interface DropdownItem {
 }
 ```
 
+<br><br>
+### vuejs Sample
+
+```html
+<pd-dropdown class="form-group" :items.prop="stateItems" label="select item" @pd-on-change="itemChanged" ></pd-dropdown>
+```
+*To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier.*
+More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
+
 <!-- Auto Generated Below -->
 
 

@@ -5,6 +5,14 @@
 ```html
 <pd-input label="label" placeholder="placeholder" helper-text="helper text" value="value"></pd-input>
 ```
+<br><br>
+### vuejs Sample
+
+```html
+<pd-input class="form-group" v-model-pd="lastname" inputmode="text" label="Name" ></pd-input>
+```
+Webcomponents don't work with v-model out of the box therefore we provide a custom directive which allows the same behaviour.
+For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-directives--model-directive)
 
 <!-- Auto Generated Below -->
 

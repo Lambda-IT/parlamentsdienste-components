@@ -24,6 +24,18 @@
     <pd-button href="http://www.google.ch">Link</pd-button>
 ```
 
+### vuejs Sample
+
+#### Simple Button
+```html
+<pd-button @click="successAction" type="button" color="success">{{caption}}</pd-button>
+```
+
+#### Icon Button
+```html
+<pd-button type="button" icon-location="right" @click="openModal('Umfrage')" >Zur Umfrage<pd-icon slot="icon" size="2" style="fill: var(--white);" name="message"></pd-icon></pd-button>
+```
+
 ## Styles
 
 | Style                      | Default | Description                                    |
