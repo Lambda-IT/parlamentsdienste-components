@@ -1,5 +1,7 @@
 :host {
     display: block;
+    position: relative;
+    width: var(--pd-timeline-width, 300px);
 }
 
 *,
@@ -7,4 +9,36 @@
 ::after {
     box-sizing: border-box;
     outline: none;
+    appearance: none;
+}
+
+.pd-timeline-line {
+    position: absolute;
+    height: 100%;
+    width: 1em;
+    background-color: $gray-3;
+    z-index: 1;
+
+    &.pd-timeline-continue-start {
+        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5em;
+    }
+
+    &.pd-timeline-continue-end {
+        border-bottom-right-radius: 0.5em;
+        border-bottom-left-radius: 0.5em;
+    }
+}
+
+.pd-timeline-container {
+    height: 100%;
+    padding: 1.5em 0;
+}
+
+::slotted(pd-timeline-date) {
+    margin-bottom: 2em;
+}
+
+::slotted(pd-timeline-date:last-child) {
+    margin-bottom: 0;
 }

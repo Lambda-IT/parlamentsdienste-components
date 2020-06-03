@@ -424,6 +424,14 @@ export namespace Components {
         "value": string;
     }
     interface PdTimeline {
+        "continueEnd": boolean;
+        "continueStart": boolean;
+    }
+    interface PdTimelineDate {
+        "date": string;
+        "header": string;
+        "href": string;
+        "target": string;
     }
     interface PdToast {
         /**
@@ -609,6 +617,12 @@ declare global {
         prototype: HTMLPdTimelineElement;
         new (): HTMLPdTimelineElement;
     };
+    interface HTMLPdTimelineDateElement extends Components.PdTimelineDate, HTMLStencilElement {
+    }
+    var HTMLPdTimelineDateElement: {
+        prototype: HTMLPdTimelineDateElement;
+        new (): HTMLPdTimelineDateElement;
+    };
     interface HTMLPdToastElement extends Components.PdToast, HTMLStencilElement {
     }
     var HTMLPdToastElement: {
@@ -644,6 +658,7 @@ declare global {
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
         "pd-timeline": HTMLPdTimelineElement;
+        "pd-timeline-date": HTMLPdTimelineDateElement;
         "pd-toast": HTMLPdToastElement;
     }
 }
@@ -1112,6 +1127,14 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PdTimeline {
+        "continueEnd"?: boolean;
+        "continueStart"?: boolean;
+    }
+    interface PdTimelineDate {
+        "date"?: string;
+        "header"?: string;
+        "href"?: string;
+        "target"?: string;
     }
     interface PdToast {
         /**
@@ -1160,6 +1183,7 @@ declare namespace LocalJSX {
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
         "pd-timeline": PdTimeline;
+        "pd-timeline-date": PdTimelineDate;
         "pd-toast": PdToast;
     }
 }
@@ -1195,6 +1219,7 @@ declare module "@stencil/core" {
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
+            "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
             "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }
     }

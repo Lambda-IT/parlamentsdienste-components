@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-timeline',
@@ -6,11 +6,22 @@ import { Component, Host, h } from '@stencil/core';
     shadow: true,
 })
 export class Timeline {
+    @Prop() continueStart: boolean = false;
+    @Prop() continueEnd: boolean = false;
+
     render() {
         return (
             <Host>
-                Timeline
-                <slot></slot>
+                <div
+                    class={{
+                        'pd-timeline-line': true,
+                        'pd-timeline-continue-start': this.continueStart,
+                        'pd-timeline-continue-end': this.continueEnd,
+                    }}
+                ></div>
+                <div class="pd-timeline-container">
+                    <slot></slot>
+                </div>
             </Host>
         );
     }

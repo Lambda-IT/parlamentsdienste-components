@@ -66,6 +66,7 @@ interface PdColumn {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                 | Type                          | Default  |
@@ -77,15 +78,15 @@ interface PdColumn {
 | `rowHeight`    | `row-height`    | Height of rows                              | `string`                      | `'48'`   |
 | `rows`         | `rows`          | The data definition for each row to display | `any`                         | `[]`     |
 
+
 ## Dependencies
 
 ### Depends on
 
--   [pd-table-filter](../pd-table-filter)
--   [pd-icon](../pd-icon)
+- [pd-table-filter](../pd-table-filter)
+- [pd-icon](../pd-icon)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
@@ -94,6 +95,6 @@ graph TD;
   style pd-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
