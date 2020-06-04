@@ -10,12 +10,12 @@
     outline: none;
 }
 
-label {
+.pd-checkbox-label {
     display: flex;
     align-items: center;
 }
 
-label > input {
+.pd-checkbox-label > .pd-checkbox-input {
     position: absolute;
     height: 0;
     width: 0;

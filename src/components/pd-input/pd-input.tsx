@@ -201,10 +201,11 @@ export class Input {
 
         return (
             <Host class={this.error ? 'pd-input-error' : ''}>
-                <label>
+                <label class="pd-input-label">
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
-                        ref={input => (this.nativeInput = input)}
+                        class="pd-input"
+                        ref={(input) => (this.nativeInput = input)}
                         aria-labelledby={labelId}
                         disabled={this.disabled}
                         accept={this.accept}
@@ -233,16 +234,8 @@ export class Input {
                         onKeyDown={this.onKeydown}
                     />
                 </label>
-
-                {this.renderHelperText()}
             </Host>
         );
-    }
-
-    private renderHelperText() {
-        if (!this.helperText) return;
-
-        return <div class="pd-input-helper-text">{this.helperText}</div>;
     }
 }
 

@@ -25,9 +25,9 @@ export class Radio {
 
     render() {
         const { inputId, name, value, label, checked } = this;
-        
+
         const labelId = inputId + '-lbl';
-        console.log("Radio -> render -> value", value)
+        console.log('Radio -> render -> value', value);
         return (
             <Host
                 role="radio"
@@ -36,7 +36,14 @@ export class Radio {
                 aria-disabled={this.disabled ? 'true' : 'false'}
             >
                 <label class="pd-radio-label">
-                    <input type="radio" checked={checked} name={name} value={value} disabled={this.disabled} />
+                    <input
+                        class="pd-radio-input"
+                        type="radio"
+                        checked={checked}
+                        name={name}
+                        value={value}
+                        disabled={this.disabled}
+                    />
                     <div class="pd-radio-inner"></div>
                     <div class="pd-radio-text">{label}</div>
                 </label>

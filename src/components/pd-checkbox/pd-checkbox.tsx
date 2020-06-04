@@ -40,8 +40,9 @@ export class Checkbox {
                 aria-checked={this.checked ? 'true' : 'false'}
                 aria-disabled={this.disabled ? 'true' : 'false'}
             >
-                <label>
+                <label class="pd-checkbox-label">
                     <input
+                        class="pd-checkbox-input"
                         type="Checkbox"
                         checked={this.checked}
                         disabled={this.disabled}

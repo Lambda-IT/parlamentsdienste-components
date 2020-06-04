@@ -14,7 +14,7 @@
 }
 
 :host(.pd-input-error) {
-    input {
+    .pd-input {
         border: 0.125em solid setcolor(danger, enabled);
 
         &:hover:enabled {
@@ -27,7 +27,12 @@
     }
 }
 
-input {
+.pd-input-label {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.pd-input {
     display: block;
     padding: 0.625em 0.875em;
     border-radius: 0.25em;
