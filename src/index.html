@@ -41,7 +41,7 @@
                     <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
                 </pd-timeline-date>
             </pd-timeline>
-            <pd-datepicker></pd-datepicker>
+            <pd-datepicker id="pd-datepickr-0" date="04/05/2021"></pd-datepicker>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
@@ -99,7 +99,7 @@
             </div>
             <pd-panel collapsible>
                 <pd-panel-header slot="header">Header</pd-panel-header>
-                <pd-panel-content style="padding: 0px">
+                <pd-panel-content style="padding: 0px;">
                     <pd-list>
                         <pd-list-item status="unset">
                             <p class="mb-1">18.3708</p>
@@ -213,6 +213,14 @@
             const pdTable1 = document.getElementById('pd-table-1');
             const pdTable2 = document.getElementById('pd-table-2');
 
+            const flatPickr0 = document.getElementById('pd-datepickr-0');
+
+            flatPickr0.config = {
+                wrap: true,
+                time_24hr: true,
+                enableTime: true,
+            };
+
             const columns = [
                 {
                     columnName: 'no',
@@ -222,7 +230,7 @@
                     bold: true,
                     fixed: true,
                     textAlign: 'right',
-                    displayFunc: value => `ITM-${value}`,
+                    displayFunc: (value) => `ITM-${value}`,
                 },
                 {
                     columnName: 'column1',
@@ -240,7 +248,7 @@
                     minWidth: 100,
                     sortable: true,
                     sortDir: 'asc',
-                    displayFunc: value => value.toUpperCase(),
+                    displayFunc: (value) => value.toUpperCase(),
                 },
                 {
                     columnName: 'column3',
@@ -253,7 +261,7 @@
                         if (dir === 'asc') return a % 2 === b % 2 ? 0 : a % 2 < b % 2 ? 1 : 0;
                         else return a % 2 === b % 2 ? 0 : a % 2 > b % 2 ? 1 : 0;
                     },
-                    displayFunc: value => value * 10,
+                    displayFunc: (value) => value * 10,
                 },
             ];
 
@@ -280,18 +288,18 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdInput.addEventListener('pdOnChange', value => {
+            pdInput.addEventListener('pdOnChange', (value) => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
-            pdSlider.addEventListener('pdOnInput', value => {
+            pdSlider.addEventListener('pdOnInput', (value) => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
 
-            pdSearch.addEventListener('pd-on-search', value => {
+            pdSearch.addEventListener('pd-on-search', (value) => {
                 console.log('LOG: value', value);
             });
 
-            pdSearch.addEventListener('pd-on-input', value => {
+            pdSearch.addEventListener('pd-on-input', (value) => {
                 pdSearch.results = [
                     `Some random results`,
                     `Some random (results)`,
@@ -302,7 +310,7 @@
                 ];
             });
 
-            pdBreadcrumbs.addEventListener('pd-on-navigated', value => {
+            pdBreadcrumbs.addEventListener('pd-on-navigated', (value) => {
                 console.log('LOG: value', value);
             });
 
@@ -324,6 +332,7 @@
 
             pdButton.addEventListener('click', () => {
                 presentModal();
+                flatPickr0.date = '2022-01-02';
             });
 
             function presentModal() {
@@ -364,12 +373,12 @@
                 modal.append(contentTemplate);
 
                 // 1st way to get return data
-                modal.whenClosed().then(returnData => {
+                modal.whenClosed().then((returnData) => {
                     console.log('whenClosed method', returnData);
                 });
 
                 // 2st way to get return data
-                modal.addEventListener('pd-on-closed', event => console.log('pd-on-closed event', event.detail));
+                modal.addEventListener('pd-on-closed', (event) => console.log('pd-on-closed event', event.detail));
 
                 // present the modal
                 document.body.appendChild(modal);
