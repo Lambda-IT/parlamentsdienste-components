@@ -33,6 +33,7 @@ export const table = () => {
             sortable: true,
             sortDir: 'asc',
             textAlign: 'left',
+            filter: true,
         },
     ];
 
