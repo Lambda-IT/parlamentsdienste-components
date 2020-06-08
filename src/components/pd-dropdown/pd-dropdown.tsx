@@ -73,10 +73,6 @@ export class Dropdown {
                 this.open = false;
                 break;
             }
-            case ' ': {
-                ev.preventDefault();
-                break;
-            }
 
             case 'ArrowDown': {
                 ev.preventDefault();

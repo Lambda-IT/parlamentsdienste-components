@@ -19,8 +19,6 @@
 </pd-alert>
 ```
 
-<br><br>
-
 ### vuejs Sample
 
 ```html

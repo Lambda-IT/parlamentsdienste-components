@@ -1,9 +1,6 @@
 # pd-datepicker
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -11,7 +8,6 @@
 | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
 | `config` | --        | Set the configuration for the datepicker (only applied at instantiation)                                                   | `{ allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string \| number \| Date \| DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: DateLimit<DateOption>[]; disableMobile?: boolean; enable?: DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: Locale) => string; getWeek?: (date: Date) => string \| number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" \| "at" \| "az" \| "be" \| "bg" \| "bn" \| "bs" \| "cat" \| "cs" \| "cy" \| "da" \| "de" \| "default" \| "en" \| "eo" \| "es" \| "et" \| "fa" \| "fi" \| "fo" \| "fr" \| "gr" \| "he" \| "hi" \| "hr" \| "hu" \| "id" \| "is" \| "it" \| "ja" \| "ka" \| "ko" \| "km" \| "kz" \| "lt" \| "lv" \| "mk" \| "mn" \| "ms" \| "my" \| "nl" \| "no" \| "pa" \| "pl" \| "pt" \| "ro" \| "ru" \| "si" \| "sk" \| "sl" \| "sq" \| "sr" \| "sv" \| "th" \| "tr" \| "uk" \| "vn" \| "zh" \| "zh_tw" \| CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" \| "multiple" \| "range" \| "time"; monthSelectorType?: "static" \| "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: Hook \| Hook[]; onClose?: Hook \| Hook[]; onDayCreate?: Hook \| Hook[]; onDestroy?: Hook \| Hook[]; onKeyDown?: Hook \| Hook[]; onMonthChange?: Hook \| Hook[]; onOpen?: Hook \| Hook[]; onParseConfig?: Hook \| Hook[]; onReady?: Hook \| Hook[]; onValueUpdate?: Hook \| Hook[]; onYearChange?: Hook \| Hook[]; onPreCalendarPosition?: Hook \| Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: Plugin<{}>[]; position?: "auto" \| "above" \| "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }` | `undefined` |
 | `date`   | `date`    | Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates. | `Date \| DateOption[] \| number \| string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `undefined` |
-
 
 ## Events
 
@@ -25,7 +21,6 @@
 | `pd-value-update` |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
 | `pd-year-change`  |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
 
-
 ## Methods
 
 ### `clear() => Promise<void>`
@@ -36,8 +31,6 @@ Resets the selected dates (if any) and clears the input.
 
 Type: `Promise<void>`
 
-
-
 ### `close() => Promise<void>`
 
 Closes the calendar.
@@ -45,8 +38,6 @@ Closes the calendar.
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `open() => Promise<void>`
 
@@ -56,8 +47,6 @@ Shows/opens the calendar.
 
 Type: `Promise<void>`
 
-
-
 ### `set(option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>`
 
 Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
@@ -65,8 +54,6 @@ Sets a config option to value, redrawing the calendar and updating the current v
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `setDate(date: string | number | Date | DateOption[], triggerChange?: boolean, format?: string) => Promise<void>`
 
@@ -78,8 +65,6 @@ And if you’re passing a date string with a format other than your dateFormat, 
 
 Type: `Promise<void>`
 
-
-
 ### `toggle() => Promise<void>`
 
 Shows/opens the calendar if its closed, hides/closes it otherwise.
@@ -88,22 +73,20 @@ Shows/opens the calendar if its closed, hides/closes it otherwise.
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Depends on
 
-- [pd-input](../pd-input)
+-   [pd-input](../pd-input)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-datepicker --> pd-input
   style pd-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
