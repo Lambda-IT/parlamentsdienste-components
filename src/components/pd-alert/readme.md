@@ -42,9 +42,9 @@
 
 ## Events
 
-| Event          | Description                                    | Type                      |
-| -------------- | ---------------------------------------------- | ------------------------- |
-| `pd-on-closed` | Emitted when action closed button was pressed. | `CustomEvent<MouseEvent>` |
+| Event       | Description                                    | Type                      |
+| ----------- | ---------------------------------------------- | ------------------------- |
+| `pd-closed` | Emitted when action closed button was pressed. | `CustomEvent<MouseEvent>` |
 
 
 ## Dependencies

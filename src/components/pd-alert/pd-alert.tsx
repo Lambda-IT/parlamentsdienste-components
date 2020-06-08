@@ -39,9 +39,9 @@ export class PdAlert {
     /**
      * Emitted when action closed button was pressed.
      */
-    @Event({ eventName: 'pd-on-closed' }) pdOnClosed!: EventEmitter<MouseEvent>;
+    @Event({ eventName: 'pd-closed' }) pdClosed!: EventEmitter<MouseEvent>;
 
-    render() {
+    public render() {
         return (
             <div class={`pd-alert pd-alert-${this.color}`}>
                 <div class="pd-alert-text">
@@ -55,7 +55,7 @@ export class PdAlert {
         );
     }
 
-    renderAction() {
+    private renderAction() {
         const { actionHref, actionText, actionTarget } = this;
 
         if (!this.action) return;
@@ -70,8 +70,8 @@ export class PdAlert {
         );
     }
 
-    renderClose() {
+    private renderClose() {
         if (!this.closable) return;
-        return <pd-icon onClick={this.pdOnClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
+        return <pd-icon onClick={this.pdClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
     }
 }

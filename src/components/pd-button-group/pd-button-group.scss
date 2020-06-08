@@ -1,16 +1,16 @@
-pd-button-group {
+:host {
     display: inline-flex;
+}
 
-    pd-button {
-        --pd-button-right-radius: 0;
-        --pd-button-left-radius: 0;
-    }
+::slotted(pd-button) {
+    --pd-button-right-radius: 0;
+    --pd-button-left-radius: 0;
+}
 
-    :first-child {
-        --pd-button-left-radius: 0.25em;
-    }
+::slotted(pd-button:first-child) {
+    --pd-button-left-radius: 0.25em;
+}
 
-    :last-child {
-        --pd-button-right-radius: 0.25em;
-    }
+::slotted(pd-button:last-child) {
+    --pd-button-right-radius: 0.25em;
 }

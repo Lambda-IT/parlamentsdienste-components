@@ -3,7 +3,7 @@ import { Component, Host, h } from '@stencil/core';
 @Component({
     tag: 'pd-button-group',
     styleUrl: 'pd-button-group.scss',
-    shadow: false,
+    shadow: true,
 })
 export class ButtonGroup {
     render() {

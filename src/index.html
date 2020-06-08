@@ -230,7 +230,7 @@
                     bold: true,
                     fixed: true,
                     textAlign: 'right',
-                    displayFunc: (value) => `ITM-${value}`,
+                    displayFunc: value => `ITM-${value}`,
                 },
                 {
                     columnName: 'column1',
@@ -248,7 +248,7 @@
                     minWidth: 100,
                     sortable: true,
                     sortDir: 'asc',
-                    displayFunc: (value) => value.toUpperCase(),
+                    displayFunc: value => value.toUpperCase(),
                 },
                 {
                     columnName: 'column3',
@@ -261,7 +261,7 @@
                         if (dir === 'asc') return a % 2 === b % 2 ? 0 : a % 2 < b % 2 ? 1 : 0;
                         else return a % 2 === b % 2 ? 0 : a % 2 > b % 2 ? 1 : 0;
                     },
-                    displayFunc: (value) => value * 10,
+                    displayFunc: value => value * 10,
                 },
             ];
 
@@ -288,18 +288,18 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdInput.addEventListener('pdOnChange', (value) => {
+            pdInput.addEventListener('pdOnChange', value => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
-            pdSlider.addEventListener('pdOnInput', (value) => {
+            pdSlider.addEventListener('pdOnInput', value => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
 
-            pdSearch.addEventListener('pd-on-search', (value) => {
+            pdSearch.addEventListener('pd-on-search', value => {
                 console.log('LOG: value', value);
             });
 
-            pdSearch.addEventListener('pd-on-input', (value) => {
+            pdSearch.addEventListener('pd-on-input', value => {
                 pdSearch.results = [
                     `Some random results`,
                     `Some random (results)`,
@@ -310,7 +310,7 @@
                 ];
             });
 
-            pdBreadcrumbs.addEventListener('pd-on-navigated', (value) => {
+            pdBreadcrumbs.addEventListener('pd-on-navigated', value => {
                 console.log('LOG: value', value);
             });
 
@@ -373,12 +373,12 @@
                 modal.append(contentTemplate);
 
                 // 1st way to get return data
-                modal.whenClosed().then((returnData) => {
+                modal.whenClosed().then(returnData => {
                     console.log('whenClosed method', returnData);
                 });
 
                 // 2st way to get return data
-                modal.addEventListener('pd-on-closed', (event) => console.log('pd-on-closed event', event.detail));
+                modal.addEventListener('pd-on-closed', event => console.log('pd-on-closed event', event.detail));
 
                 // present the modal
                 document.body.appendChild(modal);
