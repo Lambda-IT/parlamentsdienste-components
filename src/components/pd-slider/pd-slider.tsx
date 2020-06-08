@@ -7,19 +7,32 @@ import { InputChangeEventDetail } from '../../interface';
     shadow: true,
 })
 export class Slider {
-    @State() sliderValue: number = 0;
-
-    @Prop() disabled;
-
+    /**
+     * max value
+     */
     @Prop() max: number = 100;
 
+    /**
+     * min value
+     */
     @Prop() min: number = 0;
 
+    /**
+     * value steps
+     */
     @Prop() step: number = 1;
 
+    /**
+     * slider name
+     */
     @Prop() name: string = '';
 
+    /**
+     * slider value
+     */
     @Prop({ mutable: true }) value?: number | null = null;
+
+    @State() sliderValue: number = 0;
 
     @Watch('value')
     valueChanged(value) {
@@ -29,19 +42,19 @@ export class Slider {
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when slider has been released.
      */
-    @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<InputChangeEventDetail>;
 
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
         if (input) {
             this.value = parseFloat(input.value) || 0;
         }
-        this.pdOnInput.emit({ value: this.value });
+        this.pdInput.emit({ value: this.value });
     };
 
     private onChange = (ev: Event) => {
@@ -49,13 +62,14 @@ export class Slider {
         if (input) {
             this.value = parseFloat(input.value) || 0;
         }
-        this.pdOnChange.emit({ value: this.value });
+        this.pdChange.emit({ value: this.value });
     };
 
-    render() {
+    public render() {
         return (
             <Host>
                 <input
+                    name={this.name}
                     class="pd-slider"
                     type="range"
                     multiple

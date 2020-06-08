@@ -6,7 +6,7 @@ export default {
     title: 'Forms + Inputs|Dropdown',
     parameters: {
         notes,
-        decorators: [withActions('pd-on-change')],
+        decorators: [withActions('pd-change')],
     },
 };
 

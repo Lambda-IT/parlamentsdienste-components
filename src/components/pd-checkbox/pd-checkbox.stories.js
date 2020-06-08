@@ -6,7 +6,7 @@ export default {
     title: 'Forms + Inputs|Checkbox',
     parameters: {
         notes,
-        decorators: [withKnobs(), withActions('pd-on-checked')],
+        decorators: [withKnobs(), withActions('pd-checked')],
     },
 };
 

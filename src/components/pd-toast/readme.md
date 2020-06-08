@@ -31,9 +31,9 @@
 
 ## Events
 
-| Event          | Description                                 | Type               |
-| -------------- | ------------------------------------------- | ------------------ |
-| `pd-on-closed` | When closing the toast using the close icon | `CustomEvent<any>` |
+| Event       | Description                                 | Type               |
+| ----------- | ------------------------------------------- | ------------------ |
+| `pd-closed` | When closing the toast using the close icon | `CustomEvent<any>` |
 
 
 ## Dependencies

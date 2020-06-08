@@ -20,7 +20,7 @@ export class NavbarItem {
      */
     @Prop() target: string = '_blank';
 
-    render() {
+    public render() {
         const { href, enabled, target, text } = this;
         const TagType = href ? 'a' : 'button';
         const typeAttrs = TagType === 'button' ? {} : { href, target };

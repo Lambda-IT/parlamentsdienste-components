@@ -7,17 +7,32 @@ import { clamp } from '../../utils/helpers';
     shadow: true,
 })
 export class ProgressBar {
+    /**
+     * status color of progress-bar
+     */
     @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' = 'primary';
 
+    /**
+     * current value of progress bar 0.0 to 1.0
+     */
     @Prop() value: number = 0.0;
 
+    /**
+     * description of progress-bar
+     */
     @Prop() label: boolean = false;
 
+    /**
+     * decimals of value
+     */
     @Prop() decimals: number = 2;
 
+    /**
+     * show striped version of progress-bar
+     */
     @Prop() striped: boolean = false;
 
-    render() {
+    public render() {
         return <Host>{this.renderDeterminate(this.value, this.decimals)}</Host>;
     }
 

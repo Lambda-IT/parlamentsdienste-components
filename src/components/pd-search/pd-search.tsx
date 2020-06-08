@@ -10,13 +10,15 @@ import { createPopper, Instance } from '@popperjs/core';
 })
 export class Search {
     private nativeInput?: HTMLInputElement;
-    private inputId = `pd-input-${inputIds++}`;
 
     @Element() element!: HTMLElement;
     private menuElement: HTMLElement;
     private labelElement: HTMLElement;
     private popper: Instance;
 
+    /**
+     * Values shown as search results
+     */
     @Prop() results: string[] = [];
 
     /**
@@ -37,6 +39,9 @@ export class Search {
     // used to hold input value in case we need to reset on escape
     private inputValue?: string | number | null = '';
 
+    /**
+     * Search box label
+     */
     @Prop() label?: string;
 
     /**
@@ -47,34 +52,34 @@ export class Search {
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when a search request occurred.
      */
-    @Event({ eventName: 'pd-on-search' }) pdOnSearch!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-search' }) pdSearch!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when the input loses focus.
      */
-    @Event({ eventName: 'pd-on-blur' }) pdOnBlur!: EventEmitter<void>;
+    @Event({ eventName: 'pd-blur' }) pdBlur!: EventEmitter<void>;
 
     /**
      * Emitted when the input has focus.
      */
-    @Event({ eventName: 'pd-on-focus' }) pdOnFocus!: EventEmitter<void>;
+    @Event({ eventName: 'pd-focus' }) pdFocus!: EventEmitter<void>;
 
     /**
      * Update the native input element when the value changes
      */
     @Watch('value')
     protected valueChanged() {
-        this.pdOnChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
     }
 
     @Watch('results')
@@ -132,7 +137,7 @@ export class Search {
             case 'Enter': {
                 ev.preventDefault();
                 this.open = false;
-                this.pdOnSearch.emit({ value: this.value });
+                this.pdSearch.emit({ value: this.value });
                 this.inputValue = this.value;
                 break;
             }
@@ -189,15 +194,15 @@ export class Search {
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
         this.setValue(input?.value || '', true);
-        this.pdOnInput.emit({ value: this.value });
+        this.pdInput.emit({ value: this.value });
     };
 
     private onBlur = () => {
-        this.pdOnBlur.emit();
+        this.pdBlur.emit();
     };
 
     private onFocus = () => {
-        this.pdOnFocus.emit();
+        this.pdFocus.emit();
     };
 
     private getValue(): string {
@@ -212,7 +217,7 @@ export class Search {
     private selectItem(value: string, index: number) {
         this.setValue(value, true);
         this.selectedIndex = index;
-        this.pdOnSearch.emit({ value: this.value });
+        this.pdSearch.emit({ value: this.value });
         this.open = false;
     }
 
@@ -224,7 +229,7 @@ export class Search {
 
     private search = (ev: Event) => {
         ev.preventDefault();
-        this.pdOnSearch.emit({ value: this.value });
+        this.pdSearch.emit({ value: this.value });
         this.open = false;
     };
 
@@ -241,7 +246,6 @@ export class Search {
 
     public render() {
         const value = this.getValue();
-        const labelId = this.inputId + '-lbl';
 
         return (
             <Host role="search">
@@ -256,7 +260,6 @@ export class Search {
                         <input
                             class="pd-search-input"
                             ref={input => (this.nativeInput = input)}
-                            aria-labelledby={labelId}
                             disabled={this.disabled}
                             placeholder={this.placeholder || ''}
                             value={value}
@@ -304,5 +307,3 @@ export class Search {
         return <div class="pd-search-label-text">{this.label}</div>;
     }
 }
-
-let inputIds = 0;

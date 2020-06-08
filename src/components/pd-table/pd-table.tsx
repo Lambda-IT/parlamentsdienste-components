@@ -76,13 +76,13 @@ export class Table {
     // calculate flex for left side (fixed) of table
     // has a fixed width when no column is auto
     private calcFixedFlex(columns: PdColumn[]) {
-        const fixedCols = columns.filter((c) => c.fixed);
-        const hasAuto = fixedCols.findIndex((c) => c.width === 0) !== -1;
+        const fixedCols = columns.filter(c => c.fixed);
+        const hasAuto = fixedCols.findIndex(c => c.width === 0) !== -1;
 
         if (hasAuto) {
             return '1 1 auto';
         } else {
-            const width = fixedCols.map((c) => c.width).reduce((a, b) => a + b, 0);
+            const width = fixedCols.map(c => c.width).reduce((a, b) => a + b, 0);
             return `0 0 ${width}px`;
         }
     }
@@ -90,13 +90,13 @@ export class Table {
     // calculate flex for right side (scroll) of table
     // has a fixed width when no column is auto
     private calcScrollFlex(columns: PdColumn[]) {
-        const fixedCols = columns.filter((c) => !c.fixed);
-        const hasAuto = fixedCols.findIndex((c) => c.width === 0) !== -1;
+        const fixedCols = columns.filter(c => !c.fixed);
+        const hasAuto = fixedCols.findIndex(c => c.width === 0) !== -1;
 
         if (hasAuto) {
             return '1 1 auto';
         } else {
-            const width = fixedCols.map((c) => c.width).reduce((a, b) => a + b, 0);
+            const width = fixedCols.map(c => c.width).reduce((a, b) => a + b, 0);
             return `0 1 ${width}px`;
         }
     }
@@ -104,8 +104,8 @@ export class Table {
     // calculte min-width for left side (fixed) of table
     // sum of width/min-width of all fixed columns
     private calcFixedMinWidth(columns: PdColumn[]) {
-        const fixedCols = columns.filter((c) => c.fixed);
-        const minWidth = fixedCols.map((c) => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
+        const fixedCols = columns.filter(c => c.fixed);
+        const minWidth = fixedCols.map(c => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
         return minWidth === 0 ? '0' : `${minWidth}px`;
     }
 
@@ -146,9 +146,9 @@ export class Table {
     private filter() {
         const customFilters = this.getCustomFilters(this.columnFilters);
         // loop all rows
-        this.filteredRows = [...this.rows].filter((row) => {
+        this.filteredRows = [...this.rows].filter(row => {
             // loop all current filter columns
-            return Object.keys(this.columnFilters).every((key) => {
+            return Object.keys(this.columnFilters).every(key => {
                 // skip if filter is empty
                 if (!this.columnFilters[key]) return true;
                 // use custom filter or default
@@ -174,7 +174,7 @@ export class Table {
     private getCustomFilters(columnFilters) {
         const customFilters = {};
         Object.keys(columnFilters).forEach(
-            (key) => (customFilters[key] = this.columns.find((col) => col.columnName === key)?.filterFunc),
+            key => (customFilters[key] = this.columns.find(col => col.columnName === key)?.filterFunc),
         );
         return customFilters;
     }
@@ -221,8 +221,8 @@ export class Table {
             <Host role="table">
                 <pd-table-filter
                     class={{ 'pd-table-filter-hidden': !this.filterOpen }}
-                    onPdOnConfirm={(ev) => this.filterConfirm(ev)}
-                    onPdOnClose={() => (this.filterOpen = false)}
+                    onPdConfirm={ev => this.filterConfirm(ev)}
+                    onPdClose={() => (this.filterOpen = false)}
                 ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
@@ -243,8 +243,8 @@ export class Table {
     }
     private renderHeader(fixed: boolean = false) {
         return this.columns
-            .filter((c) => (c.fixed || false) === fixed)
-            .map((headerCol) => {
+            .filter(c => (c.fixed || false) === fixed)
+            .map(headerCol => {
                 const headerCellStyle = {
                     flex: headerCol.width === 0 ? `1 1 ${headerCol.minWidth || 0}px` : `0 0 ${headerCol.width}px`,
                     minWidth: `${headerCol.minWidth || headerCol.width || 0}px`,
@@ -259,7 +259,7 @@ export class Table {
                             [`pd-table-sort-${columnSortDir === 'asc' ? 'desc' : 'asc'}`]: columnSortDir,
                             [`pd-table-${this.headerStyle}`]: true,
                         }}
-                        ref={(el) => (this.headerRefs[headerCol.columnName] = el as HTMLElement)}
+                        ref={el => (this.headerRefs[headerCol.columnName] = el as HTMLElement)}
                         role="cell"
                         style={headerCellStyle}
                         title={headerCol.label}
@@ -282,9 +282,9 @@ export class Table {
             height: `${this.rowHeight}px`,
         };
 
-        return this.filteredRows.map((row) => (
+        return this.filteredRows.map(row => (
             <div class="pd-table-row" role="row" style={rowStyle}>
-                {this.columns.filter((c) => (c.fixed || false) === fixed).map((col) => this.renderColumn(row, col))}
+                {this.columns.filter(c => (c.fixed || false) === fixed).map(col => this.renderColumn(row, col))}
             </div>
         ));
     }
@@ -330,11 +330,11 @@ export class Table {
 
         if (this.columnFilters[headerCol.columnName])
             return (
-                <button class="pd-table-filter-clear" onClick={(ev) => this.openFilter(ev, headerCol.columnName)}>
+                <button class="pd-table-filter-clear" onClick={ev => this.openFilter(ev, headerCol.columnName)}>
                     <pd-icon name="filter" size={2}></pd-icon>
                     <button
                         class="pd-table-filter-clear-button"
-                        onClick={(ev) => this.clearFilter(ev, headerCol.columnName)}
+                        onClick={ev => this.clearFilter(ev, headerCol.columnName)}
                     >
                         <pd-icon size={1.2} name="close"></pd-icon>
                     </button>
@@ -344,7 +344,7 @@ export class Table {
             return (
                 <pd-icon
                     class="pd-table-filter-icon"
-                    onClick={(ev) => this.openFilter(ev, headerCol.columnName)}
+                    onClick={ev => this.openFilter(ev, headerCol.columnName)}
                     name="filter"
                     size={2}
                 ></pd-icon>

@@ -7,7 +7,7 @@ import { Component, Host, h } from '@stencil/core';
     shadow: true,
 })
 export class Navbar {
-    render() {
+    public render() {
         return (
             <Host role="navigation">
                 <pd-icon class="pd-navbar-icon" name="parlament" size={3}></pd-icon>

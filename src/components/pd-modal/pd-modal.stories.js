@@ -5,7 +5,7 @@ export default {
     title: 'Dialogs|Modal',
     parameters: {
         notes,
-        decorators: [withActions('pd-on-closed')],
+        decorators: [withActions('pd-closed')],
     },
 };
 

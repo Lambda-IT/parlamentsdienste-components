@@ -6,6 +6,9 @@ import { Component, h, Prop } from '@stencil/core';
     shadow: true,
 })
 export class SidebarItem {
+    /**
+     * Item text
+     */
     @Prop() text: string = '';
 
     /**
@@ -28,6 +31,9 @@ export class SidebarItem {
      */
     @Prop() iconName: string;
 
+    /**
+     * Icon size
+     */
     @Prop() size: number = 2;
 
     /**

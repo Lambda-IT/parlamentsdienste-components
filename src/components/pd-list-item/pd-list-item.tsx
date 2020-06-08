@@ -7,8 +7,12 @@ import { Component, Host, h, Prop } from '@stencil/core';
     assetsDirs: ['assets-list-item'],
 })
 export class PdListItem {
+    /**
+     * Status icon for list item
+     */
     @Prop() status: 'success' | 'danger' | 'warning' | 'unset';
-    render() {
+
+    public render() {
         return (
             <Host>
                 {this.renderStatus()}

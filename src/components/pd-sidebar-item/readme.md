@@ -17,9 +17,9 @@
 | `href`     | `href`      | Set href to create a link button          | `string`  | `undefined` |
 | `icon`     | `icon`      | Path to an svg asset                      | `string`  | `undefined` |
 | `iconName` | `icon-name` | Name of an icon from the library          | `string`  | `undefined` |
-| `size`     | `size`      |                                           | `number`  | `2`         |
+| `size`     | `size`      | Icon size                                 | `number`  | `2`         |
 | `target`   | `target`    | Sets target for link button e.g. '_blank' | `string`  | `'_blank'`  |
-| `text`     | `text`      |                                           | `string`  | `''`        |
+| `text`     | `text`      | Item text                                 | `string`  | `''`        |
 
 
 ## Dependencies

@@ -14,11 +14,11 @@
 
 ## Events
 
-| Event         | Description                       | Type                  |
-| ------------- | --------------------------------- | --------------------- |
-| `pdOnClose`   | Emitted when filter is confirmed. | `CustomEvent<void>`   |
-| `pdOnConfirm` | Emitted when filter is confirmed. | `CustomEvent<string>` |
-| `pdOnSearch`  | Emitted when filter changes.      | `CustomEvent<void>`   |
+| Event       | Description                       | Type                  |
+| ----------- | --------------------------------- | --------------------- |
+| `pdClose`   | Emitted when filter is confirmed. | `CustomEvent<void>`   |
+| `pdConfirm` | Emitted when filter is confirmed. | `CustomEvent<string>` |
+| `pdSearch`  | Emitted when filter changes.      | `CustomEvent<void>`   |
 
 
 ## Methods

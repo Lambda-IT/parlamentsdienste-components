@@ -13,13 +13,13 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                                                        | Default     |
-| ---------- | ---------- | ----------- | ----------------------------------------------------------- | ----------- |
-| `color`    | `color`    |             | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
-| `decimals` | `decimals` |             | `number`                                                    | `2`         |
-| `label`    | `label`    |             | `boolean`                                                   | `false`     |
-| `striped`  | `striped`  |             | `boolean`                                                   | `false`     |
-| `value`    | `value`    |             | `number`                                                    | `0.0`       |
+| Property   | Attribute  | Description                              | Type                                                        | Default     |
+| ---------- | ---------- | ---------------------------------------- | ----------------------------------------------------------- | ----------- |
+| `color`    | `color`    | status color of progress-bar             | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
+| `decimals` | `decimals` | decimals of value                        | `number`                                                    | `2`         |
+| `label`    | `label`    | description of progress-bar              | `boolean`                                                   | `false`     |
+| `striped`  | `striped`  | show striped version of progress-bar     | `boolean`                                                   | `false`     |
+| `value`    | `value`    | current value of progress bar 0.0 to 1.0 | `number`                                                    | `0.0`       |
 
 
 ----------------------------------------------

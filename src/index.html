@@ -288,18 +288,18 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdInput.addEventListener('pdOnChange', value => {
+            pdInput.addEventListener('pd-change', value => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
-            pdSlider.addEventListener('pdOnInput', value => {
+            pdSlider.addEventListener('pd-input', value => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
 
-            pdSearch.addEventListener('pd-on-search', value => {
+            pdSearch.addEventListener('pd-search', value => {
                 console.log('LOG: value', value);
             });
 
-            pdSearch.addEventListener('pd-on-input', value => {
+            pdSearch.addEventListener('pd-input', value => {
                 pdSearch.results = [
                     `Some random results`,
                     `Some random (results)`,
@@ -310,7 +310,7 @@
                 ];
             });
 
-            pdBreadcrumbs.addEventListener('pd-on-navigated', value => {
+            pdBreadcrumbs.addEventListener('pd-navigated', value => {
                 console.log('LOG: value', value);
             });
 
@@ -378,7 +378,7 @@
                 });
 
                 // 2st way to get return data
-                modal.addEventListener('pd-on-closed', event => console.log('pd-on-closed event', event.detail));
+                modal.addEventListener('pd-closed', event => console.log('pd-closed event', event.detail));
 
                 // present the modal
                 document.body.appendChild(modal);

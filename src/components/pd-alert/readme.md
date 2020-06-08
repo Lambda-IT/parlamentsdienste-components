@@ -18,11 +18,13 @@
     A simple alert with a link action
 </pd-alert>
 ```
+
 <br><br>
+
 ### vuejs Sample
 
 ```html
-<pd-alert :color="alert.status" closable="true" @pd-on-closed="removeAlert" >{{alert.message}}</pd-alert>
+<pd-alert :color="alert.status" closable="true" @pd-closed="removeAlert">{{alert.message}}</pd-alert>
 ```
 
 <!-- Auto Generated Below -->

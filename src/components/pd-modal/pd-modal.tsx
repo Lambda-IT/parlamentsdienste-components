@@ -15,6 +15,9 @@ export class Modal {
      */
     @Prop() config: PdModalConfig;
 
+    /**
+     * Modal data that can be accessed and used by modal content
+     */
     @Prop() data: any;
 
     /**
@@ -46,7 +49,7 @@ export class Modal {
     /**
      * Event with returnData that will be executed when the modal is closed
      */
-    @Event({ eventName: 'pd-on-closed' }) pdModalWhenClosed!: EventEmitter<any>;
+    @Event({ eventName: 'pd-closed' }) pdModalWhenClosed!: EventEmitter<any>;
 
     /**
      * This triggers the modal to visually close
@@ -76,14 +79,14 @@ export class Modal {
         let resolve: (detail) => void;
         const promise = new Promise<any>(r => (resolve = r));
         const el = this.element;
-        el.addEventListener('pd-on-closed', function willDismiss(willDismissEvent: CustomEvent) {
-            el.removeEventListener('pd-on-closed', willDismiss);
+        el.addEventListener('pd-closed', function willDismiss(willDismissEvent: CustomEvent) {
+            el.removeEventListener('pd-closed', willDismiss);
             resolve(willDismissEvent.detail);
         });
         return promise;
     }
 
-    @Listen('pd-on-tap', { passive: false, capture: true })
+    @Listen('pd-tap', { passive: false, capture: true })
     async backdropClick() {
         await this.closeModal();
     }
@@ -108,7 +111,7 @@ export class Modal {
         else this.closeModal();
     }
 
-    render() {
+    public render() {
         return (
             <Host
                 style={{

@@ -43,7 +43,7 @@ export class Button {
 
     @Prop({ attribute: 'icon-location' }) iconLocation: 'left' | 'right' | 'none' = 'none';
 
-    render() {
+    public render() {
         const { href, target, type, disabled } = this;
         const TagType = href ? 'a' : 'button';
         const role = 'button';
@@ -53,9 +53,13 @@ export class Button {
             <TagType
                 {...typeAttrs}
                 disabled={disabled}
-                class={`${TagType === 'button' ? 'pd-button' : 'pd-link'} pd-button-${this.color} pd-button-${
-                    this.size
-                } ${this.outline ? 'pd-button-outline' : ''}`}
+                class={{
+                    'pd-button': TagType === 'button',
+                    'pd-link': TagType !== 'button',
+                    [`pd-button-${this.color}`]: true,
+                    [`pd-button-${this.size}`]: true,
+                    'pd-button-outline': this.outline,
+                }}
             >
                 {this.renderIcon('left')}
                 <slot></slot>
@@ -64,7 +68,7 @@ export class Button {
         );
     }
 
-    renderIcon(location: 'left' | 'right' | 'none') {
+    private renderIcon(location: 'left' | 'right' | 'none') {
         if (location !== this.iconLocation) return;
         return (
             <div class={`pd-button-icon-${location}`}>

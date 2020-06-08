@@ -29,12 +29,14 @@ interface DropdownItem {
 ```
 
 <br><br>
+
 ### vuejs Sample
 
 ```html
-<pd-dropdown class="form-group" :items.prop="stateItems" label="select item" @pd-on-change="itemChanged" ></pd-dropdown>
+<pd-dropdown class="form-group" :items.prop="stateItems" label="select item" @pd-change="itemChanged"></pd-dropdown>
 ```
-*To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier.*
+
+_To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
 More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 <!-- Auto Generated Below -->
@@ -53,9 +55,9 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Events
 
-| Event          | Description | Type                        |
-| -------------- | ----------- | --------------------------- |
-| `pd-on-change` |             | `CustomEvent<DropdownItem>` |
+| Event       | Description | Type                        |
+| ----------- | ----------- | --------------------------- |
+| `pd-change` |             | `CustomEvent<DropdownItem>` |
 
 
 ## Dependencies

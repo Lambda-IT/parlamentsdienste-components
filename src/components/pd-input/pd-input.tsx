@@ -137,29 +137,29 @@ export class Input {
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event({ eventName: 'pd-on-input' }) pdOnInput!: EventEmitter<KeyboardEvent>;
+    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
 
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-on-change' }) pdOnChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<InputChangeEventDetail>;
 
     /**
      * Emitted when the input loses focus.
      */
-    @Event({ eventName: 'pd-on-blur' }) pdOnBlur!: EventEmitter<void>;
+    @Event({ eventName: 'pd-blur' }) pdBlur!: EventEmitter<void>;
 
     /**
      * Emitted when the input has focus.
      */
-    @Event({ eventName: 'pd-on-focus' }) pdOnFocus!: EventEmitter<void>;
+    @Event({ eventName: 'pd-focus' }) pdFocus!: EventEmitter<void>;
 
     /**
      * Update the native input element when the value changes
      */
     @Watch('value')
     protected valueChanged() {
-        this.pdOnChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
     }
 
     /**
@@ -178,15 +178,15 @@ export class Input {
         if (input) {
             this.value = input.value || '';
         }
-        this.pdOnInput.emit(ev as KeyboardEvent);
+        this.pdInput.emit(ev as KeyboardEvent);
     };
 
     private onBlur = () => {
-        this.pdOnBlur.emit();
+        this.pdBlur.emit();
     };
 
     private onFocus = () => {
-        this.pdOnFocus.emit();
+        this.pdFocus.emit();
     };
 
     private onKeydown = () => {};
@@ -205,7 +205,7 @@ export class Input {
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
                         class="pd-input"
-                        ref={(input) => (this.nativeInput = input)}
+                        ref={input => (this.nativeInput = input)}
                         aria-labelledby={labelId}
                         disabled={this.disabled}
                         accept={this.accept}

@@ -7,10 +7,17 @@
 ```
 
 <br><br>
+
 ### vuejs Sample
 
 ```html
-<pd-slider @pd-on-input="valueChanged" :value="sliderValue" :min="config.min" :max="config.max" :step="config.step" ></pd-slider>
+<pd-slider
+    @pd-input="valueChanged"
+    :value="sliderValue"
+    :min="config.min"
+    :max="config.max"
+    :step="config.step"
+></pd-slider>
 ```
 
 <!-- Auto Generated Below -->
@@ -18,22 +25,22 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default     |
-| ---------- | ---------- | ----------- | -------- | ----------- |
-| `disabled` | `disabled` |             | `any`    | `undefined` |
-| `max`      | `max`      |             | `number` | `100`       |
-| `min`      | `min`      |             | `number` | `0`         |
-| `name`     | `name`     |             | `string` | `''`        |
-| `step`     | `step`     |             | `number` | `1`         |
-| `value`    | `value`    |             | `number` | `null`      |
+| Property   | Attribute  | Description     | Type     | Default     |
+| ---------- | ---------- | --------------- | -------- | ----------- |
+| `disabled` | `disabled` | Disables slider | `any`    | `undefined` |
+| `max`      | `max`      |                 | `number` | `100`       |
+| `min`      | `min`      |                 | `number` | `0`         |
+| `name`     | `name`     |                 | `string` | `''`        |
+| `step`     | `step`     |                 | `number` | `1`         |
+| `value`    | `value`    |                 | `number` | `null`      |
 
 
 ## Events
 
-| Event          | Description                            | Type                                  |
-| -------------- | -------------------------------------- | ------------------------------------- |
-| `pd-on-change` | Emitted when slider has been released. | `CustomEvent<InputChangeEventDetail>` |
-| `pd-on-input`  | Emitted when the value has changed.    | `CustomEvent<InputChangeEventDetail>` |
+| Event       | Description                            | Type                                  |
+| ----------- | -------------------------------------- | ------------------------------------- |
+| `pd-change` | Emitted when slider has been released. | `CustomEvent<InputChangeEventDetail>` |
+| `pd-input`  | Emitted when the value has changed.    | `CustomEvent<InputChangeEventDetail>` |
 
 
 ----------------------------------------------

@@ -15,15 +15,15 @@
 
 ## Events
 
-| Event                | Description | Type                                                       |
-| -------------------- | ----------- | ---------------------------------------------------------- |
-| `pd-on-change`       |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
-| `pd-on-close`        |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
-| `pd-on-month-change` |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
-| `pd-on-open`         |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
-| `pd-on-ready`        |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
-| `pd-on-value-update` |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
-| `pd-on-year-change`  |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| Event             | Description | Type                                                       |
+| ----------------- | ----------- | ---------------------------------------------------------- |
+| `pd-change`       |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| `pd-close`        |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| `pd-month-change` |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| `pd-open`         |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| `pd-ready`        |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| `pd-value-update` |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
+| `pd-year-change`  |             | `CustomEvent<{ selectedDates: Date[]; dateStr: string; }>` |
 
 
 ## Methods

@@ -12,9 +12,6 @@ export class PdIcon implements ComponentInterface {
 
     @Element() el!: HTMLElement;
 
-    @State() private svgContent?: string;
-    @State() private isVisible = false;
-
     /**
      * Specifies the `src` url of an SVG file to use.
      */
@@ -48,7 +45,10 @@ export class PdIcon implements ComponentInterface {
     /** change animation direction */
     @Prop() spinReverse: boolean = false;
 
-    connectedCallback() {
+    @State() private svgContent?: string;
+    @State() private isVisible = false;
+
+    public connectedCallback() {
         // purposely do not return the promise here because loading
         // the svg file should not hold up loading the app
         // only load the svg if it's visible
@@ -58,7 +58,7 @@ export class PdIcon implements ComponentInterface {
         });
     }
 
-    disconnectedCallback() {
+    public disconnectedCallback() {
         if (this.io) {
             this.io.disconnect();
             this.io = undefined;
@@ -103,7 +103,7 @@ export class PdIcon implements ComponentInterface {
         }
     }
 
-    render() {
+    public render() {
         const flipX = this.flip?.includes('x') ? 'scaleX(-1)' : undefined;
         const flipY = this.flip?.includes('y') ? 'scaleY(-1)' : undefined;
         const rotate = this.rotate ? `rotate(${this.rotate}deg` : undefined;

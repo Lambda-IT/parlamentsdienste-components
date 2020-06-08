@@ -10,22 +10,25 @@ export class PdTableFilter {
     @Element() element;
     private inputRef: HTMLInputElement;
 
+    /**
+     * filter value
+     */
     @Prop() value = '';
 
     /**
      * Emitted when filter changes.
      */
-    @Event() pdOnSearch!: EventEmitter<void>;
+    @Event() pdSearch!: EventEmitter<void>;
 
     /**
      * Emitted when filter is confirmed.
      */
-    @Event() pdOnConfirm!: EventEmitter<string>;
+    @Event() pdConfirm!: EventEmitter<string>;
 
     /**
      * Emitted when filter is confirmed.
      */
-    @Event() pdOnClose!: EventEmitter<void>;
+    @Event() pdClose!: EventEmitter<void>;
 
     @Method()
     async reset() {
@@ -43,7 +46,7 @@ export class PdTableFilter {
     }
 
     private onSearch = () => {
-        this.pdOnSearch.emit();
+        this.pdSearch.emit();
     };
 
     private onClear = () => {
@@ -53,7 +56,7 @@ export class PdTableFilter {
     };
 
     private onConfirm = () => {
-        this.pdOnConfirm.emit(this.value);
+        this.pdConfirm.emit(this.value);
     };
 
     private handleFilterChange(ev) {
@@ -63,7 +66,7 @@ export class PdTableFilter {
     private onSubmit(ev: KeyboardEvent) {
         if (ev.key !== 'Enter') return;
 
-        this.pdOnConfirm.emit(this.value);
+        this.pdConfirm.emit(this.value);
     }
 
     @Listen('click', { target: 'body' })
@@ -71,11 +74,11 @@ export class PdTableFilter {
         // the filter is inside the shadowdom of the table, we need to find the clicked element inside of the shadow dom
         // ev.target doesn't work because of that
         if (closestElement('pd-table-filter', ev.composedPath()[0] as HTMLElement) !== this.element) {
-            this.pdOnClose.emit();
+            this.pdClose.emit();
         }
     }
 
-    render() {
+    public render() {
         return (
             <Host>
                 <div class="pd-table-filter-wrapper">

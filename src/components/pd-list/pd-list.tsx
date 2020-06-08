@@ -6,7 +6,7 @@ import { Component, Host, h } from '@stencil/core';
     shadow: false,
 })
 export class PdList {
-    render() {
+    public render() {
         return (
             <Host>
                 <slot></slot>

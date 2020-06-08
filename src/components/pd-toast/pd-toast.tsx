@@ -24,9 +24,9 @@ export class PdToast {
     /**
      * When closing the toast using the close icon
      */
-    @Event({ eventName: 'pd-on-closed' }) pdOnClosed: EventEmitter<any>;
+    @Event({ eventName: 'pd-closed' }) pdClosed: EventEmitter<any>;
 
-    render() {
+    public render() {
         return (
             <Host
                 style={{
@@ -39,7 +39,7 @@ export class PdToast {
                     </div>
                     <div class="pd-toast-header-right">
                         {this.renderInfo()}
-                        <pd-icon onClick={this.pdOnClosed.emit} class="pd-toast-close" name="close" size={2}></pd-icon>
+                        <pd-icon onClick={this.pdClosed.emit} class="pd-toast-close" name="close" size={2}></pd-icon>
                     </div>
                 </div>
                 <div class="pd-toast-body">
@@ -49,7 +49,7 @@ export class PdToast {
         );
     }
 
-    renderInfo() {
+    private renderInfo() {
         if (!this.info || this.size === 'small') return;
         return <span class="pd-toast-info">{this.info}</span>;
     }

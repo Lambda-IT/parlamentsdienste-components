@@ -6,7 +6,7 @@ import { Component, Host, h } from '@stencil/core';
     shadow: true,
 })
 export class Sidebar {
-    render() {
+    public render() {
         return (
             <Host role="navigation">
                 <slot></slot>

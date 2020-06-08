@@ -23,7 +23,7 @@ export class DropdownItem implements ComponentInterface {
      */
     @Prop() highlight?: string | number;
 
-    render() {
+    public render() {
         return (
             <Host>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>

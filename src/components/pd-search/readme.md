@@ -6,7 +6,7 @@
 <pd-search label="label" results="..."></pd-search>
 ```
 
-Search results must be provided dynamically depending on the current input. `pd-on-input` can be used to detect when a new search result should be provided.
+Search results must be provided dynamically depending on the current input. `pd-input` can be used to detect when a new search result should be provided.
 
 ```javascript
 const results = [
@@ -18,12 +18,20 @@ const results = [
 ```
 
 <br><br>
+
 ### vuejs Sample
 
 ```html
-<pd-search placeholder="Suche" :results.prop="suggestions" @pd-on-input="suggest($event.detail.value)" :value="search" @pd-on-search="searchText($event.detail.value)"></pd-search>
+<pd-search
+    placeholder="Suche"
+    :results.prop="suggestions"
+    @pd-input="suggest($event.detail.value)"
+    :value="search"
+    @pd-search="searchText($event.detail.value)"
+></pd-search>
 ```
-*To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier.*
+
+_To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
 More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Interfaces
@@ -46,21 +54,21 @@ interface DropdownItem {
 | ------------- | ------------- | ----------------------------------------------------------- | ------------------ | ----------- |
 | `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`          | `false`     |
 | `highlight`   | `highlight`   | Show matching parts in resuls as highlighted                | `boolean`          | `true`      |
-| `label`       | `label`       |                                                             | `string`           | `undefined` |
+| `label`       | `label`       | Search box label                                            | `string`           | `undefined` |
 | `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`           | `undefined` |
-| `results`     | --            |                                                             | `string[]`         | `[]`        |
+| `results`     | --            | Values shown as search results                              | `string[]`         | `[]`        |
 | `value`       | `value`       | The value of the input.                                     | `number \| string` | `''`        |
 
 
 ## Events
 
-| Event          | Description                             | Type                                  |
-| -------------- | --------------------------------------- | ------------------------------------- |
-| `pd-on-blur`   | Emitted when the input loses focus.     | `CustomEvent<void>`                   |
-| `pd-on-change` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
-| `pd-on-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
-| `pd-on-input`  | Emitted when a keyboard input occurred. | `CustomEvent<InputChangeEventDetail>` |
-| `pd-on-search` | Emitted when a search request occurred. | `CustomEvent<InputChangeEventDetail>` |
+| Event       | Description                             | Type                                  |
+| ----------- | --------------------------------------- | ------------------------------------- |
+| `pd-blur`   | Emitted when the input loses focus.     | `CustomEvent<void>`                   |
+| `pd-change` | Emitted when the value has changed.     | `CustomEvent<InputChangeEventDetail>` |
+| `pd-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                   |
+| `pd-input`  | Emitted when a keyboard input occurred. | `CustomEvent<InputChangeEventDetail>` |
+| `pd-search` | Emitted when a search request occurred. | `CustomEvent<InputChangeEventDetail>` |
 
 
 ## Methods

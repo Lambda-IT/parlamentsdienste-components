@@ -28,13 +28,13 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 
 ## Properties
 
-| Property   | Attribute  | Description                  | Type      | Default     |
-| ---------- | ---------- | ---------------------------- | --------- | ----------- |
-| `checked`  | `checked`  |                              | `boolean` | `false`     |
-| `disabled` | `disabled` | Sets radio to disabled state | `boolean` | `false`     |
-| `label`    | `label`    |                              | `string`  | `null`      |
-| `name`     | `name`     |                              | `string`  | `''`        |
-| `value`    | `value`    |                              | `any`     | `undefined` |
+| Property   | Attribute  | Description                                  | Type      | Default     |
+| ---------- | ---------- | -------------------------------------------- | --------- | ----------- |
+| `checked`  | `checked`  | Checks radio                                 | `boolean` | `false`     |
+| `disabled` | `disabled` | Sets radio to disabled state                 | `boolean` | `false`     |
+| `label`    | `label`    | Label used by radio                          | `string`  | `null`      |
+| `name`     | `name`     | Name of radio. Used to group radios together | `string`  | `''`        |
+| `value`    | `value`    | Value of radio                               | `any`     | `undefined` |
 
 
 ----------------------------------------------

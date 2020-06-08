@@ -26,13 +26,13 @@ export class Datepicker {
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
         time_24hr: true,
-        onChange: (selectedDates, dateStr) => this.pdOnChange.emit({ selectedDates, dateStr }),
-        onOpen: (selectedDates, dateStr) => this.pdOnOpen.emit({ selectedDates, dateStr }),
-        onClose: (selectedDates, dateStr) => this.pdOnClose.emit({ selectedDates, dateStr }),
-        onMonthChange: (selectedDates, dateStr) => this.pdOnMonthChange.emit({ selectedDates, dateStr }),
-        onYearChange: (selectedDates, dateStr) => this.pdOnYearChange.emit({ selectedDates, dateStr }),
-        onReady: (selectedDates, dateStr) => this.pdOnReady.emit({ selectedDates, dateStr }),
-        onValueUpdate: (selectedDates, dateStr) => this.pdOnValueUpdate.emit({ selectedDates, dateStr }),
+        onChange: (selectedDates, dateStr) => this.pdChange.emit({ selectedDates, dateStr }),
+        onOpen: (selectedDates, dateStr) => this.pdOpen.emit({ selectedDates, dateStr }),
+        onClose: (selectedDates, dateStr) => this.pdClose.emit({ selectedDates, dateStr }),
+        onMonthChange: (selectedDates, dateStr) => this.pdMonthChange.emit({ selectedDates, dateStr }),
+        onYearChange: (selectedDates, dateStr) => this.pdYearChange.emit({ selectedDates, dateStr }),
+        onReady: (selectedDates, dateStr) => this.pdReady.emit({ selectedDates, dateStr }),
+        onValueUpdate: (selectedDates, dateStr) => this.pdValueUpdate.emit({ selectedDates, dateStr }),
     };
 
     @Watch('date')
@@ -84,16 +84,16 @@ export class Datepicker {
         this.flatpickr.setDate(date, triggerChange, format);
     }
 
-    @Event({ eventName: 'pd-on-change' }) pdOnChange: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
-    @Event({ eventName: 'pd-on-open' }) pdOnOpen: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
-    @Event({ eventName: 'pd-on-close' }) pdOnClose: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
-    @Event({ eventName: 'pd-on-month-change' }) pdOnMonthChange: EventEmitter<{
+    @Event({ eventName: 'pd-change' }) pdChange: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
+    @Event({ eventName: 'pd-open' }) pdOpen: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
+    @Event({ eventName: 'pd-close' }) pdClose: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
+    @Event({ eventName: 'pd-month-change' }) pdMonthChange: EventEmitter<{
         selectedDates: Date[];
         dateStr: string;
     }>;
-    @Event({ eventName: 'pd-on-year-change' }) pdOnYearChange: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
-    @Event({ eventName: 'pd-on-ready' }) pdOnReady: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
-    @Event({ eventName: 'pd-on-value-update' }) pdOnValueUpdate: EventEmitter<{
+    @Event({ eventName: 'pd-year-change' }) pdYearChange: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
+    @Event({ eventName: 'pd-ready' }) pdReady: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
+    @Event({ eventName: 'pd-value-update' }) pdValueUpdate: EventEmitter<{
         selectedDates: Date[];
         dateStr: string;
     }>;

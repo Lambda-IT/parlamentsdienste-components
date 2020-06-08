@@ -5,7 +5,7 @@ export default {
     title: 'Layout|Panel',
     parameters: {
         notes,
-        decorators: [withActions('pd-on-collapsed')],
+        decorators: [withActions('pd-collapsed')],
     },
 };
 

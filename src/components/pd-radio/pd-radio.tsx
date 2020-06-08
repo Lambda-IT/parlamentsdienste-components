@@ -6,16 +6,26 @@ import { Component, Host, h, Prop, Element } from '@stencil/core';
     shadow: false,
 })
 export class Radio {
-    private inputId = `pd-radio-${radioButtonIds++}`;
-
     @Element() element!: HTMLElement;
 
+    /**
+     * Checks radio
+     */
     @Prop() checked: boolean = false;
 
+    /**
+     * Value of radio
+     */
     @Prop() value?: any | null;
 
+    /**
+     * Label used by radio
+     */
     @Prop() label?: string | null = null;
 
+    /**
+     * Name of radio. Used to group radios together
+     */
     @Prop() name: string = '';
 
     /**
@@ -23,15 +33,12 @@ export class Radio {
      */
     @Prop() disabled: boolean = false;
 
-    render() {
-        const { inputId, name, value, label, checked } = this;
+    public render() {
+        const { name, value, label, checked } = this;
 
-        const labelId = inputId + '-lbl';
-        console.log('Radio -> render -> value', value);
         return (
             <Host
                 role="radio"
-                aria-labeledby={labelId}
                 aria-checked={this.checked ? 'true' : 'false'}
                 aria-disabled={this.disabled ? 'true' : 'false'}
             >
@@ -51,5 +58,3 @@ export class Radio {
         );
     }
 }
-
-let radioButtonIds = 0;

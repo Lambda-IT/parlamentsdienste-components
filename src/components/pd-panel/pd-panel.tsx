@@ -23,15 +23,15 @@ export class Panel {
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-on-collapsed' }) pdOnCollapsed!: EventEmitter<any>;
+    @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<any>;
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
-        this.pdOnCollapsed.emit({ collapsed });
+        this.pdCollapsed.emit({ collapsed });
         collapsed ? collapse(this.contentWrapper) : expand(this.contentWrapper);
     }
 
-    componentDidLoad() {
+    public componentDidLoad() {
         this.contentWrapper = this.element.shadowRoot.querySelector('.pd-panel-content-wrapper');
         // start collapsed
         if (this.collapsed) {
@@ -39,7 +39,7 @@ export class Panel {
         }
     }
 
-    render() {
+    public render() {
         return (
             <Host>
                 <slot name="header"></slot>

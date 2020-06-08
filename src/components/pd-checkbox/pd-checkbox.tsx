@@ -21,19 +21,25 @@ export class Checkbox {
      */
     @Prop() checked: boolean = false;
 
+    /**
+     * value of checkbox
+     */
     @Prop() value: boolean = false;
 
-    @Prop() name: string = '';
+    /**
+     * checkbox name
+     */
+    @Prop() name: string;
 
-    @Event({ eventName: 'pd-on-checked' }) pdOnChecked: EventEmitter<any>;
+    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<any>;
 
     private onClick = (ev: Event) => {
         this.checked = !this.checked;
         this.value = this.checked;
-        this.pdOnChecked.emit(ev);
+        this.pdChecked.emit(ev);
     };
 
-    render() {
+    public render() {
         return (
             <Host
                 role="checkbox"

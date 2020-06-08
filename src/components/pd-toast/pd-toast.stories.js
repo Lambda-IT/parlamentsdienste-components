@@ -4,7 +4,7 @@ import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Dialogs|Toast',
-    decorators: [withKnobs(), withActions('pd-on-closed')],
+    decorators: [withKnobs(), withActions('pd-closed')],
     parameters: {
         notes,
     },

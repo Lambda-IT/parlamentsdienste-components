@@ -113,8 +113,8 @@ export class Dropdown {
         }
     }
 
-    @Event({ eventName: 'pd-on-change' })
-    public pdOnChange!: EventEmitter<DropdownItem>;
+    @Event({ eventName: 'pd-change' })
+    public pdChange!: EventEmitter<DropdownItem>;
 
     private currentSearch: string = '';
     private inputTime: number = 0;
@@ -122,7 +122,7 @@ export class Dropdown {
     private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
         this.selectedItem = item;
         if (closeDropdown) this.open = false;
-        this.pdOnChange.emit(item);
+        this.pdChange.emit(item);
     }
 
     private openDropdown = () => {

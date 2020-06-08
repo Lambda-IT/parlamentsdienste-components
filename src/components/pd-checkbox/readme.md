@@ -21,20 +21,20 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 
 ## Properties
 
-| Property   | Attribute  | Description                                 | Type      | Default |
-| ---------- | ---------- | ------------------------------------------- | --------- | ------- |
-| `checked`  | `checked`  | Sets check state of the checkbox true/false | `boolean` | `false` |
-| `disabled` | `disabled` | Sets checkbox to disabled state             | `boolean` | `false` |
-| `name`     | `name`     |                                             | `string`  | `''`    |
-| `text`     | `text`     | Checkbox description text                   | `string`  | `''`    |
-| `value`    | `value`    |                                             | `boolean` | `false` |
+| Property   | Attribute  | Description                                 | Type      | Default     |
+| ---------- | ---------- | ------------------------------------------- | --------- | ----------- |
+| `checked`  | `checked`  | Sets check state of the checkbox true/false | `boolean` | `false`     |
+| `disabled` | `disabled` | Sets checkbox to disabled state             | `boolean` | `false`     |
+| `name`     | `name`     | checkbox name                               | `string`  | `undefined` |
+| `text`     | `text`     | Checkbox description text                   | `string`  | `''`        |
+| `value`    | `value`    | value of checkbox                           | `boolean` | `false`     |
 
 
 ## Events
 
-| Event           | Description | Type               |
-| --------------- | ----------- | ------------------ |
-| `pd-on-checked` |             | `CustomEvent<any>` |
+| Event        | Description | Type               |
+| ------------ | ----------- | ------------------ |
+| `pd-checked` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

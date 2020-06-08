@@ -6,7 +6,7 @@ import { Component, Host, h } from '@stencil/core';
     shadow: true,
 })
 export class ButtonGroup {
-    render() {
+    public render() {
         return (
             <Host>
                 <slot></slot>

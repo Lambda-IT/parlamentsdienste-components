@@ -14,7 +14,7 @@ export class PanelHeader {
 
     private collapsible: boolean = false;
 
-    connectedCallback() {
+    public connectedCallback() {
         this.panel = this.element.closest('pd-panel') as HTMLPdPanelElement;
         if (this.panel) {
             this.collapsible = this.panel.collapsible;
@@ -30,7 +30,7 @@ export class PanelHeader {
         this.panel.collapsed = this.collapsed;
     }
 
-    render() {
+    public render() {
         return (
             <Host>
                 <div class="pd-panel-header-content">
@@ -41,7 +41,7 @@ export class PanelHeader {
         );
     }
 
-    rendercollapsible() {
+    private rendercollapsible() {
         if (!this.collapsible) return;
 
         return (

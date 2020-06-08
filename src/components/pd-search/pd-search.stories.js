@@ -4,7 +4,7 @@ import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Forms + Inputs|Search',
-    decorators: [withActions('pd-on-input', 'pd-on-change', 'pd-on-search', 'pd-on-focus', 'pd-on-blur'), withKnobs()],
+    decorators: [withActions('pd-input', 'pd-change', 'pd-search', 'pd-focus', 'pd-blur'), withKnobs()],
     parameters: {
         notes,
     },

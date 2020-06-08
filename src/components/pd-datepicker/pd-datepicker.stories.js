@@ -5,13 +5,13 @@ export default {
     title: 'Forms + Inputs|Datepicker',
     decorators: [
         withActions(
-            'pd-on-change',
-            'pd-on-open',
-            'pd-on-close',
-            'pd-on-month-change',
-            'pd-on-year-change',
-            'pd-on-ready',
-            'pd-on-value-update',
+            'pd-change',
+            'pd-open',
+            'pd-close',
+            'pd-month-change',
+            'pd-year-change',
+            'pd-ready',
+            'pd-value-update',
         ),
     ],
     parameters: {

@@ -68,8 +68,8 @@ function presentModal() {
         console.log('whenClosed method', returnData);
     });
 
-    // another way is to listen on the pd-on-closed event
-    modal.addEventListener('pd-on-closed', event => console.log('pd-on-closed event', event.detail));
+    // another way is to listen on the pd-closed event
+    modal.addEventListener('pd-closed', event => console.log('pd-closed event', event.detail));
 
     // present the modal
     document.body.appendChild(modal);
@@ -79,11 +79,12 @@ function presentModal() {
 ```
 
 <br><br>
+
 ### vuejs Sample
 
 ```html
 <script type="text/x-template" id="survey-template">
-    <pd-modal ref="modal" open="true" :config.prop="config" @pd-on-closed ="closed()">
+    <pd-modal ref="modal" open="true" :config.prop="config" @pd-closed ="closed()">
         <div  @keyup.enter="ok()" >
             <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
             <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
@@ -160,7 +161,9 @@ var app = new Vue({
 });
 
 ```
+
 <br><br>
+
 ## Interfaces
 
 ```javascript
@@ -184,15 +187,15 @@ interface PdModalConfig {
 | Property | Attribute | Description                                                                                                         | Type            | Default     |
 | -------- | --------- | ------------------------------------------------------------------------------------------------------------------- | --------------- | ----------- |
 | `config` | --        | Configuration properties                                                                                            | `PdModalConfig` | `undefined` |
-| `data`   | `data`    |                                                                                                                     | `any`           | `undefined` |
+| `data`   | `data`    | Modal data that can be accessed and used by modal content                                                           | `any`           | `undefined` |
 | `open`   | `open`    | This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this | `boolean`       | `false`     |
 
 
 ## Events
 
-| Event          | Description                                                          | Type               |
-| -------------- | -------------------------------------------------------------------- | ------------------ |
-| `pd-on-closed` | Event with returnData that will be executed when the modal is closed | `CustomEvent<any>` |
+| Event       | Description                                                          | Type               |
+| ----------- | -------------------------------------------------------------------- | ------------------ |
+| `pd-closed` | Event with returnData that will be executed when the modal is closed | `CustomEvent<any>` |
 
 
 ## Methods

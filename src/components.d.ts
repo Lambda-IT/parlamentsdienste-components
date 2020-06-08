@@ -83,11 +83,17 @@ export namespace Components {
           * Sets checkbox to disabled state
          */
         "disabled": boolean;
+        /**
+          * checkbox name
+         */
         "name": string;
         /**
           * Checkbox description text
          */
         "text": string;
+        /**
+          * value of checkbox
+         */
         "value": boolean;
     }
     interface PdDatepicker {
@@ -355,6 +361,9 @@ export namespace Components {
     interface PdList {
     }
     interface PdListItem {
+        /**
+          * Status icon for list item
+         */
         "status": "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
@@ -366,6 +375,9 @@ export namespace Components {
           * Configuration properties
          */
         "config": PdModalConfig;
+        /**
+          * Modal data that can be accessed and used by modal content
+         */
         "data": any;
         /**
           * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
@@ -411,20 +423,47 @@ export namespace Components {
     interface PdPanelHeader {
     }
     interface PdProgressBar {
+        /**
+          * status color of progress-bar
+         */
         "color": "primary" | "success" | "danger" | "warning" | "info";
+        /**
+          * decimals of value
+         */
         "decimals": number;
+        /**
+          * description of progress-bar
+         */
         "label": boolean;
+        /**
+          * show striped version of progress-bar
+         */
         "striped": boolean;
+        /**
+          * current value of progress bar 0.0 to 1.0
+         */
         "value": number;
     }
     interface PdRadio {
+        /**
+          * Checks radio
+         */
         "checked": boolean;
         /**
           * Sets radio to disabled state
          */
         "disabled": boolean;
+        /**
+          * Label used by radio
+         */
         "label"?: string | null;
+        /**
+          * Name of radio. Used to group radios together
+         */
         "name": string;
+        /**
+          * Value of radio
+         */
         "value"?: any | null;
     }
     interface PdSearch {
@@ -436,11 +475,17 @@ export namespace Components {
           * Show matching parts in resuls as highlighted
          */
         "highlight"?: boolean;
+        /**
+          * Search box label
+         */
         "label"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
+        /**
+          * Values shown as search results
+         */
         "results": string[];
         /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
@@ -470,19 +515,39 @@ export namespace Components {
           * Name of an icon from the library
          */
         "iconName": string;
+        /**
+          * Icon size
+         */
         "size": number;
         /**
           * Sets target for link button e.g. '_blank'
          */
         "target": string;
+        /**
+          * Item text
+         */
         "text": string;
     }
     interface PdSlider {
-        "disabled": any;
+        /**
+          * max value
+         */
         "max": number;
+        /**
+          * min value
+         */
         "min": number;
+        /**
+          * slider name
+         */
         "name": string;
+        /**
+          * value steps
+         */
         "step": number;
+        /**
+          * slider value
+         */
         "value"?: number | null;
     }
     interface PdTable {
@@ -515,6 +580,9 @@ export namespace Components {
         "focusInput": () => Promise<void>;
         "reset": () => Promise<void>;
         "setValue": (value: string) => Promise<void>;
+        /**
+          * filter value
+         */
         "value": string;
     }
     interface PdTimeline {
@@ -806,7 +874,7 @@ declare namespace LocalJSX {
         "onPd-closed"?: (event: CustomEvent<MouseEvent>) => void;
     }
     interface PdBackdrop {
-        "onPd-on-tap"?: (event: CustomEvent<void>) => void;
+        "onPd-tap"?: (event: CustomEvent<void>) => void;
         /**
           * Invisible backdrop when set to false
          */
@@ -854,12 +922,18 @@ declare namespace LocalJSX {
           * Sets checkbox to disabled state
          */
         "disabled"?: boolean;
+        /**
+          * checkbox name
+         */
         "name"?: string;
-        "onPd-on-checked"?: (event: CustomEvent<any>) => void;
+        "onPd-checked"?: (event: CustomEvent<any>) => void;
         /**
           * Checkbox description text
          */
         "text"?: string;
+        /**
+          * value of checkbox
+         */
         "value"?: boolean;
     }
     interface PdDatepicker {
@@ -871,31 +945,31 @@ declare namespace LocalJSX {
           * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
          */
         "date"?: DateOption | DateOption[];
-        "onPd-on-change"?: (event: CustomEvent<{
+        "onPd-change"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
-        "onPd-on-close"?: (event: CustomEvent<{
+        "onPd-close"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
-        "onPd-on-month-change"?: (event: CustomEvent<{
+        "onPd-month-change"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
-        "onPd-on-open"?: (event: CustomEvent<{
+        "onPd-open"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
-        "onPd-on-ready"?: (event: CustomEvent<{
+        "onPd-ready"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
-        "onPd-on-value-update"?: (event: CustomEvent<{
+        "onPd-value-update"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
-        "onPd-on-year-change"?: (event: CustomEvent<{
+        "onPd-year-change"?: (event: CustomEvent<{
             selectedDates: Date[];
             dateStr: string;
         }>) => void;
@@ -917,7 +991,7 @@ declare namespace LocalJSX {
           * Items to display and select in dropdown
          */
         "items"?: DropdownItem[];
-        "onPd-on-change"?: (event: CustomEvent<DropdownItem>) => void;
+        "onPd-change"?: (event: CustomEvent<DropdownItem>) => void;
         /**
           * Placeholder when no item is selected
          */
@@ -1034,19 +1108,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onPd-on-blur"?: (event: CustomEvent<void>) => void;
+        "onPd-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-on-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPd-on-focus"?: (event: CustomEvent<void>) => void;
+        "onPd-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-on-input"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onPd-input"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */
@@ -1083,6 +1157,9 @@ declare namespace LocalJSX {
     interface PdList {
     }
     interface PdListItem {
+        /**
+          * Status icon for list item
+         */
         "status"?: "success" | "danger" | "warning" | "unset";
     }
     interface PdModal {
@@ -1090,11 +1167,14 @@ declare namespace LocalJSX {
           * Configuration properties
          */
         "config"?: PdModalConfig;
+        /**
+          * Modal data that can be accessed and used by modal content
+         */
         "data"?: any;
         /**
           * Event with returnData that will be executed when the modal is closed
          */
-        "onPd-on-closed"?: (event: CustomEvent<any>) => void;
+        "onPd-closed"?: (event: CustomEvent<any>) => void;
         /**
           * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
          */
@@ -1126,7 +1206,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onPd-on-collapsed"?: (event: CustomEvent<any>) => void;
+        "onPd-collapsed"?: (event: CustomEvent<any>) => void;
     }
     interface PdPanelContent {
     }
@@ -1135,20 +1215,47 @@ declare namespace LocalJSX {
     interface PdPanelHeader {
     }
     interface PdProgressBar {
+        /**
+          * status color of progress-bar
+         */
         "color"?: "primary" | "success" | "danger" | "warning" | "info";
+        /**
+          * decimals of value
+         */
         "decimals"?: number;
+        /**
+          * description of progress-bar
+         */
         "label"?: boolean;
+        /**
+          * show striped version of progress-bar
+         */
         "striped"?: boolean;
+        /**
+          * current value of progress bar 0.0 to 1.0
+         */
         "value"?: number;
     }
     interface PdRadio {
+        /**
+          * Checks radio
+         */
         "checked"?: boolean;
         /**
           * Sets radio to disabled state
          */
         "disabled"?: boolean;
+        /**
+          * Label used by radio
+         */
         "label"?: string | null;
+        /**
+          * Name of radio. Used to group radios together
+         */
         "name"?: string;
+        /**
+          * Value of radio
+         */
         "value"?: any | null;
     }
     interface PdSearch {
@@ -1160,31 +1267,37 @@ declare namespace LocalJSX {
           * Show matching parts in resuls as highlighted
          */
         "highlight"?: boolean;
+        /**
+          * Search box label
+         */
         "label"?: string;
         /**
           * Emitted when the input loses focus.
          */
-        "onPd-on-blur"?: (event: CustomEvent<void>) => void;
+        "onPd-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-on-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPd-on-focus"?: (event: CustomEvent<void>) => void;
+        "onPd-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-on-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when a search request occurred.
          */
-        "onPd-on-search"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-search"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
+        /**
+          * Values shown as search results
+         */
         "results"?: string[];
         /**
           * The value of the input.
@@ -1210,27 +1323,47 @@ declare namespace LocalJSX {
           * Name of an icon from the library
          */
         "iconName"?: string;
+        /**
+          * Icon size
+         */
         "size"?: number;
         /**
           * Sets target for link button e.g. '_blank'
          */
         "target"?: string;
+        /**
+          * Item text
+         */
         "text"?: string;
     }
     interface PdSlider {
-        "disabled"?: any;
+        /**
+          * max value
+         */
         "max"?: number;
+        /**
+          * min value
+         */
         "min"?: number;
+        /**
+          * slider name
+         */
         "name"?: string;
         /**
           * Emitted when slider has been released.
          */
-        "onPd-on-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-on-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * value steps
+         */
         "step"?: number;
+        /**
+          * slider value
+         */
         "value"?: number | null;
     }
     interface PdTable {
@@ -1263,15 +1396,18 @@ declare namespace LocalJSX {
         /**
           * Emitted when filter is confirmed.
          */
-        "onPdOnClose"?: (event: CustomEvent<void>) => void;
+        "onPdClose"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when filter is confirmed.
          */
-        "onPdOnConfirm"?: (event: CustomEvent<string>) => void;
+        "onPdConfirm"?: (event: CustomEvent<string>) => void;
         /**
           * Emitted when filter changes.
          */
-        "onPdOnSearch"?: (event: CustomEvent<void>) => void;
+        "onPdSearch"?: (event: CustomEvent<void>) => void;
+        /**
+          * filter value
+         */
         "value"?: string;
     }
     interface PdTimeline {
@@ -1314,7 +1450,7 @@ declare namespace LocalJSX {
         /**
           * When closing the toast using the close icon
          */
-        "onPd-on-closed"?: (event: CustomEvent<any>) => void;
+        "onPd-closed"?: (event: CustomEvent<any>) => void;
         /**
           * Changes max-with of the toast
          */

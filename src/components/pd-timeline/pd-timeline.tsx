@@ -16,7 +16,7 @@ export class Timeline {
      */
     @Prop() end: boolean = false;
 
-    render() {
+    public render() {
         return (
             <Host>
                 <div

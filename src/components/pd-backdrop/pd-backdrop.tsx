@@ -15,12 +15,12 @@ export class Backdrop {
     @Prop() visible = true;
 
     @Event({
-        eventName: 'pd-on-tap',
+        eventName: 'pd-tap',
         composed: true,
         cancelable: true,
         bubbles: true,
     })
-    pdOnTap: EventEmitter<void>;
+    pdTap: EventEmitter<void>;
 
     @Listen('touchstart', { passive: false, capture: true })
     protected onTouchStart(ev: TouchEvent) {
@@ -38,10 +38,10 @@ export class Backdrop {
     private tap(ev: Event) {
         ev.preventDefault();
         ev.stopPropagation();
-        this.pdOnTap.emit();
+        this.pdTap.emit();
     }
 
-    render() {
+    public render() {
         return (
             <Host
                 tabindex="-1"

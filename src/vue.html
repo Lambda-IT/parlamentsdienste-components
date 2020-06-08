@@ -470,7 +470,7 @@
         </script>
 
         <script type="text/x-template" id="survey-template">
-            <pd-modal ref="modal" open="true" :config.prop="config" @pd-on-closed ="closed()">
+            <pd-modal ref="modal" open="true" :config.prop="config" @pd-closed ="closed()">
                 <div  @keyup.enter="ok()" >
                     <p>Sind Sie</p><pd-radio name="happy" value="true" v-model-pd="happy" label="Zufrieden"></pd-radio>
                     <pd-radio name="happy" value="false" v-model-pd="happy" label="Unzufrieden"></pd-radio>
@@ -786,9 +786,9 @@
                                                 <pd-search
                                                     placeholder="Suche"
                                                     :results.prop="suggestions"
-                                                    @pd-on-input="suggest($event.detail.value)"
+                                                    @pd-input="suggest($event.detail.value)"
                                                     :value="search"
-                                                    @pd-on-search="searchText($event.detail.value)"
+                                                    @pd-search="searchText($event.detail.value)"
                                                 ></pd-search>
                                             </pd-list-item>
                                         </pd-list>
@@ -839,7 +839,7 @@
                                                 class="form-group"
                                                 :items.prop="stateItems"
                                                 label="button color"
-                                                @pd-on-change="config.button.color=$event.detail.label"
+                                                @pd-change="config.button.color=$event.detail.label"
                                             ></pd-dropdown>
                                             <h4>{{config.button.color}}</h4>
                                         </form>

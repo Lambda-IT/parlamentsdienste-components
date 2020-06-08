@@ -4,7 +4,7 @@ import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Dialogs|Alert',
-    decorators: [withActions('pd-on-closed'), withKnobs()],
+    decorators: [withActions('pd-closed'), withKnobs()],
     parameters: {
         notes,
     },
