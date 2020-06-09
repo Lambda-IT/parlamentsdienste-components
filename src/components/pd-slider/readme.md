@@ -25,14 +25,13 @@
 
 ## Properties
 
-| Property   | Attribute  | Description     | Type     | Default     |
-| ---------- | ---------- | --------------- | -------- | ----------- |
-| `disabled` | `disabled` | Disables slider | `any`    | `undefined` |
-| `max`      | `max`      |                 | `number` | `100`       |
-| `min`      | `min`      |                 | `number` | `0`         |
-| `name`     | `name`     |                 | `string` | `''`        |
-| `step`     | `step`     |                 | `number` | `1`         |
-| `value`    | `value`    |                 | `number` | `null`      |
+| Property | Attribute | Description  | Type     | Default |
+| -------- | --------- | ------------ | -------- | ------- |
+| `max`    | `max`     | max value    | `number` | `100`   |
+| `min`    | `min`     | min value    | `number` | `0`     |
+| `name`   | `name`    | slider name  | `string` | `''`    |
+| `step`   | `step`    | value steps  | `number` | `1`     |
+| `value`  | `value`   | slider value | `number` | `null`  |
 
 
 ## Events

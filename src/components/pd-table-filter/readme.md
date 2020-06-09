@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `value`  | `value`   |             | `string` | `''`    |
+| Property | Attribute | Description  | Type     | Default |
+| -------- | --------- | ------------ | -------- | ------- |
+| `value`  | `value`   | filter value | `string` | `''`    |
 
 
 ## Events
