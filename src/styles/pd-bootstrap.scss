@@ -111,7 +111,12 @@ a {
             .flatpickr-monthDropdown-months,
             .numInputWrapper {
                 flex: 1 1 auto;
-                padding: 0 0.5rem;
+                margin: 0 0.2rem;
+            }
+            .flatpickr-monthDropdown-months,
+            .numInputWrapper,
+            .numInput {
+                height: 100%;
             }
         }
 

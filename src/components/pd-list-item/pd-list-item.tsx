@@ -37,13 +37,13 @@ export class PdListItem {
     private renderIcon() {
         switch (this.status) {
             case 'success':
-                return <pd-icon name="status-green" size={2}></pd-icon>;
+                return <pd-icon name="status_green" size={3.6}></pd-icon>;
             case 'warning':
-                return <pd-icon name="status-orange" size={2}></pd-icon>;
+                return <pd-icon name="status_orange" size={3.6}></pd-icon>;
             case 'danger':
-                return <pd-icon name="status-red" size={2}></pd-icon>;
+                return <pd-icon name="status_red" size={3.6}></pd-icon>;
             case 'unset':
-                return <pd-icon name="status-undefined" size={2}></pd-icon>;
+                return <pd-icon name="status_undefined" size={3.6}></pd-icon>;
             default:
                 break;
         }

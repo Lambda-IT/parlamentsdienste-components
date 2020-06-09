@@ -10,7 +10,7 @@ import { getSvgContent, iconContent } from '../../utils/svg';
 export class PdIcon implements ComponentInterface {
     private io?: IntersectionObserver;
 
-    @Element() el!: HTMLElement;
+    @Element() element!: HTMLElement;
 
     /**
      * Specifies the `src` url of an SVG file to use.
@@ -52,7 +52,7 @@ export class PdIcon implements ComponentInterface {
         // purposely do not return the promise here because loading
         // the svg file should not hold up loading the app
         // only load the svg if it's visible
-        this.waitUntilVisible(this.el, '50px', () => {
+        this.waitUntilVisible(this.element, '50px', () => {
             this.isVisible = true;
             this.loadIcon();
         });
@@ -90,7 +90,7 @@ export class PdIcon implements ComponentInterface {
     @Watch('name')
     private loadIcon() {
         if (this.isVisible) {
-            const url = this.src || (this.name ? getAssetPath(`./assets-icon/icon-${this.name}.svg`) : null);
+            const url = this.src || (this.name ? getAssetPath(`./assets-icon/icon_${this.name}.svg`) : null);
             if (url) {
                 if (iconContent.has(url)) {
                     // sync if it's already loaded
@@ -108,7 +108,7 @@ export class PdIcon implements ComponentInterface {
         const flipY = this.flip?.includes('y') ? 'scaleY(-1)' : undefined;
         const rotate = this.rotate ? `rotate(${this.rotate}deg` : undefined;
 
-        const transformStyle = [flipX, flipY, rotate].filter(x => x !== undefined).join(' ');
+        const transformStyle = [flipX, flipY, rotate].filter((x) => x !== undefined).join(' ');
 
         return (
             <Host
@@ -123,12 +123,13 @@ export class PdIcon implements ComponentInterface {
                     animationName: this.spinReverse ? `spin-reverse` : null,
                 }}
             >
-                {this.svgContent ? (
-                    <div class="pd-icon-inner" innerHTML={this.svgContent}></div>
-                ) : (
-                    <div class="pd-icon-inner"></div>
-                )}
+                {this.renderSvg()}
             </Host>
         );
+    }
+
+    public renderSvg() {
+        if (!this.svgContent) return <div class="pd-icon-inner"></div>;
+        else return <div class="pd-icon-inner" innerHTML={this.svgContent}></div>;
     }
 }

@@ -322,7 +322,7 @@ export class Table {
 
     private renderSort(nextSort, columnName) {
         if (!nextSort || columnName !== this.sortColumn) return;
-        return <pd-icon name="arrow" size={2} rotate={nextSort === 'asc' ? 180 : 0}></pd-icon>;
+        return <pd-icon name="sort" size={2} rotate={nextSort === 'asc' ? 180 : 0}></pd-icon>;
     }
 
     private renderFilterIcon(headerCol: PdColumn) {

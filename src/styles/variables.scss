@@ -77,29 +77,29 @@ $focus: $yellow-4;
 $min-component-width: 300px;
 
 // bootstrap
-$primary : $cyan-9;
+$primary: $cyan-9;
 $secondary: $athens-gray;
 $success: $lime-9;
-$danger : $red-9;
+$danger: $red-9;
 $warning: $yellow-9;
-$info : $blue-6;
+$info: $blue-6;
 $light: $athens-gray;
-$dark:$blue-whale;
+$dark: $blue-whale;
 
-$theme-colors:  (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
-  );
+$theme-colors: (
+    'primary': $primary,
+    'secondary': $secondary,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'light': $light,
+    'dark': $dark,
+);
 
-$link-color:$primary;
-$link-hover-color:  darken($link-color, 15%);
-$link-decoration:                         none;
+$link-color: $primary;
+$link-hover-color: darken($link-color, 15%);
+$link-decoration: none;
 $link-hover-decoration: none;
 
 $colorscheme: (
@@ -169,9 +169,9 @@ $colorscheme: (
         disabled: $gray-6,
         disabled-contrast: $white,
         hover: $gray-6,
-        hover-contrast:$blue-whale,
+        hover-contrast: $blue-whale,
         pressed: $gray-3,
-        pressed-contrast:$blue-whale,
+        pressed-contrast: $blue-whale,
     ),
 );
 
@@ -179,22 +179,22 @@ $font-family-base: 'Avenir';
 $font-family-sans-serif: 'Avenir';
 $font-size-base: 1rem;
 
-$h1-font-size:                $font-size-base * 1.25;
-$h2-font-size:                $font-size-base;
-$h3-font-size:                $font-size-base;
-$h4-font-size:                $font-size-base;
-$h5-font-size:                $font-size-base;
-$h6-font-size:                $font-size-base;
+$h1-font-size: $font-size-base * 1.25;
+$h2-font-size: $font-size-base;
+$h3-font-size: $font-size-base;
+$h4-font-size: $font-size-base;
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base;
 
-$headings-font-family:        null ;
-$headings-font-weight:        700 ;
-$headings-line-height:        1.5 ;
-$headings-color:              $blue-whale;
+$headings-font-family: null;
+$headings-font-weight: 700;
+$headings-line-height: 1.5;
+$headings-color: $blue-whale;
 
-$mark-bg:                     $yellow-2;
+$mark-bg: $yellow-2;
 
-$lead-font-size:              $font-size-base ;
-$lead-font-weight:            700 ;
+$lead-font-size: $font-size-base;
+$lead-font-weight: 700;
 
 $input-btn-line-height: 2;
 $paragraph-margin-bottom: 0;
@@ -202,14 +202,14 @@ $paragraph-margin-bottom: 0;
 $body-bg: $wild-sand;
 $body-color: $black;
 
-$list-group-bg:$wild-sand;
+$list-group-bg: $wild-sand;
 $list-group-border-radius: 0;
 // $list-group-item-padding-y:         .75rem !default;
 $list-group-item-padding-x: 0;
 
 $breadcrumb-bg: transparent;
 $breadcrumb-item-padding: 1rem;
-$breadcrumb-border-radius: 0; 
+$breadcrumb-border-radius: 0;
 $breadcrumb-active-color: $blue-whale;
 $breadcrumb-divider: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4LjEyNSIgaGVpZ2h0PSIxMy40MzgiIHZpZXdCb3g9IjAgMCA4LjEyNSAxMy40MzgiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiNiYWJhYmE7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNMTQuMjE5LDkuMjgxbC0xLjQzNywxLjQzOEwxOC4wNjMsMTZsLTUuMjgxLDUuMjgxLDEuNDM4LDEuNDM4LDYtNkwyMC45MDYsMTZsLS42ODctLjcxOVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMi43ODEgLTkuMjgxKSIvPjwvc3ZnPg==);
 $breadcrumb-divider-color: $gray-6;

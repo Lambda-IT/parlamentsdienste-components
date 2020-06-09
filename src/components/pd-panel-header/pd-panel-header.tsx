@@ -46,7 +46,7 @@ export class PanelHeader {
 
         return (
             <div class="pd-panel-header-collapse" onClick={() => this.toggle()}>
-                <pd-icon name="collapse" size={1.2} rotate={this.collapsed ? 180 : 0}></pd-icon>
+                <pd-icon name="expand" size={1.2} rotate={this.collapsed ? 0 : 180}></pd-icon>
             </div>
         );
     }

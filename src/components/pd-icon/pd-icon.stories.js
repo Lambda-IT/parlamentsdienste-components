@@ -10,92 +10,96 @@ export default {
 };
 
 const iconMap = {
-    ablage: 'ablage',
     add: 'add',
     appview: 'appview',
-    arrow: 'arrow',
-    book: 'book',
+    audio: 'audio',
     breadcrumb: 'breadcrumb',
     cancel: 'cancel',
-    'checkbox-checked': 'checkbox-checked',
-    'checkbox-default': 'checkbox-default',
+    checkbox_checked: 'checkbox_checked',
+    checkbox_default: 'checkbox_default',
+    clipboard: 'clipboard',
+    close_small: 'close_small',
     close: 'close',
-    'close-small': 'close-small',
-    collapse: 'collapse',
+    compensation: 'compensation',
     configuration: 'configuration',
     confirm: 'confirm',
-    contacts: 'contacts',
+    contact: 'contact',
+    dictionary: 'dictionary',
     documents: 'documents',
     dropdown: 'dropdown',
     expand: 'expand',
     filter: 'filter',
-    'folder-closed': 'folder-closed',
-    'folder-open': 'folder-open',
+    folder_closed: 'folder_closed',
+    folder_open: 'folder_open',
+    gallery: 'gallery',
     link: 'link',
     list: 'list',
     menu: 'menu',
     message: 'message',
-    money: 'money',
+    microphone: 'microphone',
     parlament: 'parlament',
+    play: 'play',
     press: 'press',
     print: 'print',
     profile: 'profile',
-    'radio-checked': 'radio-checked',
-    'radio-default': 'radio-default',
-    recherche: 'recherche',
+    radio_checked: 'radio_checked',
+    radio_default: 'radio_default',
+    research: 'research',
     reservation: 'reservation',
     search: 'search',
     sort: 'sort',
-    'status-green': 'status-green',
-    'status-orange': 'status-orange',
-    'status-red': 'status-red',
-    'status-undefined': 'status-undefined',
+    status_green: 'status_green',
+    status_orange: 'status_orange',
+    status_red: 'status_red',
+    status_undefined: 'status_undefined',
     support: 'support',
 };
 
 export const basic = () => {
     return `
-    <pd-icon class="mt-3" size="1.5" name="ablage"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="add"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="appview"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="arrow"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="book"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="breadcrumb"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="cancel"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="checkbox-checked"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="checkbox-default"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="close"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="close-small"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="collapse"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="configuration"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="confirm"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="contacts"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="documents"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="dropdown"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="expand"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="filter"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="folder-closed"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="folder-open"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="link"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="list"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="menu"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="message"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="money"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="parlament"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="press"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="print"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="profile"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="radio-checked"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="radio-default"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="recherche"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="reservation"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="search"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="sort"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="status-green"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="status-orange"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="status-red"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="status-undefined"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="support"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="add"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="appview"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="audio"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="breadcrumb"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="cancel"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="checkbox_checked"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="checkbox_default"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="clipboard"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="close_small"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="close"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="compensation"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="configuration"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="confirm"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="contact"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="dictionary"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="documents"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="dropdown"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="expand"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="filter"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="folder_closed"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="folder_open"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="gallery"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="link"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="list"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="menu"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="message"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="microphone"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="parlament"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="play"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="press"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="print"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="profile"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="radio_checked"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="radio_default"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="research"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="reservation"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="search"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="sort"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="status_green"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="status_orange"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="status_red"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="status_undefined"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="support"></pd-icon>
     `;
 };
 
