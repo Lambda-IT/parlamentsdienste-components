@@ -8,7 +8,6 @@ import { TextFieldTypes, InputChangeEventDetail } from '../../interface';
 })
 export class Input {
     private nativeInput?: HTMLInputElement;
-    private inputId = `pd-input-${inputIds++}`;
 
     /**
      * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -85,7 +84,7 @@ export class Input {
     /**
      * The name of the control, which is submitted with the form data.
      */
-    @Prop() name: string = this.inputId;
+    @Prop() name: string;
 
     /**
      * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
@@ -197,7 +196,6 @@ export class Input {
 
     render() {
         const value = this.getValue();
-        const labelId = this.inputId + '-lbl';
 
         return (
             <Host class={this.error ? 'pd-input-error' : ''}>
@@ -205,8 +203,7 @@ export class Input {
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
                         class="pd-input"
-                        ref={input => (this.nativeInput = input)}
-                        aria-labelledby={labelId}
+                        ref={(input) => (this.nativeInput = input)}
                         disabled={this.disabled}
                         accept={this.accept}
                         autoCapitalize={this.autocapitalize}
@@ -238,5 +235,3 @@ export class Input {
         );
     }
 }
-
-let inputIds = 0;

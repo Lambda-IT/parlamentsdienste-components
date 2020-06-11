@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdTimelineDate } from './pd-timeline-date';
+import { PdTimelineDate } from '../pd-timeline-date';
 
 describe('pd-timeline-date', () => {
     it('renders', async () => {
@@ -10,7 +10,15 @@ describe('pd-timeline-date', () => {
         expect(page.root).toEqualHtml(`
       <pd-timeline-date>
         <mock:shadow-root>
-          <slot></slot>
+          <div class="pd-timeline-date">
+            <div class="pd-timeline-date-dot"></div>
+            <div class="pd-timeline-date-text"></div>
+          </div>
+          <div class="pd-timeline-content pd-timeline-content-notitle">
+            <div class="pd-timeline-content-text">
+              <slot></slot>
+            </div>
+          </div>
         </mock:shadow-root>
       </pd-timeline-date>
     `);

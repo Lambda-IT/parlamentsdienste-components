@@ -117,7 +117,7 @@ export class PdIcon implements ComponentInterface {
                     spin: !!this.spin,
                 }}
                 style={{
-                    fontSize: `${this.size}rem` ?? null,
+                    fontSize: this.size ? `${this.size}rem` : null,
                     transform: transformStyle ?? null,
                     animationDuration: this.spin ? `${this.spin}ms` : null,
                     animationName: this.spinReverse ? `spin-reverse` : null,

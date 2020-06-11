@@ -8,11 +8,13 @@ describe('pd-list-item', () => {
             html: `<pd-list-item></pd-list-item>`,
         });
         expect(page.root).toEqualHtml(`
-      <pd-list-item>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </pd-list-item>
-    `);
+          <pd-list-item>
+            <mock:shadow-root>
+              <div class="pd-list-item-content">
+                <slot></slot>
+              </div>
+            </mock:shadow-root>
+          </pd-list-item>
+        `);
     });
 });
