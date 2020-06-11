@@ -525,7 +525,7 @@
                             </pd-sidebar-item>
                         </pd-sidebar>
                     </div>
-                    <div class="col">
+                    <div class="col overflow-hidden">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Start</a></li>
@@ -577,7 +577,7 @@
                                     >
                                     <pd-panel-content>
                                         <div class="row">
-                                            <pd-panel class="col-sm-6">
+                                            <pd-panel class="col-xl-6">
                                                 <pd-panel-header slot="header">Nationalrat</pd-panel-header>
                                                 <pd-panel-content>
                                                     <div class="card-group">
@@ -649,7 +649,7 @@
                                                 </pd-panel-content>
                                             </pd-panel>
                                             <pd-panel
-                                                class="col-sm-6"
+                                                class="col-xl-6"
                                                 style="--pd-list-background: #f8f9fa; --pd-list-border-color: white;"
                                             >
                                                 <pd-panel-header slot="header">Aktuelle Rednerliste</pd-panel-header>
@@ -673,6 +673,46 @@
                                                 </pd-panel-content>
                                             </pd-panel>
                                         </div>
+                                    </pd-panel-content>
+                                </pd-panel>
+                                <pd-panel class="mt-4" collapsible>
+                                    <pd-panel-header slot="header">Timeline</pd-panel-header>
+                                    <pd-panel-content>
+                                        <pd-timeline start="true" end="true">
+                                            <pd-timeline-date date="13.03.2019" header="Ständerat"
+                                                >Annahme</pd-timeline-date
+                                            >
+                                            <pd-timeline-date
+                                                date="28.04.2019"
+                                                header="SiK-NR"
+                                                href="http://www.google.ch"
+                                            >
+                                                Beginn der Beratung<br />
+                                                <a href="#">Unterlagen (PDF)</a>
+                                            </pd-timeline-date>
+                                            <pd-timeline-date
+                                                date="24.06.2019"
+                                                header="SiK-NR"
+                                                href="http://www.google.ch"
+                                            >
+                                                Antrag: Ablehnung <br />
+                                                <a href="#">Bericht (PDF)</a>
+                                            </pd-timeline-date>
+                                            <pd-timeline-date date="19.09.2019" header="Nationalrat"
+                                                >Ablehnung</pd-timeline-date
+                                            >
+                                            <pd-timeline-date date="30.10.2019">
+                                                Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des
+                                                Bundesrates auf dringliche Kredite mit Vorschuss zu. <br /><a href="#"
+                                                    >Audioaufnahme</a
+                                                >
+                                                <img
+                                                    src="https://source.unsplash.com/random/300x300?v=1"
+                                                    class="card-img-top"
+                                                    alt="..."
+                                                />
+                                            </pd-timeline-date>
+                                        </pd-timeline>
                                     </pd-panel-content>
                                 </pd-panel>
                             </div>

@@ -23,7 +23,7 @@ export class PdIcon implements ComponentInterface {
     @Prop() name?: string;
 
     /**
-     * Size of the icon in 'em'
+     * Size of the icon in 'rem'
      */
     @Prop() size?: number;
 
@@ -117,7 +117,7 @@ export class PdIcon implements ComponentInterface {
                     spin: !!this.spin,
                 }}
                 style={{
-                    fontSize: `${this.size}em` ?? null,
+                    fontSize: `${this.size}rem` ?? null,
                     transform: transformStyle ?? null,
                     animationDuration: this.spin ? `${this.spin}ms` : null,
                     animationName: this.spinReverse ? `spin-reverse` : null,

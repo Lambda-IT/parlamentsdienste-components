@@ -180,7 +180,7 @@ export namespace Components {
          */
         "rotate": number;
         /**
-          * Size of the icon in 'em'
+          * Size of the icon in 'rem'
          */
         "size"?: number;
         /**
@@ -949,7 +949,7 @@ declare namespace LocalJSX {
          */
         "rotate"?: number;
         /**
-          * Size of the icon in 'em'
+          * Size of the icon in 'rem'
          */
         "size"?: number;
         /**

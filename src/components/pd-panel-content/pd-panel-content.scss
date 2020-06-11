@@ -2,4 +2,5 @@ pd-panel-content {
     display: block;
     position: relative;
     padding: var(--pd-panel-content-padding, 1.25em);
+    overflow-x: auto;
 }
