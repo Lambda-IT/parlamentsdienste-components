@@ -57,7 +57,7 @@ describe('pd-dropdown', () => {
         expect(dropdownItems.length).toBe(1);
     });
 
-    it('should trigger change event', async () => {
+    it('should select an item', async () => {
         const page = await newE2EPage();
         await page.setContent(`<pd-dropdown></pd-dropdown>`);
 
@@ -65,8 +65,8 @@ describe('pd-dropdown', () => {
 
         const element = await page.find('pd-dropdown');
         element.setProperty('items', [
-            { id: '0', label: 'item0', value: 'item0' },
-            { id: '1', label: 'item1', value: 'item1' },
+            { id: '0', label: 'itemLabel0', value: 'itemValue0' },
+            { id: '1', label: 'itemLabel1', value: 'itemValue1' },
         ]);
         await page.waitForChanges();
 
@@ -77,6 +77,24 @@ describe('pd-dropdown', () => {
         const item1 = dropdownItems[1]; // pick item1
         await item1.click();
 
-        expect(changeEventSpy).toHaveReceivedEventDetail({ id: '1', label: 'item1', value: 'item1' });
+        const dropdownText = await page.find('pd-dropdown >>> .pd-dropdown-text');
+        expect(dropdownText).toEqualText('itemLabel1');
+
+        expect(changeEventSpy).toHaveReceivedEventDetail({ id: '1', label: 'itemLabel1', value: 'itemValue1' });
+    });
+
+    it('should set a placeholder', async () => {
+        const page = await newE2EPage();
+        await page.setContent(`<pd-dropdown></pd-dropdown>`);
+
+        const element = await page.find('pd-dropdown');
+        const dropdownText = await page.find('pd-dropdown >>> .pd-dropdown-text');
+
+        expect(dropdownText).toEqualText('');
+
+        element.setProperty('placeholder', 'test placeholder');
+        await page.waitForChanges();
+
+        expect(dropdownText).toEqualText('test placeholder');
     });
 });

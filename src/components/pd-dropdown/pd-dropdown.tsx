@@ -25,7 +25,7 @@ export class Dropdown {
     /**
      * Placeholder when no item is selected
      */
-    @Prop() placeholder: string = 'Placeholder';
+    @Prop() placeholder: string = '';
 
     /**
      * Items to display and select in dropdown
