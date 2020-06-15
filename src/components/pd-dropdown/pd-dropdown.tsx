@@ -76,7 +76,7 @@ export class Dropdown {
 
             case 'ArrowDown': {
                 ev.preventDefault();
-                const currentIndex = this.items.findIndex(item => item === this.selectedItem);
+                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
                 const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = this.items[nextIndex];
                 if (nextItem !== this.selectedItem) this.selectItem(nextItem);
@@ -84,7 +84,7 @@ export class Dropdown {
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                const currentIndex = this.items.findIndex(item => item === this.selectedItem);
+                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
                 const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
                 const previousItem = this.items[previousIndex];
                 if (previousItem !== this.selectedItem) this.selectItem(previousItem);
@@ -100,7 +100,7 @@ export class Dropdown {
                     this.currentSearch = ev.key;
                 }
                 const currentItem = this.items.find(
-                    item => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
+                    (item) => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
                 );
                 if (currentItem) this.selectedItem = currentItem;
 
@@ -128,7 +128,7 @@ export class Dropdown {
     @State() selectedItem: any;
 
     protected componentWillLoad() {
-        this.selectedItem = this.items.find(item => item.selected);
+        this.selectedItem = this.items.find((item) => item.selected);
     }
 
     protected componentDidLoad() {
@@ -147,7 +147,7 @@ export class Dropdown {
     }
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
-        dropdownItemNodes.forEach(item => {
+        dropdownItemNodes.forEach((item) => {
             const centerItem = Math.ceil(this.itemCount / 2) - 1;
             if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
@@ -202,7 +202,7 @@ export class Dropdown {
     }
 
     private renderDropDownItems() {
-        return this.items.map(item => (
+        return this.items.map((item) => (
             <pd-dropdown-item
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
