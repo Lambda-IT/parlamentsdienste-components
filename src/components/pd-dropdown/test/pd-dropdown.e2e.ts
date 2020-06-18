@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('pd-dropdown', () => {
-    it('renders', async () => {
+    it('should render', async () => {
         const page = await newE2EPage();
         await page.setContent('<pd-dropdown></pd-dropdown>');
 
@@ -9,7 +9,7 @@ describe('pd-dropdown', () => {
         expect(element).toHaveClass('hydrated');
     });
 
-    it('opens dropdown', async () => {
+    it('should opens dropdown', async () => {
         const page = await newE2EPage();
         await page.setContent(`<pd-dropdown></pd-dropdown>`);
 
@@ -34,7 +34,7 @@ describe('pd-dropdown', () => {
         expect(dropdownItems.length).toBe(2);
     });
 
-    it('adds empty item', async () => {
+    it('should add an empty item', async () => {
         const page = await newE2EPage();
         await page.setContent(`<pd-dropdown></pd-dropdown>`);
 
@@ -96,5 +96,19 @@ describe('pd-dropdown', () => {
         await page.waitForChanges();
 
         expect(dropdownText).toEqualText('test placeholder');
+    });
+
+    it('should match screenshot', async () => {
+        const page = await newE2EPage();
+        await page.setContent(`<pd-dropdown></pd-dropdown>`);
+
+        const results = await page.compareScreenshot();
+
+        // Finally, we can test against the previous screenshots.
+        // Test against hard pixels
+        expect(results).toMatchScreenshot({ allowableMismatchedPixels: 0 });
+
+        // Test against the percentage of changes. if 'allowableMismatchedRatio' is above 20% changed,
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0.2 });
     });
 });
