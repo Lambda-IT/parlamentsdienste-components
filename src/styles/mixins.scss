@@ -56,4 +56,11 @@
         letter-spacing: 0.19px;
         margin: 0;
     }
+
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        appearance: none;
+    }
 }
