@@ -32,7 +32,7 @@ export class PanelHeader {
 
     public render() {
         return (
-            <Host>
+            <Host class={{ 'pd-panel-header-collapsed': this.collapsed }}>
                 <div class="pd-panel-header-content">
                     <slot></slot>
                 </div>

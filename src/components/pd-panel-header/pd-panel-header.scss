@@ -8,6 +8,12 @@
     border-top-right-radius: 0.25em;
     min-height: 3em;
     font-weight: 700;
+    transition: border-radius 0.3s ease-in-out;
+}
+
+:host(.pd-panel-header-collapsed) {
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
 }
 
 *,
