@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Forms + Inputs|Datepicker',
+    title: 'Forms + Inputs/Datepicker',
     decorators: [
         withActions(
             'pd-change',

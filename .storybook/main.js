@@ -3,7 +3,6 @@ module.exports = {
         '@storybook/addon-notes/register-panel',
         '@storybook/addon-knobs/register',
         '@storybook/addon-actions/register',
-        '@storybook/addon-backgrounds/register',
         '@storybook/addon-viewport/register',
         '@storybook/addon-links/register',
     ],

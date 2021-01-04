@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Dialogs|Modal',
+    title: 'Dialogs/Modal',
     parameters: {
         notes,
         decorators: [withActions('pd-closed')],

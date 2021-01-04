@@ -1,7 +1,7 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Layout|Navbar',
+    title: 'Layout/Navbar',
     parameters: {
         notes,
     },

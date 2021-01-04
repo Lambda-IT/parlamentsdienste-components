@@ -1,5 +1,5 @@
 export default {
-    title: 'vuejs|samples',
+    title: 'vuejs/samples',
 };
 
 export const sampleApp = () => `

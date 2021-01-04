@@ -3,7 +3,7 @@ import { withActions } from '@storybook/addon-actions';
 import { withKnobs, radios } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Forms + Inputs|Checkbox',
+    title: 'Forms + Inputs/Checkbox',
     parameters: {
         notes,
         decorators: [withKnobs(), withActions('pd-checked')],

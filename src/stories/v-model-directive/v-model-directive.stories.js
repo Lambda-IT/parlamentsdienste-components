@@ -1,7 +1,7 @@
 import notes from './readme.md';
 
 export default {
-    title: 'vuejs|directives',
+    title: 'vuejs/directives',
     parameters: { notes },
 };
 

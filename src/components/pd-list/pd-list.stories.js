@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Interactions|List',
+    title: 'Interactions/List',
     decorators: [withKnobs()],
     parameters: {
         notes,

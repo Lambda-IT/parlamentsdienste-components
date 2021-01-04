@@ -25,7 +25,7 @@ export const pointerCoord = (ev: any): { x: number; y: number } => {
 export function closestElement(selector: string, base: HTMLElement) {
     function __closestFrom(el: Element | Window | Document): Element {
         if (!el || el === document || el === window) return null;
-        if ((el as Slotable).assignedSlot) el = (el as Slotable).assignedSlot;
+        if ((el as Slottable).assignedSlot) el = (el as Slottable).assignedSlot;
         let found = (el as Element).closest(selector);
         return found ? found : __closestFrom(((el as Element).getRootNode() as ShadowRoot).host);
     }

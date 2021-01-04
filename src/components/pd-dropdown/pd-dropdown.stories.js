@@ -3,7 +3,7 @@ import { object } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Forms + Inputs|Dropdown',
+    title: 'Forms + Inputs/Dropdown',
     parameters: {
         notes,
         decorators: [withActions('pd-change')],

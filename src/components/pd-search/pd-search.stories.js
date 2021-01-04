@@ -3,7 +3,7 @@ import { withKnobs, radios, array, text } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Forms + Inputs|Search',
+    title: 'Forms + Inputs/Search',
     decorators: [withActions('pd-input', 'pd-change', 'pd-search', 'pd-focus', 'pd-blur'), withKnobs()],
     parameters: {
         notes,

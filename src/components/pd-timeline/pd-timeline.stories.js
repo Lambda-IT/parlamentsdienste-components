@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Interactions|Timeline',
+    title: 'Interactions/Timeline',
     decorators: [withKnobs()],
     parameters: {
         notes,

@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withKnobs, object, array, radios } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Interactions|Table',
+    title: 'Interactions/Table',
     decorators: [withKnobs()],
     parameters: {
         notes,

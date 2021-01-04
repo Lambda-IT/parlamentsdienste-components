@@ -1,7 +1,7 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Forms + Inputs|Radio',
+    title: 'Forms + Inputs/Radio',
     parameters: {
         notes,
     },

@@ -1,7 +1,7 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Interactions|Breadcrumb',
+    title: 'Interactions/Breadcrumb',
     parameters: { notes },
 };
 

@@ -3,7 +3,7 @@ import { withKnobs, text, radios } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
 export default {
-    title: 'Dialogs|Alert',
+    title: 'Dialogs/Alert',
     decorators: [withActions('pd-closed'), withKnobs()],
     parameters: {
         notes,

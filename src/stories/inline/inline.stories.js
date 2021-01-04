@@ -1,7 +1,7 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Typography|Inline',
+    title: 'Typography/Inline',
     parameters: { notes },
 };
 

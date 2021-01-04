@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Interactions|Timeline Date',
+    title: 'Interactions/Timeline Date',
     decorators: [withKnobs()],
     parameters: {
         notes,

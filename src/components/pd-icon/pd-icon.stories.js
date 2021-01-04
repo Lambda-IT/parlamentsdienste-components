@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { withKnobs, radios, number, select, text } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Typography|Icon',
+    title: 'Typography/Icon',
     decorators: [withKnobs()],
     parameters: {
         notes,

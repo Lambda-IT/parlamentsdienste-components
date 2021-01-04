@@ -2,7 +2,7 @@ import notes from './readme.md';
 import { radios, withKnobs, number } from '@storybook/addon-knobs';
 
 export default {
-    title: 'Interactions|Progress Bar',
+    title: 'Interactions/Progress Bar',
     decorators: [withKnobs()],
     parameters: {
         notes,
