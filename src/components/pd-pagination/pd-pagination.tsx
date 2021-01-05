@@ -8,13 +8,13 @@ import { Component, Host, h, Prop, Event, EventEmitter, Watch } from '@stencil/c
 export class PdPagination {
     @Prop() public currentPage: number = 1;
 
-    @Prop() public totalPages: number = 1;
+    @Prop() public totalPages: number = 5;
+
+    @Prop() visiblePages: number = 5;
 
     @Event({ eventName: 'pd-change' }) pdChange: EventEmitter<number>;
 
-    private pages: number[] = [1, 2, 3];
-
-    public visiblePages: number = 5;
+    private pages: number[] = [];
 
     private selectPage(page: number) {
         this.pdChange.emit(page);
@@ -32,7 +32,7 @@ export class PdPagination {
             0,
             this.totalPages - this.visiblePages,
         );
-        this.pages = Array.from({ length: this.visiblePages }, (_, i) => i + first + 1);
+        this.pages = Array.from({ length: this.clamp(this.visiblePages, 0, this.totalPages) }, (_, i) => i + first + 1);
     }
 
     private firstPage() {

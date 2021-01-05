@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type     | Default |
-| ------------- | -------------- | ----------- | -------- | ------- |
-| `currentPage` | `current-page` |             | `number` | `1`     |
-| `totalPages`  | `total-pages`  |             | `number` | `1`     |
+| Property       | Attribute       | Description | Type     | Default |
+| -------------- | --------------- | ----------- | -------- | ------- |
+| `currentPage`  | `current-page`  |             | `number` | `1`     |
+| `totalPages`   | `total-pages`   |             | `number` | `5`     |
+| `visiblePages` | `visible-pages` |             | `number` | `5`     |
 
 
 ## Events

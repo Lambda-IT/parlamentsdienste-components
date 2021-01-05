@@ -348,6 +348,7 @@ export namespace Components {
     interface PdPagination {
         "currentPage": number;
         "totalPages": number;
+        "visiblePages": number;
     }
     interface PdPanel {
         /**
@@ -1133,6 +1134,7 @@ declare namespace LocalJSX {
         "currentPage"?: number;
         "onPd-change"?: (event: CustomEvent<number>) => void;
         "totalPages"?: number;
+        "visiblePages"?: number;
     }
     interface PdPanel {
         /**
