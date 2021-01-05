@@ -36,19 +36,19 @@ export class PdPagination {
     }
 
     private firstPage() {
-        this.currentPage = 1;
+        this.pdChange.emit(1);
     }
 
     private prevPage() {
-        this.currentPage = this.clamp(this.currentPage - 1, 1, this.totalPages);
+        this.pdChange.emit(this.clamp(this.currentPage - 1, 1, this.totalPages));
     }
 
     private nextPage() {
-        this.currentPage = this.clamp(this.currentPage + 1, 1, this.totalPages);
+        this.pdChange.emit(this.clamp(this.currentPage + 1, 1, this.totalPages));
     }
 
     private lastPage() {
-        this.currentPage = this.totalPages;
+        this.pdChange.emit(this.totalPages);
     }
 
     render() {
