@@ -345,6 +345,10 @@ export namespace Components {
         "target": string;
         "text": string;
     }
+    interface PdPagination {
+        "currentPage": number;
+        "totalPages": number;
+    }
     interface PdPanel {
         /**
           * Expands / collapses the panel content
@@ -658,6 +662,12 @@ declare global {
         prototype: HTMLPdNavbarItemElement;
         new (): HTMLPdNavbarItemElement;
     };
+    interface HTMLPdPaginationElement extends Components.PdPagination, HTMLStencilElement {
+    }
+    var HTMLPdPaginationElement: {
+        prototype: HTMLPdPaginationElement;
+        new (): HTMLPdPaginationElement;
+    };
     interface HTMLPdPanelElement extends Components.PdPanel, HTMLStencilElement {
     }
     var HTMLPdPanelElement: {
@@ -764,6 +774,7 @@ declare global {
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
+        "pd-pagination": HTMLPdPaginationElement;
         "pd-panel": HTMLPdPanelElement;
         "pd-panel-content": HTMLPdPanelContentElement;
         "pd-panel-footer": HTMLPdPanelFooterElement;
@@ -1118,6 +1129,11 @@ declare namespace LocalJSX {
         "target"?: string;
         "text"?: string;
     }
+    interface PdPagination {
+        "currentPage"?: number;
+        "onPd-change"?: (event: CustomEvent<number>) => void;
+        "totalPages"?: number;
+    }
     interface PdPanel {
         /**
           * Expands / collapses the panel content
@@ -1396,6 +1412,7 @@ declare namespace LocalJSX {
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
+        "pd-pagination": PdPagination;
         "pd-panel": PdPanel;
         "pd-panel-content": PdPanelContent;
         "pd-panel-footer": PdPanelFooter;
@@ -1432,6 +1449,7 @@ declare module "@stencil/core" {
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
+            "pd-pagination": LocalJSX.PdPagination & JSXBase.HTMLAttributes<HTMLPdPaginationElement>;
             "pd-panel": LocalJSX.PdPanel & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
             "pd-panel-content": LocalJSX.PdPanelContent & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
             "pd-panel-footer": LocalJSX.PdPanelFooter & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;

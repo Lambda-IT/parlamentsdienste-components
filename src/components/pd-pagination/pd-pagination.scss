@@ -1,0 +1,65 @@
+@include resetControlFonts;
+
+:host {
+    display: flex;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pd-pagination-prev,
+.pd-pagination-next,
+.pd-pagination-first,
+.pd-pagination-last,
+.pd-pagination-page {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border: 0.125em solid $gray-3;
+    min-width: 2.25em;
+    color: setcolor(primary, enabled);
+    background-color: white;
+    padding: 0.25em;
+
+    &:hover {
+        background-color: setcolor(primary, hover);
+        color: white;
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: setcolor(primary, pressed);
+        color: white;
+    }
+
+    span {
+        margin-top: -0.2em;
+    }
+}
+
+.pd-pagination-first {
+    border-right: none;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+}
+
+.pd-pagination-page,
+.pd-pagination-prev,
+.pd-pagination-next {
+    border-right: none;
+}
+
+.pd-pagination-last {
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+}
+
+.pd-pagination-active {
+    color: setcolor(primary, pressed);
+    background-color: setcolor(primary, enabled);
+    font-weight: 700;
+}

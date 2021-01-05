@@ -24,6 +24,7 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-pagination id="pd-pagination-1" total-pages="10" current-page="1"></pd-pagination>
             <pd-timeline start="true" end="true">
                 <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
                 <pd-timeline-date date="28.04.2019" header="SiK-NR" href="http://www.google.ch">
@@ -213,6 +214,8 @@
             const pdTable1 = document.getElementById('pd-table-1');
             const pdTable2 = document.getElementById('pd-table-2');
 
+            const pdPagination1 = document.getElementById('pd-pagination-1');
+
             const flatPickr0 = document.getElementById('pd-datepickr-0');
 
             flatPickr0.config = {
@@ -230,7 +233,7 @@
                     bold: true,
                     fixed: true,
                     textAlign: 'right',
-                    displayFunc: value => `ITM-${value}`,
+                    displayFunc: (value) => `ITM-${value}`,
                 },
                 {
                     columnName: 'column1',
@@ -248,7 +251,7 @@
                     minWidth: 100,
                     sortable: true,
                     sortDir: 'asc',
-                    displayFunc: value => value.toUpperCase(),
+                    displayFunc: (value) => value.toUpperCase(),
                 },
                 {
                     columnName: 'column3',
@@ -261,7 +264,7 @@
                         if (dir === 'asc') return a % 2 === b % 2 ? 0 : a % 2 < b % 2 ? 1 : 0;
                         else return a % 2 === b % 2 ? 0 : a % 2 > b % 2 ? 1 : 0;
                     },
-                    displayFunc: value => value * 10,
+                    displayFunc: (value) => value * 10,
                 },
             ];
 
@@ -288,18 +291,23 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdInput.addEventListener('pd-change', value => {
+            pdPagination1.addEventListener('pd-change', (value) => {
+                console.log(`file: index.html ~ line 295 ~ pdPagination1.addEventListener ~ value`, value.detail);
+                pdPagination1.setAttribute('current-page', value.detail);
+            });
+
+            pdInput.addEventListener('pd-change', (value) => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
-            pdSlider.addEventListener('pd-input', value => {
+            pdSlider.addEventListener('pd-input', (value) => {
                 pdProgress.setAttribute('value', value.detail.value / 100);
             });
 
-            pdSearch.addEventListener('pd-search', value => {
+            pdSearch.addEventListener('pd-search', (value) => {
                 console.log('LOG: value', value);
             });
 
-            pdSearch.addEventListener('pd-input', value => {
+            pdSearch.addEventListener('pd-input', (value) => {
                 pdSearch.results = [
                     `Some random results`,
                     `Some random (results)`,
@@ -310,7 +318,7 @@
                 ];
             });
 
-            pdBreadcrumbs.addEventListener('pd-navigated', value => {
+            pdBreadcrumbs.addEventListener('pd-navigated', (value) => {
                 console.log('LOG: value', value);
             });
 
@@ -373,12 +381,12 @@
                 modal.append(contentTemplate);
 
                 // 1st way to get return data
-                modal.whenClosed().then(returnData => {
+                modal.whenClosed().then((returnData) => {
                     console.log('whenClosed method', returnData);
                 });
 
                 // 2st way to get return data
-                modal.addEventListener('pd-closed', event => console.log('pd-closed event', event.detail));
+                modal.addEventListener('pd-closed', (event) => console.log('pd-closed event', event.detail));
 
                 // present the modal
                 document.body.appendChild(modal);
