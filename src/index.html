@@ -24,6 +24,11 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-navbar id="pd-navbar-1">
+                <pd-navbar-item text="Startseite"></pd-navbar-item>
+                <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
+                <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
+            </pd-navbar>
             <pd-pagination id="pd-pagination-1" total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
             <pd-timeline start="true" end="true">
                 <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
@@ -176,11 +181,6 @@
                 helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
             ></pd-input>
             <pd-input value="asdf" label="asdf" error id="pd-input-0" helper-text="asdf-asdf"></pd-input>
-            <pd-navbar>
-                <pd-navbar-item text="Startseite"></pd-navbar-item>
-                <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
-                <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
-            </pd-navbar>
             <pd-sidebar>
                 <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
                 <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
@@ -209,6 +209,7 @@
             const pdBackdrop = document.getElementById('pd-backdrop-0');
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
+            const pdNavbar = document.getElementById('pd-navbar-1');
 
             const pdTable0 = document.getElementById('pd-table-0');
             const pdTable1 = document.getElementById('pd-table-1');
@@ -292,7 +293,6 @@
             ];
 
             pdPagination1.addEventListener('pd-change', (value) => {
-                console.log(`file: index.html ~ line 295 ~ pdPagination1.addEventListener ~ value`, value.detail);
                 pdPagination1.setAttribute('current-page', value.detail);
             });
 
@@ -317,6 +317,8 @@
                     `RanDoM`,
                 ];
             });
+
+            pdNavbar.addEventListener('pd-menu', () => console.log(`file: index.html ~ line 324`));
 
             pdBreadcrumbs.addEventListener('pd-navigated', (value) => {
                 console.log('LOG: value', value);

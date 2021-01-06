@@ -5,7 +5,6 @@
     min-height: 4.25rem;
     background-color: $blue-whale;
     color: $white;
-    padding: 0 6.25em;
 }
 
 *,
@@ -15,7 +14,47 @@
     outline: none;
 }
 
-.pd-navbar-icon {
+.pd-navbar-icon,
+pd-icon {
     min-width: 2rem;
     fill: $white;
+}
+
+.pd-navbar-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 6.25em;
+}
+
+.pd-navbar-item-mobile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5em;
+
+    .pd-navbar-menu {
+        fill: $cyan-3;
+        cursor: pointer;
+
+        &:hover {
+            fill: $white;
+        }
+
+        &:focus {
+            fill: $yellow-2;
+        }
+
+        &:active {
+            fill: $cyan-6;
+        }
+    }
+
+    .pd-navbar-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 }
