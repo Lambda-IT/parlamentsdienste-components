@@ -1,8 +1,5 @@
-import { withLinks } from '@storybook/addon-links';
-
 export default {
     title: 'Introduction/Welcome',
-    decorators: [withLinks],
 };
 
 export const welcome = () => `
