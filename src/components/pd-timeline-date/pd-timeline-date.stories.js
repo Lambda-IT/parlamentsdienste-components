@@ -1,23 +1,31 @@
 import notes from './readme.md';
-import { withKnobs, text } from '@storybook/addon-knobs';
 
 export default {
     title: 'Interactions/Timeline Date',
-    decorators: [withKnobs()],
     parameters: {
         notes,
     },
+    argTypes: {
+        date: { control: { type: 'text' } },
+        header: { control: { type: 'text' } },
+        href: { control: { type: 'text' } },
+        target: { control: { type: 'select', options: ['_blank', ''] } },
+        content: { control: { type: 'text' } },
+    },
 };
 
-export const timeline = () => {
-    const date = text('date', 'date');
-    const header = text('header', 'header');
-    const href = text('href', 'http://www.lambda-it.ch');
-    const target = text('href', '_blank');
-    const content = text('content', 'Content text');
-    return `
-        <pd-timeline-date class="m-3" date="${date}" header="${header}" href="${href}" target="${target}">
-            <span>${content}<span>
-        </pd-timeline-date>
-    `;
+///////////////////////////////////////////////////////////////////////////
+
+export const Timeline = (args) => `
+    <pd-timeline-date class="m-3" date="${args.date}" header="${args.header}" href="${args.href}" target="${args.target}">
+        <span>${args.content}<span>
+    </pd-timeline-date>
+`;
+
+Timeline.args = {
+    date: 'date',
+    header: 'header',
+    href: 'http://www.lambda-it.ch',
+    target: '_blank',
+    content: 'Content text',
 };

@@ -1,26 +1,30 @@
 import notes from './readme.md';
-import { withKnobs, text, radios } from '@storybook/addon-knobs';
 
 export default {
     title: 'Dialogs/Toast',
-    decorators: [withKnobs()],
     parameters: {
         actions: {
             handles: ['pd-closed'],
         },
         notes,
     },
+    argTypes: {
+        header: { control: { type: 'text' } },
+        info: { control: { type: 'text' } },
+        body: { control: { type: 'text' } },
+        size: { control: { type: 'select', options: ['large', 'small'] } },
+    },
 };
 
-export const toast = () => {
-    const header = text('header', 'Toast Title');
-    const info = text('info', '11 minutes ago');
-    const body = text('body', 'Toast body text goes here');
-    const size = radios('size', ['large', 'small'], 'large');
+///////////////////////////////////////////////////////////////////////////
 
-    return `
-    <pd-toast class="m-3" header="${header}" info="${info}" size="${size}">
-        ${body}
-    </pd-toast>
-    `;
+export const Toast = (args) => `
+    <pd-toast class="m-3" header="${args.header}" info="${args.info}" size="${args.size}">${args.body}</pd-toast>
+`;
+
+Toast.args = {
+    header: 'Toast Title',
+    info: '11 minutes ago',
+    body: 'Toast body text goes here',
+    size: 'large',
 };

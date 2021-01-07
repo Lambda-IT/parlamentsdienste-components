@@ -1,37 +1,40 @@
 import notes from './readme.md';
-import { withKnobs, radios, array, text } from '@storybook/addon-knobs';
 
 export default {
     title: 'Forms + Inputs/Search',
-    decorators: [withKnobs()],
     parameters: {
         actions: {
             handles: ['pd-input', 'pd-change', 'pd-search', 'pd-focus', 'pd-blur'],
         },
         notes,
     },
+    argTypes: {
+        label: { control: { type: 'text' } },
+        placeholder: { control: { type: 'text' } },
+        disabled: { control: { type: 'boolean' } },
+        highlight: { control: { type: 'boolean' } },
+        results: { control: { type: 'array' } },
+    },
 };
 
-export const search = () => {
-    const disabled = radios('disabled', { yes: 'true', no: 'false' }, 'false');
-    const label = text('label', 'Label');
-    const placeholder = text('placeholder', 'search...');
-    const highlight = radios('highlight', { yes: 'true', no: 'false' }, 'false');
-    const results = array('search results', [
-        'Sample Result 1',
-        'Sample Result 2',
-        'Sample Result 3',
-        'Sample Result 4',
-        'Sample Result 5',
-    ]);
+///////////////////////////////////////////////////////////////////////////
 
+export const Search = (args) => {
     const search = document.createElement('pd-search');
     search.classList = ['m-3'];
-    search.results = results;
-    search.disabled = disabled;
-    search.label = label;
-    search.placeholder = placeholder;
-    search.highlight = highlight;
+    search.results = args.results;
+    search.disabled = args.disabled;
+    search.label = args.label;
+    search.placeholder = args.placeholder;
+    search.highlight = args.highlight;
 
     return search;
+};
+
+Search.args = {
+    label: 'Label',
+    placeholder: 'search...',
+    disabled: false,
+    highlight: false,
+    results: ['Sample Result 1', 'Sample Result 2', 'Sample Result 3', 'Sample Result 4', 'Sample Result 5'],
 };

@@ -1,5 +1,4 @@
 import notes from './readme.md';
-import { withKnobs, radios } from '@storybook/addon-knobs';
 
 export default {
     title: 'Forms + Inputs/Checkbox',
@@ -8,15 +7,21 @@ export default {
             handles: ['pd-checked'],
         },
         notes,
-        decorators: [withKnobs()],
+    },
+    argTypes: {
+        disabled: { control: { type: 'boolean' } },
+        checked: { control: { type: 'boolean' } },
     },
 };
 
-export const checkbox = () => {
-    const checked = radios('checked', { yes: 'checked', no: '' }, '');
-    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
+///////////////////////////////////////////////////////////////////////////
 
-    return `
-        <pd-checkbox class="m-3" ${disabled} ${checked} text="checkbox"></pd-checkbox>
-    `;
+export const Checkbox = (args) => `
+        <pd-checkbox class="m-3" ${args.disabled ? 'disabled' : ''} 
+        ${args.checked ? 'checked' : ''} text="checkbox"></pd-checkbox>
+`;
+
+Checkbox.args = {
+    disabled: false,
+    checked: false,
 };

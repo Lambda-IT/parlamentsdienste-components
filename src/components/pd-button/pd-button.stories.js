@@ -1,9 +1,7 @@
-import { withKnobs, text, radios } from '@storybook/addon-knobs';
 import notes from './readme.md';
 
 export default {
     title: 'Interactions/Button',
-    decorators: [withKnobs()],
     parameters: {
         actions: {
             handles: ['click'],
@@ -12,68 +10,119 @@ export default {
     },
 };
 
-export const states = () => {
-    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
-    const size = radios('size', { large: 'large', normal: 'normal', small: 'small' }, 'normal');
-    return `
-        <pd-button class="mt-3 ml-3" ${disabled} size=${size}>Primary</pd-button>
-        <pd-button class="mt-3" ${disabled} size=${size} color="success">Success</pd-button>
-        <pd-button class="mt-3" ${disabled} size=${size} color="danger">Danger</pd-button>
-        <pd-button class="mt-3" ${disabled} size=${size} color="warning">Warning</pd-button>
-        <pd-button class="mt-3" ${disabled} size=${size} color="info">Info</pd-button>
-        <pd-button class="mt-3" ${disabled} size=${size} color="light">Light</pd-button>
-        <pd-button class="mt-3" ${disabled} size=${size} color="dark">Dark</pd-button>
-    `;
+///////////////////////////////////////////////////////////////////////////
+
+const StatesStory = (args) => `
+    <pd-button class="mt-3 ml-3" ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="success">Success</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger">Danger</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning">Warning</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="info">Info</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="light">Light</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark">Dark</pd-button>
+`;
+
+export const States = StatesStory.bind({});
+
+States.args = {
+    disabled: false,
+    size: 'normal',
 };
 
-export const outline = () => {
-    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
-    const size = radios('size', { large: 'large', normal: 'normal', small: 'small' }, 'normal');
-    return `
-        <pd-button class="mt-3 ml-3" outline ${disabled} size=${size}>Primary</pd-button>
-        <pd-button class="mt-3" outline ${disabled} size=${size} color="success">Success</pd-button>
-        <pd-button class="mt-3" outline ${disabled} size=${size} color="danger">Danger</pd-button>
-        <pd-button class="mt-3" outline ${disabled} size=${size} color="warning">Warning</pd-button>
-        <pd-button class="mt-3" outline ${disabled} size=${size} color="info">Info</pd-button>
-        <pd-button class="mt-3" outline ${disabled} size=${size} color="light">Light</pd-button>
-        <pd-button class="mt-3" outline ${disabled} size=${size} color="dark">Dark</pd-button>
-    `;
+States.argTypes = {
+    disabled: { control: { type: 'boolean' } },
+    size: { control: { type: 'select', options: ['large', 'normal', 'small'] } },
 };
 
-export const icon = () => {
-    const location = radios('location', { left: 'left', right: 'right' }, 'left');
-    return `
-        <div>
-            <pd-button class="m-3" icon-location="${location}">
-                <pd-icon size="2" style="fill: white" slot="icon" name="link"></pd-icon>
-                button
-            </pd-button>
-        </div>
-        <div>
-            <pd-button class="m-3" icon-location="${location}" href="http://www.google.ch" target="_blank">
-                <pd-icon size="1.2" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
-                external link
-            </pd-button>
-        </div>
-    `;
+///////////////////////////////////////////////////////////////////////////
+
+const OutlineStory = (args) => `
+    <pd-button class="mt-3 ml-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
+    args.size
+} color="success">Success</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
+    args.size
+} color="danger">Danger</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
+    args.size
+} color="warning">Warning</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="info">Info</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="light">Light</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark">Dark</pd-button>
+`;
+
+export const Outline = OutlineStory.bind({});
+
+Outline.args = {
+    ...States.args,
 };
 
-export const link = () => {
-    const href = text('href', 'http://www.google.ch');
-    const target = text('target', '_blank');
-    return `
-      <pd-button class="m-3" href="${href}" target="${target}">external link</pd-button>
-  `;
+Outline.argTypes = {
+    ...States.argTypes,
 };
 
-export const group = () => {
-    const disabled = radios('disabled', { yes: 'disabled', no: '' }, '');
-    const size = radios('size', { large: 'large', normal: 'normal', small: 'small' }, 'normal');
-    return `
-        <pd-button-group class="m-3">
-            <pd-button ${disabled} size=${size}>Primary</pd-button>
-            <pd-button ${disabled} size=${size}>Success</pd-button>
-            <pd-button ${disabled} size=${size}>Danger</pd-button>
-        </pd-button-group>
-    `;
+///////////////////////////////////////////////////////////////////////////
+
+const IconStory = (args) => `
+    <div>
+        <pd-button class="m-3" icon-location="${args.location}">
+            <pd-icon size="2" style="fill: white" slot="icon" name="link"></pd-icon>
+            button
+        </pd-button>
+    </div>
+    <div>
+        <pd-button class="m-3" icon-location="${args.location}" href="http://www.google.ch" target="_blank">
+            <pd-icon size="1.2" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
+            external link
+        </pd-button>
+    </div>
+`;
+
+export const Icon = IconStory.bind({});
+
+Icon.args = {
+    location: 'left',
+};
+
+Icon.argTypes = {
+    location: { control: { type: 'select', options: ['left', 'right'] } },
+};
+
+///////////////////////////////////////////////////////////////////////////
+
+const LinkStory = (args) => `
+    <pd-button class="m-3" href="${args.href}" target="${args.target}">external link</pd-button>
+`;
+
+export const Link = LinkStory.bind({});
+
+Link.args = {
+    href: 'http://www.google.ch',
+    target: '_blank',
+};
+
+Link.argTypes = {
+    href: { control: { type: 'text' } },
+    target: { control: { type: 'select', options: ['', '_blank'] } },
+};
+
+///////////////////////////////////////////////////////////////////////////
+
+const GroupStory = (args) => `
+    <pd-button-group class="m-3">
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Success</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Danger</pd-button>
+    </pd-button-group>
+`;
+
+export const Group = GroupStory.bind({});
+
+Group.args = {
+    ...States.args,
+};
+
+Group.argTypes = {
+    ...States.argTypes,
 };

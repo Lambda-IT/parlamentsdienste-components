@@ -1,23 +1,31 @@
 import notes from './readme.md';
-import { number, withKnobs } from '@storybook/addon-knobs';
 
 export default {
     title: 'Forms + Inputs/Pagination',
-    decorators: [withKnobs()],
     parameters: {
         actions: {
             handles: ['pd-change'],
         },
         notes,
     },
+    argTypes: {
+        currentPage: { control: { type: 'number' } },
+        totalPages: { control: { type: 'number' } },
+        visiblePages: { control: { type: 'number' } },
+    },
 };
 
-export const pagination = () => {
-    const currentPage = number('current-page', 3);
-    const totalPages = number('total-pages', 10);
-    const visiblePages = number('visible-pages', 5);
+///////////////////////////////////////////////////////////////////////////
 
-    return `
-        <pd-pagination total-pages="${totalPages}" visible-pages="${visiblePages}" current-page="${currentPage}"></pd-pagination>
-    `;
+export const Pagination = (args) => `
+    <pd-pagination 
+    total-pages="${args.totalPages}" 
+    visible-pages="${args.visiblePages}" 
+    current-page="${args.currentPage}"></pd-pagination>
+`;
+
+Pagination.args = {
+    currentPage: 3,
+    totalPages: 10,
+    visiblePages: 5,
 };

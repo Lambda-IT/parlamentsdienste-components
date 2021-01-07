@@ -1,32 +1,46 @@
 import notes from './readme.md';
-import { radios, withKnobs, number } from '@storybook/addon-knobs';
 
 export default {
     title: 'Interactions/Progress Bar',
-    decorators: [withKnobs()],
     parameters: {
         notes,
     },
+    argTypes: {
+        value: {
+            control: {
+                type: 'select',
+                options: { '0%': '0', '25%': '0.25', '33.33333%': '0.33333', '50%': '0.5', '75%': '0.75', '100%': '1' },
+            },
+        },
+        striped: { control: { type: 'boolean' } },
+        label: { control: { type: 'boolean' } },
+        decimals: { control: { type: 'number' } },
+    },
 };
 
-export const progressBar = () => {
-    const value = radios(
-        'value',
-        { '0%': '0', '25%': '0.25', '33.33333%': '0.33333', '50%': '0.5', '75%': '0.75', '100%': '1' },
-        0.25,
-    );
+///////////////////////////////////////////////////////////////////////////
 
-    const striped = radios('striped', { yes: 'striped', no: '' }, '');
+export const ProgressBar = (args) => `
+    <pd-progress-bar class="m-3" ${args.striped ? 'striped' : ''} ${args.label ? 'label' : ''} decimals="${
+    args.decimals
+}" color="primary" value=${args.value}></pd-progress-bar>
+    <pd-progress-bar class="m-3" ${args.striped ? 'striped' : ''} ${args.label ? 'label' : ''} decimals="${
+    args.decimals
+}" color="success" value=${args.value}></pd-progress-bar>
+    <pd-progress-bar class="m-3" ${args.striped ? 'striped' : ''} ${args.label ? 'label' : ''} decimals="${
+    args.decimals
+}" color="danger" value=${args.value}></pd-progress-bar>
+    <pd-progress-bar class="m-3" ${args.striped ? 'striped' : ''} ${args.label ? 'label' : ''} decimals="${
+    args.decimals
+}" color="warning" value=${args.value}></pd-progress-bar>
+    <pd-progress-bar class="m-3" ${args.striped ? 'striped' : ''} ${args.label ? 'label' : ''} decimals="${
+    args.decimals
+}" color="info" value=${args.value}></pd-progress-bar>
+`;
 
-    const label = radios('label', { yes: 'label', no: '' }, '');
-
-    const decimals = number('decimals', 2);
-
-    return `
-        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="primary" value=${value}></pd-progress-bar>
-        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="success" value=${value}></pd-progress-bar>
-        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="danger" value=${value}></pd-progress-bar>
-        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="warning" value=${value}></pd-progress-bar>
-        <pd-progress-bar class="m-3" ${striped} ${label} decimals="${decimals}" color="info" value=${value}></pd-progress-bar>
-    `;
+ProgressBar.args = {
+    value: '0.25',
+    striped: false,
+    label: false,
+    decimals: 2,
 };
