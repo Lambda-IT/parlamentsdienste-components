@@ -1,11 +1,14 @@
 import notes from './readme.md';
 import { text, radios, withKnobs, number } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Layout/Navbar',
-    decorators: [withActions('pd-menu'), withKnobs()],
+
+    decorators: [withKnobs()],
     parameters: {
+        actions: {
+            handles: ['pd-menu'],
+        },
         notes,
     },
 };

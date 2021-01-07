@@ -1,11 +1,13 @@
 import notes from './readme.md';
 import { text, radios, withKnobs } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Forms + Inputs/Input',
-    decorators: [withActions('pd-input', 'pd-change', 'pd-blur', 'pd-focus'), withKnobs()],
+    decorators: [withKnobs()],
     parameters: {
+        actions: {
+            handles: ['pd-input', 'pd-change', 'pd-blur', 'pd-focus'],
+        },
         notes,
     },
 };

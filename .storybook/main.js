@@ -2,7 +2,7 @@ module.exports = {
     addons: [
         '@storybook/addon-notes/register-panel',
         '@storybook/addon-knobs/register',
-        '@storybook/addon-actions/register',
+        '@storybook/addon-actions',
         '@storybook/addon-viewport/register',
         '@storybook/addon-links/register',
     ],

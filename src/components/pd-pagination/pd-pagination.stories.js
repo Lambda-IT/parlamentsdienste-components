@@ -1,11 +1,13 @@
 import notes from './readme.md';
 import { number, withKnobs } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Forms + Inputs/Pagination',
-    decorators: [withActions('pd-change'), withKnobs()],
+    decorators: [withKnobs()],
     parameters: {
+        actions: {
+            handles: ['pd-change'],
+        },
         notes,
     },
 };

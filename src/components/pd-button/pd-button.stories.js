@@ -1,11 +1,15 @@
 import { withKnobs, text, radios } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 import notes from './readme.md';
 
 export default {
     title: 'Interactions/Button',
-    decorators: [withActions('click', 'click'), withKnobs()],
-    parameters: { notes },
+    decorators: [withKnobs()],
+    parameters: {
+        actions: {
+            handles: ['click'],
+        },
+        notes,
+    },
 };
 
 export const states = () => {

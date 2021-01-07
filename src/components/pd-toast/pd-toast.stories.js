@@ -1,11 +1,13 @@
 import notes from './readme.md';
 import { withKnobs, text, radios } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Dialogs/Toast',
-    decorators: [withKnobs(), withActions('pd-closed')],
+    decorators: [withKnobs()],
     parameters: {
+        actions: {
+            handles: ['pd-closed'],
+        },
         notes,
     },
 };

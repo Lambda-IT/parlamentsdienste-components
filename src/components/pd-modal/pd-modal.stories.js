@@ -1,11 +1,12 @@
 import notes from './readme.md';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Dialogs/Modal',
     parameters: {
+        actions: {
+            handles: ['pd-closed'],
+        },
         notes,
-        decorators: [withActions('pd-closed')],
     },
 };
 

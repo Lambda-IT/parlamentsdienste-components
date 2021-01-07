@@ -1,11 +1,13 @@
 import notes from './readme.md';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Forms + Inputs/Slider',
-    decorators: [withActions('pd-input', 'pd-change'), withKnobs()],
+    decorators: [withKnobs()],
     parameters: {
+        actions: {
+            handles: ['pd-input', 'pd-change'],
+        },
         notes,
     },
 };

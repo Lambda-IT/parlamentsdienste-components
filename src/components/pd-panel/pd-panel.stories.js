@@ -1,11 +1,12 @@
 import notes from './readme.md';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Layout/Panel',
     parameters: {
+        actions: {
+            handles: ['pd-collapsed'],
+        },
         notes,
-        decorators: [withActions('pd-collapsed')],
     },
 };
 

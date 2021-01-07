@@ -1,12 +1,14 @@
 import notes from './readme.md';
-import { withActions } from '@storybook/addon-actions';
 import { withKnobs, radios } from '@storybook/addon-knobs';
 
 export default {
     title: 'Forms + Inputs/Checkbox',
     parameters: {
+        actions: {
+            handles: ['pd-checked'],
+        },
         notes,
-        decorators: [withKnobs(), withActions('pd-checked')],
+        decorators: [withKnobs()],
     },
 };
 

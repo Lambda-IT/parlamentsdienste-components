@@ -1,11 +1,13 @@
 import notes from './readme.md';
 import { withKnobs, text, radios } from '@storybook/addon-knobs';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Dialogs/Alert',
-    decorators: [withActions('pd-closed'), withKnobs()],
+    decorators: [withKnobs()],
     parameters: {
+        actions: {
+            handles: ['pd-closed'],
+        },
         notes,
     },
 };
