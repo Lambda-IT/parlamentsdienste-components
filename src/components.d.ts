@@ -327,8 +327,25 @@ export namespace Components {
         "text": string;
     }
     interface PdPagination {
+        /**
+          * Current page number
+         */
         "currentPage": number;
+        /**
+          * separator string in simple mode
+         */
+        "separator": string;
+        /**
+          * switch between pagination mode (simple with separator/page buttons)
+         */
+        "showPageButtons": boolean;
+        /**
+          * Number of pages
+         */
         "totalPages": number;
+        /**
+          * visible pages in 'shopPageButtons' mode
+         */
         "visiblePages": number;
     }
     interface PdPanel {
@@ -1114,9 +1131,29 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface PdPagination {
+        /**
+          * Current page number
+         */
         "currentPage"?: number;
+        /**
+          * Page change event. Returns selected page
+         */
         "onPd-change"?: (event: CustomEvent<number>) => void;
+        /**
+          * separator string in simple mode
+         */
+        "separator"?: string;
+        /**
+          * switch between pagination mode (simple with separator/page buttons)
+         */
+        "showPageButtons"?: boolean;
+        /**
+          * Number of pages
+         */
         "totalPages"?: number;
+        /**
+          * visible pages in 'shopPageButtons' mode
+         */
         "visiblePages"?: number;
     }
     interface PdPanel {

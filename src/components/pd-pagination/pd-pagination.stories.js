@@ -12,6 +12,8 @@ export default {
         currentPage: { control: { type: 'number' } },
         totalPages: { control: { type: 'number' } },
         visiblePages: { control: { type: 'number' } },
+        showPageButtons: { control: { type: 'boolean' } },
+        separator: { control: { type: 'text' } },
     },
 };
 
@@ -21,11 +23,15 @@ export const Pagination = (args) => `
     <pd-pagination 
     total-pages="${args.totalPages}" 
     visible-pages="${args.visiblePages}" 
-    current-page="${args.currentPage}"></pd-pagination>
+    current-page="${args.currentPage}" 
+    separator="${args.separator}"
+    ${args.showPageButtons ? 'show-page-buttons' : ''}></pd-pagination>
 `;
 
 Pagination.args = {
     currentPage: 3,
     totalPages: 10,
     visiblePages: 5,
+    showPageButtons: false,
+    separator: 'von',
 };

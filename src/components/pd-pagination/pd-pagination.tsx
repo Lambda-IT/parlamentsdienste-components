@@ -6,12 +6,34 @@ import { Component, Host, h, Prop, Event, EventEmitter, Watch } from '@stencil/c
     shadow: true,
 })
 export class PdPagination {
+    /**
+     * Current page number
+     */
     @Prop() public currentPage: number = 1;
 
+    /**
+     * Number of pages
+     */
     @Prop() public totalPages: number = 5;
 
-    @Prop() visiblePages: number = 5;
+    /**
+     * switch between pagination mode (simple with separator/page buttons)
+     */
+    @Prop() public showPageButtons: boolean = false;
 
+    /**
+     * visible pages in 'shopPageButtons' mode
+     */
+    @Prop() public visiblePages: number = 5;
+
+    /**
+     * separator string in simple mode
+     */
+    @Prop() public separator: string = 'von';
+
+    /**
+     * Page change event. Returns selected page
+     */
     @Event({ eventName: 'pd-change' }) pdChange: EventEmitter<number>;
 
     private pages: number[] = [];
@@ -52,7 +74,6 @@ export class PdPagination {
     }
 
     render() {
-        const { pages } = this;
         return (
             <Host>
                 <button class="pd-pagination-first" onClick={() => this.firstPage()}>
@@ -61,17 +82,7 @@ export class PdPagination {
                 <button class="pd-pagination-prev" onClick={() => this.prevPage()}>
                     <span>&#8249;</span>
                 </button>
-                {pages.map((value) => (
-                    <button
-                        onClick={() => this.selectPage(value)}
-                        class={{
-                            'pd-pagination-page': true,
-                            'pd-pagination-active': value === this.currentPage,
-                        }}
-                    >
-                        {value}
-                    </button>
-                ))}
+                {this.showPageButtons ? this.renderPageButtons() : this.renderSimplePages()}
                 <button class="pd-pagination-next" onClick={() => this.nextPage()}>
                     <span>&#8250;</span>
                 </button>
@@ -79,6 +90,30 @@ export class PdPagination {
                     <span>&raquo;</span>
                 </button>
             </Host>
+        );
+    }
+
+    private renderPageButtons() {
+        return this.pages.map((value) => (
+            <button
+                onClick={() => this.selectPage(value)}
+                class={{
+                    'pd-pagination-page': true,
+                    'pd-pagination-active': value === this.currentPage,
+                }}
+            >
+                {value}
+            </button>
+        ));
+    }
+
+    private renderSimplePages() {
+        return (
+            <div class="pd-pagination-simple">
+                <span class="pd-pagination-number">{this.currentPage}</span>
+                <span class="pd-pagination-separator">{this.separator}</span>
+                <span class="pd-pagination-number">{this.totalPages}</span>
+            </div>
         );
     }
 
