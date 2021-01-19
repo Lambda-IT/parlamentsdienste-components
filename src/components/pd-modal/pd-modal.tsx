@@ -48,7 +48,6 @@ export class Modal {
     }
 
     private closeModal() {
-        this.config.close();
         this.pdClosed.emit();
     }
 

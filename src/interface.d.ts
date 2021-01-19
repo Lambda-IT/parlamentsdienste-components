@@ -34,5 +34,4 @@ export interface PdModalConfig {
     maxHeight?: string;
     backdropVisible?: boolean;
     zIndex?: string;
-    close?: () => void;
 }
