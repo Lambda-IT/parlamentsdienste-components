@@ -1,4 +1,4 @@
-import { Component, Host, h, Method, Element, Listen, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Listen, Prop, EventEmitter, Event } from '@stencil/core';
 import '@a11y/focus-trap';
 import { PdModalConfig } from '../../interface';
 
@@ -16,106 +16,46 @@ export class Modal {
     @Prop() config: PdModalConfig;
 
     /**
-     * Modal data that can be accessed and used by modal content
+     * Event that will be executed when the is closed
      */
-    @Prop() data: any;
+    @Event({ eventName: 'pd-closed' }) pdClosed!: EventEmitter<void>;
 
     /**
-     * This triggers the modal to visually open / close
-     * Alternatively the openModal() method can be called to trigger this
+     * Event that will be executed when the modal backdrop is clicked
      */
-    @Prop() open: boolean = false;
+    @Event({ eventName: 'pd-backdrop' }) pdBackdropClicked!: EventEmitter<void>;
 
     /**
-     * This triggers the modal to visually open
-     * Alternatively the open property can be set to 'true' to trigger this
+     * Event that will be executed when the escape button was clicked
      */
-    @Method()
-    async openModal() {
-        // Just change 'open' to true in case the function was called directly, this will trigger @Watch(open)
-        // @Watch(open) will call openModal again because 'open' changes here
-        if (!this.open) {
-            this.open = true;
-            return;
-        }
-        // The rest will only be executed when the function is call from @Watch(open)
-        // This is to prevent the function from running twice because @Watch(open) also triggers it
-        this.element.style.display = 'flex';
-        const wrapper = this.element.shadowRoot.querySelector(`.pd-modal-wrapper`) as HTMLElement;
-        document.body.classList.add('no-scroll');
-        wrapper.focus();
-    }
-
-    /**
-     * Event with returnData that will be executed when the modal is closed
-     */
-    @Event({ eventName: 'pd-closed' }) pdModalWhenClosed!: EventEmitter<any>;
-
-    /**
-     * This triggers the modal to visually close
-     * Alternatively the open property can be set to 'false' to trigger this
-     * returnData: will be added to 'pdModalWhenClosed' Event or 'whenClosed' method
-     */
-    @Method()
-    async closeModal(returnData?: any) {
-        if (this.config?.close) {
-            // console.log("Modal -> closeModal -> close EXTERNAL")
-            document.body.classList.remove('no-scroll');
-            this.config.close();
-        } else if (this.open) {
-            // console.log("Modal -> closeModal -> close INTERNAL")
-            // TODO: This will not work when called from @Watch(!open)
-            this.pdModalWhenClosed.emit(returnData);
-            this.element.remove();
-            document.body.classList.remove('no-scroll');
-        }
-    }
-
-    /**
-     * Returns a promise that will be resolved with modal 'returnData' when the modal is closed
-     */
-    @Method()
-    async whenClosed(): Promise<any> {
-        let resolve: (detail) => void;
-        const promise = new Promise<any>(r => (resolve = r));
-        const el = this.element;
-        el.addEventListener('pd-closed', function willDismiss(willDismissEvent: CustomEvent) {
-            el.removeEventListener('pd-closed', willDismiss);
-            resolve(willDismissEvent.detail);
-        });
-        return promise;
-    }
+    @Event({ eventName: 'pd-escape' }) pdEscapeClicked!: EventEmitter<void>;
 
     @Listen('pd-tap', { passive: false, capture: true })
     async backdropClick() {
-        await this.closeModal();
+        this.pdBackdropClicked.emit();
+        this.closeModal();
     }
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Escape': {
+                this.pdEscapeClicked.emit();
                 this.closeModal();
                 break;
             }
         }
     }
 
-    componentDidLoad() {
-        this.openChanged(this.open);
-    }
-
-    @Watch('open')
-    openChanged(isOpen: boolean) {
-        if (isOpen) this.openModal();
-        else this.closeModal();
+    private closeModal() {
+        this.config.close();
+        this.pdClosed.emit();
     }
 
     public render() {
         return (
             <Host
                 style={{
-                    display: 'none',
                     zIndex: this.config?.zIndex ?? null,
                 }}
             >

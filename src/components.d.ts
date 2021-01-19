@@ -307,29 +307,9 @@ export namespace Components {
     }
     interface PdModal {
         /**
-          * This triggers the modal to visually close Alternatively the open property can be set to 'false' to trigger this returnData: will be added to 'pdModalWhenClosed' Event or 'whenClosed' method
-         */
-        "closeModal": (returnData?: any) => Promise<void>;
-        /**
           * Configuration properties
          */
         "config": PdModalConfig;
-        /**
-          * Modal data that can be accessed and used by modal content
-         */
-        "data": any;
-        /**
-          * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
-         */
-        "open": boolean;
-        /**
-          * This triggers the modal to visually open Alternatively the open property can be set to 'true' to trigger this
-         */
-        "openModal": () => Promise<void>;
-        /**
-          * Returns a promise that will be resolved with modal 'returnData' when the modal is closed
-         */
-        "whenClosed": () => Promise<any>;
     }
     interface PdNavbar {
         "mobileBreakpoint": number;
@@ -1105,17 +1085,17 @@ declare namespace LocalJSX {
          */
         "config"?: PdModalConfig;
         /**
-          * Modal data that can be accessed and used by modal content
+          * Event that will be executed when the modal backdrop is clicked
          */
-        "data"?: any;
+        "onPd-backdrop"?: (event: CustomEvent<void>) => void;
         /**
-          * Event with returnData that will be executed when the modal is closed
+          * Event that will be executed when the is closed
          */
-        "onPd-closed"?: (event: CustomEvent<any>) => void;
+        "onPd-closed"?: (event: CustomEvent<void>) => void;
         /**
-          * This triggers the modal to visually open / close Alternatively the openModal() method can be called to trigger this
+          * Event that will be executed when the escape button was clicked
          */
-        "open"?: boolean;
+        "onPd-escape"?: (event: CustomEvent<void>) => void;
     }
     interface PdNavbar {
         "mobileBreakpoint"?: number;

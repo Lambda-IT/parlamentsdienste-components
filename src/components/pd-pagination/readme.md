@@ -10,6 +10,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description | Type     | Default |
@@ -18,12 +19,14 @@
 | `totalPages`   | `total-pages`   |             | `number` | `5`     |
 | `visiblePages` | `visible-pages` |             | `number` | `5`     |
 
+
 ## Events
 
 | Event       | Description | Type                  |
 | ----------- | ----------- | --------------------- |
 | `pd-change` |             | `CustomEvent<number>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

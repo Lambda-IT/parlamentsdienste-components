@@ -4,39 +4,33 @@ export default {
     title: 'Dialogs/Modal',
     parameters: {
         actions: {
-            handles: ['pd-closed'],
+            handles: ['pd-closed', 'pd-backdrop', 'pd-escape'],
         },
         notes,
     },
+    argTypes: {
+        config: { control: { type: 'object' } },
+    },
 };
 
-export const modal = () => {
-    const config = {
+export const Modal = (args) => {
+    const modal = document.createElement('pd-modal');
+    modal.config = args.config;
+    modal.innerHTML = `
+    <p>Modal Content</p>
+    <div slot="footer">
+        <pd-button outline>Cancel</pd-button>
+        <pd-button>Save</pd-button>
+    </div>`;
+
+    return modal;
+};
+
+Modal.args = {
+    config: {
         title: 'Modal Title',
         minWidth: '400px',
         maxWidth: 500,
         backdropVisible: true,
-    };
-
-    const openButton = document.createElement('pd-button');
-    openButton.classList = 'm-3';
-    openButton.innerHTML = 'open Modal';
-    openButton.outline = true;
-
-    const modal = document.createElement('pd-modal');
-    modal.config = config;
-    modal.open = true;
-    modal.innerHTML = `
-        <p>Modal Content</p>
-        <div slot="footer">
-            Modal Footer
-        </div>
-    `;
-
-    openButton.addEventListener('click', () => {
-        modal.open = true;
-        document.body.append(modal);
-    });
-
-    return openButton;
+    },
 };
