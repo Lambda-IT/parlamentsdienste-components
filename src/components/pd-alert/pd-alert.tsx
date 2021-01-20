@@ -32,6 +32,11 @@ export class PdAlert {
     @Prop() actionHref: string;
 
     /**
+     * Show alert icon
+     */
+    @Prop() showIcon: boolean = true;
+
+    /**
      * Target for action href (eg. _blank)
      */
     @Prop() actionTarget: string = '_blank';
@@ -44,6 +49,7 @@ export class PdAlert {
     public render() {
         return (
             <div class={`pd-alert pd-alert-${this.color}`}>
+                {this.renderIcon()}
                 <div class="pd-alert-text">
                     <slot></slot>
                 </div>
@@ -73,5 +79,22 @@ export class PdAlert {
     private renderClose() {
         if (!this.closable) return;
         return <pd-icon onClick={this.pdClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
+    }
+
+    private renderIcon() {
+        if (!this.showIcon) return null;
+
+        switch (this.color) {
+            case 'danger':
+                return <pd-icon class="pd-alert-icon" size={2.5} name="alert_danger"></pd-icon>;
+            case 'info':
+                return <pd-icon class="pd-alert-icon" size={2.5} name="alert_info"></pd-icon>;
+            case 'success':
+                return <pd-icon class="pd-alert-icon" size={2.5} name="confirm"></pd-icon>;
+            case 'warning':
+                return <pd-icon class="pd-alert-icon" size={2.5} name="alert_warning"></pd-icon>;
+            default:
+                return null;
+        }
     }
 }

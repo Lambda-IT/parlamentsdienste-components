@@ -14,6 +14,7 @@ export default {
         actionText: { control: { type: 'text' } },
         actionHref: { control: { type: 'text' } },
         actionTarget: { control: { type: 'select', options: ['', '_blank'] } },
+        showIcon: { control: { type: 'boolean' } },
     },
 };
 
@@ -23,6 +24,7 @@ export const Basic = (args) => `
     <pd-alert class="m-3" 
     ${args.action ? 'action' : ''} 
     ${args.closable ? 'closable' : ''} 
+    ${args.showIcon ? 'show-icon' : ''} 
     action-text="${args.actionText}" 
     action-href="${args.actionHref}" 
     action-target="${args.actionTarget}">
@@ -36,23 +38,91 @@ Basic.args = {
     actionText: 'this is an action',
     actionHref: false,
     actionTarget: '',
+    showIcon: true,
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const color = () => `
-    <pd-alert class="m-3" color="primary">A simple primary alert</pd-alert>
-    <pd-alert class="m-3" color="success">A simple success alert</pd-alert>
-    <pd-alert class="m-3" color="warning">A simple warning alert</pd-alert>
-    <pd-alert class="m-3" color="alert">A simple alert</pd-alert>
-    <pd-alert class="m-3" color="info">A simple info alert</pd-alert>
-    <pd-alert class="m-3" color="dark">A simple dark alert</pd-alert>
-    <pd-alert class="m-3" color="light">A simple light alert</pd-alert>
+export const Color = (args) => `
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="primary">
+        A simple primary alert
+    </pd-alert>
+    <pd-alert class="m-3"
+    ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="success">
+        A simple success alert
+    </pd-alert>
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="warning">
+        A simple warning alert
+    </pd-alert>
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="danger">
+        A simple alert
+    </pd-alert>
+    <pd-alert class="m-3" 
+        ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="info">
+        A simple info alert
+    </pd-alert>
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="dark">
+        A simple dark alert
+    </pd-alert>
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''} 
+        ${args.closable ? 'closable' : ''} 
+        ${args.showIcon ? 'show-icon' : ''} 
+        action-text="${args.actionText}" 
+        action-href="${args.actionHref}" 
+        action-target="${args.actionTarget}"
+        color="light">
+        A simple light alert
+    </pd-alert>
 `;
+
+Color.args = {
+    ...Basic.args,
+};
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const action = () => `
+export const Action = () => `
     <pd-alert class="m-3" action action-text="a button action">A simple alert with a button action</pd-alert>
     <pd-alert class="m-3" action action-text="a link action" action-href="http://www.google.ch">A simple alert with a link action</pd-alert>
 `;

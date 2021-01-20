@@ -42,4 +42,13 @@ export const iconMap = {
     status_red: 'status_red',
     status_undefined: 'status_undefined',
     support: 'support',
+    alert_danger: 'alert_danger',
+    alert_info: 'alert_info',
+    alert_success: 'alert_success',
+    alert_warning: 'alert_warning',
+    calendar: 'calendar',
+    delete: 'delete',
+    drag_drop: 'drag_drop',
+    edit: 'edit',
+    menu_actions: 'menu_actions',
 };

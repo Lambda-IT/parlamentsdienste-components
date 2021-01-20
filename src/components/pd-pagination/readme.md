@@ -10,6 +10,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property          | Attribute           | Description                                                         | Type      | Default |
@@ -20,12 +21,14 @@
 | `totalPages`      | `total-pages`       | Number of pages                                                     | `number`  | `5`     |
 | `visiblePages`    | `visible-pages`     | visible pages in 'shopPageButtons' mode                             | `number`  | `5`     |
 
+
 ## Events
 
 | Event       | Description                              | Type                  |
 | ----------- | ---------------------------------------- | --------------------- |
 | `pd-change` | Page change event. Returns selected page | `CustomEvent<number>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

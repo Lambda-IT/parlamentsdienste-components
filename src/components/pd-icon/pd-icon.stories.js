@@ -51,6 +51,15 @@ const iconList = [
     'status_red',
     'status_undefined',
     'support',
+    'alert_danger',
+    'alert_info',
+    'alert_success',
+    'alert_warning',
+    'calendar',
+    'delete',
+    'drag_drop',
+    'edit',
+    'menu_actions',
 ];
 
 export const basic = () =>
@@ -98,6 +107,15 @@ export const basic = () =>
     <pd-icon class="mt-3" size="2.5" name="status_red"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="status_undefined"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="support"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="alert_danger"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="alert_info"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="alert_success"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="alert_warning"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="calendar"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="delete"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="drag_drop"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="edit"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="menu_actions"></pd-icon>
     `;
 
 ///////////////////////////////////////////////////////////////////////////

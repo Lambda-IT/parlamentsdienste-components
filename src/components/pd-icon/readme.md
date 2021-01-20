@@ -16,14 +16,15 @@
 
 ## Available Icon Names
 
-| []()           |                   |              |                |              |                   |                   |                |
-| -------------- | ----------------- | ------------ | -------------- | ------------ | ----------------- | ----------------- | -------------- |
-| add            | appview           | audio        | breadcrumb     | cancel       | checkbox\_checked | checkbox\_default | clipboard      |
-| close\_small   | close             | compensation | configuration  | confirm      | contact           | dictionary        | documents      |
-| dropdown       | expand            | filter       | folder\_closed | folder\_open | gallery           | link              | list           |
-| menu           | message           | microphone   | parlament      | play         | press             | print             | profile        |
-| radio\_checked | radio\_default    | research     | reservation    | search       | sort              | status\_green     | status\_orange |
-| status\_red    | status\_undefined | support      |                |              |                   |                   |                |
+| []()          |                  |              |               |             |                  |                  |               |
+| ------------- | ---------------- | ------------ | ------------- | ----------- | ---------------- | ---------------- | ------------- |
+| add           | appview          | audio        | breadcrumb    | cancel      | checkbox_checked | checkbox_default | clipboard     |
+| close_small   | close            | compensation | configuration | confirm     | contact          | dictionary       | documents     |
+| dropdown      | expand           | filter       | folder_closed | folder_open | gallery          | link             | list          |
+| menu          | message          | microphone   | parlament     | play        | press            | print            | profile       |
+| radio_checked | radio_default    | research     | reservation   | search      | sort             | status_green     | status_orange |
+| status_red    | status_undefined | support      | alert_danger  | alert_info  | alert_success    | alert_warning    | calendar      |
+| delete        | drag_drop        | edit         | menu_actions  |             |                  |                  |               |
 
 <!-- Auto Generated Below -->
 

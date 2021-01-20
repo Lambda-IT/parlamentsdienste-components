@@ -34,6 +34,10 @@ export namespace Components {
           * Color schema used for the alert
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        /**
+          * Show alert icon
+         */
+        "showIcon": boolean;
     }
     interface PdBackdrop {
         /**
@@ -821,6 +825,10 @@ declare namespace LocalJSX {
           * Emitted when action closed button was pressed.
          */
         "onPd-closed"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Show alert icon
+         */
+        "showIcon"?: boolean;
     }
     interface PdBackdrop {
         "onPd-tap"?: (event: CustomEvent<void>) => void;
