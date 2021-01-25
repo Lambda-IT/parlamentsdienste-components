@@ -32,9 +32,9 @@ export class PdAlert {
     @Prop() actionHref: string;
 
     /**
-     * Show alert icon
+     * Hide alert icon
      */
-    @Prop() showIcon: boolean = true;
+    @Prop() hideIcon: boolean = false;
 
     /**
      * Target for action href (eg. _blank)
@@ -82,7 +82,7 @@ export class PdAlert {
     }
 
     private renderIcon() {
-        if (!this.showIcon) return null;
+        if (this.hideIcon) return;
 
         switch (this.color) {
             case 'danger':
@@ -94,7 +94,7 @@ export class PdAlert {
             case 'warning':
                 return <pd-icon class="pd-alert-icon" size={2.5} name="alert_warning"></pd-icon>;
             default:
-                return null;
+                return;
         }
     }
 }

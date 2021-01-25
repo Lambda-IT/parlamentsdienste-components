@@ -38,7 +38,7 @@
 | `actionText`   | `action-text`   | Text to show on action                          | `string`                                                                         | `undefined` |
 | `closable`     | `closable`      | Display an option to close the alert            | `boolean`                                                                        | `false`     |
 | `color`        | `color`         | Color schema used for the alert                 | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
-| `showIcon`     | `show-icon`     | Show alert icon                                 | `boolean`                                                                        | `true`      |
+| `hideIcon`     | `hide-icon`     | Hide alert icon                                 | `boolean`                                                                        | `false`     |
 
 
 ## Events

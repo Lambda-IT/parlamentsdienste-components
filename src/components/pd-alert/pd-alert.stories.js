@@ -14,7 +14,7 @@ export default {
         actionText: { control: { type: 'text' } },
         actionHref: { control: { type: 'text' } },
         actionTarget: { control: { type: 'select', options: ['', '_blank'] } },
-        showIcon: { control: { type: 'boolean' } },
+        hideIcon: { control: { type: 'boolean' } },
     },
 };
 
@@ -24,7 +24,7 @@ export const Basic = (args) => `
     <pd-alert class="m-3" 
     ${args.action ? 'action' : ''} 
     ${args.closable ? 'closable' : ''} 
-    ${args.showIcon ? 'show-icon' : ''} 
+    ${args.showIcon ? 'hide-icon' : ''} 
     action-text="${args.actionText}" 
     action-href="${args.actionHref}" 
     action-target="${args.actionTarget}">
@@ -38,7 +38,7 @@ Basic.args = {
     actionText: 'this is an action',
     actionHref: false,
     actionTarget: '',
-    showIcon: true,
+    hideIcon: false,
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ export const Color = (args) => `
     <pd-alert class="m-3"
         ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${!args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
@@ -57,7 +57,7 @@ export const Color = (args) => `
     <pd-alert class="m-3"
     ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
@@ -67,7 +67,7 @@ export const Color = (args) => `
     <pd-alert class="m-3"
         ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
@@ -77,7 +77,7 @@ export const Color = (args) => `
     <pd-alert class="m-3"
         ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
@@ -87,7 +87,7 @@ export const Color = (args) => `
     <pd-alert class="m-3" 
         ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
@@ -97,7 +97,7 @@ export const Color = (args) => `
     <pd-alert class="m-3"
         ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
@@ -107,7 +107,7 @@ export const Color = (args) => `
     <pd-alert class="m-3"
         ${args.action ? 'action' : ''} 
         ${args.closable ? 'closable' : ''} 
-        ${args.showIcon ? 'show-icon' : ''} 
+        ${args.hideIcon ? 'hide-icon' : ''} 
         action-text="${args.actionText}" 
         action-href="${args.actionHref}" 
         action-target="${args.actionTarget}"
