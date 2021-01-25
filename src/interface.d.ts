@@ -28,10 +28,6 @@ export interface PdColumn {
 
 export interface PdModalConfig {
     title: string;
-    minWidth?: string;
-    maxWidth?: string;
-    minHeight?: string;
-    maxHeight?: string;
     backdropVisible?: boolean;
     zIndex?: string;
 }
