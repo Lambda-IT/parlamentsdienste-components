@@ -14,6 +14,7 @@ export default {
         helperText: { control: { type: 'text' } },
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
     },
 };
@@ -27,7 +28,8 @@ export const Input = (args) => {
         placeholder="${args.placeholder}" 
         helper-text="${args.helperText}" 
         value="${args.value}"
-        ${args.disabled ? 'disabled ' : ''} 
+        ${args.disabled ? 'disabled' : ''} 
+        ${args.readonly ? 'readonly' : ''} 
         ${args.error ? 'error' : ''}></pd-input>
     `;
 };
@@ -38,5 +40,6 @@ Input.args = {
     helperText: 'Helper Text',
     placeholder: 'Placehoder',
     disabled: false,
+    readonly: false,
     error: false,
 };

@@ -29,6 +29,7 @@
 .pd-input-label {
     width: 100%;
     margin-bottom: 0;
+    font-size: 0.875em;
 }
 
 .pd-input {
@@ -51,6 +52,17 @@
     &:focus:enabled {
         border: 0.125em solid $focus;
     }
+
+    &:read-only {
+        background-color: $gray-3;
+        border: 0.125em solid $gray-3;
+        &:hover:enabled,
+        &:disabled,
+        &:focus:enabled {
+            border: 0.125em solid $gray-3;
+            cursor: default;
+        }
+    }
 }
 
 .pd-input-label-text {
@@ -60,6 +72,6 @@
 .pd-input-helper-text {
     margin-left: 0.875em;
     margin-top: 0.25em;
-    font-size: 0.85em;
+    font-size: 0.875em;
     line-height: 1.25em;
 }
