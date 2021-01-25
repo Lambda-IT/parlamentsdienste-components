@@ -39,6 +39,13 @@ interface DropdownItem {
 _To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
 More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
+## Styles
+
+| Style                              | Default   | Description                                        |
+| ---------------------------------- | --------- | -------------------------------------------------- |
+| `--pd-dropdown-vertical-padding`   | `0.625em` | Possibility to change inner height of the dropdown |
+| `--pd-dropdown-horizontal-padding` | `0.75em`  | Possibility to change inner width of the dropdown  |
+
 <!-- Auto Generated Below -->
 
 
