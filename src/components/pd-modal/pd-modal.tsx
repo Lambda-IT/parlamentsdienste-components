@@ -60,17 +60,7 @@ export class Modal {
             >
                 <focus-trap>
                     <pd-backdrop visible={this.config?.backdropVisible ?? false}></pd-backdrop>
-                    <div
-                        tabindex="0"
-                        role="dialog"
-                        class="pd-modal-wrapper"
-                        style={{
-                            minWidth: this.config?.minWidth ?? null,
-                            maxWidth: this.config?.maxWidth ?? null,
-                            minHeight: this.config?.minHeight ?? null,
-                            maxHeight: this.config?.maxHeight ?? null,
-                        }}
-                    >
+                    <div tabindex="0" role="dialog" class="pd-modal-wrapper">
                         <div class="pd-modal-header">
                             <span class="pd-modal-title">{this.config?.title}</span>
                             <button class="pd-modal-close" onClick={() => this.closeModal()}>

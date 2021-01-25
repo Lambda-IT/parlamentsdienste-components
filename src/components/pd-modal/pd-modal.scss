@@ -27,6 +27,12 @@
     padding: 1.25em;
     position: relative;
     border-radius: 0.25em;
+    width: var(--pd-modal-width, unset);
+    height: var(--pd-modal-height, unset);
+    min-width: var(--pd-modal-min-width, unset);
+    max-width: var(--pd-modal-max-width, unset);
+    min-height: var(--pd-modal-min-height, unset);
+    max-height: var(--pd-modal-max-height, unset);
 }
 
 .pd-modal-header {

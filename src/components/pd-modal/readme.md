@@ -29,6 +29,17 @@ interface PdModalConfig {
 }
 ```
 
+## Styles
+
+| Style                   | Default | Description         |
+| ----------------------- | ------- | ------------------- |
+| `--pd-modal-min-width`  | `unset` | min-width of modal  |
+| `--pd-modal-max-width`  | `unset` | max-width of modal  |
+| `--pd-modal-min-height` | `unset` | min-height of modal |
+| `--pd-modal-max-height` | `unset` | max-height of modal |
+| `--pd-modal-width`      | `unset` | width of modal      |
+| `--pd-modal-height`     | `unset` | height of modal     |
+
 <!-- Auto Generated Below -->
 
 
