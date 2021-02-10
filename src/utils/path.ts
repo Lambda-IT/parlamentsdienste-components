@@ -4,10 +4,9 @@ let currentScriptUrl: string;
 
 export function getCurrentScriptUrl(): string {
     if (!currentScriptUrl) {
-        const script = Array.from(document.querySelectorAll('script')).find((s) =>
-            new RegExp(`${namespace}(\.esm)?\.js$`).test(s.src),
-        );
-        currentScriptUrl = (script && script.src) || document.baseURI;
+        currentScriptUrl =
+            document.querySelector('meta[name="parlamentsdienste-base-path"]')?.getAttribute('content') ||
+            document.baseURI;
     }
     return currentScriptUrl;
 }
