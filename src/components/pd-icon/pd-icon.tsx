@@ -1,4 +1,5 @@
-import { Component, ComponentInterface, Host, h, Element, State, Prop, Watch, getAssetPath } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Element, State, Prop, Watch } from '@stencil/core';
+import { getURL } from '../../utils/path';
 import { getSvgContent, iconContent } from '../../utils/svg';
 
 @Component({
@@ -90,7 +91,7 @@ export class PdIcon implements ComponentInterface {
     @Watch('name')
     private loadIcon() {
         if (this.isVisible) {
-            const url = this.src || (this.name ? getAssetPath(`./assets-icon/icon_${this.name}.svg`) : null);
+            const url = this.src || (this.name ? getURL(`./assets-icon/icon_${this.name}.svg`) : null);
             if (url) {
                 if (iconContent.has(url)) {
                     // sync if it's already loaded
