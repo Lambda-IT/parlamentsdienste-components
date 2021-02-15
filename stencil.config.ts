@@ -10,6 +10,7 @@ export const config: Config = {
         {
             type: 'dist',
             esmLoaderPath: '../loader',
+            copy: [{ src: 'styles/typography.css' }],
         },
         {
             type: 'docs-readme',
@@ -17,7 +18,7 @@ export const config: Config = {
         {
             type: 'www',
             serviceWorker: null, // disable service workers
-            copy: [{ src: 'vue.html' }, { src: 'index.html' }],
+            copy: [{ src: 'vue.html' }, { src: 'index.html' }, { src: 'styles/typography.css' }],
         },
     ],
     plugins: [
