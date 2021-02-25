@@ -2,6 +2,7 @@ export type TextFieldTypes = 'date' | 'email' | 'number' | 'password' | 'search'
 
 export type Mode = 'ios' | 'md';
 
+export type ChipType = 'text' | 'toggle' | 'filter';
 export interface InputChangeEventDetail {
     value: string | number | undefined | null;
 }

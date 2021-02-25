@@ -1,0 +1,77 @@
+@include resetControlFonts;
+
+:host {
+    display: inline-block;
+}
+
+*,
+::before,
+::after {
+    font-weight: 700;
+    font-size: 0.8em;
+    line-height: $input-btn-line-height;
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
+.pd-chip {
+    display: flex;
+    align-items: center;
+    border-radius: 1em;
+    padding: 0.31em 0.75em;
+    position: relative;
+    cursor: pointer;
+    height: 1.38em;
+    transition: box-shadow 0.15s ease-in-out;
+    background-color: setcolor(light, pressed);
+    border: 0.125em solid setcolor(light, pressed);
+    color: setcolor(light, pressed-contrast);
+
+    &.pd-chip-checked {
+        background-color: setcolor(primary, enabled);
+        border: 0.125em solid setcolor(primary, enabled);
+        color: setcolor(primary, enabled-contrast);
+
+        .pd-chip-icon {
+            fill: white;
+        }
+    }
+
+    &:hover:enabled {
+        background-color: setcolor(primary, hover);
+        border: 0.125em solid setcolor(primary, hover);
+        color: setcolor(primary, hover-contrast);
+    }
+
+    &:disabled {
+        background-color: setcolor(primary, disabled);
+        border: 0.125em solid setcolor(primary, disabled);
+        color: setcolor(primary, disabled-contrast);
+    }
+
+    &:active:enabled {
+        background-color: setcolor(primary, pressed);
+        border: 0.125em solid setcolor(primary, pressed);
+        color: setcolor(primary, pressed-contrast);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.25em $focus;
+        z-index: 2;
+    }
+}
+
+.pd-chip-icon-left,
+.pd-chip-icon-right {
+    display: flex;
+    align-items: center;
+}
+
+.pd-chip-icon-left {
+    margin-right: 0.38em;
+}
+
+.pd-chip-icon-right {
+    margin-left: 0.38em;
+}
