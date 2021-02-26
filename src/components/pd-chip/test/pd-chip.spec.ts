@@ -1,20 +1,18 @@
-import { Button } from '../pd-button';
 import { newSpecPage } from '@stencil/core/testing';
+import { Chip } from '../pd-chip';
 
-describe('pd-button', () => {
+describe('pd-chip', () => {
     it('renders', async () => {
         const page = await newSpecPage({
-            components: [Button],
-            html: `<pd-button></pd-button>`,
+            components: [Chip],
+            html: `<pd-chip></pd-chip>`,
         });
         expect(page.root).toEqualHtml(`
-          <pd-button>
+          <pd-chip>
             <mock:shadow-root>
-                <button class="pd-button pd-button-normal pd-button-primary" role="button" type="button">  
-                    <slot></slot>
-                </button>
+            <pd-chip id="pd-chip-0">Text Chip</pd-chip>
             </mock:shadow-root>
-          </pd-button>
+          </pd-chip>
         `);
     });
 });

@@ -114,6 +114,36 @@ export namespace Components {
          */
         "type": ChipType;
     }
+    interface PdCombobox {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Show matching parts in resuls as highlighted
+         */
+        "highlight"?: boolean;
+        /**
+          * Values shown as combobox items
+         */
+        "items": string[];
+        /**
+          * combobox box label
+         */
+        "label"?: string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number | null;
+    }
     interface PdDatepicker {
         /**
           * Resets the selected dates (if any) and clears the input.
@@ -625,6 +655,12 @@ declare global {
         prototype: HTMLPdChipElement;
         new (): HTMLPdChipElement;
     };
+    interface HTMLPdComboboxElement extends Components.PdCombobox, HTMLStencilElement {
+    }
+    var HTMLPdComboboxElement: {
+        prototype: HTMLPdComboboxElement;
+        new (): HTMLPdComboboxElement;
+    };
     interface HTMLPdDatepickerElement extends Components.PdDatepicker, HTMLStencilElement {
     }
     var HTMLPdDatepickerElement: {
@@ -788,6 +824,7 @@ declare global {
         "pd-button-group": HTMLPdButtonGroupElement;
         "pd-checkbox": HTMLPdCheckboxElement;
         "pd-chip": HTMLPdChipElement;
+        "pd-combobox": HTMLPdComboboxElement;
         "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
@@ -929,6 +966,52 @@ declare namespace LocalJSX {
           * Sets chip type |text|toggle|filter|
          */
         "type"?: ChipType;
+    }
+    interface PdCombobox {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show matching parts in resuls as highlighted
+         */
+        "highlight"?: boolean;
+        /**
+          * Values shown as combobox items
+         */
+        "items"?: string[];
+        /**
+          * combobox box label
+         */
+        "label"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onPd-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Emitted when a combobox request occurred.
+         */
+        "onPd-combobox"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onPd-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number | null;
     }
     interface PdDatepicker {
         /**
@@ -1470,6 +1553,7 @@ declare namespace LocalJSX {
         "pd-button-group": PdButtonGroup;
         "pd-checkbox": PdCheckbox;
         "pd-chip": PdChip;
+        "pd-combobox": PdCombobox;
         "pd-datepicker": PdDatepicker;
         "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
@@ -1508,6 +1592,7 @@ declare module "@stencil/core" {
             "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
             "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
+            "pd-combobox": LocalJSX.PdCombobox & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;

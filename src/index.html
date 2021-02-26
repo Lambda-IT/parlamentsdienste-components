@@ -30,6 +30,8 @@
                 <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
                 <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
             </pd-navbar>
+            <pd-combobox id="pd-combobox-0"></pd-combobox>
+            <pd-combobox disabled></pd-combobox>
             <pd-chip id="pd-chip-0">Text Chip</pd-chip>
             <pd-chip id="pd-chip-0" disabled>Disabled Chip</pd-chip>
             <pd-chip id="pd-chip-0" type="filter">Filter Chip</pd-chip>
@@ -214,6 +216,7 @@
             const pdBackdrop = document.getElementById('pd-backdrop-0');
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
+            const pdComboBox = document.getElementById('pd-combobox-0');
             const pdNavbar = document.getElementById('pd-navbar-1');
 
             const pdTable0 = document.getElementById('pd-table-0');
@@ -312,6 +315,10 @@
                 console.log('LOG: value', value);
             });
 
+            pdComboBox.addEventListener('pd-combobox', (value) => {
+                console.log('LOG: value', value);
+            });
+
             pdSearch.addEventListener('pd-input', (value) => {
                 pdSearch.results = [
                     `Some random results`,
@@ -339,6 +346,14 @@
                 { id: '7', label: 'Aktuelles aus dem VBS, Information und Diskussion', value: 'a7' },
                 { id: '8', label: 'NKF. Evaluationsverfahren, Information und Diskussion', value: 'a8' },
                 { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
+            ];
+
+            pdComboBox.items = [
+                'Dropdown Link 01',
+                'Dropdown Link 02',
+                'Dropdown Link 03',
+                'Dropdown Link 04',
+                'Dropdown Link 05',
             ];
 
             /*** Modal ***/
