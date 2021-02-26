@@ -4,7 +4,7 @@ export default {
     title: 'Interactions/Chip',
     parameters: {
         actions: {
-            handles: ['click'],
+            handles: ['click', 'removeChip', 'checkChip'],
         },
         notes,
     },

@@ -18,11 +18,10 @@
 .pd-chip {
     display: flex;
     align-items: center;
-    border-radius: 1em;
-    padding: 0.31em 0.75em;
+    border-radius: 2em;
+    padding: 0.31em 0.6em;
     position: relative;
     cursor: pointer;
-    height: 1.38em;
     transition: box-shadow 0.15s ease-in-out;
     background-color: setcolor(light, pressed);
     border: 0.125em solid setcolor(light, pressed);
