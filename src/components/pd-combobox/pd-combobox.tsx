@@ -283,6 +283,7 @@ export class Combobox {
         ev.preventDefault();
         this.setValue('', true);
         this.open = false;
+        this.selectedIndex = -1;
     };
 
     private renderDropdownItems() {
