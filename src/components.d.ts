@@ -120,7 +120,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Show matching parts in resuls as highlighted
+          * Show matching parts in results as highlighted
          */
         "highlight"?: boolean;
         /**
@@ -973,7 +973,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Show matching parts in resuls as highlighted
+          * Show matching parts in results as highlighted
          */
         "highlight"?: boolean;
         /**

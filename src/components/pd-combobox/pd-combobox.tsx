@@ -45,7 +45,7 @@ export class Combobox {
     @Prop() label?: string;
 
     /**
-     * Show matching parts in resuls as highlighted
+     * Show matching parts in results as highlighted
      */
     @Prop() highlight?: boolean = true;
 
