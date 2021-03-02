@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter, Method } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
 import { closestElement } from '../../utils/helpers';
 import { DropdownItem } from '../../../dist/types/interface';
@@ -42,6 +42,17 @@ export class Dropdown {
         label: '-',
         value: null,
     };
+
+    /**
+     * Set a preselected entry by index
+     */
+    @Method()
+    setSelectedIndex(index: number) {
+        if (index >= 0 && index < this.items.length) {
+            this.items[index] = { ...this.items[index], selected: true };
+            this.selectedItem = this.items[index];
+        }
+    }
 
     @State() open: boolean = false;
 

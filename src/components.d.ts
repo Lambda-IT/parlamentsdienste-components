@@ -199,6 +199,10 @@ export namespace Components {
           * Placeholder when no item is selected
          */
         "placeholder": string;
+        /**
+          * Set a preselected entry by index
+         */
+        "setSelectedIndex": (index: number) => Promise<void>;
     }
     interface PdDropdownItem {
         /**
