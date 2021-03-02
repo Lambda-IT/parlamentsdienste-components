@@ -348,6 +348,12 @@
                 { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
             ];
 
+            // test do set a selected value over a programmatic way
+            setTimeout(() => pdDropDown.setSelectedIndex(2), 2000);
+
+            // test do set a selected value over a programmatic way
+            setTimeout(() => pdDropDown.reset(), 4000);
+
             pdComboBox.items = [
                 'Dropdown Link 01',
                 'Dropdown Link 02',

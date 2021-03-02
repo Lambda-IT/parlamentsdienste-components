@@ -47,11 +47,19 @@ export class Dropdown {
      * Set a preselected entry by index
      */
     @Method()
-    setSelectedIndex(index: number) {
+    async setSelectedIndex(index: number) {
         if (index >= 0 && index < this.items.length) {
             this.items[index] = { ...this.items[index], selected: true };
             this.selectedItem = this.items[index];
         }
+    }
+
+    /**
+     * Reset the selection of the dropdown
+     */
+    @Method()
+    async reset() {
+        this.selectedItem = null;
     }
 
     @State() open: boolean = false;

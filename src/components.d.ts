@@ -200,6 +200,10 @@ export namespace Components {
          */
         "placeholder": string;
         /**
+          * Reset the selection of the dropdown
+         */
+        "reset": () => Promise<void>;
+        /**
           * Set a preselected entry by index
          */
         "setSelectedIndex": (index: number) => Promise<void>;

@@ -69,6 +69,16 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Methods
 
+### `reset() => Promise<void>`
+
+Reset the selection of the dropdown
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setSelectedIndex(index: number) => Promise<void>`
 
 Set a preselected entry by index
