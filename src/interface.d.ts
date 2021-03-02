@@ -32,3 +32,10 @@ export interface PdModalConfig {
     backdropVisible?: boolean;
     zIndex?: string;
 }
+
+export interface DropdownItem {
+    id: string;
+    label: string;
+    value: string;
+    selected?: boolean;
+}

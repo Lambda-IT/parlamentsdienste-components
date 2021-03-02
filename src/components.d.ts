@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChipType, InputChangeEventDetail, PdColumn, PdModalConfig, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-import { DropdownItem } from "./components/pd-dropdown/pd-dropdown";
+import { DropdownItem } from "../dist/types/interface";
 export namespace Components {
     interface PdAlert {
         /**

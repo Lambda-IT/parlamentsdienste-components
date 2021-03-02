@@ -1,15 +1,7 @@
 import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
 import { closestElement } from '../../utils/helpers';
-
-// TODO: move out of file
-export interface DropdownItem {
-    id: string;
-    label: string;
-    value: string;
-    selected?: boolean;
-}
-
+import { DropdownItem } from '../../../dist/types/interface';
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
