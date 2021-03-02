@@ -16,11 +16,13 @@ const iconList = [
     'checkbox_checked',
     'checkbox_default',
     'clipboard',
+    'close_bold',
     'close_small',
     'close',
     'compensation',
     'configuration',
     'confirm',
+    'confirm_bold',
     'contact',
     'dictionary',
     'documents',
@@ -72,11 +74,13 @@ export const basic = () =>
     <pd-icon class="mt-3" size="2.5" name="checkbox_checked"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="checkbox_default"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="clipboard"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="close_bold"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="close_small"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="close"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="compensation"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="configuration"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="confirm"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="confirm_bold"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="contact"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="dictionary"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="documents"></pd-icon>

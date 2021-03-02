@@ -16,15 +16,15 @@
 
 ## Available Icon Names
 
-| []()          |                  |              |               |             |                  |                  |               |
-| ------------- | ---------------- | ------------ | ------------- | ----------- | ---------------- | ---------------- | ------------- |
-| add           | appview          | audio        | breadcrumb    | cancel      | checkbox_checked | checkbox_default | clipboard     |
-| close_small   | close            | compensation | configuration | confirm     | contact          | dictionary       | documents     |
-| dropdown      | expand           | filter       | folder_closed | folder_open | gallery          | link             | list          |
-| menu          | message          | microphone   | parlament     | play        | press            | print            | profile       |
-| radio_checked | radio_default    | research     | reservation   | search      | sort             | status_green     | status_orange |
-| status_red    | status_undefined | support      | alert_danger  | alert_info  | alert_success    | alert_warning    | calendar      |
-| delete        | drag_drop        | edit         | menu_actions  |             |                  |                  |               |
+| []()          |                  |              |               |              |                  |                  |               |
+| ------------- | ---------------- | ------------ | ------------- | ------------ | ---------------- | ---------------- | ------------- |
+| add           | appview          | audio        | breadcrumb    | cancel       | checkbox_checked | checkbox_default | clipboard     |
+| close_small   | close            | compensation | configuration | confirm      | contact          | dictionary       | documents     |
+| dropdown      | expand           | filter       | folder_closed | folder_open  | gallery          | link             | list          |
+| menu          | message          | microphone   | parlament     | play         | press            | print            | profile       |
+| radio_checked | radio_default    | research     | reservation   | search       | sort             | status_green     | status_orange |
+| status_red    | status_undefined | support      | alert_danger  | alert_info   | alert_success    | alert_warning    | calendar      |
+| delete        | drag_drop        | edit         | menu_actions  | confirm_bold | close_bold       |                  |               |
 
 <!-- Auto Generated Below -->
 
@@ -47,6 +47,8 @@
 ### Used by
 
  - [pd-alert](../pd-alert)
+ - [pd-chip](../pd-chip)
+ - [pd-combobox](../pd-combobox)
  - [pd-dropdown](../pd-dropdown)
  - [pd-list-item](../pd-list-item)
  - [pd-modal](../pd-modal)
@@ -62,6 +64,8 @@
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
+  pd-chip --> pd-icon
+  pd-combobox --> pd-icon
   pd-dropdown --> pd-icon
   pd-list-item --> pd-icon
   pd-modal --> pd-icon

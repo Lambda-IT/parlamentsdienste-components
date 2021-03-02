@@ -4,6 +4,7 @@
     display: inline-block;
     border: none; // fixes border issue in firefox
     outline: none;
+    vertical-align: bottom;
 }
 
 *,
@@ -84,6 +85,8 @@
 .pd-button-icon-right {
     display: flex;
     align-items: center;
+    margin-top: -0.25em;
+    margin-bottom: -0.25em;
 }
 
 .pd-button-icon-left {

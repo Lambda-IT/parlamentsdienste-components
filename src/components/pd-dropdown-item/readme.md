@@ -18,12 +18,14 @@
 
 ### Used by
 
+ - [pd-combobox](../pd-combobox)
  - [pd-dropdown](../pd-dropdown)
  - [pd-search](../pd-search)
 
 ### Graph
 ```mermaid
 graph TD;
+  pd-combobox --> pd-dropdown-item
   pd-dropdown --> pd-dropdown-item
   pd-search --> pd-dropdown-item
   style pd-dropdown-item fill:#f9f,stroke:#333,stroke-width:4px
