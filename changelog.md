@@ -9,12 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   Initial Changelog.md file
--   Pagination Control
+-   Chips Component
+-   Combobox Component
 
 ### Changed
 
--   Button, button group and icon vertical alignment for prefixed icons
+-   Icon alignment for prefixed icons in chips, buttons etc.
 
 ## [1.0.1] - 2020-02-15
 
