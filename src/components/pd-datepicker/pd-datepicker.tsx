@@ -20,8 +20,19 @@ export class Datepicker {
 
     /**
      * Set the configuration for the datepicker (only applied at instantiation)
+     * Check out https://flatpickr.js.org/options for further documentation about this config
      */
     @Prop() config: Partial<Options>;
+
+    /**
+     * If `true`, the user cannot interact with the input.
+     */
+    @Prop() disabled = false;
+
+    /**
+     * datepicker box label
+     */
+    @Prop() label?: string;
 
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
@@ -108,10 +119,24 @@ export class Datepicker {
     public render() {
         return (
             <Host>
-                <div class="wrapper">
-                    <pd-input data-input />
-                </div>
+                <label
+                    class={{
+                        'pd-datepicker-label': true,
+                        'pd-datepicker-disabled': this.disabled,
+                    }}
+                >
+                    {this.renderLabel()}
+                    <div class="wrapper">
+                        <pd-input class="pd-datepicker-input" disabled={this.disabled} data-input />
+                    </div>
+                </label>
             </Host>
         );
+    }
+
+    private renderLabel() {
+        if (!this.label) return;
+
+        return <div class="pd-combobox-label-text">{this.label}</div>;
     }
 }

@@ -17,10 +17,20 @@ export default {
     parameters: {
         notes,
     },
+    argTypes: {
+        disabled: { control: { type: 'boolean' } },
+    },
 };
 
-export const datepicker = () => {
-    return `
-        <pd-datepicker class="m-3"></pd-datepicker>
-    `;
+export const datepicker = (args) => {
+    const datepicker = document.createElement('pd-datepicker');
+    datepicker.classList = ['m-3'];
+    datepicker.label = args.label;
+    datepicker.disabled = args.disabled;
+    return datepicker;
+};
+
+datepicker.args = {
+    label: 'Label Text',
+    disabled: false,
 };

@@ -154,13 +154,21 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
-          * Set the configuration for the datepicker (only applied at instantiation)
+          * Set the configuration for the datepicker (only applied at instantiation) Check out https://flatpickr.js.org/options for further documentation about this config
          */
         "config": Partial<Options>;
         /**
           * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
          */
         "date": DateOption | DateOption[];
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * datepicker box label
+         */
+        "label"?: string;
         /**
           * Shows/opens the calendar.
          */
@@ -1023,13 +1031,21 @@ declare namespace LocalJSX {
     }
     interface PdDatepicker {
         /**
-          * Set the configuration for the datepicker (only applied at instantiation)
+          * Set the configuration for the datepicker (only applied at instantiation) Check out https://flatpickr.js.org/options for further documentation about this config
          */
         "config"?: Partial<Options>;
         /**
           * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
          */
         "date"?: DateOption | DateOption[];
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * datepicker box label
+         */
+        "label"?: string;
         "onPd-change"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-close"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-month-change"?: (event: CustomEvent<{
