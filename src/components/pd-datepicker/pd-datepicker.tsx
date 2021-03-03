@@ -42,7 +42,6 @@ export class Datepicker {
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
         time_24hr: true,
-        onChange: (selectedDates, dateStr) => this.pdChange.emit({ selectedDates, dateStr }),
         onOpen: (selectedDates, dateStr) => this.pdOpen.emit({ selectedDates, dateStr }),
         onClose: (selectedDates, dateStr) => this.pdClose.emit({ selectedDates, dateStr }),
         onMonthChange: (selectedDates, dateStr) => this.pdMonthChange.emit({ selectedDates, dateStr }),
@@ -92,7 +91,7 @@ export class Datepicker {
     }
 
     /**
-     * Sets the current selected date(s) todate, which can be a date string, a Date, or anArray of the Dates.
+     * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates.
      * Optionally, pass true as the second argument to force any onChange events to fire.
      * And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
      */
