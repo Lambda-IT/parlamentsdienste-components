@@ -19,6 +19,7 @@ export default {
     },
     argTypes: {
         disabled: { control: { type: 'boolean' } },
+        icon: { control: { type: 'boolean' } },
     },
 };
 
@@ -27,10 +28,12 @@ export const datepicker = (args) => {
     datepicker.classList = ['m-3'];
     datepicker.label = args.label;
     datepicker.disabled = args.disabled;
+    datepicker.icon = args.icon;
     return datepicker;
 };
 
 datepicker.args = {
     label: 'Label Text',
     disabled: false,
+    icon: true,
 };

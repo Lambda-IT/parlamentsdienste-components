@@ -30,6 +30,11 @@ export class Datepicker {
     @Prop() disabled = false;
 
     /**
+     * If `true`, a calendar icon is shown at the end of the input.
+     */
+    @Prop() icon = true;
+
+    /**
      * datepicker box label
      */
     @Prop() label?: string;
@@ -128,6 +133,7 @@ export class Datepicker {
                     {this.renderLabel()}
                     <div class="wrapper">
                         <pd-input class="pd-datepicker-input" disabled={this.disabled} data-input />
+                        {this.renderIcon()}
                     </div>
                 </label>
             </Host>
@@ -139,4 +145,14 @@ export class Datepicker {
 
         return <div class="pd-combobox-label-text">{this.label}</div>;
     }
+
+    private renderIcon() {
+        if (!this.icon) return;
+        return <pd-icon class="pd-datepicker-icon" name="calendar" onClick={this.onClickIcon} size={2.4}></pd-icon>;
+    }
+
+    private onClickIcon = (ev: Event) => {
+        ev.preventDefault();
+        this.flatpickr.open();
+    };
 }

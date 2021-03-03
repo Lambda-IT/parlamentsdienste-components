@@ -166,6 +166,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true`, a calendar icon is shown at the end of the input.
+         */
+        "icon": boolean;
+        /**
           * datepicker box label
          */
         "label"?: string;
@@ -1042,6 +1046,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * If `true`, a calendar icon is shown at the end of the input.
+         */
+        "icon"?: boolean;
         /**
           * datepicker box label
          */

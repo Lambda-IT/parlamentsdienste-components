@@ -49,6 +49,7 @@
  - [pd-alert](../pd-alert)
  - [pd-chip](../pd-chip)
  - [pd-combobox](../pd-combobox)
+ - [pd-datepicker](../pd-datepicker)
  - [pd-dropdown](../pd-dropdown)
  - [pd-list-item](../pd-list-item)
  - [pd-modal](../pd-modal)
@@ -66,6 +67,7 @@ graph TD;
   pd-alert --> pd-icon
   pd-chip --> pd-icon
   pd-combobox --> pd-icon
+  pd-datepicker --> pd-icon
   pd-dropdown --> pd-icon
   pd-list-item --> pd-icon
   pd-modal --> pd-icon
