@@ -373,6 +373,38 @@ export namespace Components {
          */
         "status": 'success' | 'danger' | 'warning' | 'unset';
     }
+    interface PdMenu {
+        /**
+          * Close menu
+         */
+        "close": () => Promise<void>;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": any;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items": any[];
+        /**
+          * Open menu
+         */
+        "open": () => Promise<void>;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder": string;
+    }
+    interface PdMenuItem {
+        /**
+          * Text for this item
+         */
+        "text": string;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -723,6 +755,18 @@ declare global {
         prototype: HTMLPdListItemElement;
         new (): HTMLPdListItemElement;
     };
+    interface HTMLPdMenuElement extends Components.PdMenu, HTMLStencilElement {
+    }
+    var HTMLPdMenuElement: {
+        prototype: HTMLPdMenuElement;
+        new (): HTMLPdMenuElement;
+    };
+    interface HTMLPdMenuItemElement extends Components.PdMenuItem, HTMLStencilElement {
+    }
+    var HTMLPdMenuItemElement: {
+        prototype: HTMLPdMenuItemElement;
+        new (): HTMLPdMenuItemElement;
+    };
     interface HTMLPdModalElement extends Components.PdModal, HTMLStencilElement {
     }
     var HTMLPdModalElement: {
@@ -852,6 +896,8 @@ declare global {
         "pd-input": HTMLPdInputElement;
         "pd-list": HTMLPdListElement;
         "pd-list-item": HTMLPdListItemElement;
+        "pd-menu": HTMLPdMenuElement;
+        "pd-menu-item": HTMLPdMenuItemElement;
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
@@ -1256,6 +1302,31 @@ declare namespace LocalJSX {
          */
         "status"?: 'success' | 'danger' | 'warning' | 'unset';
     }
+    interface PdMenu {
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: any;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items"?: any[];
+        "onPd-change"?: (event: CustomEvent<any>) => void;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder"?: string;
+    }
+    interface PdMenuItem {
+        /**
+          * Text for this item
+         */
+        "text"?: string;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -1593,6 +1664,8 @@ declare namespace LocalJSX {
         "pd-input": PdInput;
         "pd-list": PdList;
         "pd-list-item": PdListItem;
+        "pd-menu": PdMenu;
+        "pd-menu-item": PdMenuItem;
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
@@ -1632,6 +1705,8 @@ declare module "@stencil/core" {
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
             "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
+            "pd-menu": LocalJSX.PdMenu & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
+            "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;

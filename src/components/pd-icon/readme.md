@@ -52,6 +52,7 @@
  - [pd-datepicker](../pd-datepicker)
  - [pd-dropdown](../pd-dropdown)
  - [pd-list-item](../pd-list-item)
+ - [pd-menu](../pd-menu)
  - [pd-modal](../pd-modal)
  - [pd-navbar](../pd-navbar)
  - [pd-panel-header](../pd-panel-header)
@@ -70,6 +71,7 @@ graph TD;
   pd-datepicker --> pd-icon
   pd-dropdown --> pd-icon
   pd-list-item --> pd-icon
+  pd-menu --> pd-icon
   pd-modal --> pd-icon
   pd-navbar --> pd-icon
   pd-panel-header --> pd-icon

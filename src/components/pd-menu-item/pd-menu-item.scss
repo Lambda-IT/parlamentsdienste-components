@@ -1,0 +1,48 @@
+@include resetControlFonts;
+
+:host {
+    display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pd-menu-item {
+    width: 100%;
+    padding: 0.5em 0.5em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: $cyan-9;
+    fill: $cyan-9;
+
+    .pd-menu-item-text {
+        margin-left: 0.5em;
+    }
+
+    &:hover {
+        background-color: setcolor(primary, enabled);
+        color: $white;
+        fill: $white;
+    }
+
+    &:active {
+        background-color: setcolor(primary, pressed);
+        color: $black;
+        fill: $black;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    span {
+        white-space: pre;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+}
