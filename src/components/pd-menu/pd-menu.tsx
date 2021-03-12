@@ -16,7 +16,7 @@ export class Menu {
     /**
      * Placeholder when no item is selected
      */
-    @Prop() placeholder: string = '';
+    @Prop() placeholder = '';
 
     /**
      * Items to display and select in dropdown
@@ -26,7 +26,7 @@ export class Menu {
     /**
      * Enable selection of an empty item
      */
-    @Prop() emptyItem: boolean = false;
+    @Prop() emptyItem = false;
 
     /**
      * Data used for the empty item
@@ -37,7 +37,7 @@ export class Menu {
         value: null,
     };
 
-    @State() isOpen: boolean = false;
+    @State() isOpen = false;
 
     /**
      * Open menu
@@ -63,7 +63,7 @@ export class Menu {
     }
 
     @Event({ eventName: 'pd-change' })
-    public pdChange!: EventEmitter<any>;
+    pdChange!: EventEmitter<any>;
 
     protected componentDidLoad() {
         this.menuElement = this.element.shadowRoot.querySelector('.pd-menu-content') as HTMLElement;
@@ -87,7 +87,7 @@ export class Menu {
         });
     }
 
-    public render() {
+    render() {
         return (
             <Host>
                 <div class="pd-menu">
