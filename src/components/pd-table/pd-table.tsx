@@ -380,7 +380,7 @@ export class Table {
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
                 {this.renderButton(iConfig.edit, 'edit', this.onEdit, row)}
-                {this.renderButton(iConfig.select, 'print', this.onSelect, row)}
+                {this.renderButton(iConfig.select, 'detail', this.onSelect, row)}
                 {this.renderButton(iConfig.delete, 'delete', this.onDelete, row)}
             </div>
         );

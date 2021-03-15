@@ -50,6 +50,7 @@ export const iconMap = {
     alert_warning: 'alert_warning',
     calendar: 'calendar',
     delete: 'delete',
+    detail: 'detail',
     drag_drop: 'drag_drop',
     edit: 'edit',
     menu_actions: 'menu_actions',
