@@ -18,13 +18,13 @@
 
 | []()          |                  |              |               |              |                  |                  |               |
 | ------------- | ---------------- | ------------ | ------------- | ------------ | ---------------- | ---------------- | ------------- |
-| add           | appview          | audio        | breadcrumb    | cancel       | checkbox_checked | checkbox_default | clipboard     |
-| close_small   | close            | compensation | configuration | confirm      | contact          | dictionary       | documents     |
-| dropdown      | expand           | filter       | folder_closed | folder_open  | gallery          | link             | list          |
+| add           | appview          | audio        | breadcrumb    | cancel       | checkbox\_checked | checkbox\_default | clipboard     |
+| close\_small   | close            | compensation | configuration | confirm      | contact          | dictionary       | documents     |
+| dropdown      | expand           | filter       | folder\_closed | folder\_open  | gallery          | link             | list          |
 | menu          | message          | microphone   | parlament     | play         | press            | print            | profile       |
-| radio_checked | radio_default    | research     | reservation   | search       | sort             | status_green     | status_orange |
-| status_red    | status_undefined | support      | alert_danger  | alert_info   | alert_success    | alert_warning    | calendar      |
-| delete        | drag_drop        | edit         | menu_actions  | confirm_bold | close_bold       |                  |               |
+| radio\_checked | radio\_default    | research     | reservation   | search       | sort             | status\_green     | status\_orange |
+| status\_red    | status\_undefined | support      | alert\_danger  | alert\_info   | alert\_success    | alert\_warning    | calendar      |
+| delete        | drag\_drop        | edit         | menu\_actions  | confirm\_bold | close\_bold       | detail           |               |
 
 <!-- Auto Generated Below -->
 
