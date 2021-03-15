@@ -5,9 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, InputChangeEventDetail, PdColumn, PdModalConfig, TextFieldTypes } from "./interface";
+import { ChipType, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-import { DropdownItem } from "../dist/types/interface";
 export namespace Components {
     interface PdAlert {
         /**
@@ -606,6 +605,10 @@ export namespace Components {
          */
         "headerStyle": 'light' | 'dark' | 'gray';
         /**
+          * The configuration for the last column, the icon column
+         */
+        "iconConfig"?: PdTableIconConfiguration;
+        /**
           * The minimum width the table should take
          */
         "minWidth": string;
@@ -617,6 +620,10 @@ export namespace Components {
           * The data definition for each row to display
          */
         "rows": any;
+        /**
+          * Show button column and context menu
+         */
+        "showActionColumn": boolean;
     }
     interface PdTableFilter {
         "focusInput": () => Promise<void>;
@@ -1573,9 +1580,25 @@ declare namespace LocalJSX {
          */
         "headerStyle"?: 'light' | 'dark' | 'gray';
         /**
+          * The configuration for the last column, the icon column
+         */
+        "iconConfig"?: PdTableIconConfiguration;
+        /**
           * The minimum width the table should take
          */
         "minWidth"?: string;
+        /**
+          * Triggers an event when the delete icon was clicked
+         */
+        "onPd-delete"?: (event: CustomEvent<CustomEvent>) => void;
+        /**
+          * Triggers an event when the edit icon was clicked
+         */
+        "onPd-edit"?: (event: CustomEvent<CustomEvent>) => void;
+        /**
+          * Triggers an event when the select icon was clicked
+         */
+        "onPd-select"?: (event: CustomEvent<CustomEvent>) => void;
         /**
           * Height of rows
          */
@@ -1584,6 +1607,10 @@ declare namespace LocalJSX {
           * The data definition for each row to display
          */
         "rows"?: any;
+        /**
+          * Show button column and context menu
+         */
+        "showActionColumn"?: boolean;
     }
     interface PdTableFilter {
         /**

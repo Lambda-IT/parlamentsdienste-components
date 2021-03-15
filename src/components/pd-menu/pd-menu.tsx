@@ -57,7 +57,7 @@ export class Menu {
 
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
-        if (closestElement('pd-menu', ev.target as HTMLElement) !== this.element) {
+        if (closestElement('pd-menu', ev.composedPath()[0] as HTMLElement) !== this.element) {
             this.isOpen = false;
         }
     }

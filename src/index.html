@@ -151,7 +151,14 @@
             <h1>Header 1</h1>
             <pd-table id="pd-table-0" header-style="dark"> </pd-table>
             <pd-table id="pd-table-1" header-style="light"> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray"> </pd-table>
+            <pd-table id="pd-table-2" header-style="gray">
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+            </pd-table>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning" icon-location="left"> Button</pd-button>
             <pd-button color="danger">Button</pd-button>
@@ -309,6 +316,11 @@
             pdTable1.rows = rows;
             pdTable2.columns = columns;
             pdTable2.rows = rows;
+            pdTable2.iconConfig = { edit: true, select: true, delete: true };
+            pdTable2.showActionColumn = true;
+            pdTable2.addEventListener('pd-edit', (ev) => console.log('pdTable2 > edit', ev));
+            pdTable2.addEventListener('pd-select', (ev) => console.log('pdTable2 > select', ev));
+            pdTable2.addEventListener('pd-delete', (ev) => console.log('pdTable2 > delete', ev));
 
             pdBreadcrumbs.items = [
                 'Startseite',

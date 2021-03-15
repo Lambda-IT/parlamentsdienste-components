@@ -1,7 +1,7 @@
 import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter, Method } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
 import { closestElement } from '../../utils/helpers';
-import { DropdownItem } from '../../../dist/types/interface';
+import { DropdownItem } from '../../interface';
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',

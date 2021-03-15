@@ -10,12 +10,14 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description        | Type     | Default |
 | -------- | --------- | ------------------ | -------- | ------- |
 | `text`   | `text`    | Text for this item | `string` | `''`    |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

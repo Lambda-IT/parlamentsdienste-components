@@ -76,6 +76,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [pd-table](../pd-table)
+
 ### Depends on
 
 - [pd-icon](../pd-icon)
@@ -84,6 +88,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   pd-menu --> pd-icon
+  pd-table --> pd-menu
   style pd-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
