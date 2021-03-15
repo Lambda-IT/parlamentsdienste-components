@@ -20,13 +20,28 @@ export class Datepicker {
 
     /**
      * Set the configuration for the datepicker (only applied at instantiation)
+     * Check out https://flatpickr.js.org/options for further documentation about this config
      */
     @Prop() config: Partial<Options>;
+
+    /**
+     * If `true`, the user cannot interact with the input.
+     */
+    @Prop() disabled = false;
+
+    /**
+     * If `true`, a calendar icon is shown at the end of the input.
+     */
+    @Prop() icon = true;
+
+    /**
+     * datepicker box label
+     */
+    @Prop() label?: string;
 
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
         time_24hr: true,
-        onChange: (selectedDates, dateStr) => this.pdChange.emit({ selectedDates, dateStr }),
         onOpen: (selectedDates, dateStr) => this.pdOpen.emit({ selectedDates, dateStr }),
         onClose: (selectedDates, dateStr) => this.pdClose.emit({ selectedDates, dateStr }),
         onMonthChange: (selectedDates, dateStr) => this.pdMonthChange.emit({ selectedDates, dateStr }),
@@ -76,7 +91,7 @@ export class Datepicker {
     }
 
     /**
-     * Sets the current selected date(s) todate, which can be a date string, a Date, or anArray of the Dates.
+     * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates.
      * Optionally, pass true as the second argument to force any onChange events to fire.
      * And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
      */
@@ -108,10 +123,35 @@ export class Datepicker {
     public render() {
         return (
             <Host>
-                <div class="wrapper">
-                    <pd-input data-input />
-                </div>
+                <label
+                    class={{
+                        'pd-datepicker-label': true,
+                        'pd-datepicker-disabled': this.disabled,
+                    }}
+                >
+                    {this.renderLabel()}
+                    <div class="wrapper">
+                        <pd-input class="pd-datepicker-input" disabled={this.disabled} data-input />
+                        {this.renderIcon()}
+                    </div>
+                </label>
             </Host>
         );
     }
+
+    private renderLabel() {
+        if (!this.label) return;
+
+        return <div class="pd-combobox-label-text">{this.label}</div>;
+    }
+
+    private renderIcon() {
+        if (!this.icon) return;
+        return <pd-icon class="pd-datepicker-icon" name="calendar" onClick={this.onClickIcon} size={2.4}></pd-icon>;
+    }
+
+    private onClickIcon = (ev: Event) => {
+        ev.preventDefault();
+        this.flatpickr.open();
+    };
 }

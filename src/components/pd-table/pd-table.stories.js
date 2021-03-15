@@ -8,6 +8,8 @@ export default {
     argTypes: {
         rows: { control: { type: 'object' } },
         columns: { control: { type: 'object' } },
+        iconConfig: { control: { type: 'object' } },
+        showActionColumn: { control: { type: 'boolean' } },
     },
 };
 
@@ -21,6 +23,8 @@ export const Table = (args) => {
     table0.classList = ['m-3'];
     table0.rows = args.rows;
     table0.columns = args.columns;
+    table0.iconConfig = args.iconConfig;
+    table0.showActionColumn = args.showActionColumn;
     table0.setAttribute('header-style', 'dark');
 
     const headerLight = document.createElement('h3');
@@ -30,6 +34,8 @@ export const Table = (args) => {
     table1.classList = ['m-3'];
     table1.rows = args.rows;
     table1.columns = args.columns;
+    table1.iconConfig = args.iconConfig;
+    table1.showActionColumn = args.showActionColumn;
     table1.setAttribute('header-style', 'light');
 
     const headerGray = document.createElement('h3');
@@ -39,6 +45,8 @@ export const Table = (args) => {
     table2.classList = ['m-3'];
     table2.rows = args.rows;
     table2.columns = args.columns;
+    table2.iconConfig = args.iconConfig;
+    table2.showActionColumn = args.showActionColumn;
     table2.setAttribute('header-style', 'gray');
 
     const wrapper = document.createElement('div');
@@ -97,4 +105,6 @@ Table.args = {
             filter: true,
         },
     ],
+    showActionColumn: true,
+    iconConfig: { edit: true, select: false, delete: true },
 };

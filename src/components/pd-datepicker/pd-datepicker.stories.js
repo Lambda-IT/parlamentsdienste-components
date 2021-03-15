@@ -17,10 +17,28 @@ export default {
     parameters: {
         notes,
     },
+    argTypes: {
+        disabled: { control: { type: 'boolean' } },
+        icon: { control: { type: 'boolean' } },
+        config_allow_input: { control: { type: 'boolean' } },
+    },
 };
 
-export const datepicker = () => {
-    return `
-        <pd-datepicker class="m-3"></pd-datepicker>
-    `;
+export const datepicker = (args) => {
+    const datepicker = document.createElement('pd-datepicker');
+    datepicker.classList = ['m-3'];
+    datepicker.label = args.label;
+    datepicker.disabled = args.disabled;
+    datepicker.icon = args.icon;
+    datepicker.config = {
+        allowInput: args.config_allow_input,
+    };
+    return datepicker;
+};
+
+datepicker.args = {
+    label: 'Label Text',
+    disabled: false,
+    icon: true,
+    config_allow_input: false,
 };

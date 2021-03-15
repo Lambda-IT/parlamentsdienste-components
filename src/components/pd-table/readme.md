@@ -165,14 +165,25 @@ interface PdColumn {
 
 ## Properties
 
-| Property       | Attribute       | Description                                 | Type                          | Default  |
-| -------------- | --------------- | ------------------------------------------- | ----------------------------- | -------- |
-| `columns`      | --              | A definition for each column of the table   | `PdColumn[]`                  | `[]`     |
-| `headerHeight` | `header-height` | Height of header cells                      | `string`                      | `'48'`   |
-| `headerStyle`  | `header-style`  | The table style                             | `"dark" \| "gray" \| "light"` | `'dark'` |
-| `minWidth`     | `min-width`     | The minimum width the table should take     | `string`                      | `'300'`  |
-| `rowHeight`    | `row-height`    | Height of rows                              | `string`                      | `'48'`   |
-| `rows`         | `rows`          | The data definition for each row to display | `any`                         | `[]`     |
+| Property           | Attribute            | Description                                            | Type                          | Default     |
+| ------------------ | -------------------- | ------------------------------------------------------ | ----------------------------- | ----------- |
+| `columns`          | --                   | A definition for each column of the table              | `PdColumn[]`                  | `[]`        |
+| `headerHeight`     | `header-height`      | Height of header cells                                 | `string`                      | `'48'`      |
+| `headerStyle`      | `header-style`       | The table style                                        | `"dark" \| "gray" \| "light"` | `'dark'`    |
+| `iconConfig`       | --                   | The configuration for the last column, the icon column | `PdTableIconConfiguration`    | `undefined` |
+| `minWidth`         | `min-width`          | The minimum width the table should take                | `string`                      | `'300'`     |
+| `rowHeight`        | `row-height`         | Height of rows                                         | `string`                      | `'48'`      |
+| `rows`             | `rows`               | The data definition for each row to display            | `any`                         | `[]`        |
+| `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`     |
+
+
+## Events
+
+| Event       | Description                                        | Type                            |
+| ----------- | -------------------------------------------------- | ------------------------------- |
+| `pd-delete` | Triggers an event when the delete icon was clicked | `CustomEvent<CustomEvent<any>>` |
+| `pd-edit`   | Triggers an event when the edit icon was clicked   | `CustomEvent<CustomEvent<any>>` |
+| `pd-select` | Triggers an event when the select icon was clicked | `CustomEvent<CustomEvent<any>>` |
 
 
 ## Dependencies
@@ -180,14 +191,17 @@ interface PdColumn {
 ### Depends on
 
 - [pd-table-filter](../pd-table-filter)
+- [pd-menu](../pd-menu)
 - [pd-icon](../pd-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
+  pd-table --> pd-menu
   pd-table --> pd-icon
   pd-table-filter --> pd-icon
+  pd-menu --> pd-icon
   style pd-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

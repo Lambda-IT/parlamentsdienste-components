@@ -67,6 +67,29 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 | `pd-change` |             | `CustomEvent<DropdownItem>` |
 
 
+## Methods
+
+### `reset() => Promise<void>`
+
+Reset the selection of the dropdown
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setSelectedIndex(index: number) => Promise<void>`
+
+Set a preselected entry by index
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

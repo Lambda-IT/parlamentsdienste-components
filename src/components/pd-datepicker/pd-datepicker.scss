@@ -10,6 +10,73 @@
     outline: none;
 }
 
+.pd-datepicker-label {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    &.pd-datepicker-disabled {
+        .pd-datepicker-input {
+            border: 0.125em solid setcolor(primary, disabled);
+            background-color: $white;
+        }
+
+        .pd-datepicker-icon .pd-icon {
+            fill: setcolor(primary, disabled);
+        }
+    }
+
+    &:focus {
+        .pd-datepicker-input {
+            border: 0.125em solid $focus;
+        }
+    }
+}
+
 .wrapper {
-    display: block;
+    display: flex;
+    position: relative;
+}
+
+.pd-datepicker-input {
+    flex: 1 1 auto;
+
+    &:focus {
+        border: 0.125em solid $focus;
+        border-right: none;
+
+        & ~ .pd-search-button {
+            border: 0.125em solid $focus;
+            border-left: none;
+        }
+    }
+}
+
+.pd-datepicker-label {
+    padding-bottom: 0.25em;
+}
+
+.pd-datepicker-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0.125em;
+    height: calc(100% - 0.125em);
+    top: 1px; // misaligned icon
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    font-size: 4em;
+    fill: setcolor(primary, enabled);
+
+    &:hover {
+        fill: setcolor(primary, hover);
+    }
+
+    &:active {
+        fill: setcolor(primary, pressed);
+    }
 }

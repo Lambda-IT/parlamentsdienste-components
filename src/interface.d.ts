@@ -27,8 +27,27 @@ export interface PdColumn {
     filterFunc?: (value: any, filter: string) => boolean;
 }
 
+export interface PdTableIconConfiguration {
+    edit: boolean;
+    select: boolean;
+    delete: boolean;
+}
+
+export interface PdButtonCell {
+    width: number;
+    minWidth: number;
+    align: PdColumn['textAlign'];
+}
+
 export interface PdModalConfig {
     title: string;
     backdropVisible?: boolean;
     zIndex?: string;
+}
+
+export interface DropdownItem {
+    id: string;
+    label: string;
+    value: string;
+    selected?: boolean;
 }

@@ -59,6 +59,7 @@ const iconList = [
     'alert_warning',
     'calendar',
     'delete',
+    'detail',
     'drag_drop',
     'edit',
     'menu_actions',
@@ -117,6 +118,7 @@ export const basic = () =>
     <pd-icon class="mt-3" size="2.5" name="alert_warning"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="calendar"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="delete"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="detail"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="drag_drop"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="edit"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="menu_actions"></pd-icon>

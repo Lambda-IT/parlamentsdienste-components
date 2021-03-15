@@ -1,15 +1,7 @@
-import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter, Method } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
 import { closestElement } from '../../utils/helpers';
-
-// TODO: move out of file
-export interface DropdownItem {
-    id: string;
-    label: string;
-    value: string;
-    selected?: boolean;
-}
-
+import { DropdownItem } from '../../interface';
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
@@ -50,6 +42,25 @@ export class Dropdown {
         label: '-',
         value: null,
     };
+
+    /**
+     * Set a preselected entry by index
+     */
+    @Method()
+    async setSelectedIndex(index: number) {
+        if (index >= 0 && index < this.items.length) {
+            this.items[index] = { ...this.items[index], selected: true };
+            this.selectedItem = this.items[index];
+        }
+    }
+
+    /**
+     * Reset the selection of the dropdown
+     */
+    @Method()
+    async reset() {
+        this.selectedItem = null;
+    }
 
     @State() open: boolean = false;
 

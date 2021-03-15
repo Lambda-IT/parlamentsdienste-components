@@ -30,6 +30,14 @@
                 <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
                 <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
             </pd-navbar>
+            <pd-menu>
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+                <pd-menu-item text="Download">
+                    <pd-icon size="2" name="documents"></pd-icon>
+                </pd-menu-item>
+            </pd-menu>
             <pd-combobox id="pd-combobox-0"></pd-combobox>
             <pd-combobox disabled></pd-combobox>
             <pd-chip id="pd-chip-0">Text Chip</pd-chip>
@@ -143,7 +151,14 @@
             <h1>Header 1</h1>
             <pd-table id="pd-table-0" header-style="dark"> </pd-table>
             <pd-table id="pd-table-1" header-style="light"> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray"> </pd-table>
+            <pd-table id="pd-table-2" header-style="gray">
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+            </pd-table>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning" icon-location="left"> Button</pd-button>
             <pd-button color="danger">Button</pd-button>
@@ -187,7 +202,15 @@
                 id="pd-input-0"
                 helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
             ></pd-input>
-            <pd-input value="asdf" label="asdf" error id="pd-input-0" helper-text="asdf-asdf"></pd-input>
+            <pd-input value="asdf" label="asdf" error id="pd-input-1" helper-text="asdf-asdf"></pd-input>
+            <pd-input
+                class="flatpickr-input"
+                value="asdf"
+                label="readonly"
+                id="pd-input-2"
+                helper-text="asdf-asdf"
+                readonly
+            ></pd-input>
             <pd-sidebar>
                 <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
                 <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
@@ -231,7 +254,10 @@
                 wrap: true,
                 time_24hr: true,
                 enableTime: true,
+                allowInput: true,
             };
+
+            flatPickr0.addEventListener('pd-change', (ev) => console.log('change', ev));
 
             const columns = [
                 {
@@ -290,6 +316,11 @@
             pdTable1.rows = rows;
             pdTable2.columns = columns;
             pdTable2.rows = rows;
+            pdTable2.iconConfig = { edit: true, select: true, delete: true };
+            pdTable2.showActionColumn = true;
+            pdTable2.addEventListener('pd-edit', (ev) => console.log('pdTable2 > edit', ev));
+            pdTable2.addEventListener('pd-select', (ev) => console.log('pdTable2 > select', ev));
+            pdTable2.addEventListener('pd-delete', (ev) => console.log('pdTable2 > delete', ev));
 
             pdBreadcrumbs.items = [
                 'Startseite',
@@ -347,6 +378,12 @@
                 { id: '8', label: 'NKF. Evaluationsverfahren, Information und Diskussion', value: 'a8' },
                 { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
             ];
+
+            // test do set a selected value over a programmatic way
+            setTimeout(() => pdDropDown.setSelectedIndex(2), 2000);
+
+            // test do set a selected value over a programmatic way
+            setTimeout(() => pdDropDown.reset(), 4000);
 
             pdComboBox.items = [
                 'Dropdown Link 01',

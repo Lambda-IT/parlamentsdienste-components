@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop, Element, State, Listen, Watch } from '@stencil/core';
-import { PdColumn } from '../../interface';
+import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter } from '@stencil/core';
+import { PdColumn, PdTableIconConfiguration, PdButtonCell } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
@@ -40,6 +40,31 @@ export class Table {
      */
     @Prop() rows: any = [];
 
+    /**
+     * The configuration for the last column, the icon column
+     */
+    @Prop() iconConfig?: PdTableIconConfiguration;
+
+    /**
+     * Show button column and context menu
+     */
+    @Prop() showActionColumn = false;
+
+    /**
+     * Triggers an event when the edit icon was clicked
+     */
+    @Event({ eventName: 'pd-edit' }) onEdit: EventEmitter<CustomEvent>;
+
+    /**
+     * Triggers an event when the select icon was clicked
+     */
+    @Event({ eventName: 'pd-select' }) onSelect: EventEmitter<CustomEvent>;
+
+    /**
+     * Triggers an event when the delete icon was clicked
+     */
+    @Event({ eventName: 'pd-delete' }) onDelete: EventEmitter<CustomEvent>;
+
     @Watch('rows')
     handleRowsChanged() {
         this.filteredRows = [...this.rows];
@@ -55,6 +80,7 @@ export class Table {
     private nextSortDir = {};
     private sortColumn = '';
     private popper: Instance;
+    private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
 
     @Listen('keydown')
     protected handleKeyDown(ev: KeyboardEvent) {
@@ -109,8 +135,8 @@ export class Table {
         return minWidth === 0 ? '0' : `${minWidth}px`;
     }
 
-    private getTextAlign = (headerCol: PdColumn) =>
-        headerCol.textAlign === 'left' ? 'flex-start' : headerCol.textAlign === 'right' ? 'flex-end' : 'center';
+    private getTextAlign = (textAlign: PdColumn['textAlign']) =>
+        textAlign === 'left' ? 'flex-start' : textAlign === 'right' ? 'flex-end' : 'center';
 
     private defaultSortFunc = (a, b, dir) => {
         if (dir === 'asc') return a === b ? 0 : a < b ? -1 : 1;
@@ -229,26 +255,22 @@ export class Table {
                         <div class={`pd-table-header-row`} role="rowheader" style={headerStyle}>
                             {this.renderHeader(true)}
                         </div>
-                        <div class="pd-table-body">{this.renderRows(true)}</div>
+                        <div class="pd-table-body">{this.renderRows(true, this.iconConfig)}</div>
                     </div>
                     <div class="pd-table-horizontal-scroll" style={scrollStyle}>
                         <div class={`pd-table-header-row ${this.headerStyle}`} role="rowheader" style={headerStyle}>
                             {this.renderHeader(false)}
                         </div>
-                        <div class="pd-table-body">{this.renderRows(false)}</div>
+                        <div class="pd-table-body">{this.renderRows(false, this.iconConfig)}</div>
                     </div>
                 </div>
             </Host>
         );
     }
     private renderHeader(fixed: boolean = false) {
-        return this.columns
+        const columns = this.columns
             .filter((c) => (c.fixed || false) === fixed)
             .map((headerCol) => {
-                const headerCellStyle = {
-                    flex: headerCol.width === 0 ? `1 1 ${headerCol.minWidth || 0}px` : `0 0 ${headerCol.width}px`,
-                    minWidth: `${headerCol.minWidth || headerCol.width || 0}px`,
-                };
                 const columnSortDir = this.nextSortDir[headerCol.columnName];
                 return (
                     <div
@@ -261,11 +283,14 @@ export class Table {
                         }}
                         ref={(el) => (this.headerRefs[headerCol.columnName] = el as HTMLElement)}
                         role="cell"
-                        style={headerCellStyle}
+                        style={this.calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => this.sort(headerCol)}
                     >
-                        <div class="pd-table-header-cell-text" style={{ justifyContent: this.getTextAlign(headerCol) }}>
+                        <div
+                            class="pd-table-header-cell-text"
+                            style={{ justifyContent: this.getTextAlign(headerCol.textAlign) }}
+                        >
                             <span>{headerCol.label}</span>
                         </div>
                         <div class="pd-table-header-cell-actions">
@@ -275,9 +300,41 @@ export class Table {
                     </div>
                 );
             });
+
+        // render menu/button column
+        const btnColumnName = 'btnColumn';
+        const btnColumn = (
+            <div
+                class={{
+                    'pd-table-header-cell': true,
+                    'pd-table-cell-bold': true,
+                    [`pd-table-${this.headerStyle}`]: true,
+                }}
+                ref={(el) => (this.headerRefs[btnColumnName] = el as HTMLElement)}
+                role="cell"
+                style={this.calculateHeaderCellStyle({
+                    width: this.evaluateBtnColumnWidth(),
+                    minWidth: this.btnCellStyle.minWidth,
+                })}
+            >
+                <div
+                    class="pd-table-header-cell-text"
+                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
+                >
+                    <pd-menu>
+                        <slot data-menu-items=""></slot>
+                    </pd-menu>
+                </div>
+                <div class="pd-table-header-cell-actions"></div>
+            </div>
+        );
+
+        if (!fixed && this.showActionColumn) columns.push(btnColumn);
+
+        return columns;
     }
 
-    private renderRows(fixed: boolean = false) {
+    private renderRows(fixed: boolean = false, iconConfig: PdTableIconConfiguration) {
         const rowStyle = {
             height: `${this.rowHeight}px`,
         };
@@ -285,16 +342,13 @@ export class Table {
         return this.filteredRows.map((row) => (
             <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.columns.filter((c) => (c.fixed || false) === fixed).map((col) => this.renderColumn(row, col))}
+                {this.showActionColumn ? this.renderBtnColumn(row, fixed, iconConfig) : null}
             </div>
         ));
     }
 
     private renderColumn(row, col: PdColumn) {
-        const cellStyle = {
-            flex: col.width === 0 ? `1 1 ${col.minWidth || 0}px` : `0 0 ${col.width}px`,
-            minWidth: `${col.minWidth || col.width || 0}px`,
-            justifyContent: this.getTextAlign(col),
-        };
+        const cellStyle = this.claculateCellStyle({ width: col.width, minWidth: col.minWidth, align: col.textAlign });
 
         let value = row[col.columnName];
         if (value && typeof value.getMonth === 'function') {
@@ -312,6 +366,22 @@ export class Table {
                 title={value}
             >
                 {this.renderValue(col, value)}
+            </div>
+        );
+    }
+
+    private renderBtnColumn(row, fixed: boolean, iconConfig: PdTableIconConfiguration) {
+        if (fixed) return;
+        const cellStyle = this.claculateCellStyle({
+            ...this.btnCellStyle,
+            width: this.evaluateBtnColumnWidth(),
+        });
+        const iConfig = { edit: false, select: false, delete: false, ...iconConfig };
+        return (
+            <div class={`pd-table-cell`} style={cellStyle} role="cell">
+                {this.renderButton(iConfig.edit, 'edit', this.onEdit, row)}
+                {this.renderButton(iConfig.select, 'detail', this.onSelect, row)}
+                {this.renderButton(iConfig.delete, 'delete', this.onDelete, row)}
             </div>
         );
     }
@@ -349,5 +419,38 @@ export class Table {
                     size={2}
                 ></pd-icon>
             );
+    }
+
+    private renderButton(visible: boolean, icon: string, trigger: EventEmitter, data) {
+        if (!visible) return;
+        return (
+            <button class="pd-table-action-btn">
+                {/* TODO: if possible replace target with ev.composedPath() for more accurate target*/}
+                <pd-icon size={2} name={icon} onClick={() => trigger.emit(data)}></pd-icon>
+            </button>
+        );
+    }
+
+    private calculateHeaderCellStyle(headerCol: { width: number; minWidth: number }) {
+        return {
+            flex: headerCol.width === 0 ? `1 1 ${headerCol.minWidth || 0}px` : `0 0 ${headerCol.width}px`,
+            minWidth: `${headerCol.minWidth || headerCol.width || 0}px`,
+        };
+    }
+
+    private claculateCellStyle(cell: { width: number; minWidth: number; align: PdColumn['textAlign'] }) {
+        return {
+            flex: cell.width === 0 ? `1 1 ${cell.minWidth || 0}px` : `0 0 ${cell.width}px`,
+            minWidth: `${cell.minWidth || cell.width || 0}px`,
+            justifyContent: this.getTextAlign(cell.align),
+        };
+    }
+
+    private evaluateBtnColumnWidth(): number {
+        if (this.iconConfig) {
+            return Object.keys(this.iconConfig).length * this.btnCellStyle.width;
+        } else {
+            return this.btnCellStyle.width;
+        }
     }
 }
