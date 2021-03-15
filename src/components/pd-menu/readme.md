@@ -36,12 +36,10 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Properties
 
-| Property        | Attribute         | Description                             | Type      | Default                                                             |
-| --------------- | ----------------- | --------------------------------------- | --------- | ------------------------------------------------------------------- |
-| `emptyItem`     | `empty-item`      | Enable selection of an empty item       | `boolean` | `false`                                                             |
-| `emptyItemData` | `empty-item-data` | Data used for the empty item            | `any`     | `{         id: '0',         label: '-',         value: null,     }` |
-| `items`         | --                | Items to display and select in dropdown | `any[]`   | `[]`                                                                |
-| `placeholder`   | `placeholder`     | Placeholder when no item is selected    | `string`  | `''`                                                                |
+| Property      | Attribute     | Description                             | Type     | Default |
+| ------------- | ------------- | --------------------------------------- | -------- | ------- |
+| `items`       | --            | Items to display and select in dropdown | `any[]`  | `[]`    |
+| `placeholder` | `placeholder` | Placeholder when no item is selected    | `string` | `''`    |
 
 
 ## Events

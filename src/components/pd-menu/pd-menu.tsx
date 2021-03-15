@@ -23,20 +23,6 @@ export class Menu {
      */
     @Prop() items: any[] = [];
 
-    /**
-     * Enable selection of an empty item
-     */
-    @Prop() emptyItem = false;
-
-    /**
-     * Data used for the empty item
-     */
-    @Prop() emptyItemData: any = {
-        id: '0',
-        label: '-',
-        value: null,
-    };
-
     @State() isOpen = false;
 
     /**
