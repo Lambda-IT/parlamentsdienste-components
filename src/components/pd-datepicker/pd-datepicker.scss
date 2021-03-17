@@ -14,6 +14,7 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+    padding-bottom: 0.25em;
 
     &.pd-datepicker-disabled {
         .pd-datepicker-input {
@@ -50,10 +51,6 @@
             border-left: none;
         }
     }
-}
-
-.pd-datepicker-label {
-    padding-bottom: 0.25em;
 }
 
 .pd-datepicker-icon {

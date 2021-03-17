@@ -44,6 +44,16 @@ export class Dropdown {
     };
 
     /**
+     * If `true`, the user cannot interact with the input.
+     */
+    @Prop() disabled = false;
+
+    /**
+     * Dropdown box label
+     */
+    @Prop() label?: string;
+
+    /**
      * Set a preselected entry by index
      */
     @Method()
@@ -174,24 +184,33 @@ export class Dropdown {
     public render() {
         return (
             <Host>
-                <div class="pd-dropdown">
-                    <button
-                        class="pd-dropdown-button"
-                        type="button"
-                        aria-haspopup="true"
-                        aria-expanded={`${this.open}`}
-                        onClick={this.openDropdown}
-                    >
-                        <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
-                        <pd-icon
-                            class="pd-dropdown-caret"
-                            name="dropdown"
-                            rotate={this.open ? 180 : 0}
-                            size={2}
-                        ></pd-icon>
-                    </button>
-                    {this.renderDropDown()}
-                </div>
+                <label
+                    class={{
+                        'pd-dropdown-label': true,
+                        'pd-dropdown-disabled': this.disabled,
+                    }}
+                >
+                    {this.renderLabel()}
+                    <div class="pd-dropdown">
+                        <button
+                            class="pd-dropdown-button"
+                            type="button"
+                            aria-haspopup="true"
+                            aria-expanded={`${this.open}`}
+                            onClick={this.openDropdown}
+                            disabled={this.disabled}
+                        >
+                            <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
+                            <pd-icon
+                                class="pd-dropdown-caret"
+                                name="dropdown"
+                                rotate={this.open ? 180 : 0}
+                                size={2}
+                            ></pd-icon>
+                        </button>
+                        {this.renderDropDown()}
+                    </div>
+                </label>
             </Host>
         );
     }
@@ -231,5 +250,11 @@ export class Dropdown {
                 onClick={() => this.selectItem(this.emptyItemData, true)}
             ></pd-dropdown-item>
         );
+    }
+
+    private renderLabel() {
+        if (!this.label) return;
+
+        return <div class="pd-combobox-label-text">{this.label}</div>;
     }
 }

@@ -9,6 +9,8 @@ export default {
         notes,
         argTypes: {
             items: { controls: { type: 'object' } },
+            disabled: { controls: { type: 'boolean' } },
+            label: { controls: { type: 'string' } },
         },
     },
 };
@@ -18,6 +20,8 @@ export default {
 export const Dropdown = (args) => {
     const pdDropdown = document.createElement('pd-dropdown');
     pdDropdown.items = args.items;
+    pdDropdown.disabled = args.disabled;
+    pdDropdown.label = args.label;
     pdDropdown.classList = ['m-3'];
 
     return pdDropdown;
@@ -35,4 +39,6 @@ Dropdown.args = {
         { id: '8', label: 'NKF. Evaluationsverfahren, Information und Diskussion', value: 'a8' },
         { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
     ],
+    disabled: false,
+    label: 'Dropdown label text',
 };

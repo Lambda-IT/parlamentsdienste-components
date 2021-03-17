@@ -11,6 +11,13 @@
     outline: none;
 }
 
+.pd-dropdown-label {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.25em;
+}
+
 .pd-dropdown {
     position: relative;
 }

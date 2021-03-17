@@ -191,6 +191,10 @@ export namespace Components {
     }
     interface PdDropdown {
         /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
           * Enable selection of an empty item
          */
         "emptyItem": boolean;
@@ -206,6 +210,10 @@ export namespace Components {
           * Items to display and select in dropdown
          */
         "items": DropdownItem[];
+        /**
+          * Dropdown box label
+         */
+        "label"?: string;
         /**
           * Placeholder when no item is selected
          */
@@ -1115,6 +1123,10 @@ declare namespace LocalJSX {
     }
     interface PdDropdown {
         /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
           * Enable selection of an empty item
          */
         "emptyItem"?: boolean;
@@ -1130,6 +1142,10 @@ declare namespace LocalJSX {
           * Items to display and select in dropdown
          */
         "items"?: DropdownItem[];
+        /**
+          * Dropdown box label
+         */
+        "label"?: string;
         "onPd-change"?: (event: CustomEvent<DropdownItem>) => void;
         /**
           * Placeholder when no item is selected
