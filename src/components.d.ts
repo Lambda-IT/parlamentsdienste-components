@@ -206,6 +206,7 @@ export namespace Components {
           * Data used for the empty item
          */
         "emptyItemData": DropdownItem;
+        "error": boolean;
         /**
           * Items visible in dropdown
          */
@@ -222,6 +223,14 @@ export namespace Components {
           * Placeholder when no item is selected
          */
         "placeholder": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Reset the selection of the dropdown
          */
@@ -1142,6 +1151,7 @@ declare namespace LocalJSX {
           * Data used for the empty item
          */
         "emptyItemData"?: DropdownItem;
+        "error"?: boolean;
         /**
           * Items visible in dropdown
          */
@@ -1159,6 +1169,14 @@ declare namespace LocalJSX {
           * Placeholder when no item is selected
          */
         "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
     }
     interface PdDropdownItem {
         /**

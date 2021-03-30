@@ -189,6 +189,9 @@
                 helper-text="dropdown helper text"
                 empty-item
             ></pd-dropdown>
+            <pd-dropdown label="dropdown error" helper-text="dropdown helper text" error empty-item></pd-dropdown>
+            <pd-dropdown label="dropdown readonly" helper-text="dropdown helper text" readonly empty-item></pd-dropdown>
+            <pd-dropdown label="dropdown disabled" helper-text="dropdown helper text" disabled empty-item></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-checkbox text="checkbox"></pd-checkbox>
             <pd-checkbox disabled text="checkbox"></pd-checkbox>
@@ -200,12 +203,12 @@
             <pd-radio name="x" value="1" label="100%"></pd-radio>
             <pd-input
                 value="asdf"
-                label="asdf"
+                label="error"
                 error
                 id="pd-input-0"
                 helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
             ></pd-input>
-            <pd-input value="asdf" label="asdf" error id="pd-input-1" helper-text="asdf-asdf"></pd-input>
+            <pd-input label="required" required id="pd-input-1" helper-text="asdf-asdf"></pd-input>
             <pd-input
                 class="flatpickr-input"
                 value="asdf"
