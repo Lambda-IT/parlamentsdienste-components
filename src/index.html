@@ -75,9 +75,10 @@
                 Toast body text goes here
             </pd-toast>
             <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
-            <pd-alert href="http://www.google.ch" closable color="primary"
-                >A simple primary alert—check it out!</pd-alert
-            >
+            <pd-alert closable color="primary" headline="Additional Content">
+                <p>Line 1: A simple primary alert—check it out!</p>
+                <p>Line 2: A simple primary alert—check it out!</p>
+            </pd-alert>
             <pd-alert color="danger" action action-text="a link to click" closable
                 >A simple primary alert—check it out!</pd-alert
             >
@@ -101,8 +102,10 @@
                 action-text="a external link to click"
                 action-href="http://www.google.ch"
                 closable
-                >A simple primary alert—check it out!</pd-alert
+                headline="Additional Content"
             >
+                A simple primary alert—check it out!
+            </pd-alert>
             <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
             <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
             <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>

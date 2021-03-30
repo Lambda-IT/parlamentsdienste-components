@@ -32,6 +32,11 @@ export class PdAlert {
     @Prop() actionHref: string;
 
     /**
+     * A headline displayed above the given text
+     */
+    @Prop() headline: string;
+
+    /**
      * Hide alert icon
      */
     @Prop() hideIcon: boolean = false;
@@ -51,7 +56,10 @@ export class PdAlert {
             <div class={`pd-alert pd-alert-${this.color}`}>
                 {this.renderIcon()}
                 <div class="pd-alert-text">
-                    <slot></slot>
+                    {this.renderHeadline()}
+                    <div>
+                        <slot></slot>
+                    </div>
                 </div>
                 <div class="pd-alert-action">
                     {this.renderAction()}
@@ -79,6 +87,11 @@ export class PdAlert {
     private renderClose() {
         if (!this.closable) return;
         return <pd-icon onClick={this.pdClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
+    }
+
+    private renderHeadline() {
+        if (!this.headline) return;
+        return <h1 class="pd-alert-headline">{this.headline}</h1>;
     }
 
     private renderIcon() {

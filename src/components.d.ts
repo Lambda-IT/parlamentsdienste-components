@@ -34,6 +34,10 @@ export namespace Components {
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
+          * A headline displayed above the given text
+         */
+        "headline": string;
+        /**
           * Hide alert icon
          */
         "hideIcon": boolean;
@@ -952,6 +956,10 @@ declare namespace LocalJSX {
           * Color schema used for the alert
          */
         "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        /**
+          * A headline displayed above the given text
+         */
+        "headline"?: string;
         /**
           * Hide alert icon
          */

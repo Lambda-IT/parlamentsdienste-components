@@ -38,6 +38,7 @@
 | `actionText`   | `action-text`   | Text to show on action                          | `string`                                                                         | `undefined` |
 | `closable`     | `closable`      | Display an option to close the alert            | `boolean`                                                                        | `false`     |
 | `color`        | `color`         | Color schema used for the alert                 | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
+| `headline`     | `headline`      | A headline displayed above the given text       | `string`                                                                         | `undefined` |
 | `hideIcon`     | `hide-icon`     | Hide alert icon                                 | `boolean`                                                                        | `false`     |
 
 

@@ -19,6 +19,13 @@
     display: flex;
     align-items: center;
 
+    .pd-alert-headline {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+    }
+
     &.pd-alert-primary {
         background-color: setcolor(primary, enabled);
     }

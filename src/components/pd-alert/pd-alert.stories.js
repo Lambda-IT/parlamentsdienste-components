@@ -15,20 +15,34 @@ export default {
         actionHref: { control: { type: 'text' } },
         actionTarget: { control: { type: 'select', options: ['', '_blank'] } },
         hideIcon: { control: { type: 'boolean' } },
+        headline: { control: { type: 'text' } },
     },
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 export const Basic = (args) => `
-    <pd-alert class="m-3" 
-    ${args.action ? 'action' : ''} 
-    ${args.closable ? 'closable' : ''} 
-    ${args.showIcon ? 'hide-icon' : ''} 
-    action-text="${args.actionText}" 
-    action-href="${args.actionHref}" 
+    <pd-alert class="m-3"
+    ${args.action ? 'action' : ''}
+    ${args.closable ? 'closable' : ''}
+    ${args.showIcon ? 'hide-icon' : ''}
+    action-text="${args.actionText}"
+    action-href="${args.actionHref}"
+    headline="${args.headline}"
     action-target="${args.actionTarget}">
         A text to show on this alert
+    </pd-alert>
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${!args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
+        headline="My Title (not headline)"
+        action-target="${args.actionTarget}"
+        color="primary">
+        <p>Line 1: A simple primary alert—check it out!</p>
+        <p>Line 2: A simple primary alert—check it out!</p>
     </pd-alert>
 `;
 
@@ -39,78 +53,86 @@ Basic.args = {
     actionHref: false,
     actionTarget: '',
     hideIcon: false,
+    headline: '',
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 export const Color = (args) => `
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${!args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${!args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="primary">
         A simple primary alert
     </pd-alert>
     <pd-alert class="m-3"
-    ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+    ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="success">
         A simple success alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="warning">
         A simple warning alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="danger">
         A simple alert
     </pd-alert>
-    <pd-alert class="m-3" 
-        ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+    <pd-alert class="m-3"
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="info">
         A simple info alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="dark">
         A simple dark alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''} 
-        ${args.closable ? 'closable' : ''} 
-        ${args.hideIcon ? 'hide-icon' : ''} 
-        action-text="${args.actionText}" 
-        action-href="${args.actionHref}" 
+        ${args.action ? 'action' : ''}
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-href="${args.actionHref}"
         action-target="${args.actionTarget}"
+        headline="${args.headline}"
         color="light">
         A simple light alert
     </pd-alert>
