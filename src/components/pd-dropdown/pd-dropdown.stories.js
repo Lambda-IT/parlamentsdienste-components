@@ -11,6 +11,9 @@ export default {
             items: { controls: { type: 'object' } },
             disabled: { controls: { type: 'boolean' } },
             label: { controls: { type: 'string' } },
+            required: { controls: { type: 'boolean' } },
+            readonly: { controls: { type: 'boolean' } },
+            error: { controls: { type: 'boolean' } },
         },
     },
 };
@@ -21,6 +24,9 @@ export const Dropdown = (args) => {
     const pdDropdown = document.createElement('pd-dropdown');
     pdDropdown.items = args.items;
     pdDropdown.disabled = args.disabled;
+    pdDropdown.required = args.required;
+    pdDropdown.readonly = args.readonly;
+    pdDropdown.error = args.error;
     pdDropdown.label = args.label;
     pdDropdown.classList = ['m-3'];
 
@@ -41,4 +47,7 @@ Dropdown.args = {
     ],
     disabled: false,
     label: 'Dropdown label text',
+    required: false,
+    readonly: false,
+    error: false,
 };
