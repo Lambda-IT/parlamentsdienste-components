@@ -49,7 +49,7 @@ export class PdIcon implements ComponentInterface {
     @State() private svgContent?: string;
     @State() private isVisible = false;
 
-    public connectedCallback() {
+    public componentDidRender() {
         // purposely do not return the promise here because loading
         // the svg file should not hold up loading the app
         // only load the svg if it's visible
