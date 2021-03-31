@@ -123,6 +123,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        "error": boolean;
         /**
           * Show matching parts in results as highlighted
          */
@@ -139,6 +140,14 @@ export namespace Components {
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
@@ -1063,6 +1072,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        "error"?: boolean;
         /**
           * Show matching parts in results as highlighted
          */
@@ -1099,6 +1109,14 @@ declare namespace LocalJSX {
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * The value of the input.
          */

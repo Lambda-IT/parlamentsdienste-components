@@ -11,11 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   #25 Dropdown: 🎉 Added readonly, error and required attribute
 -   #26 Alert: 🎉 Added title attribute
+-   #29: 🎉 Readonly etc, Checkbox, Dropdown, Datepicker, Combobox
 
 ### Changed
 
 -   #24 Icon: 🐛 Rendering had timing issue for initial render cycle
--   #23 Combobox: 🐛⚠ Multiple refactorings and bugfixing, care `breaking change` because of new items list. Old way with a string[], new with as ComboBoxItem[].
+-   #23 Combobox: 🐛⚡ Multiple refactorings and bugfixing, care `breaking change` because of new items list. Old way with a string[], new with as ComboBoxItem[].
 
 ## [1.2.2] - 2020-03-19
 

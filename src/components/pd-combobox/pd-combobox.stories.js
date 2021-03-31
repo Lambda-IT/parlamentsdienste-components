@@ -12,8 +12,11 @@ export default {
         label: { control: { type: 'text' } },
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
+        error: { control: { type: 'boolean' } },
+        required: { control: { type: 'boolean' } },
         highlight: { control: { type: 'boolean' } },
-        items: { control: { type: 'array' } },
+        items: { control: { type: 'object' } },
     },
 };
 
@@ -24,6 +27,9 @@ export const combobox = (args) => {
     combobox.classList = ['m-3'];
     combobox.items = args.items;
     combobox.disabled = args.disabled;
+    combobox.readonly = args.readonly;
+    combobox.error = args.error;
+    combobox.required = args.required;
     combobox.label = args.label;
     combobox.placeholder = args.placeholder;
     combobox.highlight = args.highlight;
@@ -35,6 +41,9 @@ combobox.args = {
     label: 'Label Text',
     placeholder: 'Type for examples...',
     disabled: false,
+    readonly: false,
+    error: false,
+    required: false,
     highlight: false,
     items: [
         { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },

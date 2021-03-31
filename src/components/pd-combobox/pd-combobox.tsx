@@ -28,6 +28,16 @@ export class Combobox {
     @Prop() disabled = false;
 
     /**
+     * If `true`, the user cannot modify the value.
+     */
+    @Prop() readonly = false;
+
+    /**
+     * If `true`, the user must fill in a value before submitting a form.
+     */
+    @Prop() required = false;
+
+    /**
      * Instructional text that shows before the input has a value.
      */
     @Prop() placeholder?: string | null;
@@ -49,6 +59,8 @@ export class Combobox {
      * Show matching parts in results as highlighted
      */
     @Prop() highlight?: boolean = true;
+
+    @Prop() error: boolean = false;
 
     /**
      * Emitted when a keyboard input occurred.
@@ -196,7 +208,7 @@ export class Combobox {
     }
 
     private onClickInput = () => {
-        if (this.items?.length > 0 && !this.open) {
+        if (this.items?.length > 0 && !this.open && !(this.disabled || this.readonly)) {
             this.open = true;
         } else {
             this.open = false;
@@ -259,7 +271,7 @@ export class Combobox {
 
     public render() {
         return (
-            <Host role="combobox">
+            <Host role="combobox" class={this.error ? 'pd-combobox-error' : ''}>
                 <label
                     class={{
                         'pd-combobox-label': true,
@@ -275,6 +287,8 @@ export class Combobox {
                             class="pd-combobox-input"
                             ref={(input) => (this.nativeInput = input)}
                             disabled={this.disabled}
+                            readOnly={this.readonly}
+                            required={this.required}
                             placeholder={this.placeholder || ''}
                             value={this.value || ''}
                             onClick={this.onClickInput}
