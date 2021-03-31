@@ -1,6 +1,7 @@
 import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element, State } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
+import { ComboboxItem } from '../../../dist/types/interface';
 
 @Component({
     tag: 'pd-combobox',
@@ -19,7 +20,7 @@ export class Combobox {
     /**
      * Values shown as combobox items
      */
-    @Prop() items: string[] = [];
+    @Prop() items: ComboboxItem[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
@@ -34,10 +35,10 @@ export class Combobox {
     /**
      * The value of the input.
      */
-    @Prop({ mutable: true }) value?: string | number | null = '';
+    @Prop({ mutable: true }) value?: string | null = '';
 
     // used to hold input value in case we need to reset on escape
-    private inputValue?: string | number | null = '';
+    private inputValue?: string | null = '';
 
     /**
      * combobox box label
@@ -57,12 +58,12 @@ export class Combobox {
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<ComboboxItem>;
 
     /**
      * Emitted when a combobox request occurred.
      */
-    @Event({ eventName: 'pd-combobox' }) pdCombobox!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-combobox' }) pdCombobox!: EventEmitter<ComboboxItem>;
 
     /**
      * Emitted when the input loses focus.
@@ -74,24 +75,16 @@ export class Combobox {
      */
     @Event({ eventName: 'pd-focus' }) pdFocus!: EventEmitter<void>;
 
-    /**
-     * Update the native input element when the value changes
-     */
-    @Watch('value')
-    protected valueChanged() {
-        this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
-    }
-
     @Watch('items')
     protected resultsChanged(items: any) {
         this.items = this.validateItems(items);
         if (this.items.length > 0) {
-            this.selectedIndex = -1;
+            this.selectedItem = null;
             this.open = true;
         } else this.open = false;
     }
 
-    @Watch('selectedIndex')
+    @Watch('selectedItem')
     protected indexChanged(index: number) {
         const menu = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
@@ -102,6 +95,8 @@ export class Combobox {
             const centerItem = Math.ceil(5 / 2) - 1;
             if (itemIndex === index) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
+
+        this.pdChange.emit(this.selectedItem);
     }
 
     protected componentWillLoad() {
@@ -119,7 +114,7 @@ export class Combobox {
     }
 
     @State() open: boolean = false;
-    @State() selectedIndex: number = -1;
+    @State() selectedItem: ComboboxItem = null;
 
     @Listen('keydown')
     protected handleKeyDown(ev: KeyboardEvent) {
@@ -137,11 +132,9 @@ export class Combobox {
             case 'Enter': {
                 ev.preventDefault();
                 this.open = false;
-                const matches = this.items.filter((i) => i === this.value).length;
+                const matches = this.items.filter((i) => i.label === this.value).length;
                 if (matches > 0) {
-                    this.pdCombobox.emit({ value: this.value });
-                    this.inputValue = this.value;
-                    this.reset(ev);
+                    this.selectItem(this.selectedItem, ev);
                 }
                 break;
             }
@@ -151,27 +144,35 @@ export class Combobox {
                 if (!this.open && this.items?.length > 0) {
                     this.open = true;
                     return;
-                } else if (!this.open) return;
-                const currentIndex = this.selectedIndex;
-                this.selectedIndex =
-                    currentIndex >= this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue)).length - 1
-                        ? currentIndex
-                        : currentIndex + 1;
-                this.setValue(this.items[this.selectedIndex]);
+                }
+                const currentFiltredItems = this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
+                const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
+                const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
+                const nextItem = currentFiltredItems[nextIndex];
+                if (nextItem !== this.selectedItem) {
+                    this.selectItem(nextItem, ev);
+                    this.setValue(nextItem.label);
+                }
                 break;
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                if (!this.open) return;
-                const currentIndex = this.selectedIndex;
-                this.selectedIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-                this.setValue(
-                    this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue))[this.selectedIndex],
-                );
+                if (!this.open && this.items?.length > 0) {
+                    this.open = true;
+                    return;
+                }
+                const currentFiltredItems = this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
+                const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
+                const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
+                const previousItem = currentFiltredItems[previousIndex];
+                if (previousItem !== this.selectedItem) {
+                    this.selectItem(previousItem, ev);
+                    this.setValue(previousItem.label);
+                }
                 break;
             }
             default: {
-                this.selectedIndex = -1;
+                this.selectedItem = null;
             }
         }
     }
@@ -214,21 +215,25 @@ export class Combobox {
         this.pdFocus.emit();
     };
 
-    private getValue(): string {
-        return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
-    }
-
-    private setValue(value: string | number | null, isInput: boolean = false): void {
+    private setValue(value: string | null, isInput: boolean = false): void {
         this.value = value;
         if (isInput) this.inputValue = value;
     }
 
-    private selectItem(value: string, index: number, ev?: Event) {
-        this.setValue(value, true);
-        this.selectedIndex = index;
-        this.pdCombobox.emit({ value: this.value });
-        this.open = false;
-        this.reset(ev);
+    private selectItem(comboboxItem: ComboboxItem | null, ev?: Event | KeyboardEvent) {
+        this.pdCombobox.emit(comboboxItem);
+
+        if (ev instanceof KeyboardEvent && ev.key.includes('Arrow')) {
+            this.open = true;
+            this.selectedItem = comboboxItem;
+        } else if (ev instanceof KeyboardEvent && ev.key.includes('Enter')) {
+            this.setValue(comboboxItem.label, true);
+            this.open = false;
+        } else {
+            this.selectedItem = comboboxItem;
+            this.setValue(comboboxItem.label, true);
+            this.open = false;
+        }
     }
 
     private validateItems(results: any) {
@@ -243,8 +248,6 @@ export class Combobox {
     }
 
     public render() {
-        const value = this.getValue();
-
         return (
             <Host role="combobox">
                 <label
@@ -263,7 +266,7 @@ export class Combobox {
                             ref={(input) => (this.nativeInput = input)}
                             disabled={this.disabled}
                             placeholder={this.placeholder || ''}
-                            value={value}
+                            value={this.value || ''}
                             onClick={this.onClickInput}
                             onInput={this.onInput}
                             onBlur={this.onBlur}
@@ -281,9 +284,9 @@ export class Combobox {
 
     private reset = (ev: Event) => {
         ev.preventDefault();
-        this.setValue('', true);
+        this.setValue(null, true);
         this.open = false;
-        this.selectedIndex = -1;
+        this.selectedItem = null;
     };
 
     private renderDropdownItems() {
@@ -296,20 +299,21 @@ export class Combobox {
             >
                 {this.items
                     .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
-                    .map((comboboxString, i) => (
+                    .map((comboboxItem) => (
                         <pd-dropdown-item
-                            selected={i === this.selectedIndex || false}
-                            value={comboboxString}
+                            selected={comboboxItem.id === this.selectedItem?.id || false}
+                            value={comboboxItem?.label}
                             highlight={this.highlight ? this.inputValue : ''}
-                            onClick={(e) => this.selectItem(comboboxString, i, e)}
+                            onClick={(e) => this.selectItem(comboboxItem, e)}
                         ></pd-dropdown-item>
                     ))}
             </div>
         );
     }
 
-    private filterNotMatchingItems(string, input) {
-        return string.toLowerCase().includes(input.toLowerCase());
+    private filterNotMatchingItems(comboboxItem: ComboboxItem, input) {
+        if (!input) input = '';
+        return comboboxItem.label.toLowerCase().includes(input.toLowerCase());
     }
 
     private renderLabel() {

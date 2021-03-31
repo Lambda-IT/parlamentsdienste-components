@@ -10,9 +10,9 @@ Combobox results must be provided dynamically depending on the current input. `p
 
 ```javascript
 const results = [
-    `Some random result 1`,
-    `Some random result 2`,
-    `Some random result 3`,
+    { id: '1', label: 'Dropdown Link 01', value: 'a1' },
+    { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+    { id: '3', label: 'Dropdown Link 03', value: 'a3' },
     ...
 ];
 ```
@@ -24,15 +24,15 @@ const results = [
 ```html
 <pd-combobox
     placeholder="Suche"
-    :results.prop="suggestions"
+    :results.props="suggestions"
     @pd-input="suggest($event.detail.value)"
     :value="combobox"
     @pd-combobox="comboboxText($event.detail.value)"
 ></pd-combobox>
 ```
 
-_To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
-More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
+_To pass arrays or objects to webcomponents you need to append the attribute name with the `.props` modifier._
+More info on [props modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Interfaces
 
@@ -47,29 +47,26 @@ interface DropdownItem {
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property      | Attribute     | Description                                                 | Type               | Default     |
-| ------------- | ------------- | ----------------------------------------------------------- | ------------------ | ----------- |
-| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`          | `false`     |
-| `highlight`   | `highlight`   | Show matching parts in results as highlighted               | `boolean`          | `true`      |
-| `items`       | --            | Values shown as combobox items                              | `string[]`         | `[]`        |
-| `label`       | `label`       | combobox box label                                          | `string`           | `undefined` |
-| `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`           | `undefined` |
-| `value`       | `value`       | The value of the input.                                     | `number \| string` | `''`        |
-
+| Property      | Attribute     | Description                                                 | Type             | Default     |
+| ------------- | ------------- | ----------------------------------------------------------- | ---------------- | ----------- |
+| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`        | `false`     |
+| `highlight`   | `highlight`   | Show matching parts in results as highlighted               | `boolean`        | `true`      |
+| `items`       | --            | Values shown as combobox items                              | `ComboboxItem[]` | `[]`        |
+| `label`       | `label`       | combobox box label                                          | `string`         | `undefined` |
+| `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`         | `undefined` |
+| `value`       | `value`       | The value of the input.                                     | `string`         | `''`        |
 
 ## Events
 
 | Event         | Description                               | Type                                  |
 | ------------- | ----------------------------------------- | ------------------------------------- |
 | `pd-blur`     | Emitted when the input loses focus.       | `CustomEvent<void>`                   |
-| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<InputChangeEventDetail>` |
-| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<InputChangeEventDetail>` |
+| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<ComboboxItem>`           |
+| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<ComboboxItem>`           |
 | `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                   |
 | `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>` |
-
 
 ## Methods
 
@@ -82,17 +79,15 @@ Sets focus on the specified `pd-input`. Use this method instead of the global
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Depends on
 
-- [pd-icon](../pd-icon)
-- [pd-dropdown-item](../pd-dropdown-item)
+-   [pd-icon](../pd-icon)
+-   [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-combobox --> pd-icon
@@ -100,6 +95,6 @@ graph TD;
   style pd-combobox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

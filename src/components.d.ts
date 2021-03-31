@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChipType, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, TextFieldTypes } from "./interface";
+import { ComboboxItem } from "../dist/types/interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -129,7 +130,7 @@ export namespace Components {
         /**
           * Values shown as combobox items
          */
-        "items": string[];
+        "items": ComboboxItem[];
         /**
           * combobox box label
          */
@@ -145,7 +146,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | null;
     }
     interface PdDatepicker {
         /**
@@ -1069,7 +1070,7 @@ declare namespace LocalJSX {
         /**
           * Values shown as combobox items
          */
-        "items"?: string[];
+        "items"?: ComboboxItem[];
         /**
           * combobox box label
          */
@@ -1081,11 +1082,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: CustomEvent<ComboboxItem>) => void;
         /**
           * Emitted when a combobox request occurred.
          */
-        "onPd-combobox"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-combobox"?: (event: CustomEvent<ComboboxItem>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -1101,7 +1102,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | null;
     }
     interface PdDatepicker {
         /**

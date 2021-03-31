@@ -51,3 +51,9 @@ export interface DropdownItem {
     value: string;
     selected?: boolean;
 }
+
+export interface ComboboxItem {
+    id: string;
+    label: string;
+    value: string;
+}
