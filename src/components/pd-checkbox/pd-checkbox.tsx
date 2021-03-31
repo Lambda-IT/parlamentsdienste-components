@@ -17,6 +17,16 @@ export class Checkbox {
     @Prop() disabled: boolean = false;
 
     /**
+     * If `true`, the user cannot modify the value.
+     */
+    @Prop() readonly = false;
+
+    /**
+     * If `true`, the user must fill in a value before submitting a form.
+     */
+    @Prop() required = false;
+
+    /**
      * Sets check state of the checkbox true/false
      */
     @Prop() checked: boolean = false;
@@ -30,6 +40,8 @@ export class Checkbox {
      * checkbox name
      */
     @Prop() name: string;
+
+    @Prop() error: boolean = false;
 
     @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<any>;
 
@@ -45,13 +57,16 @@ export class Checkbox {
                 role="checkbox"
                 aria-checked={this.checked ? 'true' : 'false'}
                 aria-disabled={this.disabled ? 'true' : 'false'}
+                class={this.error ? 'pd-checkbox-error' : ''}
             >
-                <label class="pd-checkbox-label">
+                <label class={{ 'pd-checkbox-label': true, 'pd-checkbox-readonly': this.readonly }}>
                     <input
                         class="pd-checkbox-input"
                         type="Checkbox"
                         checked={this.checked}
                         disabled={this.disabled}
+                        readOnly={this.readonly}
+                        required={this.required}
                         value={`${this.value}`}
                         name={this.name}
                         onClick={this.onClick}

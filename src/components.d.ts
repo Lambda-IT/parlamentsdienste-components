@@ -91,10 +91,19 @@ export namespace Components {
           * Sets checkbox to disabled state
          */
         "disabled": boolean;
+        "error": boolean;
         /**
           * checkbox name
          */
         "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Checkbox description text
          */
@@ -1037,11 +1046,20 @@ declare namespace LocalJSX {
           * Sets checkbox to disabled state
          */
         "disabled"?: boolean;
+        "error"?: boolean;
         /**
           * checkbox name
          */
         "name"?: string;
         "onPd-checked"?: (event: CustomEvent<any>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Checkbox description text
          */

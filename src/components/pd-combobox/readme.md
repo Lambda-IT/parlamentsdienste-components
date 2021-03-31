@@ -47,16 +47,21 @@ interface DropdownItem {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property      | Attribute     | Description                                                 | Type             | Default     |
-| ------------- | ------------- | ----------------------------------------------------------- | ---------------- | ----------- |
-| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`        | `false`     |
-| `highlight`   | `highlight`   | Show matching parts in results as highlighted               | `boolean`        | `true`      |
-| `items`       | --            | Values shown as combobox items                              | `ComboboxItem[]` | `[]`        |
-| `label`       | `label`       | combobox box label                                          | `string`         | `undefined` |
-| `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`         | `undefined` |
-| `value`       | `value`       | The value of the input.                                     | `string`         | `''`        |
+| Property      | Attribute     | Description                                                        | Type             | Default     |
+| ------------- | ------------- | ------------------------------------------------------------------ | ---------------- | ----------- |
+| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.                | `boolean`        | `false`     |
+| `error`       | `error`       |                                                                    | `boolean`        | `false`     |
+| `highlight`   | `highlight`   | Show matching parts in results as highlighted                      | `boolean`        | `true`      |
+| `items`       | --            | Values shown as combobox items                                     | `ComboboxItem[]` | `[]`        |
+| `label`       | `label`       | combobox box label                                                 | `string`         | `undefined` |
+| `placeholder` | `placeholder` | Instructional text that shows before the input has a value.        | `string`         | `undefined` |
+| `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                       | `boolean`        | `false`     |
+| `required`    | `required`    | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`     |
+| `value`       | `value`       | The value of the input.                                            | `string`         | `''`        |
+
 
 ## Events
 
@@ -67,6 +72,7 @@ interface DropdownItem {
 | `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<ComboboxItem>`           |
 | `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                   |
 | `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>` |
+
 
 ## Methods
 
@@ -79,15 +85,17 @@ Sets focus on the specified `pd-input`. Use this method instead of the global
 
 Type: `Promise<void>`
 
+
+
+
 ## Dependencies
 
 ### Depends on
 
--   [pd-icon](../pd-icon)
--   [pd-dropdown-item](../pd-dropdown-item)
+- [pd-icon](../pd-icon)
+- [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-combobox --> pd-icon
@@ -95,6 +103,6 @@ graph TD;
   style pd-combobox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
