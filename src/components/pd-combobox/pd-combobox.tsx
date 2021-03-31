@@ -149,7 +149,7 @@ export class Combobox {
                 const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
                 const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = currentFiltredItems[nextIndex];
-                if (nextItem !== this.selectedItem) {
+                if (nextItem && nextItem !== this.selectedItem) {
                     this.selectItem(nextItem, ev);
                     this.setValue(nextItem.label);
                 }
@@ -196,14 +196,17 @@ export class Combobox {
     }
 
     private onClickInput = () => {
-        if (this.items?.length > 0) {
+        if (this.items?.length > 0 && !this.open) {
             this.open = true;
+        } else {
+            this.open = false;
         }
     };
 
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
         this.setValue(input?.value || '', true);
+        this.open = true;
         this.pdInput.emit({ value: this.value });
     };
 
@@ -273,7 +276,12 @@ export class Combobox {
                             onFocus={this.onFocus}
                         />
                         <button class="pd-combobox-icon right" tabindex="-1">
-                            <pd-icon class="pd-icon pd-combobox-icon-toggle" name="dropdown" size={2.4}></pd-icon>
+                            <pd-icon
+                                onClick={this.onClickInput}
+                                class="pd-icon pd-combobox-icon-toggle"
+                                name="dropdown"
+                                size={2.4}
+                            ></pd-icon>
                         </button>
                     </div>
                 </label>
