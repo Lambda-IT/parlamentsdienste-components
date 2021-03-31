@@ -237,10 +237,12 @@ export class Combobox {
         } else if (ev instanceof KeyboardEvent && ev.key.includes('Enter')) {
             this.setValue(comboboxItem.label, true);
             this.open = false;
+            this.reset(ev);
         } else {
             this.selectedItem = comboboxItem;
             this.setValue(comboboxItem.label, true);
             this.open = false;
+            this.reset(ev);
         }
     }
 
