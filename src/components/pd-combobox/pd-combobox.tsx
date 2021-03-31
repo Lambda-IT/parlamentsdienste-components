@@ -206,8 +206,13 @@ export class Combobox {
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
         this.setValue(input?.value || '', true);
-        this.open = true;
         this.pdInput.emit({ value: this.value });
+        const currentFiltredItems = this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
+        if (currentFiltredItems.length > 0) {
+            this.open = true;
+        } else {
+            this.open = false;
+        }
     };
 
     private onBlur = () => {
