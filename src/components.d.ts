@@ -5,8 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, TextFieldTypes } from "./interface";
-import { ComboboxItem } from "../dist/types/interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {

@@ -1,7 +1,6 @@
 import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element, State } from '@stencil/core';
-import { InputChangeEventDetail } from '../../interface';
+import { InputChangeEventDetail, ComboboxItem } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
-import { ComboboxItem } from '../../../dist/types/interface';
 
 @Component({
     tag: 'pd-combobox',
