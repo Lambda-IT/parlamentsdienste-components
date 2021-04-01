@@ -195,7 +195,7 @@ export class Dropdown {
 
     public render() {
         return (
-            <Host class={this.error || (this.required && !this.selectedItem) ? 'pd-dropdown-error' : ''}>
+            <Host class={this.error ? 'pd-dropdown-error' : ''}>
                 <label
                     class={{
                         'pd-dropdown-label': true,

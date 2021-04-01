@@ -30,17 +30,15 @@
    input for the flatpickr, the datepicker itself has
    no direct access to this part of the input component
  */
-:host(:read-only:not(.flatpickr-input)) {
-    .pd-input {
-        &:read-only {
-            background-color: $gray-3;
+.pd-input {
+    &.pd-input-readonly:not(.flatpickr-input) {
+        background-color: $gray-3;
+        border: 0.125em solid $gray-3;
+        &:hover:enabled,
+        &:disabled,
+        &:focus:enabled {
             border: 0.125em solid $gray-3;
-            &:hover:enabled,
-            &:disabled,
-            &:focus:enabled {
-                border: 0.125em solid $gray-3;
-                cursor: default;
-            }
+            cursor: default;
         }
     }
 }

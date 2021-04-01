@@ -30,6 +30,16 @@ export class Datepicker {
     @Prop() disabled = false;
 
     /**
+     * If `true`, the user cannot modify the value.
+     */
+    @Prop() readonly = false;
+
+    /**
+     * If `true`, the user must fill in a value before submitting a form.
+     */
+    @Prop() required = false;
+
+    /**
      * If `true`, a calendar icon is shown at the end of the input.
      */
     @Prop() icon = true;
@@ -127,11 +137,18 @@ export class Datepicker {
                     class={{
                         'pd-datepicker-label': true,
                         'pd-datepicker-disabled': this.disabled,
+                        'pd-datepicker-readonly': this.readonly,
                     }}
                 >
                     {this.renderLabel()}
                     <div class="wrapper">
-                        <pd-input class="pd-datepicker-input" disabled={this.disabled} data-input />
+                        <pd-input
+                            class="pd-datepicker-input"
+                            disabled={this.disabled}
+                            readonly={this.readonly}
+                            required={this.required}
+                            data-input
+                        />
                         {this.renderIcon()}
                     </div>
                 </label>
