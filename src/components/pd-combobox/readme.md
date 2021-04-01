@@ -10,9 +10,9 @@ Combobox results must be provided dynamically depending on the current input. `p
 
 ```javascript
 const results = [
-    `Some random result 1`,
-    `Some random result 2`,
-    `Some random result 3`,
+    { id: '1', label: 'Dropdown Link 01', value: 'a1' },
+    { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+    { id: '3', label: 'Dropdown Link 03', value: 'a3' },
     ...
 ];
 ```
@@ -24,15 +24,15 @@ const results = [
 ```html
 <pd-combobox
     placeholder="Suche"
-    :results.prop="suggestions"
+    :results.props="suggestions"
     @pd-input="suggest($event.detail.value)"
     :value="combobox"
     @pd-combobox="comboboxText($event.detail.value)"
 ></pd-combobox>
 ```
 
-_To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
-More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
+_To pass arrays or objects to webcomponents you need to append the attribute name with the `.props` modifier._
+More info on [props modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Interfaces
 
@@ -50,14 +50,17 @@ interface DropdownItem {
 
 ## Properties
 
-| Property      | Attribute     | Description                                                 | Type               | Default     |
-| ------------- | ------------- | ----------------------------------------------------------- | ------------------ | ----------- |
-| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.         | `boolean`          | `false`     |
-| `highlight`   | `highlight`   | Show matching parts in results as highlighted               | `boolean`          | `true`      |
-| `items`       | --            | Values shown as combobox items                              | `string[]`         | `[]`        |
-| `label`       | `label`       | combobox box label                                          | `string`           | `undefined` |
-| `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`           | `undefined` |
-| `value`       | `value`       | The value of the input.                                     | `number \| string` | `''`        |
+| Property      | Attribute     | Description                                                        | Type             | Default     |
+| ------------- | ------------- | ------------------------------------------------------------------ | ---------------- | ----------- |
+| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.                | `boolean`        | `false`     |
+| `error`       | `error`       |                                                                    | `boolean`        | `false`     |
+| `highlight`   | `highlight`   | Show matching parts in results as highlighted                      | `boolean`        | `true`      |
+| `items`       | --            | Values shown as combobox items                                     | `ComboboxItem[]` | `[]`        |
+| `label`       | `label`       | combobox box label                                                 | `string`         | `undefined` |
+| `placeholder` | `placeholder` | Instructional text that shows before the input has a value.        | `string`         | `undefined` |
+| `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                       | `boolean`        | `false`     |
+| `required`    | `required`    | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`     |
+| `value`       | `value`       | The value of the input.                                            | `string`         | `''`        |
 
 
 ## Events
@@ -65,8 +68,8 @@ interface DropdownItem {
 | Event         | Description                               | Type                                  |
 | ------------- | ----------------------------------------- | ------------------------------------- |
 | `pd-blur`     | Emitted when the input loses focus.       | `CustomEvent<void>`                   |
-| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<InputChangeEventDetail>` |
-| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<InputChangeEventDetail>` |
+| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<ComboboxItem>`           |
+| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<ComboboxItem>`           |
 | `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                   |
 | `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>` |
 

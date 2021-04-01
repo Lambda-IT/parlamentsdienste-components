@@ -54,6 +54,18 @@ export class Dropdown {
     @Prop() label?: string;
 
     /**
+     * If `true`, the user cannot modify the value.
+     */
+    @Prop() readonly = false;
+
+    /**
+     * If `true`, the user must fill in a value before submitting a form.
+     */
+    @Prop() required = false;
+
+    @Prop() error: boolean = false;
+
+    /**
      * Set a preselected entry by index
      */
     @Method()
@@ -183,7 +195,7 @@ export class Dropdown {
 
     public render() {
         return (
-            <Host>
+            <Host class={this.error ? 'pd-dropdown-error' : ''}>
                 <label
                     class={{
                         'pd-dropdown-label': true,
@@ -191,14 +203,14 @@ export class Dropdown {
                     }}
                 >
                     {this.renderLabel()}
-                    <div class="pd-dropdown">
+                    <div class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}>
                         <button
                             class="pd-dropdown-button"
                             type="button"
                             aria-haspopup="true"
                             aria-expanded={`${this.open}`}
                             onClick={this.openDropdown}
-                            disabled={this.disabled}
+                            disabled={this.disabled || this.readonly}
                         >
                             <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
                             <pd-icon

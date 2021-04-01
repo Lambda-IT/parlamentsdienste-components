@@ -62,7 +62,9 @@
                     <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
                 </pd-timeline-date>
             </pd-timeline>
-            <pd-datepicker id="pd-datepickr-0" date="04/05/2021"></pd-datepicker>
+            <pd-datepicker label="normal" id="pd-datepickr-0" date="04/05/2021"></pd-datepicker>
+            <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
+            <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
@@ -189,10 +191,15 @@
                 helper-text="dropdown helper text"
                 empty-item
             ></pd-dropdown>
+            <pd-dropdown label="dropdown error" helper-text="dropdown helper text" error empty-item></pd-dropdown>
+            <pd-dropdown label="dropdown readonly" helper-text="dropdown helper text" readonly empty-item></pd-dropdown>
+            <pd-dropdown label="dropdown disabled" helper-text="dropdown helper text" disabled empty-item></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-checkbox text="checkbox"></pd-checkbox>
-            <pd-checkbox disabled text="checkbox"></pd-checkbox>
-            <pd-checkbox disabled checked text="checkbox"></pd-checkbox>
+            <pd-checkbox readonly checked text="checkbox readonly"></pd-checkbox>
+            <pd-checkbox disabled text="checkbox disabled"></pd-checkbox>
+            <pd-checkbox disabled checked text="checkbox disabled checked"></pd-checkbox>
+            <pd-checkbox error text="checkbox error"></pd-checkbox>
             <pd-radio name="x" value="0" label="0%"></pd-radio>
             <pd-radio name="x" value="0.25" label="25%"></pd-radio>
             <pd-radio name="x" value="0.50" label="50%"></pd-radio>
@@ -200,12 +207,12 @@
             <pd-radio name="x" value="1" label="100%"></pd-radio>
             <pd-input
                 value="asdf"
-                label="asdf"
+                label="error"
                 error
                 id="pd-input-0"
                 helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
             ></pd-input>
-            <pd-input value="asdf" label="asdf" error id="pd-input-1" helper-text="asdf-asdf"></pd-input>
+            <pd-input label="required" required id="pd-input-1" helper-text="asdf-asdf"></pd-input>
             <pd-input
                 class="flatpickr-input"
                 value="asdf"
@@ -389,11 +396,12 @@
             setTimeout(() => pdDropDown.reset(), 4000);
 
             pdComboBox.items = [
-                'Dropdown Link 01',
-                'Dropdown Link 02',
-                'Dropdown Link 03',
-                'Dropdown Link 04',
-                'Dropdown Link 05',
+                { id: '1', label: 'Dropdown Link 01', value: 'a1' },
+                { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+                { id: '3', label: 'Dropdown Link 03', value: 'a3' },
+                { id: '4', label: 'Dropdown Link 04', value: 'a4' },
+                { id: '5', label: 'Dropdown Link 05', value: 'a5' },
+                { id: '6', label: 'Dropdown Second Link 05', value: 'a6' },
             ];
 
             /*** Modal ***/

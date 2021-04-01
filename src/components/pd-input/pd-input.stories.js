@@ -15,6 +15,7 @@ export default {
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
         readonly: { control: { type: 'boolean' } },
+        required: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
     },
 };
@@ -23,13 +24,14 @@ export default {
 
 export const Input = (args) => {
     return `
-        <pd-input class="m-3" 
-        label="${args.label}" 
-        placeholder="${args.placeholder}" 
-        helper-text="${args.helperText}" 
+        <pd-input class="m-3"
+        label="${args.label}"
+        placeholder="${args.placeholder}"
+        helper-text="${args.helperText}"
         value="${args.value}"
-        ${args.disabled ? 'disabled' : ''} 
-        ${args.readonly ? 'readonly' : ''} 
+        ${args.disabled ? 'disabled' : ''}
+        ${args.readonly ? 'readonly' : ''}
+        ${args.required ? 'required' : ''}
         ${args.error ? 'error' : ''}></pd-input>
     `;
 };
@@ -41,5 +43,6 @@ Input.args = {
     placeholder: 'Placehoder',
     disabled: false,
     readonly: false,
+    required: false,
     error: false,
 };

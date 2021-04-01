@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChipType, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, TextFieldTypes } from "./interface";
+import { ComboboxItem } from "../dist/types/interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -90,10 +91,19 @@ export namespace Components {
           * Sets checkbox to disabled state
          */
         "disabled": boolean;
+        "error": boolean;
         /**
           * checkbox name
          */
         "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Checkbox description text
          */
@@ -122,6 +132,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        "error": boolean;
         /**
           * Show matching parts in results as highlighted
          */
@@ -129,7 +140,7 @@ export namespace Components {
         /**
           * Values shown as combobox items
          */
-        "items": string[];
+        "items": ComboboxItem[];
         /**
           * combobox box label
          */
@@ -139,13 +150,21 @@ export namespace Components {
          */
         "placeholder"?: string | null;
         /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | null;
     }
     interface PdDatepicker {
         /**
@@ -181,6 +200,14 @@ export namespace Components {
          */
         "open": () => Promise<void>;
         /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
          */
         "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
@@ -206,6 +233,7 @@ export namespace Components {
           * Data used for the empty item
          */
         "emptyItemData": DropdownItem;
+        "error": boolean;
         /**
           * Items visible in dropdown
          */
@@ -222,6 +250,14 @@ export namespace Components {
           * Placeholder when no item is selected
          */
         "placeholder": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Reset the selection of the dropdown
          */
@@ -1018,11 +1054,20 @@ declare namespace LocalJSX {
           * Sets checkbox to disabled state
          */
         "disabled"?: boolean;
+        "error"?: boolean;
         /**
           * checkbox name
          */
         "name"?: string;
         "onPd-checked"?: (event: CustomEvent<any>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Checkbox description text
          */
@@ -1053,6 +1098,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        "error"?: boolean;
         /**
           * Show matching parts in results as highlighted
          */
@@ -1060,7 +1106,7 @@ declare namespace LocalJSX {
         /**
           * Values shown as combobox items
          */
-        "items"?: string[];
+        "items"?: ComboboxItem[];
         /**
           * combobox box label
          */
@@ -1072,11 +1118,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: CustomEvent<ComboboxItem>) => void;
         /**
           * Emitted when a combobox request occurred.
          */
-        "onPd-combobox"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-combobox"?: (event: CustomEvent<ComboboxItem>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -1090,9 +1136,17 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string | null;
         /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | null;
     }
     interface PdDatepicker {
         /**
@@ -1128,6 +1182,14 @@ declare namespace LocalJSX {
         dateStr: string;
     }>) => void;
         "onPd-year-change"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
     }
     interface PdDropdown {
         /**
@@ -1142,6 +1204,7 @@ declare namespace LocalJSX {
           * Data used for the empty item
          */
         "emptyItemData"?: DropdownItem;
+        "error"?: boolean;
         /**
           * Items visible in dropdown
          */
@@ -1159,6 +1222,14 @@ declare namespace LocalJSX {
           * Placeholder when no item is selected
          */
         "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
     }
     interface PdDropdownItem {
         /**

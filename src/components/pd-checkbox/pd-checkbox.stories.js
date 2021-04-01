@@ -10,6 +10,9 @@ export default {
     },
     argTypes: {
         disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
+        required: { control: { type: 'boolean' } },
+        error: { control: { type: 'boolean' } },
         checked: { control: { type: 'boolean' } },
     },
 };
@@ -17,11 +20,16 @@ export default {
 ///////////////////////////////////////////////////////////////////////////
 
 export const Checkbox = (args) => `
-        <pd-checkbox class="m-3" ${args.disabled ? 'disabled' : ''} 
+        <pd-checkbox class="m-3" ${args.disabled ? 'disabled' : ''} ${args.readonly ? 'readonly' : ''} ${
+    args.required ? 'required' : ''
+} ${args.error ? 'error' : ''}
         ${args.checked ? 'checked' : ''} text="checkbox"></pd-checkbox>
 `;
 
 Checkbox.args = {
     disabled: false,
+    readonly: false,
+    required: false,
+    error: false,
     checked: false,
 };

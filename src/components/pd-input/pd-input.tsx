@@ -202,7 +202,7 @@ export class Input {
                 <label class="pd-input-label">
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
-                        class="pd-input"
+                        class={{ 'pd-input': true, 'pd-input-readonly': this.readonly }}
                         ref={(input) => (this.nativeInput = input)}
                         disabled={this.disabled}
                         accept={this.accept}
@@ -219,7 +219,7 @@ export class Input {
                         name={this.name}
                         pattern={this.pattern}
                         placeholder={this.placeholder || ''}
-                        readOnly={this.readonly}
+                        readonly={this.readonly}
                         required={this.required}
                         step={this.step}
                         size={this.size}

@@ -11,6 +11,20 @@
     outline: none;
 }
 
+:host(.pd-dropdown-error) {
+    .pd-dropdown-button {
+        border: 0.125em solid setcolor(danger, enabled);
+
+        &:hover:enabled {
+            border: 0.125em solid setcolor(danger, hover);
+        }
+    }
+
+    .pd-dropdown-helper-text {
+        color: setcolor(danger, enabled);
+    }
+}
+
 .pd-dropdown-label {
     flex: 1 1 auto;
     display: flex;
@@ -24,6 +38,18 @@
 
 .pd-dropdown {
     position: relative;
+
+    &.pd-dropdown-readonly {
+        .pd-dropdown-button {
+            background-color: $gray-3;
+            color: $black;
+            border: none;
+
+            .pd-dropdown-caret {
+                fill: $black;
+            }
+        }
+    }
 }
 
 .pd-dropdown-menu {

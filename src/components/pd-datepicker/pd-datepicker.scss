@@ -17,13 +17,16 @@
     padding-bottom: 0.25em;
 
     &.pd-datepicker-disabled {
-        .pd-datepicker-input {
-            border: 0.125em solid setcolor(primary, disabled);
-            background-color: $white;
-        }
-
-        .pd-datepicker-icon .pd-icon {
+        .pd-datepicker-icon {
             fill: setcolor(primary, disabled);
+        }
+    }
+
+    &.pd-datepicker-readonly {
+        pointer-events: none;
+
+        .pd-datepicker-icon {
+            fill: setcolor(primary, readonly);
         }
     }
 
