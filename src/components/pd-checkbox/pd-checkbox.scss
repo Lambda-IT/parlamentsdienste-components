@@ -22,11 +22,12 @@
             }
         }
 
-        &:checked {
-            & + .pd-checkbox-inner {
-                &:after {
-                    background-color: setcolor(danger, enabled);
-                }
+        &:checked + .pd-checkbox-inner {
+            background-color: setcolor(danger, enabled);
+
+            .pd-checkbox-checkmark {
+                border-bottom: 0.125em solid $white;
+                border-right: 0.125em solid $white;
             }
         }
     }
@@ -49,8 +50,11 @@
 
         & > .pd-checkbox-input:checked {
             & + .pd-checkbox-inner {
-                &:after {
-                    background-color: $gray-3;
+                background-color: $gray-3;
+
+                .pd-checkbox-checkmark {
+                    border-bottom: 0.125em solid $white;
+                    border-right: 0.125em solid $white;
                 }
             }
         }
@@ -124,8 +128,11 @@
 
     &:disabled:checked {
         & + .pd-checkbox-inner {
-            &:after {
-                background-color: setcolor(primary, disabled);
+            background-color: setcolor(primary, disabled);
+
+            .pd-checkbox-checkmark {
+                border-bottom: 0.125em solid $white;
+                border-right: 0.125em solid $white;
             }
         }
     }

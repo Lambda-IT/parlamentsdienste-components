@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   #24 Icon: 🐛 Rendering had timing issue for initial render cycle
 -   #23 Combobox: 🐛⚡ Multiple refactorings and bugfixing, care `breaking change` because of new items list. Old way with a string[], new with as ComboBoxItem[].
+-   Checkbox: 🐛 Styling Improvement
 
 ## [1.2.2] - 2020-03-19
 
