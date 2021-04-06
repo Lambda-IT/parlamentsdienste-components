@@ -25,6 +25,39 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-textarea
+                label="Error"
+                error
+                auto-grow
+                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+            ></pd-textarea>
+            <pd-textarea
+                id="pd-textarea"
+                label="Disabled"
+                disabled
+                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+            ></pd-textarea>
+            <pd-textarea
+                label="Readonly"
+                readonly
+                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+            ></pd-textarea>
+            <pd-input
+                value="asdf"
+                label="error"
+                error
+                id="pd-input-0"
+                helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
+            ></pd-input>
+            <pd-input label="required" required id="pd-input-1" helper-text="asdf-asdf"></pd-input>
+            <pd-input
+                class="flatpickr-input"
+                value="asdf"
+                label="readonly"
+                id="pd-input-2"
+                helper-text="asdf-asdf"
+                readonly
+            ></pd-input>
             <pd-navbar id="pd-navbar-1">
                 <pd-navbar-item text="Startseite"></pd-navbar-item>
                 <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
@@ -205,22 +238,7 @@
             <pd-radio name="x" value="0.50" label="50%"></pd-radio>
             <pd-radio name="x" value="0.80" label="80%"></pd-radio>
             <pd-radio name="x" value="1" label="100%"></pd-radio>
-            <pd-input
-                value="asdf"
-                label="error"
-                error
-                id="pd-input-0"
-                helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
-            ></pd-input>
-            <pd-input label="required" required id="pd-input-1" helper-text="asdf-asdf"></pd-input>
-            <pd-input
-                class="flatpickr-input"
-                value="asdf"
-                label="readonly"
-                id="pd-input-2"
-                helper-text="asdf-asdf"
-                readonly
-            ></pd-input>
+
             <pd-sidebar>
                 <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
                 <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
@@ -243,6 +261,7 @@
         </div>
         <script>
             const pdInput = document.getElementById('pd-input-0');
+            const pdTextarea = document.getElementById('pd-textarea');
             const pdBreadcrumbs = document.getElementById('pd-breadcrumbs-0');
             const pdProgress = document.getElementById('pd-progress-0');
             const pdSlider = document.getElementById('pd-slider-0');
@@ -259,6 +278,8 @@
             const pdPagination1 = document.getElementById('pd-pagination-1');
 
             const flatPickr0 = document.getElementById('pd-datepickr-0');
+
+            pdTextarea.cols = 10;
 
             flatPickr0.config = {
                 wrap: true,

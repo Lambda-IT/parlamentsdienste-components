@@ -1,0 +1,66 @@
+@include resetControlFonts;
+
+:host {
+    display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
+:host(.pd-textarea-error) {
+    .pd-textarea {
+        border: 0.125em solid setcolor(danger, enabled);
+
+        &:hover:enabled {
+            border: 0.125em solid setcolor(danger, hover);
+        }
+    }
+
+    .pd-textarea-helper-text {
+        color: setcolor(danger, enabled);
+    }
+}
+
+.pd-textarea-label {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.875em;
+}
+
+.pd-textarea {
+    display: block;
+    padding: 0.625em 0.875em;
+    border-radius: 0.25em;
+    border: 0.125em solid setcolor(primary, enabled);
+    width: 100%;
+
+    &:hover:enabled {
+        border: 0.125em solid setcolor(primary, hover);
+    }
+
+    &:disabled {
+        border: 0.125em solid setcolor(primary, disabled);
+        background-color: transparent;
+        color: $gray;
+    }
+
+    &:focus:enabled {
+        border: 0.125em solid $focus;
+    }
+}
+
+.pd-textarea-label-text {
+    padding-bottom: 0.25em;
+}
+
+.pd-textarea-helper-text {
+    margin-left: 0.875em;
+    margin-top: 0.25em;
+    font-size: 0.875em;
+    line-height: 1.25em;
+}

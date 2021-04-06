@@ -209,7 +209,7 @@ export namespace Components {
         /**
           * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
          */
-        "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
+        "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
         /**
           * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates. Optionally, pass true as the second argument to force any onChange events to fire. And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
          */
@@ -673,6 +673,78 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdTextarea {
+        /**
+          * If `true`, the element height will increase based on the value.
+         */
+        "autoGrow": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize": string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        "error": boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "label"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * Sets focus on the native `textarea` in `pd-textarea`. Use this method instead of the global `textarea.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
     interface PdTimeline {
         /**
           * Adds rounded bottom of the date line to indicate that the timeline ends here
@@ -909,6 +981,12 @@ declare global {
         prototype: HTMLPdTableFilterElement;
         new (): HTMLPdTableFilterElement;
     };
+    interface HTMLPdTextareaElement extends Components.PdTextarea, HTMLStencilElement {
+    }
+    var HTMLPdTextareaElement: {
+        prototype: HTMLPdTextareaElement;
+        new (): HTMLPdTextareaElement;
+    };
     interface HTMLPdTimelineElement extends Components.PdTimeline, HTMLStencilElement {
     }
     var HTMLPdTimelineElement: {
@@ -960,6 +1038,7 @@ declare global {
         "pd-slider": HTMLPdSliderElement;
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
+        "pd-textarea": HTMLPdTextareaElement;
         "pd-timeline": HTMLPdTimelineElement;
         "pd-timeline-date": HTMLPdTimelineDateElement;
         "pd-toast": HTMLPdToastElement;
@@ -1708,6 +1787,90 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PdTextarea {
+        /**
+          * If `true`, the element height will increase based on the value.
+         */
+        "autoGrow"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        "error"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "label"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onPdBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onPdChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onPdFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPdInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
     interface PdTimeline {
         /**
           * Adds rounded bottom of the date line to indicate that the timeline ends here
@@ -1787,6 +1950,7 @@ declare namespace LocalJSX {
         "pd-slider": PdSlider;
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
+        "pd-textarea": PdTextarea;
         "pd-timeline": PdTimeline;
         "pd-timeline-date": PdTimelineDate;
         "pd-toast": PdToast;
@@ -1828,6 +1992,7 @@ declare module "@stencil/core" {
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
+            "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
             "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
             "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
