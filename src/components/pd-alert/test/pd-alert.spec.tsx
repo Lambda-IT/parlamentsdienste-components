@@ -12,7 +12,9 @@ describe('pd-alert', () => {
             <mock:shadow-root>
               <div class="pd-alert pd-alert-primary">
                 <div class="pd-alert-text">
-                  <slot></slot>
+                  <div>
+                    <slot></slot>
+                  </div>
                 </div>
                 <div class="pd-alert-action"></div>
               </div>

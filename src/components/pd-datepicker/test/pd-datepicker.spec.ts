@@ -8,13 +8,16 @@ describe('pd-datepicker', () => {
             html: `<pd-datepicker></pd-datepicker>`,
         });
         expect(page.root).toEqualHtml(`
-          <pd-datepicker>
-            <mock:shadow-root>
-                <div class="wrapper">
-                    <pd-input data-input></pd-input>
-                </div>
-            </mock:shadow-root>
-          </pd-datepicker>
+            <pd-datepicker>
+                <mock:shadow-root>
+                    <label class="pd-datepicker-label">
+                        <div class="wrapper">
+                            <pd-input class="pd-datepicker-input" data-input></pd-input>
+                            <pd-icon class="pd-datepicker-icon" name="calendar" size="2.4"></pd-icon>
+                        </div>
+                    </label>
+                </mock:shadow-root>
+            </pd-datepicker>
         `);
     });
 });

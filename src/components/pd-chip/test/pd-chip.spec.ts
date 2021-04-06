@@ -8,11 +8,13 @@ describe('pd-chip', () => {
             html: `<pd-chip></pd-chip>`,
         });
         expect(page.root).toEqualHtml(`
-          <pd-chip>
-            <mock:shadow-root>
-            <pd-chip id="pd-chip-0">Text Chip</pd-chip>
-            </mock:shadow-root>
-          </pd-chip>
+            <pd-chip>
+                <mock:shadow-root>
+                <button class="pd-chip pd-chip-text" role="button">
+                    <slot></slot>
+                </button>
+                </mock:shadow-root>
+            </pd-chip>
         `);
     });
 });

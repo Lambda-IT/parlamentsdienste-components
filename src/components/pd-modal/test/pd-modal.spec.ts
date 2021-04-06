@@ -8,7 +8,7 @@ describe('pd-modal', () => {
             html: `<pd-modal></pd-modal>`,
         });
         expect(page.root).toEqualHtml(`
-            <pd-modal style="display: none;">
+            <pd-modal>
                 <mock:shadow-root>
                     <focus-trap>
                         <pd-backdrop></pd-backdrop>
