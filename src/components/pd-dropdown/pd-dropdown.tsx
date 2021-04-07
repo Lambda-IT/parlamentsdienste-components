@@ -154,7 +154,7 @@ export class Dropdown {
         this.pdChange.emit(item);
     }
 
-    private openDropdown = () => {
+    private toggleDropdown = () => {
         this.open = !this.open;
     };
 
@@ -201,6 +201,7 @@ export class Dropdown {
                         'pd-dropdown-label': true,
                         'pd-dropdown-disabled': this.disabled,
                     }}
+                    onClick={this.toggleDropdown}
                 >
                     {this.renderLabel()}
                 </label>
@@ -210,7 +211,7 @@ export class Dropdown {
                         type="button"
                         aria-haspopup="true"
                         aria-expanded={`${this.open}`}
-                        onClick={this.openDropdown}
+                        onClick={this.toggleDropdown}
                         disabled={this.disabled || this.readonly}
                     >
                         <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
