@@ -69,6 +69,7 @@
             border-bottom: 0.125em solid $blue-whale;
             border-top: 0.125em solid $blue-whale;
             fill: $white;
+            --pd-checkbox-background-color: white;
 
             &.pd-table-sortable {
                 &:hover {
@@ -195,5 +196,5 @@
 }
 
 pd-menu {
-  z-index: 1000;
+    z-index: 1000;
 }

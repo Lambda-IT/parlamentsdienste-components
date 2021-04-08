@@ -35,10 +35,23 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `pd-checked` |             | `CustomEvent<any>` |
+| Event        | Description | Type                   |
+| ------------ | ----------- | ---------------------- |
+| `pd-checked` |             | `CustomEvent<boolean>` |
 
+
+## Dependencies
+
+### Used by
+
+ - [pd-table](../pd-table)
+
+### Graph
+```mermaid
+graph TD;
+  pd-table --> pd-checkbox
+  style pd-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
