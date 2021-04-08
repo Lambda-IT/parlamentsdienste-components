@@ -57,3 +57,10 @@ export interface ComboboxItem {
     label: string;
     value: string;
 }
+
+export interface SelectedEvent {
+    selected: boolean;
+    selectAll: boolean;
+    row: any;
+    rows: any[];
+}

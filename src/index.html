@@ -58,6 +58,16 @@
                 helper-text="asdf-asdf"
                 readonly
             ></pd-input>
+            <pd-table id="pd-table-0" header-style="dark" selectable> </pd-table>
+            <pd-table id="pd-table-1" header-style="light" selectable> </pd-table>
+            <pd-table id="pd-table-2" header-style="gray" selectable>
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+            </pd-table>
             <pd-navbar id="pd-navbar-1">
                 <pd-navbar-item text="Startseite"></pd-navbar-item>
                 <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
@@ -187,16 +197,6 @@
                 <pd-panel-footer slot="footer"></pd-panel-footer>
             </pd-panel>
             <h1>Header 1</h1>
-            <pd-table id="pd-table-0" header-style="dark"> </pd-table>
-            <pd-table id="pd-table-1" header-style="light"> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray">
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-            </pd-table>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning" icon-location="left"> Button</pd-button>
             <pd-button color="danger">Button</pd-button>
@@ -336,9 +336,9 @@
 
             const rows = [
                 { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 0.12 },
-                { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 411.21 },
+                { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 411.21, pdSelected: true },
                 { no: '10 10 10 10 10', column1: 'Cell2', column2: 'Cell5', column3: 871 },
-                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563 },
+                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563, pdSelected: true },
             ];
 
             pdTable0.columns = columns;
@@ -350,8 +350,9 @@
             pdTable2.iconConfig = { edit: true, select: true, delete: true };
             pdTable2.showActionColumn = true;
             pdTable2.addEventListener('pd-edit', (ev) => console.log('pdTable2 > edit', ev));
-            pdTable2.addEventListener('pd-select', (ev) => console.log('pdTable2 > select', ev));
+            pdTable2.addEventListener('pd-view', (ev) => console.log('pdTable2 > view', ev));
             pdTable2.addEventListener('pd-delete', (ev) => console.log('pdTable2 > delete', ev));
+            pdTable2.addEventListener('pd-selected', (ev) => console.log('pdTable2 > selected', ev.detail));
 
             pdBreadcrumbs.items = [
                 'Startseite',

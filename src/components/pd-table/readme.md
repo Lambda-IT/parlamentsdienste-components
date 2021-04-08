@@ -45,7 +45,10 @@ const rowsData = [
 ];
 ```
 
-<br><br>
+###Selection
+
+A Row can be preselected by adding the internal property `pdSelected: true` to any row.
+
 ### vuejs Sample
 
 ```javascript
@@ -129,17 +132,17 @@ var app = new Vue({
                     sortable: true,
                 },
             ],
-        }
-    }
+        },
+    },
 });
 ```
 
 ```html
-<pd-table header-style="light" :rows.prop="table.rows" :columns.prop="table.columns" ></pd-table>
+<pd-table header-style="light" :rows.prop="table.rows" :columns.prop="table.columns"></pd-table>
 ```
-*To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier.*
-More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
+_To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
+More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Interfaces
 
@@ -173,17 +176,32 @@ interface PdColumn {
 | `iconConfig`       | --                   | The configuration for the last column, the icon column | `PdTableIconConfiguration`    | `undefined` |
 | `minWidth`         | `min-width`          | The minimum width the table should take                | `string`                      | `'300'`     |
 | `rowHeight`        | `row-height`         | Height of rows                                         | `string`                      | `'48'`      |
-| `rows`             | `rows`               | The data definition for each row to display            | `any`                         | `[]`        |
+| `rows`             | --                   | The data definition for each row to display            | `any[]`                       | `[]`        |
+| `selectable`       | `selectable`         | Make rows selectable with a checkbox                   | `boolean`                     | `false`     |
 | `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`     |
 
 
 ## Events
 
-| Event       | Description                                        | Type                            |
-| ----------- | -------------------------------------------------- | ------------------------------- |
-| `pd-delete` | Triggers an event when the delete icon was clicked | `CustomEvent<CustomEvent<any>>` |
-| `pd-edit`   | Triggers an event when the edit icon was clicked   | `CustomEvent<CustomEvent<any>>` |
-| `pd-select` | Triggers an event when the select icon was clicked | `CustomEvent<CustomEvent<any>>` |
+| Event         | Description                                        | Type                         |
+| ------------- | -------------------------------------------------- | ---------------------------- |
+| `pd-delete`   | Triggers an event when the delete icon was clicked | `CustomEvent<any>`           |
+| `pd-edit`     | Triggers an event when the edit icon was clicked   | `CustomEvent<any>`           |
+| `pd-selected` | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
+| `pd-view`     | Triggers an event when the select icon was clicked | `CustomEvent<any>`           |
+
+
+## Methods
+
+### `unselectAll() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies
@@ -191,6 +209,7 @@ interface PdColumn {
 ### Depends on
 
 - [pd-table-filter](../pd-table-filter)
+- [pd-checkbox](../pd-checkbox)
 - [pd-menu](../pd-menu)
 - [pd-icon](../pd-icon)
 
@@ -198,6 +217,7 @@ interface PdColumn {
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
+  pd-table --> pd-checkbox
   pd-table --> pd-menu
   pd-table --> pd-icon
   pd-table-filter --> pd-icon

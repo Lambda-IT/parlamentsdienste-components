@@ -72,6 +72,8 @@
         position: relative;
         width: 1.25em;
         height: 1.25em;
+        background-color: var(--pd-checkbox-background-color, transparent);
+        border-radius: 0.25em;
 
         &:before,
         &:after {

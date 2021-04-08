@@ -43,12 +43,12 @@ export class Checkbox {
 
     @Prop() error: boolean = false;
 
-    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<any>;
+    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<boolean>;
 
-    private onClick = (ev: Event) => {
+    private onClick = () => {
         this.checked = !this.checked;
         this.value = this.checked;
-        this.pdChecked.emit(ev);
+        this.pdChecked.emit(this.value);
     };
 
     public render() {

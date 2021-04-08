@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -658,11 +658,16 @@ export namespace Components {
         /**
           * The data definition for each row to display
          */
-        "rows": any;
+        "rows": any[];
+        /**
+          * Make rows selectable with a checkbox
+         */
+        "selectable": boolean;
         /**
           * Show button column and context menu
          */
         "showActionColumn": boolean;
+        "unselectAll": () => Promise<void>;
     }
     interface PdTableFilter {
         "focusInput": () => Promise<void>;
@@ -1137,7 +1142,7 @@ declare namespace LocalJSX {
           * checkbox name
          */
         "name"?: string;
-        "onPd-checked"?: (event: CustomEvent<any>) => void;
+        "onPd-checked"?: (event: CustomEvent<boolean>) => void;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1747,15 +1752,19 @@ declare namespace LocalJSX {
         /**
           * Triggers an event when the delete icon was clicked
          */
-        "onPd-delete"?: (event: CustomEvent<CustomEvent>) => void;
+        "onPd-delete"?: (event: CustomEvent<any>) => void;
         /**
           * Triggers an event when the edit icon was clicked
          */
-        "onPd-edit"?: (event: CustomEvent<CustomEvent>) => void;
+        "onPd-edit"?: (event: CustomEvent<any>) => void;
+        /**
+          * Triggers when one or all rows get selected
+         */
+        "onPd-selected"?: (event: CustomEvent<SelectedEvent>) => void;
         /**
           * Triggers an event when the select icon was clicked
          */
-        "onPd-select"?: (event: CustomEvent<CustomEvent>) => void;
+        "onPd-view"?: (event: CustomEvent<any>) => void;
         /**
           * Height of rows
          */
@@ -1763,7 +1772,11 @@ declare namespace LocalJSX {
         /**
           * The data definition for each row to display
          */
-        "rows"?: any;
+        "rows"?: any[];
+        /**
+          * Make rows selectable with a checkbox
+         */
+        "selectable"?: boolean;
         /**
           * Show button column and context menu
          */

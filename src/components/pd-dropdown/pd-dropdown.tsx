@@ -154,7 +154,7 @@ export class Dropdown {
         this.pdChange.emit(item);
     }
 
-    private openDropdown = () => {
+    private toggleDropdown = () => {
         this.open = !this.open;
     };
 
@@ -201,28 +201,29 @@ export class Dropdown {
                         'pd-dropdown-label': true,
                         'pd-dropdown-disabled': this.disabled,
                     }}
+                    onClick={this.toggleDropdown}
                 >
                     {this.renderLabel()}
-                    <div class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}>
-                        <button
-                            class="pd-dropdown-button"
-                            type="button"
-                            aria-haspopup="true"
-                            aria-expanded={`${this.open}`}
-                            onClick={this.openDropdown}
-                            disabled={this.disabled || this.readonly}
-                        >
-                            <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
-                            <pd-icon
-                                class="pd-dropdown-caret"
-                                name="dropdown"
-                                rotate={this.open ? 180 : 0}
-                                size={2}
-                            ></pd-icon>
-                        </button>
-                        {this.renderDropDown()}
-                    </div>
                 </label>
+                <div class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}>
+                    <button
+                        class="pd-dropdown-button"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded={`${this.open}`}
+                        onClick={this.toggleDropdown}
+                        disabled={this.disabled || this.readonly}
+                    >
+                        <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
+                        <pd-icon
+                            class="pd-dropdown-caret"
+                            name="dropdown"
+                            rotate={this.open ? 180 : 0}
+                            size={2}
+                        ></pd-icon>
+                    </button>
+                    {this.renderDropDown()}
+                </div>
             </Host>
         );
     }
