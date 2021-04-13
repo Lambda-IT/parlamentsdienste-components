@@ -165,3 +165,122 @@ a {
         min-width: calc(7 * 2rem + 14 * 0.125rem);
     }
 }
+
+.tippy-arrow {
+    & {
+        border-color: inherit;
+    }
+
+    &::after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+    }
+}
+
+.tippy-box[data-theme~='pd-popover'],
+.tippy-box[data-theme~='pd-popover-header'] {
+    background-color: white;
+    border: 2px solid $gray-300;
+    border-radius: $border-radius;
+
+    &[data-placement^='top'] > .tippy-arrow {
+        &::after {
+            border-top-color: $gray-300 !important;
+            border-width: 8px 8px 0;
+            bottom: -10px;
+            left: 0;
+        }
+
+        &::before {
+            border-top-color: $gray-100 !important;
+        }
+    }
+
+    &[data-placement^='bottom'] > .tippy-arrow {
+        &::after {
+            border-bottom-color: $gray-300 !important;
+            border-width: 0 8px 8px;
+            top: -10px;
+            left: 0;
+        }
+
+        &::before {
+            border-bottom-color: $gray-100 !important;
+        }
+    }
+
+    &[data-placement^='left'] > .tippy-arrow {
+        &::after {
+            border-left-color: $gray-300 !important;
+            border-width: 8px 0 8px 8px;
+            right: -10px;
+            top: 0;
+        }
+
+        &::before {
+            border-left-color: $gray-100 !important;
+        }
+    }
+
+    &[data-placement^='right'] > .tippy-arrow {
+        &::after {
+            border-right-color: $gray-300 !important;
+            border-width: 8px 8px 8px 0;
+            left: -10px;
+            top: 0;
+        }
+
+        &::before {
+            border-right-color: $gray-100 !important;
+        }
+    }
+
+    .tippy-content {
+        padding: 0;
+        margin: 0;
+
+        .popover {
+            .popover-header {
+                padding: 0.25rem 0.5rem;
+                margin: 0;
+                background-color: $gray-100;
+                font-size: 1rem;
+            }
+
+            .popover-body {
+                font-size: 0.875rem;
+                color: black;
+                padding: 0.625rem 0.5rem;
+            }
+        }
+    }
+}
+
+.tippy-box[data-theme~='pd-popover'] {
+    &[data-placement^='top'] > .tippy-arrow {
+        &::before {
+            border-top-color: white !important;
+        }
+    }
+
+    &[data-placement^='bottom'] > .tippy-arrow {
+        &::before {
+            border-bottom-color: white !important;
+        }
+    }
+
+    &[data-placement^='left'] > .tippy-arrow {
+        &::before {
+            border-left-color: white !important;
+        }
+    }
+
+    &[data-placement^='right'] > .tippy-arrow {
+        &::before {
+            border-right-color: white !important;
+        }
+    }
+}
