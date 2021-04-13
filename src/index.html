@@ -26,6 +26,11 @@
     <body>
         <div class="example-components">
             <pd-textarea
+                label="Default"
+                auto-grow
+                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+            ></pd-textarea>
+            <pd-textarea
                 label="Error"
                 error
                 auto-grow
@@ -42,14 +47,15 @@
                 readonly
                 value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
             ></pd-textarea>
+            <pd-input placeholder="placeholder" label="error" error id="pd-input-0"></pd-input>
             <pd-input
-                value="asdf"
-                label="error"
-                error
-                id="pd-input-0"
-                helper-text="asdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdfasdf-asdf"
+                label="disabled"
+                disabled
+                id="pd-input-1"
+                placeholder="placeholder"
+                helper-text="asdf-asdf"
             ></pd-input>
-            <pd-input label="required" required id="pd-input-1" helper-text="asdf-asdf"></pd-input>
+            <pd-input label="required" required id="pd-input-1"></pd-input>
             <pd-input
                 class="flatpickr-input"
                 value="asdf"

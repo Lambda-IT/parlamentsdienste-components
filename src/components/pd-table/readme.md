@@ -166,6 +166,7 @@ interface PdColumn {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property           | Attribute            | Description                                            | Type                          | Default     |
@@ -180,6 +181,7 @@ interface PdColumn {
 | `selectable`       | `selectable`         | Make rows selectable with a checkbox                   | `boolean`                     | `false`     |
 | `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`     |
 
+
 ## Events
 
 | Event         | Description                                        | Type                         |
@@ -187,27 +189,32 @@ interface PdColumn {
 | `pd-delete`   | Triggers an event when the delete icon was clicked | `CustomEvent<any>`           |
 | `pd-edit`     | Triggers an event when the edit icon was clicked   | `CustomEvent<any>`           |
 | `pd-selected` | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
-| `pd-view`     | Triggers an event when the select icon was clicked | `CustomEvent<any>`           |
+| `pd-view`     | Triggers an event when the view icon was clicked   | `CustomEvent<any>`           |
+
 
 ## Methods
 
 ### `unselectAll() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 
 ### Depends on
 
--   [pd-table-filter](../pd-table-filter)
--   [pd-checkbox](../pd-checkbox)
--   [pd-menu](../pd-menu)
--   [pd-icon](../pd-icon)
+- [pd-table-filter](../pd-table-filter)
+- [pd-checkbox](../pd-checkbox)
+- [pd-menu](../pd-menu)
+- [pd-icon](../pd-icon)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
@@ -219,6 +226,6 @@ graph TD;
   style pd-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

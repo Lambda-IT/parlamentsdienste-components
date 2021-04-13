@@ -52,6 +52,18 @@
     &:focus:enabled {
         border: 0.125em solid $focus;
     }
+
+    &:read-only {
+        background-color: $gray-3;
+        border: 0.125em solid $gray-3;
+
+        &:hover:enabled,
+        &:disabled,
+        &:focus:enabled {
+            border: 0.125em solid $gray-3;
+            cursor: default;
+        }
+    }
 }
 
 .pd-textarea-label-text {
