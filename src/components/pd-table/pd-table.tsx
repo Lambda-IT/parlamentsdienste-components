@@ -66,7 +66,7 @@ export class Table {
     @Event({ eventName: 'pd-edit' }) onEdit: EventEmitter<any>;
 
     /**
-     * Triggers an event when the select icon was clicked
+     * Triggers an event when the view icon was clicked
      */
     @Event({ eventName: 'pd-view' }) onView: EventEmitter<any>;
 
@@ -471,11 +471,11 @@ export class Table {
             ...this.btnCellStyle,
             width: this.evaluateBtnColumnWidth(),
         });
-        const iConfig = { edit: false, select: false, delete: false, ...iconConfig };
+        const iConfig = { edit: false, view: false, delete: false, ...iconConfig };
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
                 {this.renderButton(iConfig.edit, 'edit', this.onEdit, row)}
-                {this.renderButton(iConfig.select, 'detail', this.onView, row)}
+                {this.renderButton(iConfig.view, 'detail', this.onView, row)}
                 {this.renderButton(iConfig.delete, 'delete', this.onDelete, row)}
             </div>
         );

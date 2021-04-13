@@ -1762,7 +1762,7 @@ declare namespace LocalJSX {
          */
         "onPd-selected"?: (event: CustomEvent<SelectedEvent>) => void;
         /**
-          * Triggers an event when the select icon was clicked
+          * Triggers an event when the view icon was clicked
          */
         "onPd-view"?: (event: CustomEvent<any>) => void;
         /**

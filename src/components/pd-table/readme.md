@@ -45,8 +45,9 @@ const rowsData = [
 ];
 ```
 
-###Selection
+###Selectable
 
+Make rows selectable by setting the `selectable` property to true. Selecting a row triggers the `pd-selected` Event that contains the selected row/rows.  
 A Row can be preselected by adding the internal property `pdSelected: true` to any row.
 
 ### vuejs Sample
@@ -165,7 +166,6 @@ interface PdColumn {
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property           | Attribute            | Description                                            | Type                          | Default     |
@@ -180,7 +180,6 @@ interface PdColumn {
 | `selectable`       | `selectable`         | Make rows selectable with a checkbox                   | `boolean`                     | `false`     |
 | `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`     |
 
-
 ## Events
 
 | Event         | Description                                        | Type                         |
@@ -190,30 +189,25 @@ interface PdColumn {
 | `pd-selected` | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
 | `pd-view`     | Triggers an event when the select icon was clicked | `CustomEvent<any>`           |
 
-
 ## Methods
 
 ### `unselectAll() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Depends on
 
-- [pd-table-filter](../pd-table-filter)
-- [pd-checkbox](../pd-checkbox)
-- [pd-menu](../pd-menu)
-- [pd-icon](../pd-icon)
+-   [pd-table-filter](../pd-table-filter)
+-   [pd-checkbox](../pd-checkbox)
+-   [pd-menu](../pd-menu)
+-   [pd-icon](../pd-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
@@ -225,6 +219,6 @@ graph TD;
   style pd-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
