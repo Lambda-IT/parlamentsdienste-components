@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter } from '@stencil/core';
-import { PdColumn, PdTableIconConfiguration, PdButtonCell } from '../../interface';
+import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter, Method } from '@stencil/core';
+import { PdColumn, PdTableIconConfiguration, PdButtonCell, SelectedEvent } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
@@ -38,7 +38,7 @@ export class Table {
     /**
      * The data definition for each row to display
      */
-    @Prop() rows: any = [];
+    @Prop() rows: any[] = [];
 
     /**
      * The configuration for the last column, the icon column
@@ -51,19 +51,37 @@ export class Table {
     @Prop() showActionColumn = false;
 
     /**
-     * Triggers an event when the edit icon was clicked
+     * Make rows selectable with a checkbox
      */
-    @Event({ eventName: 'pd-edit' }) onEdit: EventEmitter<CustomEvent>;
+    @Prop() selectable = false;
 
     /**
-     * Triggers an event when the select icon was clicked
+     * Triggers when one or all rows get selected
      */
-    @Event({ eventName: 'pd-select' }) onSelect: EventEmitter<CustomEvent>;
+    @Event({ eventName: 'pd-selected' }) onSelected: EventEmitter<SelectedEvent>;
+
+    /**
+     * Triggers an event when the edit icon was clicked
+     */
+    @Event({ eventName: 'pd-edit' }) onEdit: EventEmitter<any>;
+
+    /**
+     * Triggers an event when the view icon was clicked
+     */
+    @Event({ eventName: 'pd-view' }) onView: EventEmitter<any>;
 
     /**
      * Triggers an event when the delete icon was clicked
      */
-    @Event({ eventName: 'pd-delete' }) onDelete: EventEmitter<CustomEvent>;
+    @Event({ eventName: 'pd-delete' }) onDelete: EventEmitter<any>;
+
+    @Method() async unselectAll() {
+        this.allSelected = false;
+        this.filteredRows = this.filteredRows.map((r) => ({
+            ...r,
+            pdSelected: false,
+        }));
+    }
 
     @Watch('rows')
     handleRowsChanged() {
@@ -73,6 +91,7 @@ export class Table {
     @State() filterOpen = false;
     @State() columnFilters: any = {};
     @State() filteredRows: any = [...this.rows];
+    @State() allSelected: boolean = false;
 
     private filterElement: HTMLPdTableFilterElement;
     private currentFilter: string;
@@ -81,6 +100,7 @@ export class Table {
     private sortColumn = '';
     private popper: Instance;
     private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
+    private selectableCellWidth: number = 50;
 
     @Listen('keydown')
     protected handleKeyDown(ev: KeyboardEvent) {
@@ -108,7 +128,8 @@ export class Table {
         if (hasAuto) {
             return '1 1 auto';
         } else {
-            const width = fixedCols.map((c) => c.width).reduce((a, b) => a + b, 0);
+            let width = fixedCols.map((c) => c.width).reduce((a, b) => a + b, 0);
+            width += this.selectable ? this.selectableCellWidth : 0;
             return `0 0 ${width}px`;
         }
     }
@@ -131,7 +152,8 @@ export class Table {
     // sum of width/min-width of all fixed columns
     private calcFixedMinWidth(columns: PdColumn[]) {
         const fixedCols = columns.filter((c) => c.fixed);
-        const minWidth = fixedCols.map((c) => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
+        let minWidth = fixedCols.map((c) => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
+        minWidth += this.selectable ? this.selectableCellWidth : 0;
         return minWidth === 0 ? '0' : `${minWidth}px`;
     }
 
@@ -229,6 +251,33 @@ export class Table {
         });
     }
 
+    private select(isSelected: boolean, row) {
+        row.pdSelected = isSelected;
+        this.filteredRows = [...this.filteredRows]; // trigger a rerender for the rows
+        this.onSelected.emit({
+            selected: isSelected,
+            selectAll: false,
+            row,
+            rows: this.filteredRows.filter((r) => r.pdSelected),
+        });
+
+        if (!isSelected) this.allSelected = false; // reset if not all checkboxes are selected
+    }
+
+    private selectAll(isAllSelected: boolean) {
+        this.allSelected = isAllSelected;
+        this.filteredRows = this.filteredRows.map((r) => ({
+            ...r,
+            pdSelected: isAllSelected,
+        }));
+        this.onSelected.emit({
+            selected: false,
+            selectAll: isAllSelected,
+            row: {},
+            rows: this.filteredRows.filter((r) => r.pdSelected),
+        });
+    }
+
     public render() {
         const headerStyle = {
             height: `${this.headerHeight}px`,
@@ -269,7 +318,7 @@ export class Table {
     }
     private renderHeader(fixed: boolean = false) {
         const columns = this.columns
-            .filter((c) => (c.fixed || false) === fixed)
+            .filter((c) => !!c.fixed === fixed)
             .map((headerCol) => {
                 const columnSortDir = this.nextSortDir[headerCol.columnName];
                 return (
@@ -301,6 +350,35 @@ export class Table {
                 );
             });
 
+        // render select all
+        const selectAllName = 'selectAllColumn';
+        const selectAll = (
+            <div
+                class={{
+                    'pd-table-header-cell': true,
+                    'pd-table-cell-bold': true,
+                    [`pd-table-${this.headerStyle}`]: true,
+                }}
+                ref={(el) => (this.headerRefs[selectAllName] = el as HTMLElement)}
+                role="cell"
+                style={this.calculateHeaderCellStyle({
+                    width: this.selectableCellWidth,
+                    minWidth: this.selectableCellWidth,
+                })}
+            >
+                <div
+                    class="pd-table-header-cell-text"
+                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
+                >
+                    <pd-checkbox
+                        onPd-checked={(ev) => this.selectAll(ev.detail)}
+                        checked={this.allSelected}
+                    ></pd-checkbox>
+                </div>
+                <div class="pd-table-header-cell-actions"></div>
+            </div>
+        );
+
         // render menu/button column
         const btnColumnName = 'btnColumn';
         const btnColumn = (
@@ -329,9 +407,11 @@ export class Table {
             </div>
         );
 
-        if (!fixed && this.showActionColumn) columns.push(btnColumn);
-
-        return columns;
+        return [
+            ...(fixed && this.selectable ? [selectAll] : []),
+            ...columns,
+            ...(!fixed && this.showActionColumn ? [btnColumn] : []),
+        ];
     }
 
     private renderRows(fixed: boolean = false, iconConfig: PdTableIconConfiguration) {
@@ -341,14 +421,15 @@ export class Table {
 
         return this.filteredRows.map((row) => (
             <div class="pd-table-row" role="row" style={rowStyle}>
-                {this.columns.filter((c) => (c.fixed || false) === fixed).map((col) => this.renderColumn(row, col))}
+                {this.selectable ? this.renderSelectable(row, fixed) : null}
+                {this.columns.filter((c) => !!c.fixed === fixed).map((col) => this.renderColumn(row, col))}
                 {this.showActionColumn ? this.renderBtnColumn(row, fixed, iconConfig) : null}
             </div>
         ));
     }
 
     private renderColumn(row, col: PdColumn) {
-        const cellStyle = this.claculateCellStyle({ width: col.width, minWidth: col.minWidth, align: col.textAlign });
+        const cellStyle = this.calculateCellStyle({ width: col.width, minWidth: col.minWidth, align: col.textAlign });
 
         let value = row[col.columnName];
         if (value && typeof value.getMonth === 'function') {
@@ -370,17 +451,31 @@ export class Table {
         );
     }
 
+    private renderSelectable(row, fixed: boolean) {
+        if (!fixed) return; // only render in fixed row
+        const cellStyle = this.calculateCellStyle({
+            minWidth: this.selectableCellWidth,
+            width: this.selectableCellWidth,
+            align: 'center',
+        });
+        return (
+            <div class={`pd-table-cell`} style={cellStyle} role="cell">
+                <pd-checkbox checked={row.pdSelected} onPd-checked={(ev) => this.select(ev.detail, row)}></pd-checkbox>
+            </div>
+        );
+    }
+
     private renderBtnColumn(row, fixed: boolean, iconConfig: PdTableIconConfiguration) {
         if (fixed) return;
-        const cellStyle = this.claculateCellStyle({
+        const cellStyle = this.calculateCellStyle({
             ...this.btnCellStyle,
             width: this.evaluateBtnColumnWidth(),
         });
-        const iConfig = { edit: false, select: false, delete: false, ...iconConfig };
+        const iConfig = { edit: false, view: false, delete: false, ...iconConfig };
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
                 {this.renderButton(iConfig.edit, 'edit', this.onEdit, row)}
-                {this.renderButton(iConfig.select, 'detail', this.onSelect, row)}
+                {this.renderButton(iConfig.view, 'detail', this.onView, row)}
                 {this.renderButton(iConfig.delete, 'delete', this.onDelete, row)}
             </div>
         );
@@ -438,7 +533,7 @@ export class Table {
         };
     }
 
-    private claculateCellStyle(cell: { width: number; minWidth: number; align: PdColumn['textAlign'] }) {
+    private calculateCellStyle(cell: { width: number; minWidth: number; align: PdColumn['textAlign'] }) {
         return {
             flex: cell.width === 0 ? `1 1 ${cell.minWidth || 0}px` : `0 0 ${cell.width}px`,
             minWidth: `${cell.minWidth || cell.width || 0}px`,

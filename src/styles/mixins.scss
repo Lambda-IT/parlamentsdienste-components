@@ -50,6 +50,7 @@
 
 @mixin resetControlFonts {
     input,
+    textarea,
     a,
     button {
         font: 1rem/1.5rem Avenir;

@@ -4,12 +4,16 @@ export default {
     title: 'Interactions/Table',
     parameters: {
         notes,
+        actions: {
+            handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete'],
+        },
     },
     argTypes: {
         rows: { control: { type: 'object' } },
         columns: { control: { type: 'object' } },
         iconConfig: { control: { type: 'object' } },
         showActionColumn: { control: { type: 'boolean' } },
+        selectable: { control: { type: 'boolean' } },
     },
 };
 
@@ -26,6 +30,7 @@ export const Table = (args) => {
     table0.iconConfig = args.iconConfig;
     table0.showActionColumn = args.showActionColumn;
     table0.setAttribute('header-style', 'dark');
+    table0.selectable = args.selectable;
 
     const headerLight = document.createElement('h3');
     headerLight.classList = ['m-3'];
@@ -37,6 +42,7 @@ export const Table = (args) => {
     table1.iconConfig = args.iconConfig;
     table1.showActionColumn = args.showActionColumn;
     table1.setAttribute('header-style', 'light');
+    table1.selectable = args.selectable;
 
     const headerGray = document.createElement('h3');
     headerGray.classList = ['m-3'];
@@ -48,6 +54,7 @@ export const Table = (args) => {
     table2.iconConfig = args.iconConfig;
     table2.showActionColumn = args.showActionColumn;
     table2.setAttribute('header-style', 'gray');
+    table2.selectable = args.selectable;
 
     const wrapper = document.createElement('div');
     wrapper.append(headerDark);
@@ -107,4 +114,5 @@ Table.args = {
     ],
     showActionColumn: true,
     iconConfig: { edit: true, select: false, delete: true },
+    selectable: true,
 };

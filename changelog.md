@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2020-04-13
+
+### Added
+
+-   #27 Tooltip / Popover: 🎉 Added Themes and examples on how to create Tooltip/Popover
+-   #28 Table: 🎉 Added possibility to make rows selectable. `BREAKING CHANGE!!!` The event `pd-selected` is now used for selected rows. Previous event from the button group was renamed to `pd-view`.
+-   #22 Textarea: 🎉 Added Textarea component with auto-grow feature.
+
 ## [1.3.1] - 2020-04-12
 
 ### Changed
@@ -22,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 -   #24 Icon: 🐛 Rendering had timing issue for initial render cycle
--   #23 Combobox: 🐛⚡ Multiple refactorings and bugfixing, care `breaking change` because of new items list. Old way with a string[], new with as ComboBoxItem[].
+-   #23 Combobox: 🐛⚡ Multiple refactorings and bugfixing, care `BREAKING CHANGE!!!` because of new items list. Old way with a string[], new with as ComboBoxItem[].
 -   Checkbox: 🐛 Styling Improvement
 
 ## [1.2.2] - 2020-03-19
@@ -85,6 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[1.4.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.4.0
 [1.3.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.3.1
 [1.3.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.3.0
 [1.2.3]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.2.3
