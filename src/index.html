@@ -90,9 +90,12 @@
             <pd-combobox id="pd-combobox-0" label="Fancy Combobox"></pd-combobox>
             <pd-combobox disabled></pd-combobox>
             <pd-chip id="pd-chip-0">Text Chip</pd-chip>
-            <pd-chip id="pd-chip-0" disabled>Disabled Chip</pd-chip>
-            <pd-chip id="pd-chip-0" type="filter">Filter Chip</pd-chip>
-            <pd-chip id="pd-chip-0" type="toggle">Toggle Chip</pd-chip>
+            <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
+            <pd-chip id="pd-chip-2" type="filter">Filter Chip</pd-chip>
+            <pd-chip id="pd-chip-3" type="toggle">Toggle Chip</pd-chip>
+            <pd-chip id="pd-chip-4" type="toggle" disabled>Disabled Chip</pd-chip>
+            <pd-chip id="pd-chip-5" type="toggle" readonly>Readonly Chip</pd-chip>
+            <pd-chip id="pd-chip-6">Checked programmatically</pd-chip>
             <pd-pagination id="pd-pagination-1" total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
             <pd-timeline start="true" end="true">
                 <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
@@ -431,6 +434,10 @@
                 { id: '5', label: 'Dropdown Link 05', value: 'a5' },
                 { id: '6', label: 'Dropdown Second Link 05', value: 'a6' },
             ];
+
+            const chip6 = document.getElementById('pd-chip-6');
+            console.log('chip6', chip6.checked);
+            setTimeout(() => (chip6.checked = true), 2000);
 
             /*** Modal ***/
 

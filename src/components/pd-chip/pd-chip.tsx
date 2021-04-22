@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Listen, Prop, State, Watch } from '@stencil/core';
 import { ChipType } from '../../interface';
 
 @Component({
@@ -13,6 +13,11 @@ export class Chip {
     @Prop() disabled: boolean = false;
 
     /**
+     * Sets chip to readonly state
+     */
+    @Prop() readonly: boolean = false;
+
+    /**
      * Sets chip to checked state
      */
     @Prop() checked: boolean = false;
@@ -23,32 +28,39 @@ export class Chip {
     @Prop() type: ChipType = 'text';
 
     /**
-     *
+     * Event for clicking the cross to remove a chip
      */
     @Event() removeChip!: EventEmitter;
 
     /**
-     *
+     * Event for check chip
      */
     @Event() checkChip!: EventEmitter;
 
     /**
-     *
+     * Handles current checked State
      */
     @State() checkedState: boolean = this.checked;
 
+    @Watch('checked')
+    protected checkedStateChanged() {
+        this.checkedState = this.checked;
+    }
+
     /**
-     *
+     * Click event
      */
     @Listen('click', { capture: true })
     handleClick() {
-        this.checkedState = !this.checkedState;
-        this.checkChip.emit(this.checkedState);
+        if (!this.disabled && !this.readonly) {
+            this.checkedState = !this.checkedState;
+            this.checkChip.emit(this.checkedState);
+        }
     }
 
     private removeClicked(e: Event) {
         e.preventDefault();
-        this.removeChip.emit(this);
+        if (!this.disabled && !this.readonly) this.removeChip.emit(this);
     }
 
     public render() {
@@ -63,6 +75,7 @@ export class Chip {
                 class={{
                     'pd-chip': true,
                     'pd-chip-checked': this.checkedState || type === 'toggle' ? true : false,
+                    'pd-chip-readonly': this.readonly,
                     [`pd-chip-${type}`]: true,
                 }}
             >
