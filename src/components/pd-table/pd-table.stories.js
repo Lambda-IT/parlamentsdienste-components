@@ -31,6 +31,7 @@ export const Table = (args) => {
     table0.showActionColumn = args.showActionColumn;
     table0.setAttribute('header-style', 'dark');
     table0.selectable = args.selectable;
+    generateTableMenu(args).forEach((m) => table0.appendChild(m));
 
     const headerLight = document.createElement('h3');
     headerLight.classList = ['m-3'];
@@ -43,6 +44,7 @@ export const Table = (args) => {
     table1.showActionColumn = args.showActionColumn;
     table1.setAttribute('header-style', 'light');
     table1.selectable = args.selectable;
+    generateTableMenu(args).forEach((m) => table1.appendChild(m));
 
     const headerGray = document.createElement('h3');
     headerGray.classList = ['m-3'];
@@ -55,6 +57,7 @@ export const Table = (args) => {
     table2.showActionColumn = args.showActionColumn;
     table2.setAttribute('header-style', 'gray');
     table2.selectable = args.selectable;
+    generateTableMenu(args).forEach((m) => table2.appendChild(m));
 
     const wrapper = document.createElement('div');
     wrapper.append(headerDark);
@@ -69,7 +72,7 @@ export const Table = (args) => {
 
 Table.args = {
     rows: [
-        { no: 1, column1: 'SiK/CPS-19-01', column2: 'Mitteilungen' },
+        { no: 1, column1: 'SiK/CPS-19-01', column2: 'Mitteilungen', iconConfig: { view: true } },
         { no: 2, column1: 'SiK/CPS-19-34', column2: 'Aktuelles as dem VBS, Information und Diskussion' },
         { no: 3, column1: 'SiK/CPS-19-12', column2: 'NKF, Evaluationsverfahren, Information und Diskussion' },
         { no: 4, column1: 'SiK/CPS-19-65', column2: 'Gesamtkonzeption Boden, Präsentation und Diskussion' },
@@ -112,7 +115,27 @@ Table.args = {
             filter: true,
         },
     ],
+    menu: [
+        { text: 'Drucken', icon: 'print' },
+        { text: 'Contact', icon: 'contact' },
+    ],
     showActionColumn: true,
     iconConfig: { edit: true, select: false, delete: true },
     selectable: true,
 };
+
+function generateTableMenu(args) {
+    let menuItems = [];
+
+    args.menu.forEach((m) => {
+        const menu = document.createElement('pd-menu-item');
+        const icon = document.createElement('pd-icon');
+        menu.text = m.text;
+        icon.size = 2;
+        icon.name = m.icon;
+        menu.appendChild(icon);
+        menuItems.push(menu);
+    });
+
+    return menuItems;
+}

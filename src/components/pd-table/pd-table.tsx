@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter, Method } from '@stencil/core';
-import { PdColumn, PdTableIconConfiguration, PdButtonCell, SelectedEvent } from '../../interface';
+import { PdColumn, PdTableRow, PdTableIconConfiguration, PdButtonCell, SelectedEvent } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
@@ -38,7 +38,7 @@ export class Table {
     /**
      * The data definition for each row to display
      */
-    @Prop() rows: any[] = [];
+    @Prop() rows: PdTableRow[] = [];
 
     /**
      * The configuration for the last column, the icon column
@@ -465,18 +465,23 @@ export class Table {
         );
     }
 
-    private renderBtnColumn(row, fixed: boolean, iconConfig: PdTableIconConfiguration) {
+    private renderBtnColumn(row: PdTableRow, fixed: boolean, iconConfig: PdTableIconConfiguration) {
         if (fixed) return;
         const cellStyle = this.calculateCellStyle({
             ...this.btnCellStyle,
             width: this.evaluateBtnColumnWidth(),
         });
         const iConfig = { edit: false, view: false, delete: false, ...iconConfig };
+
+        const isEditable = row.iconConfig ? row.iconConfig.edit || iConfig.edit : iconConfig.edit;
+        const isViewable = row.iconConfig ? row.iconConfig.view || iConfig.view : iconConfig.view;
+        const isDeletable = row.iconConfig ? row.iconConfig.delete || iConfig.delete : iconConfig.delete;
+
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
-                {this.renderButton(iConfig.edit, 'edit', this.onEdit, row)}
-                {this.renderButton(iConfig.view, 'detail', this.onView, row)}
-                {this.renderButton(iConfig.delete, 'delete', this.onDelete, row)}
+                {this.renderButton(isEditable, 'edit', this.onEdit, row)}
+                {this.renderButton(isViewable, 'detail', this.onView, row)}
+                {this.renderButton(isDeletable, 'delete', this.onDelete, row)}
             </div>
         );
     }
