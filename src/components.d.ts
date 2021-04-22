@@ -1750,6 +1750,10 @@ declare namespace LocalJSX {
          */
         "minWidth"?: string;
         /**
+          * Triggers an event when row was clicked
+         */
+        "onPd-clicked-row"?: (event: CustomEvent<any>) => void;
+        /**
           * Triggers an event when the delete icon was clicked
          */
         "onPd-delete"?: (event: CustomEvent<any>) => void;

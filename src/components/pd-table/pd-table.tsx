@@ -75,6 +75,11 @@ export class Table {
      */
     @Event({ eventName: 'pd-delete' }) onDelete: EventEmitter<any>;
 
+    /**
+     * Triggers an event when row was clicked
+     */
+    @Event({ eventName: 'pd-clicked-row' }) onRowClick: EventEmitter<any>;
+
     @Method() async unselectAll() {
         this.allSelected = false;
         this.filteredRows = this.filteredRows.map((r) => ({
@@ -420,7 +425,7 @@ export class Table {
         };
 
         return this.filteredRows.map((row) => (
-            <div class="pd-table-row" role="row" style={rowStyle}>
+            <div class="pd-table-row" role="row" style={rowStyle} onClick={() => this.onRowClick.emit(row)}>
                 {this.selectable ? this.renderSelectable(row, fixed) : null}
                 {this.columns.filter((c) => !!c.fixed === fixed).map((col) => this.renderColumn(row, col))}
                 {this.showActionColumn ? this.renderBtnColumn(row, fixed, iconConfig) : null}

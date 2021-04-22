@@ -355,10 +355,11 @@
             pdTable2.rows = rows;
             pdTable2.iconConfig = { edit: true, select: true, delete: true };
             pdTable2.showActionColumn = true;
-            pdTable2.addEventListener('pd-edit', (ev) => console.log('pdTable2 > edit', ev));
-            pdTable2.addEventListener('pd-view', (ev) => console.log('pdTable2 > view', ev));
-            pdTable2.addEventListener('pd-delete', (ev) => console.log('pdTable2 > delete', ev));
+            pdTable2.addEventListener('pd-edit', (ev) => console.log('pdTable2 > edit', ev.detail));
+            pdTable2.addEventListener('pd-view', (ev) => console.log('pdTable2 > view', ev.detail));
+            pdTable2.addEventListener('pd-delete', (ev) => console.log('pdTable2 > delete', ev.detail));
             pdTable2.addEventListener('pd-selected', (ev) => console.log('pdTable2 > selected', ev.detail));
+            pdTable2.addEventListener('pd-clicked-row', (ev) => console.log('pdTable2 > clicked-row', ev.detail));
 
             pdBreadcrumbs.items = [
                 'Startseite',
