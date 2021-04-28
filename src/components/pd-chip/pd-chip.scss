@@ -28,6 +28,12 @@
     border: 0.125em solid setcolor(light, pressed);
     color: setcolor(light, pressed-contrast);
 
+    &.pd-chip-readonly {
+        background-color: $gray-3;
+        border-color: $gray-3;
+        color: $black;
+    }
+
     &.pd-chip-checked {
         background-color: setcolor(primary, enabled);
         border: 0.125em solid setcolor(primary, enabled);

@@ -122,6 +122,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Sets chip to readonly state
+         */
+        "readonly": boolean;
+        /**
           * Sets chip type |text|toggle|filter|
          */
         "type": ChipType;
@@ -1169,8 +1173,18 @@ declare namespace LocalJSX {
           * Sets chip to disabled state
          */
         "disabled"?: boolean;
+        /**
+          * Event for check chip
+         */
         "onCheckChip"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event for clicking the cross to remove a chip
+         */
         "onRemoveChip"?: (event: CustomEvent<any>) => void;
+        /**
+          * Sets chip to readonly state
+         */
+        "readonly"?: boolean;
         /**
           * Sets chip type |text|toggle|filter|
          */
