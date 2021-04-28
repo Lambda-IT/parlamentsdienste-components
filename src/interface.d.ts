@@ -35,7 +35,8 @@ export interface PdTableIconConfiguration {
 
 export interface PdTableRow {
     [key: string]: any;
-    iconConfig: PdTableIconConfiguration;
+    pdIconConfig: PdTableIconConfiguration;
+    pdSelected: boolean;
 }
 
 export interface PdButtonCell {

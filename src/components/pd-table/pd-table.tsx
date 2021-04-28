@@ -478,9 +478,9 @@ export class Table {
         });
         const iConfig = { edit: false, view: false, delete: false, ...iconConfig };
 
-        const isEditable = row.iconConfig ? row.iconConfig.edit || iConfig.edit : iconConfig.edit;
-        const isViewable = row.iconConfig ? row.iconConfig.view || iConfig.view : iconConfig.view;
-        const isDeletable = row.iconConfig ? row.iconConfig.delete || iConfig.delete : iconConfig.delete;
+        const isEditable = row.pdIconConfig ? row.pdIconConfig.edit || iConfig.edit : iconConfig.edit;
+        const isViewable = row.pdIconConfig ? row.pdIconConfig.view || iConfig.view : iconConfig.view;
+        const isDeletable = row.pdIconConfig ? row.pdIconConfig.delete || iConfig.delete : iconConfig.delete;
 
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
@@ -531,7 +531,14 @@ export class Table {
         return (
             <button class="pd-table-action-btn">
                 {/* TODO: if possible replace target with ev.composedPath() for more accurate target*/}
-                <pd-icon size={2} name={icon} onClick={() => trigger.emit(data)}></pd-icon>
+                <pd-icon
+                    size={2}
+                    name={icon}
+                    onClick={(ev) => {
+                        ev.stopPropagation();
+                        trigger.emit(data);
+                    }}
+                ></pd-icon>
             </button>
         );
     }
