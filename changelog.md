@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.4.0] - 2020-04-13
+## [1.5.0] - 2021-04-xx
+
+### Added
+
+-   #34 Table: 🎉 Added click events for rows and allowed single row configuration for icons
+-   ...
+
+## [1.4.0] - 2021-04-13
 
 ### Added
 
@@ -13,13 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   #28 Table: 🎉 Added possibility to make rows selectable. `BREAKING CHANGE!!!` The event `pd-selected` is now used for selected rows. Previous event from the button group was renamed to `pd-view`.
 -   #22 Textarea: 🎉 Added Textarea component with auto-grow feature.
 
-## [1.3.1] - 2020-04-12
+## [1.3.1] - 2021-04-12
 
 ### Changed
 
 -   #33 Dropdown: 🐛 Fixed issue with Dropdown not closing on selection
 
-## [1.3.0] - 2020-03-30
+## [1.3.0] - 2021-03-30
 
 ### Added
 
@@ -33,21 +40,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   #23 Combobox: 🐛⚡ Multiple refactorings and bugfixing, care `BREAKING CHANGE!!!` because of new items list. Old way with a string[], new with as ComboBoxItem[].
 -   Checkbox: 🐛 Styling Improvement
 
-## [1.2.2] - 2020-03-19
+## [1.2.2] - 2021-03-19
 
 ### Changed
 
 -   #15 Dropdown: 🐛 label styling
 -   Combobox: 🐛 label styling
 
-## [1.2.1] - 2020-03-17
+## [1.2.1] - 2021-03-17
 
 ### Added
 
 -   #15 Dropdown: disabled property
 -   #15 Dropdown: label property
 
-## [1.2.0] - 2020-03-15
+## [1.2.0] - 2021-03-15
 
 ### Added
 
@@ -59,7 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   #15 Fix Dropdown Bugs
 -   Table Component, add possibility to have a context menu and action buttons
 
-## [1.1.0] - 2020-03-01
+## [1.1.0] - 2021-03-01
 
 ### Added
 
@@ -70,14 +77,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Icon alignment for prefixed icons in chips, buttons etc.
 
-## [1.0.1] - 2020-02-15
+## [1.0.1] - 2021-02-15
 
 ### Changed
 
 -   A meta-tag can now be used to set a custom assetpath
 -   Extracted font-faces to a separate css to allow custom font paths
 
-## [1.0.0] - 2020-02-03
+## [1.0.0] - 2021-02-03
 
 ### Added
 
@@ -93,6 +100,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[1.5.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.5.0
 [1.4.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.4.0
 [1.3.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.3.1
 [1.3.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.3.0

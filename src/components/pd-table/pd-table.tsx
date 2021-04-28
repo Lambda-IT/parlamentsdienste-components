@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter, Method } from '@stencil/core';
-import { PdColumn, PdTableIconConfiguration, PdButtonCell, SelectedEvent } from '../../interface';
+import { PdColumn, PdTableRow, PdTableIconConfiguration, PdButtonCell, SelectedEvent } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
@@ -38,7 +38,7 @@ export class Table {
     /**
      * The data definition for each row to display
      */
-    @Prop() rows: any[] = [];
+    @Prop() rows: PdTableRow[] = [];
 
     /**
      * The configuration for the last column, the icon column
@@ -74,6 +74,11 @@ export class Table {
      * Triggers an event when the delete icon was clicked
      */
     @Event({ eventName: 'pd-delete' }) onDelete: EventEmitter<any>;
+
+    /**
+     * Triggers an event when row was clicked
+     */
+    @Event({ eventName: 'pd-clicked-row' }) onRowClick: EventEmitter<any>;
 
     @Method() async unselectAll() {
         this.allSelected = false;
@@ -420,7 +425,7 @@ export class Table {
         };
 
         return this.filteredRows.map((row) => (
-            <div class="pd-table-row" role="row" style={rowStyle}>
+            <div class="pd-table-row" role="row" style={rowStyle} onClick={() => this.onRowClick.emit(row)}>
                 {this.selectable ? this.renderSelectable(row, fixed) : null}
                 {this.columns.filter((c) => !!c.fixed === fixed).map((col) => this.renderColumn(row, col))}
                 {this.showActionColumn ? this.renderBtnColumn(row, fixed, iconConfig) : null}
@@ -465,18 +470,23 @@ export class Table {
         );
     }
 
-    private renderBtnColumn(row, fixed: boolean, iconConfig: PdTableIconConfiguration) {
+    private renderBtnColumn(row: PdTableRow, fixed: boolean, iconConfig: PdTableIconConfiguration) {
         if (fixed) return;
         const cellStyle = this.calculateCellStyle({
             ...this.btnCellStyle,
             width: this.evaluateBtnColumnWidth(),
         });
         const iConfig = { edit: false, view: false, delete: false, ...iconConfig };
+
+        const isEditable = row.pdIconConfig ? row.pdIconConfig.edit || iConfig.edit : iconConfig.edit;
+        const isViewable = row.pdIconConfig ? row.pdIconConfig.view || iConfig.view : iconConfig.view;
+        const isDeletable = row.pdIconConfig ? row.pdIconConfig.delete || iConfig.delete : iconConfig.delete;
+
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
-                {this.renderButton(iConfig.edit, 'edit', this.onEdit, row)}
-                {this.renderButton(iConfig.view, 'detail', this.onView, row)}
-                {this.renderButton(iConfig.delete, 'delete', this.onDelete, row)}
+                {this.renderButton(isEditable, 'edit', this.onEdit, row)}
+                {this.renderButton(isViewable, 'detail', this.onView, row)}
+                {this.renderButton(isDeletable, 'delete', this.onDelete, row)}
             </div>
         );
     }
@@ -521,7 +531,14 @@ export class Table {
         return (
             <button class="pd-table-action-btn">
                 {/* TODO: if possible replace target with ev.composedPath() for more accurate target*/}
-                <pd-icon size={2} name={icon} onClick={() => trigger.emit(data)}></pd-icon>
+                <pd-icon
+                    size={2}
+                    name={icon}
+                    onClick={(ev) => {
+                        ev.stopPropagation();
+                        trigger.emit(data);
+                    }}
+                ></pd-icon>
             </button>
         );
     }

@@ -29,8 +29,14 @@ export interface PdColumn {
 
 export interface PdTableIconConfiguration {
     edit: boolean;
-    select: boolean;
+    view: boolean;
     delete: boolean;
+}
+
+export interface PdTableRow {
+    [key: string]: any;
+    pdIconConfig: PdTableIconConfiguration;
+    pdSelected: boolean;
 }
 
 export interface PdButtonCell {

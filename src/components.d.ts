@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -658,7 +658,7 @@ export namespace Components {
         /**
           * The data definition for each row to display
          */
-        "rows": any[];
+        "rows": PdTableRow[];
         /**
           * Make rows selectable with a checkbox
          */
@@ -1750,6 +1750,10 @@ declare namespace LocalJSX {
          */
         "minWidth"?: string;
         /**
+          * Triggers an event when row was clicked
+         */
+        "onPd-clicked-row"?: (event: CustomEvent<any>) => void;
+        /**
           * Triggers an event when the delete icon was clicked
          */
         "onPd-delete"?: (event: CustomEvent<any>) => void;
@@ -1772,7 +1776,7 @@ declare namespace LocalJSX {
         /**
           * The data definition for each row to display
          */
-        "rows"?: any[];
+        "rows"?: PdTableRow[];
         /**
           * Make rows selectable with a checkbox
          */
