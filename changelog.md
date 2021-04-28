@@ -5,12 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.5.0] - 2021-04-xx
+## [1.5.0] - 2021-04-28
 
 ### Added
 
 -   #34 Table: 🎉 Added click events for rows and allowed single row configuration for icons
--   ...
+
+### Changed
+
+-   #32 Chip: 🐛 Multiple fixes for pd-chip
+-   #38 Table: 🐛 Fixed alert colors defined by DesignSensor
 
 ## [1.4.0] - 2021-04-13
 
