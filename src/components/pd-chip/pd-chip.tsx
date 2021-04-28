@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Listen, Prop } from '@stencil/core';
 import { ChipType } from '../../interface';
 
 @Component({
@@ -38,23 +38,13 @@ export class Chip {
     @Event() checkChip!: EventEmitter;
 
     /**
-     * Handles current checked State
-     */
-    @State() checkedState: boolean = this.checked;
-
-    @Watch('checked')
-    protected checkedStateChanged() {
-        this.checkedState = this.checked;
-    }
-
-    /**
      * Click event
      */
     @Listen('click', { capture: true })
     handleClick() {
         if (!this.disabled && !this.readonly) {
-            this.checkedState = !this.checkedState;
-            this.checkChip.emit(this.checkedState);
+            this.checked = !this.checked;
+            this.checkChip.emit(this.checked);
         }
     }
 
@@ -74,12 +64,12 @@ export class Chip {
                 role={role}
                 class={{
                     'pd-chip': true,
-                    'pd-chip-checked': this.checkedState || type === 'toggle' ? true : false,
+                    'pd-chip-checked': this.checked || type === 'toggle' ? true : false,
                     'pd-chip-readonly': this.readonly,
                     [`pd-chip-${type}`]: true,
                 }}
             >
-                {type === 'filter' && this.checkedState && (
+                {type === 'filter' && this.checked && (
                     <div class="pd-chip-icon pd-chip-icon-left">
                         <pd-icon size={iconSize} name="confirm_bold"></pd-icon>
                     </div>
