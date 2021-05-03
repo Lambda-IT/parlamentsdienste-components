@@ -1,0 +1,36 @@
+name: Parlamentsdienst Release
+on:
+    release:
+        types: [published]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+              ref: ${{ github.event.release.tag_name }}
+
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v2
+
+            - name: Prepare Version
+              uses: bluwy/substitute-string-action@v1
+              with:
+                  _input-text: ${{ github.event.release.tag_name }}
+                  v: ''
+
+            - run: npm version ${{ steps.sub.outputs.result }}
+
+            - name: Build Package
+              run: |
+                  npm install
+                  npm run build
+
+            - uses: JS-DevTools/npm-publish@v1
+              with:
+                  registry: https://npm.pkg.github.com
+                  token: ${{ secrets.NPM_TOKEN }}
+                  check-version: true
