@@ -43,12 +43,16 @@
     position: relative;
     cursor: pointer;
 
+    height: 38px;
+
     &.pd-button-large {
         padding: 0.625em 1.25em;
+        height: 48px;
     }
 
     &.pd-button-small {
         padding: 0.125em 0.5em;
+        height: 32px;
     }
 
     &.pd-button-success {
