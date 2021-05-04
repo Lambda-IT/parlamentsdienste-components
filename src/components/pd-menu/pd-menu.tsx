@@ -14,9 +14,9 @@ export class Menu {
     private popper: Instance;
 
     /**
-     * Placeholder when no item is selected
+     * Label nearby to the dot menu icon
      */
-    @Prop() placeholder = '';
+    @Prop() label = '';
 
     /**
      * Items to display and select in dropdown
@@ -83,8 +83,9 @@ export class Menu {
                         aria-haspopup="true"
                         aria-expanded={`${this.isOpen}`}
                         onClick={() => this.toggleOpenState()}
-                    >
-                        <pd-icon size={2} name="menu_actions"></pd-icon>
+                        >
+                      {this.renderLabel()}
+                        <pd-icon class="pd-menu-icon" size={2} name="menu_actions"></pd-icon>
                     </button>
                     <div>{this.renderMenu()}</div>
                 </div>
@@ -105,5 +106,12 @@ export class Menu {
                 <slot></slot>
             </div>
         );
+    }
+
+    private renderLabel() {
+      console.log('renderLabel', this.label)
+
+        if (!this.label) return;
+        return <span class="pd-menu-label">{this.label}</span>;
     }
 }

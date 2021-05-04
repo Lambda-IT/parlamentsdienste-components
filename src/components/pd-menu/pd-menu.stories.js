@@ -9,6 +9,7 @@ export default {
         notes,
         argTypes: {
             items: { controls: { type: 'object' } },
+            label: { controls: { type: 'string' } },
         },
     },
 };
@@ -30,6 +31,7 @@ export const Menu = (args) => {
         pdMenu.append(child);
     });
 
+    pdMenu.label = args.label;
     pdMenu.classList = ['m-3'];
 
     return pdMenu;
@@ -40,4 +42,5 @@ Menu.args = {
         { icon: 'print', text: 'Print' },
         { icon: 'documents', text: 'Download' },
     ],
+    label: 'Aktionen',
 };

@@ -12,7 +12,16 @@
 }
 
 .pd-menu {
-    width: max-content;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 38px;
+
+    .pd-menu-label {
+        color: setcolor(primary, enabled);
+        size: 1rem;
+        line-height: 38px;
+    }
 }
 
 .pd-menu-content {
@@ -36,5 +45,8 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 52px;
+
+    .pd-menu-icon {
+        fill: setcolor(primary, enabled);
+    }
 }

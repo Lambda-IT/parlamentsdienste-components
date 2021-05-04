@@ -433,13 +433,13 @@ export namespace Components {
          */
         "items": any[];
         /**
+          * Label nearby to the dot menu icon
+         */
+        "label": string;
+        /**
           * Open menu
          */
         "open": () => Promise<void>;
-        /**
-          * Placeholder when no item is selected
-         */
-        "placeholder": string;
     }
     interface PdMenuItem {
         /**
@@ -1498,11 +1498,11 @@ declare namespace LocalJSX {
           * Items to display and select in dropdown
          */
         "items"?: any[];
-        "onPd-change"?: (event: CustomEvent<any>) => void;
         /**
-          * Placeholder when no item is selected
+          * Label nearby to the dot menu icon
          */
-        "placeholder"?: string;
+        "label"?: string;
+        "onPd-change"?: (event: CustomEvent<any>) => void;
     }
     interface PdMenuItem {
         /**
