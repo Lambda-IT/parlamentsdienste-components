@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
+import { PdStatus } from "../dist/types/interface";
 export namespace Components {
     interface PdAlert {
         /**
@@ -421,7 +422,7 @@ export namespace Components {
         /**
           * Status icon for list item
          */
-        "status": 'success' | 'danger' | 'warning' | 'unset';
+        "status": PdStatus;
     }
     interface PdMenu {
         /**
@@ -671,6 +672,10 @@ export namespace Components {
           * Show button column and context menu
          */
         "showActionColumn": boolean;
+        /**
+          * Allow to render a status icon per row
+         */
+        "showStatus": boolean;
         "unselectAll": () => Promise<void>;
     }
     interface PdTableFilter {
@@ -1491,7 +1496,7 @@ declare namespace LocalJSX {
         /**
           * Status icon for list item
          */
-        "status"?: 'success' | 'danger' | 'warning' | 'unset';
+        "status"?: PdStatus;
     }
     interface PdMenu {
         /**
@@ -1799,6 +1804,10 @@ declare namespace LocalJSX {
           * Show button column and context menu
          */
         "showActionColumn"?: boolean;
+        /**
+          * Allow to render a status icon per row
+         */
+        "showStatus"?: boolean;
     }
     interface PdTableFilter {
         /**

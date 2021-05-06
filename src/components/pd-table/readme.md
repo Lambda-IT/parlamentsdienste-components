@@ -5,7 +5,7 @@
 #### Table
 
 ```html
-<pd-table columns="..." rows="..." header-style="dark"> </pd-table>
+<pd-table columns="..." rows="..." header-style="dark" selectable show-status> </pd-table>
 ```
 
 Columns and Rows are defined using the following data structure. _Be aware that these cannot be defined directly in html._
@@ -44,6 +44,22 @@ const rowsData = [
         ...
 ];
 ```
+
+**Optional Fields for each row**
+
+```javascript
+{
+    ...,
+    pdIconConfig: { view: true, delete: true };
+    pdStatus: 'success';
+    pdSelected: true;
+}
+```
+
+-   The `pdIconConfig` will overwrite the current global configuration.
+-   The `pdStatus` add an icon in the front of the row, if globally `show-status` is enabled
+    Rows without any status, will get a grey `unset` status.
+-   With `pdSelected` you can configure the selected configuration for each row. To enable the checkboxes you have to set the `selectable` configuration globally.
 
 ###Selectable
 
@@ -177,19 +193,21 @@ interface PdColumn {
 | `iconConfig`       | --                   | The configuration for the last column, the icon column | `PdTableIconConfiguration`    | `undefined` |
 | `minWidth`         | `min-width`          | The minimum width the table should take                | `string`                      | `'300'`     |
 | `rowHeight`        | `row-height`         | Height of rows                                         | `string`                      | `'48'`      |
-| `rows`             | --                   | The data definition for each row to display            | `any[]`                       | `[]`        |
+| `rows`             | --                   | The data definition for each row to display            | `PdTableRow[]`                | `[]`        |
 | `selectable`       | `selectable`         | Make rows selectable with a checkbox                   | `boolean`                     | `false`     |
 | `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`     |
+| `showStatus`       | `show-status`        | Allow to render a status icon per row                  | `boolean`                     | `false`     |
 
 
 ## Events
 
-| Event         | Description                                        | Type                         |
-| ------------- | -------------------------------------------------- | ---------------------------- |
-| `pd-delete`   | Triggers an event when the delete icon was clicked | `CustomEvent<any>`           |
-| `pd-edit`     | Triggers an event when the edit icon was clicked   | `CustomEvent<any>`           |
-| `pd-selected` | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
-| `pd-view`     | Triggers an event when the view icon was clicked   | `CustomEvent<any>`           |
+| Event            | Description                                        | Type                         |
+| ---------------- | -------------------------------------------------- | ---------------------------- |
+| `pd-clicked-row` | Triggers an event when row was clicked             | `CustomEvent<any>`           |
+| `pd-delete`      | Triggers an event when the delete icon was clicked | `CustomEvent<any>`           |
+| `pd-edit`        | Triggers an event when the edit icon was clicked   | `CustomEvent<any>`           |
+| `pd-selected`    | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
+| `pd-view`        | Triggers an event when the view icon was clicked   | `CustomEvent<any>`           |
 
 
 ## Methods
@@ -210,16 +228,16 @@ Type: `Promise<void>`
 ### Depends on
 
 - [pd-table-filter](../pd-table-filter)
-- [pd-checkbox](../pd-checkbox)
 - [pd-menu](../pd-menu)
+- [pd-checkbox](../pd-checkbox)
 - [pd-icon](../pd-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
-  pd-table --> pd-checkbox
   pd-table --> pd-menu
+  pd-table --> pd-checkbox
   pd-table --> pd-icon
   pd-table-filter --> pd-icon
   pd-menu --> pd-icon

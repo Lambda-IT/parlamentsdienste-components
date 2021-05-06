@@ -29,15 +29,16 @@
 | ---------- | ---------- | --------------------------------------- | -------------------------------- | -------- |
 | `checked`  | `checked`  | Sets chip to checked state              | `boolean`                        | `false`  |
 | `disabled` | `disabled` | Sets chip to disabled state             | `boolean`                        | `false`  |
+| `readonly` | `readonly` | Sets chip to readonly state             | `boolean`                        | `false`  |
 | `type`     | `type`     | Sets chip type \|text\|toggle\|filter\| | `"filter" \| "text" \| "toggle"` | `'text'` |
 
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `checkChip`  |             | `CustomEvent<any>` |
-| `removeChip` |             | `CustomEvent<any>` |
+| Event        | Description                                   | Type               |
+| ------------ | --------------------------------------------- | ------------------ |
+| `checkChip`  | Event for check chip                          | `CustomEvent<any>` |
+| `removeChip` | Event for clicking the cross to remove a chip | `CustomEvent<any>` |
 
 
 ## Dependencies
