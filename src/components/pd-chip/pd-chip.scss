@@ -26,7 +26,8 @@
     transition: box-shadow 0.15s ease-in-out;
     background-color: setcolor(light, pressed);
     border: 0.125em solid setcolor(light, pressed);
-    color: setcolor(light, pressed-contrast);
+    color: $blue-whale;
+    height: 2rem;
 
     &.pd-chip-readonly {
         background-color: $gray-3;
@@ -35,12 +36,12 @@
     }
 
     &.pd-chip-checked {
-        background-color: setcolor(primary, enabled);
-        border: 0.125em solid setcolor(primary, enabled);
-        color: setcolor(primary, enabled-contrast);
+        background-color: setcolor(primary, pressed);
+        border: 0.125em solid setcolor(primary, pressed);
+        color: $blue-whale;
 
         .pd-chip-icon {
-            fill: white;
+            fill: $blue-whale;
         }
     }
 
@@ -48,18 +49,26 @@
         background-color: setcolor(primary, hover);
         border: 0.125em solid setcolor(primary, hover);
         color: setcolor(primary, hover-contrast);
+
+        .pd-chip-icon {
+            fill: setcolor(primary, hover-contrast);
+        }
     }
 
     &:disabled {
         background-color: setcolor(primary, disabled);
         border: 0.125em solid setcolor(primary, disabled);
         color: setcolor(primary, disabled-contrast);
+
+        .pd-chip-icon {
+            fill: setcolor(primary, disabled-contrast);
+        }
     }
 
     &:active:enabled {
-        background-color: setcolor(primary, pressed);
-        border: 0.125em solid setcolor(primary, pressed);
-        color: setcolor(primary, pressed-contrast);
+        background-color: setcolor(primary, enabled);
+        border: 0.125em solid setcolor(primary, enabled);
+        color: setcolor(primary, enabled-contrast);
     }
 
     &:focus {
