@@ -64,9 +64,13 @@
                 helper-text="asdf-asdf"
                 readonly
             ></pd-input>
-            <pd-table id="pd-table-0" header-style="dark" selectable> </pd-table>
+            <pd-table id="pd-table-0" header-style="dark" selectable menu-label="Aktionen">
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+            </pd-table>
             <pd-table id="pd-table-1" header-style="light" selectable> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray" selectable>
+            <pd-table id="pd-table-2" header-style="gray" selectable menu-label="Aktionen">
                 <pd-menu-item text="Drucken">
                     <pd-icon size="2" name="print"></pd-icon>
                 </pd-menu-item>
@@ -366,6 +370,8 @@
 
             pdTable0.columns = columns;
             pdTable0.rows = rows;
+            pdTable0.showActionColumn = true;
+            pdTable0.iconConfig = { edit: true, select: true, delete: true };
             pdTable1.columns = columns;
             pdTable1.rows = rows;
             pdTable2.columns = columns;

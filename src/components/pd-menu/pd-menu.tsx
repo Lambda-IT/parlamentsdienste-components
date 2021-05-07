@@ -19,6 +19,11 @@ export class Menu {
     @Prop() label = '';
 
     /**
+     * Switch dark colors to bright font color
+     */
+    @Prop() invertColor = false;
+
+    /**
      * Items to display and select in dropdown
      */
     @Prop() items: any[] = [];
@@ -76,15 +81,15 @@ export class Menu {
     render() {
         return (
             <Host>
-                <div class="pd-menu">
+                <div class={{ 'pd-menu': true, 'pd-menu-iverted': this.invertColor }}>
                     <button
                         class="pd-menu-button"
                         type="button"
                         aria-haspopup="true"
                         aria-expanded={`${this.isOpen}`}
                         onClick={() => this.toggleOpenState()}
-                        >
-                      {this.renderLabel()}
+                    >
+                        {this.renderLabel()}
                         <pd-icon class="pd-menu-icon" size={2} name="menu_actions"></pd-icon>
                     </button>
                     <div>{this.renderMenu()}</div>
@@ -109,8 +114,6 @@ export class Menu {
     }
 
     private renderLabel() {
-      console.log('renderLabel', this.label)
-
         if (!this.label) return;
         return <span class="pd-menu-label">{this.label}</span>;
     }

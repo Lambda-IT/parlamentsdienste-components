@@ -10,6 +10,7 @@ export default {
         argTypes: {
             items: { controls: { type: 'object' } },
             label: { controls: { type: 'string' } },
+            invertColor: { controls: { type: 'boolean' } },
         },
     },
 };
@@ -32,6 +33,7 @@ export const Menu = (args) => {
     });
 
     pdMenu.label = args.label;
+    pdMenu.invertColor = args.invertColor;
     pdMenu.classList = ['m-3'];
 
     return pdMenu;
@@ -43,4 +45,5 @@ Menu.args = {
         { icon: 'documents', text: 'Download' },
     ],
     label: 'Aktionen',
+    invertColor: false,
 };

@@ -429,6 +429,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * Switch dark colors to bright font color
+         */
+        "invertColor": boolean;
+        /**
           * Items to display and select in dropdown
          */
         "items": any[];
@@ -651,6 +655,10 @@ export namespace Components {
           * The configuration for the last column, the icon column
          */
         "iconConfig"?: PdTableIconConfiguration;
+        /**
+          * Show label text for menu
+         */
+        "menuLabel": string;
         /**
           * The minimum width the table should take
          */
@@ -1495,6 +1503,10 @@ declare namespace LocalJSX {
     }
     interface PdMenu {
         /**
+          * Switch dark colors to bright font color
+         */
+        "invertColor"?: boolean;
+        /**
           * Items to display and select in dropdown
          */
         "items"?: any[];
@@ -1759,6 +1771,10 @@ declare namespace LocalJSX {
           * The configuration for the last column, the icon column
          */
         "iconConfig"?: PdTableIconConfiguration;
+        /**
+          * Show label text for menu
+         */
+        "menuLabel"?: string;
         /**
           * The minimum width the table should take
          */
