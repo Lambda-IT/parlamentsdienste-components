@@ -19,7 +19,7 @@
 
     .pd-menu-label {
         color: var(--pd-menu-label-color, setcolor(primary, enabled));
-        font-weight: var(--pd-menu-label-weight, inherit);
+        font-weight: var(--pd-menu-label-weight, 400);
         size: 1rem;
         line-height: 2.375rem;
         padding-right: var(--pd-menu-horizontal-padding, 0.4em);
