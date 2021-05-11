@@ -14,6 +14,7 @@ export default {
         iconConfig: { control: { type: 'object' } },
         showActionColumn: { control: { type: 'boolean' } },
         selectable: { control: { type: 'boolean' } },
+        menuLabel: { control: { type: 'string' } },
     },
 };
 
@@ -31,6 +32,7 @@ export const Table = (args) => {
     table0.showActionColumn = args.showActionColumn;
     table0.setAttribute('header-style', 'dark');
     table0.selectable = args.selectable;
+    table0.menuLabel = args.menuLabel;
     generateTableMenu(args).forEach((m) => table0.appendChild(m));
 
     const headerLight = document.createElement('h3');
@@ -122,6 +124,7 @@ Table.args = {
     showActionColumn: true,
     iconConfig: { edit: true, select: false, delete: true },
     selectable: true,
+    menuLabel: 'Aktionen',
 };
 
 function generateTableMenu(args) {

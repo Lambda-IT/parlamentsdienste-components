@@ -14,9 +14,14 @@ export class Menu {
     private popper: Instance;
 
     /**
-     * Placeholder when no item is selected
+     * Label nearby to the dot menu icon
      */
-    @Prop() placeholder = '';
+    @Prop() label = '';
+
+    /**
+     * Switch dark colors to bright font color
+     */
+    @Prop() invertColor = false;
 
     /**
      * Items to display and select in dropdown
@@ -76,7 +81,7 @@ export class Menu {
     render() {
         return (
             <Host>
-                <div class="pd-menu">
+                <div class={{ 'pd-menu': true, 'pd-menu-inverted': this.invertColor }}>
                     <button
                         class="pd-menu-button"
                         type="button"
@@ -84,7 +89,8 @@ export class Menu {
                         aria-expanded={`${this.isOpen}`}
                         onClick={() => this.toggleOpenState()}
                     >
-                        <pd-icon size={2} name="menu_actions"></pd-icon>
+                        {this.renderLabel()}
+                        <pd-icon class="pd-menu-icon" size={2} name="menu_actions"></pd-icon>
                     </button>
                     <div>{this.renderMenu()}</div>
                 </div>
@@ -105,5 +111,10 @@ export class Menu {
                 <slot></slot>
             </div>
         );
+    }
+
+    private renderLabel() {
+        if (!this.label) return;
+        return <span class="pd-menu-label">{this.label}</span>;
     }
 }

@@ -25,21 +25,24 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Styles
 
-| Style                              | Default     | Description                                        |
-| ---------------------------------- | ----------- | -------------------------------------------------- |
-| `--pd-menu-max-width`              | `undefined` | Max width for                                      |
-| `--pd-dropdown-vertical-padding`   | `0.625em`   | Possibility to change inner height of the dropdown |
-| `--pd-dropdown-horizontal-padding` | `0.75em`    | Possibility to change inner width of the dropdown  |
+| Style                              | Default                      | Description                                        |
+| ---------------------------------- | ---------------------------- | -------------------------------------------------- |
+| `--pd-menu-max-width`              | `undefined`                  | Max width for                                      |
+| `--pd-dropdown-vertical-padding`   | `0.625em`                    | Possibility to change inner height of the dropdown |
+| `--pd-dropdown-horizontal-padding` | `0.75em`                     | Possibility to change inner width of the dropdown  |
+| `--pd-menu-label-color`            | `setcolor(primary, enabled)` | Possibility to change color of label and icon      |
+| `--pd-menu-label-weight`           | `400`                        | Possibility to change the label font-weight        |
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property      | Attribute     | Description                             | Type     | Default |
-| ------------- | ------------- | --------------------------------------- | -------- | ------- |
-| `items`       | --            | Items to display and select in dropdown | `any[]`  | `[]`    |
-| `placeholder` | `placeholder` | Placeholder when no item is selected    | `string` | `''`    |
+| Property      | Attribute      | Description                             | Type      | Default |
+| ------------- | -------------- | --------------------------------------- | --------- | ------- |
+| `invertColor` | `invert-color` | Switch dark colors to bright font color | `boolean` | `false` |
+| `items`       | --             | Items to display and select in dropdown | `any[]`   | `[]`    |
+| `label`       | `label`        | Label nearby to the dot menu icon       | `string`  | `''`    |
 
 
 ## Events
