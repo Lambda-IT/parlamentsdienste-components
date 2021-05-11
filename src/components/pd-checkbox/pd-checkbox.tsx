@@ -37,6 +37,11 @@ export class Checkbox {
     @Prop() value: boolean = false;
 
     /**
+     * indeterminate state
+     */
+    @Prop() isIndeterminate: boolean = false;
+
+    /**
      * checkbox name
      */
     @Prop() name: string;
@@ -71,8 +76,14 @@ export class Checkbox {
                         name={this.name}
                         onClick={this.onClick}
                     ></input>
-                    <div class="pd-checkbox-inner">
-                        <div class="pd-checkbox-checkmark"></div>
+                    <div
+                        class={{
+                            'pd-checkbox-inner': true,
+                            'pd-checkbox-checked': this.checked || this.isIndeterminate,
+                        }}
+                    >
+                        <div class={{ 'pd-checkbox-checkmark': this.checked && !this.isIndeterminate }}></div>
+                        <div class={{ 'pd-checkbox-indeterminate': this.isIndeterminate }}></div>
                     </div>
                     <div class="pd-checkbox-text">{this.text}</div>
                 </label>

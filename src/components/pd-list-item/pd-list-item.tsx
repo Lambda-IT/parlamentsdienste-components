@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-import { PdStatus } from '../../../dist/types/interface';
+import { PdStatus } from '../../interface';
 
 @Component({
     tag: 'pd-list-item',

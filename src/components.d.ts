@@ -5,9 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdStatus, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-import { PdStatus } from "../dist/types/interface";
 export namespace Components {
     interface PdAlert {
         /**
@@ -92,6 +91,10 @@ export namespace Components {
          */
         "disabled": boolean;
         "error": boolean;
+        /**
+          * indeterminate state
+         */
+        "isIndeterminate": boolean;
         /**
           * checkbox name
          */
@@ -1147,6 +1150,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         "error"?: boolean;
+        /**
+          * indeterminate state
+         */
+        "isIndeterminate"?: boolean;
         /**
           * checkbox name
          */
