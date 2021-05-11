@@ -405,10 +405,7 @@ export class Table {
                     minWidth: this.btnCellStyle.minWidth,
                 })}
             >
-                <div
-                    class="pd-table-header-cell-text"
-                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
-                >
+                <div class="pd-table-header-cell-text" style={{ justifyContent: 'flex-end' }}>
                     <pd-menu label={this.menuLabel} invertColor={this.headerStyle === 'dark' ? true : false}>
                         <slot data-menu-items=""></slot>
                     </pd-menu>

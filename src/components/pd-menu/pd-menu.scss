@@ -18,29 +18,30 @@
     height: 2.375rem;
 
     .pd-menu-label {
-        color: setcolor(primary, enabled);
+        color: var(--pd-menu-label-color, setcolor(primary, enabled));
+        font-weight: var(--pd-menu-label-weight, inherit);
         size: 1rem;
         line-height: 2.375rem;
+        padding-right: var(--pd-menu-horizontal-padding, 0.4em);
     }
 
     .pd-menu-button {
         border: none;
         background: transparent;
-        padding: 0.625em 0.75em;
         padding-top: var(--pd-menu-vertical-padding, 0.625em);
         padding-bottom: var(--pd-menu-vertical-padding, 0.625em);
-        padding-left: var(--pd-menu-horizontal-padding, 0.75em);
-        padding-right: var(--pd-menu-horizontal-padding, 0.75em);
+        padding-left: 0;
+        padding-right: var(--pd-menu-horizontal-padding, 0.4em);
         cursor: pointer;
         display: flex;
         align-items: center;
 
         .pd-menu-icon {
-            fill: setcolor(primary, enabled);
+            fill: var(--pd-menu-label-color, setcolor(primary, enabled));
         }
     }
 
-    &.pd-menu-iverted {
+    &.pd-menu-inverted {
         .pd-menu-label {
             color: setcolor(primary, enabled-contrast);
         }

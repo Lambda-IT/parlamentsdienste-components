@@ -3,6 +3,9 @@
 :host {
     display: block;
     flex: 1;
+
+    --pd-menu-label-weight: 700;
+    --pd-menu-label-color: black;
 }
 
 *,

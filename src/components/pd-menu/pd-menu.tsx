@@ -81,7 +81,7 @@ export class Menu {
     render() {
         return (
             <Host>
-                <div class={{ 'pd-menu': true, 'pd-menu-iverted': this.invertColor }}>
+                <div class={{ 'pd-menu': true, 'pd-menu-inverted': this.invertColor }}>
                     <button
                         class="pd-menu-button"
                         type="button"
