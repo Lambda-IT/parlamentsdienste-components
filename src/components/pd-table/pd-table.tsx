@@ -59,6 +59,7 @@ export class Table {
      * Allow to render a status icon per row
      */
     @Prop() showStatus = false;
+    /*
      * Show label text for menu
      */
     @Prop() menuLabel: string;

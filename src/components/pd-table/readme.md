@@ -191,6 +191,7 @@ interface PdColumn {
 | `headerHeight`     | `header-height`      | Height of header cells                                 | `string`                      | `'48'`      |
 | `headerStyle`      | `header-style`       | The table style                                        | `"dark" \| "gray" \| "light"` | `'dark'`    |
 | `iconConfig`       | --                   | The configuration for the last column, the icon column | `PdTableIconConfiguration`    | `undefined` |
+| `menuLabel`        | `menu-label`         |                                                        | `string`                      | `undefined` |
 | `minWidth`         | `min-width`          | The minimum width the table should take                | `string`                      | `'300'`     |
 | `rowHeight`        | `row-height`         | Height of rows                                         | `string`                      | `'48'`      |
 | `rows`             | --                   | The data definition for each row to display            | `PdTableRow[]`                | `[]`        |

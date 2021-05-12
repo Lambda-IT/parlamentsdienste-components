@@ -659,9 +659,6 @@ export namespace Components {
           * The configuration for the last column, the icon column
          */
         "iconConfig"?: PdTableIconConfiguration;
-        /**
-          * Show label text for menu
-         */
         "menuLabel": string;
         /**
           * The minimum width the table should take
@@ -1783,9 +1780,6 @@ declare namespace LocalJSX {
           * The configuration for the last column, the icon column
          */
         "iconConfig"?: PdTableIconConfiguration;
-        /**
-          * Show label text for menu
-         */
         "menuLabel"?: string;
         /**
           * The minimum width the table should take
