@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
+import { PdStatus } from '../../interface';
 
 @Component({
     tag: 'pd-list-item',
@@ -10,7 +11,7 @@ export class PdListItem {
     /**
      * Status icon for list item
      */
-    @Prop() status: 'success' | 'danger' | 'warning' | 'unset';
+    @Prop() status: PdStatus;
 
     public render() {
         return (

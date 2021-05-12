@@ -13,6 +13,8 @@
 :host(.pd-checkbox-error) {
     .pd-checkbox-label > .pd-checkbox-input {
         & + .pd-checkbox-inner {
+            background-color: setcolor(danger, enabled);
+
             &:after {
                 border: 0.125em solid setcolor(danger, enabled);
 
@@ -20,10 +22,6 @@
                     border: 0.125em solid setcolor(danger, hover);
                 }
             }
-        }
-
-        &:checked + .pd-checkbox-inner {
-            background-color: setcolor(danger, enabled);
 
             .pd-checkbox-checkmark {
                 border-bottom: 0.125em solid $white;
@@ -48,7 +46,7 @@
             }
         }
 
-        & > .pd-checkbox-input:checked {
+        & > .pd-checkbox-input {
             & + .pd-checkbox-inner {
                 background-color: $gray-3;
 
@@ -128,7 +126,7 @@
         }
     }
 
-    &:disabled:checked {
+    &:disabled {
         & + .pd-checkbox-inner {
             background-color: setcolor(primary, disabled);
 
@@ -139,23 +137,36 @@
         }
     }
 
-    &:checked {
-        & + .pd-checkbox-inner {
-            position: relative;
-            background-color: setcolor(primary, enabled);
-            border-radius: 0.25em;
+    & + .pd-checkbox-inner.pd-checkbox-checked {
+        background-color: setcolor(primary, enabled);
+    }
 
-            .pd-checkbox-checkmark {
-                position: absolute;
-                display: inline-block;
-                transform: rotate(45deg);
-                height: 0.75em;
-                width: 0.375em;
-                top: 0.15em;
-                left: 0.45em;
-                border-bottom: 0.125em solid $white;
-                border-right: 0.125em solid $white;
-            }
+    & + .pd-checkbox-inner {
+        position: relative;
+        border-radius: 0.25em;
+
+        .pd-checkbox-checkmark {
+            position: absolute;
+            display: inline-block;
+            transform: rotate(45deg);
+            height: 0.75em;
+            width: 0.375em;
+            top: 0.15em;
+            left: 0.45em;
+            border-bottom: 0.125em solid $white;
+            border-right: 0.125em solid $white;
+        }
+
+        .pd-checkbox-indeterminate {
+            position: absolute;
+            display: inline-block;
+            transform: rotate(90deg);
+            height: 0.75em;
+            width: 0.375em;
+            top: 0.15em;
+            left: 0.45em;
+            border-bottom: none;
+            border-right: 0.125em solid $white;
         }
 
         &:hover:enabled {

@@ -64,13 +64,13 @@
                 helper-text="asdf-asdf"
                 readonly
             ></pd-input>
-            <pd-table id="pd-table-0" header-style="dark" selectable menu-label="Aktionen">
+            <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
                 <pd-menu-item text="Drucken">
                     <pd-icon size="2" name="print"></pd-icon>
                 </pd-menu-item>
             </pd-table>
-            <pd-table id="pd-table-1" header-style="light" selectable> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray" selectable menu-label="Aktionen">
+            <pd-table id="pd-table-1" header-style="light" selectable show-status> </pd-table>
+            <pd-table id="pd-table-2" header-style="gray" selectable show-status menu-label="Aktionen">
                 <pd-menu-item text="Drucken">
                     <pd-icon size="2" name="print"></pd-icon>
                 </pd-menu-item>
@@ -250,6 +250,7 @@
             <pd-dropdown label="dropdown disabled" helper-text="dropdown helper text" disabled empty-item></pd-dropdown>
             <pd-footer></pd-footer>
             <pd-checkbox text="checkbox"></pd-checkbox>
+            <pd-checkbox text="indeterminate" is-indeterminate></pd-checkbox>
             <pd-checkbox readonly checked text="checkbox readonly"></pd-checkbox>
             <pd-checkbox disabled text="checkbox disabled"></pd-checkbox>
             <pd-checkbox disabled checked text="checkbox disabled checked"></pd-checkbox>
@@ -357,7 +358,15 @@
 
             const rows = [
                 { no: 1, column1: 'Cell1', column2: 'Cell2', column3: 0.12 },
-                { no: 2, column1: 'Cell4', column2: 'Cell5', column3: 411.21, pdSelected: true },
+                {
+                    no: 2,
+                    column1: 'Cell4',
+                    column2: 'Cell5',
+                    column3: 411.21,
+                    pdSelected: true,
+                    pdIconConfig: { delete: false },
+                    pdStatus: 'success',
+                },
                 {
                     no: '10 10 10 10 10',
                     column1: 'Cell2',
@@ -365,7 +374,7 @@
                     column3: 871,
                     pdIconConfig: { view: true },
                 },
-                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563, pdSelected: true },
+                { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563, pdSelected: true, pdStatus: 'warning' },
             ];
 
             pdTable0.columns = columns;
@@ -376,7 +385,7 @@
             pdTable1.rows = rows;
             pdTable2.columns = columns;
             pdTable2.rows = rows;
-            pdTable2.iconConfig = { edit: true, select: true, delete: true };
+            pdTable2.iconConfig = { edit: true, view: false, delete: true };
             pdTable2.showActionColumn = true;
             pdTable2.addEventListener('pd-edit', (ev) => console.log('pdTable2 > edit', ev.detail));
             pdTable2.addEventListener('pd-view', (ev) => console.log('pdTable2 > view', ev.detail));

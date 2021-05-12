@@ -36,6 +36,7 @@ export interface PdTableIconConfiguration {
 export interface PdTableRow {
     [key: string]: any;
     pdIconConfig: PdTableIconConfiguration;
+    pdStatus: PdStatus;
     pdSelected: boolean;
 }
 
@@ -70,3 +71,5 @@ export interface SelectedEvent {
     row: any;
     rows: any[];
 }
+
+export type PdStatus = 'success' | 'danger' | 'warning' | 'unset';

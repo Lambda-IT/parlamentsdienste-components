@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdStatus, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -91,6 +91,10 @@ export namespace Components {
          */
         "disabled": boolean;
         "error": boolean;
+        /**
+          * indeterminate state
+         */
+        "isIndeterminate": boolean;
         /**
           * checkbox name
          */
@@ -421,7 +425,7 @@ export namespace Components {
         /**
           * Status icon for list item
          */
-        "status": 'success' | 'danger' | 'warning' | 'unset';
+        "status": PdStatus;
     }
     interface PdMenu {
         /**
@@ -679,6 +683,10 @@ export namespace Components {
           * Show button column and context menu
          */
         "showActionColumn": boolean;
+        /**
+          * Allow to render a status icon per row
+         */
+        "showStatus": boolean;
         "unselectAll": () => Promise<void>;
     }
     interface PdTableFilter {
@@ -1151,6 +1159,10 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "error"?: boolean;
         /**
+          * indeterminate state
+         */
+        "isIndeterminate"?: boolean;
+        /**
           * checkbox name
          */
         "name"?: string;
@@ -1499,7 +1511,7 @@ declare namespace LocalJSX {
         /**
           * Status icon for list item
          */
-        "status"?: 'success' | 'danger' | 'warning' | 'unset';
+        "status"?: PdStatus;
     }
     interface PdMenu {
         /**
@@ -1815,6 +1827,10 @@ declare namespace LocalJSX {
           * Show button column and context menu
          */
         "showActionColumn"?: boolean;
+        /**
+          * Allow to render a status icon per row
+         */
+        "showStatus"?: boolean;
     }
     interface PdTableFilter {
         /**

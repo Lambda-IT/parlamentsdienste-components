@@ -14,6 +14,7 @@ export default {
         required: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
         checked: { control: { type: 'boolean' } },
+        isIndeterminate: { control: { type: 'boolean' } },
     },
 };
 
@@ -23,7 +24,9 @@ export const Checkbox = (args) => `
         <pd-checkbox class="m-3" ${args.disabled ? 'disabled' : ''} ${args.readonly ? 'readonly' : ''} ${
     args.required ? 'required' : ''
 } ${args.error ? 'error' : ''}
-        ${args.checked ? 'checked' : ''} text="checkbox"></pd-checkbox>
+        ${args.checked ? 'checked' : ''} ${
+    args.isIndeterminate ? 'is-indeterminate' : ''
+} text="checkbox"></pd-checkbox>
 `;
 
 Checkbox.args = {
@@ -32,4 +35,5 @@ Checkbox.args = {
     required: false,
     error: false,
     checked: false,
+    isIndeterminate: false,
 };

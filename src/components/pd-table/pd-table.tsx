@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter, Method } from '@stencil/core';
-import { PdColumn, PdTableRow, PdTableIconConfiguration, PdButtonCell, SelectedEvent } from '../../interface';
+import { PdColumn, PdTableRow, PdTableIconConfiguration, PdButtonCell, SelectedEvent, PdStatus } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
@@ -56,6 +56,9 @@ export class Table {
     @Prop() selectable = false;
 
     /**
+     * Allow to render a status icon per row
+     */
+    @Prop() showStatus = false;
      * Show label text for menu
      */
     @Prop() menuLabel: string;
@@ -102,6 +105,7 @@ export class Table {
     @State() columnFilters: any = {};
     @State() filteredRows: any = [...this.rows];
     @State() allSelected: boolean = false;
+    @State() isIndeterminate: boolean = false;
 
     private filterElement: HTMLPdTableFilterElement;
     private currentFilter: string;
@@ -121,6 +125,7 @@ export class Table {
         const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
         this.filterElement = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
         this.popper = this.createMenuPopper(table, this.filterElement);
+        this.calculateIsIndeterminate();
     }
 
     protected componentDidUpdate() {
@@ -272,10 +277,12 @@ export class Table {
         });
 
         if (!isSelected) this.allSelected = false; // reset if not all checkboxes are selected
+        this.calculateIsIndeterminate();
     }
 
     private selectAll(isAllSelected: boolean) {
         this.allSelected = isAllSelected;
+        if (this.allSelected) this.isIndeterminate = false;
         this.filteredRows = this.filteredRows.map((r) => ({
             ...r,
             pdSelected: isAllSelected,
@@ -360,35 +367,6 @@ export class Table {
                 );
             });
 
-        // render select all
-        const selectAllName = 'selectAllColumn';
-        const selectAll = (
-            <div
-                class={{
-                    'pd-table-header-cell': true,
-                    'pd-table-cell-bold': true,
-                    [`pd-table-${this.headerStyle}`]: true,
-                }}
-                ref={(el) => (this.headerRefs[selectAllName] = el as HTMLElement)}
-                role="cell"
-                style={this.calculateHeaderCellStyle({
-                    width: this.selectableCellWidth,
-                    minWidth: this.selectableCellWidth,
-                })}
-            >
-                <div
-                    class="pd-table-header-cell-text"
-                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
-                >
-                    <pd-checkbox
-                        onPd-checked={(ev) => this.selectAll(ev.detail)}
-                        checked={this.allSelected}
-                    ></pd-checkbox>
-                </div>
-                <div class="pd-table-header-cell-actions"></div>
-            </div>
-        );
-
         // render menu/button column
         const btnColumnName = 'btnColumn';
         const btnColumn = (
@@ -414,11 +392,11 @@ export class Table {
             </div>
         );
 
-        return [
-            ...(fixed && this.selectable ? [selectAll] : []),
-            ...columns,
-            ...(!fixed && this.showActionColumn ? [btnColumn] : []),
-        ];
+        const additionalColumns = [];
+        if (fixed && this.showStatus) additionalColumns.push(this.renderShowStatus());
+        if (fixed && this.selectable) additionalColumns.push(this.renderSelectAll());
+
+        return [...additionalColumns, ...columns, ...(!fixed && this.showActionColumn ? [btnColumn] : [])];
     }
 
     private renderRows(fixed: boolean = false, iconConfig: PdTableIconConfiguration) {
@@ -428,6 +406,7 @@ export class Table {
 
         return this.filteredRows.map((row) => (
             <div class="pd-table-row" role="row" style={rowStyle} onClick={() => this.onRowClick.emit(row)}>
+                {this.showStatus ? this.renderStatus(row, fixed) : null}
                 {this.selectable ? this.renderSelectable(row, fixed) : null}
                 {this.columns.filter((c) => !!c.fixed === fixed).map((col) => this.renderColumn(row, col))}
                 {this.showActionColumn ? this.renderBtnColumn(row, fixed, iconConfig) : null}
@@ -472,6 +451,20 @@ export class Table {
         );
     }
 
+    private renderStatus(row: PdTableRow, fixed: boolean) {
+        if (!fixed) return; // only render in fixed row
+        const cellStyle = this.calculateCellStyle({
+            minWidth: this.selectableCellWidth,
+            width: this.selectableCellWidth,
+            align: 'center',
+        });
+        return (
+            <div class={`pd-table-cell`} style={cellStyle} role="cell">
+                {this.renderIcon(row.pdStatus || 'unset')}
+            </div>
+        );
+    }
+
     private renderBtnColumn(row: PdTableRow, fixed: boolean, iconConfig: PdTableIconConfiguration) {
         if (fixed) return;
         const cellStyle = this.calculateCellStyle({
@@ -480,9 +473,12 @@ export class Table {
         });
         const iConfig = { edit: false, view: false, delete: false, ...iconConfig };
 
-        const isEditable = row.pdIconConfig ? row.pdIconConfig.edit || iConfig.edit : iconConfig.edit;
-        const isViewable = row.pdIconConfig ? row.pdIconConfig.view || iConfig.view : iconConfig.view;
-        const isDeletable = row.pdIconConfig ? row.pdIconConfig.delete || iConfig.delete : iconConfig.delete;
+        const isEditable =
+            row.pdIconConfig && typeof row.pdIconConfig.edit === 'boolean' ? row.pdIconConfig.edit : iConfig.edit;
+        const isViewable =
+            row.pdIconConfig && typeof row.pdIconConfig.view === 'boolean' ? row.pdIconConfig.view : iConfig.view;
+        const isDeletable =
+            row.pdIconConfig && typeof row.pdIconConfig.delete === 'boolean' ? row.pdIconConfig.delete : iConfig.delete;
 
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
@@ -565,6 +561,86 @@ export class Table {
             return Object.keys(this.iconConfig).length * this.btnCellStyle.width;
         } else {
             return this.btnCellStyle.width;
+        }
+    }
+
+    private renderSelectAll() {
+        const selectAllName = 'selectAllColumn';
+        return (
+            <div
+                class={{
+                    'pd-table-header-cell': true,
+                    'pd-table-cell-bold': true,
+                    [`pd-table-${this.headerStyle}`]: true,
+                }}
+                ref={(el) => (this.headerRefs[selectAllName] = el as HTMLElement)}
+                role="cell"
+                style={this.calculateHeaderCellStyle({
+                    width: this.selectableCellWidth,
+                    minWidth: this.selectableCellWidth,
+                })}
+            >
+                <div
+                    class="pd-table-header-cell-text"
+                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
+                >
+                    <pd-checkbox
+                        onPd-checked={(ev) => this.selectAll(ev.detail)}
+                        checked={this.allSelected}
+                        isIndeterminate={this.isIndeterminate}
+                    ></pd-checkbox>
+                </div>
+                <div class="pd-table-header-cell-actions"></div>
+            </div>
+        );
+    }
+
+    private renderShowStatus() {
+        const columnName = 'showStatusColumn';
+        return (
+            <div
+                class={{
+                    'pd-table-header-cell': true,
+                    'pd-table-cell-bold': true,
+                    [`pd-table-${this.headerStyle}`]: true,
+                }}
+                ref={(el) => (this.headerRefs[columnName] = el as HTMLElement)}
+                role="cell"
+                style={this.calculateHeaderCellStyle({
+                    width: this.selectableCellWidth,
+                    minWidth: this.selectableCellWidth,
+                })}
+            >
+                <div
+                    class="pd-table-header-cell-text"
+                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
+                ></div>
+                <div class="pd-table-header-cell-actions"></div>
+            </div>
+        );
+    }
+
+    private renderIcon(status: PdStatus) {
+        switch (status) {
+            case 'success':
+                return <pd-icon name="status_green" size={3.6}></pd-icon>;
+            case 'warning':
+                return <pd-icon name="status_orange" size={3.6}></pd-icon>;
+            case 'danger':
+                return <pd-icon name="status_red" size={3.6}></pd-icon>;
+            case 'unset':
+                return <pd-icon name="status_undefined" size={3.6}></pd-icon>;
+            default:
+                break;
+        }
+    }
+
+    private calculateIsIndeterminate() {
+        const countSelected = this.filteredRows.reduce((acc, r) => (r.pdSelected ? acc + 1 : acc), 0);
+        if (countSelected > 0 && !this.allSelected) {
+            this.isIndeterminate = true;
+        } else {
+            this.isIndeterminate = false;
         }
     }
 }
