@@ -1,7 +1,7 @@
 {
-    "name": "componentlibrary",
+    "name": "@lambda-it/parlamentsdienste-component-library",
     "version": "1.5.2",
-    "description": "Stencil Component Starter",
+    "description": "Component Library for Swiss Parliamentary Services",
     "main": "dist/index.cjs.js",
     "module": "dist/index.js",
     "es2015": "dist/esm/index.mjs",
@@ -14,6 +14,19 @@
         "dist/",
         "loader/"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Lambda-IT/parlamentsdienste-components.git"
+    },
+    "author": {
+        "email": "support@lambda-it.ch",
+        "name": "Lambda IT",
+        "url": "https://lambda-it.ch"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com",
+        "access": "restricted"
+    },
     "scripts": {
         "build": "stencil build --docs",
         "b": "npm run build",
