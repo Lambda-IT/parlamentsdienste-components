@@ -64,9 +64,13 @@
                 helper-text="asdf-asdf"
                 readonly
             ></pd-input>
-            <pd-table id="pd-table-0" header-style="dark" selectable show-status> </pd-table>
+            <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+            </pd-table>
             <pd-table id="pd-table-1" header-style="light" selectable show-status> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray" selectable show-status>
+            <pd-table id="pd-table-2" header-style="gray" selectable show-status menu-label="Aktionen">
                 <pd-menu-item text="Drucken">
                     <pd-icon size="2" name="print"></pd-icon>
                 </pd-menu-item>
@@ -80,6 +84,14 @@
                 <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
             </pd-navbar>
             <pd-menu>
+                <pd-menu-item text="Drucken">
+                    <pd-icon size="2" name="print"></pd-icon>
+                </pd-menu-item>
+                <pd-menu-item text="Download">
+                    <pd-icon size="2" name="documents"></pd-icon>
+                </pd-menu-item>
+            </pd-menu>
+            <pd-menu label="My Menu">
                 <pd-menu-item text="Drucken">
                     <pd-icon size="2" name="print"></pd-icon>
                 </pd-menu-item>
@@ -367,6 +379,8 @@
 
             pdTable0.columns = columns;
             pdTable0.rows = rows;
+            pdTable0.showActionColumn = true;
+            pdTable0.iconConfig = { edit: true, select: true, delete: true };
             pdTable1.columns = columns;
             pdTable1.rows = rows;
             pdTable2.columns = columns;

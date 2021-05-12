@@ -59,6 +59,9 @@ export class Table {
      * Allow to render a status icon per row
      */
     @Prop() showStatus = false;
+     * Show label text for menu
+     */
+    @Prop() menuLabel: string;
 
     /**
      * Triggers when one or all rows get selected
@@ -380,11 +383,8 @@ export class Table {
                     minWidth: this.btnCellStyle.minWidth,
                 })}
             >
-                <div
-                    class="pd-table-header-cell-text"
-                    style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
-                >
-                    <pd-menu>
+                <div class="pd-table-header-cell-text" style={{ justifyContent: 'flex-end' }}>
+                    <pd-menu label={this.menuLabel} invertColor={this.headerStyle === 'dark' ? true : false}>
                         <slot data-menu-items=""></slot>
                     </pd-menu>
                 </div>

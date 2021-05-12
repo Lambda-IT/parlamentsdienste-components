@@ -16,6 +16,7 @@ export default {
         selectable: { control: { type: 'boolean' } },
         showStatus: { control: { type: 'boolean' } },
         headerStyle: { control: { type: 'select', options: ['light', 'dark', 'gray'] } },
+        menuLabel: { control: { type: 'string' } },
     },
 };
 
@@ -31,6 +32,7 @@ export const Table = (args) => {
     table0.setAttribute('header-style', args.headerStyle);
     table0.selectable = args.selectable;
     table0.showStatus = args.showStatus;
+    table0.menuLabel = args.menuLabel;
     generateTableMenu(args).forEach((m) => table0.appendChild(m));
 
     const wrapper = document.createElement('div');
@@ -120,6 +122,7 @@ Table.args = {
     selectable: true,
     showStatus: true,
     headerStyle: 'dark',
+    menuLabel: 'Aktionen',
 };
 
 function generateTableMenu(args) {
