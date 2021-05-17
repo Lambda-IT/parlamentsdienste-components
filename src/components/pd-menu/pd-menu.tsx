@@ -1,6 +1,7 @@
-import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, Host, h, State, Listen, Element, Prop, Method, Watch } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
 import { closestElement } from '../../utils/helpers';
+import { PdPlacement } from '../../interface';
 @Component({
     tag: 'pd-menu',
     styleUrl: 'pd-menu.scss',
@@ -28,6 +29,16 @@ export class Menu {
      */
     @Prop() items: any[] = [];
 
+    /**
+     * Prefered placement of menu dropdown
+     */
+    @Prop() placement: PdPlacement = 'bottom-start';
+
+    @Watch('placement')
+    protected placementChanged(placement: PdPlacement) {
+        this.popper.setOptions({ placement });
+    }
+
     @State() isOpen = false;
 
     /**
@@ -53,9 +64,6 @@ export class Menu {
         }
     }
 
-    @Event({ eventName: 'pd-change' })
-    pdChange!: EventEmitter<any>;
-
     protected componentDidLoad() {
         this.menuElement = this.element.shadowRoot.querySelector('.pd-menu-content') as HTMLElement;
         this.buttonElement = this.element.shadowRoot.querySelector('.pd-menu-button') as HTMLElement;
@@ -74,7 +82,7 @@ export class Menu {
     // create a popper js element for the menu
     private createMenuPopper(button, menu) {
         return createPopper(button, menu, {
-            placement: 'bottom-start',
+            placement: this.placement,
         });
     }
 

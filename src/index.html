@@ -91,7 +91,7 @@
                     <pd-icon size="2" name="documents"></pd-icon>
                 </pd-menu-item>
             </pd-menu>
-            <pd-menu label="My Menu">
+            <pd-menu label="My Menu" id="pd-menu-1">
                 <pd-menu-item text="Drucken">
                     <pd-icon size="2" name="print"></pd-icon>
                 </pd-menu-item>
@@ -297,6 +297,8 @@
             const pdTable1 = document.getElementById('pd-table-1');
             const pdTable2 = document.getElementById('pd-table-2');
 
+            const pdMenu1 = document.getElementById('pd-menu-1');
+
             const pdPagination1 = document.getElementById('pd-pagination-1');
 
             const flatPickr0 = document.getElementById('pd-datepickr-0');
@@ -455,6 +457,9 @@
 
             // test do set a selected value over a programmatic way
             setTimeout(() => pdDropDown.reset(), 4000);
+
+            // update placement of menu
+            setTimeout(() => pdMenu1.setAttribute('placement', 'top-start'), 10000);
 
             pdComboBox.items = [
                 { id: '1', label: 'Dropdown Link 01', value: 'a1' },
