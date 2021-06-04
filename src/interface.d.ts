@@ -72,4 +72,21 @@ export interface SelectedEvent {
     rows: any[];
 }
 
+export type PdPlacement =
+    | 'auto'
+    | 'auto-start'
+    | 'auto-end'
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
+
 export type PdStatus = 'success' | 'danger' | 'warning' | 'unset';

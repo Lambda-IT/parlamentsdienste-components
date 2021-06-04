@@ -1,16 +1,35 @@
 import notes from './readme.md';
 
 export default {
-    title: 'Layout',
+    title: 'Interactions/Menu',
     parameters: {
-        actions: {
-            handles: ['pd-change'],
-        },
         notes,
-        argTypes: {
-            items: { controls: { type: 'object' } },
-            label: { controls: { type: 'string' } },
-            invertColor: { controls: { type: 'boolean' } },
+    },
+    argTypes: {
+        items: { control: { type: 'object' } },
+        label: { control: { type: 'string' } },
+        invertColor: { control: { type: 'boolean' } },
+        placement: {
+            control: {
+                type: 'select',
+                options: [
+                    'auto',
+                    'auto-start',
+                    'auto-end',
+                    'top',
+                    'top-start',
+                    'top-end',
+                    'bottom',
+                    'bottom-start',
+                    'bottom-end',
+                    'right',
+                    'right-start',
+                    'right-end',
+                    'left',
+                    'left-start',
+                    'left-end',
+                ],
+            },
         },
     },
 };
@@ -34,6 +53,7 @@ export const Menu = (args) => {
 
     pdMenu.label = args.label;
     pdMenu.invertColor = args.invertColor;
+    pdMenu.placement = args.placement;
     pdMenu.classList = ['m-3'];
 
     return pdMenu;
@@ -46,4 +66,5 @@ Menu.args = {
     ],
     label: 'Aktionen',
     invertColor: false,
+    placement: 'bottom-start',
 };

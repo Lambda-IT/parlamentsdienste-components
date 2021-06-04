@@ -38,18 +38,12 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Properties
 
-| Property      | Attribute      | Description                             | Type      | Default |
-| ------------- | -------------- | --------------------------------------- | --------- | ------- |
-| `invertColor` | `invert-color` | Switch dark colors to bright font color | `boolean` | `false` |
-| `items`       | --             | Items to display and select in dropdown | `any[]`   | `[]`    |
-| `label`       | `label`        | Label nearby to the dot menu icon       | `string`  | `''`    |
-
-
-## Events
-
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `pd-change` |             | `CustomEvent<any>` |
+| Property      | Attribute      | Description                             | Type                                                                                                                                                                                                         | Default          |
+| ------------- | -------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| `invertColor` | `invert-color` | Switch dark colors to bright font color | `boolean`                                                                                                                                                                                                    | `false`          |
+| `items`       | --             | Items to display and select in dropdown | `any[]`                                                                                                                                                                                                      | `[]`             |
+| `label`       | `label`        | Label nearby to the dot menu icon       | `string`                                                                                                                                                                                                     | `''`             |
+| `placement`   | `placement`    | Prefered placement of menu dropdown     | `"auto" \| "auto-end" \| "auto-start" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
 
 
 ## Methods
