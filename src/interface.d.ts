@@ -90,3 +90,5 @@ export type PdPlacement =
     | 'left-end';
 
 export type PdStatus = 'success' | 'danger' | 'warning' | 'unset';
+
+export type PdSelectOutside = null | 'none' | 'indeterminate' | 'all';

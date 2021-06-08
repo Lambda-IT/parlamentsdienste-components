@@ -14,6 +14,7 @@ export default {
         iconConfig: { control: { type: 'object' } },
         showActionColumn: { control: { type: 'boolean' } },
         selectable: { control: { type: 'boolean' } },
+        selectedOutside: { control: { type: 'select', options: [null, 'none', 'indeterminate', 'all']}},
         showStatus: { control: { type: 'boolean' } },
         headerStyle: { control: { type: 'select', options: ['light', 'dark', 'gray'] } },
         menuLabel: { control: { type: 'string' } },
@@ -31,6 +32,7 @@ export const Table = (args) => {
     table0.showActionColumn = args.showActionColumn;
     table0.setAttribute('header-style', args.headerStyle);
     table0.selectable = args.selectable;
+    table0.selectedOutside = args.selectedOutside;
     table0.showStatus = args.showStatus;
     table0.menuLabel = args.menuLabel;
     generateTableMenu(args).forEach((m) => table0.appendChild(m));
@@ -120,6 +122,7 @@ Table.args = {
     showActionColumn: true,
     iconConfig: { edit: true, select: false, delete: true },
     selectable: true,
+    selectedOutside: null,
     showStatus: true,
     headerStyle: 'dark',
     menuLabel: 'Aktionen',
