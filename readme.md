@@ -1,4 +1,4 @@
-# Web Components Library der Pralamentsdienste
+# Web Components Library der Parlamentsdienste
 
 Web Components Library für Parlamentsdienste Core.
 
@@ -7,7 +7,11 @@ wurde die vorliegende Bibliothek mit StencilJS umgesetzt.
 
 ## Storybook Dokumentation
 
+Stencil Demo Page:  
 https://parlamentsdienstecore.lambda-it.ch
+
+VueJS Demo Page:  
+https://parlamentsdienstecore.lambda-it.ch/vue/#
 
 ## Lizenz
 
