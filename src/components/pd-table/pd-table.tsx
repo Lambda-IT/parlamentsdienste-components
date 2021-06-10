@@ -1,5 +1,13 @@
 import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter, Method } from '@stencil/core';
-import { PdColumn, PdTableRow, PdTableIconConfiguration, PdButtonCell, SelectedEvent, PdStatus } from '../../interface';
+import {
+    PdColumn,
+    PdTableRow,
+    PdTableIconConfiguration,
+    PdButtonCell,
+    SelectedEvent,
+    PdStatus,
+    PdSelectOutside,
+} from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
 
 @Component({
@@ -56,6 +64,12 @@ export class Table {
     @Prop() selectable = false;
 
     /**
+     * Indicates the state of rows outside of the table context.
+     * Sets the 'selectAll' checkbox accordingly
+     */
+    @Prop() selectedOutside: PdSelectOutside = null;
+
+    /**
      * Allow to render a status icon per row
      */
     @Prop() showStatus = false;
@@ -102,6 +116,11 @@ export class Table {
         this.filteredRows = [...this.rows];
     }
 
+    @Watch('selectedOutside')
+    handleSelectOutsideChanged() {
+        this.calculateIsIndeterminate();
+    }
+
     @State() filterOpen = false;
     @State() columnFilters: any = {};
     @State() filteredRows: any = [...this.rows];
@@ -122,11 +141,14 @@ export class Table {
         if (ev.key === 'Escape') this.filterOpen = false;
     }
 
+    protected componentWillLoad() {
+        this.calculateIsIndeterminate();
+    }
+
     protected componentDidLoad() {
         const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
         this.filterElement = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
         this.popper = this.createMenuPopper(table, this.filterElement);
-        this.calculateIsIndeterminate();
     }
 
     protected componentDidUpdate() {
@@ -277,20 +299,22 @@ export class Table {
             rows: this.filteredRows.filter((r) => r.pdSelected),
         });
 
-        if (!isSelected) this.allSelected = false; // reset if not all checkboxes are selected
+        this.allSelected = this.filteredRows.every((r) => r.pdSelected); // reset if not all checkboxes are selected
         this.calculateIsIndeterminate();
     }
 
-    private selectAll(isAllSelected: boolean) {
-        this.allSelected = isAllSelected;
+    private selectAll() {
+        this.allSelected = !this.allSelected || this.isIndeterminate;
+        this.selectedOutside = this.allSelected ? 'all' : 'none';
         if (this.allSelected) this.isIndeterminate = false;
+
         this.filteredRows = this.filteredRows.map((r) => ({
             ...r,
-            pdSelected: isAllSelected,
+            pdSelected: this.allSelected,
         }));
         this.onSelected.emit({
             selected: false,
-            selectAll: isAllSelected,
+            selectAll: this.allSelected,
             row: {},
             rows: this.filteredRows.filter((r) => r.pdSelected),
         });
@@ -586,7 +610,7 @@ export class Table {
                     style={{ justifyContent: this.getTextAlign(this.btnCellStyle.align) }}
                 >
                     <pd-checkbox
-                        onPd-checked={(ev) => this.selectAll(ev.detail)}
+                        onPd-checked={() => this.selectAll()}
                         checked={this.allSelected}
                         isIndeterminate={this.isIndeterminate}
                     ></pd-checkbox>
@@ -638,10 +662,11 @@ export class Table {
 
     private calculateIsIndeterminate() {
         const countSelected = this.filteredRows.reduce((acc, r) => (r.pdSelected ? acc + 1 : acc), 0);
-        if (countSelected > 0 && !this.allSelected) {
-            this.isIndeterminate = true;
-        } else {
-            this.isIndeterminate = false;
-        }
+        const indeterminate = countSelected > 0 && !this.allSelected;
+        this.isIndeterminate =
+            indeterminate ||
+            this.selectedOutside === 'indeterminate' ||
+            (this.allSelected && this.selectedOutside === 'none') ||
+            (!this.allSelected && this.selectedOutside === 'all');
     }
 }

@@ -182,23 +182,22 @@ interface PdColumn {
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property           | Attribute            | Description                                            | Type                          | Default     |
-| ------------------ | -------------------- | ------------------------------------------------------ | ----------------------------- | ----------- |
-| `columns`          | --                   | A definition for each column of the table              | `PdColumn[]`                  | `[]`        |
-| `headerHeight`     | `header-height`      | Height of header cells                                 | `string`                      | `'48'`      |
-| `headerStyle`      | `header-style`       | The table style                                        | `"dark" \| "gray" \| "light"` | `'dark'`    |
-| `iconConfig`       | --                   | The configuration for the last column, the icon column | `PdTableIconConfiguration`    | `undefined` |
-| `menuLabel`        | `menu-label`         |                                                        | `string`                      | `undefined` |
-| `minWidth`         | `min-width`          | The minimum width the table should take                | `string`                      | `'300'`     |
-| `rowHeight`        | `row-height`         | Height of rows                                         | `string`                      | `'48'`      |
-| `rows`             | --                   | The data definition for each row to display            | `PdTableRow[]`                | `[]`        |
-| `selectable`       | `selectable`         | Make rows selectable with a checkbox                   | `boolean`                     | `false`     |
-| `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`     |
-| `showStatus`       | `show-status`        | Allow to render a status icon per row                  | `boolean`                     | `false`     |
-
+| Property           | Attribute            | Description                                                                                         | Type                                 | Default     |
+| ------------------ | -------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------- |
+| `columns`          | --                   | A definition for each column of the table                                                           | `PdColumn[]`                         | `[]`        |
+| `headerHeight`     | `header-height`      | Height of header cells                                                                              | `string`                             | `'48'`      |
+| `headerStyle`      | `header-style`       | The table style                                                                                     | `"dark" \| "gray" \| "light"`        | `'dark'`    |
+| `iconConfig`       | --                   | The configuration for the last column, the icon column                                              | `PdTableIconConfiguration`           | `undefined` |
+| `menuLabel`        | `menu-label`         |                                                                                                     | `string`                             | `undefined` |
+| `minWidth`         | `min-width`          | The minimum width the table should take                                                             | `string`                             | `'300'`     |
+| `rowHeight`        | `row-height`         | Height of rows                                                                                      | `string`                             | `'48'`      |
+| `rows`             | --                   | The data definition for each row to display                                                         | `PdTableRow[]`                       | `[]`        |
+| `selectable`       | `selectable`         | Make rows selectable with a checkbox                                                                | `boolean`                            | `false`     |
+| `selectedOutside`  | `selected-outside`   | Indicates the state of rows outside of the table context. Sets the 'selectAll' checkbox accordingly | `"all" \| "indeterminate" \| "none"` | `null`      |
+| `showActionColumn` | `show-action-column` | Show button column and context menu                                                                 | `boolean`                            | `false`     |
+| `showStatus`       | `show-status`        | Allow to render a status icon per row                                                               | `boolean`                            | `false`     |
 
 ## Events
 
@@ -210,30 +209,25 @@ interface PdColumn {
 | `pd-selected`    | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
 | `pd-view`        | Triggers an event when the view icon was clicked   | `CustomEvent<any>`           |
 
-
 ## Methods
 
 ### `unselectAll() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
-
-
-
 ## Dependencies
 
 ### Depends on
 
-- [pd-table-filter](../pd-table-filter)
-- [pd-menu](../pd-menu)
-- [pd-checkbox](../pd-checkbox)
-- [pd-icon](../pd-icon)
+-   [pd-table-filter](../pd-table-filter)
+-   [pd-menu](../pd-menu)
+-   [pd-checkbox](../pd-checkbox)
+-   [pd-icon](../pd-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-table --> pd-table-filter
@@ -245,6 +239,6 @@ graph TD;
   style pd-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
