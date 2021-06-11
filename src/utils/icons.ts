@@ -42,6 +42,7 @@ export const iconMap = {
     status_green: 'status_green',
     status_orange: 'status_orange',
     status_red: 'status_red',
+    status_blue: 'status_blue',
     status_undefined: 'status_undefined',
     support: 'support',
     alert_danger: 'alert_danger',

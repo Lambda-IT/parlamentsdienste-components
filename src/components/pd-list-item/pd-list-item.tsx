@@ -43,6 +43,8 @@ export class PdListItem {
                 return <pd-icon name="status_orange" size={3.6}></pd-icon>;
             case 'danger':
                 return <pd-icon name="status_red" size={3.6}></pd-icon>;
+            case 'info':
+                return <pd-icon name="status_blue" size={3.6}></pd-icon>;
             case 'unset':
                 return <pd-icon name="status_undefined" size={3.6}></pd-icon>;
             default:

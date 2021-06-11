@@ -51,6 +51,7 @@ const iconList = [
     'status_green',
     'status_orange',
     'status_red',
+    'status_blue',
     'status_undefined',
     'support',
     'alert_danger',
@@ -110,6 +111,7 @@ export const basic = () =>
     <pd-icon class="mt-3" size="2.5" name="status_green"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="status_orange"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="status_red"></pd-icon>
+    <pd-icon class="mt-3" size="2.5" name="status_blue"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="status_undefined"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="support"></pd-icon>
     <pd-icon class="mt-3" size="2.5" name="alert_danger"></pd-icon>

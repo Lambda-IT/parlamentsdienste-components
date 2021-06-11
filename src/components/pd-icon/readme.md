@@ -18,16 +18,15 @@
 
 | []()          |                  |              |               |              |                  |                  |               |
 | ------------- | ---------------- | ------------ | ------------- | ------------ | ---------------- | ---------------- | ------------- |
-| add           | appview          | audio        | breadcrumb    | cancel       | checkbox\_checked | checkbox\_default | clipboard     |
-| close\_small   | close            | compensation | configuration | confirm      | contact          | dictionary       | documents     |
-| dropdown      | expand           | filter       | folder\_closed | folder\_open  | gallery          | link             | list          |
+| add           | appview          | audio        | breadcrumb    | cancel       | checkbox_checked | checkbox_default | clipboard     |
+| close_small   | close            | compensation | configuration | confirm      | contact          | dictionary       | documents     |
+| dropdown      | expand           | filter       | folder_closed | folder_open  | gallery          | link             | list          |
 | menu          | message          | microphone   | parlament     | play         | press            | print            | profile       |
-| radio\_checked | radio\_default    | research     | reservation   | search       | sort             | status\_green     | status\_orange |
-| status\_red    | status\_undefined | support      | alert\_danger  | alert\_info   | alert\_success    | alert\_warning    | calendar      |
-| delete        | drag\_drop        | edit         | menu\_actions  | confirm\_bold | close\_bold       | detail           |               |
+| radio_checked | radio_default    | research     | reservation   | search       | sort             | status_green     | status_orange |
+| status_red    | status_undefined | support      | alert_danger  | alert_info   | alert_success    | alert_warning    | calendar      |
+| delete        | drag_drop        | edit         | menu_actions  | confirm_bold | close_bold       | detail           | status_blue   |
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -41,28 +40,28 @@
 | `spinReverse` | `spin-reverse` | change animation direction                     | `boolean`            | `false`     |
 | `src`         | `src`          | Specifies the `src` url of an SVG file to use. | `string`             | `undefined` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [pd-alert](../pd-alert)
- - [pd-chip](../pd-chip)
- - [pd-combobox](../pd-combobox)
- - [pd-datepicker](../pd-datepicker)
- - [pd-dropdown](../pd-dropdown)
- - [pd-list-item](../pd-list-item)
- - [pd-menu](../pd-menu)
- - [pd-modal](../pd-modal)
- - [pd-navbar](../pd-navbar)
- - [pd-panel-header](../pd-panel-header)
- - [pd-search](../pd-search)
- - [pd-sidebar-item](../pd-sidebar-item)
- - [pd-table](../pd-table)
- - [pd-table-filter](../pd-table-filter)
- - [pd-toast](../pd-toast)
+-   [pd-alert](../pd-alert)
+-   [pd-chip](../pd-chip)
+-   [pd-combobox](../pd-combobox)
+-   [pd-datepicker](../pd-datepicker)
+-   [pd-dropdown](../pd-dropdown)
+-   [pd-list-item](../pd-list-item)
+-   [pd-menu](../pd-menu)
+-   [pd-modal](../pd-modal)
+-   [pd-navbar](../pd-navbar)
+-   [pd-panel-header](../pd-panel-header)
+-   [pd-search](../pd-search)
+-   [pd-sidebar-item](../pd-sidebar-item)
+-   [pd-table](../pd-table)
+-   [pd-table-filter](../pd-table-filter)
+-   [pd-toast](../pd-toast)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
@@ -83,6 +82,6 @@ graph TD;
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
