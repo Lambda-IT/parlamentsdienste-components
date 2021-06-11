@@ -125,7 +125,10 @@ export class Datepicker {
 
     public componentDidLoad() {
         const element = this.element.shadowRoot.querySelector('.wrapper');
-        this.flatpickr = flatpickr(element, Object.assign(this.defaultConfig, this.config));
+        this.flatpickr = flatpickr(
+            element,
+            Object.assign(this.defaultConfig, { ...this.config, inline: this.readonly }),
+        );
 
         if (this.date) this.setDate(this.date);
     }

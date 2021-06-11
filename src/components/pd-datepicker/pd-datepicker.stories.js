@@ -19,6 +19,7 @@ export default {
     },
     argTypes: {
         disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
         icon: { control: { type: 'boolean' } },
         config_allow_input: { control: { type: 'boolean' } },
     },
@@ -29,6 +30,7 @@ export const datepicker = (args) => {
     datepicker.classList = ['m-3'];
     datepicker.label = args.label;
     datepicker.disabled = args.disabled;
+    datepicker.readonly = args.readonly;
     datepicker.icon = args.icon;
     datepicker.config = {
         allowInput: args.config_allow_input,
@@ -39,6 +41,7 @@ export const datepicker = (args) => {
 datepicker.args = {
     label: 'Label Text',
     disabled: false,
+    readonly: false,
     icon: true,
     config_allow_input: false,
 };
