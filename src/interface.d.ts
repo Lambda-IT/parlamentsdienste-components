@@ -59,11 +59,7 @@ export interface DropdownItem {
     selected?: boolean;
 }
 
-export interface ComboboxItem {
-    id: string;
-    label: string;
-    value: string;
-}
+export interface ComboboxItem extends DropdownItem {}
 
 export interface SelectedEvent {
     selected: boolean;

@@ -37,6 +37,11 @@ export class Combobox {
     @Prop() required = false;
 
     /**
+     * If `true`, the combobox get a selected state like a dropdown.
+     */
+    @Prop() selectable = false;
+
+    /**
      * Instructional text that shows before the input has a value.
      */
     @Prop() placeholder?: string | null;
@@ -86,6 +91,26 @@ export class Combobox {
      */
     @Event({ eventName: 'pd-focus' }) pdFocus!: EventEmitter<void>;
 
+    /**
+     * Set a preselected entry by index
+     */
+    @Method()
+    async setSelectedIndex(index: number) {
+        console.log('index', index);
+        if (index >= 0 && index < this.items.length) {
+            this.items[index] = { ...this.items[index], selected: true };
+            this.selectItem(this.items[index]);
+        }
+    }
+
+    /**
+     * Reset the selection of the dropdown
+     */
+    @Method()
+    async reset() {
+        this.resetInternally(null);
+    }
+
     @Watch('items')
     protected resultsChanged(items: any) {
         this.items = this.validateItems(items);
@@ -121,7 +146,19 @@ export class Combobox {
     }
 
     protected componentDidUpdate() {
+        if (!this.open) return;
+        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+            HTMLPdDropdownItemElement
+        >;
+        this.scrollToSelected(dropdownItemNodes, this.menuElement);
         this.popper.forceUpdate();
+    }
+
+    private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
+        dropdownItemNodes.forEach((item) => {
+            const centerItem = Math.ceil(this.items.length / 2) - 1;
+            if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
+        });
     }
 
     @State() open: boolean = false;
@@ -137,7 +174,7 @@ export class Combobox {
             case 'Escape': {
                 ev.preventDefault();
                 this.open = false;
-                this.reset(ev);
+                this.resetInternally(ev);
                 break;
             }
             case 'Enter': {
@@ -215,6 +252,8 @@ export class Combobox {
     };
 
     private onInput = (ev: Event) => {
+        if (this.selectable) this.resetInternally(ev);
+
         const input = ev.target as HTMLInputElement | null;
         this.setValue(input?.value || '', true);
         this.pdInput.emit({ value: this.value });
@@ -248,12 +287,12 @@ export class Combobox {
         } else if (ev instanceof KeyboardEvent && ev.key.includes('Enter')) {
             this.setValue(comboboxItem.label, true);
             this.open = false;
-            this.reset(ev);
+            if (!this.selectable) this.resetInternally(ev);
         } else {
             this.selectedItem = comboboxItem;
             this.setValue(comboboxItem.label, true);
             this.open = false;
-            this.reset(ev);
+            if (!this.selectable) this.resetInternally(ev);
         }
     }
 
@@ -275,6 +314,8 @@ export class Combobox {
                     class={{
                         'pd-combobox-label': true,
                         'pd-combobox-disabled': this.disabled,
+                        'pd-combobox-selectable': this.selectable,
+                        'pd-combobox-item-selected': this.selectedItem ? true : false,
                     }}
                 >
                     {this.renderLabel()}
@@ -289,7 +330,7 @@ export class Combobox {
                             readOnly={this.readonly}
                             required={this.required}
                             placeholder={this.placeholder || ''}
-                            value={this.value || ''}
+                            value={this.value}
                             onClick={this.onClickInput}
                             onInput={this.onInput}
                             onBlur={this.onBlur}
@@ -310,8 +351,8 @@ export class Combobox {
         );
     }
 
-    private reset = (ev: Event) => {
-        ev.preventDefault();
+    private resetInternally = (ev?: Event) => {
+        if (ev) ev.preventDefault();
         this.setValue(null, true);
         this.open = false;
         this.selectedItem = null;

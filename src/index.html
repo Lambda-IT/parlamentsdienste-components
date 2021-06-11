@@ -100,6 +100,7 @@
                 </pd-menu-item>
             </pd-menu>
             <pd-combobox id="pd-combobox-0" label="Fancy Combobox"></pd-combobox>
+            <pd-combobox id="pd-combobox-1" label="Selectable Combobox" selectable></pd-combobox>
             <pd-combobox disabled></pd-combobox>
             <pd-chip id="pd-chip-0">Text Chip</pd-chip>
             <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
@@ -291,6 +292,7 @@
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
             const pdComboBox = document.getElementById('pd-combobox-0');
+            const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdNavbar = document.getElementById('pd-navbar-1');
 
             const pdTable0 = document.getElementById('pd-table-0');
@@ -469,6 +471,9 @@
                 { id: '5', label: 'Dropdown Link 05', value: 'a5' },
                 { id: '6', label: 'Dropdown Second Link 05', value: 'a6' },
             ];
+            pdComboBox1.items = pdComboBox.items;
+            setTimeout(() => pdComboBox1.setSelectedIndex(3), 2000);
+            setTimeout(() => pdComboBox1.reset(), 4000);
 
             const chip6 = document.getElementById('pd-chip-6');
             console.log('chip6', chip6.checked);

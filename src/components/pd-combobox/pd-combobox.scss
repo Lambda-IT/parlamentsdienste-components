@@ -49,6 +49,32 @@
             border: 0.125em solid $focus;
         }
     }
+
+    &.pd-combobox-selectable.pd-combobox-item-selected {
+        .pd-combobox-icon-search {
+            display: none;
+        }
+
+        .pd-combobox-icon-toggle {
+            fill: white;
+        }
+
+        .pd-combobox-input {
+            padding-left: 0.875em;
+            background-color: setcolor(primary, enabled);
+            color: $white;
+
+            &:hover {
+                color: $white;
+                background-color: setcolor(primary, hover);
+                border-color: setcolor(primary, hover);
+            }
+
+            &:active {
+                background-color: setcolor(primary, pressed);
+            }
+        }
+    }
 }
 
 .pd-combobox-input-wrapper {

@@ -13,6 +13,7 @@ export default {
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
         readonly: { control: { type: 'boolean' } },
+        selectable: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
         required: { control: { type: 'boolean' } },
         highlight: { control: { type: 'boolean' } },
@@ -23,18 +24,37 @@ export default {
 ///////////////////////////////////////////////////////////////////////////
 
 export const combobox = (args) => {
-    const combobox = document.createElement('pd-combobox');
-    combobox.classList = ['m-3'];
-    combobox.items = args.items;
-    combobox.disabled = args.disabled;
-    combobox.readonly = args.readonly;
-    combobox.error = args.error;
-    combobox.required = args.required;
-    combobox.label = args.label;
-    combobox.placeholder = args.placeholder;
-    combobox.highlight = args.highlight;
+    const elements = document.createElement('div');
+    const c1 = document.createElement('pd-combobox');
+    c1.classList = ['m-3'];
+    c1.items = args.items;
+    c1.disabled = args.disabled;
+    c1.readonly = args.readonly;
+    c1.selectable = args.selectable;
+    c1.error = args.error;
+    c1.required = args.required;
+    c1.label = args.label;
+    c1.placeholder = args.placeholder;
+    c1.highlight = args.highlight;
 
-    return combobox;
+    elements.append(c1);
+
+    const c2 = document.createElement('pd-combobox');
+    c2.classList = ['m-3'];
+    c2.items = args.items;
+    c2.disabled = args.disabled;
+    c2.readonly = args.readonly;
+    c2.selectable = true;
+    c2.error = args.error;
+    c2.required = args.required;
+    c2.label = args.label + ' (selectable)';
+    c2.placeholder = args.placeholder;
+    c2.highlight = args.highlight;
+
+    elements.append(c1);
+    elements.append(c2);
+
+    return elements;
 };
 
 combobox.args = {
@@ -42,6 +62,7 @@ combobox.args = {
     placeholder: 'Type for examples...',
     disabled: false,
     readonly: false,
+    selectable: false,
     error: false,
     required: false,
     highlight: false,
