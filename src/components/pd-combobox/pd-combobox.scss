@@ -73,6 +73,24 @@
             &:active {
                 background-color: setcolor(primary, pressed);
             }
+
+            &:disabled {
+                color: $white;
+                background-color: setcolor(primary, disabled);
+                border-color: setcolor(primary, disabled);
+            }
+
+            &:read-only {
+                background-color: $gray-3;
+                color: $black;
+                border-color: $gray-3;
+            }
+        }
+
+        &.pd-combobox-readonly {
+            .pd-combobox-icon-toggle {
+                fill: $black;
+            }
         }
     }
 }
@@ -98,7 +116,7 @@
     &:read-only {
         background-color: $gray-3;
         color: $black;
-        border: none;
+        border: 0.125em solid $gray-3;
     }
 }
 

@@ -18,6 +18,7 @@ export default {
         required: { control: { type: 'boolean' } },
         highlight: { control: { type: 'boolean' } },
         items: { control: { type: 'object' } },
+        value: { control: { type: 'text' } },
     },
 };
 
@@ -36,6 +37,7 @@ export const combobox = (args) => {
     c1.label = args.label;
     c1.placeholder = args.placeholder;
     c1.highlight = args.highlight;
+    c1.value = args.value;
 
     elements.append(c1);
 
@@ -50,6 +52,7 @@ export const combobox = (args) => {
     c2.label = args.label + ' (selectable)';
     c2.placeholder = args.placeholder;
     c2.highlight = args.highlight;
+    c2.value = args.value;
 
     elements.append(c1);
     elements.append(c2);
@@ -66,6 +69,7 @@ combobox.args = {
     error: false,
     required: false,
     highlight: false,
+    value: '',
     items: [
         { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
         { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },

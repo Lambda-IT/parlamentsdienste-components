@@ -96,7 +96,6 @@ export class Combobox {
      */
     @Method()
     async setSelectedIndex(index: number) {
-        console.log('index', index);
         if (index >= 0 && index < this.items.length) {
             this.items[index] = { ...this.items[index], selected: true };
             this.selectItem(this.items[index]);
@@ -143,6 +142,10 @@ export class Combobox {
         this.menuElement = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
         this.labelElement = this.element.shadowRoot.querySelector('.pd-combobox-label') as HTMLElement;
         this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
+
+        if (this.value) {
+            this.selectedItem = this.items.filter((i) => i.label === this.value).shift();
+        }
     }
 
     protected componentDidUpdate() {
@@ -315,6 +318,7 @@ export class Combobox {
                         'pd-combobox-label': true,
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-selectable': this.selectable,
+                        'pd-combobox-readonly': this.readonly,
                         'pd-combobox-item-selected': this.selectedItem ? true : false,
                     }}
                 >
