@@ -5,12 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1] - 2021-06-14
+
+### Changed
+
+-   #57 Combobox: 🎨 Fixed readonly/disabled styles
+-   README: Edited Readme
+
 ## [1.6.0] - 2021-06-11
 
 ### Added
 
 -   #55 Icon: 🎉 Add blue state icon
 -   #56 Menu: 🎉 Allow to set preferred menu position
+-   #57 Combobox: 🎉 Improved combobox with selected state
 -   #58 Table: 🎉 Manage selected row status outside of the table
 
 ### Changed
@@ -136,6 +144,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[1.6.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.6.1
 [1.6.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.6.0
 [1.5.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.5.2
 [1.5.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.5.1
