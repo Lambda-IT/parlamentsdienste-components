@@ -10,6 +10,7 @@ import { getSvgContent, iconContent } from '../../utils/svg';
 })
 export class PdIcon implements ComponentInterface {
     private io?: IntersectionObserver;
+    private wrapperElement?: HTMLDivElement;
 
     @Element() element!: HTMLElement;
 
@@ -45,6 +46,12 @@ export class PdIcon implements ComponentInterface {
 
     /** change animation direction */
     @Prop() spinReverse: boolean = false;
+
+    /** title tag in svg for accessability */
+    @Prop() title: string;
+
+    /** description tag in svg for accessability*/
+    @Prop() description: string;
 
     @State() private svgContent?: string;
     @State() private isVisible = false;
@@ -96,9 +103,13 @@ export class PdIcon implements ComponentInterface {
                 if (iconContent.has(url)) {
                     // sync if it's already loaded
                     this.svgContent = iconContent.get(url);
+                    this.appendSVGContent(this.svgContent, this.wrapperElement);
                 } else {
                     // async if it hasn't been loaded
-                    getSvgContent(url).then(() => (this.svgContent = iconContent.get(url)));
+                    getSvgContent(url).then(() => {
+                        this.svgContent = iconContent.get(url);
+                        this.appendSVGContent(this.svgContent, this.wrapperElement);
+                    });
                 }
             }
         }
@@ -124,13 +135,32 @@ export class PdIcon implements ComponentInterface {
                     animationName: this.spinReverse ? `spin-reverse` : null,
                 }}
             >
-                {this.renderSvg()}
+                <div class="pd-icon-inner" ref={(textarea) => (this.wrapperElement = textarea)}></div>
             </Host>
         );
     }
 
-    public renderSvg() {
-        if (!this.svgContent) return <div class="pd-icon-inner"></div>;
-        else return <div class="pd-icon-inner" innerHTML={this.svgContent}></div>;
+    private appendSVGContent(svgContent: string, appendElement: HTMLElement) {
+        if (!appendElement.hasChildNodes()) {
+            const doc = new DOMParser().parseFromString(svgContent, 'image/svg+xml');
+            const svgElement = appendElement.ownerDocument.importNode(doc.documentElement, true);
+
+            // append accessability elements
+            if (this.description) {
+                const descriptionElement = doc.createElement('desc');
+                descriptionElement.innerHTML = this.description;
+                svgElement.prepend(descriptionElement);
+            }
+
+            let titleElement = svgElement.getElementsByTagName('title').item(0);
+            if (titleElement && this.title) titleElement.innerHTML = this.title;
+            if (!titleElement && this.title) {
+                titleElement = doc.createElement('title');
+                titleElement.innerHTML = this.title;
+                svgElement.prepend(titleElement);
+            }
+
+            appendElement.appendChild(svgElement);
+        }
     }
 }

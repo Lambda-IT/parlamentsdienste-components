@@ -86,7 +86,11 @@ export class PdAlert {
 
     private renderClose() {
         if (!this.closable) return;
-        return <pd-icon onClick={this.pdClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
+        return (
+            <button class="pd-alert-close-button" onClick={this.pdClosed.emit}>
+                <pd-icon class="pd-alert-action-cancel" name="close" size={2}></pd-icon>
+            </button>
+        );
     }
 
     private renderHeadline() {

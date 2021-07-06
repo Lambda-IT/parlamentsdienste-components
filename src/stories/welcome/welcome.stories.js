@@ -1,5 +1,6 @@
 export default {
     title: 'Introduction/Welcome',
+    parameters: { options: {showPanel: false }}
 };
 
 export const welcome = () => `

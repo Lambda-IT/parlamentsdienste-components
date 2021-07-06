@@ -8,10 +8,10 @@ export const getSvgContent = (url: string) => {
     if (!req) {
         if (typeof fetch !== 'undefined') {
             // we don't already have a request
-            req = fetch(url).then(rsp => {
+            req = fetch(url).then((rsp) => {
                 if (rsp.ok) {
-                    return rsp.text().then(svgContent => {
-                        iconContent.set(url, validateContent(svgContent));
+                    return rsp.text().then((svgContent) => {
+                        iconContent.set(url, svgContent);
                     });
                 }
                 iconContent.set(url, '');
@@ -28,56 +28,3 @@ export const getSvgContent = (url: string) => {
 
     return req;
 };
-
-export const validateContent = (svgContent: string | null) => {
-    if (svgContent && typeof document !== 'undefined') {
-        const div = document.createElement('div');
-        div.innerHTML = svgContent;
-
-        // setup this way to ensure it works on our buddy IE
-        for (let i = div.childNodes.length - 1; i >= 0; i--) {
-            if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
-                div.removeChild(div.childNodes[i]);
-            }
-        }
-
-        // must only have 1 root element
-        const svgElm = div.firstElementChild;
-        if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
-            const svgClass = svgElm.getAttribute('class') || '';
-            svgElm.setAttribute('class', (svgClass + ' sc-pd-icon').trim());
-
-            // root element must be an svg
-            // lets double check we've got valid elements
-            // do not allow scripts
-            if (isValid(svgElm as any)) {
-                return div.innerHTML;
-            }
-        }
-    }
-    return '';
-};
-
-export const isValid = (elm: HTMLElement) => {
-    if (elm.nodeType === 1) {
-        if (elm.nodeName.toLowerCase() === 'script') {
-            return false;
-        }
-
-        for (let i = 0; i < elm.attributes.length; i++) {
-            const val = elm.attributes[i].value;
-            if (isStr(val) && val.toLowerCase().indexOf('on') === 0) {
-                return false;
-            }
-        }
-
-        for (let i = 0; i < elm.childNodes.length; i++) {
-            if (!isValid(elm.childNodes[i] as any)) {
-                return false;
-            }
-        }
-    }
-    return true;
-};
-
-export const isStr = (val: any): val is string => typeof val === 'string';

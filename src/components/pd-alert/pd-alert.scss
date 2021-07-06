@@ -83,7 +83,6 @@
     display: flex;
     margin: -0.875em 0;
     align-items: center;
-    text-decoration: underline;
 
     .pd-alert-action-text {
         color: $white;
@@ -93,11 +92,27 @@
         font-weight: 700 !important;
         background-color: transparent;
         border: none;
+        text-decoration: underline;
+
+        &:focus {
+            color: $focus;
+        }
+    }
+
+    .pd-alert-close-button {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        margin-left: 0.625em;
+        border: none;
+
+        &:focus .pd-alert-action-cancel {
+            fill: $focus;
+        }
     }
 
     .pd-alert-action-cancel {
         fill: $white;
-        margin-left: 0.625em;
         cursor: pointer;
 
         &:hover {

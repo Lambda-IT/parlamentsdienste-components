@@ -36,6 +36,16 @@
         display: flex;
         align-items: center;
 
+        &:focus {
+            .pd-menu-label {
+                color: $focus;
+            }
+
+            .pd-menu-icon {
+                fill: $focus;
+            }
+        }
+
         .pd-menu-icon {
             fill: var(--pd-menu-label-color, setcolor(primary, enabled));
         }
