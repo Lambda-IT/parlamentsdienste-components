@@ -302,13 +302,17 @@ export namespace Components {
     }
     interface PdIcon {
         /**
-          * description tag in svg for accessability
-         */
-        "description": string;
-        /**
           * Flip in X/Y direction
          */
         "flip": 'x' | 'y' | 'xy';
+        /**
+          * description tag in svg for accessability
+         */
+        "iconDescription": string;
+        /**
+          * title tag in svg for accessability
+         */
+        "iconTitle": string;
         /**
           * Name of an icon from the provided gallery
          */
@@ -333,10 +337,6 @@ export namespace Components {
           * Specifies the `src` url of an SVG file to use.
          */
         "src"?: string;
-        /**
-          * title tag in svg for accessability
-         */
-        "title": string;
     }
     interface PdInput {
         /**
@@ -1393,13 +1393,17 @@ declare namespace LocalJSX {
     }
     interface PdIcon {
         /**
-          * description tag in svg for accessability
-         */
-        "description"?: string;
-        /**
           * Flip in X/Y direction
          */
         "flip"?: 'x' | 'y' | 'xy';
+        /**
+          * description tag in svg for accessability
+         */
+        "iconDescription"?: string;
+        /**
+          * title tag in svg for accessability
+         */
+        "iconTitle"?: string;
         /**
           * Name of an icon from the provided gallery
          */
@@ -1424,10 +1428,6 @@ declare namespace LocalJSX {
           * Specifies the `src` url of an SVG file to use.
          */
         "src"?: string;
-        /**
-          * title tag in svg for accessability
-         */
-        "title"?: string;
     }
     interface PdInput {
         /**

@@ -48,10 +48,10 @@ export class PdIcon implements ComponentInterface {
     @Prop() spinReverse: boolean = false;
 
     /** title tag in svg for accessability */
-    @Prop() title: string;
+    @Prop() iconTitle: string;
 
     /** description tag in svg for accessability*/
-    @Prop() description: string;
+    @Prop() iconDescription: string;
 
     @State() private svgContent?: string;
     @State() private isVisible = false;
@@ -146,17 +146,17 @@ export class PdIcon implements ComponentInterface {
             const svgElement = appendElement.ownerDocument.importNode(doc.documentElement, true);
 
             // append accessability elements
-            if (this.description) {
+            if (this.iconDescription) {
                 const descriptionElement = doc.createElement('desc');
-                descriptionElement.innerHTML = this.description;
+                descriptionElement.innerHTML = this.iconDescription;
                 svgElement.prepend(descriptionElement);
             }
 
             let titleElement = svgElement.getElementsByTagName('title').item(0);
-            if (titleElement && this.title) titleElement.innerHTML = this.title;
-            if (!titleElement && this.title) {
+            if (titleElement && this.iconTitle) titleElement.innerHTML = this.iconTitle;
+            if (!titleElement && this.iconTitle) {
                 titleElement = doc.createElement('title');
-                titleElement.innerHTML = this.title;
+                titleElement.innerHTML = this.iconTitle;
                 svgElement.prepend(titleElement);
             }
 
