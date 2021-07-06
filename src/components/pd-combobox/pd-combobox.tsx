@@ -115,7 +115,6 @@ export class Combobox {
         this.items = this.validateItems(items);
         if (this.items.length > 0) {
             this.selectedItem = null;
-            this.open = true;
         } else this.open = false;
     }
 
