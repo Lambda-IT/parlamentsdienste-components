@@ -60,6 +60,16 @@
             .pd-menu-icon {
                 fill: setcolor(primary, enabled-contrast);
             }
+
+            &:focus {
+                .pd-menu-label {
+                    color: $focus;
+                }
+
+                .pd-menu-icon {
+                    fill: $focus;
+                }
+            }
         }
     }
 }

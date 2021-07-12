@@ -67,6 +67,11 @@ a {
     color: $cyan-9;
     a {
         font-weight: 700;
+        outline: none;
+
+        &:focus {
+            color: $focus;
+        }
     }
 
     ::before {

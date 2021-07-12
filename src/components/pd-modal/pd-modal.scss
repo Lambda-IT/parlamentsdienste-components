@@ -64,6 +64,10 @@
         &:active {
             fill: setcolor(primary, pressed);
         }
+
+        &:focus {
+            fill: $focus;
+        }
     }
 }
 

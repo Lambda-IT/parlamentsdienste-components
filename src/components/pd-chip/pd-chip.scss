@@ -90,3 +90,16 @@
 .pd-chip-icon-right {
     margin-left: 0.38em;
 }
+
+.pd-chip-remove {
+    margin: 0;
+    margin-left: 0.38em;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus pd-icon {
+        fill: $focus;
+    }
+}
