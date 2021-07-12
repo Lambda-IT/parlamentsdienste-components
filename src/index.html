@@ -21,10 +21,27 @@
             .checked .a {
                 fill: green !important;
             }
+
+            pd-list-item-expandable {
+                background: #fff;
+                margin-bottom: 6px;
+                border-radius: 6px;
+            }
         </style>
     </head>
     <body>
         <div class="example-components">
+            <pd-list>
+                <pd-list-item-expandable status="success"
+                    >item 1
+                    <div slot="expandable">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
+                        earum sed ducimus quo voluptate recusandae perferendis.
+                    </div>
+                </pd-list-item-expandable>
+                <pd-list-item-expandable status="danger">item 2</pd-list-item-expandable>
+                <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
+            </pd-list>
             <pd-textarea
                 label="Default"
                 auto-grow

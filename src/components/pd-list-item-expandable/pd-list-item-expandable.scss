@@ -1,0 +1,54 @@
+:host {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    background-color: var(--pd-list-background, transparent);
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
+.pd-list-item-expandable-status {
+    width: 3.125em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pd-list-item-expandable-content {
+    padding: 0.75rem;
+    flex: 1 1 auto;
+}
+
+.pd-list-item-expandable-additional-content-wrapper {
+    grid-column: 1 / span 3;
+    transition: height 0.3s ease-in-out;
+    height: auto;
+
+    .pd-list-item-expandable-additional-content {
+        padding: 0 0.75rem 0.75rem 0.75rem;
+    }
+}
+
+.pd-list-item-expandable-expand {
+    background-color: transparent;
+    border: none;
+    fill: $cyan-9;
+    cursor: pointer;
+
+    &:hover {
+        fill: $cyan-6;
+    }
+
+    &:focus {
+        fill: $focus;
+    }
+}
+
+.pd-list-item-expandable-status + .pd-list-item-expandable-content {
+    padding: 0.75rem 0.75rem 0.75rem 0;
+}
