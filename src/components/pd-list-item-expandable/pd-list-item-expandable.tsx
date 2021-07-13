@@ -17,11 +17,19 @@ export class PdListItemExpandable {
     /**
      * Expands / collapses the panel content
      */
-    @Prop() collapsed: boolean = false;
+    @Prop() collapsed: boolean = true;
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
         collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
+    }
+
+    public componentDidLoad() {
+        // start collapsed
+        if (this.collapsed) {
+            this.contentWrapperElement.style.height = '0';
+            this.contentWrapperElement.style.overflow = 'hidden';
+        }
     }
 
     public render() {

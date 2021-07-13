@@ -10,6 +10,7 @@ import { Options, DateOption, BaseOptions } from 'flatpickr/dist/types/options';
 })
 export class Datepicker {
     @Element() element: HTMLElement;
+    private contentWrapperElement: HTMLElement;
 
     private flatpickr: Instance;
 
@@ -124,11 +125,7 @@ export class Datepicker {
     }>;
 
     public componentDidLoad() {
-        const element = this.element.shadowRoot.querySelector('.wrapper');
-        this.flatpickr = flatpickr(
-            element,
-            Object.assign(this.defaultConfig, { ...this.config, inline: this.readonly }),
-        );
+        this.flatpickr = flatpickr(this.contentWrapperElement, Object.assign(this.defaultConfig, this.config));
 
         if (this.date) this.setDate(this.date);
     }
@@ -144,12 +141,13 @@ export class Datepicker {
                     }}
                 >
                     {this.renderLabel()}
-                    <div class="wrapper">
+                    <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">
                         <pd-input
                             class="pd-datepicker-input"
                             disabled={this.disabled}
                             readonly={this.readonly}
                             required={this.required}
+                            tabindex={this.readonly ? '-1' : null} // this is not an optimal solution as it removes ability to copy&paste with focus
                             data-input
                         />
                         {this.renderIcon()}
@@ -167,7 +165,7 @@ export class Datepicker {
 
     private renderIcon() {
         if (!this.icon) return;
-        return <pd-icon class="pd-datepicker-icon" name="calendar" onClick={this.onClickIcon} size={2.4}></pd-icon>;
+        return <pd-icon class="pd-datepicker-icon" name="calendar" data-toggle size={2.4}></pd-icon>;
     }
 
     private onClickIcon = (ev: Event) => {

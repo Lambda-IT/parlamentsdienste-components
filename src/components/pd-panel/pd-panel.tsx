@@ -35,6 +35,7 @@ export class Panel {
         // start collapsed
         if (this.collapsed) {
             this.contentWrapperElement.style.height = '0';
+            this.contentWrapperElement.style.overflow = 'hidden';
         }
     }
 
