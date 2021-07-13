@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description               | Type                                            | Default     |
-| -------- | --------- | ------------------------- | ----------------------------------------------- | ----------- |
-| `status` | `status`  | Status icon for list item | `"danger" \| "success" \| "unset" \| "warning"` | `undefined` |
+| Property | Attribute | Description               | Type                                                      | Default     |
+| -------- | --------- | ------------------------- | --------------------------------------------------------- | ----------- |
+| `status` | `status`  | Status icon for list item | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
 
 
 ## Dependencies

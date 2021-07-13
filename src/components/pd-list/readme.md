@@ -23,11 +23,12 @@
 ```
 
 <br><br>
+
 ### vuejs Sample
 
 ```html
 <pd-list>
-    <pd-list-item v-for="geschaeft in geschaeftsListe" :key="geschaeft.id" :status="geschaeft.status" >
+    <pd-list-item v-for="geschaeft in geschaeftsListe" :key="geschaeft.id" :status="geschaeft.status">
         <p class="mb-1">{{geschaeft.id}}</p>
         <h5 class="mb-1">{{geschaeft.title}}</h5>
         <p class="mb-1">{{geschaeft.description}}</p>
@@ -44,7 +45,6 @@
 
 <!-- Auto Generated Below -->
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

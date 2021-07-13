@@ -1,9 +1,13 @@
 import notes from './readme.md';
+import notesSidebarItem from '../pd-sidebar-item/readme.md';
 
 export default {
     title: 'Layout/Sidebar',
     parameters: {
-        notes,
+        notes: {
+            'Sidebar': notes,
+            'Sidebar Item': notesSidebarItem
+        },
     },
 };
 

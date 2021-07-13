@@ -1,4 +1,5 @@
 import notes from './readme.md';
+import notesDropdownItem from '../pd-dropdown-item/readme.md';
 
 export default {
     title: 'Forms + Inputs/Dropdown',
@@ -6,7 +7,10 @@ export default {
         actions: {
             handles: ['pd-change'],
         },
-        notes,
+        notes: {
+            'Dropdown': notes,
+            'Dropdown Item': notesDropdownItem
+        },
         argTypes: {
             items: { controls: { type: 'object' } },
             disabled: { controls: { type: 'boolean' } },

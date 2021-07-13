@@ -167,9 +167,4 @@ export class Datepicker {
         if (!this.icon) return;
         return <pd-icon class="pd-datepicker-icon" name="calendar" data-toggle size={2.4}></pd-icon>;
     }
-
-    private onClickIcon = (ev: Event) => {
-        ev.preventDefault();
-        this.flatpickr.open();
-    };
 }
