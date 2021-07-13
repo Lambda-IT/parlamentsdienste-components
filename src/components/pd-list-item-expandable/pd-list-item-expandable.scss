@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     background-color: var(--pd-list-background, transparent);
+    border-radius: 0.25rem;
+    align-items: center;
 }
 
 *,
@@ -34,18 +36,30 @@
     }
 }
 
-.pd-list-item-expandable-expand {
-    background-color: transparent;
-    border: none;
-    fill: $cyan-9;
-    cursor: pointer;
+.pd-list-item-expandable-actions {
+    display: flex;
+    padding-right: 0.75rem;
 
-    &:hover {
-        fill: $cyan-6;
+    .pd-list-item-expandable-expand,
+    .pd-list-item-expandable-edit {
+        background-color: transparent;
+        border: none;
+        fill: $cyan-9;
+        cursor: pointer;
+        padding: 0 0 0 0.125rem;
+        margin: 0;
+
+        &:hover {
+            fill: $cyan-6;
+        }
+
+        &:focus {
+            fill: $focus;
+        }
     }
 
-    &:focus {
-        fill: $focus;
+    .pd-list-item-expandable-menu {
+        --pd-menu-horizontal-padding: 0;
     }
 }
 

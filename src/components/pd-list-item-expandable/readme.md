@@ -22,33 +22,35 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property     | Attribute    | Description                           | Type                                                      | Default     |
-| ------------ | ------------ | ------------------------------------- | --------------------------------------------------------- | ----------- |
-| `collapsed`  | `collapsed`  | Expands / collapses the panel content | `boolean`                                                 | `true`      |
-| `edit`       | `edit`       |                                       | `boolean`                                                 | `false`     |
-| `expand`     | `expand`     |                                       | `boolean`                                                 | `false`     |
-| `expandable` | `expandable` |                                       | `boolean`                                                 | `false`     |
-| `menu`       | `menu`       |                                       | `boolean`                                                 | `false`     |
-| `status`     | `status`     | Status icon for list item             | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
+| Property     | Attribute    | Description                                                         | Type                                                      | Default     |
+| ------------ | ------------ | ------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
+| `collapsed`  | `collapsed`  | Expands / collapses the inner content of the list item              | `boolean`                                                 | `true`      |
+| `edit`       | `edit`       | Shows edit button                                                   | `boolean`                                                 | `false`     |
+| `expand`     | `expand`     | Shows expand button with simple event (no expandable inner content) | `boolean`                                                 | `false`     |
+| `expandable` | `expandable` | Shows expand (toggle) button for expandable inner content           | `boolean`                                                 | `false`     |
+| `menu`       | `menu`       | Shows menu button                                                   | `boolean`                                                 | `false`     |
+| `status`     | `status`     | Status icon for list item                                           | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
+
 
 ## Events
 
-| Event       | Description | Type                |
-| ----------- | ----------- | ------------------- |
-| `pd-edit`   |             | `CustomEvent<void>` |
-| `pd-expand` |             | `CustomEvent<void>` |
+| Event       | Description               | Type                |
+| ----------- | ------------------------- | ------------------- |
+| `pd-edit`   | Edit button click event   | `CustomEvent<void>` |
+| `pd-expand` | Expand button click event | `CustomEvent<void>` |
+
 
 ## Dependencies
 
 ### Depends on
 
--   [pd-icon](../pd-icon)
--   [pd-menu](../pd-menu)
+- [pd-icon](../pd-icon)
+- [pd-menu](../pd-menu)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-list-item-expandable --> pd-icon
@@ -57,6 +59,6 @@ graph TD;
   style pd-list-item-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
