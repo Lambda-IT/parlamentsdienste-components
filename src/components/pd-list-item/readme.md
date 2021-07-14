@@ -1,6 +1,10 @@
 # pd-list-item
 
+## Styles
 
+| Style                       | Default       | Description                   |
+| --------------------------- | ------------- | ----------------------------- |
+| `--pd-list-item-background` | `transparent` | background color of list item |
 
 <!-- Auto Generated Below -->
 

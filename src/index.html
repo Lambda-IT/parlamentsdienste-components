@@ -23,17 +23,16 @@
             }
 
             pd-list-item-expandable {
-                background: #fff;
+                --pd-list-item-background: #fff;
                 margin-bottom: 6px;
-                border-radius: 6px;
             }
         </style>
     </head>
     <body>
         <div class="example-components">
             <pd-list>
-                <pd-list-item-expandable status="success"
-                    >item 1
+                <pd-list-item-expandable status="success" edit expandable menu checked checkbox
+                    ><div>item 1</div>
                     <div slot="expandable">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
                         earum sed ducimus quo voluptate recusandae perferendis.

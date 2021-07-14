@@ -1,7 +1,7 @@
 :host {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    background-color: var(--pd-list-background, transparent);
+    grid-template-columns: auto auto 1fr auto;
+    background-color: var(--pd-list-item-background, transparent);
     border-radius: 0.25rem;
     align-items: center;
 }
@@ -12,6 +12,11 @@
     box-sizing: border-box;
     appearance: none;
     outline: none;
+}
+
+.pd-list-item-expandable-checkbox {
+    padding-left: 0.75rem;
+    --pd-checkbox-text-padding-left: 0;
 }
 
 .pd-list-item-expandable-status {

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, Watch, Event, EventEmitter, Listen } from '@stencil/core';
 import { PdStatus } from '../../interface';
 import { collapse, expand } from '../../utils/animation';
 
@@ -19,9 +19,10 @@ export class PdListItemExpandable {
      */
     @Prop() collapsed: boolean = true;
 
-    /**
-     * Shows edit button
-     */
+    /** Shows edit button */
+    @Prop() checkbox: boolean = false;
+
+    /** Shows edit button */
     @Prop() edit: boolean = false;
 
     /** Shows expand button with simple event (no expandable inner content) */
@@ -33,15 +34,26 @@ export class PdListItemExpandable {
     /** Shows expand (toggle) button for expandable inner content */
     @Prop() expandable: boolean = false;
 
+    /** Sets check state of the checkbox true/false */
+    @Prop() checked: boolean = false;
+
     /** Edit button click event */
     @Event({ eventName: 'pd-edit' }) pdEdit: EventEmitter<void>;
 
     /** Expand button click event */
     @Event({ eventName: 'pd-expand' }) pdExpand: EventEmitter<void>;
 
+    /** Expand button click event */
+    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<boolean>;
+
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
         collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
+    }
+
+    @Listen('pd-checked')
+    checkboxChecked(event: CustomEvent<boolean>) {
+        this.pdChecked.emit(event.detail);
     }
 
     public componentDidLoad() {
@@ -60,11 +72,16 @@ export class PdListItemExpandable {
     public render() {
         return (
             <Host>
+                <div class={{ 'pd-list-item-expandable-checkbox': this.checkbox }}>{this.renderCheckbox()}</div>
                 {this.renderStatus()}
                 <div class="pd-list-item-expandable-content">
                     <slot></slot>
                 </div>
-                <div class="pd-list-item-expandable-actions">
+                <div
+                    class={{
+                        'pd-list-item-expandable-actions': this.edit || this.expand || this.expandable || this.menu,
+                    }}
+                >
                     {this.renderEdit()}
                     {this.renderExpand()}
                     {this.renderMenu()}
@@ -128,5 +145,10 @@ export class PdListItemExpandable {
             default:
                 break;
         }
+    }
+
+    private renderCheckbox() {
+        if (!this.checkbox) return;
+        return <pd-checkbox checked={this.checked}></pd-checkbox>;
     }
 }

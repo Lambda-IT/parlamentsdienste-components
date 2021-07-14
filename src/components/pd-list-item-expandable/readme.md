@@ -6,7 +6,7 @@
 
 ```html
 <pd-list class="m-3">
-    <pd-list-item-expandable edit expandable expand menu status="success" style="--pd-list-background: #fff">
+    <pd-list-item-expandable checkbox edit expandable expand menu status="success" style="--pd-list-background: #fff">
         <div>16.3112</div>
         <a>WBK-NR: Antrag auf Ablehnung </a>
         <div slot="expandable">Expandable Content</div>
@@ -20,6 +20,12 @@
 </pd-list>
 ```
 
+## Styles
+
+| Style                       | Default       | Description                   |
+| --------------------------- | ------------- | ----------------------------- |
+| `--pd-list-item-background` | `transparent` | background color of list item |
+
 <!-- Auto Generated Below -->
 
 
@@ -27,6 +33,8 @@
 
 | Property     | Attribute    | Description                                                         | Type                                                      | Default     |
 | ------------ | ------------ | ------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
+| `checkbox`   | `checkbox`   | Shows edit button                                                   | `boolean`                                                 | `false`     |
+| `checked`    | `checked`    | Sets check state of the checkbox true/false                         | `boolean`                                                 | `false`     |
 | `collapsed`  | `collapsed`  | Expands / collapses the inner content of the list item              | `boolean`                                                 | `true`      |
 | `edit`       | `edit`       | Shows edit button                                                   | `boolean`                                                 | `false`     |
 | `expand`     | `expand`     | Shows expand button with simple event (no expandable inner content) | `boolean`                                                 | `false`     |
@@ -37,10 +45,11 @@
 
 ## Events
 
-| Event       | Description               | Type                |
-| ----------- | ------------------------- | ------------------- |
-| `pd-edit`   | Edit button click event   | `CustomEvent<void>` |
-| `pd-expand` | Expand button click event | `CustomEvent<void>` |
+| Event        | Description               | Type                   |
+| ------------ | ------------------------- | ---------------------- |
+| `pd-checked` | Expand button click event | `CustomEvent<boolean>` |
+| `pd-edit`    | Edit button click event   | `CustomEvent<void>`    |
+| `pd-expand`  | Expand button click event | `CustomEvent<void>`    |
 
 
 ## Dependencies
@@ -49,12 +58,14 @@
 
 - [pd-icon](../pd-icon)
 - [pd-menu](../pd-menu)
+- [pd-checkbox](../pd-checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-list-item-expandable --> pd-icon
   pd-list-item-expandable --> pd-menu
+  pd-list-item-expandable --> pd-checkbox
   pd-menu --> pd-icon
   style pd-list-item-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
