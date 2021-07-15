@@ -25,14 +25,15 @@ export class PanelHeader {
     /**
      * Update panel collapsed state
      */
-    private toggle() {
+    private toggle(e: Event) {
+        e.stopPropagation();
         this.collapsed = !this.collapsed;
         this.panel.collapsed = this.collapsed;
     }
 
     public render() {
         return (
-            <Host class={{ 'pd-panel-header-collapsed': this.collapsed }}>
+            <Host class={{ 'pd-panel-header-collapsed': this.collapsed }} onClick={(e) => this.toggle(e)}>
                 <div class="pd-panel-header-content">
                     <slot></slot>
                 </div>
@@ -45,7 +46,7 @@ export class PanelHeader {
         if (!this.collapsible) return;
 
         return (
-            <div class="pd-panel-header-collapse" onClick={() => this.toggle()}>
+            <div class="pd-panel-header-collapse" onClick={(e) => this.toggle(e)}>
                 <pd-icon name="expand" size={1.2} rotate={this.collapsed ? 0 : 180}></pd-icon>
             </div>
         );
