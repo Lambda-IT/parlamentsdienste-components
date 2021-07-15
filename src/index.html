@@ -30,6 +30,15 @@
     </head>
     <body>
         <div class="example-components">
+            <pd-alert color="warning" action-text="Mehr anzeigen" expandable closable>
+                <div>Info: A simple primary alert—check it out!</div>
+                <div slot="expandable">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
+                    adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
+                    adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim harum esse
+                    repellat.
+                </div>
+            </pd-alert>
             <pd-list>
                 <pd-list-item-expandable status="success" edit expandable menu checked checkbox
                     ><div>item 1</div>
@@ -183,7 +192,6 @@
                 >A simple primary alert—check it out!</pd-alert
             >
             <pd-search placeholder="search..." id="pd-search-0"></pd-search>
-            <pd-alert color="info">Info: A simple primary alert—check it out!</pd-alert>
             <pd-alert color="dark">Dark: A simple primary alert—check it out!</pd-alert>
             <pd-alert
                 color="light"

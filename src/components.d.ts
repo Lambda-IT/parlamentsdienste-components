@@ -10,10 +10,6 @@ import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
         /**
-          * Show action
-         */
-        "action": boolean;
-        /**
           * A link displayed to the right side of the alert
          */
         "actionHref": string;
@@ -34,9 +30,13 @@ export namespace Components {
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
-          * A headline displayed above the given text
+          * Enable expandable content
          */
-        "headline": string;
+        "expandable": boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded": boolean;
         /**
           * Hide alert icon
          */
@@ -229,7 +229,7 @@ export namespace Components {
         /**
           * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
          */
-        "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
+        "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
         /**
           * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates. Optionally, pass true as the second argument to force any onChange events to fire. And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
          */
@@ -1130,10 +1130,6 @@ declare global {
 declare namespace LocalJSX {
     interface PdAlert {
         /**
-          * Show action
-         */
-        "action"?: boolean;
-        /**
           * A link displayed to the right side of the alert
          */
         "actionHref"?: string;
@@ -1154,17 +1150,29 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
-          * A headline displayed above the given text
+          * Enable expandable content
          */
-        "headline"?: string;
+        "expandable"?: boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded"?: boolean;
         /**
           * Hide alert icon
          */
         "hideIcon"?: boolean;
         /**
-          * Emitted when action closed button was pressed.
+          * Emitted when action button was pressed.
+         */
+        "onPd-action"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when close button was pressed.
          */
         "onPd-closed"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when inner content is expanded/collapsed.
+         */
+        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdBackdrop {
         "onPd-tap"?: (event: CustomEvent<void>) => void;
@@ -1605,9 +1613,13 @@ declare namespace LocalJSX {
          */
         "menu"?: boolean;
         /**
-          * Expand button click event
+          * Checkbox checked event
          */
         "onPd-checked"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Inner content collapsed/expanded
+         */
+        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
         /**
           * Edit button click event
          */

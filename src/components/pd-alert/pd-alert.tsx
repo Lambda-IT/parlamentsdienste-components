@@ -1,4 +1,5 @@
-import { Component, h, Prop, EventEmitter, Event } from '@stencil/core';
+import { Component, h, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { collapse, expand } from '../../utils/animation';
 
 @Component({
     tag: 'pd-alert',
@@ -6,65 +7,94 @@ import { Component, h, Prop, EventEmitter, Event } from '@stencil/core';
     shadow: true,
 })
 export class PdAlert {
-    /**
-     * Color schema used for the alert
-     */
+    private contentWrapperElement: HTMLElement;
+
+    /** Color schema used for the alert */
     @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
 
-    /**
-     * Display an option to close the alert
-     */
+    /** Display an option to close the alert */
     @Prop() closable: boolean = false;
 
-    /**
-     * Show action
-     */
-    @Prop() action: boolean = false;
-
-    /**
-     * Text to show on action
-     */
+    /** Text to show on action */
     @Prop() actionText: string;
 
-    /**
-     * A link displayed to the right side of the alert
-     */
+    /** A link displayed to the right side of the alert */
     @Prop() actionHref: string;
 
-    /**
-     * A headline displayed above the given text
-     */
-    @Prop() headline: string;
-
-    /**
-     * Hide alert icon
-     */
-    @Prop() hideIcon: boolean = false;
-
-    /**
-     * Target for action href (eg. _blank)
-     */
+    /** Target for action href (eg. _blank) */
     @Prop() actionTarget: string = '_blank';
 
-    /**
-     * Emitted when action closed button was pressed.
-     */
+    /** Hide alert icon */
+    @Prop() hideIcon: boolean = false;
+
+    /** Emitted when close button was pressed. */
     @Event({ eventName: 'pd-closed' }) pdClosed!: EventEmitter<MouseEvent>;
+
+    /** Emitted when action button was pressed. */
+    @Event({ eventName: 'pd-action' }) pdAction!: EventEmitter<void>;
+
+    /** Emitted when inner content is expanded/collapsed. */
+    @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<boolean>;
+
+    /** Enable expandable content */
+    @Prop() expandable: boolean = false;
+
+    /** Expands / collapses the panel content */
+    @Prop() expanded: boolean = false;
+
+    @Watch('expanded')
+    valueChanged(expanded: boolean) {
+        expanded ? expand(this.contentWrapperElement) : collapse(this.contentWrapperElement);
+    }
+
+    public componentDidLoad() {
+        // start collapsed
+        if (!this.expanded) {
+            this.contentWrapperElement.style.height = '0';
+            this.contentWrapperElement.style.overflow = 'hidden';
+        }
+    }
+
+    private handleAction() {
+        if (this.expandable) this.expanded = !this.expanded;
+        if (this.expandable) this.pdCollapsed.emit(!this.expanded);
+        this.pdAction.emit();
+    }
 
     public render() {
         return (
-            <div class={`pd-alert pd-alert-${this.color}`}>
+            <div
+                class={{
+                    'pd-alert': true,
+                    [`pd-alert-${this.color}`]: true,
+                    'pd-alert-has-status':
+                        !this.hideIcon &&
+                        (this.color === 'danger' ||
+                            this.color === 'success' ||
+                            this.color === 'warning' ||
+                            this.color === 'info'),
+                }}
+            >
                 {this.renderIcon()}
                 <div class="pd-alert-text">
-                    {this.renderHeadline()}
-                    <div>
-                        <slot></slot>
-                    </div>
+                    <slot></slot>
                 </div>
                 <div class="pd-alert-action">
                     {this.renderAction()}
                     {this.renderClose()}
                 </div>
+                <div class="pd-alert-expandable-content-wrapper" ref={(el) => (this.contentWrapperElement = el)}>
+                    {this.renderExpandable()}
+                </div>
+            </div>
+        );
+    }
+
+    private renderExpandable() {
+        if (!this.expandable) return;
+        return (
+            <div class="pd-alert-expandable-content">
+                <slot name="expandable"></slot>
             </div>
         );
     }
@@ -72,13 +102,13 @@ export class PdAlert {
     private renderAction() {
         const { actionHref, actionText, actionTarget } = this;
 
-        if (!this.action) return;
+        if (!this.actionText) return;
 
         const TagType = actionHref ? 'a' : 'button';
         const typeAttrs = TagType === 'button' ? { type: 'button' } : { href: actionHref, target: actionTarget };
 
         return (
-            <TagType class="pd-alert-action-text" {...typeAttrs}>
+            <TagType class="pd-alert-action-text" {...typeAttrs} onClick={() => this.handleAction()}>
                 {actionText}
             </TagType>
         );
@@ -87,11 +117,6 @@ export class PdAlert {
     private renderClose() {
         if (!this.closable) return;
         return <pd-icon onClick={this.pdClosed.emit} class="pd-alert-action-cancel" name="close" size={2}></pd-icon>;
-    }
-
-    private renderHeadline() {
-        if (!this.headline) return;
-        return <h1 class="pd-alert-headline">{this.headline}</h1>;
     }
 
     private renderIcon() {
