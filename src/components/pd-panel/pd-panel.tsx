@@ -8,7 +8,7 @@ import { expand, collapse } from '../../utils/animation';
 })
 export class Panel {
     @Element() element!: HTMLElement;
-    private contentWrapper: HTMLElement;
+    private contentWrapperElement: HTMLElement;
 
     /**
      * Expands / collapses the panel content
@@ -28,14 +28,14 @@ export class Panel {
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
         this.pdCollapsed.emit({ collapsed });
-        collapsed ? collapse(this.contentWrapper) : expand(this.contentWrapper);
+        collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
     }
 
     public componentDidLoad() {
-        this.contentWrapper = this.element.shadowRoot.querySelector('.pd-panel-content-wrapper');
         // start collapsed
         if (this.collapsed) {
-            this.contentWrapper.style.height = '0';
+            this.contentWrapperElement.style.height = '0';
+            this.contentWrapperElement.style.overflow = 'hidden';
         }
     }
 
@@ -44,6 +44,7 @@ export class Panel {
             <Host>
                 <slot name="header"></slot>
                 <div
+                    ref={(el) => (this.contentWrapperElement = el)}
                     class={`pd-panel-content-wrapper ${
                         this.collapsed ? 'pd-panel-content-collapsed' : 'pd-panel-content-expanded'
                     }`}

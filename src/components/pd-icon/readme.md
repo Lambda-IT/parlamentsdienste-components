@@ -28,6 +28,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute      | Description                                    | Type                 | Default     |
@@ -40,28 +41,29 @@
 | `spinReverse` | `spin-reverse` | change animation direction                     | `boolean`            | `false`     |
 | `src`         | `src`          | Specifies the `src` url of an SVG file to use. | `string`             | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
--   [pd-alert](../pd-alert)
--   [pd-chip](../pd-chip)
--   [pd-combobox](../pd-combobox)
--   [pd-datepicker](../pd-datepicker)
--   [pd-dropdown](../pd-dropdown)
--   [pd-list-item](../pd-list-item)
--   [pd-menu](../pd-menu)
--   [pd-modal](../pd-modal)
--   [pd-navbar](../pd-navbar)
--   [pd-panel-header](../pd-panel-header)
--   [pd-search](../pd-search)
--   [pd-sidebar-item](../pd-sidebar-item)
--   [pd-table](../pd-table)
--   [pd-table-filter](../pd-table-filter)
--   [pd-toast](../pd-toast)
+ - [pd-alert](../pd-alert)
+ - [pd-chip](../pd-chip)
+ - [pd-combobox](../pd-combobox)
+ - [pd-datepicker](../pd-datepicker)
+ - [pd-dropdown](../pd-dropdown)
+ - [pd-list-item](../pd-list-item)
+ - [pd-list-item-expandable](../pd-list-item-expandable)
+ - [pd-menu](../pd-menu)
+ - [pd-modal](../pd-modal)
+ - [pd-navbar](../pd-navbar)
+ - [pd-panel-header](../pd-panel-header)
+ - [pd-search](../pd-search)
+ - [pd-sidebar-item](../pd-sidebar-item)
+ - [pd-table](../pd-table)
+ - [pd-table-filter](../pd-table-filter)
+ - [pd-toast](../pd-toast)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
@@ -70,6 +72,7 @@ graph TD;
   pd-datepicker --> pd-icon
   pd-dropdown --> pd-icon
   pd-list-item --> pd-icon
+  pd-list-item-expandable --> pd-icon
   pd-menu --> pd-icon
   pd-modal --> pd-icon
   pd-navbar --> pd-icon
@@ -82,6 +85,6 @@ graph TD;
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

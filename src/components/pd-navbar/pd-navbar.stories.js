@@ -1,4 +1,5 @@
 import notes from './readme.md';
+import notesNavbarItem from '../pd-navbar-item/readme.md';
 
 export default {
     title: 'Layout/Navbar',
@@ -7,7 +8,10 @@ export default {
         actions: {
             handles: ['pd-menu'],
         },
-        notes,
+        notes: {
+            'Navbar': notes,
+            'Navbar Item': notesNavbarItem
+        },
     },
     argTypes: {
         mobileBreakpoint: { control: { type: 'number' } },

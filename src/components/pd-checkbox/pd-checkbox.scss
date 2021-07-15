@@ -200,5 +200,5 @@
 }
 
 .pd-checkbox-text {
-    padding-left: 0.625em;
+    padding-left: var(--pd-checkbox-text-padding-left, 0.625rem);
 }

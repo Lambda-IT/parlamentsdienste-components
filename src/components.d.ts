@@ -229,7 +229,7 @@ export namespace Components {
         /**
           * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
          */
-        "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook | import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/projects/_lambda/parlamentsdienste-components/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
+        "set": (option: "allowInput" | "altFormat" | "altInput" | "altInputClass" | "animate" | "appendTo" | "ariaDateFormat" | "clickOpens" | "closeOnSelect" | "conjunction" | "dateFormat" | "defaultDate" | "defaultHour" | "defaultMinute" | "defaultSeconds" | "disable" | "disableMobile" | "enable" | "enableSeconds" | "enableTime" | "errorHandler" | "formatDate" | "getWeek" | "hourIncrement" | "ignoredFocusElements" | "inline" | "locale" | "maxDate" | "maxTime" | "minDate" | "minTime" | "minuteIncrement" | "mode" | "monthSelectorType" | "nextArrow" | "noCalendar" | "now" | "onChange" | "onClose" | "onDayCreate" | "onDestroy" | "onKeyDown" | "onMonthChange" | "onOpen" | "onParseConfig" | "onReady" | "onValueUpdate" | "onYearChange" | "onPreCalendarPosition" | "parseDate" | "plugins" | "position" | "positionElement" | "prevArrow" | "shorthandCurrentMonth" | "static" | "showMonths" | "time_24hr" | "weekNumbers" | "wrap" | { allowInput?: boolean; altFormat?: string; altInput?: boolean; altInputClass?: string; animate?: boolean; appendTo?: HTMLElement; ariaDateFormat?: string; clickOpens?: boolean; closeOnSelect?: boolean; conjunction?: string; dateFormat?: string; defaultDate?: string | number | Date | DateOption[]; defaultHour?: number; defaultMinute?: number; defaultSeconds?: number; disable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; disableMobile?: boolean; enable?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").DateLimit<DateOption>[]; enableSeconds?: boolean; enableTime?: boolean; errorHandler?: (e: Error) => void; formatDate?: (date: Date, format: string, locale: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").Locale) => string; getWeek?: (date: Date) => string | number; hourIncrement?: number; ignoredFocusElements?: HTMLElement[]; inline?: boolean; locale?: "ar" | "at" | "az" | "be" | "bg" | "bn" | "bs" | "cat" | "cs" | "cy" | "da" | "de" | "default" | "en" | "eo" | "es" | "et" | "fa" | "fi" | "fo" | "fr" | "gr" | "he" | "hi" | "hr" | "hu" | "id" | "is" | "it" | "ja" | "ka" | "ko" | "km" | "kz" | "lt" | "lv" | "mk" | "mn" | "ms" | "my" | "nl" | "no" | "pa" | "pl" | "pt" | "ro" | "ru" | "si" | "sk" | "sl" | "sq" | "sr" | "sv" | "th" | "tr" | "uk" | "vn" | "zh" | "zh_tw" | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/locale").CustomLocale; maxDate?: DateOption; maxTime?: DateOption; minDate?: DateOption; minTime?: DateOption; minuteIncrement?: number; mode?: "single" | "multiple" | "range" | "time"; monthSelectorType?: "static" | "dropdown"; nextArrow?: string; noCalendar?: boolean; now?: DateOption; onChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onClose?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDayCreate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onDestroy?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onKeyDown?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onMonthChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onOpen?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onParseConfig?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onReady?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onValueUpdate?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onYearChange?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; onPreCalendarPosition?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook | import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Hook[]; parseDate?: (date: string, format: string) => Date; plugins?: import("D:/Projects/Parlamentsdienste/componentlibrary/node_modules/flatpickr/dist/types/options").Plugin<{}>[]; position?: "auto" | "above" | "below"; positionElement?: Element; prevArrow?: string; shorthandCurrentMonth?: boolean; static?: boolean; showMonths?: number; time_24hr?: boolean; weekNumbers?: boolean; wrap?: boolean; }, value?: any) => Promise<void>;
         /**
           * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates. Optionally, pass true as the second argument to force any onChange events to fire. And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
          */
@@ -434,6 +434,40 @@ export namespace Components {
     interface PdList {
     }
     interface PdListItem {
+        /**
+          * Status icon for list item
+         */
+        "status": PdStatus;
+    }
+    interface PdListItemExpandable {
+        /**
+          * Shows edit button
+         */
+        "checkbox": boolean;
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked": boolean;
+        /**
+          * Expands / collapses the inner content of the list item
+         */
+        "collapsed": boolean;
+        /**
+          * Shows edit button
+         */
+        "edit": boolean;
+        /**
+          * Shows expand button with simple event (no expandable inner content)
+         */
+        "expand": boolean;
+        /**
+          * Shows expand (toggle) button for expandable inner content
+         */
+        "expandable": boolean;
+        /**
+          * Shows menu button
+         */
+        "menu": boolean;
         /**
           * Status icon for list item
          */
@@ -915,6 +949,12 @@ declare global {
         prototype: HTMLPdListItemElement;
         new (): HTMLPdListItemElement;
     };
+    interface HTMLPdListItemExpandableElement extends Components.PdListItemExpandable, HTMLStencilElement {
+    }
+    var HTMLPdListItemExpandableElement: {
+        prototype: HTMLPdListItemExpandableElement;
+        new (): HTMLPdListItemExpandableElement;
+    };
     interface HTMLPdMenuElement extends Components.PdMenu, HTMLStencilElement {
     }
     var HTMLPdMenuElement: {
@@ -1062,6 +1102,7 @@ declare global {
         "pd-input": HTMLPdInputElement;
         "pd-list": HTMLPdListElement;
         "pd-list-item": HTMLPdListItemElement;
+        "pd-list-item-expandable": HTMLPdListItemExpandableElement;
         "pd-menu": HTMLPdMenuElement;
         "pd-menu-item": HTMLPdMenuItemElement;
         "pd-modal": HTMLPdModalElement;
@@ -1529,6 +1570,52 @@ declare namespace LocalJSX {
     interface PdList {
     }
     interface PdListItem {
+        /**
+          * Status icon for list item
+         */
+        "status"?: PdStatus;
+    }
+    interface PdListItemExpandable {
+        /**
+          * Shows edit button
+         */
+        "checkbox"?: boolean;
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked"?: boolean;
+        /**
+          * Expands / collapses the inner content of the list item
+         */
+        "collapsed"?: boolean;
+        /**
+          * Shows edit button
+         */
+        "edit"?: boolean;
+        /**
+          * Shows expand button with simple event (no expandable inner content)
+         */
+        "expand"?: boolean;
+        /**
+          * Shows expand (toggle) button for expandable inner content
+         */
+        "expandable"?: boolean;
+        /**
+          * Shows menu button
+         */
+        "menu"?: boolean;
+        /**
+          * Expand button click event
+         */
+        "onPd-checked"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Edit button click event
+         */
+        "onPd-edit"?: (event: CustomEvent<void>) => void;
+        /**
+          * Expand button click event
+         */
+        "onPd-expand"?: (event: CustomEvent<void>) => void;
         /**
           * Status icon for list item
          */
@@ -2020,6 +2107,7 @@ declare namespace LocalJSX {
         "pd-input": PdInput;
         "pd-list": PdList;
         "pd-list-item": PdListItem;
+        "pd-list-item-expandable": PdListItemExpandable;
         "pd-menu": PdMenu;
         "pd-menu-item": PdMenuItem;
         "pd-modal": PdModal;
@@ -2062,6 +2150,7 @@ declare module "@stencil/core" {
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
             "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
+            "pd-list-item-expandable": LocalJSX.PdListItemExpandable & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;
             "pd-menu": LocalJSX.PdMenu & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
             "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;

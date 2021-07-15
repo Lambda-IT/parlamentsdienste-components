@@ -9,9 +9,8 @@ import { createPopper, Instance } from '@popperjs/core';
     shadow: true,
 })
 export class Search {
-    private nativeInput?: HTMLInputElement;
-
     @Element() element!: HTMLElement;
+    private inputElement?: HTMLInputElement;
     private menuElement: HTMLElement;
     private labelElement: HTMLElement;
     private popper: Instance;
@@ -109,8 +108,6 @@ export class Search {
     }
 
     protected componentDidLoad() {
-        this.menuElement = this.element.shadowRoot.querySelector('.pd-search-dropdown') as HTMLElement;
-        this.labelElement = this.element.shadowRoot.querySelector('.pd-search-label') as HTMLElement;
         this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
     }
 
@@ -180,8 +177,8 @@ export class Search {
      */
     @Method()
     public async setFocus() {
-        if (this.nativeInput) {
-            this.nativeInput.focus();
+        if (this.inputElement) {
+            this.inputElement.focus();
         }
     }
 
@@ -250,6 +247,7 @@ export class Search {
         return (
             <Host role="search">
                 <label
+                    ref={(el) => (this.labelElement = el)}
                     class={{
                         'pd-search-label': true,
                         'pd-search-disabled': this.disabled,
@@ -259,7 +257,7 @@ export class Search {
                     <div class="pd-search-input-wrapper">
                         <input
                             class="pd-search-input"
-                            ref={input => (this.nativeInput = input)}
+                            ref={(el) => (this.inputElement = el)}
                             disabled={this.disabled}
                             placeholder={this.placeholder || ''}
                             value={value}
@@ -284,6 +282,7 @@ export class Search {
     private renderDropdownItems() {
         return (
             <div
+                ref={(el) => (this.menuElement = el)}
                 class="pd-search-dropdown"
                 style={{
                     display: this.open ? 'block' : 'none',

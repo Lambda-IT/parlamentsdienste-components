@@ -1,9 +1,13 @@
 import notes from './readme.md';
+import notesMenuItem from '../pd-menu-item/readme.md';
 
 export default {
     title: 'Interactions/Menu',
     parameters: {
-        notes,
+        notes: {
+            'Menu': notes,
+            'Menu Item': notesMenuItem
+        }
     },
     argTypes: {
         items: { control: { type: 'object' } },

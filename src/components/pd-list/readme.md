@@ -23,11 +23,12 @@
 ```
 
 <br><br>
+
 ### vuejs Sample
 
 ```html
 <pd-list>
-    <pd-list-item v-for="geschaeft in geschaeftsListe" :key="geschaeft.id" :status="geschaeft.status" >
+    <pd-list-item v-for="geschaeft in geschaeftsListe" :key="geschaeft.id" :status="geschaeft.status">
         <p class="mb-1">{{geschaeft.id}}</p>
         <h5 class="mb-1">{{geschaeft.title}}</h5>
         <p class="mb-1">{{geschaeft.description}}</p>
@@ -37,10 +38,9 @@
 
 ## Styles
 
-| Style                    | Default       | Description                        |
-| ------------------------ | ------------- | ---------------------------------- |
-| `--pd-list-border-color` | `gray-3`      | bottom border color of a list item |
-| `--pd-list-background`   | `transparent` | background color of a list item    |
+| Style                    | Default  | Description                        |
+| ------------------------ | -------- | ---------------------------------- |
+| `--pd-list-border-color` | `gray-3` | bottom border color of a list item |
 
 <!-- Auto Generated Below -->
 
