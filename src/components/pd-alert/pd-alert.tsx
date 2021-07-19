@@ -18,6 +18,9 @@ export class PdAlert {
     /** Text to show on action */
     @Prop() actionText: string;
 
+    /** Text to show on expanded action */
+    @Prop() actionTextExpanded: string;
+
     /** A link displayed to the right side of the alert */
     @Prop() actionHref: string;
 
@@ -100,7 +103,7 @@ export class PdAlert {
     }
 
     private renderAction() {
-        const { actionHref, actionText, actionTarget } = this;
+        const { actionHref, actionText, actionTarget, actionTextExpanded } = this;
 
         if (!this.actionText) return;
 
@@ -109,7 +112,7 @@ export class PdAlert {
 
         return (
             <TagType class="pd-alert-action-text" {...typeAttrs} onClick={() => this.handleAction()}>
-                {actionText}
+                {!this.expanded ? actionText : actionTextExpanded}
             </TagType>
         );
     }

@@ -39,13 +39,15 @@ Basic.args = {
     actionHref: 'http://www.google.ch',
     actionTarget: '_blank',
     hideIcon: false,
-    color: "primary"
+    color: 'primary',
 };
 
 Basic.argTypes = {
     actionTarget: { control: { type: 'select', options: ['', '_blank'] } },
-    color: { control: { type: 'select', options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'] } },
-}
+    color: {
+        control: { type: 'select', options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'] },
+    },
+};
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -109,11 +111,6 @@ Color.args = {
 
 ///////////////////////////////////////////////////////////////////////////
 
-
-        
-        
-        
-
 export const Expandable = (args) => `
     <pd-alert 
         ${args.expandable ? 'expandable' : ''}
@@ -121,6 +118,7 @@ export const Expandable = (args) => `
         color="${args.color}"
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
+        action-text-expanded="${args.actionTextExpanded}"
         ${args.closable ? 'closable' : ''}>
         <div>Info: A simple primary alert—check it out!</div>
         <div slot="expandable">
@@ -137,10 +135,13 @@ Expandable.args = {
     expanded: false,
     closable: true,
     actionText: 'show more',
+    actionTextExpanded: 'show less',
     hideIcon: false,
-    color: "info"
-}
+    color: 'info',
+};
 
 Expandable.argTypes = {
-    color: { control: { type: 'select', options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'] } },
-}
+    color: {
+        control: { type: 'select', options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'] },
+    },
+};

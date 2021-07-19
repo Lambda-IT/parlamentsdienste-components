@@ -43,16 +43,17 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                                     | Type                                                                             | Default     |
-| -------------- | --------------- | ----------------------------------------------- | -------------------------------------------------------------------------------- | ----------- |
-| `actionHref`   | `action-href`   | A link displayed to the right side of the alert | `string`                                                                         | `undefined` |
-| `actionTarget` | `action-target` | Target for action href (eg. _blank)             | `string`                                                                         | `'_blank'`  |
-| `actionText`   | `action-text`   | Text to show on action                          | `string`                                                                         | `undefined` |
-| `closable`     | `closable`      | Display an option to close the alert            | `boolean`                                                                        | `false`     |
-| `color`        | `color`         | Color schema used for the alert                 | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
-| `expandable`   | `expandable`    | Enable expandable content                       | `boolean`                                                                        | `false`     |
-| `expanded`     | `expanded`      | Expands / collapses the panel content           | `boolean`                                                                        | `false`     |
-| `hideIcon`     | `hide-icon`     | Hide alert icon                                 | `boolean`                                                                        | `false`     |
+| Property             | Attribute              | Description                                     | Type                                                                             | Default     |
+| -------------------- | ---------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------- | ----------- |
+| `actionHref`         | `action-href`          | A link displayed to the right side of the alert | `string`                                                                         | `undefined` |
+| `actionTarget`       | `action-target`        | Target for action href (eg. _blank)             | `string`                                                                         | `'_blank'`  |
+| `actionText`         | `action-text`          | Text to show on action                          | `string`                                                                         | `undefined` |
+| `actionTextExpanded` | `action-text-expanded` | Text to show on expanded action                 | `string`                                                                         | `undefined` |
+| `closable`           | `closable`             | Display an option to close the alert            | `boolean`                                                                        | `false`     |
+| `color`              | `color`                | Color schema used for the alert                 | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
+| `expandable`         | `expandable`           | Enable expandable content                       | `boolean`                                                                        | `false`     |
+| `expanded`           | `expanded`             | Expands / collapses the panel content           | `boolean`                                                                        | `false`     |
+| `hideIcon`           | `hide-icon`            | Hide alert icon                                 | `boolean`                                                                        | `false`     |
 
 
 ## Events
