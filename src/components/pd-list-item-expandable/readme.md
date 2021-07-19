@@ -26,6 +26,15 @@
 | --------------------------- | ------------- | ----------------------------- |
 | `--pd-list-item-background` | `transparent` | background color of list item |
 
+## Slots
+
+| Name         | Description                                    |
+| ------------ | ---------------------------------------------- |
+|              | default slot for list content                  |
+| action-left  | left of actions for additional action buttons  |
+| action-right | right of actions for additional action buttons |
+| expandable   | for additional, expandable content             |
+
 <!-- Auto Generated Below -->
 
 

@@ -86,9 +86,11 @@ export class PdListItemExpandable {
                         'pd-list-item-expandable-actions': this.edit || this.expand || this.expandable || this.menu,
                     }}
                 >
+                    <slot name="action-left"></slot>
                     {this.renderEdit()}
                     {this.renderExpand()}
                     {this.renderMenu()}
+                    <slot name="action-right"></slot>
                 </div>
                 <div
                     ref={(el) => (this.contentWrapperElement = el)}
