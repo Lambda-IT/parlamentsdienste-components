@@ -76,9 +76,12 @@ export class Chip {
                 )}
                 <slot></slot>
                 {type === 'toggle' && (
-                    <div class="pd-chip-icon pd-chip-icon-right" onClick={(e) => this.removeClicked(e)}>
+                    <button
+                        class="pd-chip-remove pd-chip-icon pd-chip-icon-right"
+                        onClick={(e) => this.removeClicked(e)}
+                    >
                         <pd-icon size={iconSize} name="close_bold"></pd-icon>
-                    </div>
+                    </button>
                 )}
             </button>
         );

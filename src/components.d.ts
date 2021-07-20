@@ -310,6 +310,14 @@ export namespace Components {
          */
         "flip": 'x' | 'y' | 'xy';
         /**
+          * description tag in svg for accessability
+         */
+        "iconDescription": string;
+        /**
+          * title tag in svg for accessability
+         */
+        "iconTitle": string;
+        /**
           * Name of an icon from the provided gallery
          */
         "name"?: string;
@@ -1445,6 +1453,14 @@ declare namespace LocalJSX {
           * Flip in X/Y direction
          */
         "flip"?: 'x' | 'y' | 'xy';
+        /**
+          * description tag in svg for accessability
+         */
+        "iconDescription"?: string;
+        /**
+          * title tag in svg for accessability
+         */
+        "iconTitle"?: string;
         /**
           * Name of an icon from the provided gallery
          */

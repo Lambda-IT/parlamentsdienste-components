@@ -6,6 +6,13 @@
     background-color: $white;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
 .pd-toast-header {
     display: flex;
     justify-content: space-between;
@@ -32,22 +39,34 @@
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+            align-self: center;
         }
 
-        .pd-toast-close {
-            fill: setcolor(primary, enabled);
+        .pd-toast-close-button {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            border: none;
             margin-left: 1em;
-            margin-right: -0.25em;
-            margin-top: -0.25em;
+            margin-right: -0.5em;
+            margin-top: -0.5em;
             cursor: pointer;
-            min-width: 1em;
 
-            &:hover {
-                fill: setcolor(primary, hover);
+            &:focus .pd-toast-close {
+                fill: $focus;
             }
 
-            &:active {
-                fill: setcolor(primary, pressed);
+            .pd-toast-close {
+                fill: setcolor(primary, enabled);
+                min-width: 1em;
+
+                &:hover {
+                    fill: setcolor(primary, hover);
+                }
+
+                &:active {
+                    fill: setcolor(primary, pressed);
+                }
             }
         }
     }

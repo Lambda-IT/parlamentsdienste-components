@@ -2,6 +2,13 @@
     display: block;
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
 .pd-timeline-date {
     display: flex;
     align-items: center;
@@ -80,6 +87,10 @@
 
             &:active {
                 color: $cyan-3;
+            }
+
+            &:focus {
+                color: $focus;
             }
         }
     }
