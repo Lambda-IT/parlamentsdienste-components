@@ -1,9 +1,13 @@
 import notes from './readme.md';
+import notesTableFilter from '../pd-table-filter/readme.md';
 
 export default {
     title: 'Interactions/Table',
     parameters: {
-        notes,
+        notes: {
+            'Table': notes,
+            'Table Filter': notesTableFilter
+        },
         actions: {
             handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete'],
         },

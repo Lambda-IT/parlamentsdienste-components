@@ -65,8 +65,6 @@ export class Menu {
     }
 
     protected componentDidLoad() {
-        this.menuElement = this.element.shadowRoot.querySelector('.pd-menu-content') as HTMLElement;
-        this.buttonElement = this.element.shadowRoot.querySelector('.pd-menu-button') as HTMLElement;
         this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     }
 
@@ -91,6 +89,7 @@ export class Menu {
             <Host>
                 <div class={{ 'pd-menu': true, 'pd-menu-inverted': this.invertColor }}>
                     <button
+                        ref={(el) => (this.buttonElement = el)}
                         class="pd-menu-button"
                         type="button"
                         aria-haspopup="true"
@@ -109,6 +108,7 @@ export class Menu {
     private renderMenu() {
         return (
             <div
+                ref={(el) => (this.menuElement = el)}
                 class={`pd-menu-content`}
                 style={{
                     display: this.isOpen ? 'block' : 'none',

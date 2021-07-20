@@ -76,7 +76,7 @@
 
 .pd-menu-content {
     background-color: $white;
-    z-index: 100;
+    z-index: 99;
     min-width: 250px;
     width: max-content;
     max-width: var(--pd-menu-max-width, undefined);

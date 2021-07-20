@@ -11,12 +11,25 @@
 #### Alert with action
 
 ```html
-<pd-alert action action-text="a button action">
+<pd-alert action-text="a button action">
     A simple alert with a button action
 </pd-alert>
-<pd-alert action action-text="a link action" action-href="...">
+<pd-alert action-text="a link action" action-href="...">
     A simple alert with a link action
 </pd-alert>
+```
+
+#### Expandable alert
+
+```html
+<pd-alert color="warning" action-text="Mehr anzeigen" expandable closable>
+    <div>Infobox Heading</div>
+    <div slot="expandable">
+        Expandable content
+    </div>
+</pd-alert>
+
+> The alert button
 ```
 
 ### vuejs Sample
@@ -30,23 +43,26 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                                     | Type                                                                             | Default     |
-| -------------- | --------------- | ----------------------------------------------- | -------------------------------------------------------------------------------- | ----------- |
-| `action`       | `action`        | Show action                                     | `boolean`                                                                        | `false`     |
-| `actionHref`   | `action-href`   | A link displayed to the right side of the alert | `string`                                                                         | `undefined` |
-| `actionTarget` | `action-target` | Target for action href (eg. _blank)             | `string`                                                                         | `'_blank'`  |
-| `actionText`   | `action-text`   | Text to show on action                          | `string`                                                                         | `undefined` |
-| `closable`     | `closable`      | Display an option to close the alert            | `boolean`                                                                        | `false`     |
-| `color`        | `color`         | Color schema used for the alert                 | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
-| `headline`     | `headline`      | A headline displayed above the given text       | `string`                                                                         | `undefined` |
-| `hideIcon`     | `hide-icon`     | Hide alert icon                                 | `boolean`                                                                        | `false`     |
+| Property             | Attribute              | Description                                     | Type                                                                             | Default     |
+| -------------------- | ---------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------- | ----------- |
+| `actionHref`         | `action-href`          | A link displayed to the right side of the alert | `string`                                                                         | `undefined` |
+| `actionTarget`       | `action-target`        | Target for action href (eg. _blank)             | `string`                                                                         | `'_blank'`  |
+| `actionText`         | `action-text`          | Text to show on action                          | `string`                                                                         | `undefined` |
+| `actionTextExpanded` | `action-text-expanded` | Text to show on expanded action                 | `string`                                                                         | `undefined` |
+| `closable`           | `closable`             | Display an option to close the alert            | `boolean`                                                                        | `false`     |
+| `color`              | `color`                | Color schema used for the alert                 | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
+| `expandable`         | `expandable`           | Enable expandable content                       | `boolean`                                                                        | `false`     |
+| `expanded`           | `expanded`             | Expands / collapses the panel content           | `boolean`                                                                        | `false`     |
+| `hideIcon`           | `hide-icon`            | Hide alert icon                                 | `boolean`                                                                        | `false`     |
 
 
 ## Events
 
-| Event       | Description                                    | Type                      |
-| ----------- | ---------------------------------------------- | ------------------------- |
-| `pd-closed` | Emitted when action closed button was pressed. | `CustomEvent<MouseEvent>` |
+| Event          | Description                                       | Type                      |
+| -------------- | ------------------------------------------------- | ------------------------- |
+| `pd-action`    | Emitted when action button was pressed.           | `CustomEvent<void>`       |
+| `pd-closed`    | Emitted when close button was pressed.            | `CustomEvent<MouseEvent>` |
+| `pd-collapsed` | Emitted when inner content is expanded/collapsed. | `CustomEvent<boolean>`    |
 
 
 ## Dependencies

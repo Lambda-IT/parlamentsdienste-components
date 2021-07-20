@@ -8,6 +8,7 @@
     border-top-right-radius: 0.25em;
     min-height: 3em;
     font-weight: 700;
+    cursor: pointer;
     transition: border-radius 0.3s ease-in-out;
 }
 
@@ -29,6 +30,5 @@
 .pd-panel-header-collapse {
     display: flex;
     align-items: center;
-    cursor: pointer;
     fill: $white;
 }

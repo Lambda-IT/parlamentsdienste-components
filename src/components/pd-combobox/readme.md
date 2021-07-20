@@ -60,6 +60,7 @@ interface DropdownItem {
 | `placeholder` | `placeholder` | Instructional text that shows before the input has a value.        | `string`         | `undefined` |
 | `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                       | `boolean`        | `false`     |
 | `required`    | `required`    | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`     |
+| `selectable`  | `selectable`  | If `true`, the combobox get a selected state like a dropdown.      | `boolean`        | `false`     |
 | `value`       | `value`       | The value of the input.                                            | `string`         | `''`        |
 
 
@@ -76,10 +77,30 @@ interface DropdownItem {
 
 ## Methods
 
+### `reset() => Promise<void>`
+
+Reset the selection of the dropdown
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setFocus() => Promise<void>`
 
 Sets focus on the specified `pd-input`. Use this method instead of the global
 `input.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setSelectedIndex(index: number) => Promise<void>`
+
+Set a preselected entry by index
 
 #### Returns
 

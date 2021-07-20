@@ -165,8 +165,6 @@ export class Dropdown {
     }
 
     protected componentDidLoad() {
-        this.menuElement = this.element.shadowRoot.querySelector('.pd-dropdown-menu') as HTMLElement;
-        this.buttonElement = this.element.shadowRoot.querySelector('.pd-dropdown-button') as HTMLElement;
         this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     }
 
@@ -207,6 +205,7 @@ export class Dropdown {
                 </label>
                 <div class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}>
                     <button
+                        ref={(el) => (this.buttonElement = el)}
                         class="pd-dropdown-button"
                         type="button"
                         aria-haspopup="true"
@@ -231,6 +230,7 @@ export class Dropdown {
     private renderDropDown() {
         return (
             <div
+                ref={(el) => (this.menuElement = el)}
                 class={`pd-dropdown-menu`}
                 style={{
                     display: this.open ? 'block' : 'none',

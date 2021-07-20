@@ -10,10 +10,6 @@ import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
         /**
-          * Show action
-         */
-        "action": boolean;
-        /**
           * A link displayed to the right side of the alert
          */
         "actionHref": string;
@@ -26,6 +22,10 @@ export namespace Components {
          */
         "actionText": string;
         /**
+          * Text to show on expanded action
+         */
+        "actionTextExpanded": string;
+        /**
           * Display an option to close the alert
          */
         "closable": boolean;
@@ -34,9 +34,13 @@ export namespace Components {
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
-          * A headline displayed above the given text
+          * Enable expandable content
          */
-        "headline": string;
+        "expandable": boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded": boolean;
         /**
           * Hide alert icon
          */
@@ -442,6 +446,40 @@ export namespace Components {
     interface PdList {
     }
     interface PdListItem {
+        /**
+          * Status icon for list item
+         */
+        "status": PdStatus;
+    }
+    interface PdListItemExpandable {
+        /**
+          * Shows edit button
+         */
+        "checkbox": boolean;
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked": boolean;
+        /**
+          * Expands / collapses the inner content of the list item
+         */
+        "collapsed": boolean;
+        /**
+          * Shows edit button
+         */
+        "edit": boolean;
+        /**
+          * Shows expand button with simple event (no expandable inner content)
+         */
+        "expand": boolean;
+        /**
+          * Shows expand (toggle) button for expandable inner content
+         */
+        "expandable": boolean;
+        /**
+          * Shows menu button
+         */
+        "menu": boolean;
         /**
           * Status icon for list item
          */
@@ -923,6 +961,12 @@ declare global {
         prototype: HTMLPdListItemElement;
         new (): HTMLPdListItemElement;
     };
+    interface HTMLPdListItemExpandableElement extends Components.PdListItemExpandable, HTMLStencilElement {
+    }
+    var HTMLPdListItemExpandableElement: {
+        prototype: HTMLPdListItemExpandableElement;
+        new (): HTMLPdListItemExpandableElement;
+    };
     interface HTMLPdMenuElement extends Components.PdMenu, HTMLStencilElement {
     }
     var HTMLPdMenuElement: {
@@ -1070,6 +1114,7 @@ declare global {
         "pd-input": HTMLPdInputElement;
         "pd-list": HTMLPdListElement;
         "pd-list-item": HTMLPdListItemElement;
+        "pd-list-item-expandable": HTMLPdListItemExpandableElement;
         "pd-menu": HTMLPdMenuElement;
         "pd-menu-item": HTMLPdMenuItemElement;
         "pd-modal": HTMLPdModalElement;
@@ -1097,10 +1142,6 @@ declare global {
 declare namespace LocalJSX {
     interface PdAlert {
         /**
-          * Show action
-         */
-        "action"?: boolean;
-        /**
           * A link displayed to the right side of the alert
          */
         "actionHref"?: string;
@@ -1113,6 +1154,10 @@ declare namespace LocalJSX {
          */
         "actionText"?: string;
         /**
+          * Text to show on expanded action
+         */
+        "actionTextExpanded"?: string;
+        /**
           * Display an option to close the alert
          */
         "closable"?: boolean;
@@ -1121,17 +1166,29 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
-          * A headline displayed above the given text
+          * Enable expandable content
          */
-        "headline"?: string;
+        "expandable"?: boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded"?: boolean;
         /**
           * Hide alert icon
          */
         "hideIcon"?: boolean;
         /**
-          * Emitted when action closed button was pressed.
+          * Emitted when action button was pressed.
+         */
+        "onPd-action"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when close button was pressed.
          */
         "onPd-closed"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when inner content is expanded/collapsed.
+         */
+        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdBackdrop {
         "onPd-tap"?: (event: CustomEvent<void>) => void;
@@ -1545,6 +1602,56 @@ declare namespace LocalJSX {
     interface PdList {
     }
     interface PdListItem {
+        /**
+          * Status icon for list item
+         */
+        "status"?: PdStatus;
+    }
+    interface PdListItemExpandable {
+        /**
+          * Shows edit button
+         */
+        "checkbox"?: boolean;
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked"?: boolean;
+        /**
+          * Expands / collapses the inner content of the list item
+         */
+        "collapsed"?: boolean;
+        /**
+          * Shows edit button
+         */
+        "edit"?: boolean;
+        /**
+          * Shows expand button with simple event (no expandable inner content)
+         */
+        "expand"?: boolean;
+        /**
+          * Shows expand (toggle) button for expandable inner content
+         */
+        "expandable"?: boolean;
+        /**
+          * Shows menu button
+         */
+        "menu"?: boolean;
+        /**
+          * Checkbox checked event
+         */
+        "onPd-checked"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Inner content collapsed/expanded
+         */
+        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Edit button click event
+         */
+        "onPd-edit"?: (event: CustomEvent<void>) => void;
+        /**
+          * Expand button click event
+         */
+        "onPd-expand"?: (event: CustomEvent<void>) => void;
         /**
           * Status icon for list item
          */
@@ -2036,6 +2143,7 @@ declare namespace LocalJSX {
         "pd-input": PdInput;
         "pd-list": PdList;
         "pd-list-item": PdListItem;
+        "pd-list-item-expandable": PdListItemExpandable;
         "pd-menu": PdMenu;
         "pd-menu-item": PdMenuItem;
         "pd-modal": PdModal;
@@ -2078,6 +2186,7 @@ declare module "@stencil/core" {
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
             "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
+            "pd-list-item-expandable": LocalJSX.PdListItemExpandable & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;
             "pd-menu": LocalJSX.PdMenu & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
             "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;

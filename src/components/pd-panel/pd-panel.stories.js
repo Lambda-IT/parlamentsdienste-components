@@ -1,4 +1,7 @@
 import notes from './readme.md';
+import notesPanelHeader from '../pd-panel-header/readme.md';
+import notesPanelContent from '../pd-panel-content/readme.md';
+import notesFooter from '../pd-panel-footer/readme.md';
 
 export default {
     title: 'Layout/Panel',
@@ -6,7 +9,12 @@ export default {
         actions: {
             handles: ['pd-collapsed'],
         },
-        notes,
+        notes: {
+            'Panel': notes,
+            'Panel Header': notesPanelHeader,
+            'Panel Content': notesPanelContent,
+            'Panel Footer': notesFooter,
+        },
     },
 };
 

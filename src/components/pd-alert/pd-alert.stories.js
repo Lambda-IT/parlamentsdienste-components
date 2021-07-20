@@ -4,18 +4,9 @@ export default {
     title: 'Dialogs/Alert',
     parameters: {
         actions: {
-            handles: ['pd-closed'],
+            handles: ['pd-closed', 'pd-action', 'pd-collapsed'],
         },
         notes,
-    },
-    argTypes: {
-        closable: { control: { type: 'boolean' } },
-        action: { control: { type: 'boolean' } },
-        actionText: { control: { type: 'text' } },
-        actionHref: { control: { type: 'text' } },
-        actionTarget: { control: { type: 'select', options: ['', '_blank'] } },
-        hideIcon: { control: { type: 'boolean' } },
-        headline: { control: { type: 'text' } },
     },
 };
 
@@ -23,128 +14,134 @@ export default {
 
 export const Basic = (args) => `
     <pd-alert class="m-3"
-    ${args.action ? 'action' : ''}
-    ${args.closable ? 'closable' : ''}
-    ${args.showIcon ? 'hide-icon' : ''}
-    action-text="${args.actionText}"
-    action-href="${args.actionHref}"
-    headline="${args.headline}"
-    action-target="${args.actionTarget}">
+        color="${args.color}"
+        ${args.closable ? 'closable' : ''}
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText} (button)">
         A text to show on this alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
+        color="${args.color}"
         ${args.closable ? 'closable' : ''}
-        ${!args.hideIcon ? 'hide-icon' : ''}
-        action-text="${args.actionText}"
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText} (link)"
         action-href="${args.actionHref}"
-        headline="My Title (not headline)"
         action-target="${args.actionTarget}"
         color="primary">
         <p>Line 1: A simple primary alert—check it out!</p>
-        <p>Line 2: A simple primary alert—check it out!</p>
+        <p style="font-weight: 400">Line 2: A simple primary alert—check it out!</p>
     </pd-alert>
 `;
 
 Basic.args = {
     closable: false,
-    action: false,
     actionText: 'this is an action',
-    actionHref: false,
-    actionTarget: '',
+    actionHref: 'http://www.google.ch',
+    actionTarget: '_blank',
     hideIcon: false,
-    headline: '',
+    color: 'primary',
+};
+
+Basic.argTypes = {
+    actionTarget: { control: { type: 'select', options: ['', '_blank'] } },
+    color: {
+        control: { type: 'select', options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'] },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 export const Color = (args) => `
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${!args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="primary">
         A simple primary alert
     </pd-alert>
     <pd-alert class="m-3"
-    ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="success">
         A simple success alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="warning">
         A simple warning alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="danger">
         A simple alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="info">
         A simple info alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="dark">
         A simple dark alert
     </pd-alert>
     <pd-alert class="m-3"
-        ${args.action ? 'action' : ''}
         ${args.closable ? 'closable' : ''}
         ${args.hideIcon ? 'hide-icon' : ''}
         action-text="${args.actionText}"
-        action-href="${args.actionHref}"
-        action-target="${args.actionTarget}"
-        headline="${args.headline}"
         color="light">
         A simple light alert
     </pd-alert>
 `;
 
 Color.args = {
-    ...Basic.args,
+    closable: true,
+    hideIcon: false,
+    actionText: 'this is an action',
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Action = () => `
-    <pd-alert class="m-3" action action-text="a button action">A simple alert with a button action</pd-alert>
-    <pd-alert class="m-3" action action-text="a link action" action-href="http://www.google.ch">A simple alert with a link action</pd-alert>
+export const Expandable = (args) => `
+    <pd-alert 
+        ${args.expandable ? 'expandable' : ''}
+        ${args.expanded ? 'expanded' : ''}
+        color="${args.color}"
+        ${args.hideIcon ? 'hide-icon' : ''}
+        action-text="${args.actionText}"
+        action-text-expanded="${args.actionTextExpanded}"
+        ${args.closable ? 'closable' : ''}>
+        <div>Info: A simple primary alert—check it out!</div>
+        <div slot="expandable">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
+            adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim harum esse
+            repellat.
+        </div>
+    </pd-alert>
 `;
+
+Expandable.args = {
+    expandable: true,
+    expanded: false,
+    closable: true,
+    actionText: 'show more',
+    actionTextExpanded: 'show less',
+    hideIcon: false,
+    color: 'info',
+};
+
+Expandable.argTypes = {
+    color: {
+        control: { type: 'select', options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'] },
+    },
+};
