@@ -26,6 +26,15 @@
 | --------------------------- | ------------- | ----------------------------- |
 | `--pd-list-item-background` | `transparent` | background color of list item |
 
+## Slots
+
+| Name         | Description                                    |
+| ------------ | ---------------------------------------------- |
+|              | default slot for list content                  |
+| action-left  | left of actions for additional action buttons  |
+| action-right | right of actions for additional action buttons |
+| expandable   | for additional, expandable content             |
+
 <!-- Auto Generated Below -->
 
 
@@ -45,11 +54,12 @@
 
 ## Events
 
-| Event        | Description               | Type                   |
-| ------------ | ------------------------- | ---------------------- |
-| `pd-checked` | Expand button click event | `CustomEvent<boolean>` |
-| `pd-edit`    | Edit button click event   | `CustomEvent<void>`    |
-| `pd-expand`  | Expand button click event | `CustomEvent<void>`    |
+| Event          | Description                      | Type                   |
+| -------------- | -------------------------------- | ---------------------- |
+| `pd-checked`   | Checkbox checked event           | `CustomEvent<boolean>` |
+| `pd-collapsed` | Inner content collapsed/expanded | `CustomEvent<boolean>` |
+| `pd-edit`      | Edit button click event          | `CustomEvent<void>`    |
+| `pd-expand`    | Expand button click event        | `CustomEvent<void>`    |
 
 
 ## Dependencies

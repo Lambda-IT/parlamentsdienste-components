@@ -43,8 +43,11 @@ export class PdListItemExpandable {
     /** Expand button click event */
     @Event({ eventName: 'pd-expand' }) pdExpand: EventEmitter<void>;
 
-    /** Expand button click event */
+    /** Checkbox checked event */
     @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<boolean>;
+
+    /** Inner content collapsed/expanded */
+    @Event({ eventName: 'pd-collapsed' }) pdCollapsed: EventEmitter<boolean>;
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
@@ -67,6 +70,7 @@ export class PdListItemExpandable {
     private handleExpand() {
         if (this.expandable) this.collapsed = !this.collapsed;
         if (this.expand) this.pdExpand.emit();
+        if (this.expandable) this.pdCollapsed.emit(this.collapsed);
     }
 
     public render() {
@@ -82,9 +86,11 @@ export class PdListItemExpandable {
                         'pd-list-item-expandable-actions': this.edit || this.expand || this.expandable || this.menu,
                     }}
                 >
+                    <slot name="action-left"></slot>
                     {this.renderEdit()}
                     {this.renderExpand()}
                     {this.renderMenu()}
+                    <slot name="action-right"></slot>
                 </div>
                 <div
                     ref={(el) => (this.contentWrapperElement = el)}

@@ -10,10 +10,6 @@ import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
         /**
-          * Show action
-         */
-        "action": boolean;
-        /**
           * A link displayed to the right side of the alert
          */
         "actionHref": string;
@@ -26,6 +22,10 @@ export namespace Components {
          */
         "actionText": string;
         /**
+          * Text to show on expanded action
+         */
+        "actionTextExpanded": string;
+        /**
           * Display an option to close the alert
          */
         "closable": boolean;
@@ -34,9 +34,13 @@ export namespace Components {
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
-          * A headline displayed above the given text
+          * Enable expandable content
          */
-        "headline": string;
+        "expandable": boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded": boolean;
         /**
           * Hide alert icon
          */
@@ -1130,10 +1134,6 @@ declare global {
 declare namespace LocalJSX {
     interface PdAlert {
         /**
-          * Show action
-         */
-        "action"?: boolean;
-        /**
           * A link displayed to the right side of the alert
          */
         "actionHref"?: string;
@@ -1146,6 +1146,10 @@ declare namespace LocalJSX {
          */
         "actionText"?: string;
         /**
+          * Text to show on expanded action
+         */
+        "actionTextExpanded"?: string;
+        /**
           * Display an option to close the alert
          */
         "closable"?: boolean;
@@ -1154,17 +1158,29 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
-          * A headline displayed above the given text
+          * Enable expandable content
          */
-        "headline"?: string;
+        "expandable"?: boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded"?: boolean;
         /**
           * Hide alert icon
          */
         "hideIcon"?: boolean;
         /**
-          * Emitted when action closed button was pressed.
+          * Emitted when action button was pressed.
+         */
+        "onPd-action"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when close button was pressed.
          */
         "onPd-closed"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when inner content is expanded/collapsed.
+         */
+        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdBackdrop {
         "onPd-tap"?: (event: CustomEvent<void>) => void;
@@ -1605,9 +1621,13 @@ declare namespace LocalJSX {
          */
         "menu"?: boolean;
         /**
-          * Expand button click event
+          * Checkbox checked event
          */
         "onPd-checked"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Inner content collapsed/expanded
+         */
+        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
         /**
           * Edit button click event
          */
