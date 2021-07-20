@@ -31,15 +31,17 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                    | Type                 | Default     |
-| ------------- | -------------- | ---------------------------------------------- | -------------------- | ----------- |
-| `flip`        | `flip`         | Flip in X/Y direction                          | `"x" \| "xy" \| "y"` | `undefined` |
-| `name`        | `name`         | Name of an icon from the provided gallery      | `string`             | `undefined` |
-| `rotate`      | `rotate`       | Rotation in 'deg'                              | `number`             | `0`         |
-| `size`        | `size`         | Size of the icon in 'rem'                      | `number`             | `undefined` |
-| `spin`        | `spin`         | Spin animation in ms per rotation              | `number`             | `undefined` |
-| `spinReverse` | `spin-reverse` | change animation direction                     | `boolean`            | `false`     |
-| `src`         | `src`          | Specifies the `src` url of an SVG file to use. | `string`             | `undefined` |
+| Property          | Attribute          | Description                                    | Type                 | Default     |
+| ----------------- | ------------------ | ---------------------------------------------- | -------------------- | ----------- |
+| `flip`            | `flip`             | Flip in X/Y direction                          | `"x" \| "xy" \| "y"` | `undefined` |
+| `iconDescription` | `icon-description` | description tag in svg for accessability       | `string`             | `undefined` |
+| `iconTitle`       | `icon-title`       | title tag in svg for accessability             | `string`             | `undefined` |
+| `name`            | `name`             | Name of an icon from the provided gallery      | `string`             | `undefined` |
+| `rotate`          | `rotate`           | Rotation in 'deg'                              | `number`             | `0`         |
+| `size`            | `size`             | Size of the icon in 'rem'                      | `number`             | `undefined` |
+| `spin`            | `spin`             | Spin animation in ms per rotation              | `number`             | `undefined` |
+| `spinReverse`     | `spin-reverse`     | change animation direction                     | `boolean`            | `false`     |
+| `src`             | `src`              | Specifies the `src` url of an SVG file to use. | `string`             | `undefined` |
 
 
 ## Dependencies
