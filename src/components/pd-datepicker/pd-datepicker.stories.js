@@ -1,20 +1,19 @@
 import notes from './readme.md';
-import { withActions } from '@storybook/addon-actions';
 
 export default {
     title: 'Forms + Inputs/Datepicker',
-    decorators: [
-        withActions(
-            'pd-change',
-            'pd-open',
-            'pd-close',
-            'pd-month-change',
-            'pd-year-change',
-            'pd-ready',
-            'pd-value-update',
-        ),
-    ],
     parameters: {
+        actions: {
+            handles: [
+                'pd-change',
+                'pd-open',
+                'pd-close',
+                'pd-month-change',
+                'pd-year-change',
+                'pd-ready',
+                'pd-value-update',
+            ],
+        },
         notes,
     },
     argTypes: {

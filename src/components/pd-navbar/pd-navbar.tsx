@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
-import ResizeObserver from 'resize-observer-polyfill';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 @Component({
     tag: 'pd-navbar',

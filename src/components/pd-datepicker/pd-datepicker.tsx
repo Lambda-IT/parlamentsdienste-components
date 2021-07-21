@@ -68,8 +68,9 @@ export class Datepicker {
 
     /**
      * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
+     * Check out https://flatpickr.js.org/options or https://flatpickr.js.org/instance-methods-properties-elements/#setoption-value for further documentation about this config
      */
-    @Method() async set(option: keyof Options | { [k in keyof Options]?: Options[k] }, value?: any) {
+    @Method() async set(option: any, value?: any) {
         this.flatpickr.set(option, value);
     }
 
