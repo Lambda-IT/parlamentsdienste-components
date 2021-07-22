@@ -86,7 +86,7 @@ Icon.args = {
 };
 
 Icon.argTypes = {
-    location: { control: { type: 'select', options: ['left', 'right'] } },
+    location: { control: { type: 'select', options: ['left', 'right', 'center'] } },
 };
 
 ///////////////////////////////////////////////////////////////////////////

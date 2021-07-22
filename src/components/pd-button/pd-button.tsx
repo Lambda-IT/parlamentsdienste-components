@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
 @Component({
     tag: 'pd-button',
@@ -14,17 +15,17 @@ export class Button {
     /**
      * Sets button type |text|submit|reset|
      */
-    @Prop() type: 'button' | 'text' | 'submit' = 'button';
+    @Prop() type: PdButtonType = 'button';
 
     /**
      * Color schema used for the button
      */
-    @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
+    @Prop() color: PdButtonColor = 'primary';
 
     /**
      * Button size
      */
-    @Prop() size: 'normal' | 'small' | 'large' = 'normal';
+    @Prop() size: PdButtonSize = 'normal';
 
     /**
      * Use outline schema
@@ -41,7 +42,7 @@ export class Button {
      */
     @Prop() target: string = '_blank';
 
-    @Prop({ attribute: 'icon-location' }) iconLocation: 'left' | 'right' | 'none' = 'none';
+    @Prop({ attribute: 'icon-location' }) iconLocation: PdIconLocation = 'none';
 
     public render() {
         const { href, target, type, disabled } = this;
@@ -62,18 +63,23 @@ export class Button {
                 }}
             >
                 {this.renderIcon('left')}
-                <slot></slot>
+                {this.renderCenter()}
                 {this.renderIcon('right')}
             </TagType>
         );
     }
 
-    private renderIcon(location: 'left' | 'right' | 'none') {
+    private renderIcon(location: PdIconLocation) {
         if (location !== this.iconLocation) return;
         return (
             <div class={`pd-button-icon-${location}`}>
                 <slot name="icon"></slot>
             </div>
         );
+    }
+
+    private renderCenter() {
+        if (this.iconLocation === 'center') return this.renderIcon('center');
+        return <slot></slot>;
     }
 }

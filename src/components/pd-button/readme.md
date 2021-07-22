@@ -21,27 +21,33 @@
 #### Link
 
 ```html
-    <pd-button href="http://www.google.ch">Link</pd-button>
+<pd-button href="http://www.google.ch">Link</pd-button>
 ```
 
 ### vuejs Sample
 
 #### Simple Button
+
 ```html
 <pd-button @click="successAction" type="button" color="success">{{caption}}</pd-button>
 ```
 
 #### Icon Button
+
 ```html
-<pd-button type="button" icon-location="right" @click="openModal('Umfrage')" >Zur Umfrage<pd-icon slot="icon" size="2" style="fill: var(--white);" name="message"></pd-icon></pd-button>
+<pd-button type="button" icon-location="right" @click="openModal('Umfrage')"
+    >Zur Umfrage<pd-icon slot="icon" size="2" style="fill: var(--white);" name="message"></pd-icon
+></pd-button>
 ```
 
 ## Styles
 
-| Style                      | Default | Description                                    |
-| -------------------------- | ------- | ---------------------------------------------- |
-| `--pd-button-left-radius`  | `4px`   | border radius for the left side of the button  |
-| `--pd-button-right-radius` | `4px`   | border radius for the right side of the button |
+| Style                            | Default    | Description                                    |
+| -------------------------------- | ---------- | ---------------------------------------------- |
+| `--pd-button-left-radius`        | `0.25rem`  | border radius for the left side of the button  |
+| `--pd-button-right-radius`       | `0.25rem`  | border radius for the right side of the button |
+| `--pd-button-padding-vertical`   | `0.25rem`  | vertical padding for 'normal' sized buttons    |
+| `--pd-button-padding-horizontal` | `0.625rem` | horizontal padding for 'normal' sized buttons  |
 
 <!-- Auto Generated Below -->
 
@@ -53,7 +59,7 @@
 | `color`        | `color`         | Color schema used for the button          | `"danger" \| "dark" \| "info" \| "light" \| "primary" \| "success" \| "warning"` | `'primary'` |
 | `disabled`     | `disabled`      | Sets button to disbaled state             | `boolean`                                                                        | `false`     |
 | `href`         | `href`          | Set href to create a link button          | `string`                                                                         | `undefined` |
-| `iconLocation` | `icon-location` |                                           | `"left" \| "none" \| "right"`                                                    | `'none'`    |
+| `iconLocation` | `icon-location` |                                           | `"center" \| "left" \| "none" \| "right"`                                        | `'none'`    |
 | `outline`      | `outline`       | Use outline schema                        | `boolean`                                                                        | `false`     |
 | `size`         | `size`          | Button size                               | `"large" \| "normal" \| "small"`                                                 | `'normal'`  |
 | `target`       | `target`        | Sets target for link button e.g. '_blank' | `string`                                                                         | `'_blank'`  |

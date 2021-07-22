@@ -88,3 +88,11 @@ export type PdPlacement =
 export type PdStatus = 'success' | 'danger' | 'warning' | 'info' | 'unset';
 
 export type PdSelectOutside = null | 'none' | 'indeterminate' | 'all';
+
+export type PdIconLocation = 'left' | 'right' | 'center' | 'none';
+
+export type PdButtonSize = 'normal' | 'small' | 'large';
+
+export type PdButtonColor = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+
+export type PdButtonType = 'button' | 'text' | 'submit';

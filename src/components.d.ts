@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdColumn, PdModalConfig, PdPlacement, PdSelectOutside, PdStatus, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPlacement, PdSelectOutside, PdStatus, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -56,7 +56,7 @@ export namespace Components {
         /**
           * Color schema used for the button
          */
-        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        "color": PdButtonColor;
         /**
           * Sets button to disbaled state
          */
@@ -65,7 +65,7 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
-        "iconLocation": 'left' | 'right' | 'none';
+        "iconLocation": PdIconLocation;
         /**
           * Use outline schema
          */
@@ -73,7 +73,7 @@ export namespace Components {
         /**
           * Button size
          */
-        "size": 'normal' | 'small' | 'large';
+        "size": PdButtonSize;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -81,7 +81,7 @@ export namespace Components {
         /**
           * Sets button type |text|submit|reset|
          */
-        "type": 'button' | 'text' | 'submit';
+        "type": PdButtonType;
     }
     interface PdButtonGroup {
     }
@@ -1201,7 +1201,7 @@ declare namespace LocalJSX {
         /**
           * Color schema used for the button
          */
-        "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        "color"?: PdButtonColor;
         /**
           * Sets button to disbaled state
          */
@@ -1210,7 +1210,7 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
-        "iconLocation"?: 'left' | 'right' | 'none';
+        "iconLocation"?: PdIconLocation;
         /**
           * Use outline schema
          */
@@ -1218,7 +1218,7 @@ declare namespace LocalJSX {
         /**
           * Button size
          */
-        "size"?: 'normal' | 'small' | 'large';
+        "size"?: PdButtonSize;
         /**
           * Sets target for link button e.g. '_blank'
          */
@@ -1226,7 +1226,7 @@ declare namespace LocalJSX {
         /**
           * Sets button type |text|submit|reset|
          */
-        "type"?: 'button' | 'text' | 'submit';
+        "type"?: PdButtonType;
     }
     interface PdButtonGroup {
     }
