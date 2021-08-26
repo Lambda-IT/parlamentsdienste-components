@@ -50,6 +50,13 @@ export class Datepicker {
      */
     @Prop() label?: string;
 
+    @Prop() error: boolean = false;
+
+    /**
+     * Instructional text that shows before the input has a value.
+     */
+    @Prop() placeholder?: string | null;
+
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
         time_24hr: true,
@@ -148,6 +155,8 @@ export class Datepicker {
                             disabled={this.disabled}
                             readonly={this.readonly}
                             required={this.required}
+                            error={this.error}
+                            placeholder={this.placeholder}
                             tabindex={this.readonly ? '-1' : null} // this is not an optimal solution as it removes ability to copy&paste with focus
                             data-input
                         />

@@ -210,6 +210,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        "error": boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
          */
@@ -222,6 +223,10 @@ export namespace Components {
           * Shows/opens the calendar.
          */
         "open": () => Promise<void>;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1364,6 +1369,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        "error"?: boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
          */
@@ -1385,6 +1391,10 @@ declare namespace LocalJSX {
         dateStr: string;
     }>) => void;
         "onPd-year-change"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
         /**
           * If `true`, the user cannot modify the value.
          */
