@@ -11,7 +11,7 @@ export default {
             'List Item Expandable': notesListItemExpandable,
         },
         actions: {
-            handles: ['pd-expand', 'pd-edit', 'pd-checked', 'pd-collapsed'],
+            handles: ['pd-expand', 'pd-edit', 'pd-selected', 'pd-collapsed'],
         },
     },
 };

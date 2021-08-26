@@ -43,8 +43,8 @@ export class PdListItemExpandable {
     /** Expand button click event */
     @Event({ eventName: 'pd-expand' }) pdExpand: EventEmitter<void>;
 
-    /** Checkbox checked event */
-    @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<boolean>;
+    /** Checkbox selected event */
+    @Event({ eventName: 'pd-selected' }) pdSelected: EventEmitter<boolean>;
 
     /** Inner content collapsed/expanded */
     @Event({ eventName: 'pd-collapsed' }) pdCollapsed: EventEmitter<boolean>;
@@ -56,7 +56,7 @@ export class PdListItemExpandable {
 
     @Listen('pd-checked')
     checkboxChecked(event: CustomEvent<boolean>) {
-        this.pdChecked.emit(event.detail);
+        this.pdSelected.emit(event.detail);
     }
 
     public componentDidLoad() {
