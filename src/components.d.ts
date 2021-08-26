@@ -1637,10 +1637,6 @@ declare namespace LocalJSX {
          */
         "menu"?: boolean;
         /**
-          * Checkbox checked event
-         */
-        "onPd-checked"?: (event: CustomEvent<boolean>) => void;
-        /**
           * Inner content collapsed/expanded
          */
         "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
@@ -1652,6 +1648,10 @@ declare namespace LocalJSX {
           * Expand button click event
          */
         "onPd-expand"?: (event: CustomEvent<void>) => void;
+        /**
+          * Checkbox selected event
+         */
+        "onPd-selected"?: (event: CustomEvent<boolean>) => void;
         /**
           * Status icon for list item
          */

@@ -5,11 +5,11 @@ export default {
     title: 'Interactions/Table',
     parameters: {
         notes: {
-            'Table': notes,
-            'Table Filter': notesTableFilter
+            Table: notes,
+            'Table Filter': notesTableFilter,
         },
         actions: {
-            handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete'],
+            handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete', 'pd-clicked-row'],
         },
     },
     argTypes: {
@@ -18,7 +18,7 @@ export default {
         iconConfig: { control: { type: 'object' } },
         showActionColumn: { control: { type: 'boolean' } },
         selectable: { control: { type: 'boolean' } },
-        selectedOutside: { control: { type: 'select', options: [null, 'none', 'indeterminate', 'all']}},
+        selectedOutside: { control: { type: 'select', options: [null, 'none', 'indeterminate', 'all'] } },
         showStatus: { control: { type: 'boolean' } },
         headerStyle: { control: { type: 'select', options: ['light', 'dark', 'gray'] } },
         menuLabel: { control: { type: 'string' } },

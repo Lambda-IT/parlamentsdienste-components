@@ -123,7 +123,7 @@ export class Table {
 
     @State() filterOpen = false;
     @State() columnFilters: any = {};
-    @State() filteredRows: any = [...this.rows];
+    @State() filteredRows: PdTableRow[] = [...this.rows];
     @State() allSelected: boolean = false;
     @State() isIndeterminate: boolean = false;
 
@@ -320,6 +320,10 @@ export class Table {
         });
     }
 
+    private rowClicked(row: PdTableRow) {
+        this.onRowClick.emit(row);
+    }
+
     public render() {
         const headerStyle = {
             height: `${this.headerHeight}px`,
@@ -430,7 +434,7 @@ export class Table {
         };
 
         return this.filteredRows.map((row) => (
-            <div class="pd-table-row" role="row" style={rowStyle} onClick={() => this.onRowClick.emit(row)}>
+            <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.showStatus ? this.renderStatus(row, fixed) : null}
                 {this.selectable ? this.renderSelectable(row, fixed) : null}
                 {this.columns.filter((c) => !!c.fixed === fixed).map((col) => this.renderColumn(row, col))}
@@ -456,6 +460,7 @@ export class Table {
                 role="cell"
                 style={cellStyle}
                 title={value}
+                onClick={() => this.rowClicked(row)}
             >
                 {this.renderValue(col, value)}
             </div>
@@ -484,7 +489,7 @@ export class Table {
             align: 'center',
         });
         return (
-            <div class={`pd-table-cell`} style={cellStyle} role="cell">
+            <div class={`pd-table-cell`} style={cellStyle} role="cell" onClick={() => this.rowClicked(row)}>
                 {this.renderIcon(row.pdStatus || 'unset')}
             </div>
         );
