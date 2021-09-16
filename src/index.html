@@ -501,11 +501,12 @@
                 { id: '3', label: 'Dropdown Link 03', value: 'a3' },
                 { id: '4', label: 'Dropdown Link 04', value: 'a4' },
                 { id: '5', label: 'Dropdown Link 05', value: 'a5' },
-                { id: '6', label: 'Dropdown Second Link 05', value: 'a6' },
+                { id: '6', label: 'Preselected', value: 'a6', selected : true },
             ];
             pdComboBox1.items = pdComboBox.items;
-            setTimeout(() => pdComboBox1.setSelectedIndex(3), 2000);
-            setTimeout(() => pdComboBox1.reset(), 4000);
+            setTimeout(() => pdComboBox1.reset(), 3000);
+            setTimeout(() => pdComboBox1.setSelectedIndex(3), 4000);
+            setTimeout(() => pdComboBox1.reset(), 6000);
 
             pdComboBox2.items = [{ value: '', label: 'Disabled Selectable Combo' }];
 
