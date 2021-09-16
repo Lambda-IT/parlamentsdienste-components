@@ -30,12 +30,12 @@ export class Chip {
     /**
      * Event for clicking the cross to remove a chip
      */
-    @Event() removeChip!: EventEmitter;
+    @Event({eventName: 'pd-remove-chip'}) removeChip!: EventEmitter;
 
     /**
      * Event for check chip
      */
-    @Event() checkChip!: EventEmitter;
+    @Event({eventName: 'pd-check-chip'}) checkChip!: EventEmitter;
 
     /**
      * Click event
