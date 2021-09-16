@@ -105,7 +105,7 @@ export class PdListItemExpandable {
     }
 
     private renderStatus = () => {
-        if (!this.status) return;
+        if (!this.status) return <div class="pd-list-item-expandable-status-placeholder"></div>;
         return <div class="pd-list-item-expandable-status">{this.renderStatusIcon()}</div>;
     };
 

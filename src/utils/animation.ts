@@ -1,4 +1,4 @@
-export const collapse = element => {
+export const collapse = (element) => {
     // get current height of element
     var sectionHeight = element.scrollHeight;
 
@@ -6,20 +6,21 @@ export const collapse = element => {
     var elementTransition = element.style.transition;
     element.style.transition = '';
     element.style.overflow = 'hidden';
+    console.log(`DEBUG: collapsed`, element);
 
     // in next frame, set height from auto to actual height of element and add transition again
-    requestAnimationFrame(function() {
+    requestAnimationFrame(function () {
         element.style.height = sectionHeight + 'px';
         element.style.transition = elementTransition;
 
         // now set height to 0 and start transition
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             element.style.height = '0';
         });
     });
 };
 
-export const expand = element => {
+export const expand = (element) => {
     // get expanded height of element
     var sectionHeight = element.scrollHeight;
 
@@ -33,5 +34,6 @@ export const expand = element => {
         // set height back to auto when transition is done
         element.style.height = null;
         element.style.overflow = 'visible';
+        console.log(`DEBUG: expanded`, element);
     });
 };

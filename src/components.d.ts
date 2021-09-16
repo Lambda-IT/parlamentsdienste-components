@@ -323,6 +323,10 @@ export namespace Components {
          */
         "iconTitle": string;
         /**
+          * Icon will be loaded lazily when it is visible
+         */
+        "lazy": boolean;
+        /**
           * Name of an icon from the provided gallery
          */
         "name"?: string;
@@ -1288,11 +1292,11 @@ declare namespace LocalJSX {
         /**
           * Event for check chip
          */
-        "onCheckChip"?: (event: CustomEvent<any>) => void;
+        "onPd-check-chip"?: (event: CustomEvent<any>) => void;
         /**
           * Event for clicking the cross to remove a chip
          */
-        "onRemoveChip"?: (event: CustomEvent<any>) => void;
+        "onPd-remove-chip"?: (event: CustomEvent<any>) => void;
         /**
           * Sets chip to readonly state
          */
@@ -1476,6 +1480,10 @@ declare namespace LocalJSX {
           * title tag in svg for accessability
          */
         "iconTitle"?: string;
+        /**
+          * Icon will be loaded lazily when it is visible
+         */
+        "lazy"?: boolean;
         /**
           * Name of an icon from the provided gallery
          */
