@@ -140,7 +140,7 @@ export class Table {
     private popper: Instance;
     private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
     private selectableCellWidth: number = 50;
-    private defaultPageSize = 15;
+    private defaultPageSize = 10;
 
     @State() private totalPages = 1;
     @State() private currentPage = 1;

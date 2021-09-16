@@ -155,9 +155,7 @@ export class Dropdown {
     }
 
     private toggleDropdown = () => {
-        console.log(`file: pd-dropdown.tsx ~ line 158 ~ Dropdown ~ toggleDropdown`, this.open);
         this.open = !this.open;
-        console.log(`file: pd-dropdown.tsx ~ line 158 ~ Dropdown ~ toggleDropdown`, this.open);
     };
 
     @State() selectedItem: any;
