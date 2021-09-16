@@ -29,6 +29,11 @@ export class PdIcon implements ComponentInterface {
      */
     @Prop() size?: number;
 
+  /**
+   * Icon will be loaded lazily when it is visible
+   */
+   @Prop() lazy = true;
+
     /**
      * Rotation in 'deg'
      */
@@ -74,7 +79,7 @@ export class PdIcon implements ComponentInterface {
     }
 
     private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
-        if (typeof window !== 'undefined' && (window as any).IntersectionObserver) {
+        if (this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
             const io = (this.io = new (window as any).IntersectionObserver(
                 (data: IntersectionObserverEntry[]) => {
                     if (data[0].isIntersecting) {

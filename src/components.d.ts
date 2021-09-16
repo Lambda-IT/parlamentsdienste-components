@@ -323,6 +323,10 @@ export namespace Components {
          */
         "iconTitle": string;
         /**
+          * Icon will be loaded lazily when it is visible
+         */
+        "lazy": boolean;
+        /**
           * Name of an icon from the provided gallery
          */
         "name"?: string;
@@ -1471,6 +1475,10 @@ declare namespace LocalJSX {
           * title tag in svg for accessability
          */
         "iconTitle"?: string;
+        /**
+          * Icon will be loaded lazily when it is visible
+         */
+        "lazy"?: boolean;
         /**
           * Name of an icon from the provided gallery
          */
