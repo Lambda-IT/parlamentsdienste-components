@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -725,7 +725,7 @@ export namespace Components {
         /**
           * The table style
          */
-        "headerStyle": 'light' | 'dark' | 'gray';
+        "headerStyle": PdTableStyle;
         /**
           * The configuration for the last column, the icon column
          */
@@ -743,6 +743,9 @@ export namespace Components {
           * Enables paging
          */
         "paging": boolean;
+        /**
+          * Location of paging element
+         */
         "pagingLocation": PdPagingLocation;
         /**
           * Height of rows
@@ -1948,7 +1951,7 @@ declare namespace LocalJSX {
         /**
           * The table style
          */
-        "headerStyle"?: 'light' | 'dark' | 'gray';
+        "headerStyle"?: PdTableStyle;
         /**
           * The configuration for the last column, the icon column
          */
@@ -1986,6 +1989,9 @@ declare namespace LocalJSX {
           * Enables paging
          */
         "paging"?: boolean;
+        /**
+          * Location of paging element
+         */
         "pagingLocation"?: PdPagingLocation;
         /**
           * Height of rows

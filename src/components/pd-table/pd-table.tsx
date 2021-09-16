@@ -8,6 +8,7 @@ import {
     PdStatus,
     PdTableIconConfiguration,
     PdTableRow,
+    PdTableStyle,
     SelectedEvent,
 } from '../../interface';
 
@@ -37,7 +38,7 @@ export class Table {
     /**
      * The table style
      */
-    @Prop() headerStyle: 'light' | 'dark' | 'gray' = 'dark';
+    @Prop() headerStyle: PdTableStyle = 'dark';
 
     /**
      * A definition for each column of the table
@@ -88,6 +89,9 @@ export class Table {
         { id: '3', label: '100', value: 100 },
     ];
 
+    /**
+     * Location of paging element
+     */
     @Prop() pagingLocation: PdPagingLocation = 'right';
 
     /**
