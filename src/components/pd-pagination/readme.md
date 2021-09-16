@@ -29,6 +29,19 @@
 | `pd-change` | Page change event. Returns selected page | `CustomEvent<number>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [pd-table](../pd-table)
+
+### Graph
+```mermaid
+graph TD;
+  pd-table --> pd-pagination
+  style pd-pagination fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
