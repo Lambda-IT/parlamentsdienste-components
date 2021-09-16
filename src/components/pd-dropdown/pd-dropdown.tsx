@@ -1,7 +1,7 @@
-import { Component, Host, h, State, Listen, Element, Prop, Event, EventEmitter, Method } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
-import { closestElement } from '../../utils/helpers';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core';
 import { DropdownItem } from '../../interface';
+import { closestElement } from '../../utils/helpers';
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
@@ -88,7 +88,7 @@ export class Dropdown {
 
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
-        if (closestElement('pd-dropdown', ev.target as HTMLElement) !== this.element) {
+        if (closestElement('pd-dropdown', ev.composedPath()[0] as HTMLElement) !== this.element) {
             this.open = false;
         }
     }
@@ -155,7 +155,9 @@ export class Dropdown {
     }
 
     private toggleDropdown = () => {
+        console.log(`file: pd-dropdown.tsx ~ line 158 ~ Dropdown ~ toggleDropdown`, this.open);
         this.open = !this.open;
+        console.log(`file: pd-dropdown.tsx ~ line 158 ~ Dropdown ~ toggleDropdown`, this.open);
     };
 
     @State() selectedItem: any;

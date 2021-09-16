@@ -55,7 +55,7 @@ export interface PdModalConfig {
 export interface DropdownItem {
     id: string;
     label: string;
-    value: string;
+    value: string | number;
     selected?: boolean;
 }
 
@@ -96,3 +96,5 @@ export type PdButtonSize = 'normal' | 'small' | 'large';
 export type PdButtonColor = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
 
 export type PdButtonType = 'button' | 'text' | 'submit';
+
+export type PdPagingLocation = 'left' | 'right';

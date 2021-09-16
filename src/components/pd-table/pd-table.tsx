@@ -1,14 +1,15 @@
-import { Component, Host, h, Prop, Element, State, Listen, Watch, Event, EventEmitter, Method } from '@stencil/core';
-import {
-    PdColumn,
-    PdTableRow,
-    PdTableIconConfiguration,
-    PdButtonCell,
-    SelectedEvent,
-    PdStatus,
-    PdSelectOutside,
-} from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import {
+    DropdownItem,
+    PdButtonCell,
+    PdColumn,
+    PdPagingLocation,
+    PdStatus,
+    PdTableIconConfiguration,
+    PdTableRow,
+    SelectedEvent,
+} from '../../interface';
 
 @Component({
     tag: 'pd-table',
@@ -64,19 +65,30 @@ export class Table {
     @Prop() selectable = false;
 
     /**
-     * Indicates the state of rows outside of the table context.
-     * Sets the 'selectAll' checkbox accordingly
-     */
-    @Prop() selectedOutside: PdSelectOutside = null;
-
-    /**
      * Allow to render a status icon per row
      */
     @Prop() showStatus = false;
+
     /*
      * Show label text for menu
      */
     @Prop() menuLabel: string;
+
+    /**
+     Enables paging 
+     */
+    @Prop() paging: boolean = false;
+
+    /**
+     * Available Page sizes for paging
+     */
+    @Prop() pageSizes: DropdownItem[] = [
+        { id: '1', label: '10', value: 10, selected: true },
+        { id: '2', label: '25', value: 25 },
+        { id: '3', label: '100', value: 100 },
+    ];
+
+    @Prop() pagingLocation: PdPagingLocation = 'right';
 
     /**
      * Triggers when one or all rows get selected
@@ -116,17 +128,6 @@ export class Table {
         this.filteredRows = [...this.rows];
     }
 
-    @Watch('selectedOutside')
-    handleSelectOutsideChanged() {
-        this.calculateIsIndeterminate();
-    }
-
-    @State() filterOpen = false;
-    @State() columnFilters: any = {};
-    @State() filteredRows: PdTableRow[] = [...this.rows];
-    @State() allSelected: boolean = false;
-    @State() isIndeterminate: boolean = false;
-
     private filterElement: HTMLPdTableFilterElement;
     private currentFilter: string;
     private headerRefs: any = {};
@@ -135,6 +136,16 @@ export class Table {
     private popper: Instance;
     private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
     private selectableCellWidth: number = 50;
+    private defaultPageSize = 15;
+
+    @State() private totalPages = 1;
+    @State() private currentPage = 1;
+    @State() private pageSize = this.defaultPageSize;
+    @State() private filterOpen = false;
+    @State() private columnFilters: any = {};
+    @State() private filteredRows: PdTableRow[] = [...this.rows];
+    @State() private allSelected: boolean = false;
+    @State() private isIndeterminate: boolean = false;
 
     @Listen('keydown')
     protected handleKeyDown(ev: KeyboardEvent) {
@@ -143,6 +154,7 @@ export class Table {
 
     protected componentWillLoad() {
         this.calculateIsIndeterminate();
+        this.initPaging(+this.pageSizes.find((ps) => ps.selected)?.value || this.defaultPageSize);
     }
 
     protected componentDidLoad() {
@@ -198,7 +210,7 @@ export class Table {
     private getTextAlign = (textAlign: PdColumn['textAlign']) =>
         textAlign === 'left' ? 'flex-start' : textAlign === 'right' ? 'flex-end' : 'center';
 
-    private defaultSortFunc = (a, b, dir) => {
+    private defaultSortFunc = (a, b, dir: 'asc' | 'desc') => {
         if (dir === 'asc') return a === b ? 0 : a < b ? -1 : 1;
         else if (dir === 'desc') return a === b ? 0 : a > b ? -1 : 1;
     };
@@ -305,7 +317,6 @@ export class Table {
 
     private selectAll() {
         this.allSelected = !this.allSelected || this.isIndeterminate;
-        this.selectedOutside = this.allSelected ? 'all' : 'none';
         if (this.allSelected) this.isIndeterminate = false;
 
         this.filteredRows = this.filteredRows.map((r) => ({
@@ -322,6 +333,25 @@ export class Table {
 
     private rowClicked(row: PdTableRow) {
         this.onRowClick.emit(row);
+    }
+
+    private calculateIsIndeterminate() {
+        const countSelected = this.filteredRows.reduce((acc, r) => (r.pdSelected ? acc + 1 : acc), 0);
+        this.isIndeterminate = countSelected > 0 && !this.allSelected;
+    }
+
+    // paging functionality
+    private pageChanged(ev: CustomEvent<number>) {
+        this.currentPage = +ev.detail;
+    }
+    private pageSizeChanged(ev: CustomEvent<DropdownItem>) {
+        this.initPaging(+ev.detail.value);
+    }
+
+    private initPaging(pageSize: number = this.defaultPageSize) {
+        this.currentPage = 1;
+        this.pageSize = pageSize;
+        this.totalPages = Math.ceil(this.filteredRows.length / this.pageSize);
     }
 
     public render() {
@@ -359,6 +389,7 @@ export class Table {
                         <div class="pd-table-body">{this.renderRows(false, this.iconConfig)}</div>
                     </div>
                 </div>
+                {this.renderFooter()}
             </Host>
         );
     }
@@ -433,7 +464,15 @@ export class Table {
             height: `${this.rowHeight}px`,
         };
 
-        return this.filteredRows.map((row) => (
+        let rows: PdTableRow[] = [];
+        if (!this.paging) {
+            rows = [...this.filteredRows];
+        } else {
+            const pageStart = (this.currentPage - 1) * this.pageSize;
+            rows = [...this.filteredRows.slice(pageStart, pageStart + this.pageSize)];
+        }
+
+        return rows.map((row) => (
             <div class="pd-table-row" role="row" style={rowStyle}>
                 {this.showStatus ? this.renderStatus(row, fixed) : null}
                 {this.selectable ? this.renderSelectable(row, fixed) : null}
@@ -665,13 +704,22 @@ export class Table {
         }
     }
 
-    private calculateIsIndeterminate() {
-        const countSelected = this.filteredRows.reduce((acc, r) => (r.pdSelected ? acc + 1 : acc), 0);
-        const indeterminate = countSelected > 0 && !this.allSelected;
-        this.isIndeterminate =
-            indeterminate ||
-            this.selectedOutside === 'indeterminate' ||
-            (this.allSelected && this.selectedOutside === 'none') ||
-            (!this.allSelected && this.selectedOutside === 'all');
+    private renderFooter() {
+        if (!this.paging) return;
+        return (
+            <div
+                class={{
+                    'pd-table-footer': true,
+                    [`pd-table-paging-location-${this.pagingLocation}`]: true,
+                }}
+            >
+                <pd-pagination
+                    current-page={this.currentPage}
+                    total-pages={this.totalPages}
+                    onPd-change={(ev) => this.pageChanged(ev)}
+                ></pd-pagination>
+                <pd-dropdown items={this.pageSizes} onPd-change={(ev) => this.pageSizeChanged(ev)}></pd-dropdown>
+            </div>
+        );
     }
 }
