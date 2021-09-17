@@ -8,10 +8,10 @@ wurde die vorliegende Bibliothek mit StencilJS umgesetzt.
 ## Library Dokumentation
 
 Stencil Demo Page:  
-https://parlamentsdienstecore.lambda-it.ch
+https://parlamentsdienstecore.app.lambda-it.ch
 
 VueJS Demo Page:  
-https://parlamentsdienstecore.lambda-it.ch/vue/#
+https://parlamentsdienstecore.app.lambda-it.ch/vue/
 
 ## Entwicklung
 
