@@ -27,18 +27,15 @@ export class Panel {
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
-        console.log(`DEBUG: Panel collapse changed.`, collapsed, this.contentWrapperElement);
         this.pdCollapsed.emit({ collapsed });
         collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
     }
 
     public componentDidLoad() {
         // start collapsed
-        console.log(`DEBUG: Panel componentent load.`, this.collapsed, this.contentWrapperElement);
         if (this.collapsed) {
             this.contentWrapperElement.style.height = '0';
             this.contentWrapperElement.style.overflow = 'hidden';
-            console.log(`DEBUG: Initially collpsed.`, this.collapsed, this.contentWrapperElement);
         }
     }
 

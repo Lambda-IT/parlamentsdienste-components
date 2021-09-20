@@ -97,6 +97,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [pd-table](../pd-table)
+
 ### Depends on
 
 - [pd-icon](../pd-icon)
@@ -107,6 +111,7 @@ Type: `Promise<void>`
 graph TD;
   pd-dropdown --> pd-icon
   pd-dropdown --> pd-dropdown-item
+  pd-table --> pd-dropdown
   style pd-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

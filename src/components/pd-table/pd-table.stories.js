@@ -1,5 +1,5 @@
-import notes from './readme.md';
 import notesTableFilter from '../pd-table-filter/readme.md';
+import notes from './readme.md';
 
 export default {
     title: 'Interactions/Table',
@@ -18,10 +18,12 @@ export default {
         iconConfig: { control: { type: 'object' } },
         showActionColumn: { control: { type: 'boolean' } },
         selectable: { control: { type: 'boolean' } },
-        selectedOutside: { control: { type: 'select', options: [null, 'none', 'indeterminate', 'all'] } },
         showStatus: { control: { type: 'boolean' } },
         headerStyle: { control: { type: 'select', options: ['light', 'dark', 'gray'] } },
         menuLabel: { control: { type: 'string' } },
+        paging: { control: { type: 'boolean' } },
+        pagingLocation: { control: { type: 'select', options: ['left', 'right'] } },
+        pageSizes: { control: { type: 'object' } },
     },
 };
 
@@ -36,9 +38,11 @@ export const Table = (args) => {
     table0.showActionColumn = args.showActionColumn;
     table0.setAttribute('header-style', args.headerStyle);
     table0.selectable = args.selectable;
-    table0.selectedOutside = args.selectedOutside;
     table0.showStatus = args.showStatus;
     table0.menuLabel = args.menuLabel;
+    table0.paging = args.paging;
+    table0.pagingLocation = args.pagingLocation;
+    table0.pageSizes = args.pageSizes;
     generateTableMenu(args).forEach((m) => table0.appendChild(m));
 
     const wrapper = document.createElement('div');
@@ -126,10 +130,16 @@ Table.args = {
     showActionColumn: true,
     iconConfig: { edit: true, select: false, delete: true },
     selectable: true,
-    selectedOutside: null,
     showStatus: true,
     headerStyle: 'dark',
     menuLabel: 'Aktionen',
+    paging: true,
+    pagingLocation: 'right',
+    pageSizes: [
+        {id: '1', value: 1, label: '1'},
+        {id: '2', value: 5, label: '5', selected: true},
+        {id: '3', value: 10, label: '10'},
+    ]
 };
 
 function generateTableMenu(args) {

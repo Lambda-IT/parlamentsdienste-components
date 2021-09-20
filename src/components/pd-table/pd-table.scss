@@ -6,6 +6,7 @@
 
     --pd-menu-label-weight: 700;
     --pd-menu-label-color: black;
+    --pd-dropdown-vertical-padding: 0.125rem;
 }
 
 *,
@@ -196,4 +197,22 @@
 
 .pd-table-filter-hidden {
     display: none;
+}
+
+.pd-table-footer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+
+    pd-pagination {
+        margin-right: 1rem;
+    }
+
+    &.pd-table-paging-location-left {
+        justify-content: flex-start;
+    }
+
+    &.pd-table-paging-location-right {
+        justify-content: flex-end;
+    }
 }
