@@ -140,7 +140,10 @@ export class Combobox {
         if (this.value) {
             matchedItem = this._itemsState.filter((i) => i.label === this.value).shift();
         }
-        this.selectItem(matchedItem);
+
+        if (matchedItem) {
+            this.selectItem(matchedItem);
+        }
     }
 
     protected componentDidLoad() {
