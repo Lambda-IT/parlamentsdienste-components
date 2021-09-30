@@ -10,7 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   #69 Added paging functionality to pd-table
+
+## [1.7.5] - 2021-09-30
+
+### Changed
+
+-   #85 Fixed issue with click outside behaviour for dropdown/menu/table-filter
+
 ## [1.7.4] - 2021-09-21
+
 ### Changed
 
 -   #83 Pd-Combobox: 🐛 fixed when the items list is empty
@@ -205,6 +213,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input label font decreased
 
 [1.8.0-1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.8.0-1
+[1.7.5]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.7.5
 [1.7.4]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.7.4
 [1.7.3]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.7.3
 [1.7.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.7.2

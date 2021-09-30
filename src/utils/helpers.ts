@@ -22,12 +22,15 @@ export const pointerCoord = (ev: any): { x: number; y: number } => {
     return { x: 0, y: 0 };
 };
 
-export function closestElement(selector: string, base: HTMLElement) {
-    function __closestFrom(el: Element | Window | Document): Element {
-        if (!el || el === document || el === window) return null;
-        if ((el as Slottable).assignedSlot) el = (el as Slottable).assignedSlot;
-        let found = (el as Element).closest(selector);
-        return found ? found : __closestFrom(((el as Element).getRootNode() as ShadowRoot).host);
+export function closestParentElement(selector: keyof HTMLElementTagNameMap, composedPath: EventTarget[]) {
+    for (let element of composedPath) {
+        if (hasTagName(element, selector)) return element;
     }
-    return __closestFrom(base);
+}
+
+function hasTagName<K extends keyof HTMLElementTagNameMap>(
+    element: Element | EventTarget | null,
+    tagName: K,
+): HTMLElement {
+    if (element instanceof HTMLElement && element.tagName.toLowerCase() === tagName) return element;
 }

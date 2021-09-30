@@ -1,7 +1,7 @@
-import { Component, Host, h, State, Listen, Element, Prop, Method, Watch } from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
-import { closestElement } from '../../utils/helpers';
+import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { PdPlacement } from '../../interface';
+import { closestParentElement } from '../../utils/helpers';
 @Component({
     tag: 'pd-menu',
     styleUrl: 'pd-menu.scss',
@@ -59,9 +59,7 @@ export class Menu {
 
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
-        if (closestElement('pd-menu', ev.composedPath()[0] as HTMLElement) !== this.element) {
-            this.isOpen = false;
-        }
+        if (closestParentElement('pd-menu', ev.composedPath()) !== this.element) this.isOpen = false;
     }
 
     protected componentDidLoad() {

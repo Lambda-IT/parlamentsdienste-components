@@ -1,5 +1,5 @@
-import { Component, Host, h, Event, EventEmitter, Listen, Element, Method, Prop } from '@stencil/core';
-import { closestElement } from '../../utils/helpers';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
+import { closestParentElement } from '../../utils/helpers';
 
 @Component({
     tag: 'pd-table-filter',
@@ -73,9 +73,7 @@ export class PdTableFilter {
     protected handleClick(ev: MouseEvent) {
         // the filter is inside the shadowdom of the table, we need to find the clicked element inside of the shadow dom
         // ev.target doesn't work because of that
-        if (closestElement('pd-table-filter', ev.composedPath()[0] as HTMLElement) !== this.element) {
-            this.pdClose.emit();
-        }
+        if (closestParentElement('pd-table-filter', ev.composedPath()) !== this.element) this.pdClose.emit();
     }
 
     public render() {
@@ -84,12 +82,12 @@ export class PdTableFilter {
                 <div class="pd-table-filter-wrapper">
                     <div class="pd-table-search-input-wrapper">
                         <input
-                            ref={el => (this.inputRef = el as HTMLInputElement)}
+                            ref={(el) => (this.inputRef = el as HTMLInputElement)}
                             class="pd-table-search-input"
-                            onInput={ev => this.handleFilterChange(ev)}
+                            onInput={(ev) => this.handleFilterChange(ev)}
                             placeholder="Stichwort, Name …"
                             value={this.value}
-                            onKeyDown={ev => this.onSubmit(ev)}
+                            onKeyDown={(ev) => this.onSubmit(ev)}
                         />
                         <button class="pd-table-search-button" onClick={this.onSearch} tabindex="-1">
                             <pd-icon class="pd-table-search-button-icon" name="search" size={2.4}></pd-icon>
