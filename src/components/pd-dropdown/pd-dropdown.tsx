@@ -1,7 +1,7 @@
 import { createPopper, Instance } from '@popperjs/core';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core';
 import { DropdownItem } from '../../interface';
-import { closestElement } from '../../utils/helpers';
+import { closestParentElement } from '../../utils/helpers';
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
@@ -88,9 +88,7 @@ export class Dropdown {
 
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
-        if (closestElement('pd-dropdown', ev.composedPath()[0] as HTMLElement) !== this.element) {
-            this.open = false;
-        }
+        if (closestParentElement('pd-dropdown', ev.composedPath()) !== this.element) this.open = false;
     }
 
     @Listen('keydown')
