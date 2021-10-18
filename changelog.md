@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2021-10-21
+
+### Changed
+
+-   #90 pd-datepicker: Fixed input padding
+
 ## [1.8.0-1] - 2021-09-20
 
 ### Added
@@ -15,13 +21,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   #85 Fixed issue with click outside behaviour for dropdown/menu/table-filter
+-   #85 Fixed issue with click outside behavior for dropdown/menu/table-filter
 
 ## [1.7.4] - 2021-09-21
 
 ### Changed
 
--   #83 Pd-Combobox: 🐛 fixed when the items list is empty
+-   #83 pd-Combobox: 🐛 fixed when the items list is empty
 
 ## [1.7.3] - 2021-09-16
 

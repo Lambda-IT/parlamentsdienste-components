@@ -170,7 +170,7 @@ export class Datepicker {
     private renderLabel() {
         if (!this.label) return;
 
-        return <div class="pd-combobox-label-text">{this.label}</div>;
+        return <div class="pd-datepicker-label-text">{this.label}</div>;
     }
 
     private renderIcon() {

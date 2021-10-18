@@ -93,6 +93,11 @@
                 readonly
                 value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
             ></pd-textarea>
+            <!-- padding issue: https://github.com/Lambda-IT/parlamentsdienste-components/issues/90 -->
+            <form style="display: flex; justify-content: space-between;">
+              <pd-input style="width: 100%" readonly placeholder="placeholder" label="fromgroup"></pd-input>
+              <pd-datepicker style="width: 100%" label="normal" placeholder="formgroup"></pd-datepicker>
+            </form>
             <pd-input placeholder="placeholder" label="error" error id="pd-input-0"></pd-input>
             <pd-input
                 label="disabled"
