@@ -40,6 +40,24 @@
                 </div>
             </pd-alert>
             <pd-list>
+                <pd-list-item-expandable expandable edit menu>
+                    <div>form expandable</div>
+                    <div slot="expandable">
+                        <form>
+                            <pd-input style="width: 100%;" readonly placeholder="placeholder" label="input"></pd-input>
+                            <div style="display: flex; justify-content: space-between;">
+                                <pd-datepicker style="width: 100%;" label="normal" placeholder="date1"></pd-datepicker>
+                                <pd-datepicker style="width: 100%;" label="normal" placeholder="date2"></pd-datepicker>
+                            </div>
+                        </form>
+                    </div>
+                    <pd-menu-item text="Drucken" slot="menu">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                    <pd-menu-item text="Drucken" slot="menu">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                </pd-list-item-expandable>
                 <pd-list-item-expandable status="success" edit expandable menu checked checkbox
                     ><div>item 1</div>
                     <div slot="expandable">
@@ -95,8 +113,8 @@
             ></pd-textarea>
             <!-- padding issue: https://github.com/Lambda-IT/parlamentsdienste-components/issues/90 -->
             <form style="display: flex; justify-content: space-between;">
-              <pd-input style="width: 100%" readonly placeholder="placeholder" label="fromgroup"></pd-input>
-              <pd-datepicker style="width: 100%" label="normal" placeholder="formgroup"></pd-datepicker>
+                <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
+                <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
             </form>
             <pd-input placeholder="placeholder" label="error" error id="pd-input-0"></pd-input>
             <pd-input
@@ -520,7 +538,7 @@
                 { id: '3', label: 'Dropdown Link 03', value: 'a3' },
                 { id: '4', label: 'Dropdown Link 04', value: 'a4' },
                 { id: '5', label: 'Dropdown Link 05', value: 'a5' },
-                { id: '6', label: 'Preselected', value: 'a6', selected : true },
+                { id: '6', label: 'Preselected', value: 'a6', selected: true },
             ];
             pdComboBox1.items = pdComboBox.items;
             setTimeout(() => pdComboBox1.reset(), 3000);

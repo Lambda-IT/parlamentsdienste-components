@@ -29,10 +29,11 @@
 .pd-list-item-expandable-content {
     padding: 0.75rem;
     flex: 1 1 auto;
+    grid-column: 3 / span 1;
 }
 
 .pd-list-item-expandable-additional-content-wrapper {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 5 ;
     transition: height 0.3s ease-in-out;
     height: auto;
 
