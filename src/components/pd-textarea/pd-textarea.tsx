@@ -174,7 +174,7 @@ export class Textarea {
     };
 
     private onBlur = (ev: FocusEvent) => {
-        this.pdBlur.emit(ev);
+        if (!this.disabled || !this.readonly) this.pdBlur.emit(ev);
     };
 
     render() {

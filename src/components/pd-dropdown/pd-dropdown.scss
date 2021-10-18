@@ -44,6 +44,7 @@
             background-color: $gray-3;
             color: $black;
             border: none;
+            cursor: default;
 
             .pd-dropdown-caret {
                 fill: $black;
@@ -86,5 +87,9 @@
         fill: $white;
         flex: 0 0 auto;
         margin: -0.625em -0.2em;
+    }
+
+    &:disabled {
+        cursor: default;
     }
 }

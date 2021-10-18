@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   #90 pd-datepicker: Fixed input padding
 -   #89 pd-list-expandable: Fixed expandable grid config
+-   #88 form components: Fixed blur event for disabled elements
+-   #88 form components: Fixed cursor css for readonly and disabled state
 
 ## [1.8.0-1] - 2021-09-20
 

@@ -120,6 +120,7 @@
 
     &:disabled {
         & + .pd-checkbox-inner {
+            cursor: default;
             &:after {
                 border: 0.125em solid setcolor(primary, disabled);
             }

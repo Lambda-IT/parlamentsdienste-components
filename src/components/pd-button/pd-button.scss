@@ -78,6 +78,10 @@
     &.pd-button-dark {
         @include button-scheme(dark);
     }
+
+    &:disabled {
+        cursor: default;
+    }
 }
 
 .pd-link {

@@ -195,7 +195,7 @@ export class Search {
     };
 
     private onBlur = () => {
-        this.pdBlur.emit();
+        if (!this.disabled) this.pdBlur.emit();
     };
 
     private onFocus = () => {

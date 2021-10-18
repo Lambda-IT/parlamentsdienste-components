@@ -73,6 +73,7 @@ pd-radio {
 
     &:disabled {
         & + .pd-radio-inner {
+            cursor: default;
             &:after {
                 border: 0.125em solid setcolor(primary, disabled);
             }

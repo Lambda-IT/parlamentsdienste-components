@@ -200,6 +200,7 @@
             <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
             <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
+            <pd-button color="primary" disabled>Button Disabled</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
                 info="5min ago"
@@ -328,7 +329,7 @@
             <pd-radio name="x" value="0.25" label="25%"></pd-radio>
             <pd-radio name="x" value="0.50" label="50%"></pd-radio>
             <pd-radio name="x" value="0.80" label="80%"></pd-radio>
-            <pd-radio name="x" value="1" label="100%"></pd-radio>
+            <pd-radio disabled checked name="x" value="1" label="100%"></pd-radio>
 
             <pd-sidebar>
                 <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>

@@ -181,7 +181,7 @@ export class Input {
     };
 
     private onBlur = () => {
-        this.pdBlur.emit();
+        if (!this.disabled || !this.readonly) this.pdBlur.emit();
     };
 
     private onFocus = () => {

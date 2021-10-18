@@ -33,6 +33,7 @@
         background-color: $gray-3;
         border-color: $gray-3;
         color: $black;
+        cursor: default;
     }
 
     &.pd-chip-checked {
@@ -59,6 +60,7 @@
         background-color: setcolor(primary, disabled);
         border: 0.125em solid setcolor(primary, disabled);
         color: setcolor(primary, disabled-contrast);
+        cursor: default;
 
         .pd-chip-icon {
             fill: setcolor(primary, disabled-contrast);

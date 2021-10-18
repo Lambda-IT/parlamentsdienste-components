@@ -150,7 +150,6 @@ export class Combobox {
         this.menuElement = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
         this.labelElement = this.element.shadowRoot.querySelector('.pd-combobox-label') as HTMLElement;
         this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
-
     }
 
     protected componentDidUpdate() {
@@ -202,7 +201,9 @@ export class Combobox {
                     this.open = true;
                     return;
                 }
-                const currentFiltredItems = this._itemsState.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
+                const currentFiltredItems = this._itemsState.filter((i) =>
+                    this.filterNotMatchingItems(i, this.inputValue),
+                );
                 const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
                 const nextIndex = currentIndex >= this._itemsState.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = currentFiltredItems[nextIndex];
@@ -218,7 +219,9 @@ export class Combobox {
                     this.open = true;
                     return;
                 }
-                const currentFiltredItems = this._itemsState.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
+                const currentFiltredItems = this._itemsState.filter((i) =>
+                    this.filterNotMatchingItems(i, this.inputValue),
+                );
                 const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
                 const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
                 const previousItem = currentFiltredItems[previousIndex];
@@ -275,7 +278,7 @@ export class Combobox {
     };
 
     private onBlur = () => {
-        this.pdBlur.emit();
+        if (!this.disabled || !this.readonly) this.pdBlur.emit();
     };
 
     private onFocus = () => {
