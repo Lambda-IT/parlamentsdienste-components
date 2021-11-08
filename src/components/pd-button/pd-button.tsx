@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Listen } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
 @Component({
@@ -43,6 +43,19 @@ export class Button {
     @Prop() target: string = '_blank';
 
     @Prop({ attribute: 'icon-location' }) iconLocation: PdIconLocation = 'none';
+
+    /**
+     * Click event
+     */
+    @Listen('click', { capture: true })
+    handleClick(e: Event) {
+        if (this.disabled) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+        return e;
+    }
 
     public render() {
         const { href, target, type, disabled } = this;

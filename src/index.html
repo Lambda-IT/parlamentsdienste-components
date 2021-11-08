@@ -200,7 +200,7 @@
             <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
             <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
-            <pd-button color="primary" disabled>Button Disabled</pd-button>
+            <pd-button id="pd-button-disabled-0" color="primary" disabled>Button Disabled</pd-button>
             <pd-toast
                 header="Toast title goes here in case there is enough space otherwise it breaks"
                 info="5min ago"
@@ -556,11 +556,16 @@
             /*** Modal ***/
 
             const pdButton = document.getElementById('pd-button-0');
+            const pdButtonDisabled = document.getElementById('pd-button-disabled-0');
 
             pdButton.addEventListener('click', () => {
-                presentModal();
+                // presentModal();
                 flatPickr0.date = '2022-01-02';
+                console.log('active button');
             });
+
+            // should not trigger, test for #94
+            pdButtonDisabled.addEventListener('click', () => console.log('disabled button'));
 
             function presentModal() {
                 // create the modal with the `modal-page` component
