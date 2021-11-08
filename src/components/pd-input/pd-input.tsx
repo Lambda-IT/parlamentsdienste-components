@@ -134,6 +134,11 @@ export class Input {
     @Prop() helperText?: string;
 
     /**
+     * Default vertical adjustment for inline forms
+     */
+    @Prop() verticalAdjust: boolean = false;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
@@ -229,6 +234,7 @@ export class Input {
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
+                        style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5rem' } : {}}
                     />
                 </label>
             </Host>

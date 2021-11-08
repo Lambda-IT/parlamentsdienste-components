@@ -66,6 +66,11 @@ export class Dropdown {
     @Prop() error: boolean = false;
 
     /**
+     * Default vertical adjustment for inline forms
+     */
+    @Prop() verticalAdjust: boolean = false;
+
+    /**
      * Set a preselected entry by index
      */
     @Method()
@@ -201,7 +206,10 @@ export class Dropdown {
                 >
                     {this.renderLabel()}
                 </label>
-                <div class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}>
+                <div
+                    class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}
+                    style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5rem' } : {}}
+                >
                     <button
                         ref={(el) => (this.buttonElement = el)}
                         class="pd-dropdown-button"

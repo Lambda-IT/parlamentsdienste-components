@@ -48,6 +48,11 @@ export class Checkbox {
 
     @Prop() error: boolean = false;
 
+    /**
+     * Default vertical adjustment for inline forms
+     */
+    @Prop() verticalAdjust: boolean = false;
+
     @Event({ eventName: 'pd-checked' }) pdChecked: EventEmitter<boolean>;
 
     private onClick = () => {
@@ -64,7 +69,10 @@ export class Checkbox {
                 aria-disabled={this.disabled ? 'true' : 'false'}
                 class={this.error ? 'pd-checkbox-error' : ''}
             >
-                <label class={{ 'pd-checkbox-label': true, 'pd-checkbox-readonly': this.readonly }}>
+                <label
+                    class={{ 'pd-checkbox-label': true, 'pd-checkbox-readonly': this.readonly }}
+                    style={this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}}
+                >
                     <input
                         class="pd-checkbox-input"
                         type="Checkbox"

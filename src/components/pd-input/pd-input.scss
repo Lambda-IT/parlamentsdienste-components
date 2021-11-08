@@ -55,6 +55,7 @@
     border-radius: 0.25em;
     border: 0.125em solid setcolor(primary, enabled);
     width: 100%;
+    margin-top: var(--pd-input-vertical-adjust, inherit);
 
     &:hover:enabled {
         border: 0.125em solid setcolor(primary, hover);

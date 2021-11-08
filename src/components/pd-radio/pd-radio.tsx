@@ -33,28 +33,37 @@ export class Radio {
      */
     @Prop() disabled: boolean = false;
 
+    /**
+     * Default vertical adjustment for inline forms
+     */
+    @Prop() verticalAdjust: boolean = false;
+
     public render() {
         const { name, value, label, checked } = this;
 
-        return (
-            <Host
-                role="radio"
-                aria-checked={this.checked ? 'true' : 'false'}
-                aria-disabled={this.disabled ? 'true' : 'false'}
-            >
-                <label class="pd-radio-label">
-                    <input
-                        class="pd-radio-input"
-                        type="radio"
-                        checked={checked}
-                        name={name}
-                        value={value}
-                        disabled={this.disabled}
-                    />
-                    <div class="pd-radio-inner"></div>
-                    <div class="pd-radio-text">{label}</div>
-                </label>
-            </Host>
-        );
+        if (this.verticalAdjust)
+            return (
+                <Host
+                    role="radio"
+                    aria-checked={this.checked ? 'true' : 'false'}
+                    aria-disabled={this.disabled ? 'true' : 'false'}
+                >
+                    <label
+                        class="pd-radio-label"
+                        style={this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}}
+                    >
+                        <input
+                            class="pd-radio-input"
+                            type="radio"
+                            checked={checked}
+                            name={name}
+                            value={value}
+                            disabled={this.disabled}
+                        />
+                        <div class="pd-radio-inner"></div>
+                        <div class="pd-radio-text">{label}</div>
+                    </label>
+                </Host>
+            );
     }
 }

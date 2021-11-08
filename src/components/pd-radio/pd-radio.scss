@@ -10,6 +10,7 @@ pd-radio {
     display: flex;
     align-items: center;
     margin: 0.375em 0;
+    margin-top: var(--pd-radio-vertical-adjust, inherit);
 }
 
 .pd-radio-label > .pd-radio-input {

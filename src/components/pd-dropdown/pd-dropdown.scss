@@ -38,6 +38,7 @@
 
 .pd-dropdown {
     position: relative;
+    margin-top: var(--pd-dropdown-vertical-adjust, inherit);
 
     &.pd-dropdown-readonly {
         .pd-dropdown-button {

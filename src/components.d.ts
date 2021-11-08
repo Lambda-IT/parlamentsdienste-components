@@ -119,6 +119,10 @@ export namespace Components {
           * value of checkbox
          */
         "value": boolean;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
     }
     interface PdChip {
         /**
@@ -188,6 +192,10 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string | null;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
     }
     interface PdDatepicker {
         /**
@@ -247,6 +255,10 @@ export namespace Components {
           * Shows/opens the calendar if its closed, hides/closes it otherwise.
          */
         "toggle": () => Promise<void>;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
     }
     interface PdDropdown {
         /**
@@ -294,6 +306,10 @@ export namespace Components {
           * Set a preselected entry by index
          */
         "setSelectedIndex": (index: number) => Promise<void>;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
     }
     interface PdDropdownItem {
         /**
@@ -451,6 +467,10 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string | number | null;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
     }
     interface PdList {
     }
@@ -628,6 +648,10 @@ export namespace Components {
           * Value of radio
          */
         "value"?: any | null;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
     }
     interface PdSearch {
         /**
@@ -1282,6 +1306,10 @@ declare namespace LocalJSX {
           * value of checkbox
          */
         "value"?: boolean;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
     }
     interface PdChip {
         /**
@@ -1367,6 +1395,10 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string | null;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
     }
     interface PdDatepicker {
         /**
@@ -1415,6 +1447,10 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
     }
     interface PdDropdown {
         /**
@@ -1455,6 +1491,10 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
     }
     interface PdDropdownItem {
         /**
@@ -1624,6 +1664,10 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string | number | null;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
     }
     interface PdList {
     }
@@ -1830,6 +1874,10 @@ declare namespace LocalJSX {
           * Value of radio
          */
         "value"?: any | null;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
     }
     interface PdSearch {
         /**

@@ -288,6 +288,22 @@
                 <pd-panel-footer slot="footer"></pd-panel-footer>
             </pd-panel>
             <h1>Header 1</h1>
+            <h2>Inline Form Check 1</h2>
+            <div style="display: flex">
+              <pd-input placeholder="without label" vertical-adjust></pd-input>
+              <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+              <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
+              <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
+              <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+              <pd-datepicker placeholder="without label, css var" style="--pd-datepicker-vertical-adjust: 1.5rem"></pd-datepicker>
+            </div>
+            <h2>Inline Form Check 2</h2>
+            <div style="display: flex">
+              <pd-input placeholder="without label" vertical-adjust></pd-input>
+              <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+              <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+              <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
+            </div>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning" icon-location="left"> Button</pd-button>
             <pd-button size="small" color="danger">Button Small</pd-button>

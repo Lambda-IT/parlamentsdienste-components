@@ -57,6 +57,11 @@ export class Datepicker {
      */
     @Prop() placeholder?: string | null;
 
+    /**
+     * Default vertical adjustment for inline forms
+     */
+    @Prop() verticalAdjust: boolean = false;
+
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
         time_24hr: true,
@@ -147,6 +152,7 @@ export class Datepicker {
                         'pd-datepicker-disabled': this.disabled,
                         'pd-datepicker-readonly': this.readonly,
                     }}
+                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5rem' } : {}}
                 >
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">

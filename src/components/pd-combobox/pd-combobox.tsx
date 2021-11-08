@@ -67,6 +67,11 @@ export class Combobox {
     @Prop() error: boolean = false;
 
     /**
+     * Default vertical adjustment for inline forms
+     */
+    @Prop() verticalAdjust: boolean = false;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<InputChangeEventDetail>;
@@ -330,6 +335,7 @@ export class Combobox {
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-item-selected': this.selectedItem ? true : false,
                     }}
+                    style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5rem' } : {}}
                 >
                     {this.renderLabel()}
                     <div class="pd-combobox-input-wrapper">
