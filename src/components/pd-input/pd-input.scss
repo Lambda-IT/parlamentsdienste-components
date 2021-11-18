@@ -1,5 +1,8 @@
 @include resetControlFonts;
 
+$error-border: 0.125em solid setcolor(danger, enabled);
+$error-border-hover: 0.125em solid setcolor(danger, hover);
+
 :host {
     display: block;
 }
@@ -14,10 +17,10 @@
 
 :host(.pd-input-error) {
     .pd-input {
-        border: 0.125em solid setcolor(danger, enabled);
+        border: $error-border;
 
         &:hover:enabled {
-            border: 0.125em solid setcolor(danger, hover);
+            border: $error-border-hover;
         }
     }
 
@@ -39,6 +42,26 @@
         &:focus:enabled {
             border: 0.125em solid $gray-3;
             cursor: default;
+        }
+    }
+}
+
+:host(.flatpickr-input) {
+    .pd-input-readonly {
+        background-color: $gray-3;
+        &:hover:enabled,
+        &:disabled,
+        &:focus:enabled {
+            border: 0.125em solid $gray-3;
+            cursor: default;
+        }
+    }
+
+    .pd-input-error {
+        border: $error-border;
+
+        &:hover:enabled {
+            border: $error-border-hover;
         }
     }
 }

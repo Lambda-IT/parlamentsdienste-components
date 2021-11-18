@@ -207,7 +207,7 @@ export class Input {
                 <label class="pd-input-label">
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
-                        class={{ 'pd-input': true, 'pd-input-readonly': this.readonly }}
+                        class={{ 'pd-input': true, 'pd-input-readonly': this.readonly, 'pd-input-error': this.error }}
                         ref={(input) => (this.nativeInput = input)}
                         disabled={this.disabled}
                         accept={this.accept}
