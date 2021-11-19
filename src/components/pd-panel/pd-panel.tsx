@@ -27,8 +27,10 @@ export class Panel {
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
-        this.pdCollapsed.emit({ collapsed });
-        collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
+        if (this.collapsible) {
+            this.pdCollapsed.emit({ collapsed });
+            collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
+        }
     }
 
     public componentDidLoad() {
