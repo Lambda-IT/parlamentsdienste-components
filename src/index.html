@@ -197,7 +197,12 @@
                 </pd-timeline-date>
             </pd-timeline>
             <pd-datepicker label="normal" id="pd-datepickr-0" error placeholder="asdf"></pd-datepicker>
-            <pd-datepicker label="allowInput false -> error" config="{allowInput: false}" error placeholder="asdf"></pd-datepicker>
+            <pd-datepicker
+                label="allowInput false -> error"
+                config="{allowInput: false}"
+                error
+                placeholder="asdf"
+            ></pd-datepicker>
             <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
             <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
             <pd-button id="pd-button-0" color="primary">Button</pd-button>
@@ -261,6 +266,7 @@
             <pd-panel collapsible>
                 <pd-panel-header slot="header">Header</pd-panel-header>
                 <pd-panel-content style="padding: 0px;">
+                    <pd-button id="pd-open-modal-btn-0">Open Modal</pd-button>
                     <pd-list>
                         <pd-list-item status="unset">
                             <p class="mb-1">18.3708</p>
@@ -269,7 +275,7 @@
                         <pd-list-item status="success">
                             <p class="mb-1">16.3112</p>
                             <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                        </pd-list-item>f
+                        </pd-list-item>
                         <pd-list-item status="danger">
                             <p class="mb-1">18.426</p>
                             <h5 class="mb-1">Jagdgesetz.</h5>
@@ -290,20 +296,23 @@
             </pd-panel>
             <h1>Header 1</h1>
             <h2>Inline Form Check 1</h2>
-            <div style="display: flex">
-              <pd-input placeholder="without label" vertical-adjust></pd-input>
-              <pd-input placeholder="with label" label="Inline: Label"></pd-input>
-              <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
-              <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
-              <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
-              <pd-datepicker placeholder="without label, css var" style="--pd-datepicker-vertical-adjust: 1.5rem"></pd-datepicker>
+            <div style="display: flex;">
+                <pd-input placeholder="without label" vertical-adjust></pd-input>
+                <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+                <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
+                <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
+                <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+                <pd-datepicker
+                    placeholder="without label, css var"
+                    style="--pd-datepicker-vertical-adjust: 1.5rem;"
+                ></pd-datepicker>
             </div>
             <h2>Inline Form Check 2</h2>
-            <div style="display: flex">
-              <pd-input placeholder="without label" vertical-adjust></pd-input>
-              <pd-input placeholder="with label" label="Inline: Label"></pd-input>
-              <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
-              <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
+            <div style="display: flex;">
+                <pd-input placeholder="without label" vertical-adjust></pd-input>
+                <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+                <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+                <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
             </div>
             <pd-button color="success">Button</pd-button>
             <pd-button color="warning" icon-location="left"> Button</pd-button>
@@ -361,6 +370,16 @@
             <pd-timeline></pd-timeline>
             <template id="pd-modal-template">
                 <span class="content-text">Currently open modals:</span>
+
+                <div>
+                    <pd-dropdown
+                        id="pd-dropdown-modal-0"
+                        label="dropdown label"
+                        helper-text="dropdown helper text"
+                        empty-item
+                    ></pd-dropdown>
+                </div>
+
                 <span class="content-modal-count"></span>
                 <div slot="footer">
                     <pd-button class="close-button" outline>close</pd-button>
@@ -574,11 +593,16 @@
 
             const pdButton = document.getElementById('pd-button-0');
             const pdButtonDisabled = document.getElementById('pd-button-disabled-0');
+            const pdButtonOpenModal = document.getElementById('pd-open-modal-btn-0');
 
             pdButton.addEventListener('click', () => {
                 // presentModal();
                 flatPickr0.date = '2022-01-02';
                 console.log('active button');
+            });
+
+            pdButtonOpenModal.addEventListener('click', () => {
+                presentModal();
             });
 
             // should not trigger, test for #94
@@ -622,15 +646,21 @@
                 modal.append(contentTemplate);
 
                 // 1st way to get return data
-                modal.whenClosed().then((returnData) => {
+                /*modal.whenClosed().then((returnData) => {
                     console.log('whenClosed method', returnData);
-                });
+                });*/
 
                 // 2st way to get return data
                 modal.addEventListener('pd-closed', (event) => console.log('pd-closed event', event.detail));
 
                 // present the modal
                 document.body.appendChild(modal);
+                const pdDropdownModal0 = document.getElementById('pd-dropdown-modal-0');
+                pdDropdownModal0.items = [...pdDropDown.items];
+
+                modal.closeModal = () => {
+                    document.body.removeChild(modal);
+                };
 
                 // modal.openModal();
                 modal.open = true;
