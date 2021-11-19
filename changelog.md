@@ -5,14 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.8.0] - 2021-10-21
+## [1.8.0] - 2021-11-19
+
+### Added
+
+-   #93  form elements: add vertical alignment possibility for inline forms
 
 ### Changed
 
--   #90 pd-datepicker: Fixed input padding
--   #89 pd-list-expandable: Fixed expandable grid config
--   #88 form components: Fixed blur event for disabled elements
--   #88 form components: Fixed cursor css for readonly and disabled state
+-   #101 pd-panel: Fixed panel collapse mode for disabled state
+-   #94  pd-button: Fixed click events
+-   #91  pd-datepicker: Fixed visualized error border
+-   #90  pd-datepicker: Fixed input padding
+-   #89  pd-list-expandable: Fixed expandable grid config
+-   #88  form components: Fixed blur event for disabled elements
+-   #88  form components: Fixed cursor css for readonly and disabled state
 
 ## [1.8.0-1] - 2021-09-20
 
@@ -221,6 +228,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[1.8.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.8.0
 [1.8.0-1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.8.0-1
 [1.7.5]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.7.5
 [1.7.4]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.7.4
