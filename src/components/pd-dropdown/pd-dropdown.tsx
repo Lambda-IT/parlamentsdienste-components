@@ -94,6 +94,8 @@ export class Dropdown {
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
         if (closestParentElement('pd-dropdown', ev.composedPath()) !== this.element) this.open = false;
+        console.log(`PD-DROPDOWN (ComposedPath): `, ev.composedPath());
+        console.log(`PD-DROPDOWN (click / isOpen): `, this.open);
     }
 
     @Listen('keydown')
@@ -159,6 +161,7 @@ export class Dropdown {
 
     private toggleDropdown = () => {
         this.open = !this.open;
+        console.log(`PD-DROPDOWN (toggle / isOpen): `, this.open);
     };
 
     @State() selectedItem: any;
