@@ -49,31 +49,31 @@
     &:hover:enabled {
         background-color: setcolor(primary, hover);
         border: 0.125em solid setcolor(primary, hover);
-        color: setcolor(primary, hover-contrast);
+        color: setcolor(primary, hoverContrast);
 
         .pd-chip-icon {
-            fill: setcolor(primary, hover-contrast);
+            fill: setcolor(primary, hoverContrast);
         }
     }
 
     &:disabled {
         background-color: setcolor(primary, disabled);
         border: 0.125em solid setcolor(primary, disabled);
-        color: setcolor(primary, disabled-contrast);
+        color: setcolor(primary, disabledContrast);
         cursor: default;
 
         .pd-chip-icon {
-            fill: setcolor(primary, disabled-contrast);
+            fill: setcolor(primary, disabledContrast);
         }
     }
 
     &:active:enabled {
         background-color: setcolor(primary, enabled);
         border: 0.125em solid setcolor(primary, enabled);
-        color: setcolor(primary, enabled-contrast);
+        color: setcolor(primary, enabledContrast);
     }
 
-    &:focus {
+    &:focus-visible {
         box-shadow: 0 0 0 0.25em $focus;
         z-index: 2;
     }
@@ -101,7 +101,7 @@
     border: none;
     cursor: pointer;
 
-    &:focus pd-icon {
+    &:focus-visible pd-icon {
         fill: $focus;
     }
 }

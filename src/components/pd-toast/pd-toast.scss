@@ -52,7 +52,7 @@
             margin-top: -0.5em;
             cursor: pointer;
 
-            &:focus .pd-toast-close {
+            &:focus-visible .pd-toast-close {
                 fill: $focus;
             }
 

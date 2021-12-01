@@ -43,7 +43,7 @@
         }
     }
 
-    &:focus {
+    &:focus-visible {
         background-color: $yellow-1;
 
         &:hover {

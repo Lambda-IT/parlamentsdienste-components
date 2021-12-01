@@ -42,7 +42,7 @@
         }
     }
 
-    &:focus {
+    &:focus-visible {
         .pd-search-input {
             border: 0.125em solid $focus;
         }
@@ -66,7 +66,7 @@
     border: 0.125em solid setcolor(primary, enabled);
     border-right: none;
 
-    &:focus {
+    &:focus-visible {
         border: 0.125em solid $focus;
         border-right: none;
 

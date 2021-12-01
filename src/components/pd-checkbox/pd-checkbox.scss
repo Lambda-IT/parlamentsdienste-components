@@ -111,7 +111,7 @@
         }
     }
 
-    &:focus:enabled {
+    &:focus-visible:enabled {
         & + .pd-checkbox-inner {
             &:after {
                 border: 0.125em solid $focus;
@@ -188,7 +188,7 @@
             }
         }
 
-        &:focus:enabled {
+        &:focus-visible:enabled {
             & + .pd-checkbox-inner {
                 background-color: $focus;
 

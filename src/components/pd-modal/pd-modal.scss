@@ -65,7 +65,7 @@
             fill: setcolor(primary, pressed);
         }
 
-        &:focus {
+        &:focus-visible {
             fill: $focus;
         }
     }

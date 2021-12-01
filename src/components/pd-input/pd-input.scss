@@ -39,7 +39,7 @@ $error-border-hover: 0.125em solid setcolor(danger, hover);
         border: 0.125em solid $gray-3;
         &:hover:enabled,
         &:disabled,
-        &:focus:enabled {
+        &:focus-visible:enabled {
             border: 0.125em solid $gray-3;
             cursor: default;
         }
@@ -51,7 +51,7 @@ $error-border-hover: 0.125em solid setcolor(danger, hover);
         background-color: $gray-3;
         &:hover:enabled,
         &:disabled,
-        &:focus:enabled {
+        &:focus-visible:enabled {
             border: 0.125em solid $gray-3;
             cursor: default;
         }
@@ -90,7 +90,7 @@ $error-border-hover: 0.125em solid setcolor(danger, hover);
         color: $gray;
     }
 
-    &:focus:enabled {
+    &:focus-visible:enabled {
         border: 0.125em solid $focus;
     }
 }

@@ -33,7 +33,7 @@
 }
 
 .pd-list-item-expandable-additional-content-wrapper {
-    grid-column: 1 / span 5 ;
+    grid-column: 1 / span 5;
     transition: height 0.3s ease-in-out;
     height: auto;
 
@@ -59,7 +59,7 @@
             fill: $cyan-6;
         }
 
-        &:focus {
+        &:focus-visible {
             fill: $focus;
         }
     }

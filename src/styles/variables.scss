@@ -1,7 +1,7 @@
 /** Primary **/
 
 // branding
-$black: #1e1e1e !default;
+$black: #0b0b0b !default;
 $blue-whale: #033840 !default;
 $wild-sand: #f5f5f5 !default;
 $yellow-metal: #807641 !default;
@@ -38,6 +38,10 @@ $red-9: #c92a2a;
 $red-6: #fa5252;
 $red-3: #ffa8a8;
 
+$gray-disabled: #cfcfcf;
+$blue-4: #4dadf7;
+$blue-2: #a3daff;
+
 /** Secondary **/
 
 $pink-9: #a61e4d;
@@ -73,7 +77,7 @@ $green-6: #40c057;
 $green-3: #8ce99a;
 
 // shortcuts
-$focus: $yellow-4;
+$focus: $yellow-2;
 
 // bootstrap
 $primary: $cyan-9;
@@ -104,73 +108,73 @@ $link-hover-decoration: none;
 $colorscheme: (
     primary: (
         enabled: $cyan-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
+        enabledContrast: $white,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
         hover: $cyan-6,
-        hover-contrast: $white,
+        hoverContrast: $white,
         pressed: $cyan-3,
-        pressed-contrast: $white,
+        pressedContrast: $cyan-9,
     ),
     success: (
-        enabled: $lime-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $lime-6,
-        hover-contrast: $white,
+        enabled: $lime-6,
+        enabledContrast: $black,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
+        hover: $lime-9,
+        hoverContrast: $white,
         pressed: $lime-3,
-        pressed-contrast: $white,
+        pressedContrast: $lime-9,
     ),
     danger: (
-        enabled: $red-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $red-6,
-        hover-contrast: $white,
+        enabled: $red-6,
+        enabledContrast: $black,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
+        hover: $red-9,
+        hoverContrast: $white,
         pressed: $red-3,
-        pressed-contrast: $white,
+        pressedContrast: $red-9,
     ),
     warning: (
-        enabled: $yellow-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $yellow-6,
-        hover-contrast: $white,
+        enabled: $yellow-6,
+        enabledContrast: $black,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
+        hover: $yellow-9,
+        hoverContrast: $white,
         pressed: $yellow-3,
-        pressed-contrast: $white,
+        pressedContrast: $yellow-9,
     ),
     info: (
-        enabled: $blue-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $blue-6,
-        hover-contrast: $white,
+        enabled: $blue-4,
+        enabledContrast: $black,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
+        hover: $blue-9,
+        hoverContrast: $white,
         pressed: $blue-3,
-        pressed-contrast: $white,
+        pressedContrast: $blue-9,
     ),
     light: (
         enabled: $athens-gray,
-        enabled-contrast: $black,
-        disabled: $athens-gray,
-        disabled-contrast: $gray-6,
+        enabledContrast: $black,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
         hover: $gray-3,
-        hover-contrast: $black,
+        hoverContrast: $black,
         pressed: $gray-3,
-        pressed-contrast: $black,
+        pressedContrast: $black,
     ),
     dark: (
-        enabled: $blue-whale,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
+        enabled: #343a40,
+        enabledContrast: $white,
+        disabled: $gray-disabled,
+        disabledContrast: $black,
         hover: $gray-6,
-        hover-contrast: $blue-whale,
+        hoverContrast: #343a40,
         pressed: $gray-3,
-        pressed-contrast: $blue-whale,
+        pressedContrast: $black,
     ),
 );
 

@@ -49,7 +49,7 @@
         color: $gray;
     }
 
-    &:focus:enabled {
+    &:focus-visible:enabled {
         border: 0.125em solid $focus;
     }
 
@@ -59,7 +59,7 @@
 
         &:hover:enabled,
         &:disabled,
-        &:focus:enabled {
+        &:focus-visible:enabled {
             border: 0.125em solid $gray-3;
             cursor: default;
         }

@@ -45,7 +45,7 @@
         }
     }
 
-    &:focus {
+    &:focus-visible {
         .pd-combobox-input {
             border: 0.125em solid $focus;
         }
@@ -110,7 +110,7 @@
     border-radius: 0.25em;
     border: 0.125em solid setcolor(primary, enabled);
 
-    &:focus {
+    &:focus-visible {
         border: 0.125em solid $focus;
     }
 
