@@ -2066,15 +2066,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when filter is confirmed.
          */
-        "onPdClose"?: (event: CustomEvent<void>) => void;
+        "onPd-close"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when filter is confirmed.
          */
-        "onPdConfirm"?: (event: CustomEvent<string>) => void;
+        "onPd-confirm"?: (event: CustomEvent<string>) => void;
         /**
           * Emitted when filter changes.
          */
-        "onPdSearch"?: (event: CustomEvent<void>) => void;
+        "onPd-search"?: (event: CustomEvent<void>) => void;
         /**
           * filter value
          */
@@ -2122,19 +2122,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onPdBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onPd-blur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onPdChange"?: (event: CustomEvent<any>) => void;
+        "onPd-change"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPdFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onPd-focus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPdInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onPd-input"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */

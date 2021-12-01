@@ -376,8 +376,8 @@ export class Table {
             <Host role="table">
                 <pd-table-filter
                     class={{ 'pd-table-filter-hidden': !this.filterOpen }}
-                    onPdConfirm={(ev) => this.filterConfirm(ev)}
-                    onPdClose={() => (this.filterOpen = false)}
+                    onPd-confirm={(ev) => this.filterConfirm(ev)}
+                    onPd-close={() => (this.filterOpen = false)}
                 ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
