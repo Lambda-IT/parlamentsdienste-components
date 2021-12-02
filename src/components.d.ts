@@ -472,6 +472,16 @@ export namespace Components {
          */
         "verticalAdjust": boolean;
     }
+    interface PdLabel {
+        /**
+          * Background or dot color depending on hasDot
+         */
+        "color": string;
+        /**
+          * Switch between background and dot color mode
+         */
+        "hasDot": boolean;
+    }
     interface PdList {
     }
     interface PdListItem {
@@ -990,6 +1000,12 @@ declare global {
         prototype: HTMLPdInputElement;
         new (): HTMLPdInputElement;
     };
+    interface HTMLPdLabelElement extends Components.PdLabel, HTMLStencilElement {
+    }
+    var HTMLPdLabelElement: {
+        prototype: HTMLPdLabelElement;
+        new (): HTMLPdLabelElement;
+    };
     interface HTMLPdListElement extends Components.PdList, HTMLStencilElement {
     }
     var HTMLPdListElement: {
@@ -1153,6 +1169,7 @@ declare global {
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
+        "pd-label": HTMLPdLabelElement;
         "pd-list": HTMLPdListElement;
         "pd-list-item": HTMLPdListItemElement;
         "pd-list-item-expandable": HTMLPdListItemExpandableElement;
@@ -1668,6 +1685,16 @@ declare namespace LocalJSX {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust"?: boolean;
+    }
+    interface PdLabel {
+        /**
+          * Background or dot color depending on hasDot
+         */
+        "color"?: string;
+        /**
+          * Switch between background and dot color mode
+         */
+        "hasDot"?: boolean;
     }
     interface PdList {
     }
@@ -2223,6 +2250,7 @@ declare namespace LocalJSX {
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
+        "pd-label": PdLabel;
         "pd-list": PdList;
         "pd-list-item": PdListItem;
         "pd-list-item-expandable": PdListItemExpandable;
@@ -2266,6 +2294,7 @@ declare module "@stencil/core" {
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+            "pd-label": LocalJSX.PdLabel & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
             "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
             "pd-list-item-expandable": LocalJSX.PdListItemExpandable & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;

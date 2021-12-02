@@ -50,18 +50,19 @@ interface DropdownItem {
 
 ## Properties
 
-| Property      | Attribute     | Description                                                        | Type             | Default     |
-| ------------- | ------------- | ------------------------------------------------------------------ | ---------------- | ----------- |
-| `disabled`    | `disabled`    | If `true`, the user cannot interact with the input.                | `boolean`        | `false`     |
-| `error`       | `error`       |                                                                    | `boolean`        | `false`     |
-| `highlight`   | `highlight`   | Show matching parts in results as highlighted                      | `boolean`        | `true`      |
-| `items`       | --            | Values shown as combobox items                                     | `ComboboxItem[]` | `[]`        |
-| `label`       | `label`       | combobox box label                                                 | `string`         | `undefined` |
-| `placeholder` | `placeholder` | Instructional text that shows before the input has a value.        | `string`         | `undefined` |
-| `readonly`    | `readonly`    | If `true`, the user cannot modify the value.                       | `boolean`        | `false`     |
-| `required`    | `required`    | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`     |
-| `selectable`  | `selectable`  | If `true`, the combobox get a selected state like a dropdown.      | `boolean`        | `false`     |
-| `value`       | `value`       | The value of the input.                                            | `string`         | `''`        |
+| Property         | Attribute         | Description                                                        | Type             | Default     |
+| ---------------- | ----------------- | ------------------------------------------------------------------ | ---------------- | ----------- |
+| `disabled`       | `disabled`        | If `true`, the user cannot interact with the input.                | `boolean`        | `false`     |
+| `error`          | `error`           |                                                                    | `boolean`        | `false`     |
+| `highlight`      | `highlight`       | Show matching parts in results as highlighted                      | `boolean`        | `true`      |
+| `items`          | --                | Values shown as combobox items                                     | `ComboboxItem[]` | `[]`        |
+| `label`          | `label`           | combobox box label                                                 | `string`         | `undefined` |
+| `placeholder`    | `placeholder`     | Instructional text that shows before the input has a value.        | `string`         | `undefined` |
+| `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                       | `boolean`        | `false`     |
+| `required`       | `required`        | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`     |
+| `selectable`     | `selectable`      | If `true`, the combobox get a selected state like a dropdown.      | `boolean`        | `false`     |
+| `value`          | `value`           | The value of the input.                                            | `string`         | `''`        |
+| `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                       | `boolean`        | `false`     |
 
 
 ## Events
