@@ -42,6 +42,7 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 | `required`        | `required`         | If `true`, the user must fill in a value before submitting a form. | `boolean` | `false`     |
 | `text`            | `text`             | Checkbox description text                                          | `string`  | `''`        |
 | `value`           | `value`            | value of checkbox                                                  | `boolean` | `false`     |
+| `verticalAdjust`  | `vertical-adjust`  | Default vertical adjustment for inline forms                       | `boolean` | `false`     |
 
 
 ## Events

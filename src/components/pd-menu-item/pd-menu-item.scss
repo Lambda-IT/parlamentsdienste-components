@@ -32,8 +32,8 @@
 
     &:active {
         background-color: setcolor(primary, pressed);
-        color: $black;
-        fill: $black;
+        color: $pd-black;
+        fill: $pd-black;
     }
 
     strong {

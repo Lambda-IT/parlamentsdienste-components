@@ -51,18 +51,19 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
 ## Properties
 
-| Property        | Attribute     | Description                                                        | Type             | Default                                                             |
-| --------------- | ------------- | ------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------- |
-| `disabled`      | `disabled`    | If `true`, the user cannot interact with the input.                | `boolean`        | `false`                                                             |
-| `emptyItem`     | `empty-item`  | Enable selection of an empty item                                  | `boolean`        | `false`                                                             |
-| `emptyItemData` | --            | Data used for the empty item                                       | `DropdownItem`   | `{         id: '0',         label: '-',         value: null,     }` |
-| `error`         | `error`       |                                                                    | `boolean`        | `false`                                                             |
-| `itemCount`     | `item-count`  | Items visible in dropdown                                          | `number`         | `5`                                                                 |
-| `items`         | --            | Items to display and select in dropdown                            | `DropdownItem[]` | `[]`                                                                |
-| `label`         | `label`       | Dropdown box label                                                 | `string`         | `undefined`                                                         |
-| `placeholder`   | `placeholder` | Placeholder when no item is selected                               | `string`         | `''`                                                                |
-| `readonly`      | `readonly`    | If `true`, the user cannot modify the value.                       | `boolean`        | `false`                                                             |
-| `required`      | `required`    | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`                                                             |
+| Property         | Attribute         | Description                                                        | Type             | Default                                                             |
+| ---------------- | ----------------- | ------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------- |
+| `disabled`       | `disabled`        | If `true`, the user cannot interact with the input.                | `boolean`        | `false`                                                             |
+| `emptyItem`      | `empty-item`      | Enable selection of an empty item                                  | `boolean`        | `false`                                                             |
+| `emptyItemData`  | --                | Data used for the empty item                                       | `DropdownItem`   | `{         id: '0',         label: '-',         value: null,     }` |
+| `error`          | `error`           |                                                                    | `boolean`        | `false`                                                             |
+| `itemCount`      | `item-count`      | Items visible in dropdown                                          | `number`         | `5`                                                                 |
+| `items`          | --                | Items to display and select in dropdown                            | `DropdownItem[]` | `[]`                                                                |
+| `label`          | `label`           | Dropdown box label                                                 | `string`         | `undefined`                                                         |
+| `placeholder`    | `placeholder`     | Placeholder when no item is selected                               | `string`         | `''`                                                                |
+| `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                       | `boolean`        | `false`                                                             |
+| `required`       | `required`        | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`                                                             |
+| `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                       | `boolean`        | `false`                                                             |
 
 
 ## Events

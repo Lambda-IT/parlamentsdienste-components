@@ -50,15 +50,15 @@
     }
 
     &.pd-alert-light {
-        color: $black;
+        color: $pd-black;
         background-color: setcolor(light, enabled);
 
         .pd-alert-action .pd-alert-action-text {
-            color: $black;
+            color: $pd-black;
         }
 
         .pd-alert-action-cancel {
-            fill: $black;
+            fill: $pd-black;
 
             &:hover {
                 fill: $gray;

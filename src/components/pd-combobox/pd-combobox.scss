@@ -83,14 +83,14 @@
 
             &:read-only {
                 background-color: $gray-3;
-                color: $black;
+                color: $pd-black;
                 border-color: $gray-3;
             }
         }
 
         &.pd-combobox-readonly {
             .pd-combobox-icon-toggle {
-                fill: $black;
+                fill: $pd-black;
             }
         }
     }
@@ -116,7 +116,7 @@
 
     &:read-only {
         background-color: $gray-3;
-        color: $black;
+        color: $pd-black;
         border: 0.125em solid $gray-3;
     }
 }

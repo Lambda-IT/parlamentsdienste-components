@@ -43,12 +43,12 @@
     &.pd-dropdown-readonly {
         .pd-dropdown-button {
             background-color: $gray-3;
-            color: $black;
+            color: $pd-black;
             border: none;
             cursor: default;
 
             .pd-dropdown-caret {
-                fill: $black;
+                fill: $pd-black;
             }
         }
     }
