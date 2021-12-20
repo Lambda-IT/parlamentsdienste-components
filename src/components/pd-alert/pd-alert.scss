@@ -79,7 +79,7 @@
     }
 
     &.pd-alert-light {
-        color: $black;
+        color: $pd-black;
         background-color: setcolor(light, enabled);
         fill: setcolor(light, enabledContrast);
         .pd-alert-action-text {
@@ -87,7 +87,7 @@
         }
 
         .pd-alert-action-cancel {
-            fill: $black;
+            fill: $pd-black;
 
             &:hover {
                 fill: $gray;

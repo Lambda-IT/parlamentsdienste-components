@@ -18,17 +18,17 @@ export class PdTableFilter {
     /**
      * Emitted when filter changes.
      */
-    @Event() pdSearch!: EventEmitter<void>;
+    @Event({ eventName: 'pd-search' }) pdSearch!: EventEmitter<void>;
 
     /**
      * Emitted when filter is confirmed.
      */
-    @Event() pdConfirm!: EventEmitter<string>;
+    @Event({ eventName: 'pd-confirm' }) pdConfirm!: EventEmitter<string>;
 
     /**
      * Emitted when filter is confirmed.
      */
-    @Event() pdClose!: EventEmitter<void>;
+    @Event({ eventName: 'pd-close' }) pdClose!: EventEmitter<void>;
 
     @Method()
     async reset() {

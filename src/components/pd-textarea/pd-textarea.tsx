@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Watch, Method, Host, readTask } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Method, Prop, readTask, Watch } from '@stencil/core';
 
 @Component({
     tag: 'pd-textarea',
@@ -113,22 +113,22 @@ export class Textarea {
     /**
      * Emitted when the input value has changed.
      */
-    @Event() pdChange!: EventEmitter<any>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<any>;
 
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event() pdInput!: EventEmitter<KeyboardEvent>;
+    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
 
     /**
      * Emitted when the input loses focus.
      */
-    @Event() pdBlur!: EventEmitter<FocusEvent>;
+    @Event({ eventName: 'pd-blur' }) pdBlur!: EventEmitter<FocusEvent>;
 
     /**
      * Emitted when the input has focus.
      */
-    @Event() pdFocus!: EventEmitter<FocusEvent>;
+    @Event({ eventName: 'pd-focus' }) pdFocus!: EventEmitter<FocusEvent>;
 
     /**
      * Sets focus on the native `textarea` in `pd-textarea`. Use this method instead of the global

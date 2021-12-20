@@ -89,7 +89,7 @@
         &.pd-table-light {
             border-bottom: 0.125em solid $blue-whale;
             border-top: 0.125em solid $blue-whale;
-            color: $black;
+            color: $pd-black;
 
             &.pd-table-sortable {
                 &:hover {
@@ -106,7 +106,7 @@
             background-color: $gray-3;
             border-bottom: 0.125em solid $gray-3;
             border-top: 0.125em solid $gray-3;
-            color: $black;
+            color: $pd-black;
 
             &.pd-table-sortable {
                 &:hover {

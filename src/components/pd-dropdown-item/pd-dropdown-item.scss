@@ -25,7 +25,7 @@
 
     &:active {
         background-color: setcolor(primary, pressed);
-        color: $black;
+        color: $pd-black;
     }
 
     strong {
@@ -40,7 +40,7 @@
 
     &.pd-dropdown-item-selected {
         background-color: $focus;
-        color: $black;
+        color: $pd-black;
 
         &:hover {
             background-color: setcolor(primary, enabled);
