@@ -15,7 +15,24 @@
             }
 
             .example-components > * {
+                margin: 10px 10px;
+                margin-top: 0;
+            }
+
+            details {
+                border: 2px solid #ccc;
+                border-radius: 6px;
+                background: white;
+                padding: 10px;
+            }
+
+            details > * {
                 margin: 20px 10px;
+            }
+
+            details > summary {
+                margin: 0;
+                padding: 3 px 6 px;
             }
 
             .checked .a {
@@ -30,364 +47,469 @@
     </head>
     <body>
         <div class="example-components">
-            <pd-button>Button</pd-button>
-            <pd-button disabled color="success">Button</pd-button>
-            <pd-button disabled color="warning" icon-location="left"> Button</pd-button>
-            <pd-button disabled color="danger">Button</pd-button>
-            <pd-button disabled color="info">Button</pd-button>
-            <pd-button disabled color="light">Button</pd-button>
-            <pd-button disabled color="dark">Button</pd-button>
-            <pd-button outline color="primary">Button</pd-button>
-            <pd-button outline color="success">Button</pd-button>
-            <pd-button outline color="warning">Button</pd-button>
-            <pd-button outline color="danger">Button</pd-button>
-            <pd-button outline color="info">Button</pd-button>
-            <pd-button outline color="light">Button</pd-button>
-            <pd-button outline color="dark">Button</pd-button>
-            <pd-alert color="warning" action-text="Mehr anzeigen" action-text-expanded="asdf" expandable closable>
-                <div>Info: A simple primary alert—check it out!</div>
-                <div slot="expandable">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
-                    adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim harum esse
-                    repellat.
-                </div>
-            </pd-alert>
-            <pd-list>
-                <pd-list-item-expandable expandable edit menu>
-                    <div>form expandable</div>
+            <details open>
+                <summary>Buttons</summary>
+                <pd-button>Button</pd-button>
+                <pd-button disabled color="success">Button</pd-button>
+                <pd-button disabled color="warning" icon-location="left"> Button</pd-button>
+                <pd-button disabled color="danger">Button</pd-button>
+                <pd-button disabled color="info">Button</pd-button>
+                <pd-button disabled color="light">Button</pd-button>
+                <pd-button disabled color="dark">Button</pd-button>
+                <pd-button outline color="primary">Button</pd-button>
+                <pd-button outline color="success">Button</pd-button>
+                <pd-button outline color="warning">Button</pd-button>
+                <pd-button outline color="danger">Button</pd-button>
+                <pd-button outline color="info">Button</pd-button>
+                <pd-button outline color="light">Button</pd-button>
+                <pd-button outline color="dark">Button</pd-button>
+
+                <pd-button id="pd-button-0" color="primary">Button</pd-button>
+                <pd-button id="pd-button-disabled-0" color="primary" disabled>Button Disabled</pd-button>
+
+                <pd-button href="http://www.google.ch">external Link</pd-button>
+            </details>
+            <details>
+                <summary>Alerts</summary>
+                <pd-alert color="warning" action-text="Mehr anzeigen" action-text-expanded="asdf" expandable closable>
+                    <div>Info: A simple primary alert—check it out!</div>
                     <div slot="expandable">
-                        <form>
-                            <pd-input style="width: 100%;" readonly placeholder="placeholder" label="input"></pd-input>
-                            <div style="display: flex; justify-content: space-between;">
-                                <pd-datepicker style="width: 100%;" label="normal" placeholder="date1"></pd-datepicker>
-                                <pd-datepicker style="width: 100%;" label="normal" placeholder="date2"></pd-datepicker>
-                            </div>
-                        </form>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
+                        adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim harum
+                        esse repellat.
                     </div>
-                    <pd-menu-item text="Drucken" slot="menu">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-menu-item text="Drucken" slot="menu">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                </pd-list-item-expandable>
-                <pd-list-item-expandable status="success" edit expandable menu checked checkbox
-                    ><div>item 1</div>
-                    <div slot="expandable">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
-                        earum sed ducimus quo voluptate recusandae perferendis.
-                    </div>
-                    <pd-menu-item text="Drucken" slot="menu">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-menu-item text="Drucken" slot="menu">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
-                </pd-list-item-expandable>
-                <pd-list-item-expandable edit expandable menu
-                    ><div>item 1.a without status</div>
-                    <div slot="expandable">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
-                        earum sed ducimus quo voluptate recusandae perferendis.
-                    </div>
-                    <pd-menu-item text="Drucken" slot="menu">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-menu-item text="Drucken" slot="menu">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
-                </pd-list-item-expandable>
-                <pd-list-item-expandable status="danger">item 2</pd-list-item-expandable>
-                <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
-            </pd-list>
-            <pd-textarea
-                label="Default"
-                auto-grow
-                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-            ></pd-textarea>
-            <pd-textarea
-                label="Error"
-                error
-                auto-grow
-                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-            ></pd-textarea>
-            <pd-textarea
-                id="pd-textarea"
-                label="Disabled"
-                disabled
-                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-            ></pd-textarea>
-            <pd-textarea
-                label="Readonly"
-                readonly
-                value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-            ></pd-textarea>
+                </pd-alert>
+                <pd-alert closable color="primary" headline="Additional Content">
+                    <p>Line 1: A simple primary alert—check it out!</p>
+                    <p>Line 2: A simple primary alert—check it out!</p>
+                </pd-alert>
+                <pd-alert color="danger" action action-text="a link to click" closable
+                    >A simple primary alert—check it out!</pd-alert
+                >
+                <pd-alert
+                    color="success"
+                    action
+                    action-text="a external link to click"
+                    action-href="http://www.google.ch"
+                    closable
+                    >A simple primary alert—check it out!</pd-alert
+                >
+                <pd-alert color="warning" action action-text="a link to click"
+                    >A simple primary alert—check it out!</pd-alert
+                >
+                <pd-alert color="dark">Dark: A simple primary alert—check it out!</pd-alert>
+                <pd-alert
+                    color="light"
+                    action
+                    action-text="a external link to click"
+                    action-href="http://www.google.ch"
+                    closable
+                    headline="Additional Content"
+                >
+                    A simple primary alert—check it out!
+                </pd-alert>
+            </details>
+            <details>
+                <summary>Search</summary>
+                <pd-search placeholder="search..." id="pd-search-0"></pd-search>
+            </details>
+            <details>
+                <summary>List</summary>
+                <pd-list>
+                    <pd-list-item-expandable expandable edit menu>
+                        <div>form expandable</div>
+                        <div slot="expandable">
+                            <form>
+                                <pd-input
+                                    style="width: 100%;"
+                                    readonly
+                                    placeholder="placeholder"
+                                    label="input"
+                                ></pd-input>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <pd-datepicker
+                                        style="width: 100%;"
+                                        label="normal"
+                                        placeholder="date1"
+                                    ></pd-datepicker>
+                                    <pd-datepicker
+                                        style="width: 100%;"
+                                        label="normal"
+                                        placeholder="date2"
+                                    ></pd-datepicker>
+                                </div>
+                            </form>
+                        </div>
+                        <pd-menu-item text="Drucken" slot="menu">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Drucken" slot="menu">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                    </pd-list-item-expandable>
+                    <pd-list-item-expandable status="success" edit expandable menu checked checkbox
+                        ><div>item 1</div>
+                        <div slot="expandable">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
+                            earum sed ducimus quo voluptate recusandae perferendis.
+                        </div>
+                        <pd-menu-item text="Drucken" slot="menu">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Drucken" slot="menu">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
+                    </pd-list-item-expandable>
+                    <pd-list-item-expandable edit expandable menu
+                        ><div>item 1.a without status</div>
+                        <div slot="expandable">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
+                            earum sed ducimus quo voluptate recusandae perferendis.
+                        </div>
+                        <pd-menu-item text="Drucken" slot="menu">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Drucken" slot="menu">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
+                    </pd-list-item-expandable>
+                    <pd-list-item-expandable status="danger">item 2</pd-list-item-expandable>
+                    <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
+                </pd-list>
+            </details>
+            <details>
+                <summary>Textareas</summary>
+                <pd-textarea
+                    label="Default"
+                    auto-grow
+                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                ></pd-textarea>
+                <pd-textarea
+                    label="Error"
+                    error
+                    auto-grow
+                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                ></pd-textarea>
+                <pd-textarea
+                    id="pd-textarea"
+                    label="Disabled"
+                    disabled
+                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                ></pd-textarea>
+                <pd-textarea
+                    label="Readonly"
+                    readonly
+                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                ></pd-textarea>
+            </details>
+
+            <details>
+                <summary>Form</summary>
+                <form style="display: flex; justify-content: space-between;">
+                    <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
+                    <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
+                </form>
+            </details>
             <!-- padding issue: https://github.com/Lambda-IT/parlamentsdienste-components/issues/90 -->
-            <form style="display: flex; justify-content: space-between;">
-                <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
-                <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
-            </form>
-            <pd-input placeholder="placeholder" label="error" error id="pd-input-0"></pd-input>
-            <pd-input
-                label="disabled"
-                disabled
-                id="pd-input-1"
-                placeholder="placeholder"
-                helper-text="asdf-asdf"
-            ></pd-input>
-            <pd-input label="required" required id="pd-input-1"></pd-input>
-            <pd-input
-                class="flatpickr-input"
-                value="asdf"
-                label="readonly"
-                id="pd-input-2"
-                helper-text="asdf-asdf"
-                readonly
-            ></pd-input>
-            <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-            </pd-table>
-            <pd-table id="pd-table-1" header-style="light" selectable show-status> </pd-table>
-            <pd-table id="pd-table-2" header-style="gray" selectable show-status menu-label="Aktionen">
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-            </pd-table>
-            <pd-navbar id="pd-navbar-1">
-                <pd-navbar-item text="Startseite"></pd-navbar-item>
-                <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
-                <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
-            </pd-navbar>
-            <pd-menu>
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-                <pd-menu-item text="Download">
-                    <pd-icon size="2" name="documents"></pd-icon>
-                </pd-menu-item>
-            </pd-menu>
-            <pd-menu label="My Menu" id="pd-menu-1">
-                <pd-menu-item text="Drucken">
-                    <pd-icon size="2" name="print"></pd-icon>
-                </pd-menu-item>
-                <pd-menu-item text="Download">
-                    <pd-icon size="2" name="documents"></pd-icon>
-                </pd-menu-item>
-            </pd-menu>
-            <pd-combobox id="pd-combobox-0" label="Fancy Combobox"></pd-combobox>
-            <pd-combobox id="pd-combobox-1" label="Selectable Combobox" selectable></pd-combobox>
-            <pd-combobox id="pd-combobox-2" disabled value="Disabled Selectable Combo" selectable></pd-combobox>
-            <pd-chip id="pd-chip-0">Text Chip</pd-chip>
-            <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
-            <pd-chip id="pd-chip-2" type="filter">Filter Chip</pd-chip>
-            <pd-chip id="pd-chip-3" type="toggle">Toggle Chip</pd-chip>
-            <pd-chip id="pd-chip-4" type="toggle" disabled>Disabled Chip</pd-chip>
-            <pd-chip id="pd-chip-5" type="toggle" readonly>Readonly Chip</pd-chip>
-            <pd-chip id="pd-chip-6">Checked programmatically</pd-chip>
-            <pd-pagination id="pd-pagination-1" total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
-            <pd-timeline start="true" end="true">
-                <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
-                <pd-timeline-date date="28.04.2019" header="SiK-NR" href="http://www.google.ch">
-                    Beginn der Beratung<br />
-                    <a href="#">Unterlagen (PDF)</a>
-                </pd-timeline-date>
-                <pd-timeline-date date="24.06.2019" header="SiK-NR" href="http://www.google.ch">
-                    Antrag: Ablehnung <br />
-                    <a href="#">Bericht (PDF)</a>
-                </pd-timeline-date>
-                <pd-timeline-date date="19.09.2019" header="Nationalrat">Ablehnung</pd-timeline-date>
-                <pd-timeline-date date="30.10.2019">
-                    Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche Kredite
-                    mit Vorschuss zu. <br /><a href="#">Audioaufnahme</a>
-                    <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
-                </pd-timeline-date>
-            </pd-timeline>
-            <pd-datepicker label="normal" id="pd-datepickr-0" error placeholder="asdf"></pd-datepicker>
-            <pd-datepicker
-                label="allowInput false -> error"
-                config="{allowInput: false}"
-                error
-                placeholder="asdf"
-            ></pd-datepicker>
-            <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
-            <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
-            <pd-button id="pd-button-0" color="primary">Button</pd-button>
-            <pd-button id="pd-button-disabled-0" color="primary" disabled>Button Disabled</pd-button>
-            <pd-toast
-                header="Toast title goes here in case there is enough space otherwise it breaks"
-                info="5min ago"
-                size="large"
-            >
-                Toast body text goes here
-            </pd-toast>
-            <pd-toast header="Toast Title" info="11 minutes ago" size="small">
-                Toast body text goes here
-            </pd-toast>
-            <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
-            <pd-alert closable color="primary" headline="Additional Content">
-                <p>Line 1: A simple primary alert—check it out!</p>
-                <p>Line 2: A simple primary alert—check it out!</p>
-            </pd-alert>
-            <pd-alert color="danger" action action-text="a link to click" closable
-                >A simple primary alert—check it out!</pd-alert
-            >
-            <pd-alert
-                color="success"
-                action
-                action-text="a external link to click"
-                action-href="http://www.google.ch"
-                closable
-                >A simple primary alert—check it out!</pd-alert
-            >
-            <pd-alert color="warning" action action-text="a link to click"
-                >A simple primary alert—check it out!</pd-alert
-            >
-            <pd-search placeholder="search..." id="pd-search-0"></pd-search>
-            <pd-alert color="dark">Dark: A simple primary alert—check it out!</pd-alert>
-            <pd-alert
-                color="light"
-                action
-                action-text="a external link to click"
-                action-href="http://www.google.ch"
-                closable
-                headline="Additional Content"
-            >
-                A simple primary alert—check it out!
-            </pd-alert>
-            <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
-            <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label striped color="success" id="pd-progress-1"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label color="warning" id="pd-progress-2"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label striped color="warning" id="pd-progress-2"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label color="danger" id="pd-progress-3"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label striped color="danger" id="pd-progress-3"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label color="info" id="pd-progress-3"></pd-progress-bar>
-            <pd-progress-bar value="0.5" label striped color="info" id="pd-progress-3"></pd-progress-bar>
-            <div>
+            <details>
+                <summary>Inputs</summary>
+                <pd-input placeholder="placeholder" label="error" error id="pd-input-0"></pd-input>
+                <pd-input
+                    label="disabled"
+                    disabled
+                    id="pd-input-1"
+                    placeholder="placeholder"
+                    helper-text="asdf-asdf"
+                ></pd-input>
+                <pd-input label="required" required id="pd-input-1"></pd-input>
+                <pd-input
+                    class="flatpickr-input"
+                    value="asdf"
+                    label="readonly"
+                    id="pd-input-2"
+                    helper-text="asdf-asdf"
+                    readonly
+                ></pd-input>
+            </details>
+            <details>
+                <summary>Table</summary>
+                <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
+                    <pd-menu-item text="Drucken">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                </pd-table>
+                <pd-table id="pd-table-1" header-style="light" selectable show-status> </pd-table>
+                <pd-table id="pd-table-2" header-style="gray" selectable show-status menu-label="Aktionen">
+                    <pd-menu-item text="Drucken">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                    <pd-menu-item text="Drucken">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                </pd-table>
+            </details>
+            <details>
+                <summary>Navbar</summary>
+                <pd-navbar id="pd-navbar-1">
+                    <pd-navbar-item text="Startseite"></pd-navbar-item>
+                    <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
+                    <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
+                </pd-navbar>
+            </details>
+            <details>
+                <summary>Menu</summary>
+                <pd-menu>
+                    <pd-menu-item text="Drucken">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                    <pd-menu-item text="Download">
+                        <pd-icon size="2" name="documents"></pd-icon>
+                    </pd-menu-item>
+                </pd-menu>
+                <pd-menu label="My Menu" id="pd-menu-1">
+                    <pd-menu-item text="Drucken">
+                        <pd-icon size="2" name="print"></pd-icon>
+                    </pd-menu-item>
+                    <pd-menu-item text="Download">
+                        <pd-icon size="2" name="documents"></pd-icon>
+                    </pd-menu-item>
+                </pd-menu>
+            </details>
+            <details>
+                <summary>Combobox</summary>
+                <pd-combobox id="pd-combobox-0" label="Fancy Combobox"></pd-combobox>
+                <pd-combobox id="pd-combobox-1" label="Selectable Combobox" selectable></pd-combobox>
+                <pd-combobox id="pd-combobox-2" disabled value="Disabled Selectable Combo" selectable></pd-combobox>
+            </details>
+            <details>
+                <summary>Chip</summary>
+                <pd-chip id="pd-chip-0">Text Chip</pd-chip>
+                <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
+                <pd-chip id="pd-chip-2" type="filter">Filter Chip</pd-chip>
+                <pd-chip id="pd-chip-3" type="toggle">Toggle Chip</pd-chip>
+                <pd-chip id="pd-chip-4" type="toggle" disabled>Disabled Chip</pd-chip>
+                <pd-chip id="pd-chip-5" type="toggle" readonly>Readonly Chip</pd-chip>
+                <pd-chip id="pd-chip-6">Checked programmatically</pd-chip>
+            </details>
+            <details>
+                <summary>Pagination</summary>
+                <pd-pagination id="pd-pagination-1" total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
+            </details>
+
+            <details>
+                <summary>Timeline</summary>
+                <pd-timeline start="true" end="true">
+                    <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
+                    <pd-timeline-date date="28.04.2019" header="SiK-NR" href="http://www.google.ch">
+                        Beginn der Beratung<br />
+                        <a href="#">Unterlagen (PDF)</a>
+                    </pd-timeline-date>
+                    <pd-timeline-date date="24.06.2019" header="SiK-NR" href="http://www.google.ch">
+                        Antrag: Ablehnung <br />
+                        <a href="#">Bericht (PDF)</a>
+                    </pd-timeline-date>
+                    <pd-timeline-date date="19.09.2019" header="Nationalrat">Ablehnung</pd-timeline-date>
+                    <pd-timeline-date date="30.10.2019">
+                        Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche
+                        Kredite mit Vorschuss zu. <br /><a href="#">Audioaufnahme</a>
+                        <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
+                    </pd-timeline-date>
+                </pd-timeline>
+            </details>
+
+            <details>
+                <summary>Datepicker</summary>
+                <pd-datepicker label="normal" id="pd-datepickr-0" error placeholder="asdf"></pd-datepicker>
+                <pd-datepicker
+                    label="allowInput false -> error"
+                    config="{allowInput: false}"
+                    error
+                    placeholder="asdf"
+                ></pd-datepicker>
+                <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
+                <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
+            </details>
+
+            <details>
+                <summary>Toast</summary>
+                <pd-toast
+                    header="Toast title goes here in case there is enough space otherwise it breaks"
+                    info="5min ago"
+                    size="large"
+                >
+                    Toast body text goes here
+                </pd-toast>
+                <pd-toast header="Toast Title" info="11 minutes ago" size="small">
+                    Toast body text goes here
+                </pd-toast>
+            </details>
+
+            <details>
+                <summary>Breadcrumbs</summary>
+                <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
+            </details>
+
+            <details>
+                <summary>Progressbar</summary>
+                <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
+                <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label striped color="success" id="pd-progress-1"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label color="warning" id="pd-progress-2"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label striped color="warning" id="pd-progress-2"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label color="danger" id="pd-progress-3"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label striped color="danger" id="pd-progress-3"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label color="info" id="pd-progress-3"></pd-progress-bar>
+                <pd-progress-bar value="0.5" label striped color="info" id="pd-progress-3"></pd-progress-bar>
+            </details>
+
+            <details>
+                <summary>Icons</summary>
                 <pd-icon size="1" name="press"></pd-icon>
                 <pd-icon size="2" name="press"></pd-icon>
                 <pd-icon size="3" name="press"></pd-icon>
-            </div>
-            <pd-panel collapsible>
-                <pd-panel-header slot="header">Header</pd-panel-header>
-                <pd-panel-content style="padding: 0px;">
-                    <pd-button id="pd-open-modal-btn-0">Open Modal</pd-button>
-                    <pd-list>
-                        <pd-list-item status="unset">
-                            <p class="mb-1">18.3708</p>
-                            <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
-                        </pd-list-item>
-                        <pd-list-item status="success">
-                            <p class="mb-1">16.3112</p>
-                            <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                        </pd-list-item>
-                        <pd-list-item status="danger">
-                            <p class="mb-1">18.426</p>
-                            <h5 class="mb-1">Jagdgesetz.</h5>
-                            <p class="mb-1">
-                                Änderung Kategorie IIIb
-                            </p>
-                        </pd-list-item>
-                        <pd-list-item>
-                            <p class="mb-1">19.426</p>
-                            <h5 class="mb-1">Waffengesetz.</h5>
-                            <p class="mb-1">
-                                Änderung Kategorie IIIb
-                            </p>
-                        </pd-list-item>
-                    </pd-list>
-                </pd-panel-content>
-                <pd-panel-footer slot="footer"></pd-panel-footer>
-            </pd-panel>
-            <h1>Header 1</h1>
-            <h2>Inline Form Check 1</h2>
-            <div style="display: flex;">
-                <pd-input placeholder="without label" vertical-adjust></pd-input>
-                <pd-input placeholder="with label" label="Inline: Label"></pd-input>
-                <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
-                <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
-                <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
-                <pd-datepicker
-                    placeholder="without label, css var"
-                    style="--pd-datepicker-vertical-adjust: 1.5rem;"
-                ></pd-datepicker>
-            </div>
-            <h2>Inline Form Check 2</h2>
-            <div style="display: flex;">
-                <pd-input placeholder="without label" vertical-adjust></pd-input>
-                <pd-input placeholder="with label" label="Inline: Label"></pd-input>
-                <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
-                <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
-            </div>
+            </details>
 
-            <pd-button-group>
-                <pd-button>Button</pd-button>
-                <pd-button>Button</pd-button>
-                <pd-button>Button</pd-button>
-            </pd-button-group>
-            <pd-button href="http://www.google.ch">external Link</pd-button>
+            <details>
+                <summary>Panel</summary>
+                <pd-panel collapsible>
+                    <pd-panel-header slot="header">Header</pd-panel-header>
+                    <pd-panel-content style="padding: 0px;">
+                        <pd-button id="pd-open-modal-btn-0">Open Modal</pd-button>
+                        <pd-list>
+                            <pd-list-item status="unset">
+                                <p class="mb-1">18.3708</p>
+                                <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
+                            </pd-list-item>
+                            <pd-list-item status="success">
+                                <p class="mb-1">16.3112</p>
+                                <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
+                            </pd-list-item>
+                            <pd-list-item status="danger">
+                                <p class="mb-1">18.426</p>
+                                <h5 class="mb-1">Jagdgesetz.</h5>
+                                <p class="mb-1">
+                                    Änderung Kategorie IIIb
+                                </p>
+                            </pd-list-item>
+                            <pd-list-item>
+                                <p class="mb-1">19.426</p>
+                                <h5 class="mb-1">Waffengesetz.</h5>
+                                <p class="mb-1">
+                                    Änderung Kategorie IIIb
+                                </p>
+                            </pd-list-item>
+                        </pd-list>
+                    </pd-panel-content>
+                    <pd-panel-footer slot="footer"></pd-panel-footer>
+                </pd-panel>
+            </details>
 
-            <pd-container></pd-container>
-            <pd-dropdown
-                id="pd-dropdown-0"
-                label="dropdown label"
-                helper-text="dropdown helper text"
-                empty-item
-            ></pd-dropdown>
-            <pd-dropdown label="dropdown error" helper-text="dropdown helper text" error empty-item></pd-dropdown>
-            <pd-dropdown label="dropdown readonly" helper-text="dropdown helper text" readonly empty-item></pd-dropdown>
-            <pd-dropdown label="dropdown disabled" helper-text="dropdown helper text" disabled empty-item></pd-dropdown>
-            <pd-footer></pd-footer>
-            <pd-checkbox text="checkbox"></pd-checkbox>
-            <pd-checkbox text="indeterminate" is-indeterminate></pd-checkbox>
-            <pd-checkbox readonly checked text="checkbox readonly"></pd-checkbox>
-            <pd-checkbox disabled text="checkbox disabled"></pd-checkbox>
-            <pd-checkbox disabled checked text="checkbox disabled checked"></pd-checkbox>
-            <pd-checkbox error text="checkbox error"></pd-checkbox>
-            <pd-radio name="x" value="0" label="0%"></pd-radio>
-            <pd-radio name="x" value="0.25" label="25%"></pd-radio>
-            <pd-radio name="x" value="0.50" label="50%"></pd-radio>
-            <pd-radio name="x" value="0.80" label="80%"></pd-radio>
-            <pd-radio disabled checked name="x" value="1" label="100%"></pd-radio>
-
-            <pd-sidebar>
-                <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
-                <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
-                <pd-sidebar-item enabled text="Recherchen" icon-name="research"></pd-sidebar-item>
-                <pd-sidebar-item text="Parlaments- Wörterbuch" icon-name="dictionary"></pd-sidebar-item>
-                <pd-sidebar-item href="http://www.google.ch" icon-name="link" text="External Link"></pd-sidebar-item>
-            </pd-sidebar>
-            <pd-notification></pd-notification>
-            <pd-slider id="pd-slider-0"></pd-slider>
-            <pd-tag></pd-tag>
-            <pd-timeline></pd-timeline>
-            <template id="pd-modal-template">
-                <span class="content-text">Currently open modals:</span>
-
-                <div>
-                    <pd-dropdown
-                        id="pd-dropdown-modal-0"
-                        label="dropdown label"
-                        helper-text="dropdown helper text"
-                        empty-item
-                    ></pd-dropdown>
+            <details>
+                <summary>Inline Form</summary>
+                <h1>Header 1</h1>
+                <h2>Inline Form Check 1</h2>
+                <div style="display: flex;">
+                    <pd-input placeholder="without label" vertical-adjust></pd-input>
+                    <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+                    <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
+                    <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
+                    <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+                    <pd-datepicker
+                        placeholder="without label, css var"
+                        style="--pd-datepicker-vertical-adjust: 1.5rem;"
+                    ></pd-datepicker>
                 </div>
-
-                <span class="content-modal-count"></span>
-                <div slot="footer">
-                    <pd-button class="close-button" outline>close</pd-button>
-                    <pd-button class="save-button">save</pd-button>
+                <h2>Inline Form Check 2</h2>
+                <div style="display: flex;">
+                    <pd-input placeholder="without label" vertical-adjust></pd-input>
+                    <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+                    <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+                    <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
                 </div>
-            </template>
+            </details>
+            <details>
+                <summary>Button Group</summary>
+                <pd-button-group>
+                    <pd-button>Button</pd-button>
+                    <pd-button>Button</pd-button>
+                    <pd-button>Button</pd-button>
+                </pd-button-group>
+            </details>
+            <details>
+                <summary>Dropdown</summary>
+                <pd-dropdown
+                    id="pd-dropdown-0"
+                    label="dropdown label"
+                    helper-text="dropdown helper text"
+                    empty-item
+                ></pd-dropdown>
+                <pd-dropdown label="dropdown error" helper-text="dropdown helper text" error empty-item></pd-dropdown>
+                <pd-dropdown
+                    label="dropdown readonly"
+                    helper-text="dropdown helper text"
+                    readonly
+                    empty-item
+                ></pd-dropdown>
+                <pd-dropdown
+                    label="dropdown disabled"
+                    helper-text="dropdown helper text"
+                    disabled
+                    empty-item
+                ></pd-dropdown>
+            </details>
+
+            <details>
+                <summary>Footer</summary>
+                <pd-footer></pd-footer>
+            </details>
+
+            <details>
+                <summary>Checkbox</summary>
+                <pd-checkbox text="checkbox"></pd-checkbox>
+                <pd-checkbox text="indeterminate" is-indeterminate></pd-checkbox>
+                <pd-checkbox readonly checked text="checkbox readonly"></pd-checkbox>
+                <pd-checkbox disabled text="checkbox disabled"></pd-checkbox>
+                <pd-checkbox disabled checked text="checkbox disabled checked"></pd-checkbox>
+                <pd-checkbox error text="checkbox error"></pd-checkbox>
+            </details>
+
+            <details>
+                <summary>Radio</summary>
+                <pd-radio name="x" value="0" label="0%"></pd-radio>
+                <pd-radio name="x" value="0.25" label="25%"></pd-radio>
+                <pd-radio name="x" value="0.50" label="50%"></pd-radio>
+                <pd-radio name="x" value="0.80" label="80%"></pd-radio>
+                <pd-radio disabled checked name="x" value="1" label="100%"></pd-radio>
+            </details>
+
+            <details>
+                <summary>Sidebar</summary>
+                <pd-sidebar>
+                    <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
+                    <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
+                    <pd-sidebar-item enabled text="Recherchen" icon-name="research"></pd-sidebar-item>
+                    <pd-sidebar-item text="Parlaments- Wörterbuch" icon-name="dictionary"></pd-sidebar-item>
+                    <pd-sidebar-item
+                        href="http://www.google.ch"
+                        icon-name="link"
+                        text="External Link"
+                    ></pd-sidebar-item>
+                </pd-sidebar>
+            </details>
+
+            <details>
+                <summary>Notifications</summary>
+                <pd-notification></pd-notification>
+            </details>
+
+            <details>
+                <summary>Tags</summary>
+                <pd-slider id="pd-slider-0"></pd-slider>
+            </details>
         </div>
         <script>
             const pdInput = document.getElementById('pd-input-0');
