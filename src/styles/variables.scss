@@ -1,7 +1,7 @@
 /** Primary **/
 
 // branding
-$pd-black: #1e1e1e !default;
+$pd-black: #0b0b0b !default;
 $blue-whale: #033840 !default;
 $wild-sand: #f5f5f5 !default;
 $yellow-metal: #807641 !default;
@@ -22,7 +22,7 @@ $yellow-2: #ffec99;
 $yellow-1: #fff9db;
 
 $gray-9: #212529;
-$gray-6: #868e96;
+$gray-6: #bababa;
 $gray-3: #dee2e6;
 
 // status
@@ -38,7 +38,6 @@ $red-9: #c92a2a;
 $red-6: #fa5252;
 $red-3: #ffa8a8;
 
-$gray-disabled: #cfcfcf;
 $blue-4: #4dadf7;
 $blue-2: #a3daff;
 
@@ -79,6 +78,10 @@ $green-3: #8ce99a;
 // shortcuts
 $focus: $yellow-2;
 
+// other
+$gray-disabled: #cfcfcf;
+$gray-readonly: #e5e8eb;
+
 // bootstrap
 $primary: $cyan-9;
 $secondary: $athens-gray;
@@ -110,71 +113,85 @@ $colorscheme: (
         enabled: $cyan-9,
         enabledContrast: $white,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $cyan-6,
         hoverContrast: $white,
         pressed: $cyan-3,
-        pressedContrast: $cyan-9,
+        pressedContrast: $blue-whale,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     success: (
         enabled: $lime-6,
-        enabledContrast: $black,
+        enabledContrast: $pd-black,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $lime-9,
         hoverContrast: $white,
         pressed: $lime-3,
         pressedContrast: $lime-9,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     danger: (
         enabled: $red-6,
-        enabledContrast: $black,
+        enabledContrast: $pd-black,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $red-9,
         hoverContrast: $white,
         pressed: $red-3,
         pressedContrast: $red-9,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     warning: (
         enabled: $yellow-6,
-        enabledContrast: $black,
+        enabledContrast: $pd-black,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $yellow-9,
         hoverContrast: $white,
         pressed: $yellow-3,
         pressedContrast: $yellow-9,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     info: (
         enabled: $blue-4,
-        enabledContrast: $black,
+        enabledContrast: $pd-black,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $blue-9,
         hoverContrast: $white,
         pressed: $blue-3,
         pressedContrast: $blue-9,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     light: (
         enabled: $athens-gray,
-        enabledContrast: $black,
+        enabledContrast: $pd-black,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $gray-3,
-        hoverContrast: $black,
+        hoverContrast: $pd-black,
         pressed: $gray-3,
-        pressedContrast: $black,
+        pressedContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     dark: (
         enabled: #343a40,
         enabledContrast: $white,
         disabled: $gray-disabled,
-        disabledContrast: $black,
+        disabledContrast: $pd-black,
         hover: $gray-6,
-        hoverContrast: #343a40,
+        hoverContrast: $pd-black,
         pressed: $gray-3,
-        pressedContrast: $black,
+        pressedContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
 );
 

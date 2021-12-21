@@ -199,7 +199,7 @@ export class Dropdown {
 
     public render() {
         return (
-            <Host class={this.error ? 'pd-dropdown-error' : ''}>
+            <Host>
                 <label
                     class={{
                         'pd-dropdown-label': true,
@@ -210,7 +210,7 @@ export class Dropdown {
                     {this.renderLabel()}
                 </label>
                 <div
-                    class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}
+                    class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly, 'pd-dropdown-error': this.error }}
                     style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5rem' } : {}}
                 >
                     <button
@@ -277,6 +277,6 @@ export class Dropdown {
     private renderLabel() {
         if (!this.label) return;
 
-        return <div class="pd-combobox-label-text">{this.label}</div>;
+        return <span class="pd-combobox-label-text">{this.label}</span>;
     }
 }

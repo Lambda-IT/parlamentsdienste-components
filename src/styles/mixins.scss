@@ -34,7 +34,7 @@
 
     &.pd-button-outline {
         background-color: transparent;
-        color: setcolor($colorscheme, enabled);
+        color: setcolor($colorscheme, disabledContrast);
 
         &:hover:enabled {
             background-color: transparent;
@@ -49,6 +49,12 @@
         &:active:enabled {
             background-color: transparent;
             color: setcolor($colorscheme, pressed);
+        }
+
+        &:focus-visible {
+            background-color: $focus;
+            border: 0.125em solid $focus;
+            color: $blue-whale;
         }
     }
 }

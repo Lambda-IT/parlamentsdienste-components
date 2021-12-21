@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen } from '@stencil/core';
+import { Component, h, Listen, Prop } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
 @Component({

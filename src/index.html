@@ -52,28 +52,133 @@
     </head>
     <body>
         <div class="example-components">
-            <details open>
+            <details>
                 <summary>Buttons</summary>
-                <pd-button>Button</pd-button>
-                <pd-button disabled color="success">Button</pd-button>
-                <pd-button disabled color="warning" icon-location="left"> Button</pd-button>
-                <pd-button disabled color="danger">Button</pd-button>
-                <pd-button disabled color="info">Button</pd-button>
-                <pd-button disabled color="light">Button</pd-button>
-                <pd-button disabled color="dark">Button</pd-button>
-                <pd-button outline color="primary">Button</pd-button>
-                <pd-button outline color="success">Button</pd-button>
-                <pd-button outline color="warning">Button</pd-button>
-                <pd-button outline color="danger">Button</pd-button>
-                <pd-button outline color="info">Button</pd-button>
-                <pd-button outline color="light">Button</pd-button>
-                <pd-button outline color="dark">Button</pd-button>
+                <h1>States</h1>
+                <div class="button-grid">
+                    <span></span>
+                    <span>Enabled</span>
+                    <span>Disable</span>
+                    <span>Outline Enabled</span>
+                    <span>Outline Disable</span>
 
-                <pd-button id="pd-button-0" color="primary">Button</pd-button>
-                <pd-button id="pd-button-disabled-0" color="primary" disabled>Button Disabled</pd-button>
-
-                <pd-button href="http://www.google.ch">external Link</pd-button>
+                    <span>Primary</span>
+                    <pd-button>Button</pd-button>
+                    <pd-button disabled>Button</pd-button>
+                    <pd-button outline>Button</pd-button>
+                    <pd-button outline disabled>Button</pd-button>
+                    
+                    <span>Success</span>
+                    <pd-button color="success">Button</pd-button>
+                    <pd-button color="success" disabled>Button</pd-button>
+                    <pd-button outline color="success">Button</pd-button>
+                    <pd-button outline color="success" disabled>Button</pd-button>
+                    
+                    <span>Danger</span>
+                    <pd-button color="danger">Button</pd-button>
+                    <pd-button color="danger" disabled>Button</pd-button>
+                    <pd-button outline color="danger">Button</pd-button>
+                    <pd-button outline color="danger" disabled>Button</pd-button>
+                    
+                    <span>Warning</span>
+                    <pd-button color="warning">Button</pd-button>
+                    <pd-button color="warning" disabled>Button</pd-button>
+                    <pd-button outline color="warning">Button</pd-button>
+                    <pd-button outline color="warning" disabled>Button</pd-button>
+                    
+                    <span>Info</span>
+                    <pd-button color="info">Button</pd-button>
+                    <pd-button color="info" disabled>Button</pd-button>
+                    <pd-button outline color="info">Button</pd-button>
+                    <pd-button outline color="info" disabled>Button</pd-button>
+                    
+                    <span>Light</span>
+                    <pd-button color="light">Button</pd-button>
+                    <pd-button color="light" disabled>Button</pd-button>
+                    <pd-button outline color="light">Button</pd-button>
+                    <pd-button outline color="light" disabled>Button</pd-button>
+                    
+                    <span>Dark</span>
+                    <pd-button color="dark">Button</pd-button>
+                    <pd-button color="dark" disabled>Button</pd-button>
+                    <pd-button outline color="dark">Button</pd-button>
+                    <pd-button outline color="dark" disabled>Button</pd-button>
+                    
+                    <span>Link</span>
+                    <pd-button href="http://www.google.ch">Button</pd-button>
+                    <pd-button href="http://www.google.ch" disabled>Button</pd-button>
+                </div>
+                <div>
+                    <h1>Sizes</h1>
+                    <pd-button size="small">Button</pd-button>
+                    <pd-button size="normal">Button</pd-button>
+                    <pd-button size="large">Button</pd-button>
+                </div>
+                <div>
+                    <h1>Icons</h1>
+                    <pd-button icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button>
+                    <pd-button icon-location="right"><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button>
+                    <pd-button outline icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
+                </div>
+                <style>
+                    .button-grid {
+                        display: grid;
+                        grid-template-columns: repeat(5, 1fr);
+                        grid-gap: 10px;
+                    }
+                </style>
             </details>
+
+            <details>
+                <summary>Button Group</summary>
+                <pd-button-group>
+                    <pd-button>Button</pd-button>
+                    <pd-button>Button</pd-button>
+                    <pd-button>Button</pd-button>
+                </pd-button-group>
+            </details>
+
+            <details open>
+                <summary>Dropdown</summary>
+                <div class="dropdown-grid">
+                    <span>Enabled</span>
+                    <span>Disabled</span>
+                    <span>Read only</span>
+                    <span>Error</span>
+                    <pd-dropdown
+                        class="pd-dropdown-items"
+                        label="Label"
+                        empty-item
+                    ></pd-dropdown>
+                    <pd-dropdown 
+                        class="pd-dropdown-items"
+                        label="Label" 
+                        empty-item
+                        disabled
+                        ></pd-dropdown>
+                        <pd-dropdown
+                        class="pd-dropdown-items"
+                        label="Label"
+                        readonly
+                        empty-item
+                        ></pd-dropdown>
+                        <pd-dropdown
+                        class="pd-dropdown-items"
+                        label="Label"
+                        helper-text="dropdown helper text"
+                        empty-item
+                        error 
+                        ></pd-dropdown>
+                </div>
+                <style>
+                    .dropdown-grid {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        grid-gap: 10px;
+                    }
+                </style>
+            </details>
+
             <details>
                 <summary>Alerts</summary>
                 <pd-alert color="warning" action-text="Mehr anzeigen" action-text-expanded="asdf" expandable closable>
@@ -436,36 +541,6 @@
                     <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
                 </div>
             </details>
-            <details>
-                <summary>Button Group</summary>
-                <pd-button-group>
-                    <pd-button>Button</pd-button>
-                    <pd-button>Button</pd-button>
-                    <pd-button>Button</pd-button>
-                </pd-button-group>
-            </details>
-            <details>
-                <summary>Dropdown</summary>
-                <pd-dropdown
-                    id="pd-dropdown-0"
-                    label="dropdown label"
-                    helper-text="dropdown helper text"
-                    empty-item
-                ></pd-dropdown>
-                <pd-dropdown label="dropdown error" helper-text="dropdown helper text" error empty-item></pd-dropdown>
-                <pd-dropdown
-                    label="dropdown readonly"
-                    helper-text="dropdown helper text"
-                    readonly
-                    empty-item
-                ></pd-dropdown>
-                <pd-dropdown
-                    label="dropdown disabled"
-                    helper-text="dropdown helper text"
-                    disabled
-                    empty-item
-                ></pd-dropdown>
-            </details>
 
             <details>
                 <summary>Footer</summary>
@@ -525,6 +600,7 @@
             const pdBackdrop = document.getElementById('pd-backdrop-0');
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
+            const pdDropDownItems = document.getElementsByClassName('pd-dropdown-items');
             const pdComboBox = document.getElementById('pd-combobox-0');
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
@@ -677,23 +753,25 @@
                 console.log('LOG: value', value);
             });
 
-            pdDropDown.items = [
-                { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
-                { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
-                { id: '3', label: 'Referendum für die Unterstützung Olympischer Spiele durch den Bund', value: 'a3' },
-                { id: '4', label: 'Gesamtkonzeption, Präsentation und Diskussion', value: 'a4' },
-                { id: '5', label: 'Controlling, Präsentation, Diskussion und Beschluss', value: 'a5' },
-                { id: '6', label: 'Mitteilungen', value: 'a6' },
-                { id: '7', label: 'Aktuelles aus dem VBS, Information und Diskussion', value: 'a7' },
-                { id: '8', label: 'NKF. Evaluationsverfahren, Information und Diskussion', value: 'a8' },
-                { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
-            ];
+            for(let pdDropdown of pdDropDownItems) {
+                pdDropdown.items = [
+                    { id: '1', label: 'Dropdown', value: 'a1', selected: true },
+                    { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
+                    { id: '3', label: 'Referendum für die Unterstützung Olympischer Spiele durch den Bund', value: 'a3' },
+                    { id: '4', label: 'Gesamtkonzeption, Präsentation und Diskussion', value: 'a4' },
+                    { id: '5', label: 'Controlling, Präsentation, Diskussion und Beschluss', value: 'a5' },
+                    { id: '6', label: 'Mitteilungen', value: 'a6' },
+                    { id: '7', label: 'Aktuelles aus dem VBS, Information und Diskussion', value: 'a7' },
+                    { id: '8', label: 'NKF. Evaluationsverfahren, Information und Diskussion', value: 'a8' },
+                    { id: '9', label: 'Politisches Controlling, Präsentation, Diskussion und Beschluss', value: 'a9' },
+                ];
+            }
 
             // test do set a selected value over a programmatic way
-            setTimeout(() => pdDropDown.setSelectedIndex(2), 2000);
+            // setTimeout(() => pdDropDown.setSelectedIndex(2), 2000);
 
             // test do set a selected value over a programmatic way
-            setTimeout(() => pdDropDown.reset(), 4000);
+            // setTimeout(() => pdDropDown.reset(), 4000);
 
             // update placement of menu
             setTimeout(() => pdMenu1.setAttribute('placement', 'top-start'), 10000);
