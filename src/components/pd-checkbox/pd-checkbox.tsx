@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, EventEmitter, Event } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-checkbox',
@@ -67,10 +67,13 @@ export class Checkbox {
                 role="checkbox"
                 aria-checked={this.checked ? 'true' : 'false'}
                 aria-disabled={this.disabled ? 'true' : 'false'}
-                class={this.error ? 'pd-checkbox-error' : ''}
             >
                 <label
-                    class={{ 'pd-checkbox-label': true, 'pd-checkbox-readonly': this.readonly }}
+                    class={{
+                        'pd-checkbox-label': true,
+                        'pd-checkbox-readonly': this.readonly,
+                        'pd-checkbox-error': this.error,
+                    }}
                     style={this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}}
                 >
                     <input
@@ -78,7 +81,7 @@ export class Checkbox {
                         type="Checkbox"
                         checked={this.checked}
                         disabled={this.disabled}
-                        readOnly={this.readonly}
+                        readonly={this.readonly}
                         required={this.required}
                         value={`${this.value}`}
                         name={this.name}

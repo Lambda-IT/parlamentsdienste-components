@@ -25,9 +25,15 @@
 
             details {
                 border-radius: 6px;
+                background: #ddd;
+                padding: 10px;
+                box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, 0.4);
+            }
+
+            details details {
                 background: white;
                 padding: 10px;
-                box-shadow: 0 .1rem 1rem -.5rem rgba(0,0,0,.4);
+                box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, 0.4);
             }
 
             details > * {
@@ -54,129 +60,231 @@
         <div class="example-components">
             <details>
                 <summary>Buttons</summary>
-                <h1>States</h1>
-                <div class="button-grid">
-                    <span></span>
-                    <span>Enabled</span>
-                    <span>Disable</span>
-                    <span>Outline Enabled</span>
-                    <span>Outline Disable</span>
+                <details>
+                    <summary>Buttons</summary>
+                    <h1>States</h1>
+                    <div class="button-grid">
+                        <span></span>
+                        <span>Enabled</span>
+                        <span>Disable</span>
+                        <span>Outline Enabled</span>
+                        <span>Outline Disable</span>
 
-                    <span>Primary</span>
-                    <pd-button>Button</pd-button>
-                    <pd-button disabled>Button</pd-button>
-                    <pd-button outline>Button</pd-button>
-                    <pd-button outline disabled>Button</pd-button>
-                    
-                    <span>Success</span>
-                    <pd-button color="success">Button</pd-button>
-                    <pd-button color="success" disabled>Button</pd-button>
-                    <pd-button outline color="success">Button</pd-button>
-                    <pd-button outline color="success" disabled>Button</pd-button>
-                    
-                    <span>Danger</span>
-                    <pd-button color="danger">Button</pd-button>
-                    <pd-button color="danger" disabled>Button</pd-button>
-                    <pd-button outline color="danger">Button</pd-button>
-                    <pd-button outline color="danger" disabled>Button</pd-button>
-                    
-                    <span>Warning</span>
-                    <pd-button color="warning">Button</pd-button>
-                    <pd-button color="warning" disabled>Button</pd-button>
-                    <pd-button outline color="warning">Button</pd-button>
-                    <pd-button outline color="warning" disabled>Button</pd-button>
-                    
-                    <span>Info</span>
-                    <pd-button color="info">Button</pd-button>
-                    <pd-button color="info" disabled>Button</pd-button>
-                    <pd-button outline color="info">Button</pd-button>
-                    <pd-button outline color="info" disabled>Button</pd-button>
-                    
-                    <span>Light</span>
-                    <pd-button color="light">Button</pd-button>
-                    <pd-button color="light" disabled>Button</pd-button>
-                    <pd-button outline color="light">Button</pd-button>
-                    <pd-button outline color="light" disabled>Button</pd-button>
-                    
-                    <span>Dark</span>
-                    <pd-button color="dark">Button</pd-button>
-                    <pd-button color="dark" disabled>Button</pd-button>
-                    <pd-button outline color="dark">Button</pd-button>
-                    <pd-button outline color="dark" disabled>Button</pd-button>
-                    
-                    <span>Link</span>
-                    <pd-button href="http://www.google.ch">Button</pd-button>
-                    <pd-button href="http://www.google.ch" disabled>Button</pd-button>
-                </div>
-                <div>
-                    <h1>Sizes</h1>
-                    <pd-button size="small">Button</pd-button>
-                    <pd-button size="normal">Button</pd-button>
-                    <pd-button size="large">Button</pd-button>
-                </div>
-                <div>
-                    <h1>Icons</h1>
-                    <pd-button icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button>
-                    <pd-button icon-location="right"><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button>
-                    <pd-button outline icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
-                </div>
-                <style>
-                    .button-grid {
-                        display: grid;
-                        grid-template-columns: repeat(5, 1fr);
-                        grid-gap: 10px;
-                    }
-                </style>
-            </details>
+                        <span>Primary</span>
+                        <pd-button>Button</pd-button>
+                        <pd-button disabled>Button</pd-button>
+                        <pd-button outline>Button</pd-button>
+                        <pd-button outline disabled>Button</pd-button>
 
-            <details>
-                <summary>Button Group</summary>
-                <pd-button-group>
-                    <pd-button>Button</pd-button>
-                    <pd-button>Button</pd-button>
-                    <pd-button>Button</pd-button>
-                </pd-button-group>
+                        <span>Success</span>
+                        <pd-button color="success">Button</pd-button>
+                        <pd-button color="success" disabled>Button</pd-button>
+                        <pd-button outline color="success">Button</pd-button>
+                        <pd-button outline color="success" disabled>Button</pd-button>
+
+                        <span>Danger</span>
+                        <pd-button color="danger">Button</pd-button>
+                        <pd-button color="danger" disabled>Button</pd-button>
+                        <pd-button outline color="danger">Button</pd-button>
+                        <pd-button outline color="danger" disabled>Button</pd-button>
+
+                        <span>Warning</span>
+                        <pd-button color="warning">Button</pd-button>
+                        <pd-button color="warning" disabled>Button</pd-button>
+                        <pd-button outline color="warning">Button</pd-button>
+                        <pd-button outline color="warning" disabled>Button</pd-button>
+
+                        <span>Info</span>
+                        <pd-button color="info">Button</pd-button>
+                        <pd-button color="info" disabled>Button</pd-button>
+                        <pd-button outline color="info">Button</pd-button>
+                        <pd-button outline color="info" disabled>Button</pd-button>
+
+                        <span>Light</span>
+                        <pd-button color="light">Button</pd-button>
+                        <pd-button color="light" disabled>Button</pd-button>
+                        <pd-button outline color="light">Button</pd-button>
+                        <pd-button outline color="light" disabled>Button</pd-button>
+
+                        <span>Dark</span>
+                        <pd-button color="dark">Button</pd-button>
+                        <pd-button color="dark" disabled>Button</pd-button>
+                        <pd-button outline color="dark">Button</pd-button>
+                        <pd-button outline color="dark" disabled>Button</pd-button>
+
+                        <span>Link</span>
+                        <pd-button href="http://www.google.ch">Button</pd-button>
+                        <pd-button href="http://www.google.ch" disabled>Button</pd-button>
+                    </div>
+                    <div>
+                        <h1>Sizes</h1>
+                        <pd-button size="small">Button</pd-button>
+                        <pd-button size="normal">Button</pd-button>
+                        <pd-button size="large">Button</pd-button>
+                    </div>
+                    <div>
+                        <h1>Icons</h1>
+                        <pd-button icon-location="left"
+                            ><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff;"></pd-icon
+                            >Button</pd-button
+                        >
+                        <pd-button icon-location="right"
+                            ><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff;"></pd-icon
+                            >Button</pd-button
+                        >
+                        <pd-button outline icon-location="left"
+                            ><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button
+                        >
+                    </div>
+                    <style>
+                        .button-grid {
+                            display: grid;
+                            grid-template-columns: repeat(5, 1fr);
+                            grid-gap: 10px;
+                        }
+                    </style>
+                </details>
+
+                <details>
+                    <summary>Button Group</summary>
+                    <pd-button-group>
+                        <pd-button>Button</pd-button>
+                        <pd-button>Button</pd-button>
+                        <pd-button>Button</pd-button>
+                    </pd-button-group>
+                </details>
             </details>
 
             <details open>
-                <summary>Dropdown</summary>
-                <div class="dropdown-grid">
-                    <span>Enabled</span>
-                    <span>Disabled</span>
-                    <span>Read only</span>
-                    <span>Error</span>
-                    <pd-dropdown
-                        class="pd-dropdown-items"
-                        label="Label"
-                        empty-item
-                    ></pd-dropdown>
-                    <pd-dropdown 
-                        class="pd-dropdown-items"
-                        label="Label" 
-                        empty-item
-                        disabled
-                        ></pd-dropdown>
+                <summary>Inputs</summary>
+                <details open>
+                    <summary>Inputs</summary>
+                    <div class="dropdown-grid">
+                        <span></span>
+                        <span>Enabled</span>
+                        <span>Disabled</span>
+                        <span>Readonly</span>
+                        <span>Error</span>
+
+                        <span>Inputs</span>
+                        <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
+                        <pd-input label="Label" value="Text" disabled placeholder="placeholder"></pd-input>
+                        <pd-input
+                            label="Label"
+                            value="Text"
+                            readonly
+                            placeholder="placeholder"
+                            id="pd-input-1"
+                        ></pd-input>
+                        <pd-input label="Label" value="Text" placeholder="placeholder" error></pd-input>
+
+                        <span>Dropdowns</span>
+                        <pd-dropdown class="pd-dropdown-items" label="Label" empty-item></pd-dropdown>
+                        <pd-dropdown class="pd-dropdown-items" label="Label" empty-item disabled></pd-dropdown>
+                        <pd-dropdown class="pd-dropdown-items" label="Label" empty-item readonly></pd-dropdown>
                         <pd-dropdown
-                        class="pd-dropdown-items"
-                        label="Label"
-                        readonly
-                        empty-item
+                            class="pd-dropdown-items"
+                            label="Label"
+                            helper-text="dropdown helper text"
+                            empty-item
+                            error
                         ></pd-dropdown>
-                        <pd-dropdown
-                        class="pd-dropdown-items"
-                        label="Label"
-                        helper-text="dropdown helper text"
-                        empty-item
-                        error 
-                        ></pd-dropdown>
-                </div>
-                <style>
-                    .dropdown-grid {
-                        display: grid;
-                        grid-template-columns: repeat(4, 1fr);
-                        grid-gap: 10px;
-                    }
-                </style>
+
+                        <span>Textareas</span>
+                        <pd-textarea
+                            label="Label"
+                            auto-grow
+                            value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                        ></pd-textarea>
+                        <pd-textarea
+                            label="Label"
+                            disabled
+                            auto-grow
+                            value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                        ></pd-textarea>
+                        <pd-textarea
+                            label="Label"
+                            readonly
+                            auto-grow
+                            value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                        ></pd-textarea>
+                        <pd-textarea
+                            label="Label"
+                            error
+                            auto-grow
+                            value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                        ></pd-textarea>
+
+                        <span>Checkbox</span>
+                        <div>
+                            <pd-checkbox text="Labeltext"></pd-checkbox>
+                            <pd-checkbox checked text="Labeltext"></pd-checkbox>
+                            <pd-checkbox is-indeterminate text="Labeltext"></pd-checkbox>
+                        </div>
+                        <div>
+                            <pd-checkbox disabled text="Labeltext"></pd-checkbox>
+                            <pd-checkbox disabled checked text="Labeltext"></pd-checkbox>
+                            <pd-checkbox disabled is-indeterminate text="Labeltext"></pd-checkbox>
+                        </div>
+                        <div>
+                            <pd-checkbox readonly text="Labeltext"></pd-checkbox>
+                            <pd-checkbox readonly checked text="Labeltext"></pd-checkbox>
+                            <pd-checkbox readonly is-indeterminate text="Labeltext"></pd-checkbox>
+                        </div>
+                        <div>
+                            <pd-checkbox error text="Labeltext"></pd-checkbox>
+                            <pd-checkbox error checked text="Labeltext"></pd-checkbox>
+                            <pd-checkbox error is-indeterminate text="Labeltext"></pd-checkbox>
+                        </div>
+
+                        <span>Radio</span>
+                        <div>
+                            <pd-radio checked name="radio-enabled" value="0" label="0%"></pd-radio>
+                            <pd-radio name="radio-enabled" value="0.50" label="50%"></pd-radio>
+                            <pd-radio name="radio-enabled" value="1" label="100%"></pd-radio>
+                        </div>
+                        <div>
+                            <pd-radio disabled checked name="radio-disabled" value="0" label="0%"></pd-radio>
+                            <pd-radio disabled name="radio-disabled" value="0.50" label="50%"></pd-radio>
+                            <pd-radio disabled name="radio-disabled" value="1" label="100%"></pd-radio>
+                        </div>
+                        <div>
+                            <pd-radio readonly checked name="radio-readonly" value="0" label="0%"></pd-radio>
+                            <pd-radio readonly name="radio-readonly" value="0.50" label="50%"></pd-radio>
+                            <pd-radio readonly name="radio-readonly" value="1" label="100%"></pd-radio>
+                        </div>
+                        <div>
+                            <pd-radio error checked name="radio-error" value="0" label="0%"></pd-radio>
+                            <pd-radio error name="radio-error" value="0.50" label="50%"></pd-radio>
+                            <pd-radio error name="radio-error" value="1" label="100%"></pd-radio>
+                        </div>
+
+                        <span>Datepicker</span>
+                        <pd-datepicker label="Label" id="pd-datepickr-0" date="01/01/2021"></pd-datepicker>
+                        <pd-datepicker label="Label" disabled date="01/01/2021"></pd-datepicker>
+                        <pd-datepicker label="Label" readonly date="01/01/2021"></pd-datepicker>
+                        <pd-datepicker label="Label" error date="01/01/2021"></pd-datepicker>
+
+                        <span>Combobox</span>
+                        <pd-combobox id="pd-combobox-0" label="Label"></pd-combobox>
+                        <pd-combobox label="Label" disabled></pd-combobox>
+                        <pd-combobox label="Label" readonly value="Disabled Selectable Combo" selectable></pd-combobox>
+                        <span></span>
+
+                        <span>Search</span>
+                        <pd-search label="Label" placeholder="search..." id="pd-search-0"></pd-search>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <style>
+                        .dropdown-grid {
+                            display: grid;
+                            grid-template-columns: repeat(5, 1fr);
+                            grid-gap: 10px;
+                        }
+                    </style>
+                </details>
             </details>
 
             <details>
@@ -220,10 +328,7 @@
                     A simple primary alert—check it out!
                 </pd-alert>
             </details>
-            <details>
-                <summary>Search</summary>
-                <pd-search placeholder="search..." id="pd-search-0"></pd-search>
-            </details>
+
             <details>
                 <summary>List</summary>
                 <pd-list>
@@ -290,31 +395,6 @@
                     <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
                 </pd-list>
             </details>
-            <details>
-                <summary>Textareas</summary>
-                <pd-textarea
-                    label="Default"
-                    auto-grow
-                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-                ></pd-textarea>
-                <pd-textarea
-                    label="Error"
-                    error
-                    auto-grow
-                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-                ></pd-textarea>
-                <pd-textarea
-                    id="pd-textarea"
-                    label="Disabled"
-                    disabled
-                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-                ></pd-textarea>
-                <pd-textarea
-                    label="Readonly"
-                    readonly
-                    value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
-                ></pd-textarea>
-            </details>
 
             <details>
                 <summary>Form</summary>
@@ -323,27 +403,7 @@
                     <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
                 </form>
             </details>
-            <!-- padding issue: https://github.com/Lambda-IT/parlamentsdienste-components/issues/90 -->
-            <details>
-                <summary>Inputs</summary>
-                <pd-input placeholder="placeholder" label="error" error id="pd-input-0"></pd-input>
-                <pd-input
-                    label="disabled"
-                    disabled
-                    id="pd-input-1"
-                    placeholder="placeholder"
-                    helper-text="asdf-asdf"
-                ></pd-input>
-                <pd-input label="required" required id="pd-input-1"></pd-input>
-                <pd-input
-                    class="flatpickr-input"
-                    value="asdf"
-                    label="readonly"
-                    id="pd-input-2"
-                    helper-text="asdf-asdf"
-                    readonly
-                ></pd-input>
-            </details>
+
             <details>
                 <summary>Table</summary>
                 <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
@@ -361,6 +421,7 @@
                     </pd-menu-item>
                 </pd-table>
             </details>
+
             <details>
                 <summary>Navbar</summary>
                 <pd-navbar id="pd-navbar-1">
@@ -369,6 +430,7 @@
                     <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
                 </pd-navbar>
             </details>
+
             <details>
                 <summary>Menu</summary>
                 <pd-menu>
@@ -388,12 +450,7 @@
                     </pd-menu-item>
                 </pd-menu>
             </details>
-            <details>
-                <summary>Combobox</summary>
-                <pd-combobox id="pd-combobox-0" label="Fancy Combobox"></pd-combobox>
-                <pd-combobox id="pd-combobox-1" label="Selectable Combobox" selectable></pd-combobox>
-                <pd-combobox id="pd-combobox-2" disabled value="Disabled Selectable Combo" selectable></pd-combobox>
-            </details>
+
             <details>
                 <summary>Chip</summary>
                 <pd-chip id="pd-chip-0">Text Chip</pd-chip>
@@ -428,19 +485,6 @@
                         <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
                     </pd-timeline-date>
                 </pd-timeline>
-            </details>
-
-            <details>
-                <summary>Datepicker</summary>
-                <pd-datepicker label="normal" id="pd-datepickr-0" error placeholder="asdf"></pd-datepicker>
-                <pd-datepicker
-                    label="allowInput false -> error"
-                    config="{allowInput: false}"
-                    error
-                    placeholder="asdf"
-                ></pd-datepicker>
-                <pd-datepicker label="disabled" disabled date="04/05/2021"></pd-datepicker>
-                <pd-datepicker label="readonly" readonly date="04/05/2021"></pd-datepicker>
             </details>
 
             <details>
@@ -548,25 +592,6 @@
             </details>
 
             <details>
-                <summary>Checkbox</summary>
-                <pd-checkbox text="checkbox"></pd-checkbox>
-                <pd-checkbox text="indeterminate" is-indeterminate></pd-checkbox>
-                <pd-checkbox readonly checked text="checkbox readonly"></pd-checkbox>
-                <pd-checkbox disabled text="checkbox disabled"></pd-checkbox>
-                <pd-checkbox disabled checked text="checkbox disabled checked"></pd-checkbox>
-                <pd-checkbox error text="checkbox error"></pd-checkbox>
-            </details>
-
-            <details>
-                <summary>Radio</summary>
-                <pd-radio name="x" value="0" label="0%"></pd-radio>
-                <pd-radio name="x" value="0.25" label="25%"></pd-radio>
-                <pd-radio name="x" value="0.50" label="50%"></pd-radio>
-                <pd-radio name="x" value="0.80" label="80%"></pd-radio>
-                <pd-radio disabled checked name="x" value="1" label="100%"></pd-radio>
-            </details>
-
-            <details>
                 <summary>Sidebar</summary>
                 <pd-sidebar>
                     <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
@@ -593,7 +618,6 @@
         </div>
         <script>
             const pdInput = document.getElementById('pd-input-0');
-            const pdTextarea = document.getElementById('pd-textarea');
             const pdBreadcrumbs = document.getElementById('pd-breadcrumbs-0');
             const pdProgress = document.getElementById('pd-progress-0');
             const pdSlider = document.getElementById('pd-slider-0');
@@ -616,16 +640,12 @@
 
             const flatPickr0 = document.getElementById('pd-datepickr-0');
 
-            pdTextarea.cols = 10;
-
             flatPickr0.config = {
                 wrap: true,
                 time_24hr: true,
                 enableTime: true,
                 allowInput: true,
             };
-
-            flatPickr0.addEventListener('pd-change', (ev) => console.log('change', ev));
 
             const columns = [
                 {
@@ -753,11 +773,15 @@
                 console.log('LOG: value', value);
             });
 
-            for(let pdDropdown of pdDropDownItems) {
+            for (let pdDropdown of pdDropDownItems) {
                 pdDropdown.items = [
                     { id: '1', label: 'Dropdown', value: 'a1', selected: true },
                     { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
-                    { id: '3', label: 'Referendum für die Unterstützung Olympischer Spiele durch den Bund', value: 'a3' },
+                    {
+                        id: '3',
+                        label: 'Referendum für die Unterstützung Olympischer Spiele durch den Bund',
+                        value: 'a3',
+                    },
                     { id: '4', label: 'Gesamtkonzeption, Präsentation und Diskussion', value: 'a4' },
                     { id: '5', label: 'Controlling, Präsentation, Diskussion und Beschluss', value: 'a5' },
                     { id: '6', label: 'Mitteilungen', value: 'a6' },

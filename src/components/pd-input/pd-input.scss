@@ -1,8 +1,5 @@
 @include resetControlFonts;
 
-$error-border: 0.125em solid setcolor(danger, enabled);
-$error-border-hover: 0.125em solid setcolor(danger, hover);
-
 :host {
     display: block;
 }
@@ -15,33 +12,61 @@ $error-border-hover: 0.125em solid setcolor(danger, hover);
     outline: none;
 }
 
-:host(.pd-input-error) {
-    .pd-input {
-        border: $error-border;
+.pd-input-label {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.875rem;
 
-        &:hover:enabled {
-            border: $error-border-hover;
-        }
-    }
-
-    .pd-input-helper-text {
-        color: setcolor(danger, enabled);
+    .pd-input-label-text {
+        padding-bottom: 0.25rem;
     }
 }
 
-/* this block is required because we don't need a grey
-   input for the flatpickr, the datepicker itself has
-   no direct access to this part of the input component
- */
 .pd-input {
-    &.pd-input-readonly:not(.flatpickr-input) {
+    display: block;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.25rem;
+    border: 0.125rem solid setcolor(primary, enabled);
+    width: 100%;
+    margin-top: var(--pd-input-vertical-adjust, inherit);
+
+    &:hover:enabled {
+        border-color: setcolor(primary, hover);
+    }
+
+    &:disabled {
+        border-color: setcolor(primary, disabled);
+        background-color: transparent;
+        font-style: italic;
+        color: setcolor(primary, disabledContrast);
+    }
+
+    &:focus-visible:enabled {
+        background: $yellow-1;
+    }
+
+    /* this block is required because we don't need a grey
+    input for the flatpickr, the datepicker itself has
+    no direct access to this part of the input component
+    */
+    &.pd-input-readonly {
         background-color: $gray-3;
-        border: 0.125em solid $gray-3;
+        border-color: $gray-3;
+
         &:hover:enabled,
         &:disabled,
         &:focus-visible:enabled {
-            border: 0.125em solid $gray-3;
+            border-color: $gray-3;
             cursor: default;
+        }
+    }
+
+    &.pd-input-error {
+        border-color: $input-error-border;
+        background: $red-3;
+
+        &:hover:enabled {
+            border-color: setcolor(danger, hover);
         }
     }
 }
@@ -52,56 +77,17 @@ $error-border-hover: 0.125em solid setcolor(danger, hover);
         &:hover:enabled,
         &:disabled,
         &:focus-visible:enabled {
-            border: 0.125em solid $gray-3;
+            border-color: $gray-3;
             cursor: default;
         }
     }
 
     .pd-input-error {
-        border: $error-border;
+        border-color: $input-error-border;
+        background: $red-3;
 
         &:hover:enabled {
-            border: $error-border-hover;
+            border-color: setcolor(danger, hover);
         }
     }
-}
-
-.pd-input-label {
-    width: 100%;
-    margin-bottom: 0;
-    font-size: 0.875em;
-}
-
-.pd-input {
-    display: block;
-    padding: 0.625em 0.875em;
-    border-radius: 0.25em;
-    border: 0.125em solid setcolor(primary, enabled);
-    width: 100%;
-    margin-top: var(--pd-input-vertical-adjust, inherit);
-
-    &:hover:enabled {
-        border: 0.125em solid setcolor(primary, hover);
-    }
-
-    &:disabled {
-        border: 0.125em solid setcolor(primary, disabled);
-        background-color: transparent;
-        color: $gray;
-    }
-
-    &:focus-visible:enabled {
-        border: 0.125em solid $focus;
-    }
-}
-
-.pd-input-label-text {
-    padding-bottom: 0.25em;
-}
-
-.pd-input-helper-text {
-    margin-left: 0.875em;
-    margin-top: 0.25em;
-    font-size: 0.875em;
-    line-height: 1.25em;
 }

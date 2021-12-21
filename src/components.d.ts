@@ -401,7 +401,6 @@ export namespace Components {
          */
         "disabled": boolean;
         "error": boolean;
-        "helperText"?: string;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
@@ -646,6 +645,7 @@ export namespace Components {
           * Sets radio to disabled state
          */
         "disabled": boolean;
+        "error": boolean;
         /**
           * Label used by radio
          */
@@ -654,6 +654,10 @@ export namespace Components {
           * Name of radio. Used to group radios together
          */
         "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
         /**
           * Value of radio
          */
@@ -1603,7 +1607,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         "error"?: boolean;
-        "helperText"?: string;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
@@ -1889,6 +1892,7 @@ declare namespace LocalJSX {
           * Sets radio to disabled state
          */
         "disabled"?: boolean;
+        "error"?: boolean;
         /**
           * Label used by radio
          */
@@ -1897,6 +1901,10 @@ declare namespace LocalJSX {
           * Name of radio. Used to group radios together
          */
         "name"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
         /**
           * Value of radio
          */

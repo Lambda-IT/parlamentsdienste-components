@@ -12,67 +12,57 @@
     outline: none;
 }
 
-:host(.pd-textarea-error) {
-    .pd-textarea {
-        border: 0.125em solid setcolor(danger, enabled);
-
-        &:hover:enabled {
-            border: 0.125em solid setcolor(danger, hover);
-        }
-    }
-
-    .pd-textarea-helper-text {
-        color: setcolor(danger, enabled);
-    }
-}
-
 .pd-textarea-label {
     width: 100%;
     margin-bottom: 0;
-    font-size: 0.875em;
+    font-size: 0.875rem;
+
+    .pd-textarea-label-text {
+        padding-bottom: 0.25rem;
+    }
 }
 
 .pd-textarea {
     display: block;
-    padding: 0.625em 0.875em;
-    border-radius: 0.25em;
-    border: 0.125em solid setcolor(primary, enabled);
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.25rem;
+    border: 0.125rem solid setcolor(primary, enabled);
     width: 100%;
+    margin-top: var(--pd-input-vertical-adjust, inherit);
 
     &:hover:enabled {
-        border: 0.125em solid setcolor(primary, hover);
+        border-color: setcolor(primary, hover);
     }
 
     &:disabled {
-        border: 0.125em solid setcolor(primary, disabled);
+        border-color: setcolor(primary, disabled);
         background-color: transparent;
-        color: $gray;
+        font-style: italic;
+        color: setcolor(primary, disabledContrast);
     }
 
     &:focus-visible:enabled {
-        border: 0.125em solid $focus;
+        background: $yellow-1;
     }
 
-    &:read-only {
+    &.pd-textarea-readonly {
         background-color: $gray-3;
-        border: 0.125em solid $gray-3;
+        border-color: $gray-3;
 
         &:hover:enabled,
         &:disabled,
         &:focus-visible:enabled {
-            border: 0.125em solid $gray-3;
+            border-color: $gray-3;
             cursor: default;
         }
     }
-}
 
-.pd-textarea-label-text {
-    padding-bottom: 0.25em;
-}
+    &.pd-textarea-error {
+        border-color: $input-error-border;
+        background: $red-3;
 
-.pd-textarea-helper-text {
-    margin-left: 0.875em;
-    margin-top: 0.25em;
-    font-size: 0.875em;
-    line-height: 1.25em;
+        &:hover:enabled {
+            border-color: setcolor(danger, hover);
+        }
+    }
 }

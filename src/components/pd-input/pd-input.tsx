@@ -1,5 +1,5 @@
-import { Component, h, Prop, Event, EventEmitter, Watch, Method, Host } from '@stencil/core';
-import { TextFieldTypes, InputChangeEventDetail } from '../../interface';
+import { Component, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { InputChangeEventDetail, TextFieldTypes } from '../../interface';
 
 @Component({
     tag: 'pd-input',
@@ -131,8 +131,6 @@ export class Input {
 
     @Prop() error: boolean = false;
 
-    @Prop() helperText?: string;
-
     /**
      * Default vertical adjustment for inline forms
      */
@@ -203,7 +201,7 @@ export class Input {
         const value = this.getValue();
 
         return (
-            <Host class={this.error ? 'pd-input-error' : ''}>
+            <Host>
                 <label class="pd-input-label">
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input

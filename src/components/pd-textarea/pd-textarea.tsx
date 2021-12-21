@@ -181,11 +181,15 @@ export class Textarea {
         const value = this.getValue();
 
         return (
-            <Host class={this.error ? 'pd-textarea-error' : ''}>
+            <Host>
                 <label class="pd-textarea-label">
                     {this.label ? <div class="pd-textarea-label-text">{this.label}</div> : ''}
                     <textarea
-                        class={{ 'pd-textarea': true, 'pd-textarea-readonly': this.readonly }}
+                        class={{
+                            'pd-textarea': true,
+                            'pd-textarea-readonly': this.readonly,
+                            'pd-textarea-error': this.error,
+                        }}
                         ref={(textarea) => (this.nativeInput = textarea)}
                         autoCapitalize={this.autocapitalize}
                         autoFocus={this.autofocus}
