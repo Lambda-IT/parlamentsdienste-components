@@ -199,6 +199,10 @@ export namespace Components {
     }
     interface PdDatepicker {
         /**
+          * Allow manual input
+         */
+        "allowInput": boolean;
+        /**
           * Resets the selected dates (if any) and clears the input.
          */
         "clear": () => Promise<void>;
@@ -1422,6 +1426,10 @@ declare namespace LocalJSX {
         "verticalAdjust"?: boolean;
     }
     interface PdDatepicker {
+        /**
+          * Allow manual input
+         */
+        "allowInput"?: boolean;
         /**
           * Set the configuration for the datepicker (only applied at instantiation) Check out https://flatpickr.js.org/options for further documentation about this config
          */

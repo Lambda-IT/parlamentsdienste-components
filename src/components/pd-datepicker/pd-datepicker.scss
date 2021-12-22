@@ -18,6 +18,7 @@
     margin-top: var(--pd-datepicker-vertical-adjust, inherit);
 
     &.pd-datepicker-disabled {
+        pointer-events: none;
         .pd-datepicker-icon {
             fill: setcolor(primary, disabled);
         }
@@ -25,9 +26,8 @@
 
     &.pd-datepicker-readonly {
         pointer-events: none;
-
         .pd-datepicker-icon {
-            fill: setcolor(primary, readonly);
+            fill: setcolor(primary, readonlyContrast);
         }
     }
 
@@ -37,15 +37,9 @@
         }
     }
 
-    &:focus-visible {
-        .pd-datepicker-input {
-            border: 0.125em solid $focus;
-        }
+    .pd-datepicker-label-text {
+        padding-bottom: 0.25em;
     }
-}
-
-.pd-datepicker-label-text {
-    padding-bottom: 0.25em;
 }
 
 .wrapper {
@@ -56,13 +50,63 @@
 .pd-datepicker-input {
     flex: 1 1 auto;
 
-    &:focus-visible {
-        border: 0.125em solid $focus;
-        border-right: none;
+    &:hover {
+        + .pd-datepicker-icon {
+            fill: setcolor(primary, hover);
+        }
+    }
 
-        & ~ .pd-search-button {
-            border: 0.125em solid $focus;
-            border-left: none;
+    &.pd-datepicker-error:hover {
+        + .pd-datepicker-icon {
+            fill: setcolor(danger, hover);
+        }
+    }
+}
+
+.pd-datepicker-input[readonly] {
+    + .pd-datepicker-icon {
+        fill: setcolor(primary, enabledContrast);
+    }
+
+    &:hover {
+        + .pd-datepicker-icon {
+            fill: setcolor(primary, hoverContrast);
+        }
+    }
+
+    &:active {
+        + .pd-datepicker-icon {
+            fill: setcolor(primary, pressedContrast);
+        }
+    }
+}
+
+.pd-datepicker-input[readonly].pd-datepicker-disabled {
+    + .pd-datepicker-icon {
+        fill: setcolor(primary, disabledContrast);
+    }
+}
+
+.pd-datepicker-input[readonly].pd-datepicker-readonly {
+    + .pd-datepicker-icon {
+        fill: setcolor(primary, readonlyContrast);
+    }
+}
+
+.pd-datepicker-input[readonly].pd-datepicker-error {
+    + .pd-datepicker-icon {
+        fill: setcolor(danger, enabledContrast);
+    }
+
+    &:hover {
+        + .pd-datepicker-icon {
+            fill: setcolor(danger, hoverContrast);
+        }
+    }
+
+    &:active {
+        + .pd-datepicker-icon {
+            fill: setcolor(danger, pressedContrast);
         }
     }
 }
@@ -79,15 +123,7 @@
     padding: 0;
     background-color: transparent;
     cursor: pointer;
-
     font-size: 4em;
     fill: setcolor(primary, enabled);
-
-    &:hover {
-        fill: setcolor(primary, hover);
-    }
-
-    &:active {
-        fill: setcolor(primary, pressed);
-    }
+    pointer-events: none;
 }

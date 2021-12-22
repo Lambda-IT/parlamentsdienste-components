@@ -77,6 +77,10 @@ pd-radio {
                     border-color: setcolor(primary, disabled);
                 }
             }
+
+            & ~ .pd-radio-text {
+                font-style: italic;
+            }
         }
 
         &:checked {

@@ -259,8 +259,14 @@
                             <pd-radio error name="radio-error" value="1" label="100%"></pd-radio>
                         </div>
 
-                        <span>Datepicker</span>
-                        <pd-datepicker label="Label" id="pd-datepickr-0" date="01/01/2021"></pd-datepicker>
+                        <span>Datepicker (input enabled)</span>
+                        <pd-datepicker label="Label" allow-input date="01/01/2021"></pd-datepicker>
+                        <pd-datepicker label="Label" allow-input disabled date="01/01/2021"></pd-datepicker>
+                        <pd-datepicker label="Label" allow-input readonly date="01/01/2021"></pd-datepicker>
+                        <pd-datepicker label="Label" allow-input error date="01/01/2021"></pd-datepicker>
+
+                        <span>Datepicker (input disabled)</span>
+                        <pd-datepicker label="Label" date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" disabled date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" readonly date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" error date="01/01/2021"></pd-datepicker>
@@ -269,11 +275,11 @@
                         <pd-combobox id="pd-combobox-0" label="Label"></pd-combobox>
                         <pd-combobox label="Label" disabled></pd-combobox>
                         <pd-combobox label="Label" readonly value="Disabled Selectable Combo" selectable></pd-combobox>
-                        <span></span>
+                        <pd-combobox label="Label" error value="Disabled Selectable Combo" selectable></pd-combobox>
 
                         <span>Search</span>
                         <pd-search label="Label" placeholder="search..." id="pd-search-0"></pd-search>
-                        <span></span>
+                        <pd-search label="Label" disabled placeholder="search..." id="pd-search-0"></pd-search>
                         <span></span>
                         <span></span>
                     </div>
@@ -642,14 +648,15 @@
 
             const pdPagination1 = document.getElementById('pd-pagination-1');
 
-            const flatPickr0 = document.getElementById('pd-datepickr-0');
+            const pdDatePickers = document.getElementsByClassName('pd-datepickr-config');
 
-            flatPickr0.config = {
-                wrap: true,
-                time_24hr: true,
-                enableTime: true,
-                allowInput: true,
-            };
+            for (let pdDatepickr of pdDatePickers) {
+                pdDatepickr.config = {
+                    time_24hr: true,
+                    enableTime: true,
+                    allowInput: true,
+                };
+            }
 
             const columns = [
                 {
