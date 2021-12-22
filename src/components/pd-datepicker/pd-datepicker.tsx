@@ -77,6 +77,7 @@ export class Datepicker {
         onReady: (selectedDates, dateStr) => this.pdReady.emit({ selectedDates, dateStr }),
         onValueUpdate: (selectedDates, dateStr) => this.pdValueUpdate.emit({ selectedDates, dateStr }),
         allowInput: this.allowInput,
+        disableMobile: true,
     };
 
     @Watch('date')

@@ -15,62 +15,62 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    font-size: 0.875em;
+    font-size: 0.875rem;
 
     .pd-combobox-label-text {
-        padding-bottom: 0.25em;
+        padding-bottom: 0.25rem;
     }
 }
 
 .pd-dropdown {
     position: relative;
     margin-top: var(--pd-dropdown-vertical-adjust, inherit);
-    
+
     .pd-dropdown-button {
         @include button-scheme(primary);
-        border-radius: 0.25em;
-        padding: 0.625em 0.75em;
-        padding-top: var(--pd-dropdown-vertical-padding, 0.625em);
-        padding-bottom: var(--pd-dropdown-vertical-padding, 0.625em);
-        padding-left: var(--pd-dropdown-horizontal-padding, 0.75em);
-        padding-right: var(--pd-dropdown-horizontal-padding, 0.75em);
+        border-radius: 0.25rem;
+        padding-top: var(--pd-dropdown-vertical-padding, 0.625rem);
+        padding-bottom: var(--pd-dropdown-vertical-padding, 0.625rem);
+        padding-left: var(--pd-dropdown-horizontal-padding, 0.75rem);
+        padding-right: var(--pd-dropdown-horizontal-padding, 2.5rem);
         cursor: pointer;
         display: flex;
         align-items: center;
         width: 100%;
         font-weight: 700;
-        
+
         .pd-dropdown-text {
             flex: 1 1 auto;
             text-align: left;
             text-overflow: ellipsis;
             overflow-x: hidden;
-            min-height: 1.5em;
+            min-height: 1.5rem;
         }
-    
+
         .pd-dropdown-caret {
+            position: absolute;
             fill: $white;
             flex: 0 0 auto;
-            margin: -0.625em -0.2em;
+            right: 0.5rem;
         }
-    
+
         &:hover:enabled {
             .pd-dropdown-caret {
-                fill: $white; 
-             }
+                fill: $white;
+            }
         }
 
         &:disabled {
             cursor: default;
             .pd-dropdown-caret {
-               fill: $gray; 
+                fill: $gray;
             }
         }
 
         &:active:enabled {
             .pd-dropdown-caret {
-                fill: setcolor(primary, pressedContrast); 
-             }
+                fill: setcolor(primary, pressedContrast);
+            }
         }
 
         &:focus-visible {
@@ -83,11 +83,11 @@
     &.pd-dropdown-readonly {
         .pd-dropdown-button {
             background-color: setcolor(primary, readonly);
-            color:  setcolor(primary, readonlyContrast);
-            border: 0.125em solid setcolor(danger, readonly);;
+            color: setcolor(primary, readonlyContrast);
+            border-color: setcolor(danger, readonly);
             cursor: default;
             font-style: normal;
-            
+
             .pd-dropdown-caret {
                 display: none;
             }
@@ -97,33 +97,33 @@
     &.pd-dropdown-error {
         .pd-dropdown-button {
             background: setcolor(danger, enabled);
-            border: 0.125em solid setcolor(danger, enabled);
+            border-color: setcolor(danger, enabled);
             color: setcolor(danger, enabledContrast);
-            .pd-dropdown-caret{
-                fill:setcolor(danger, enabledContrast);
+            .pd-dropdown-caret {
+                fill: setcolor(danger, enabledContrast);
             }
-    
+
             &:hover:enabled {
                 background-color: setcolor(danger, hover);
-                border: 0.125em solid setcolor(danger, hover);
+                border-color: setcolor(danger, hover);
                 color: setcolor(danger, hoverContrast);
-                .pd-dropdown-caret{
-                    fill:setcolor(danger, hoverContrast);
+                .pd-dropdown-caret {
+                    fill: setcolor(danger, hoverContrast);
                 }
             }
-    
+
             &:active:enabled {
                 background-color: setcolor(danger, pressed);
-                border: 0.125em solid setcolor(danger, pressed);
+                border-color: setcolor(danger, pressed);
                 color: setcolor(danger, pressedContrast);
-                .pd-dropdown-caret{
-                    fill:setcolor(danger, pressedContrast);
+                .pd-dropdown-caret {
+                    fill: setcolor(danger, pressedContrast);
                 }
             }
 
             &:focus-visible {
                 background-color: $focus;
-                border: 0.125em solid $focus;
+                border-color: $focus;
                 color: $blue-whale;
                 .pd-dropdown-caret {
                     fill: $blue-whale;
@@ -141,4 +141,3 @@
     width: 100%;
     overflow: auto;
 }
-

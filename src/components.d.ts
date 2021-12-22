@@ -735,6 +735,14 @@ export namespace Components {
     }
     interface PdSlider {
         /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
           * max value
          */
         "max": number;
@@ -746,6 +754,10 @@ export namespace Components {
           * slider name
          */
         "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
         /**
           * value steps
          */
@@ -2002,6 +2014,14 @@ declare namespace LocalJSX {
     }
     interface PdSlider {
         /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
           * max value
          */
         "max"?: number;
@@ -2021,6 +2041,10 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
         /**
           * value steps
          */

@@ -272,16 +272,49 @@
                         <pd-datepicker label="Label" error date="01/01/2021"></pd-datepicker>
 
                         <span>Combobox</span>
-                        <pd-combobox id="pd-combobox-0" label="Label"></pd-combobox>
-                        <pd-combobox label="Label" disabled></pd-combobox>
-                        <pd-combobox label="Label" readonly value="Disabled Selectable Combo" selectable></pd-combobox>
-                        <pd-combobox label="Label" error value="Disabled Selectable Combo" selectable></pd-combobox>
+                        <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label"></pd-combobox>
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            disabled
+                        ></pd-combobox>
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            readonly
+                        ></pd-combobox>
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            error
+                        ></pd-combobox>
+
+                        <span>Combobox (selectable)</span>
+                        <pd-combobox class="pd-combobox-items" selectable label="Label"></pd-combobox>
+                        <pd-combobox class="pd-combobox-items" selectable label="Label" disabled></pd-combobox>
+                        <pd-combobox
+                            class="pd-combobox-items"
+                            selectable
+                            label="Label"
+                            readonly
+                            selectable
+                        ></pd-combobox>
+                        <pd-combobox class="pd-combobox-items" selectable label="Label" error selectable></pd-combobox>
 
                         <span>Search</span>
                         <pd-search label="Label" placeholder="search..." id="pd-search-0"></pd-search>
                         <pd-search label="Label" disabled placeholder="search..." id="pd-search-0"></pd-search>
                         <span></span>
                         <span></span>
+
+                        <span>Slider</span>
+                        <pd-slider></pd-slider>
+                        <pd-slider disabled></pd-slider>
+                        <pd-slider readonly></pd-slider>
+                        <pd-slider error></pd-slider>
                     </div>
                     <style>
                         .dropdown-grid {
@@ -587,11 +620,6 @@
             </details>
 
             <details>
-                <summary>Tags</summary>
-                <pd-slider id="pd-slider-0"></pd-slider>
-            </details>
-
-            <details>
                 <summary>Tests</summary>
                 <details>
                     <summary>Inline Form</summary>
@@ -635,7 +663,7 @@
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
             const pdDropDownItems = document.getElementsByClassName('pd-dropdown-items');
-            const pdComboBox = document.getElementById('pd-combobox-0');
+            const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
             const pdNavbar = document.getElementById('pd-navbar-1');
@@ -656,6 +684,17 @@
                     enableTime: true,
                     allowInput: true,
                 };
+            }
+
+            for (let pdComboBoxItem of pdComboBoxItems) {
+                pdComboBoxItem.items = [
+                    { id: '1', label: 'Dropdown Link 01', value: 'a1' },
+                    { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+                    { id: '3', label: 'Dropdown Link 03', value: 'a3' },
+                    { id: '4', label: 'Dropdown Link 04', value: 'a4' },
+                    { id: '5', label: 'Dropdown Link 05', value: 'a5' },
+                    { id: '6', label: 'Preselected', value: 'a6', selected: true },
+                ];
             }
 
             const columns = [
@@ -755,15 +794,8 @@
             pdInput.addEventListener('pd-change', (value) => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
-            pdSlider.addEventListener('pd-input', (value) => {
-                pdProgress.setAttribute('value', value.detail.value / 100);
-            });
 
             pdSearch.addEventListener('pd-search', (value) => {
-                console.log('LOG: value', value);
-            });
-
-            pdComboBox.addEventListener('pd-combobox', (value) => {
                 console.log('LOG: value', value);
             });
 
@@ -810,21 +842,6 @@
 
             // update placement of menu
             setTimeout(() => pdMenu1.setAttribute('placement', 'top-start'), 10000);
-
-            pdComboBox.items = [
-                { id: '1', label: 'Dropdown Link 01', value: 'a1' },
-                { id: '2', label: 'Dropdown Link 02', value: 'a2' },
-                { id: '3', label: 'Dropdown Link 03', value: 'a3' },
-                { id: '4', label: 'Dropdown Link 04', value: 'a4' },
-                { id: '5', label: 'Dropdown Link 05', value: 'a5' },
-                { id: '6', label: 'Preselected', value: 'a6', selected: true },
-            ];
-            pdComboBox1.items = pdComboBox.items;
-            setTimeout(() => pdComboBox1.reset(), 3000);
-            setTimeout(() => pdComboBox1.setSelectedIndex(3), 4000);
-            setTimeout(() => pdComboBox1.reset(), 6000);
-
-            pdComboBox2.items = [{ value: '', label: 'Disabled Selectable Combo' }];
 
             const chip6 = document.getElementById('pd-chip-6');
             console.log('chip6', chip6.checked);
