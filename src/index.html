@@ -58,7 +58,7 @@
     </head>
     <body>
         <div class="example-components">
-            <details>
+            <details open>
                 <summary>Buttons</summary>
                 <details>
                     <summary>Buttons</summary>
@@ -156,7 +156,7 @@
             </details>
 
             <details open>
-                <summary>Inputs</summary>
+                <summary>Forms</summary>
                 <details open>
                     <summary>Inputs</summary>
                     <div class="dropdown-grid">
@@ -324,9 +324,20 @@
                         }
                     </style>
                 </details>
+
+                <details>
+                    <summary>Chips</summary>
+                    <pd-chip id="pd-chip-0">Text Chip</pd-chip>
+                    <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
+                    <pd-chip id="pd-chip-2" type="filter">Filter Chip</pd-chip>
+                    <pd-chip id="pd-chip-3" type="toggle">Toggle Chip</pd-chip>
+                    <pd-chip id="pd-chip-4" type="toggle" disabled>Disabled Chip</pd-chip>
+                    <pd-chip id="pd-chip-5" type="toggle" readonly>Readonly Chip</pd-chip>
+                    <pd-chip id="pd-chip-6">Checked programmatically</pd-chip>
+                </details>
             </details>
 
-            <details>
+            <details open>
                 <summary>Dialogs</summary>
                 <details>
                     <summary>Alerts</summary>
@@ -391,74 +402,198 @@
                 </details>
             </details>
 
-            <details>
-                <summary>List</summary>
-                <pd-list>
-                    <pd-list-item-expandable expandable edit menu>
-                        <div>form expandable</div>
-                        <div slot="expandable">
-                            <form>
-                                <pd-input
-                                    style="width: 100%;"
-                                    readonly
-                                    placeholder="placeholder"
-                                    label="input"
-                                ></pd-input>
-                                <div style="display: flex; justify-content: space-between;">
-                                    <pd-datepicker
-                                        style="width: 100%;"
-                                        label="normal"
-                                        placeholder="date1"
-                                    ></pd-datepicker>
-                                    <pd-datepicker
-                                        style="width: 100%;"
-                                        label="normal"
-                                        placeholder="date2"
-                                    ></pd-datepicker>
-                                </div>
-                            </form>
-                        </div>
-                        <pd-menu-item text="Drucken" slot="menu">
-                            <pd-icon size="2" name="print"></pd-icon>
-                        </pd-menu-item>
-                        <pd-menu-item text="Drucken" slot="menu">
-                            <pd-icon size="2" name="print"></pd-icon>
-                        </pd-menu-item>
-                    </pd-list-item-expandable>
-                    <pd-list-item-expandable status="success" edit expandable menu checked checkbox
-                        ><div>item 1</div>
-                        <div slot="expandable">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
-                            earum sed ducimus quo voluptate recusandae perferendis.
-                        </div>
-                        <pd-menu-item text="Drucken" slot="menu">
-                            <pd-icon size="2" name="print"></pd-icon>
-                        </pd-menu-item>
-                        <pd-menu-item text="Drucken" slot="menu">
-                            <pd-icon size="2" name="print"></pd-icon>
-                        </pd-menu-item>
-                        <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
-                    </pd-list-item-expandable>
-                    <pd-list-item-expandable edit expandable menu
-                        ><div>item 1.a without status</div>
-                        <div slot="expandable">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit architecto
-                            earum sed ducimus quo voluptate recusandae perferendis.
-                        </div>
-                        <pd-menu-item text="Drucken" slot="menu">
-                            <pd-icon size="2" name="print"></pd-icon>
-                        </pd-menu-item>
-                        <pd-menu-item text="Drucken" slot="menu">
-                            <pd-icon size="2" name="print"></pd-icon>
-                        </pd-menu-item>
-                        <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
-                    </pd-list-item-expandable>
-                    <pd-list-item-expandable status="danger">item 2</pd-list-item-expandable>
-                    <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
-                </pd-list>
+            <details open>
+                <summary>Layout</summary>
+                <details>
+                    <summary>Navbar</summary>
+                    <pd-navbar id="pd-navbar-1">
+                        <pd-navbar-item text="Startseite"></pd-navbar-item>
+                        <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
+                        <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
+                    </pd-navbar>
+                </details>
+
+                <details>
+                    <summary>Sidebar</summary>
+                    <pd-sidebar>
+                        <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
+                        <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
+                        <pd-sidebar-item enabled text="Recherchen" icon-name="research"></pd-sidebar-item>
+                        <pd-sidebar-item text="Parlaments- Wörterbuch" icon-name="dictionary"></pd-sidebar-item>
+                        <pd-sidebar-item
+                            href="http://www.google.ch"
+                            icon-name="link"
+                            text="External Link"
+                        ></pd-sidebar-item>
+                    </pd-sidebar>
+                </details>
             </details>
 
-            <details>
+            <details open>
+                <summary>Page Elements</summary>
+                <details>
+                    <summary>Timeline</summary>
+                    <pd-timeline start="true" end="true">
+                        <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
+                        <pd-timeline-date date="28.04.2019" header="SiK-NR" href="http://www.google.ch">
+                            Beginn der Beratung<br />
+                            <a href="#">Unterlagen (PDF)</a>
+                        </pd-timeline-date>
+                        <pd-timeline-date date="24.06.2019" header="SiK-NR" href="http://www.google.ch">
+                            Antrag: Ablehnung <br />
+                            <a href="#">Bericht (PDF)</a>
+                        </pd-timeline-date>
+                        <pd-timeline-date date="19.09.2019" header="Nationalrat">Ablehnung</pd-timeline-date>
+                        <pd-timeline-date date="30.10.2019">
+                            Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche
+                            Kredite mit Vorschuss zu. <br /><a href="#">Audioaufnahme</a>
+                            <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
+                        </pd-timeline-date>
+                    </pd-timeline>
+                </details>
+
+                <details>
+                    <summary>List</summary>
+                    <pd-list>
+                        <pd-list-item-expandable expandable edit menu>
+                            <div>form expandable</div>
+                            <div slot="expandable">
+                                <form>
+                                    <pd-input
+                                        style="width: 100%;"
+                                        readonly
+                                        placeholder="placeholder"
+                                        label="input"
+                                    ></pd-input>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <pd-datepicker
+                                            style="width: 100%;"
+                                            label="normal"
+                                            placeholder="date1"
+                                        ></pd-datepicker>
+                                        <pd-datepicker
+                                            style="width: 100%;"
+                                            label="normal"
+                                            placeholder="date2"
+                                        ></pd-datepicker>
+                                    </div>
+                                </form>
+                            </div>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                        </pd-list-item-expandable>
+                        <pd-list-item-expandable status="success" edit expandable menu checked checkbox
+                            ><div>item 1</div>
+                            <div slot="expandable">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit
+                                architecto earum sed ducimus quo voluptate recusandae perferendis.
+                            </div>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                            <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
+                        </pd-list-item-expandable>
+                        <pd-list-item-expandable edit expandable menu
+                            ><div>item 1.a without status</div>
+                            <div slot="expandable">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit
+                                architecto earum sed ducimus quo voluptate recusandae perferendis.
+                            </div>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                            <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
+                        </pd-list-item-expandable>
+                        <pd-list-item-expandable status="danger">item 2</pd-list-item-expandable>
+                        <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
+                    </pd-list>
+                </details>
+
+                <details>
+                    <summary>Menu</summary>
+                    <pd-menu>
+                        <pd-menu-item text="Drucken">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Download">
+                            <pd-icon size="2" name="documents"></pd-icon>
+                        </pd-menu-item>
+                    </pd-menu>
+                    <pd-menu label="My Menu" id="pd-menu-1">
+                        <pd-menu-item text="Drucken">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Download">
+                            <pd-icon size="2" name="documents"></pd-icon>
+                        </pd-menu-item>
+                    </pd-menu>
+                </details>
+
+                <details>
+                    <summary>Breadcrumbs</summary>
+                    <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
+                </details>
+
+                <details>
+                    <summary>Progressbar</summary>
+                    <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label striped color="success" id="pd-progress-1"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label color="warning" id="pd-progress-2"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label striped color="warning" id="pd-progress-2"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label color="danger" id="pd-progress-3"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label striped color="danger" id="pd-progress-3"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label color="info" id="pd-progress-3"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label striped color="info" id="pd-progress-3"></pd-progress-bar>
+                </details>
+
+                <details>
+                    <summary>Panel</summary>
+                    <pd-panel collapsible>
+                        <pd-panel-header slot="header">Header</pd-panel-header>
+                        <pd-panel-content style="padding: 0px;">
+                            <pd-list>
+                                <pd-list-item status="unset">
+                                    <p class="mb-1">18.3708</p>
+                                    <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
+                                </pd-list-item>
+                                <pd-list-item status="success">
+                                    <p class="mb-1">16.3112</p>
+                                    <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
+                                </pd-list-item>
+                                <pd-list-item status="danger">
+                                    <p class="mb-1">18.426</p>
+                                    <h5 class="mb-1">Jagdgesetz.</h5>
+                                    <p class="mb-1">
+                                        Änderung Kategorie IIIb
+                                    </p>
+                                </pd-list-item>
+                                <pd-list-item>
+                                    <p class="mb-1">19.426</p>
+                                    <h5 class="mb-1">Waffengesetz.</h5>
+                                    <p class="mb-1">
+                                        Änderung Kategorie IIIb
+                                    </p>
+                                </pd-list-item>
+                            </pd-list>
+                        </pd-panel-content>
+                        <pd-panel-footer slot="footer"></pd-panel-footer>
+                    </pd-panel>
+                </details>
+            </details>
+
+            <details open>
                 <summary>Table</summary>
                 <details>
                     <summary>Table</summary>
@@ -477,149 +612,29 @@
                         </pd-menu-item>
                     </pd-table>
                 </details>
+
+                <details>
+                    <summary>Pagination</summary>
+                    <pd-pagination
+                        id="pd-pagination-1"
+                        total-pages="10"
+                        current-page="3"
+                        visible-pages="5"
+                    ></pd-pagination>
+                </details>
             </details>
 
-            <details>
-                <summary>Navbar</summary>
-                <pd-navbar id="pd-navbar-1">
-                    <pd-navbar-item text="Startseite"></pd-navbar-item>
-                    <pd-navbar-item text="Geschäfte suchen"></pd-navbar-item>
-                    <pd-navbar-item href="http://www.google.ch" text="VORSTOSSplus"></pd-navbar-item>
-                </pd-navbar>
-            </details>
-
-            <details>
-                <summary>Menu</summary>
-                <pd-menu>
-                    <pd-menu-item text="Drucken">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-menu-item text="Download">
-                        <pd-icon size="2" name="documents"></pd-icon>
-                    </pd-menu-item>
-                </pd-menu>
-                <pd-menu label="My Menu" id="pd-menu-1">
-                    <pd-menu-item text="Drucken">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-menu-item text="Download">
-                        <pd-icon size="2" name="documents"></pd-icon>
-                    </pd-menu-item>
-                </pd-menu>
-            </details>
-
-            <details>
-                <summary>Chip</summary>
-                <pd-chip id="pd-chip-0">Text Chip</pd-chip>
-                <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
-                <pd-chip id="pd-chip-2" type="filter">Filter Chip</pd-chip>
-                <pd-chip id="pd-chip-3" type="toggle">Toggle Chip</pd-chip>
-                <pd-chip id="pd-chip-4" type="toggle" disabled>Disabled Chip</pd-chip>
-                <pd-chip id="pd-chip-5" type="toggle" readonly>Readonly Chip</pd-chip>
-                <pd-chip id="pd-chip-6">Checked programmatically</pd-chip>
-            </details>
-            <details>
-                <summary>Pagination</summary>
-                <pd-pagination id="pd-pagination-1" total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
-            </details>
-
-            <details>
-                <summary>Timeline</summary>
-                <pd-timeline start="true" end="true">
-                    <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
-                    <pd-timeline-date date="28.04.2019" header="SiK-NR" href="http://www.google.ch">
-                        Beginn der Beratung<br />
-                        <a href="#">Unterlagen (PDF)</a>
-                    </pd-timeline-date>
-                    <pd-timeline-date date="24.06.2019" header="SiK-NR" href="http://www.google.ch">
-                        Antrag: Ablehnung <br />
-                        <a href="#">Bericht (PDF)</a>
-                    </pd-timeline-date>
-                    <pd-timeline-date date="19.09.2019" header="Nationalrat">Ablehnung</pd-timeline-date>
-                    <pd-timeline-date date="30.10.2019">
-                        Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche
-                        Kredite mit Vorschuss zu. <br /><a href="#">Audioaufnahme</a>
-                        <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
-                    </pd-timeline-date>
-                </pd-timeline>
-            </details>
-
-            <details>
-                <summary>Breadcrumbs</summary>
-                <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
-            </details>
-
-            <details>
-                <summary>Progressbar</summary>
-                <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
-                <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label striped color="success" id="pd-progress-1"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label color="warning" id="pd-progress-2"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label striped color="warning" id="pd-progress-2"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label color="danger" id="pd-progress-3"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label striped color="danger" id="pd-progress-3"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label color="info" id="pd-progress-3"></pd-progress-bar>
-                <pd-progress-bar value="0.5" label striped color="info" id="pd-progress-3"></pd-progress-bar>
-            </details>
-
-            <details>
+            <details open>
                 <summary>Icons</summary>
-                <pd-icon size="1" name="press"></pd-icon>
-                <pd-icon size="2" name="press"></pd-icon>
-                <pd-icon size="3" name="press"></pd-icon>
+                <details>
+                    <summary>Icons</summary>
+                    <pd-icon size="1" name="press"></pd-icon>
+                    <pd-icon size="2" name="press"></pd-icon>
+                    <pd-icon size="3" name="press"></pd-icon>
+                </details>
             </details>
 
-            <details>
-                <summary>Panel</summary>
-                <pd-panel collapsible>
-                    <pd-panel-header slot="header">Header</pd-panel-header>
-                    <pd-panel-content style="padding: 0px;">
-                        <pd-list>
-                            <pd-list-item status="unset">
-                                <p class="mb-1">18.3708</p>
-                                <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
-                            </pd-list-item>
-                            <pd-list-item status="success">
-                                <p class="mb-1">16.3112</p>
-                                <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                            </pd-list-item>
-                            <pd-list-item status="danger">
-                                <p class="mb-1">18.426</p>
-                                <h5 class="mb-1">Jagdgesetz.</h5>
-                                <p class="mb-1">
-                                    Änderung Kategorie IIIb
-                                </p>
-                            </pd-list-item>
-                            <pd-list-item>
-                                <p class="mb-1">19.426</p>
-                                <h5 class="mb-1">Waffengesetz.</h5>
-                                <p class="mb-1">
-                                    Änderung Kategorie IIIb
-                                </p>
-                            </pd-list-item>
-                        </pd-list>
-                    </pd-panel-content>
-                    <pd-panel-footer slot="footer"></pd-panel-footer>
-                </pd-panel>
-            </details>
-
-            <details>
-                <summary>Sidebar</summary>
-                <pd-sidebar>
-                    <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
-                    <pd-sidebar-item text="Meine Ablage" icon-name="clipboard"></pd-sidebar-item>
-                    <pd-sidebar-item enabled text="Recherchen" icon-name="research"></pd-sidebar-item>
-                    <pd-sidebar-item text="Parlaments- Wörterbuch" icon-name="dictionary"></pd-sidebar-item>
-                    <pd-sidebar-item
-                        href="http://www.google.ch"
-                        icon-name="link"
-                        text="External Link"
-                    ></pd-sidebar-item>
-                </pd-sidebar>
-            </details>
-
-            <details>
+            <details open>
                 <summary>Tests</summary>
                 <details>
                     <summary>Inline Form</summary>
