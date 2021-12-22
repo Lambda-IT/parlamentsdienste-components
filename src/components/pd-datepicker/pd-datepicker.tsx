@@ -1,7 +1,7 @@
-import { Component, Host, h, Element, Event, EventEmitter, Prop, Method, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import { Instance } from 'flatpickr/dist/types/instance';
-import { Options, DateOption, BaseOptions } from 'flatpickr/dist/types/options';
+import { BaseOptions, DateOption, Options } from 'flatpickr/dist/types/options';
 
 @Component({
     tag: 'pd-datepicker',
@@ -151,6 +151,7 @@ export class Datepicker {
                         'pd-datepicker-label': true,
                         'pd-datepicker-disabled': this.disabled,
                         'pd-datepicker-readonly': this.readonly,
+                        'pd-datepicker-error': this.error,
                     }}
                     style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5rem' } : {}}
                 >

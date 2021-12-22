@@ -45,10 +45,6 @@
         background: $yellow-1;
     }
 
-    /* this block is required because we don't need a grey
-    input for the flatpickr, the datepicker itself has
-    no direct access to this part of the input component
-    */
     &.pd-input-readonly {
         background-color: $gray-3;
         border-color: $gray-3;

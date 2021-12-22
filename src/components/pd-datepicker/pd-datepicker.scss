@@ -31,6 +31,12 @@
         }
     }
 
+    &.pd-datepicker-error {
+        .pd-datepicker-icon {
+            fill: setcolor(danger, enabledContrast);
+        }
+    }
+
     &:focus-visible {
         .pd-datepicker-input {
             border: 0.125em solid $focus;

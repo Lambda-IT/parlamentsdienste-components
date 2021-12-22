@@ -288,45 +288,68 @@
             </details>
 
             <details>
-                <summary>Alerts</summary>
-                <pd-alert color="warning" action-text="Mehr anzeigen" action-text-expanded="asdf" expandable closable>
-                    <div>Info: A simple primary alert—check it out!</div>
-                    <div slot="expandable">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
-                        adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim harum
-                        esse repellat.
-                    </div>
-                </pd-alert>
-                <pd-alert closable color="primary" headline="Additional Content">
-                    <p>Line 1: A simple primary alert—check it out!</p>
-                    <p>Line 2: A simple primary alert—check it out!</p>
-                </pd-alert>
-                <pd-alert color="danger" action action-text="a link to click" closable
-                    >A simple primary alert—check it out!</pd-alert
-                >
-                <pd-alert
-                    color="success"
-                    action
-                    action-text="a external link to click"
-                    action-href="http://www.google.ch"
-                    closable
-                    >A simple primary alert—check it out!</pd-alert
-                >
-                <pd-alert color="warning" action action-text="a link to click"
-                    >A simple primary alert—check it out!</pd-alert
-                >
-                <pd-alert color="dark">Dark: A simple primary alert—check it out!</pd-alert>
-                <pd-alert
-                    color="light"
-                    action
-                    action-text="a external link to click"
-                    action-href="http://www.google.ch"
-                    closable
-                    headline="Additional Content"
-                >
-                    A simple primary alert—check it out!
-                </pd-alert>
+                <summary>Dialogs</summary>
+                <details>
+                    <summary>Alerts</summary>
+                    <pd-alert
+                        color="warning"
+                        action-text="Mehr anzeigen"
+                        action-text-expanded="asdf"
+                        expandable
+                        closable
+                    >
+                        <div>Info: A simple primary alert—check it out!</div>
+                        <div slot="expandable">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
+                            adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
+                            adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim
+                            harum esse repellat.
+                        </div>
+                    </pd-alert>
+                    <pd-alert closable color="primary" headline="Additional Content">
+                        <p>Line 1: A simple primary alert—check it out!</p>
+                        <p>Line 2: A simple primary alert—check it out!</p>
+                    </pd-alert>
+                    <pd-alert color="danger" action action-text="a link to click" closable
+                        >A simple primary alert—check it out!</pd-alert
+                    >
+                    <pd-alert
+                        color="success"
+                        action
+                        action-text="a external link to click"
+                        action-href="http://www.google.ch"
+                        closable
+                        >A simple primary alert—check it out!</pd-alert
+                    >
+                    <pd-alert color="warning" action action-text="a link to click"
+                        >A simple primary alert—check it out!</pd-alert
+                    >
+                    <pd-alert color="dark">Dark: A simple primary alert—check it out!</pd-alert>
+                    <pd-alert
+                        color="light"
+                        action
+                        action-text="a external link to click"
+                        action-href="http://www.google.ch"
+                        closable
+                        headline="Additional Content"
+                    >
+                        A simple primary alert—check it out!
+                    </pd-alert>
+                </details>
+
+                <details>
+                    <summary>Toast</summary>
+                    <pd-toast
+                        header="Toast title goes here in case there is enough space otherwise it breaks"
+                        info="5min ago"
+                        size="large"
+                    >
+                        Toast body text goes here
+                    </pd-toast>
+                    <pd-toast header="Toast Title" info="11 minutes ago" size="small">
+                        Toast body text goes here
+                    </pd-toast>
+                </details>
             </details>
 
             <details>
@@ -397,29 +420,24 @@
             </details>
 
             <details>
-                <summary>Form</summary>
-                <form style="display: flex; justify-content: space-between;">
-                    <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
-                    <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
-                </form>
-            </details>
-
-            <details>
                 <summary>Table</summary>
-                <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
-                    <pd-menu-item text="Drucken">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                </pd-table>
-                <pd-table id="pd-table-1" header-style="light" selectable show-status> </pd-table>
-                <pd-table id="pd-table-2" header-style="gray" selectable show-status menu-label="Aktionen">
-                    <pd-menu-item text="Drucken">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                    <pd-menu-item text="Drucken">
-                        <pd-icon size="2" name="print"></pd-icon>
-                    </pd-menu-item>
-                </pd-table>
+                <details>
+                    <summary>Table</summary>
+                    <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
+                        <pd-menu-item text="Drucken">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                    </pd-table>
+                    <pd-table id="pd-table-1" header-style="light" selectable show-status> </pd-table>
+                    <pd-table id="pd-table-2" header-style="gray" selectable show-status menu-label="Aktionen">
+                        <pd-menu-item text="Drucken">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Drucken">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                    </pd-table>
+                </details>
             </details>
 
             <details>
@@ -488,20 +506,6 @@
             </details>
 
             <details>
-                <summary>Toast</summary>
-                <pd-toast
-                    header="Toast title goes here in case there is enough space otherwise it breaks"
-                    info="5min ago"
-                    size="large"
-                >
-                    Toast body text goes here
-                </pd-toast>
-                <pd-toast header="Toast Title" info="11 minutes ago" size="small">
-                    Toast body text goes here
-                </pd-toast>
-            </details>
-
-            <details>
                 <summary>Breadcrumbs</summary>
                 <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
             </details>
@@ -532,7 +536,6 @@
                 <pd-panel collapsible>
                     <pd-panel-header slot="header">Header</pd-panel-header>
                     <pd-panel-content style="padding: 0px;">
-                        <pd-button id="pd-open-modal-btn-0">Open Modal</pd-button>
                         <pd-list>
                             <pd-list-item status="unset">
                                 <p class="mb-1">18.3708</p>
@@ -563,35 +566,6 @@
             </details>
 
             <details>
-                <summary>Inline Form</summary>
-                <h1>Header 1</h1>
-                <h2>Inline Form Check 1</h2>
-                <div style="display: flex;">
-                    <pd-input placeholder="without label" vertical-adjust></pd-input>
-                    <pd-input placeholder="with label" label="Inline: Label"></pd-input>
-                    <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
-                    <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
-                    <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
-                    <pd-datepicker
-                        placeholder="without label, css var"
-                        style="--pd-datepicker-vertical-adjust: 1.5rem;"
-                    ></pd-datepicker>
-                </div>
-                <h2>Inline Form Check 2</h2>
-                <div style="display: flex;">
-                    <pd-input placeholder="without label" vertical-adjust></pd-input>
-                    <pd-input placeholder="with label" label="Inline: Label"></pd-input>
-                    <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
-                    <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
-                </div>
-            </details>
-
-            <details>
-                <summary>Footer</summary>
-                <pd-footer></pd-footer>
-            </details>
-
-            <details>
                 <summary>Sidebar</summary>
                 <pd-sidebar>
                     <pd-sidebar-item text="Mitteilungen" icon-name="message"></pd-sidebar-item>
@@ -607,13 +581,43 @@
             </details>
 
             <details>
-                <summary>Notifications</summary>
-                <pd-notification></pd-notification>
+                <summary>Tags</summary>
+                <pd-slider id="pd-slider-0"></pd-slider>
             </details>
 
             <details>
-                <summary>Tags</summary>
-                <pd-slider id="pd-slider-0"></pd-slider>
+                <summary>Tests</summary>
+                <details>
+                    <summary>Inline Form</summary>
+                    <h1>Header 1</h1>
+                    <h2>Inline Form Check 1</h2>
+                    <div style="display: flex;">
+                        <pd-input placeholder="without label" vertical-adjust></pd-input>
+                        <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+                        <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
+                        <pd-dropdown placeholder="dropdown without label" vertical-adjust empty-item></pd-dropdown>
+                        <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+                        <pd-datepicker
+                            placeholder="without label, css var"
+                            style="--pd-datepicker-vertical-adjust: 1.5rem;"
+                        ></pd-datepicker>
+                    </div>
+                    <h2>Inline Form Check 2</h2>
+                    <div style="display: flex;">
+                        <pd-input placeholder="without label" vertical-adjust></pd-input>
+                        <pd-input placeholder="with label" label="Inline: Label"></pd-input>
+                        <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
+                        <pd-combobox vertical-adjust placeholder="without label"></pd-combobox>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Form</summary>
+                    <form style="display: flex; justify-content: space-between;">
+                        <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
+                        <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
+                    </form>
+                </details>
             </details>
         </div>
         <script>
