@@ -32,8 +32,10 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 | ---------------- | ----------------- | -------------------------------------------- | --------- | ----------- |
 | `checked`        | `checked`         | Checks radio                                 | `boolean` | `false`     |
 | `disabled`       | `disabled`        | Sets radio to disabled state                 | `boolean` | `false`     |
+| `error`          | `error`           |                                              | `boolean` | `false`     |
 | `label`          | `label`           | Label used by radio                          | `string`  | `null`      |
 | `name`           | `name`            | Name of radio. Used to group radios together | `string`  | `''`        |
+| `readonly`       | `readonly`        | If `true`, the user cannot modify the value. | `boolean` | `false`     |
 | `value`          | `value`           | Value of radio                               | `any`     | `undefined` |
 | `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms | `boolean` | `false`     |
 

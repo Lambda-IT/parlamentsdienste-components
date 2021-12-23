@@ -43,12 +43,12 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 
 ## Events
 
-| Event      | Description                               | Type                         |
-| ---------- | ----------------------------------------- | ---------------------------- |
-| `pdBlur`   | Emitted when the input loses focus.       | `CustomEvent<FocusEvent>`    |
-| `pdChange` | Emitted when the input value has changed. | `CustomEvent<any>`           |
-| `pdFocus`  | Emitted when the input has focus.         | `CustomEvent<FocusEvent>`    |
-| `pdInput`  | Emitted when a keyboard input occurred.   | `CustomEvent<KeyboardEvent>` |
+| Event       | Description                               | Type                         |
+| ----------- | ----------------------------------------- | ---------------------------- |
+| `pd-blur`   | Emitted when the input loses focus.       | `CustomEvent<FocusEvent>`    |
+| `pd-change` | Emitted when the input value has changed. | `CustomEvent<any>`           |
+| `pd-focus`  | Emitted when the input has focus.         | `CustomEvent<FocusEvent>`    |
+| `pd-input`  | Emitted when a keyboard input occurred.   | `CustomEvent<KeyboardEvent>` |
 
 
 ## Methods

@@ -1,4 +1,4 @@
-import { Component, h, Listen, Prop } from '@stencil/core';
+import { Component, h, Host, Listen, Prop } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
 @Component({
@@ -33,6 +33,11 @@ export class Button {
     @Prop() outline: boolean = false;
 
     /**
+     * Sets button to 100% width
+     */
+    @Prop() fullWidth: boolean = false;
+
+    /**
      * Set href to create a link button
      */
     @Prop() href: string;
@@ -64,21 +69,23 @@ export class Button {
         const typeAttrs = TagType === 'button' ? { type, role } : { href, target };
 
         return (
-            <TagType
-                {...typeAttrs}
-                disabled={disabled}
-                class={{
-                    'pd-button': TagType === 'button',
-                    'pd-link': TagType !== 'button',
-                    [`pd-button-${this.color}`]: true,
-                    [`pd-button-${this.size}`]: true,
-                    'pd-button-outline': this.outline,
-                }}
-            >
-                {this.renderIcon('left')}
-                {this.renderCenter()}
-                {this.renderIcon('right')}
-            </TagType>
+            <Host class={{ 'pd-button-fullwidth': this.fullWidth }}>
+                <TagType
+                    {...typeAttrs}
+                    disabled={disabled}
+                    class={{
+                        'pd-button': TagType === 'button',
+                        'pd-link': TagType !== 'button',
+                        [`pd-button-${this.color}`]: true,
+                        [`pd-button-${this.size}`]: true,
+                        'pd-button-outline': this.outline,
+                    }}
+                >
+                    {this.renderIcon('left')}
+                    {this.renderCenter()}
+                    {this.renderIcon('right')}
+                </TagType>
+            </Host>
         );
     }
 
