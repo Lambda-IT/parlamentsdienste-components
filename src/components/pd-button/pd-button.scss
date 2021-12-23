@@ -7,6 +7,14 @@
     vertical-align: bottom;
 }
 
+:host(.pd-button-fullwidth) {
+    display: flex;
+    .pd-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 *,
 ::before,
 ::after {

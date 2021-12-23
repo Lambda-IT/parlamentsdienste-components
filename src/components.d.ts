@@ -62,6 +62,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Sets button to 100% width
+         */
+        "fullWidth": boolean;
+        /**
           * Set href to create a link button
          */
         "href": string;
@@ -1264,6 +1268,10 @@ declare namespace LocalJSX {
           * Sets button to disbaled state
          */
         "disabled"?: boolean;
+        /**
+          * Sets button to 100% width
+         */
+        "fullWidth"?: boolean;
         /**
           * Set href to create a link button
          */
