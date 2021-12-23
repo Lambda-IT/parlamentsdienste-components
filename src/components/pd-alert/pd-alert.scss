@@ -12,8 +12,8 @@
 }
 
 .pd-alert {
-    border-radius: 0.25em;
-    padding: 0.875em 1.25em;
+    border-radius: 0.25rem;
+    padding: 0.875em 1.25rem;
     font-weight: 700;
     display: grid;
     grid-template-columns: 1fr auto;
@@ -31,6 +31,14 @@
         .pd-alert-action-text {
             color: setcolor(primary, enabledContrast);
         }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(primary, hover);
+            }
+            &:active {
+                fill: setcolor(primary, pressed);
+            }
+        }
     }
 
     &.pd-alert-danger {
@@ -39,6 +47,14 @@
         fill: setcolor(danger, enabledContrast);
         .pd-alert-action-text {
             color: setcolor(danger, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(danger, hover);
+            }
+            &:active {
+                fill: setcolor(danger, pressed);
+            }
         }
     }
 
@@ -49,6 +65,14 @@
         .pd-alert-action-text {
             color: setcolor(warning, enabledContrast);
         }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(warning, hover);
+            }
+            &:active {
+                fill: setcolor(warning, pressed);
+            }
+        }
     }
 
     &.pd-alert-info {
@@ -57,6 +81,14 @@
         fill: setcolor(info, enabledContrast);
         .pd-alert-action-text {
             color: setcolor(info, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(info, hover);
+            }
+            &:active {
+                fill: setcolor(info, pressed);
+            }
         }
     }
 
@@ -67,6 +99,14 @@
         .pd-alert-action-text {
             color: setcolor(success, enabledContrast);
         }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(success, hover);
+            }
+            &:active {
+                fill: setcolor(success, pressed);
+            }
+        }
     }
 
     &.pd-alert-dark {
@@ -75,6 +115,14 @@
         fill: setcolor(dark, enabledContrast);
         .pd-alert-action-text {
             color: setcolor(dark, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(dark, hover);
+            }
+            &:active {
+                fill: setcolor(dark, pressed);
+            }
         }
     }
 
@@ -85,12 +133,12 @@
         .pd-alert-action-text {
             color: setcolor(light, enabledContrast);
         }
-
         .pd-alert-action-cancel {
-            fill: $pd-black;
-
             &:hover {
-                fill: $gray;
+                fill: setcolor(light, hover);
+            }
+            &:active {
+                fill: setcolor(light, pressed);
             }
         }
     }
@@ -109,7 +157,7 @@
     align-items: center;
 
     .pd-alert-action-text {
-        margin-left: 0.625em;
+        margin-left: 0.625rem;
         white-space: nowrap;
         cursor: pointer;
         font-weight: 700 !important;
@@ -126,7 +174,7 @@
         margin: 0;
         padding: 0;
         background-color: transparent;
-        margin-left: 0.625em;
+        margin-left: 0.625rem;
         border: none;
 
         &:focus-visible .pd-alert-action-cancel {

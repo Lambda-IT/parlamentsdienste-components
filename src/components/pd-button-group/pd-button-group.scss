@@ -9,9 +9,9 @@
 }
 
 ::slotted(pd-button:first-child) {
-    --pd-button-left-radius: 0.25em;
+    --pd-button-left-radius: 0.25rem;
 }
 
 ::slotted(pd-button:last-child) {
-    --pd-button-right-radius: 0.25em;
+    --pd-button-right-radius: 0.25rem;
 }

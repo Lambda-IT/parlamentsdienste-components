@@ -30,12 +30,12 @@ export class Chip {
     /**
      * Event for clicking the cross to remove a chip
      */
-    @Event({eventName: 'pd-remove-chip'}) removeChip!: EventEmitter;
+    @Event({ eventName: 'pd-remove-chip' }) removeChip!: EventEmitter;
 
     /**
      * Event for check chip
      */
-    @Event({eventName: 'pd-check-chip'}) checkChip!: EventEmitter;
+    @Event({ eventName: 'pd-check-chip' }) checkChip!: EventEmitter;
 
     /**
      * Click event
@@ -56,7 +56,7 @@ export class Chip {
     public render() {
         const { type, disabled } = this;
         const role = 'button';
-        const iconSize = 1;
+        const iconSize = 1.25;
 
         return (
             <button
@@ -65,6 +65,7 @@ export class Chip {
                 class={{
                     'pd-chip': true,
                     'pd-chip-checked': this.checked || type === 'toggle' ? true : false,
+                    'pd-chip-disabled': this.disabled,
                     'pd-chip-readonly': this.readonly,
                     [`pd-chip-${type}`]: true,
                 }}
@@ -77,6 +78,7 @@ export class Chip {
                 <slot></slot>
                 {type === 'toggle' && (
                     <button
+                        tabindex={this.disabled || this.readonly ? '-1' : null}
                         class="pd-chip-remove pd-chip-icon pd-chip-icon-right"
                         onClick={(e) => this.removeClicked(e)}
                     >

@@ -23,7 +23,6 @@ $progress-height: 1rem;
     background-color: $gray-3;
     border-radius: 0.25em;
     width: 100%;
-    color: $white;
 }
 
 .pd-progress-bar {
@@ -38,21 +37,26 @@ $progress-height: 1rem;
     background-color: setcolor(primary, enabled);
     transform-origin: left top;
     transition: width 200ms ease;
+    color: setcolor(primary, enabledContrast);
 
     &.pd-progress-bar-success {
-        background-color: setcolor(success, enabled);
+        background-color: setcolor(success, hover);
+        color: setcolor(success, hoverContrast);
     }
 
     &.pd-progress-bar-warning {
-        background-color: setcolor(warning, enabled);
+        background-color: setcolor(warning, hover);
+        color: setcolor(warning, hoverContrast);
     }
 
     &.pd-progress-bar-danger {
-        background-color: setcolor(danger, enabled);
+        background-color: setcolor(danger, hover);
+        color: setcolor(danger, hoverContrast);
     }
 
     &.pd-progress-bar-info {
-        background-color: setcolor(info, enabled);
+        background-color: setcolor(info, hover);
+        color: setcolor(info, hoverContrast);
     }
 }
 

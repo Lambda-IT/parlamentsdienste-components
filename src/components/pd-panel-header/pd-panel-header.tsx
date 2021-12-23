@@ -37,7 +37,10 @@ export class PanelHeader {
                 <div class="pd-panel-header-content">
                     <slot></slot>
                 </div>
-                {this.rendercollapsible()}
+                <div class="pd-panel-header-icons">
+                    <slot name="icons"></slot>
+                    {this.rendercollapsible()}
+                </div>
             </Host>
         );
     }
@@ -47,7 +50,7 @@ export class PanelHeader {
 
         return (
             <div class="pd-panel-header-collapse" onClick={(e) => this.toggle(e)}>
-                <pd-icon name="caret" size={1.2} rotate={this.collapsed ? 0 : 180}></pd-icon>
+                <pd-icon name="caret" size={2.4} rotate={this.collapsed ? 0 : 180}></pd-icon>
             </div>
         );
     }

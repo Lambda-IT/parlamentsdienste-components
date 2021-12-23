@@ -11,7 +11,7 @@
         <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
         <style>
             body {
-                background-color: #f5f5f5;
+                background-color: #003840;
             }
 
             .example-components > * {
@@ -25,13 +25,13 @@
 
             details {
                 border-radius: 6px;
-                background: #ddd;
+                background: #ccc;
                 padding: 10px;
                 box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, 0.4);
             }
 
             details details {
-                background: white;
+                background: #f5f5f5;
                 padding: 10px;
                 box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, 0.4);
             }
@@ -62,8 +62,7 @@
                 <summary>Buttons</summary>
                 <details>
                     <summary>Buttons</summary>
-                    <pd-button full-width>Button</pd-button>
-                    <h1>States</h1>
+                    <h2>States</h2>
                     <div class="button-grid">
                         <span></span>
                         <span>Enabled</span>
@@ -118,15 +117,15 @@
                         <pd-button href="http://www.google.ch" disabled>Button</pd-button>
                     </div>
                     <div>
-                        <h1>Sizes</h1>
+                        <h2>Sizes</h2>
                         <pd-button size="small">Button</pd-button>
                         <pd-button size="normal">Button</pd-button>
                         <pd-button size="large">Button</pd-button>
                     </div>
                     <div>
-                        <h1>Icons</h1>
-                        <pd-button icon-location="left"
-                            ><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff;"></pd-icon
+                        <h2>Icons</h2>
+                        <pd-button icon-location="left">
+                            <pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff;"></pd-icon
                             >Button</pd-button
                         >
                         <pd-button icon-location="right"
@@ -136,6 +135,11 @@
                         <pd-button outline icon-location="left"
                             ><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button
                         >
+                    </div>
+                    <div>
+                        <h2>Full Width</h2>
+                        <pd-button full-width style="margin-bottom: 10px;">Button</pd-button>
+                        <pd-button full-width outline>Button</pd-button>
                     </div>
                     <style>
                         .button-grid {
@@ -328,13 +332,55 @@
 
                 <details>
                     <summary>Chips</summary>
-                    <pd-chip id="pd-chip-0">Text Chip</pd-chip>
-                    <pd-chip id="pd-chip-1" disabled>Disabled Chip</pd-chip>
-                    <pd-chip id="pd-chip-2" type="filter">Filter Chip</pd-chip>
-                    <pd-chip id="pd-chip-3" type="toggle">Toggle Chip</pd-chip>
-                    <pd-chip id="pd-chip-4" type="toggle" disabled>Disabled Chip</pd-chip>
-                    <pd-chip id="pd-chip-5" type="toggle" readonly>Readonly Chip</pd-chip>
-                    <pd-chip id="pd-chip-6">Checked programmatically</pd-chip>
+                    <div class="chips-grid">
+                        <span></span>
+                        <span>Enabled</span>
+                        <span>Disabled</span>
+                        <span>Readonly</span>
+                        <span>Activated</span>
+
+                        <span>Toggle/Input</span>
+                        <pd-chip type="toggle">Chip</pd-chip>
+                        <pd-chip type="toggle" disabled>Chip</pd-chip>
+                        <pd-chip type="toggle" readonly>Chip</pd-chip>
+                        <span></span>
+
+                        <span>Choice</span>
+                        <pd-chip type="text">Chip</pd-chip>
+                        <pd-chip type="text" disabled>Chip</pd-chip>
+                        <pd-chip type="text" readonly>Chip</pd-chip>
+                        <pd-chip type="text" checked>Chip</pd-chip>
+
+                        <span>Filter</span>
+                        <pd-chip type="filter">Chip</pd-chip>
+                        <pd-chip type="filter" disabled>Chip</pd-chip>
+                        <pd-chip type="filter" readonly>Chip</pd-chip>
+                        <pd-chip type="filter" checked>Chip</pd-chip>
+
+                        <style>
+                            .chips-grid {
+                                display: grid;
+                                grid-template-columns: repeat(5, 1fr);
+                                grid-gap: 10px;
+                            }
+                        </style>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Labels</summary>
+                    <div>
+                        <h2>Undefined</h2>
+                        <pd-label has-dot color="#BE4BDB">EJPD</pd-label>
+                        <pd-label has-dot color="#FD7E23">UVEK</pd-label>
+                        <pd-label has-dot color="#40C057">NR</pd-label>
+                        <pd-label has-dot color="#8C8C8C">[BEHANDLUNGSKATEGORIE]</pd-label>
+                    </div>
+                    <div>
+                        <h2>Defined</h2>
+                        <pd-label color="#FAB005">provisorisch</pd-label>
+                        <pd-label color="#FA5252">!Prio</pd-label>
+                    </div>
                 </details>
             </details>
 
@@ -342,50 +388,45 @@
                 <summary>Dialogs</summary>
                 <details>
                     <summary>Alerts</summary>
-                    <pd-alert
-                        color="warning"
-                        action-text="Mehr anzeigen"
-                        action-text-expanded="asdf"
-                        expandable
-                        closable
-                    >
-                        <div>Info: A simple primary alert—check it out!</div>
+
+                    <h2>Primary alert</h2>
+                    <pd-alert>Primary alert</pd-alert>
+
+                    <h2>Primary alert with link</h2>
+                    <pd-alert action-text="a link to click" action-href="http://www.google.ch">
+                        Primary alert with link
+                    </pd-alert>
+
+                    <h2>Primary alert with expandable content</h2>
+                    <pd-alert action-text="Mehr anzeigen" action-text-expanded="Weniger anzeigen" expandable>
+                        <div>Primary alert with expandable content</div>
                         <div slot="expandable">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis et inventore beatae, atque
-                            adipisci non eaque officia illo architecto ducimus. Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Nam assumenda voluptatem magnam deserunt! Corrupti consectetur id enim
-                            harum esse repellat.
+                            <p>
+                                1: a state of careful watching and readiness especially for danger or opportunity<br />
+                                2a: an alarm or other signal of danger<br />
+                                2b: an urgent notice
+                            </p>
                         </div>
                     </pd-alert>
-                    <pd-alert closable color="primary" headline="Additional Content">
-                        <p>Line 1: A simple primary alert—check it out!</p>
-                        <p>Line 2: A simple primary alert—check it out!</p>
+
+                    <h2>Primary closeable alert</h2>
+                    <pd-alert closable color="primary">
+                        Primary closeable alert
                     </pd-alert>
-                    <pd-alert color="danger" action action-text="a link to click" closable
-                        >A simple primary alert—check it out!</pd-alert
-                    >
-                    <pd-alert
-                        color="success"
-                        action
-                        action-text="a external link to click"
-                        action-href="http://www.google.ch"
-                        closable
-                        >A simple primary alert—check it out!</pd-alert
-                    >
-                    <pd-alert color="warning" action action-text="a link to click"
-                        >A simple primary alert—check it out!</pd-alert
-                    >
-                    <pd-alert color="dark">Dark: A simple primary alert—check it out!</pd-alert>
-                    <pd-alert
-                        color="light"
-                        action
-                        action-text="a external link to click"
-                        action-href="http://www.google.ch"
-                        closable
-                        headline="Additional Content"
-                    >
-                        A simple primary alert—check it out!
+
+                    <h2>Primary closeable alert with link</h2>
+                    <pd-alert closable action-text="a link to click" action-href="http://www.google.ch">
+                        Primary alert with link
                     </pd-alert>
+
+                    <h2>States</h2>
+                    <pd-alert closable color="primary">Primary alert</pd-alert>
+                    <pd-alert closable color="success">Success alert</pd-alert>
+                    <pd-alert closable color="danger">Danger alert</pd-alert>
+                    <pd-alert closable color="warning">Warning alert</pd-alert>
+                    <pd-alert closable color="info">Info alert</pd-alert>
+                    <pd-alert closable color="light">Light alert</pd-alert>
+                    <pd-alert closable color="dark">Dark alert</pd-alert>
                 </details>
 
                 <details>
@@ -547,8 +588,8 @@
 
                 <details>
                     <summary>Progressbar</summary>
-                    <pd-progress-bar value="0.54568" id="pd-progress-0"></pd-progress-bar>
-                    <pd-progress-bar value="0.5" striped id="pd-progress-0"></pd-progress-bar>
+                    <pd-progress-bar value="0.54568" label id="pd-progress-0"></pd-progress-bar>
+                    <pd-progress-bar value="0.5" label striped id="pd-progress-0"></pd-progress-bar>
                     <pd-progress-bar value="0.5" label color="success" id="pd-progress-1"></pd-progress-bar>
                     <pd-progress-bar value="0.5" label striped color="success" id="pd-progress-1"></pd-progress-bar>
                     <pd-progress-bar value="0.5" label color="warning" id="pd-progress-2"></pd-progress-bar>
@@ -561,36 +602,21 @@
 
                 <details>
                     <summary>Panel</summary>
-                    <pd-panel collapsible>
-                        <pd-panel-header slot="header">Header</pd-panel-header>
-                        <pd-panel-content style="padding: 0px;">
-                            <pd-list>
-                                <pd-list-item status="unset">
-                                    <p class="mb-1">18.3708</p>
-                                    <a class="mb-1">SiK-NR: Antrag auf Annahme</a>
-                                </pd-list-item>
-                                <pd-list-item status="success">
-                                    <p class="mb-1">16.3112</p>
-                                    <a class="mb-1">WBK-NR: Antrag auf Ablehnung </a>
-                                </pd-list-item>
-                                <pd-list-item status="danger">
-                                    <p class="mb-1">18.426</p>
-                                    <h5 class="mb-1">Jagdgesetz.</h5>
-                                    <p class="mb-1">
-                                        Änderung Kategorie IIIb
-                                    </p>
-                                </pd-list-item>
-                                <pd-list-item>
-                                    <p class="mb-1">19.426</p>
-                                    <h5 class="mb-1">Waffengesetz.</h5>
-                                    <p class="mb-1">
-                                        Änderung Kategorie IIIb
-                                    </p>
-                                </pd-list-item>
-                            </pd-list>
-                        </pd-panel-content>
-                        <pd-panel-footer slot="footer"></pd-panel-footer>
-                    </pd-panel>
+                    <div>
+                        <pd-panel collapsible>
+                            <pd-panel-header slot="header">
+                                Featured
+                                <pd-icon slot="icons" size="2.4" name="configuration"></pd-icon>
+                            </pd-panel-header>
+                            <pd-panel-content
+                                ><b style="color: #003840;">Special title treatment</b>
+                                <p>
+                                    With supporting text below as a natural lead-in to additional content.
+                                </p></pd-panel-content
+                            >
+                            <pd-panel-footer slot="footer"></pd-panel-footer>
+                        </pd-panel>
+                    </div>
                 </details>
             </details>
 
@@ -616,12 +642,27 @@
 
                 <details>
                     <summary>Pagination</summary>
+                    <h2>With pageinfo</h2>
+                    <pd-pagination total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
+
+                    <h2>Without pageinfo</h2>
                     <pd-pagination
-                        id="pd-pagination-1"
+                        show-page-buttons
                         total-pages="10"
                         current-page="3"
                         visible-pages="5"
                     ></pd-pagination>
+
+                    <h2>Paging with dropdown</h2>
+                    <div style="--pd-dropdown-vertical-padding: 0.125em; display: flex;">
+                        <pd-pagination
+                            total-pages="10"
+                            current-page="3"
+                            visible-pages="5"
+                            style="margin-right: 1rem;"
+                        ></pd-pagination>
+                        <pd-dropdown style="min-width: 80px;" class="pd-pagination-items"></pd-dropdown>
+                    </div>
                 </details>
             </details>
 
@@ -679,6 +720,7 @@
             const pdSearch = document.getElementById('pd-search-0');
             const pdDropDown = document.getElementById('pd-dropdown-0');
             const pdDropDownItems = document.getElementsByClassName('pd-dropdown-items');
+            const pdPaginationItems = document.getElementsByClassName('pd-pagination-items');
             const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
@@ -690,8 +732,6 @@
 
             const pdMenu1 = document.getElementById('pd-menu-1');
 
-            const pdPagination1 = document.getElementById('pd-pagination-1');
-
             const pdDatePickers = document.getElementsByClassName('pd-datepickr-config');
 
             for (let pdDatepickr of pdDatePickers) {
@@ -700,6 +740,15 @@
                     enableTime: true,
                     allowInput: true,
                 };
+            }
+
+            for (let pdPaginationItem of pdPaginationItems) {
+                pdPaginationItem.items = [
+                    { id: '1', label: '1', value: '1' },
+                    { id: '2', label: '10', value: '10', selected: true },
+                    { id: '3', label: '50', value: '50' },
+                    { id: '4', label: '100', value: '100' },
+                ];
             }
 
             for (let pdComboBoxItem of pdComboBoxItems) {
@@ -803,10 +852,6 @@
                 'Sitzung der SiK-NR vom 24./25. Juni 2019',
             ];
 
-            pdPagination1.addEventListener('pd-change', (value) => {
-                pdPagination1.setAttribute('current-page', value.detail);
-            });
-
             pdInput.addEventListener('pd-change', (value) => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
@@ -858,30 +903,6 @@
 
             // update placement of menu
             setTimeout(() => pdMenu1.setAttribute('placement', 'top-start'), 10000);
-
-            const chip6 = document.getElementById('pd-chip-6');
-            console.log('chip6', chip6.checked);
-            setTimeout(() => (chip6.checked = true), 2000);
-            setTimeout(() => (chip6.checked = false), 5000);
-
-            /*** Modal ***/
-
-            const pdButton = document.getElementById('pd-button-0');
-            const pdButtonDisabled = document.getElementById('pd-button-disabled-0');
-            const pdButtonOpenModal = document.getElementById('pd-open-modal-btn-0');
-
-            pdButton.addEventListener('click', () => {
-                // presentModal();
-                flatPickr0.date = '2022-01-02';
-                console.log('active button');
-            });
-
-            pdButtonOpenModal.addEventListener('click', () => {
-                presentModal();
-            });
-
-            // should not trigger, test for #94
-            pdButtonDisabled.addEventListener('click', () => console.log('disabled button'));
 
             function presentModal() {
                 // create the modal with the `modal-page` component
