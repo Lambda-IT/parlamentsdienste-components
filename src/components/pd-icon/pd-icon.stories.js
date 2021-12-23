@@ -1,3 +1,4 @@
+import { iconMap } from './../../utils/icons';
 import notes from './readme.md';
 
 export default {
@@ -7,123 +8,87 @@ export default {
     },
 };
 
-const iconList = [
-    'add',
-    'appview',
-    'audio',
-    'breadcrumb',
-    'cancel',
-    'checkbox_checked',
-    'checkbox_default',
-    'clipboard',
-    'close_bold',
-    'close_small',
-    'close',
-    'compensation',
-    'configuration',
-    'confirm',
-    'confirm_bold',
-    'contact',
-    'dictionary',
-    'documents',
-    'dropdown',
-    'expand',
-    'filter',
-    'folder_closed',
-    'folder_open',
-    'gallery',
-    'link',
-    'list',
-    'menu',
-    'message',
-    'microphone',
-    'parlament',
-    'play',
-    'press',
-    'print',
-    'profile',
-    'radio_checked',
-    'radio_default',
-    'research',
-    'reservation',
-    'search',
-    'sort',
-    'status_green',
-    'status_orange',
-    'status_red',
-    'status_blue',
-    'status_undefined',
-    'support',
-    'alert_danger',
-    'alert_info',
-    'alert_success',
-    'alert_warning',
-    'calendar',
-    'delete',
-    'detail',
-    'drag_drop',
-    'edit',
-    'menu_actions',
-];
-
 export const basic = () =>
     `
-    <pd-icon class="mt-3" size="2.5" name="add"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="appview"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="audio"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="breadcrumb"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="cancel"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="checkbox_checked"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="checkbox_default"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="clipboard"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="close_bold"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="close_small"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="close"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="compensation"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="configuration"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="confirm"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="confirm_bold"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="contact"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="dictionary"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="documents"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="dropdown"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="expand"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="filter"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="folder_closed"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="folder_open"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="gallery"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="link"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="list"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="menu"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="message"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="microphone"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="parlament"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="play"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="press"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="print"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="profile"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="radio_checked"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="radio_default"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="research"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="reservation"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="search"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="sort"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="status_green"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="status_orange"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="status_red"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="status_blue"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="status_undefined"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="support"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="alert_danger"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="alert_info"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="alert_success"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="alert_warning"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="calendar"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="delete"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="detail"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="drag_drop"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="edit"></pd-icon>
-    <pd-icon class="mt-3" size="2.5" name="menu_actions"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="add"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_danger"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_info"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_success"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_warning"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="appview"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="audio"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="bill"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="breadcrumb"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="calendar"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="cancel"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="caret"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="checkbox_checked"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="checkbox_default"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="clipboard"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="close"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="close_bold"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="close_small"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="comment"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="compensation"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="configuration"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="confirm"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="confirm_bold"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="contact"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="copy"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="delete"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="detail"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="dictionary"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="documents"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="download"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="drag_drop"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="dropdown"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="edit"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="excel_export"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="expand"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="export"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="file"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="filter"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="folder_closed"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="folder_open"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="gallery"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="group"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="history"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="link"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="list"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="lock"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="menu"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="menu_actions"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="message"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="microphone"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="multiple_files"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="notification"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="parlament"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="pdf_file"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="planung_organe"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="planung_session"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="play"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="press"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="print"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="profile"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="proposal"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="radio_checked"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="radio_default"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="ratsmitglied_gruppen"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="research"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="reservation"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="response"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="search"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="shrink"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sign"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sitzungsdurchfuehrung"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sort"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="status_blue"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="status_green"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="status_orange"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="status_red"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="status_undefined"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="support"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="upload"></pd-icon>
     `;
 
 ///////////////////////////////////////////////////////////////////////////
@@ -151,17 +116,17 @@ Size.args = {
 };
 
 Size.argTypes = {
-    icons: { control: { type: 'select', options: iconList } },
+    icons: { control: { type: 'select', options: Object.keys(iconMap) } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 const ColorStory = (args) =>
     `
-    <pd-icon class="mt-3 ml-3" size="1.5" name="${args.icons}" style="fill: ${args.color}" size="large"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="${args.icons}" style="fill: red"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="${args.icons}" style="fill: blue"></pd-icon>
-    <pd-icon class="mt-3" size="1.5" name="${args.icons}" style="fill: lime"></pd-icon>
+    <pd-icon class="mt-3 ml-3" size="3" name="${args.icons}" style="fill: ${args.color}" size="large"></pd-icon>
+    <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: red"></pd-icon>
+    <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: blue"></pd-icon>
+    <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: lime"></pd-icon>
     `;
 
 export const Color = ColorStory.bind({});
@@ -178,79 +143,102 @@ Color.argTypes = {
 
 // ///////////////////////////////////////////////////////////////////////////
 
-// export const rotate = () => {
-//     const deg = number('deg', 0);
-//     const icons = select('icons', iconMap, 'parlament');
+const RotateStory = (args) => `
+    <div class="m-3">
+        <h3>${args.rotate}deg</h3>
+        <pd-icon name="${args.icons}" size="3" rotate="${args.rotate}"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>45deg</h3>
+        <pd-icon name="${args.icons}" size="3" rotate="45"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>180deg</h3>
+        <pd-icon name="${args.icons}" size="3" rotate="180"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>295deg</h3>
+        <pd-icon name="${args.icons}" size="3" rotate="295"></pd-icon>
+    </div>`;
 
-//     return `
-//     <div class="m-3">
-//         <h3>${deg}deg</h3>
-//         <pd-icon name="${icons}" size="1.5" rotate="${deg}"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>45deg</h3>
-//         <pd-icon name="${icons}" size="1.5" rotate="45"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>180deg</h3>
-//         <pd-icon name="${icons}" size="1.5" rotate="180"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>295deg</h3>
-//         <pd-icon name="${icons}" size="1.5" rotate="295"></pd-icon>
-//     </div>`;
-// };
+export const Rotate = RotateStory.bind({});
 
-// ///////////////////////////////////////////////////////////////////////////
+Rotate.args = {
+    icons: 'parlament',
+    rotate: 0,
+};
 
-// export const flip = () => {
-//     const flip = radios('flip', { none: 'none', X: 'x', Y: 'y', 'Y/X': 'xy' }, 'none');
-//     const icons = select('icons', iconMap, 'parlament');
-
-//     return `
-//     <div class="m-3">
-//         <h3>${flip}</h3>
-//         <pd-icon name="${icons}" size="1.5" flip="${flip}"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>x</h3>
-//         <pd-icon name="${icons}" size="1.5" flip="x"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>y</h3>
-//         <pd-icon name="${icons}" size="1.5" flip="y"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>xy</h3>
-//         <pd-icon name="${icons}" size="1.5" flip="xy"></pd-icon>
-//     </div>`;
-// };
+Rotate.argTypes = {
+    icons: { control: { type: 'select', options: Object.keys(iconMap) } },
+    rotate: { control: { type: 'number', }},
+};
 
 // ///////////////////////////////////////////////////////////////////////////
 
-// export const spin = () => {
-//     const speed = number('ms', 0);
-//     const direction = radios('direction', { Clockwise: 'false', 'Counter-clockwise': 'true' }, 'false');
-//     const icons = select('icons', iconMap, 'parlament');
-//     return `
-//     <div class="m-3">
-//         <h3>${speed}ms ${direction === 'false' ? '(cw)' : '(ccw)'}</h3>
-//         <pd-icon name="${icons}" size="1.5" spin="${speed}" spin-reverse="${direction}"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>500ms</h3>
-//         <pd-icon name="${icons}" size="1.5" spin="500"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>1000ms</h3>
-//         <pd-icon name="${icons}" size="1.5" spin="1000"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>5000ms</h3>
-//         <pd-icon name="${icons}" size="1.5" spin="5000"></pd-icon>
-//     </div>
-//     <div class="m-3">
-//         <h3>5000ms (ccw)</h3>
-//         <pd-icon name="${icons}" size="1.5" spin="5000" spin-reverse></pd-icon>
-//     </div>`;
-// };
+const FlipStory = (args) => `
+    <div class="m-3">
+        <h3>${args.flip}</h3>
+        <pd-icon name="${args.icons}" size="3" flip="${args.flip}"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>x</h3>
+        <pd-icon name="${args.icons}" size="3" flip="x"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>y</h3>
+        <pd-icon name="${args.icons}" size="3" flip="y"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>xy</h3>
+        <pd-icon name="${args.icons}" size="3" flip="xy"></pd-icon>
+    </div>`;
+
+export const Flip = FlipStory.bind({});
+
+Flip.args = {
+    icons: 'parlament',
+    flip: 'x',
+};
+
+Flip.argTypes = {
+    icons: { control: { type: 'select', options: Object.keys(iconMap) } },
+    flip: { control: { type: 'select', options: [ 'none', 'x', 'y','xy' ]} },
+};
+
+// ///////////////////////////////////////////////////////////////////////////
+
+const SpinStory = (args) => `
+    <div class="m-3">
+        <h3>${args.speed}ms ${!args.direction ? '(cw)' : '(ccw)'}</h3>
+        <pd-icon name="${args.icons}" size="3" spin="${args.speed}" spin-reverse="${args.direction}"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>500ms</h3>
+        <pd-icon name="${args.icons}" size="3" spin="500"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>1000ms</h3>
+        <pd-icon name="${args.icons}" size="3" spin="1000"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>5000ms</h3>
+        <pd-icon name="${args.icons}" size="3" spin="5000"></pd-icon>
+    </div>
+    <div class="m-3">
+        <h3>5000ms (ccw)</h3>
+        <pd-icon name="${args.icons}" size="3" spin="5000" spin-reverse></pd-icon>
+    </div>`;
+
+export const Spin = SpinStory.bind({});
+
+Spin.args = {
+    icons: 'parlament',
+    direction: false,
+    speed: 1000,
+};
+
+Spin.argTypes = {
+    icons: { control: { type: 'select', options: Object.keys(iconMap) } },
+    direction: { control: { type: 'boolean'} },
+    speed: { control: { type: 'number' }},
+};

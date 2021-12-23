@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
+import { Component, Element, h, Host, State } from '@stencil/core';
 
 @Component({
     tag: 'pd-panel-header',
@@ -47,7 +47,7 @@ export class PanelHeader {
 
         return (
             <div class="pd-panel-header-collapse" onClick={(e) => this.toggle(e)}>
-                <pd-icon name="expand" size={1.2} rotate={this.collapsed ? 0 : 180}></pd-icon>
+                <pd-icon name="caret" size={1.2} rotate={this.collapsed ? 0 : 180}></pd-icon>
             </div>
         );
     }
