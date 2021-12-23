@@ -65,7 +65,7 @@
     "dependencies": {
         "@a11y/focus-trap": "^1.0.5",
         "@popperjs/core": "^2.4.0",
-        "flatpickr": "^4.6.3",
+        "flatpickr": "^4.6.9",
         "@juggle/resize-observer": "^3.3.0"
     }
 }

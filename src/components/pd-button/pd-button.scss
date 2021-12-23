@@ -31,14 +31,6 @@
     }
 }
 
-.pd-link {
-    display: flex;
-    align-items: center;
-    * {
-        font-weight: 500;
-    }
-}
-
 .pd-button {
     @include button-scheme(primary);
     display: flex;
@@ -93,8 +85,22 @@
 }
 
 .pd-link {
+    display: flex;
+    align-items: center;
     color: $cyan-9;
     text-decoration: none;
+
+    * {
+        font-weight: 500;
+    }
+
+    &:hover {
+        color: $cyan-6;
+    }
+
+    &:active {
+        color: $cyan-3;
+    }
 }
 
 .pd-button-icon-left,

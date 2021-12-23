@@ -131,6 +131,10 @@
                     background-color: setcolor(primary, disabled);
                 }
             }
+
+            & ~ .pd-checkbox-text {
+                font-style: italic;
+            }
         }
     }
 

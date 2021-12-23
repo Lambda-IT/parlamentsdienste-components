@@ -13,7 +13,7 @@ export class Combobox {
 
     @Element() element!: HTMLElement;
     private menuElement: HTMLElement;
-    private labelElement: HTMLElement;
+    private wrapperElement: HTMLElement;
     private popper: Instance;
 
     /**
@@ -125,14 +125,13 @@ export class Combobox {
 
     @Watch('selectedItem')
     protected indexChanged(index: number) {
-        const menu = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
 
         dropdownItemNodes.forEach((item, itemIndex) => {
             const centerItem = Math.ceil(5 / 2) - 1;
-            if (itemIndex === index) menu.scrollTop = item.offsetTop - 48 * centerItem;
+            if (itemIndex === index) this.menuElement.scrollTop = item.offsetTop - 48 * centerItem;
         });
 
         this.pdChange.emit(this.selectedItem);
@@ -152,9 +151,7 @@ export class Combobox {
     }
 
     protected componentDidLoad() {
-        this.menuElement = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
-        this.labelElement = this.element.shadowRoot.querySelector('.pd-combobox-label') as HTMLElement;
-        this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
+        this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
     protected componentDidUpdate() {
@@ -181,7 +178,7 @@ export class Combobox {
     protected handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
-                this.open = true;
+                this.open = false;
                 break;
             }
             case 'Escape': {
@@ -326,22 +323,19 @@ export class Combobox {
 
     public render() {
         return (
-            <Host role="combobox" class={this.error ? 'pd-combobox-error' : ''}>
+            <Host role="combobox">
                 <label
                     class={{
                         'pd-combobox-label': true,
                         'pd-combobox-disabled': this.disabled,
-                        'pd-combobox-selectable': this.selectable,
                         'pd-combobox-readonly': this.readonly,
-                        'pd-combobox-item-selected': this.selectedItem ? true : false,
+                        'pd-combobox-error': this.error,
+                        'pd-combobox-item-selected': !!this.selectedItem,
                     }}
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5rem' } : {}}
                 >
                     {this.renderLabel()}
-                    <div class="pd-combobox-input-wrapper">
-                        <button class="pd-combobox-icon left" tabindex="-1">
-                            <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
-                        </button>
+                    <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
                         <input
                             class="pd-combobox-input"
                             ref={(input) => (this.nativeInput = input)}
@@ -355,6 +349,9 @@ export class Combobox {
                             onBlur={this.onBlur}
                             onFocus={this.onFocus}
                         />
+                        <button class="pd-combobox-icon left" tabindex="-1">
+                            <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
+                        </button>
                         <button class="pd-combobox-icon right" tabindex="-1">
                             <pd-icon
                                 onClick={this.onClickInput}
@@ -380,6 +377,7 @@ export class Combobox {
     private renderDropdownItems() {
         return (
             <div
+                ref={(input) => (this.menuElement = input)}
                 class="pd-combobox-dropdown"
                 style={{
                     display: this.open ? 'block' : 'none',

@@ -9,7 +9,7 @@ pd-radio {
 .pd-radio-label {
     display: flex;
     align-items: center;
-    margin: 0.375em 0;
+    margin: 0.375rem 0;
     margin-top: var(--pd-radio-vertical-adjust, inherit);
 
     .pd-radio-input {
@@ -21,11 +21,12 @@ pd-radio {
         & + .pd-radio-inner {
             cursor: pointer;
             position: relative;
-            width: 1.25em;
-            height: 1.25em;
+            width: 1.25rem;
+            height: 1.25rem;
 
             &:before,
             &:after {
+                content: '';
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -34,12 +35,10 @@ pd-radio {
             }
 
             &:before {
-                content: '';
                 background-color: transparent;
             }
 
             &:after {
-                content: '';
                 border: 0.125em solid setcolor(primary, enabled);
                 border-radius: 100%;
             }
@@ -64,8 +63,14 @@ pd-radio {
         &:focus-visible:enabled {
             & + .pd-radio-inner {
                 &:after {
-                    border-color: $focus;
+                    border-color: setcolor(primary, enabled);
+                    border-width: 0.125rem;
+                }
+                &:before {
+                    width: 1.25rem;
+                    height: 1.25rem;
                     border-radius: 100%;
+                    background-color: $focus;
                 }
             }
         }
@@ -77,13 +82,16 @@ pd-radio {
                     border-color: setcolor(primary, disabled);
                 }
             }
+
+            & ~ .pd-radio-text {
+                font-style: italic;
+            }
         }
 
         &:checked {
             & + .pd-radio-inner {
                 &:after {
-                    border: 0.375em solid setcolor(primary, enabled);
-                    border-radius: 100%;
+                    border: 0.375rem solid setcolor(primary, enabled);
                 }
             }
 
@@ -106,12 +114,10 @@ pd-radio {
             &:focus-visible:enabled {
                 & + .pd-radio-inner {
                     &:after {
-                        content: '';
                         border-color: $focus;
-                        border-radius: 100%;
+                        border-width: 0.375rem;
                     }
                     &:before {
-                        content: '';
                         width: 0.625em;
                         height: 0.625em;
                         margin: 0.3em;
@@ -137,7 +143,6 @@ pd-radio {
         & > .pd-radio-input {
             & + .pd-radio-inner {
                 &:after {
-                    content: '';
                     background-color: setcolor(primary, readonly);
                     border: none;
                 }
@@ -148,7 +153,6 @@ pd-radio {
                     &:after {
                         content: '';
                         border: 0.375em solid setcolor(primary, readonly);
-                        border-radius: 100%;
                         background-color: $pd-black;
                     }
                 }
@@ -160,13 +164,10 @@ pd-radio {
         & > .pd-radio-input {
             & + .pd-radio-inner {
                 &:before {
-                    content: '';
                     background-color: transparent;
                 }
                 &:after {
-                    content: '';
                     border-color: setcolor(danger, enabled);
-                    border-radius: 100%;
                 }
             }
 
@@ -189,9 +190,7 @@ pd-radio {
             &:focus-visible:enabled {
                 & + .pd-radio-inner {
                     &:after {
-                        content: '';
                         border-color: $focus;
-                        border-radius: 100%;
                     }
                 }
             }

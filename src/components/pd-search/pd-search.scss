@@ -18,15 +18,60 @@
     display: flex;
     flex-direction: column;
 
+    .pd-search-input-wrapper {
+        display: flex;
+        position: relative;
+    }
+
+    .pd-search-input {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 0.625rem 0.875rem;
+        padding-right: 3em;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border: 0.125rem solid setcolor(primary, enabled);
+        border-right: none;
+
+        &:focus-visible {
+            background-color: $yellow-1;
+        }
+    }
+
     &:hover {
+        .pd-search-input {
+            border-color: setcolor(primary, hover);
+        }
         .pd-search-button {
             background-color: setcolor(primary, hover);
+            border-color: setcolor(primary, hover);
+        }
+        .pd-search-clear {
+            fill: setcolor(primary, hover);
+        }
+    }
+
+    &:active {
+        .pd-search-input {
+            border-color: setcolor(primary, pressed);
+        }
+        .pd-search-button {
+            background-color: setcolor(primary, pressed);
+            border-color: setcolor(primary, pressed);
+            fill: setcolor(primary, pressedContrast);
+        }
+        .pd-search-clear {
+            fill: setcolor(primary, pressed);
         }
     }
 
     &.pd-search-disabled {
+        pointer-events: none;
         .pd-search-input {
-            border: 0.125em solid setcolor(primary, disabled);
+            font-style: italic;
+            border-color: setcolor(primary, disabled);
             border-right: none;
             background-color: $white;
         }
@@ -36,98 +81,46 @@
         }
 
         .pd-search-button {
-            border: 0.125em solid setcolor(primary, disabled);
-            background-color: setcolor(primary, disabled) !important;
-            cursor: default;
+            border-color: setcolor(primary, disabled);
+            background-color: setcolor(primary, disabled);
+            fill: setcolor(primary, disabledContrast);
         }
     }
 
-    &:focus-visible {
-        .pd-search-input {
-            border: 0.125em solid $focus;
-        }
-    }
-}
-
-.pd-search-input-wrapper {
-    display: flex;
-    position: relative;
-}
-
-.pd-search-input {
-    flex: 1 1 auto;
-    min-width: 0;
-    padding: 0.625em 0.875em;
-    padding-right: 3em;
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border: 0.125em solid setcolor(primary, enabled);
-    border-right: none;
-
-    &:focus-visible {
-        border: 0.125em solid $focus;
-        border-right: none;
-
-        & ~ .pd-search-button {
-            border: 0.125em solid $focus;
-            border-left: none;
-        }
-    }
-}
-
-.pd-search-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 3em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-    background-color: setcolor(primary, enabled);
-    border: 0.125em solid setcolor(primary, enabled);
-    border-left: none;
-    padding: 0;
-    cursor: pointer;
-
-    &:hover:active {
-        background-color: setcolor(primary, pressed);
-    }
-
-    .pd-search-button-icon {
-        fill: $white;
-    }
-}
-
-.pd-search-clear {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    right: 3.25em;
-    height: calc(100% - 0.125em);
-    top: 1px; // misaligned icon
-    border: none;
-    padding: 0;
-    background-color: transparent;
-
-    .pd-search-clear-icon {
+    .pd-search-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 3rem;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+        background-color: setcolor(primary, enabled);
+        border: 0.125rem solid setcolor(primary, enabled);
+        border-left: none;
+        padding: 0;
         cursor: pointer;
-        font-size: 4em;
-        fill: setcolor(primary, enabled);
-
-        &:hover {
-            fill: setcolor(primary, hover);
-        }
-
-        &:active {
-            fill: setcolor(primary, pressed);
-        }
+        fill: setcolor(primary, enabledContrast);
     }
-}
 
-.pd-search-label-text {
-    padding-bottom: 0.25em;
+    .pd-search-clear {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 3.25rem;
+        height: calc(100% - 0.125rem);
+        top: 1px; // misaligned icon
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        fill: setcolor(primary, enabled);
+    }
+
+    .pd-search-label-text {
+        padding-bottom: 0.25rem;
+        font-size: 0.875rem;
+    }
 }
 
 .pd-search-dropdown {
@@ -137,7 +130,7 @@
     //top: 3em;
     width: 100%;
     border: 0.125em solid setcolor(primary, enabled);
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     overflow-y: auto;
-    max-height: calc(3em * 5 + 0.25em);
+    max-height: calc(3rem * 5 + 0.25rem);
 }

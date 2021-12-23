@@ -43,16 +43,16 @@ h1 {
 }
 
 h4 {
-    color: #000000;
+    color: $pd-black;
 }
 
 h5 {
-    color: #000000;
+    color: $pd-black;
     font-weight: 500;
 }
 
 h6 {
-    color: #000000;
+    color: $pd-black;
     font-weight: 500;
 }
 
@@ -86,9 +86,7 @@ a {
 .flatpickr-calendar {
     border: 0.125rem solid $cyan-9;
     box-shadow: none;
-    padding: 1.125rem;
     width: calc(2.5rem + 7 * 2rem + 14 * 0.125rem);
-    top: (100rem - 3rem);
     margin-top: -0.125rem;
 
     &.hasWeeks {
@@ -96,11 +94,18 @@ a {
     }
 
     &.arrowTop::before,
-    &.arrowTop::after {
+    &.arrowTop::after,
+    &.arrowBottom::before,
+    &.arrowBottom::after {
         display: none;
     }
 
+    .flatpickr-innerContainer {
+        padding: 0 1.125rem 1.125rem 1.125rem;
+    }
+
     .flatpickr-months {
+        padding: 1.125rem 1.125rem 0 1.125rem;
         align-items: center;
 
         .flatpickr-current-month {

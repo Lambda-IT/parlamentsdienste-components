@@ -58,6 +58,11 @@ export class Datepicker {
     @Prop() placeholder?: string | null;
 
     /**
+     * Allow manual input
+     */
+    @Prop() allowInput: boolean = false;
+
+    /**
      * Default vertical adjustment for inline forms
      */
     @Prop() verticalAdjust: boolean = false;
@@ -71,6 +76,8 @@ export class Datepicker {
         onYearChange: (selectedDates, dateStr) => this.pdYearChange.emit({ selectedDates, dateStr }),
         onReady: (selectedDates, dateStr) => this.pdReady.emit({ selectedDates, dateStr }),
         onValueUpdate: (selectedDates, dateStr) => this.pdValueUpdate.emit({ selectedDates, dateStr }),
+        allowInput: this.allowInput,
+        disableMobile: true,
     };
 
     @Watch('date')
@@ -152,13 +159,19 @@ export class Datepicker {
                         'pd-datepicker-disabled': this.disabled,
                         'pd-datepicker-readonly': this.readonly,
                         'pd-datepicker-error': this.error,
+                        'pd-datepicker-allowinput': this.allowInput,
                     }}
                     style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5rem' } : {}}
                 >
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">
                         <pd-input
-                            class="pd-datepicker-input"
+                            class={{
+                                'pd-datepicker-input': true,
+                                'pd-datepicker-disabled': this.disabled,
+                                'pd-datepicker-readonly': this.readonly,
+                                'pd-datepicker-error': this.error,
+                            }}
                             disabled={this.disabled}
                             readonly={this.readonly}
                             required={this.required}

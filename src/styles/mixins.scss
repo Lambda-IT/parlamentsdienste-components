@@ -6,13 +6,13 @@
 
     &:hover:enabled {
         background-color: setcolor($colorscheme, hover);
-        border: 0.125em solid setcolor($colorscheme, hover);
+        border-color: setcolor($colorscheme, hover);
         color: setcolor($colorscheme, hoverContrast);
     }
 
     &:disabled {
         background-color: setcolor($colorscheme, disabled);
-        border: 0.125em solid setcolor($colorscheme, disabled);
+        border-color: setcolor($colorscheme, disabled);
         color: setcolor($colorscheme, disabledContrast);
         font-style: italic;
         * {
@@ -22,33 +22,37 @@
 
     &:active:enabled {
         background-color: setcolor($colorscheme, pressed);
-        border: 0.125em solid setcolor($colorscheme, pressed);
+        border-color: setcolor($colorscheme, pressed);
         color: setcolor($colorscheme, pressedContrast);
     }
 
     &:focus-visible {
         background-color: $focus;
-        border: 0.125em solid $focus;
+        border-color: $focus;
         color: $blue-whale;
     }
 
     &.pd-button-outline {
         background-color: transparent;
-        color: setcolor($colorscheme, disabledContrast);
+        border-color: setcolor($colorscheme, enabledOutline);
+        color: setcolor($colorscheme, enabledOutlineContrast);
 
         &:hover:enabled {
             background-color: transparent;
-            color: setcolor($colorscheme, hover);
+            border-color: setcolor($colorscheme, hoverOutline);
+            color: setcolor($colorscheme, hoverOutlineContrast);
         }
 
         &:disabled {
             background-color: transparent;
             color: setcolor($colorscheme, disabled);
+            border-color: $gray-6;
         }
 
         &:active:enabled {
             background-color: transparent;
-            color: setcolor($colorscheme, pressed);
+            border-color: setcolor($colorscheme, pressedOutline);
+            color: setcolor($colorscheme, pressedOutlineContrast);
         }
 
         &:focus-visible {

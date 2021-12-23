@@ -15,9 +15,9 @@
 .pd-input-label {
     width: 100%;
     margin-bottom: 0;
-    font-size: 0.875rem;
 
     .pd-input-label-text {
+        font-size: 0.875rem;
         padding-bottom: 0.25rem;
     }
 }
@@ -67,23 +67,73 @@
     }
 }
 
-:host(.flatpickr-input) {
-    .pd-input-readonly {
-        background-color: $gray-3;
-        &:hover:enabled,
-        &:disabled,
-        &:focus-visible:enabled {
-            border-color: $gray-3;
-            cursor: default;
-        }
-    }
+// Datepickerstyles //
 
-    .pd-input-error {
-        border-color: $input-error-border;
-        background: $red-3;
+// enabled (disabled input)
+:host(.pd-datepicker-input[readonly]:not(.pd-datepicker-disabled):not(.pd-datepicker-readonly)) {
+    .pd-input {
+        background-color: setcolor(primary, enabled);
+        border-color: setcolor(primary, enabled);
+        color: setcolor(primary, enabledContrast);
+        font-weight: 700;
+        cursor: pointer;
 
         &:hover:enabled {
+            background-color: setcolor(primary, hover);
+            border-color: setcolor(primary, hover);
+            color: setcolor(primary, hoverContrast);
+        }
+
+        &:active:enabled {
+            background-color: setcolor(primary, pressed);
+            border-color: setcolor(primary, pressed);
+            color: setcolor(primary, pressedContrast);
+        }
+
+        &:focus-visible {
+            background-color: $focus;
+            border-color: $focus;
+            color: $blue-whale;
+        }
+    }
+}
+
+// disabled (disabled input)
+:host(.pd-datepicker-input[readonly].pd-datepicker-disabled:not(.pd-datepicker-readonly)) {
+    .pd-input {
+        background-color: setcolor(primary, disabled);
+        border-color: setcolor(primary, disabled);
+        color: setcolor(primary, disabledContrast);
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+// error (disabled input)
+:host(.pd-datepicker-input[readonly]:not(.pd-datepicker-disabled):not(.pd-datepicker-readonly).pd-datepicker-error) {
+    .pd-input {
+        background-color: setcolor(danger, enabled);
+        border-color: setcolor(danger, enabled);
+        color: setcolor(danger, enabledContrast);
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover:enabled {
+            background-color: setcolor(danger, hover);
             border-color: setcolor(danger, hover);
+            color: setcolor(danger, hoverContrast);
+        }
+
+        &:active:enabled {
+            background-color: setcolor(danger, pressed);
+            border-color: setcolor(danger, pressed);
+            color: setcolor(danger, pressedContrast);
+        }
+
+        &:focus-visible {
+            background-color: $focus;
+            border-color: $focus;
+            color: $blue-whale;
         }
     }
 }

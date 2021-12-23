@@ -12,7 +12,7 @@ export class Search {
     @Element() element!: HTMLElement;
     private inputElement?: HTMLInputElement;
     private menuElement: HTMLElement;
-    private labelElement: HTMLElement;
+    private wrapperElement: HTMLElement;
     private popper: Instance;
 
     /**
@@ -108,7 +108,7 @@ export class Search {
     }
 
     protected componentDidLoad() {
-        this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
+        this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
     protected componentDidUpdate() {
@@ -247,14 +247,13 @@ export class Search {
         return (
             <Host role="search">
                 <label
-                    ref={(el) => (this.labelElement = el)}
                     class={{
                         'pd-search-label': true,
                         'pd-search-disabled': this.disabled,
                     }}
                 >
                     {this.renderLabel()}
-                    <div class="pd-search-input-wrapper">
+                    <div class="pd-search-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
                         <input
                             class="pd-search-input"
                             ref={(el) => (this.inputElement = el)}
