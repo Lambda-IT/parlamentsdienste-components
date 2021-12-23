@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   #102 Added additional icons. `BREAKING CHANGE!!!` Renamed icon 'expand' to 'caret'. Added new 'expand' icon.
+-   #104 Added pd-button fullwidth attr.
 
 ## [1.8.1] - 2021-12-02
 
