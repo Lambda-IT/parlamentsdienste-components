@@ -63,6 +63,9 @@ export class Dropdown {
      */
     @Prop() required = false;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**

@@ -35,7 +35,7 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 | ----------------- | ------------------ | ------------------------------------------------------------------ | --------- | ----------- |
 | `checked`         | `checked`          | Sets check state of the checkbox true/false                        | `boolean` | `false`     |
 | `disabled`        | `disabled`         | Sets checkbox to disabled state                                    | `boolean` | `false`     |
-| `error`           | `error`            |                                                                    | `boolean` | `false`     |
+| `error`           | `error`            | Shows error state                                                  | `boolean` | `false`     |
 | `isIndeterminate` | `is-indeterminate` | indeterminate state                                                | `boolean` | `false`     |
 | `name`            | `name`             | checkbox name                                                      | `string`  | `undefined` |
 | `readonly`        | `readonly`         | If `true`, the user cannot modify the value.                       | `boolean` | `false`     |

@@ -57,6 +57,7 @@ interface DropdownItem {
 | `label`       | `label`       | Search box label                                            | `string`           | `undefined` |
 | `placeholder` | `placeholder` | Instructional text that shows before the input has a value. | `string`           | `undefined` |
 | `results`     | --            | Values shown as search results                              | `string[]`         | `[]`        |
+| `size`        | `size`        | Input tag size (check pd-input 'size' for more info)        | `number`           | `1`         |
 | `value`       | `value`       | The value of the input.                                     | `number \| string` | `''`        |
 
 

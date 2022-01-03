@@ -82,8 +82,14 @@ export class Textarea {
      */
     @Prop() wrap?: 'hard' | 'soft' | 'off';
 
+    /**
+     * Label text
+     */
     @Prop() label?: string;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**

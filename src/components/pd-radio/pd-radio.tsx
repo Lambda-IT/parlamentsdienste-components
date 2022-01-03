@@ -43,6 +43,9 @@ export class Radio {
      */
     @Prop() verticalAdjust: boolean = false;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     public render() {

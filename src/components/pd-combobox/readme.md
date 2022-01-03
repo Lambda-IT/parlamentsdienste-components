@@ -53,7 +53,7 @@ interface DropdownItem {
 | Property         | Attribute         | Description                                                        | Type             | Default     |
 | ---------------- | ----------------- | ------------------------------------------------------------------ | ---------------- | ----------- |
 | `disabled`       | `disabled`        | If `true`, the user cannot interact with the input.                | `boolean`        | `false`     |
-| `error`          | `error`           |                                                                    | `boolean`        | `false`     |
+| `error`          | `error`           | Shows error state                                                  | `boolean`        | `false`     |
 | `highlight`      | `highlight`       | Show matching parts in results as highlighted                      | `boolean`        | `true`      |
 | `items`          | --                | Values shown as combobox items                                     | `ComboboxItem[]` | `[]`        |
 | `label`          | `label`           | combobox box label                                                 | `string`         | `undefined` |
@@ -61,6 +61,7 @@ interface DropdownItem {
 | `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                       | `boolean`        | `false`     |
 | `required`       | `required`        | If `true`, the user must fill in a value before submitting a form. | `boolean`        | `false`     |
 | `selectable`     | `selectable`      | If `true`, the combobox get a selected state like a dropdown.      | `boolean`        | `false`     |
+| `size`           | `size`            | Input tag size (check pd-input 'size' for more info)               | `number`         | `1`         |
 | `value`          | `value`           | The value of the input.                                            | `string`         | `''`        |
 | `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                       | `boolean`        | `false`     |
 

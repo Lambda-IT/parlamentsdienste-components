@@ -46,6 +46,9 @@ export class Checkbox {
      */
     @Prop() name: string;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**

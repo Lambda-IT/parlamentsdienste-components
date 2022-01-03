@@ -50,6 +50,9 @@ export class Datepicker {
      */
     @Prop() label?: string;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**
@@ -66,6 +69,11 @@ export class Datepicker {
      * Default vertical adjustment for inline forms
      */
     @Prop() verticalAdjust: boolean = false;
+
+    /**
+     * Input tag size (check pd-input 'size' for more info)
+     */
+    @Prop() size?: number = 1;
 
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
@@ -178,6 +186,7 @@ export class Datepicker {
                             error={this.error}
                             placeholder={this.placeholder}
                             tabindex={this.readonly ? '-1' : null} // this is not an optimal solution as it removes ability to copy&paste with focus
+                            size={this.size}
                             data-input
                         />
                         {this.renderIcon()}

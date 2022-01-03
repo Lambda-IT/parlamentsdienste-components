@@ -115,7 +115,7 @@ export class Input {
     /**
      * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
      */
-    @Prop() size?: number;
+    @Prop() size?: number = 1;
 
     /**
      * The type of control to display. The default type is text.
@@ -127,8 +127,14 @@ export class Input {
      */
     @Prop({ mutable: true }) value?: string | number | null = '';
 
+    /**
+     * Label text
+     */
     @Prop() label?: string;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**

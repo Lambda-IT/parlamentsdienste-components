@@ -98,6 +98,9 @@ export namespace Components {
           * Sets checkbox to disabled state
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * indeterminate state
@@ -151,6 +154,9 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * Show matching parts in results as highlighted
@@ -193,6 +199,10 @@ export namespace Components {
          */
         "setSelectedIndex": (index: number) => Promise<void>;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -226,6 +236,9 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
@@ -260,6 +273,10 @@ export namespace Components {
          */
         "setDate": (date: DateOption | DateOption[], triggerChange?: boolean, format?: string) => Promise<void>;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * Shows/opens the calendar if its closed, hides/closes it otherwise.
          */
         "toggle": () => Promise<void>;
@@ -281,6 +298,9 @@ export namespace Components {
           * Data used for the empty item
          */
         "emptyItemData": DropdownItem;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * Items visible in dropdown
@@ -408,11 +428,17 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -653,6 +679,9 @@ export namespace Components {
           * Sets radio to disabled state
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * Label used by radio
@@ -700,6 +729,10 @@ export namespace Components {
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
         /**
           * The value of the input.
          */
@@ -861,11 +894,17 @@ export namespace Components {
           * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
          */
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
@@ -1325,6 +1364,9 @@ declare namespace LocalJSX {
           * Sets checkbox to disabled state
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * indeterminate state
@@ -1387,6 +1429,9 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * Show matching parts in results as highlighted
@@ -1437,6 +1482,10 @@ declare namespace LocalJSX {
          */
         "selectable"?: boolean;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -1462,6 +1511,9 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
@@ -1497,6 +1549,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust"?: boolean;
@@ -1514,6 +1570,9 @@ declare namespace LocalJSX {
           * Data used for the empty item
          */
         "emptyItemData"?: DropdownItem;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * Items visible in dropdown
@@ -1634,11 +1693,17 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -1920,6 +1985,9 @@ declare namespace LocalJSX {
           * Sets radio to disabled state
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * Label used by radio
@@ -1983,6 +2051,10 @@ declare namespace LocalJSX {
           * Values shown as search results
          */
         "results"?: string[];
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
         /**
           * The value of the input.
          */
@@ -2180,11 +2252,17 @@ declare namespace LocalJSX {
           * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
          */
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
