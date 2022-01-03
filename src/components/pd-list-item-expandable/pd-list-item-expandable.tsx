@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Watch, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
 import { PdStatus } from '../../interface';
 import { collapse, expand } from '../../utils/animation';
 
@@ -88,8 +88,8 @@ export class PdListItemExpandable {
                 >
                     <slot name="action-left"></slot>
                     {this.renderEdit()}
-                    {this.renderExpand()}
                     {this.renderMenu()}
+                    {this.renderExpand()}
                     <slot name="action-right"></slot>
                 </div>
                 <div
@@ -113,7 +113,7 @@ export class PdListItemExpandable {
         if (!this.expandable && !this.expand) return;
         return (
             <button class="pd-list-item-expandable-expand" onClick={() => this.handleExpand()}>
-                <pd-icon name="detail" size={2.5}></pd-icon>
+                <pd-icon name="caret" rotate={this.collapsed ? 0 : 180} size={2.2}></pd-icon>
             </button>
         );
     };
