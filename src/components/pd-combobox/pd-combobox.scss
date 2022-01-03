@@ -168,6 +168,7 @@
                 color: setcolor(primary, disabledContrast);
                 background-color: setcolor(primary, disabled);
                 border-color: setcolor(primary, disabled);
+                font-weight: 500;
             }
             .pd-combobox-icon {
                 fill: setcolor(primary, disabledContrast);
@@ -180,6 +181,7 @@
                 color: setcolor(primary, readonlyContrast);
                 background-color: setcolor(primary, readonly);
                 border-color: setcolor(primary, readonly);
+                font-weight: 500;
                 &:focus-visible {
                     background-color: $focus;
                     border-color: $focus;
