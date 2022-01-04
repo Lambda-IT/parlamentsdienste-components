@@ -59,13 +59,19 @@ export interface DropdownItem {
     selected?: boolean;
 }
 
-export interface ComboboxItem extends DropdownItem {}
+export interface ComboboxItem extends DropdownItem { }
 
 export interface SelectedEvent {
     selected: boolean;
     selectAll: boolean;
     row: any;
     rows: any[];
+}
+
+export interface TabValue {
+    id: number;
+    text: string;
+    checked?: boolean;
 }
 
 export type PdPlacement =

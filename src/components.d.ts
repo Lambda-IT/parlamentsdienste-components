@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -869,6 +869,12 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdTabs {
+        /**
+          * List of tab texts
+         */
+        "tabs": TabValue[];
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1195,6 +1201,12 @@ declare global {
         prototype: HTMLPdTableFilterElement;
         new (): HTMLPdTableFilterElement;
     };
+    interface HTMLPdTabsElement extends Components.PdTabs, HTMLStencilElement {
+    }
+    var HTMLPdTabsElement: {
+        prototype: HTMLPdTabsElement;
+        new (): HTMLPdTabsElement;
+    };
     interface HTMLPdTextareaElement extends Components.PdTextarea, HTMLStencilElement {
     }
     var HTMLPdTextareaElement: {
@@ -1254,6 +1266,7 @@ declare global {
         "pd-slider": HTMLPdSliderElement;
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
+        "pd-tabs": HTMLPdTabsElement;
         "pd-textarea": HTMLPdTextareaElement;
         "pd-timeline": HTMLPdTimelineElement;
         "pd-timeline-date": HTMLPdTimelineDateElement;
@@ -2227,6 +2240,16 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PdTabs {
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-change"?: (event: CustomEvent<TabValue>) => void;
+        /**
+          * List of tab texts
+         */
+        "tabs"?: TabValue[];
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -2398,6 +2421,7 @@ declare namespace LocalJSX {
         "pd-slider": PdSlider;
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
+        "pd-tabs": PdTabs;
         "pd-textarea": PdTextarea;
         "pd-timeline": PdTimeline;
         "pd-timeline-date": PdTimelineDate;
@@ -2442,6 +2466,7 @@ declare module "@stencil/core" {
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
+            "pd-tabs": LocalJSX.PdTabs & JSXBase.HTMLAttributes<HTMLPdTabsElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
             "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;

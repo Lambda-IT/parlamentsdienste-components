@@ -184,11 +184,16 @@
                         <pd-button>Button</pd-button>
                     </pd-button-group>
                 </details>
+
+                <details open>
+                    <summary>Tabs</summary>
+                    <pd-tabs class="pd-tabs-items"></pd-tabs>
+                </details>
             </details>
 
             <details open>
                 <summary>Forms</summary>
-                <details open>
+                <details>
                     <summary>Inputs</summary>
                     <div class="dropdown-grid">
                         <span></span>
@@ -761,6 +766,7 @@
             const pdDropDown = document.getElementById('pd-dropdown-0');
             const pdDropDownItems = document.getElementsByClassName('pd-dropdown-items');
             const pdPaginationItems = document.getElementsByClassName('pd-pagination-items');
+            const pdTabsItems = document.getElementsByClassName('pd-tabs-items');
             const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
@@ -773,6 +779,15 @@
             const pdMenu1 = document.getElementById('pd-menu-1');
 
             const pdDatePickers = document.getElementsByClassName('pd-datepickr-config');
+
+            for (let pdTabsItem of pdTabsItems) {
+                pdTabsItem.tabs = [
+                    { id: 0, text: 'Tab one' },
+                    { id: 1, text: 'Tab two' },
+                    { id: 2, text: 'Tab three' },
+                    { id: 3, text: 'Tab four' },
+                ];
+            }
 
             for (let pdDatepickr of pdDatePickers) {
                 pdDatepickr.config = {
@@ -883,15 +898,6 @@
             pdTable2.addEventListener('pd-selected', (ev) => console.log('pdTable2 > selected', ev.detail));
             pdTable2.addEventListener('pd-clicked-row', (ev) => console.log('pdTable2 > clicked-row', ev.detail));
 
-            pdBreadcrumbs.items = [
-                'Startseite',
-                'Organe',
-                'Kommissionen',
-                'SiK-NR',
-                'Sitzungen',
-                'Sitzung der SiK-NR vom 24./25. Juni 2019',
-            ];
-
             pdInput.addEventListener('pd-change', (value) => {
                 pdProgress.setAttribute('value', value.detail.value);
             });
@@ -912,10 +918,6 @@
             });
 
             pdNavbar.addEventListener('pd-menu', () => console.log(`file: index.html ~ line 324`));
-
-            pdBreadcrumbs.addEventListener('pd-navigated', (value) => {
-                console.log('LOG: value', value);
-            });
 
             for (let pdDropdown of pdDropDownItems) {
                 pdDropdown.items = [
