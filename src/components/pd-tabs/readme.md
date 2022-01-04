@@ -29,11 +29,13 @@ export interface TabValue {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description       | Type         | Default |
 | -------- | --------- | ----------------- | ------------ | ------- |
 | `tabs`   | --        | List of tab texts | `TabValue[]` | `[]`    |
+
 
 ## Events
 
@@ -41,6 +43,7 @@ export interface TabValue {
 | ----------- | ----------------------------------- | ----------------------- |
 | `pd-change` | Emitted when the value has changed. | `CustomEvent<TabValue>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
