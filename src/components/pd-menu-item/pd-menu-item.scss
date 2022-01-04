@@ -13,7 +13,7 @@
 
 .pd-menu-item {
     width: 100%;
-    padding: 0.5em 0.5em;
+    padding: 0.5rem 0.5rem;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -21,7 +21,7 @@
     fill: $cyan-9;
 
     .pd-menu-item-text {
-        margin-left: 0.5em;
+        margin-left: 0.5rem;
     }
 
     &:hover {

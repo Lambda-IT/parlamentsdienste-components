@@ -36,13 +36,33 @@
         display: flex;
         align-items: center;
 
-        &:focus {
+        &:hover {
+            .pd-menu-label {
+                color: setcolor(primary, hover);
+            }
+
+            .pd-menu-icon {
+                fill: setcolor(primary, hover);
+            }
+        }
+
+        &:focus-visible {
             .pd-menu-label {
                 color: $focus;
             }
 
             .pd-menu-icon {
                 fill: $focus;
+            }
+        }
+
+        &:active {
+            .pd-menu-label {
+                color: setcolor(primary, pressed);
+            }
+
+            .pd-menu-icon {
+                fill: setcolor(primary, pressed);
             }
         }
 
@@ -53,15 +73,15 @@
 
     &.pd-menu-inverted {
         .pd-menu-label {
-            color: setcolor(primary, enabled-contrast);
+            color: setcolor(primary, enabledContrast);
         }
 
         .pd-menu-button {
             .pd-menu-icon {
-                fill: setcolor(primary, enabled-contrast);
+                fill: setcolor(primary, enabledContrast);
             }
 
-            &:focus {
+            &:focus-visible {
                 .pd-menu-label {
                     color: $focus;
                 }

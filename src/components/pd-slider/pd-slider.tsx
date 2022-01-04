@@ -28,6 +28,21 @@ export class Slider {
     @Prop() name: string = '';
 
     /**
+     * If `true`, the user cannot interact with the input.
+     */
+    @Prop() disabled = false;
+
+    /**
+     * If `true`, the user cannot modify the value.
+     */
+    @Prop() readonly = false;
+
+    /**
+     * Shows error state
+     */
+    @Prop() error: boolean = false;
+
+    /**
      * slider value
      */
     @Prop({ mutable: true }) value?: number | null = null;
@@ -69,8 +84,14 @@ export class Slider {
         return (
             <Host>
                 <input
+                    class={{
+                        'pd-slider': true,
+                        'pd-slider-disabled': this.disabled,
+                        'pd-slider-readonly': this.readonly,
+                        'pd-slider-error': this.error,
+                    }}
                     name={this.name}
-                    class="pd-slider"
+                    disabled={this.disabled || this.readonly}
                     type="range"
                     multiple
                     min={this.min}

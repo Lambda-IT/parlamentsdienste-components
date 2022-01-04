@@ -181,7 +181,7 @@
     border: none;
     cursor: pointer;
 
-    &:focus {
+    &:focus-visible {
         background-color: $focus;
     }
 

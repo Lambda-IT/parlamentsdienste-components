@@ -1,5 +1,5 @@
-import { Component, h, Prop, Event, EventEmitter, Watch, Method, Host } from '@stencil/core';
-import { TextFieldTypes, InputChangeEventDetail } from '../../interface';
+import { Component, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { InputChangeEventDetail, TextFieldTypes } from '../../interface';
 
 @Component({
     tag: 'pd-input',
@@ -115,7 +115,7 @@ export class Input {
     /**
      * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
      */
-    @Prop() size?: number;
+    @Prop() size?: number = 1;
 
     /**
      * The type of control to display. The default type is text.
@@ -127,11 +127,15 @@ export class Input {
      */
     @Prop({ mutable: true }) value?: string | number | null = '';
 
+    /**
+     * Label text
+     */
     @Prop() label?: string;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
-
-    @Prop() helperText?: string;
 
     /**
      * Default vertical adjustment for inline forms
@@ -203,7 +207,7 @@ export class Input {
         const value = this.getValue();
 
         return (
-            <Host class={this.error ? 'pd-input-error' : ''}>
+            <Host>
                 <label class="pd-input-label">
                     {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
                     <input
@@ -234,7 +238,7 @@ export class Input {
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
-                        style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5rem' } : {}}
+                        style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
                     />
                 </label>
             </Host>

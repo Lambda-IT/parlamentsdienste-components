@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2022-01-05
+
+### Added
+
+-   #115 Added pd-tabs as a new component
+-   #101 Added icon slot to pd-panel header
+
+### Changed
+
+-   Changed styling of multiple components to comply with new, improved accessible styles. `BREAKING CHANGE!!!` Check your application's locally defined colors with these new styles.
+-   Now using `:focus-visible` instead of `focus` for focus styles
+-   Improved/changes styles on multiple components
+-   Added error states to additional input components
+-   #98 removed pd-datepicker mobile display
+-   #103 pd-input, pd-search, pd-dropdown and pd-combobox now use a default size `<input>` of 1. A new prop 'size' was added when missing
+-   #112 changed eye icon for chevron in pd-list-item-expandable
+
 ## [1.8.2] - 2021-12-23
 
 ### Added
@@ -247,6 +264,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.0.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.0.0
 [1.8.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.8.2
 [1.8.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.8.1
 [1.8.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v1.8.0

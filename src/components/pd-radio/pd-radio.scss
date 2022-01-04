@@ -9,90 +9,37 @@ pd-radio {
 .pd-radio-label {
     display: flex;
     align-items: center;
-    margin: 0.375em 0;
+    margin: 0.375rem 0;
     margin-top: var(--pd-radio-vertical-adjust, inherit);
-}
 
-.pd-radio-label > .pd-radio-input {
-    position: absolute;
-    height: 0;
-    width: 0;
-    opacity: 0;
+    .pd-radio-input {
+        position: absolute;
+        height: 0;
+        width: 0;
+        opacity: 0;
 
-    & + .pd-radio-inner {
-        cursor: pointer;
-        position: relative;
-        width: 1.25em;
-        height: 1.25em;
-
-        &:before,
-        &:after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        &:before {
-            content: '';
-            background-color: transparent;
-        }
-
-        &:after {
-            content: '';
-            border: 0.125em solid setcolor(primary, enabled);
-            border-radius: 100%;
-        }
-    }
-
-    &:hover:enabled {
         & + .pd-radio-inner {
-            &:after {
-                border: 0.125em solid setcolor(primary, hover);
-            }
-        }
-    }
+            cursor: pointer;
+            position: relative;
+            width: 1.25rem;
+            height: 1.25rem;
 
-    &:active:enabled {
-        & + .pd-radio-inner {
-            &:after {
-                border: 0.125em solid setcolor(primary, pressed);
-            }
-        }
-    }
-
-    &:focus:enabled {
-        & + .pd-radio-inner {
+            &:before,
             &:after {
                 content: '';
-                border: 0.125em solid $focus;
-                border-radius: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
             }
-        }
-    }
 
-    &:disabled {
-        & + .pd-radio-inner {
-            cursor: default;
-            &:after {
-                border: 0.125em solid setcolor(primary, disabled);
+            &:before {
+                background-color: transparent;
             }
-        }
-    }
 
-    &:disabled:checked {
-        & + .pd-radio-inner {
             &:after {
-                background-color: setcolor(primary, disabled);
-            }
-        }
-    }
-
-    &:checked {
-        & + .pd-radio-inner {
-            &:after {
-                border: 0.375em solid setcolor(primary, enabled);
+                border: 0.125em solid setcolor(primary, enabled);
                 border-radius: 100%;
             }
         }
@@ -100,7 +47,7 @@ pd-radio {
         &:hover:enabled {
             & + .pd-radio-inner {
                 &:after {
-                    border: 0.375em solid setcolor(primary, hover);
+                    border-color: setcolor(primary, hover);
                 }
             }
         }
@@ -108,30 +55,149 @@ pd-radio {
         &:active:enabled {
             & + .pd-radio-inner {
                 &:after {
-                    border: 0.375em solid setcolor(primary, pressed);
+                    border-color: setcolor(primary, pressed);
                 }
             }
         }
 
-        &:focus:enabled {
+        &:focus-visible:enabled {
             & + .pd-radio-inner {
                 &:after {
-                    content: '';
-                    border: 0.375em solid $focus;
-                    border-radius: 100%;
+                    border-color: setcolor(primary, enabled);
+                    border-width: 0.125rem;
                 }
                 &:before {
-                    content: '';
-                    width: 0.625em;
-                    height: 0.625em;
-                    margin: 0.3em;
-                    background-color: setcolor(primary, enabled);
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    border-radius: 100%;
+                    background-color: $focus;
+                }
+            }
+        }
+
+        &:disabled {
+            & + .pd-radio-inner {
+                cursor: default;
+                &:after {
+                    border-color: setcolor(primary, disabled);
+                }
+            }
+
+            & ~ .pd-radio-text {
+                font-style: italic;
+            }
+        }
+
+        &:checked {
+            & + .pd-radio-inner {
+                &:after {
+                    border: 0.375rem solid setcolor(primary, enabled);
+                }
+            }
+
+            &:hover:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(primary, hover);
+                    }
+                }
+            }
+
+            &:active:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(primary, pressed);
+                    }
+                }
+            }
+
+            &:focus-visible:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: $focus;
+                        border-width: 0.375rem;
+                    }
+                    &:before {
+                        width: 0.625em;
+                        height: 0.625em;
+                        margin: 0.3em;
+                        background-color: setcolor(primary, enabled);
+                    }
+                }
+            }
+
+            &:disabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(primary, disabled);
+                    }
                 }
             }
         }
     }
-}
 
-.pd-radio-text {
-    padding-left: 0.625em;
+    &.pd-radio-readonly {
+        pointer-events: none;
+        cursor: default;
+
+        & > .pd-radio-input {
+            & + .pd-radio-inner {
+                &:after {
+                    background-color: setcolor(primary, readonly);
+                    border: none;
+                }
+            }
+
+            &:checked {
+                & + .pd-radio-inner {
+                    &:after {
+                        content: '';
+                        border: 0.375em solid setcolor(primary, readonly);
+                        background-color: $pd-black;
+                    }
+                }
+            }
+        }
+    }
+
+    &.pd-radio-error {
+        & > .pd-radio-input {
+            & + .pd-radio-inner {
+                &:before {
+                    background-color: transparent;
+                }
+                &:after {
+                    border-color: setcolor(danger, enabled);
+                }
+            }
+
+            &:hover:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(danger, hover);
+                    }
+                }
+            }
+
+            &:active:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(danger, pressed);
+                    }
+                }
+            }
+
+            &:focus-visible:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: $focus;
+                    }
+                }
+            }
+        }
+    }
+
+    .pd-radio-text {
+        padding-left: 0.625em;
+    }
 }

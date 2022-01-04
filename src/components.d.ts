@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -98,6 +98,9 @@ export namespace Components {
           * Sets checkbox to disabled state
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * indeterminate state
@@ -151,6 +154,9 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * Show matching parts in results as highlighted
@@ -193,6 +199,10 @@ export namespace Components {
          */
         "setSelectedIndex": (index: number) => Promise<void>;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -202,6 +212,10 @@ export namespace Components {
         "verticalAdjust": boolean;
     }
     interface PdDatepicker {
+        /**
+          * Allow manual input
+         */
+        "allowInput": boolean;
         /**
           * Resets the selected dates (if any) and clears the input.
          */
@@ -222,6 +236,9 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
@@ -256,6 +273,10 @@ export namespace Components {
          */
         "setDate": (date: DateOption | DateOption[], triggerChange?: boolean, format?: string) => Promise<void>;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * Shows/opens the calendar if its closed, hides/closes it otherwise.
          */
         "toggle": () => Promise<void>;
@@ -277,6 +298,9 @@ export namespace Components {
           * Data used for the empty item
          */
         "emptyItemData": DropdownItem;
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * Items visible in dropdown
@@ -404,12 +428,17 @@ export namespace Components {
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
+        /**
+          * Shows error state
+         */
         "error": boolean;
-        "helperText"?: string;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -651,6 +680,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
           * Label used by radio
          */
         "label"?: string | null;
@@ -658,6 +691,10 @@ export namespace Components {
           * Name of radio. Used to group radios together
          */
         "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
         /**
           * Value of radio
          */
@@ -692,6 +729,10 @@ export namespace Components {
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
         /**
           * The value of the input.
          */
@@ -731,6 +772,14 @@ export namespace Components {
     }
     interface PdSlider {
         /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
           * max value
          */
         "max": number;
@@ -742,6 +791,10 @@ export namespace Components {
           * slider name
          */
         "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
         /**
           * value steps
          */
@@ -816,6 +869,12 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdTabs {
+        /**
+          * List of tab texts
+         */
+        "tabs": TabValue[];
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -841,11 +900,17 @@ export namespace Components {
           * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
          */
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Shows error state
+         */
         "error": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
@@ -1136,6 +1201,12 @@ declare global {
         prototype: HTMLPdTableFilterElement;
         new (): HTMLPdTableFilterElement;
     };
+    interface HTMLPdTabsElement extends Components.PdTabs, HTMLStencilElement {
+    }
+    var HTMLPdTabsElement: {
+        prototype: HTMLPdTabsElement;
+        new (): HTMLPdTabsElement;
+    };
     interface HTMLPdTextareaElement extends Components.PdTextarea, HTMLStencilElement {
     }
     var HTMLPdTextareaElement: {
@@ -1195,6 +1266,7 @@ declare global {
         "pd-slider": HTMLPdSliderElement;
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
+        "pd-tabs": HTMLPdTabsElement;
         "pd-textarea": HTMLPdTextareaElement;
         "pd-timeline": HTMLPdTimelineElement;
         "pd-timeline-date": HTMLPdTimelineDateElement;
@@ -1305,6 +1377,9 @@ declare namespace LocalJSX {
           * Sets checkbox to disabled state
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * indeterminate state
@@ -1367,6 +1442,9 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * Show matching parts in results as highlighted
@@ -1417,6 +1495,10 @@ declare namespace LocalJSX {
          */
         "selectable"?: boolean;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -1426,6 +1508,10 @@ declare namespace LocalJSX {
         "verticalAdjust"?: boolean;
     }
     interface PdDatepicker {
+        /**
+          * Allow manual input
+         */
+        "allowInput"?: boolean;
         /**
           * Set the configuration for the datepicker (only applied at instantiation) Check out https://flatpickr.js.org/options for further documentation about this config
          */
@@ -1438,6 +1524,9 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
@@ -1473,6 +1562,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust"?: boolean;
@@ -1490,6 +1583,9 @@ declare namespace LocalJSX {
           * Data used for the empty item
          */
         "emptyItemData"?: DropdownItem;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * Items visible in dropdown
@@ -1610,12 +1706,17 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
-        "helperText"?: string;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -1898,6 +1999,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
           * Label used by radio
          */
         "label"?: string | null;
@@ -1905,6 +2010,10 @@ declare namespace LocalJSX {
           * Name of radio. Used to group radios together
          */
         "name"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
         /**
           * Value of radio
          */
@@ -1956,6 +2065,10 @@ declare namespace LocalJSX {
          */
         "results"?: string[];
         /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
           * The value of the input.
          */
         "value"?: string | number | null;
@@ -1994,6 +2107,14 @@ declare namespace LocalJSX {
     }
     interface PdSlider {
         /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
           * max value
          */
         "max"?: number;
@@ -2013,6 +2134,10 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
         /**
           * value steps
          */
@@ -2115,6 +2240,16 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PdTabs {
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-change"?: (event: CustomEvent<TabValue>) => void;
+        /**
+          * List of tab texts
+         */
+        "tabs"?: TabValue[];
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -2140,11 +2275,17 @@ declare namespace LocalJSX {
           * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
          */
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Shows error state
+         */
         "error"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
         "label"?: string;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
@@ -2280,6 +2421,7 @@ declare namespace LocalJSX {
         "pd-slider": PdSlider;
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
+        "pd-tabs": PdTabs;
         "pd-textarea": PdTextarea;
         "pd-timeline": PdTimeline;
         "pd-timeline-date": PdTimelineDate;
@@ -2324,6 +2466,7 @@ declare module "@stencil/core" {
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
+            "pd-tabs": LocalJSX.PdTabs & JSXBase.HTMLAttributes<HTMLPdTabsElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
             "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;

@@ -1,7 +1,7 @@
 /** Primary **/
 
 // branding
-$pd-black: #1e1e1e !default;
+$pd-black: #0b0b0b !default;
 $blue-whale: #033840 !default;
 $wild-sand: #f5f5f5 !default;
 $yellow-metal: #807641 !default;
@@ -19,10 +19,10 @@ $cyan-3: #66d9e8;
 
 $yellow-4: #ffd43b;
 $yellow-2: #ffec99;
-$yellow-1: #fff9db;
+$yellow-1: #fff3bf;
 
 $gray-9: #212529;
-$gray-6: #868e96;
+$gray-6: #bababa;
 $gray-3: #dee2e6;
 
 // status
@@ -37,6 +37,9 @@ $yellow-3: #ffe066;
 $red-9: #c92a2a;
 $red-6: #fa5252;
 $red-3: #ffa8a8;
+
+$blue-4: #4dadf7;
+$blue-2: #a3daff;
 
 /** Secondary **/
 
@@ -73,7 +76,13 @@ $green-6: #40c057;
 $green-3: #8ce99a;
 
 // shortcuts
-$focus: $yellow-4;
+$focus: $yellow-2;
+
+// other
+$gray-disabled: #cfcfcf;
+$gray-readonly: #e5e8eb;
+$input-error-border: #b33529;
+$dark-button: #343a40;
 
 // bootstrap
 $primary: $cyan-9;
@@ -96,81 +105,137 @@ $theme-colors: (
     'dark': $dark,
 );
 
-$link-color: $primary;
-$link-hover-color: darken($link-color, 15%);
+$link-color: $cyan-9;
+$link-hover-color: $cyan-6;
 $link-decoration: none;
 $link-hover-decoration: none;
 
 $colorscheme: (
     primary: (
         enabled: $cyan-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
+        enabledContrast: $white,
+        enabledOutline: $cyan-9,
+        enabledOutlineContrast: $cyan-9,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
         hover: $cyan-6,
-        hover-contrast: $white,
+        hoverContrast: $white,
+        hoverOutline: $cyan-6,
+        hoverOutlineContrast: $cyan-6,
         pressed: $cyan-3,
-        pressed-contrast: $white,
+        pressedContrast: $blue-whale,
+        pressedOutline: $cyan-3,
+        pressedOutlineContrast: $cyan-9,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     success: (
-        enabled: $lime-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $lime-6,
-        hover-contrast: $white,
+        enabled: $lime-6,
+        enabledContrast: $pd-black,
+        enabledOutline: $lime-9,
+        enabledOutlineContrast: $pd-black,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
+        hover: $lime-9,
+        hoverContrast: $white,
+        hoverOutline: $lime-6,
+        hoverOutlineContrast: $pd-black,
         pressed: $lime-3,
-        pressed-contrast: $white,
+        pressedContrast: $lime-9,
+        pressedOutline: $lime-3,
+        pressedOutlineContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     danger: (
-        enabled: $red-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $red-6,
-        hover-contrast: $white,
+        enabled: $red-6,
+        enabledContrast: $pd-black,
+        enabledOutline: $red-9,
+        enabledOutlineContrast: $pd-black,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
+        hover: $red-9,
+        hoverContrast: $white,
+        hoverOutline: $red-6,
+        hoverOutlineContrast: $pd-black,
         pressed: $red-3,
-        pressed-contrast: $white,
+        pressedContrast: $red-9,
+        pressedOutline: $red-3,
+        pressedOutlineContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     warning: (
-        enabled: $yellow-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $yellow-6,
-        hover-contrast: $white,
+        enabled: $yellow-6,
+        enabledContrast: $pd-black,
+        enabledOutline: $yellow-9,
+        enabledOutlineContrast: $pd-black,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
+        hover: $yellow-9,
+        hoverContrast: $white,
+        hoverOutline: $yellow-6,
+        hoverOutlineContrast: $pd-black,
         pressed: $yellow-3,
-        pressed-contrast: $white,
+        pressedContrast: $yellow-9,
+        pressedOutline: $yellow-3,
+        pressedOutlineContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     info: (
-        enabled: $blue-9,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
-        hover: $blue-6,
-        hover-contrast: $white,
+        enabled: $blue-4,
+        enabledContrast: $pd-black,
+        enabledOutline: $blue-9,
+        enabledOutlineContrast: $pd-black,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
+        hover: $blue-9,
+        hoverContrast: $white,
+        hoverOutline: $blue-6,
+        hoverOutlineContrast: $pd-black,
         pressed: $blue-3,
-        pressed-contrast: $white,
+        pressedContrast: $blue-9,
+        pressedOutline: $blue-3,
+        pressedOutlineContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     light: (
         enabled: $athens-gray,
-        enabled-contrast: $pd-black,
-        disabled: $athens-gray,
-        disabled-contrast: $gray-6,
+        enabledContrast: $pd-black,
+        enabledOutline: $gray-3,
+        enabledOutlineContrast: $pd-black,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
         hover: $gray-3,
-        hover-contrast: $pd-black,
+        hoverContrast: $pd-black,
+        hoverOutline: $gray-3,
+        hoverOutlineContrast: $pd-black,
         pressed: $gray-3,
-        pressed-contrast: $pd-black,
+        pressedContrast: $pd-black,
+        pressedOutline: $gray-3,
+        pressedOutlineContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
     dark: (
-        enabled: $blue-whale,
-        enabled-contrast: $white,
-        disabled: $gray-6,
-        disabled-contrast: $white,
+        enabled: $dark-button,
+        enabledContrast: $white,
+        enabledOutline: $dark-button,
+        enabledOutlineContrast: $pd-black,
+        disabled: $gray-disabled,
+        disabledContrast: $pd-black,
         hover: $gray-6,
-        hover-contrast: $blue-whale,
+        hoverContrast: $pd-black,
+        hoverOutline: $gray,
+        hoverOutlineContrast: $pd-black,
         pressed: $gray-3,
-        pressed-contrast: $blue-whale,
+        pressedContrast: $pd-black,
+        pressedOutline: $gray-3,
+        pressedOutlineContrast: $pd-black,
+        readonly: $gray-readonly,
+        readonlyContrast: $pd-black,
     ),
 );
 

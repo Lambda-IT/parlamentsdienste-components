@@ -17,10 +17,6 @@
 // MIT License
 
 $slider-track-color: $gray-3 !default;
-$slider-thumb-color: $cyan-9 !default;
-$slider-thumb-color-hover: $cyan-6 !default;
-$slider-thumb-color-active: $cyan-3 !default;
-$slider-thumb-color-disabled: $gray !default;
 
 $slider-thumb-height: 1.25em !default;
 $slider-thumb-width: 1.25em !default;
@@ -52,9 +48,9 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
     width: $slider-track-width;
 }
 
-@mixin thumb {
+@mixin thumb($thumb-color, $thumb-color-hover, $thumb-color-active) {
     @include shadow($slider-thumb-shadow-size, $slider-thumb-shadow-blur, $slider-thumb-shadow-color);
-    background: $slider-thumb-color;
+    background: $thumb-color;
     border-radius: $slider-thumb-radius;
     border: none;
     cursor: pointer;
@@ -62,101 +58,156 @@ $ie-bottom-track-color: darken($slider-track-color, $contrast) !default;
     width: $slider-thumb-width;
 
     &:hover {
-        background: $slider-thumb-color-hover;
+        background: $thumb-color-hover;
     }
 
     &:active {
-        background: $slider-thumb-color-active;
+        background: $thumb-color-active;
     }
 }
 
-[type='range'] {
-    -webkit-appearance: none;
-    background: transparent;
-    margin: $slider-thumb-height / 2 0;
-    width: $slider-track-width;
-
-    &::-moz-focus-outer {
-        border: 0;
-    }
-
-    &:focus {
-        &::-webkit-slider-thumb {
-            background: $slider-thumb-color-hover;
-            box-shadow: 0 0 0 0.25em $focus;
-        }
-        &::-moz-range-thumb {
-            background: $slider-thumb-color-hover;
-            box-shadow: 0 0 0 0.25em $focus;
-        }
-        &::-ms-thumb {
-            background: $slider-thumb-color-hover;
-            box-shadow: 0 0 0 0.25em $focus;
-        }
-    }
-
-    &::-webkit-slider-runnable-track {
-        @include track;
-        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
-        background: $slider-track-color;
-        border: $slider-track-border;
-        border-radius: $slider-track-radius;
-    }
-
-    &::-webkit-slider-thumb {
-        @include thumb;
+.pd-slider {
+    &[type='range'] {
         -webkit-appearance: none;
-        margin-top: (($slider-track-height) / 2 - $slider-thumb-height / 2);
-    }
-
-    &::-moz-range-track {
-        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
-        @include track;
-        background: $slider-track-color;
-        border: $slider-track-border;
-        border-radius: $slider-track-radius;
-        height: $slider-track-height;
-    }
-
-    &::-moz-range-thumb {
-        @include thumb;
-    }
-
-    &::-ms-track {
-        @include track;
         background: transparent;
-        border-color: transparent;
-        border-width: ($slider-thumb-height / 2) 0;
-        color: transparent;
-    }
+        margin: $slider-thumb-height / 2 0;
+        width: $slider-track-width;
+        &::-moz-focus-outer {
+            border: 0;
+        }
 
-    &::-ms-fill-lower {
-        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
-        background: $ie-bottom-track-color;
-        border: $slider-track-border;
-        border-radius: ($slider-track-radius * 2);
-    }
+        &:focus-visible {
+            &::-webkit-slider-thumb {
+                background: $focus;
+                box-shadow: 0 0 0 0.125rem $blue-whale;
+            }
+            &::-moz-range-thumb {
+                background: $focus;
+                box-shadow: 0 0 0 0.125rem $blue-whale;
+            }
+            &::-ms-thumb {
+                background: $focus;
+                box-shadow: 0 0 0 0.125rem $blue-whale;
+            }
+        }
 
-    &::-ms-fill-upper {
-        @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
-        background: $slider-track-color;
-        border: $slider-track-border;
-        border-radius: ($slider-track-radius * 2);
-    }
+        &::-webkit-slider-runnable-track {
+            @include track;
+            @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+            background: $slider-track-color;
+            border: $slider-track-border;
+            border-radius: $slider-track-radius;
+        }
 
-    &::-ms-thumb {
-        @include thumb;
-        margin-top: $slider-track-height / 4;
-    }
+        &::-webkit-slider-thumb {
+            @include thumb(setcolor(primary, enabled), setcolor(primary, hover), setcolor(primary, pressed));
+            -webkit-appearance: none;
+            margin-top: (($slider-track-height) / 2 - $slider-thumb-height / 2);
+        }
 
-    &:disabled {
-        &::-webkit-slider-thumb,
-        &::-moz-range-thumb,
-        &::-ms-thumb,
-        &::-webkit-slider-runnable-track,
-        &::-ms-fill-lower,
+        &::-moz-range-track {
+            @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+            @include track;
+            background: $slider-track-color;
+            border: $slider-track-border;
+            border-radius: $slider-track-radius;
+            height: $slider-track-height;
+        }
+
+        &::-moz-range-thumb {
+            @include thumb(setcolor(primary, enabled), setcolor(primary, hover), setcolor(primary, pressed));
+        }
+
+        &::-ms-track {
+            @include track;
+            background: transparent;
+            border-color: transparent;
+            border-width: ($slider-thumb-height / 2) 0;
+            color: transparent;
+        }
+
+        &::-ms-fill-lower {
+            @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+            background: $ie-bottom-track-color;
+            border: $slider-track-border;
+            border-radius: ($slider-track-radius * 2);
+        }
+
         &::-ms-fill-upper {
-            cursor: not-allowed;
+            @include shadow($slider-track-shadow-size, $slider-track-shadow-blur, $slider-track-shadow-color);
+            background: $slider-track-color;
+            border: $slider-track-border;
+            border-radius: ($slider-track-radius * 2);
+        }
+
+        &::-ms-thumb {
+            @include thumb(setcolor(primary, enabled), setcolor(primary, hover), setcolor(primary, pressed));
+            margin-top: $slider-track-height / 4;
+        }
+
+        &:disabled {
+            &::-webkit-slider-thumb,
+            &::-moz-range-thumb,
+            &::-ms-thumb,
+            &::-webkit-slider-runnable-track,
+            &::-ms-fill-lower,
+            &::-ms-fill-upper {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &.pd-slider-disabled {
+        &::-webkit-slider-thumb {
+            @include thumb($gray-disabled, $gray-disabled, $gray-disabled);
+            box-shadow: 0 0 0 0.125rem setcolor(primary, disabledContrast);
+            cursor: default;
+        }
+
+        &::-moz-range-thumb {
+            @include thumb($gray-disabled, $gray-disabled, $gray-disabled);
+            box-shadow: 0 0 0 0.125rem setcolor(primary, disabledContrast);
+            cursor: default;
+        }
+
+        &::-ms-thumb {
+            @include thumb($gray-disabled, $gray-disabled, $gray-disabled);
+            box-shadow: 0 0 0 0.125rem setcolor(primary, disabledContrast);
+            cursor: default;
+        }
+    }
+
+    &.pd-slider-readonly {
+        &::-webkit-slider-thumb {
+            @include thumb($gray-readonly, $gray-readonly, $gray-readonly);
+            box-shadow: 0 0 0 0.125rem setcolor(primary, readonlyContrast);
+            cursor: default;
+        }
+
+        &::-moz-range-thumb {
+            @include thumb($gray-readonly, $gray-readonly, $gray-readonly);
+            box-shadow: 0 0 0 0.125rem setcolor(primary, readonlyContrast);
+            cursor: default;
+        }
+
+        &::-ms-thumb {
+            @include thumb($gray-readonly, $gray-readonly, $gray-readonly);
+            box-shadow: 0 0 0 0.125rem setcolor(primary, readonlyContrast);
+            cursor: default;
+        }
+    }
+
+    &.pd-slider-error {
+        &::-webkit-slider-thumb {
+            @include thumb(setcolor(danger, enabled), setcolor(danger, hover), setcolor(danger, pressed));
+        }
+
+        &::-moz-range-thumb {
+            @include thumb(setcolor(danger, enabled), setcolor(danger, hover), setcolor(danger, pressed));
+        }
+
+        &::-ms-thumb {
+            @include thumb(setcolor(danger, enabled), setcolor(danger, hover), setcolor(danger, pressed));
         }
     }
 }

@@ -16,68 +16,53 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 5em;
-    height: 5em;
+    width: 5rem;
+    height: 5rem;
     color: $blue-whale;
+    fill: $blue-whale;
     border: none;
     overflow: hidden;
     text-decoration: none;
     background-color: transparent;
     cursor: pointer;
 
-    pd-icon {
-        fill: $blue-whale;
-    }
-
     & * {
-        font-size: 0.55rem;
+        font-size: 0.5625rem;
         line-height: 0.75rem;
         font-weight: 700;
     }
 
-    &:hover {
-        background-color: $cyan-6;
-        color: $white;
-        pd-icon {
-            fill: $white;
-        }
-    }
-
-    &:focus {
-        background-color: $yellow-1;
-
-        &:hover {
-            color: $blue-whale;
-
-            pd-icon {
-                fill: $blue-whale;
-            }
-        }
-    }
-
-    &:active {
-        background-color: $cyan-3;
+    &.pd-sidebar-active {
+        background-color: $wild-sand;
         color: $blue-whale;
     }
 
-    &.pd-sidebar-active {
-        background-color: $wild-sand;
-        cursor: default;
+    &:hover {
+        background-color: setcolor(primary, hover);
+        color: setcolor(primary, hoverContrast);
+        fill: setcolor(primary, hoverContrast);
+    }
 
-        &:hover {
-            background-color: $cyan-6;
-            color: $blue-whale;
-        }
+    &:focus-visible {
+        background-color: $yellow-2;
+        color: $blue-whale;
+        fill: $blue-whale;
+    }
+
+    &:active {
+        background-color: setcolor(primary, pressed);
+        color: setcolor(primary, pressedContrast);
+        fill: setcolor(primary, pressedContrast);
     }
 }
 
 .pd-sidebar-text {
     text-align: center;
-    padding: 0 0.375em;
+    padding: 0 0.375rem;
 }
 
 .pd-sidebar-icon {
-    padding: 0.375em;
+    padding: 0.375rem;
     font-weight: normal;
-    font-size: 1em;
+    font-size: 1rem;
 }

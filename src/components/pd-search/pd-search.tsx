@@ -1,6 +1,6 @@
-import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element, State } from '@stencil/core';
-import { InputChangeEventDetail } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { InputChangeEventDetail } from '../../interface';
 
 @Component({
     tag: 'pd-search',
@@ -12,7 +12,7 @@ export class Search {
     @Element() element!: HTMLElement;
     private inputElement?: HTMLInputElement;
     private menuElement: HTMLElement;
-    private labelElement: HTMLElement;
+    private wrapperElement: HTMLElement;
     private popper: Instance;
 
     /**
@@ -47,6 +47,11 @@ export class Search {
      * Show matching parts in resuls as highlighted
      */
     @Prop() highlight?: boolean = true;
+
+    /**
+     * Input tag size (check pd-input 'size' for more info)
+     */
+    @Prop() size?: number = 1;
 
     /**
      * Emitted when a keyboard input occurred.
@@ -108,7 +113,7 @@ export class Search {
     }
 
     protected componentDidLoad() {
-        this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
+        this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
     protected componentDidUpdate() {
@@ -247,14 +252,13 @@ export class Search {
         return (
             <Host role="search">
                 <label
-                    ref={(el) => (this.labelElement = el)}
                     class={{
                         'pd-search-label': true,
                         'pd-search-disabled': this.disabled,
                     }}
                 >
                     {this.renderLabel()}
-                    <div class="pd-search-input-wrapper">
+                    <div class="pd-search-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
                         <input
                             class="pd-search-input"
                             ref={(el) => (this.inputElement = el)}
@@ -265,6 +269,7 @@ export class Search {
                             onInput={this.onInput}
                             onBlur={this.onBlur}
                             onFocus={this.onFocus}
+                            size={this.size}
                         />
                         <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
                             <pd-icon class="pd-search-clear-icon" name="cancel" size={2.4}></pd-icon>

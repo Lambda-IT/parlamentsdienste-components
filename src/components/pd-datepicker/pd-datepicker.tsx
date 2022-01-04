@@ -1,7 +1,7 @@
-import { Component, Host, h, Element, Event, EventEmitter, Prop, Method, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
 import flatpickr from 'flatpickr';
 import { Instance } from 'flatpickr/dist/types/instance';
-import { Options, DateOption, BaseOptions } from 'flatpickr/dist/types/options';
+import { BaseOptions, DateOption, Options } from 'flatpickr/dist/types/options';
 
 @Component({
     tag: 'pd-datepicker',
@@ -50,6 +50,9 @@ export class Datepicker {
      */
     @Prop() label?: string;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**
@@ -58,9 +61,19 @@ export class Datepicker {
     @Prop() placeholder?: string | null;
 
     /**
+     * Allow manual input
+     */
+    @Prop() allowInput: boolean = false;
+
+    /**
      * Default vertical adjustment for inline forms
      */
     @Prop() verticalAdjust: boolean = false;
+
+    /**
+     * Input tag size (check pd-input 'size' for more info)
+     */
+    @Prop() size?: number = 1;
 
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
@@ -71,6 +84,8 @@ export class Datepicker {
         onYearChange: (selectedDates, dateStr) => this.pdYearChange.emit({ selectedDates, dateStr }),
         onReady: (selectedDates, dateStr) => this.pdReady.emit({ selectedDates, dateStr }),
         onValueUpdate: (selectedDates, dateStr) => this.pdValueUpdate.emit({ selectedDates, dateStr }),
+        allowInput: this.allowInput,
+        disableMobile: true,
     };
 
     @Watch('date')
@@ -151,19 +166,27 @@ export class Datepicker {
                         'pd-datepicker-label': true,
                         'pd-datepicker-disabled': this.disabled,
                         'pd-datepicker-readonly': this.readonly,
+                        'pd-datepicker-error': this.error,
+                        'pd-datepicker-allowinput': this.allowInput,
                     }}
-                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5rem' } : {}}
+                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {}}
                 >
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">
                         <pd-input
-                            class="pd-datepicker-input"
+                            class={{
+                                'pd-datepicker-input': true,
+                                'pd-datepicker-disabled': this.disabled,
+                                'pd-datepicker-readonly': this.readonly,
+                                'pd-datepicker-error': this.error,
+                            }}
                             disabled={this.disabled}
                             readonly={this.readonly}
                             required={this.required}
                             error={this.error}
                             placeholder={this.placeholder}
                             tabindex={this.readonly ? '-1' : null} // this is not an optimal solution as it removes ability to copy&paste with focus
+                            size={this.size}
                             data-input
                         />
                         {this.renderIcon()}

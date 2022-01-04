@@ -13,19 +13,19 @@
 
 .pd-dropdown-item {
     width: 100%;
-    padding: 0.75em 0.825em;
+    padding: 0.75rem 0.825rem;
     display: flex;
     align-items: center;
     cursor: pointer;
 
     &:hover {
         background-color: setcolor(primary, enabled);
-        color: $white;
+        color: setcolor(primary, enabledContrast);
     }
 
     &:active {
         background-color: setcolor(primary, pressed);
-        color: $pd-black;
+        color: setcolor(primary, pressedContrast);
     }
 
     strong {
@@ -44,11 +44,12 @@
 
         &:hover {
             background-color: setcolor(primary, enabled);
-            color: $white;
+            color: setcolor(primary, enabledContrast);
         }
 
         &:active {
             background-color: setcolor(primary, pressed);
+            color: setcolor(primary, pressedContrast);
         }
     }
 }

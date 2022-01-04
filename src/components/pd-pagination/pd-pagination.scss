@@ -19,11 +19,11 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    border: 0.125em solid $gray-3;
-    min-width: 2.25em;
+    border: 0.125rem solid $gray-3;
+    min-width: 2.25rem;
     color: setcolor(primary, enabled);
     background-color: white;
-    padding: 0.25em;
+    padding: 0.25rem;
 
     &:hover {
         background-color: setcolor(primary, hover);
@@ -36,15 +36,19 @@
         color: white;
     }
 
+    &:focus-visible {
+        background-color: $focus;
+    }
+
     span {
-        margin-top: -0.2em;
+        margin-top: -0.2rem;
     }
 }
 
 .pd-pagination-first {
     border-right: none;
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
 }
 
 .pd-pagination-page,
@@ -54,8 +58,8 @@
 }
 
 .pd-pagination-last {
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
 }
 
 .pd-pagination-active {
@@ -65,16 +69,17 @@
 }
 
 .pd-pagination-simple {
+    background-color: $white;
     border: 0.125em solid $gray-3;
     border-right: none;
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
     justify-items: end;
-    padding: 0 0.25em;
+    padding: 0 0.25rem;
 }
 
 .pd-pagination-number {
-    padding: 0 0.25em;
+    padding: 0 0.25rem;
     font-weight: 900;
 }

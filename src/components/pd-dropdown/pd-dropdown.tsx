@@ -63,6 +63,9 @@ export class Dropdown {
      */
     @Prop() required = false;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
 
     /**
@@ -94,8 +97,6 @@ export class Dropdown {
     @Listen('click', { target: 'body' })
     protected handleClick(ev: MouseEvent) {
         if (closestParentElement('pd-dropdown', ev.composedPath()) !== this.element) this.open = false;
-        console.log(`PD-DROPDOWN (ComposedPath): `, ev.composedPath());
-        console.log(`PD-DROPDOWN (click / isOpen): `, this.open);
     }
 
     @Listen('keydown')
@@ -161,7 +162,6 @@ export class Dropdown {
 
     private toggleDropdown = () => {
         this.open = !this.open;
-        console.log(`PD-DROPDOWN (toggle / isOpen): `, this.open);
     };
 
     @State() selectedItem: any;
@@ -199,7 +199,7 @@ export class Dropdown {
 
     public render() {
         return (
-            <Host class={this.error ? 'pd-dropdown-error' : ''}>
+            <Host>
                 <label
                     class={{
                         'pd-dropdown-label': true,
@@ -210,8 +210,12 @@ export class Dropdown {
                     {this.renderLabel()}
                 </label>
                 <div
-                    class={{ 'pd-dropdown': true, 'pd-dropdown-readonly': this.readonly }}
-                    style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5rem' } : {}}
+                    class={{
+                        'pd-dropdown': true,
+                        'pd-dropdown-readonly': this.readonly,
+                        'pd-dropdown-error': this.error,
+                    }}
+                    style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}
                 >
                     <button
                         ref={(el) => (this.buttonElement = el)}
@@ -277,6 +281,6 @@ export class Dropdown {
     private renderLabel() {
         if (!this.label) return;
 
-        return <div class="pd-combobox-label-text">{this.label}</div>;
+        return <span class="pd-combobox-label-text">{this.label}</span>;
     }
 }

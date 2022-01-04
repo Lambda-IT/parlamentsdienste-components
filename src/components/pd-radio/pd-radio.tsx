@@ -34,9 +34,19 @@ export class Radio {
     @Prop() disabled: boolean = false;
 
     /**
+     * If `true`, the user cannot modify the value.
+     */
+    @Prop() readonly = false;
+
+    /**
      * Default vertical adjustment for inline forms
      */
     @Prop() verticalAdjust: boolean = false;
+
+    /**
+     * Shows error state
+     */
+    @Prop() error: boolean = false;
 
     public render() {
         const { name, value, label, checked } = this;
@@ -48,7 +58,11 @@ export class Radio {
                 aria-disabled={this.disabled ? 'true' : 'false'}
             >
                 <label
-                    class="pd-radio-label"
+                    class={{
+                        'pd-radio-label': true,
+                        'pd-radio-readonly': this.readonly,
+                        'pd-radio-error': this.error,
+                    }}
                     style={this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}}
                 >
                     <input
@@ -58,6 +72,7 @@ export class Radio {
                         name={name}
                         value={value}
                         disabled={this.disabled}
+                        readonly={this.readonly}
                     />
                     <div class="pd-radio-inner"></div>
                     <div class="pd-radio-text">{label}</div>

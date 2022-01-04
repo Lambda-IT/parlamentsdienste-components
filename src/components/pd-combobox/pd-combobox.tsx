@@ -1,6 +1,6 @@
-import { Component, Host, h, Event, EventEmitter, Watch, Method, Prop, Listen, Element, State } from '@stencil/core';
-import { InputChangeEventDetail, ComboboxItem } from '../../interface';
 import { createPopper, Instance } from '@popperjs/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { ComboboxItem, InputChangeEventDetail } from '../../interface';
 
 @Component({
     tag: 'pd-combobox',
@@ -13,7 +13,7 @@ export class Combobox {
 
     @Element() element!: HTMLElement;
     private menuElement: HTMLElement;
-    private labelElement: HTMLElement;
+    private wrapperElement: HTMLElement;
     private popper: Instance;
 
     /**
@@ -64,7 +64,15 @@ export class Combobox {
      */
     @Prop() highlight?: boolean = true;
 
+    /**
+     * Shows error state
+     */
     @Prop() error: boolean = false;
+
+    /**
+     * Input tag size (check pd-input 'size' for more info)
+     */
+    @Prop() size?: number = 1;
 
     /**
      * Default vertical adjustment for inline forms
@@ -125,14 +133,13 @@ export class Combobox {
 
     @Watch('selectedItem')
     protected indexChanged(index: number) {
-        const menu = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
 
         dropdownItemNodes.forEach((item, itemIndex) => {
             const centerItem = Math.ceil(5 / 2) - 1;
-            if (itemIndex === index) menu.scrollTop = item.offsetTop - 48 * centerItem;
+            if (itemIndex === index) this.menuElement.scrollTop = item.offsetTop - 48 * centerItem;
         });
 
         this.pdChange.emit(this.selectedItem);
@@ -152,9 +159,7 @@ export class Combobox {
     }
 
     protected componentDidLoad() {
-        this.menuElement = this.element.shadowRoot.querySelector('.pd-combobox-dropdown') as HTMLElement;
-        this.labelElement = this.element.shadowRoot.querySelector('.pd-combobox-label') as HTMLElement;
-        this.popper = this.createMenuPopper(this.labelElement, this.menuElement);
+        this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
     protected componentDidUpdate() {
@@ -181,7 +186,7 @@ export class Combobox {
     protected handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
-                this.open = true;
+                this.open = false;
                 break;
             }
             case 'Escape': {
@@ -326,22 +331,19 @@ export class Combobox {
 
     public render() {
         return (
-            <Host role="combobox" class={this.error ? 'pd-combobox-error' : ''}>
+            <Host role="combobox">
                 <label
                     class={{
                         'pd-combobox-label': true,
                         'pd-combobox-disabled': this.disabled,
-                        'pd-combobox-selectable': this.selectable,
                         'pd-combobox-readonly': this.readonly,
-                        'pd-combobox-item-selected': this.selectedItem ? true : false,
+                        'pd-combobox-error': this.error,
+                        'pd-combobox-item-selected': !!this.selectedItem,
                     }}
-                    style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5rem' } : {}}
+                    style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
                     {this.renderLabel()}
-                    <div class="pd-combobox-input-wrapper">
-                        <button class="pd-combobox-icon left" tabindex="-1">
-                            <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
-                        </button>
+                    <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
                         <input
                             class="pd-combobox-input"
                             ref={(input) => (this.nativeInput = input)}
@@ -354,7 +356,11 @@ export class Combobox {
                             onInput={this.onInput}
                             onBlur={this.onBlur}
                             onFocus={this.onFocus}
+                            size={this.size}
                         />
+                        <button class="pd-combobox-icon left" tabindex="-1">
+                            <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
+                        </button>
                         <button class="pd-combobox-icon right" tabindex="-1">
                             <pd-icon
                                 onClick={this.onClickInput}
@@ -380,6 +386,7 @@ export class Combobox {
     private renderDropdownItems() {
         return (
             <div
+                ref={(input) => (this.menuElement = input)}
                 class="pd-combobox-dropdown"
                 style={{
                     display: this.open ? 'block' : 'none',

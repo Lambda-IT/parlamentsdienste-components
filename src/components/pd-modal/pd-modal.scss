@@ -24,9 +24,9 @@
     background-color: #fff;
     box-shadow: 0px 0px 8px rgba($color: $pd-black, $alpha: 0.45);
     z-index: 10;
-    padding: 1.25em;
+    padding: 1.25rem;
     position: relative;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     width: var(--pd-modal-width, unset);
     height: var(--pd-modal-height, unset);
     min-width: var(--pd-modal-min-width, unset);
@@ -38,7 +38,7 @@
 .pd-modal-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.875em;
+    margin-bottom: 1.875rem;
 
     .pd-modal-title {
         font-weight: 700;
@@ -48,14 +48,14 @@
 
     .pd-modal-close {
         fill: setcolor(primary, enabled);
-        margin-left: 1em;
+        margin-left: 1rem;
         cursor: pointer;
-        min-width: 1em;
+        min-width: 1rem;
         padding: 0;
         margin: 0;
         background-color: transparent;
         border: none;
-        line-height: 1em;
+        line-height: 1rem;
 
         &:hover {
             fill: setcolor(primary, hover);
@@ -65,7 +65,7 @@
             fill: setcolor(primary, pressed);
         }
 
-        &:focus {
+        &:focus-visible {
             fill: $focus;
         }
     }

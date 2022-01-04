@@ -1,8 +1,8 @@
 :host {
     display: block;
-    padding: 1.25em;
-    box-shadow: 0 0 0.5em rgba($color: $pd-black, $alpha: 0.45);
-    border-radius: 0.25em;
+    padding: 1.25rem;
+    box-shadow: 0 0 0.5rem rgba($color: $pd-black, $alpha: 0.45);
+    border-radius: 0.25rem;
     background-color: $white;
 }
 
@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.375em;
+    margin-bottom: 1.375rem;
 
     .pd-toast-title {
         font-weight: 700;
@@ -34,8 +34,8 @@
         max-width: 50%;
 
         .pd-toast-info {
-            font-size: 0.875em;
-            margin-left: 1em;
+            font-size: 0.875rem;
+            margin-left: 1rem;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -47,18 +47,18 @@
             padding: 0;
             background-color: transparent;
             border: none;
-            margin-left: 1em;
-            margin-right: -0.5em;
-            margin-top: -0.5em;
+            margin-left: 1rem;
+            margin-right: -0.5rem;
+            margin-top: -0.5rem;
             cursor: pointer;
 
-            &:focus .pd-toast-close {
+            &:focus-visible .pd-toast-close {
                 fill: $focus;
             }
 
             .pd-toast-close {
                 fill: setcolor(primary, enabled);
-                min-width: 1em;
+                min-width: 1rem;
 
                 &:hover {
                     fill: setcolor(primary, hover);

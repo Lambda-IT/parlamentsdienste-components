@@ -24,11 +24,26 @@
     outline: none;
 }
 
+.pd-panel-header-icons {
+    margin-right: -0.375rem;
+    display: flex;
+    fill: setcolor(primary, pressed);
+
+    ::slotted(pd-icon:hover),
+    pd-icon:hover {
+        fill: setcolor(primary, hover);
+    }
+
+    ::slotted(pd-icon:active),
+    pd-icon:active {
+        fill: $white;
+    }
+}
+
 .pd-panel-header-content {
     flex: 1 1 auto;
 }
 .pd-panel-header-collapse {
     display: flex;
     align-items: center;
-    fill: $white;
 }
