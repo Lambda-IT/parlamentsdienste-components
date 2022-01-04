@@ -215,7 +215,7 @@ export class Dropdown {
                         'pd-dropdown-readonly': this.readonly,
                         'pd-dropdown-error': this.error,
                     }}
-                    style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5rem' } : {}}
+                    style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}
                 >
                     <button
                         ref={(el) => (this.buttonElement = el)}

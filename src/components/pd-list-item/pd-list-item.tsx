@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 import { PdStatus } from '../../interface';
 
 @Component({
@@ -38,15 +38,15 @@ export class PdListItem {
     private renderIcon() {
         switch (this.status) {
             case 'success':
-                return <pd-icon name="status_green" size={3.6}></pd-icon>;
+                return <pd-icon name="status_green" size={2.2}></pd-icon>;
             case 'warning':
-                return <pd-icon name="status_orange" size={3.6}></pd-icon>;
+                return <pd-icon name="status_orange" size={2.2}></pd-icon>;
             case 'danger':
-                return <pd-icon name="status_red" size={3.6}></pd-icon>;
+                return <pd-icon name="status_red" size={2.2}></pd-icon>;
             case 'info':
-                return <pd-icon name="status_blue" size={3.6}></pd-icon>;
+                return <pd-icon name="status_blue" size={2.2}></pd-icon>;
             case 'unset':
-                return <pd-icon name="status_undefined" size={3.6}></pd-icon>;
+                return <pd-icon name="status_undefined" size={2.2}></pd-icon>;
             default:
                 break;
         }

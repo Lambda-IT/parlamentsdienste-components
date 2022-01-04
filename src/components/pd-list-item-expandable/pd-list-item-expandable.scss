@@ -50,17 +50,21 @@
     .pd-list-item-expandable-edit {
         background-color: transparent;
         border: none;
-        fill: $cyan-9;
+        fill: setcolor(primary, enabled);
         cursor: pointer;
         padding: 0 0 0 0.125rem;
         margin: 0;
 
         &:hover {
-            fill: $cyan-6;
+            fill: setcolor(primary, hover);
         }
 
         &:focus-visible {
             fill: $focus;
+        }
+
+        &:active {
+            fill: setcolor(primary, pressed);
         }
     }
 

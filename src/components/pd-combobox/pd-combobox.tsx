@@ -340,7 +340,7 @@ export class Combobox {
                         'pd-combobox-error': this.error,
                         'pd-combobox-item-selected': !!this.selectedItem,
                     }}
-                    style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5rem' } : {}}
+                    style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
                     {this.renderLabel()}
                     <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>

@@ -238,7 +238,7 @@ export class Input {
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
-                        style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5rem' } : {}}
+                        style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
                     />
                 </label>
             </Host>

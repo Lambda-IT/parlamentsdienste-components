@@ -36,6 +36,16 @@
         display: flex;
         align-items: center;
 
+        &:hover {
+            .pd-menu-label {
+                color: setcolor(primary, hover);
+            }
+
+            .pd-menu-icon {
+                fill: setcolor(primary, hover);
+            }
+        }
+
         &:focus-visible {
             .pd-menu-label {
                 color: $focus;
@@ -43,6 +53,16 @@
 
             .pd-menu-icon {
                 fill: $focus;
+            }
+        }
+
+        &:active {
+            .pd-menu-label {
+                color: setcolor(primary, pressed);
+            }
+
+            .pd-menu-icon {
+                fill: setcolor(primary, pressed);
             }
         }
 

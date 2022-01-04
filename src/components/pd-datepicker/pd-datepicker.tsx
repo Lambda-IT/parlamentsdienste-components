@@ -169,7 +169,7 @@ export class Datepicker {
                         'pd-datepicker-error': this.error,
                         'pd-datepicker-allowinput': this.allowInput,
                     }}
-                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5rem' } : {}}
+                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {}}
                 >
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">

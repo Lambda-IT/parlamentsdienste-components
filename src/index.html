@@ -59,6 +59,32 @@
     <body>
         <div class="example-components">
             <details open>
+                <summary>Typography</summary>
+                <details>
+                    <summary>Header</summary>
+                    <h1>h1. Heading</h1>
+                    <h2>h2. Heading</h2>
+                    <h3>h3. Heading</h3>
+                    <h4>h4. Heading</h4>
+                    <h5>h5. Heading</h5>
+                    <h6>h6. Heading</h6>
+                </details>
+
+                <details>
+                    <summary>Inline</summary>
+                    <p>You can use the <mark>mark</mark> tag to highlight text.</p>
+                    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+                    <p><del>This line of text is meant to be treated as no longer accurate.</del></p>
+                    <p style="text-decoration: underline;">
+                        This line of text is meant to be treated as an addition to the document.
+                    </p>
+                    <p style="text-decoration: underline;">This line of text will render as underlined</p>
+                    <p style="font: 14px/20px Avenir;">This line of text is meant to be treated as fine print.</p>
+                    <p><strong>This line rendered as bold text.</strong></p>
+                    <p><i>This line rendered as italicized text.</i></p>
+                </details>
+            </details>
+            <details open>
                 <summary>Buttons</summary>
                 <details>
                     <summary>Buttons</summary>
@@ -70,7 +96,7 @@
                         <span>Outline Enabled</span>
                         <span>Outline Disable</span>
 
-                        <span>Primary</span>
+                        <span>Primary</span>jnhghbzvnghztb
                         <pd-button>Button</pd-button>
                         <pd-button disabled>Button</pd-button>
                         <pd-button outline>Button</pd-button>
@@ -474,6 +500,35 @@
             <details open>
                 <summary>Page Elements</summary>
                 <details>
+                    <summary>Card</summary>
+                    <div class="mt-3 ml-3 card" style="width: 18rem;">
+                        <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                        </div>
+                        <pd-list>
+                            <pd-list-item>
+                                <span>Cras justo odio</span>
+                            </pd-list-item>
+                            <pd-list-item>
+                                <span>Dapibus ac facilisis in</span>
+                            </pd-list-item>
+                            <pd-list-item>
+                                <span>Vestibulum at eros</span>
+                            </pd-list-item>
+                        </pd-list>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
                     <summary>Timeline</summary>
                     <pd-timeline start="true" end="true">
                         <pd-timeline-date date="13.03.2019" header="Ständerat">Annahme</pd-timeline-date>
@@ -496,30 +551,24 @@
 
                 <details>
                     <summary>List</summary>
+                    <h2>List item</h2>
                     <pd-list>
-                        <pd-list-item-expandable expandable edit menu>
-                            <div>form expandable</div>
+                        <pd-list-item>List item</pd-list-item>
+                        <pd-list-item status="unset">Success</pd-list-item>
+                        <pd-list-item status="success">Success</pd-list-item>
+                        <pd-list-item status="info">Info</pd-list-item>
+                        <pd-list-item status="danger">Danger</pd-list-item>
+                        <pd-list-item status="warning">Warning</pd-list-item>
+                    </pd-list>
+                    <h2>List item expandable</h2>
+                    <pd-list>
+                        <pd-list-item-expandable expandable>
+                            <div>Expandable List Item</div>
                             <div slot="expandable">
-                                <form>
-                                    <pd-input
-                                        style="width: 100%;"
-                                        readonly
-                                        placeholder="placeholder"
-                                        label="input"
-                                    ></pd-input>
-                                    <div style="display: flex; justify-content: space-between;">
-                                        <pd-datepicker
-                                            style="width: 100%;"
-                                            label="normal"
-                                            placeholder="date1"
-                                        ></pd-datepicker>
-                                        <pd-datepicker
-                                            style="width: 100%;"
-                                            label="normal"
-                                            placeholder="date2"
-                                        ></pd-datepicker>
-                                    </div>
-                                </form>
+                                <span
+                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem
+                                    obcaecati quo inventore numquam aliquid nulla nisi! Eveniet, quam!</span
+                                >
                             </div>
                             <pd-menu-item text="Drucken" slot="menu">
                                 <pd-icon size="2" name="print"></pd-icon>
@@ -528,36 +577,21 @@
                                 <pd-icon size="2" name="print"></pd-icon>
                             </pd-menu-item>
                         </pd-list-item-expandable>
-                        <pd-list-item-expandable status="success" edit expandable menu checked checkbox
-                            ><div>item 1</div>
+                        <pd-list-item-expandable status="success" expandable edit menu checked checkbox>
+                            <div>Expandable List Item</div>
                             <div slot="expandable">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit
-                                architecto earum sed ducimus quo voluptate recusandae perferendis.
+                                <span
+                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem
+                                    obcaecati quo inventore numquam aliquid nulla nisi! Eveniet, quam!</span
+                                >
                             </div>
-                            <pd-menu-item text="Drucken" slot="menu">
-                                <pd-icon size="2" name="print"></pd-icon>
+                            <pd-menu-item text="Edit" slot="menu">
+                                <pd-icon size="2" name="edit"></pd-icon>
                             </pd-menu-item>
                             <pd-menu-item text="Drucken" slot="menu">
                                 <pd-icon size="2" name="print"></pd-icon>
                             </pd-menu-item>
-                            <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
                         </pd-list-item-expandable>
-                        <pd-list-item-expandable edit expandable menu
-                            ><div>item 1.a without status</div>
-                            <div slot="expandable">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem similique ab fugit
-                                architecto earum sed ducimus quo voluptate recusandae perferendis.
-                            </div>
-                            <pd-menu-item text="Drucken" slot="menu">
-                                <pd-icon size="2" name="print"></pd-icon>
-                            </pd-menu-item>
-                            <pd-menu-item text="Drucken" slot="menu">
-                                <pd-icon size="2" name="print"></pd-icon>
-                            </pd-menu-item>
-                            <pd-icon slot="action-right" name="status_green" size="{2.5}"></pd-icon>
-                        </pd-list-item-expandable>
-                        <pd-list-item-expandable status="danger">item 2</pd-list-item-expandable>
-                        <pd-list-item-expandable status="warning">item 3</pd-list-item-expandable>
                     </pd-list>
                 </details>
 
@@ -583,7 +617,13 @@
 
                 <details>
                     <summary>Breadcrumbs</summary>
-                    <pd-breadcrumbs id="pd-breadcrumbs-0"></pd-breadcrumbs>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ol>
+                    </nav>
                 </details>
 
                 <details>
@@ -682,7 +722,7 @@
                     <summary>Inline Form</summary>
                     <h1>Header 1</h1>
                     <h2>Inline Form Check 1</h2>
-                    <div style="display: flex;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 0.5fr 1fr 0.5fr 1fr; grid-gap: 1rem;">
                         <pd-input placeholder="without label" vertical-adjust></pd-input>
                         <pd-input placeholder="with label" label="Inline: Label"></pd-input>
                         <pd-radio name="x" value="0" label="0%" vertical-adjust></pd-radio>
@@ -694,7 +734,7 @@
                         ></pd-datepicker>
                     </div>
                     <h2>Inline Form Check 2</h2>
-                    <div style="display: flex;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 0.25fr 1fr; grid-gap: 1rem;">
                         <pd-input placeholder="without label" vertical-adjust></pd-input>
                         <pd-input placeholder="with label" label="Inline: Label"></pd-input>
                         <pd-checkbox text="checkbox" vertical-adjust></pd-checkbox>
@@ -704,9 +744,9 @@
 
                 <details>
                     <summary>Form</summary>
-                    <form style="display: flex; justify-content: space-between;">
+                    <form style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1rem;">
                         <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
-                        <pd-datepicker style="width: 100%;" label="normal" placeholder="formgroup"></pd-datepicker>
+                        <pd-datepicker style="width: 100%;" label="normal"></pd-datepicker>
                     </form>
                 </details>
             </details>
