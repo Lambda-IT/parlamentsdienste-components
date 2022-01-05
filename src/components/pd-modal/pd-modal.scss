@@ -47,15 +47,11 @@
     }
 
     .pd-modal-close {
+        @include invisibleButton;
         fill: setcolor(primary, enabled);
-        margin-left: 1rem;
-        cursor: pointer;
-        min-width: 1rem;
-        padding: 0;
-        margin: 0;
-        background-color: transparent;
-        border: none;
-        line-height: 1rem;
+        margin-top: -0.475rem;
+        margin-right: -0.475rem;
+        margin-left: 0.5rem;
 
         &:hover {
             fill: setcolor(primary, hover);
@@ -63,10 +59,6 @@
 
         &:active {
             fill: setcolor(primary, pressed);
-        }
-
-        &:focus-visible {
-            fill: $focus;
         }
     }
 }

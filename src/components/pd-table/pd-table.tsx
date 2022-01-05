@@ -588,12 +588,9 @@ export class Table {
             );
         else
             return (
-                <pd-icon
-                    class="pd-table-filter-icon"
-                    onClick={(ev) => this.openFilter(ev, headerCol.columnName)}
-                    name="filter"
-                    size={2}
-                ></pd-icon>
+                <button class="pd-table-filter" onClick={(ev) => this.openFilter(ev, headerCol.columnName)}>
+                    <pd-icon class="pd-table-filter-icon" name="filter" size={2}></pd-icon>
+                </button>
             );
     }
 
@@ -601,9 +598,8 @@ export class Table {
         if (!visible) return;
         return (
             <button class="pd-table-action-btn">
-                {/* TODO: if possible replace target with ev.composedPath() for more accurate target*/}
                 <pd-icon
-                    size={2}
+                    size={2.375}
                     name={icon}
                     onClick={(ev) => {
                         ev.stopPropagation();

@@ -53,7 +53,7 @@
             cursor: pointer;
 
             &:focus-visible .pd-toast-close {
-                fill: $focus;
+                @include focusRing;
             }
 
             .pd-toast-close {

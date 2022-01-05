@@ -90,15 +90,15 @@ export class PdTableFilter {
                             onKeyDown={(ev) => this.onSubmit(ev)}
                         />
                         <button class="pd-table-search-button" onClick={this.onSearch} tabindex="-1">
-                            <pd-icon class="pd-table-search-button-icon" name="search" size={2.4}></pd-icon>
+                            <pd-icon class="pd-table-search-button-icon" name="search" size={2.375}></pd-icon>
                         </button>
                     </div>
                     <button class="pd-table-filter-clear" onClick={this.onClear}>
-                        <pd-icon class="pd-table-filter-close" size={2.5} name="close"></pd-icon>
+                        <pd-icon class="pd-table-filter-close" size={2.375} name="close"></pd-icon>
                     </button>
                 </div>
                 <button class="pd-table-filter-confirm" onClick={this.onConfirm}>
-                    <pd-icon name="confirm" size={2.8}></pd-icon>
+                    <pd-icon name="confirm" size={2.375}></pd-icon>
                 </button>
             </Host>
         );

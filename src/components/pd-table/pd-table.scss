@@ -145,8 +145,8 @@
     background: transparent;
 
     .pd-table-action-btn {
-        border: none;
-        background: transparent;
+        @include invisibleButton;
+        margin: 0 0.25rem;
         fill: setcolor(primary, enabled);
         cursor: pointer;
 
@@ -170,28 +170,31 @@
     font-weight: 700;
 }
 
+.pd-table-filter {
+    @include invisibleButton;
+}
+
 .pd-table-filter-clear {
     display: flex;
     fill: $white;
     align-items: center;
-    padding: 0.1em;
-    margin-left: 0.2em;
+    padding: 0.1rem;
+    margin-left: 0.2rem;
     background-color: $cyan-9;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     border: none;
     cursor: pointer;
 
     &:focus-visible {
         background-color: $focus;
+        fill: $blue-whale;
     }
 
     .pd-table-filter-clear-button {
+        @include invisibleButton;
         display: flex;
         align-items: center;
         color: $white;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
     }
 }
 

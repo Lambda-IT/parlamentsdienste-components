@@ -80,3 +80,22 @@
         appearance: none;
     }
 }
+
+@mixin focusRing {
+    border-radius: 2px;
+    box-shadow: 0 0 1px 3px $yellow-4;
+    outline: none;
+}
+
+@mixin invisibleButton {
+    cursor: pointer;
+    appearance: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    &:focus-visible {
+        @include focusRing;
+    }
+}
