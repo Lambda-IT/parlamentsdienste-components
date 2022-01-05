@@ -2,7 +2,7 @@ FROM node:12-alpine as ui-builder
 WORKDIR /app
 COPY . .
 
-RUN apk add python make gcc g++
+RUN apk add python3 make gcc g++
 RUN npm install
 RUN npm run build
 RUN npm run build-storybook
