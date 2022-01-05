@@ -34,6 +34,7 @@ export interface TabValue {
 
 | Property | Attribute | Description       | Type         | Default |
 | -------- | --------- | ----------------- | ------------ | ------- |
+| `light`  | `light`   | List of tab texts | `boolean`    | `false` |
 | `tabs`   | --        | List of tab texts | `TabValue[]` | `[]`    |
 
 

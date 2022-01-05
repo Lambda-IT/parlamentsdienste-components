@@ -10,6 +10,7 @@ export default {
     },
     argTypes: {
         tabs: { control: { type: 'array' } },
+        light: { control: { type: 'boolean' } },
     },
 };
 
@@ -19,6 +20,7 @@ export const Tabs = (args) => {
     const tabs = document.createElement('pd-tabs');
     tabs.classList = ['m-3'];
     tabs.tabs = args.tabs;
+    tabs.light = args.light;
 
     return tabs;
 };
@@ -30,4 +32,5 @@ Tabs.args = {
         { id: 2, text: 'Tab three', checked: true },
         { id: 3, text: 'Tab four' },
     ],
+    light: false,
 };

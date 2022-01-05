@@ -15,6 +15,11 @@ export class PdTabs {
     @Prop() tabs: TabValue[] = [];
 
     /**
+     * Light mode
+     */
+    @Prop() light: boolean = false;
+
+    /**
      * Emitted when the value has changed.
      */
     @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<TabValue>;
@@ -28,7 +33,7 @@ export class PdTabs {
             <Host>
                 {this.tabs.map((tab) => {
                     return (
-                        <div class="pd-tabs-control">
+                        <div class={{ 'pd-tabs-control': true, 'pd-tabs-light': this.light }}>
                             <label class="pd-tabs-label">
                                 <input
                                     checked={tab?.checked}

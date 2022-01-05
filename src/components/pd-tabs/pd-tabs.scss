@@ -2,6 +2,15 @@
     display: flex;
 }
 
+*,
+::before,
+::after {
+    font-weight: 500;
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
 .pd-tabs-visually-hidden {
     position: absolute;
     left: -10000px;
@@ -43,6 +52,37 @@
             &:active {
                 background-color: setcolor(primary, enabled);
                 color: setcolor(primary, enabledContrast);
+            }
+        }
+    }
+
+    &.pd-tabs-light {
+        .pd-tabs-label {
+            background-color: transparent;
+            .pd-tabs-radio:checked + .pd-tabs-text {
+                background-color: transparent;
+                color: $pd-black;
+                border-bottom: 0.125rem solid $blue-whale;
+            }
+
+            .pd-tabs-radio:focus-visible + .pd-tabs-text {
+                background-color: $focus;
+                color: $blue-whale;
+            }
+
+            .pd-tabs-text {
+                background-color: transparent;
+                color: setcolor(primary, enabled);
+
+                &:hover {
+                    background-color: transparent;
+                    color: setcolor(primary, hover);
+                }
+
+                &:active {
+                    background-color: transparent;
+                    color: setcolor(primary, pressed);
+                }
             }
         }
     }
