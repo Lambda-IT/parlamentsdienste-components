@@ -6,6 +6,7 @@ export const config: Config = {
     srcDir: 'src',
     srcIndexHtml: 'vue.html',
     globalStyle: 'src/styles/pd-bootstrap.scss',
+    buildEs5: 'prod',
     outputTargets: [
         {
             type: 'dist',
