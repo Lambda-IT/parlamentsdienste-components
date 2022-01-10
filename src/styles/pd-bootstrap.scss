@@ -60,6 +60,9 @@ h6 {
 
 a {
     font-weight: 500;
+    &:focus-visible {
+        @include focus;
+    }
 }
 
 .breadcrumb {
@@ -68,10 +71,6 @@ a {
     a {
         font-weight: 700;
         outline: none;
-
-        &:focus-visible {
-            color: $focus;
-        }
     }
 
     ::before {

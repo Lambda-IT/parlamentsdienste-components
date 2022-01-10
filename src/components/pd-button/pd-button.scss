@@ -98,6 +98,10 @@
         color: $cyan-6;
     }
 
+    &:focus-visible {
+        @include focus;
+    }
+
     &:active {
         color: $cyan-3;
     }

@@ -14,10 +14,10 @@ export const primary = () => {
       
       <div class="row my-3">
         <div class="col-sm">
-          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #1e1e1e"></div>
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #0b0b0b"></div>
           <div class="float-left ml-3">
             <p>BLACK</p>
-            <p>#1e1e1e</p>
+            <p>#0b0b0b</p>
           </div>
         </div>
         <div class="col-sm">
@@ -31,7 +31,7 @@ export const primary = () => {
 
       <div class="row my-3">
         <div class="col-sm">
-          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #ffffff"></div>
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #ffffff; border: 1px solid black;"></div>
           <div class="float-left ml-3">
             <p>WHITE</p>
             <p>#ffffff</p>
@@ -65,7 +65,7 @@ export const primary = () => {
 
       <div class="row my-3">
         <div class="col-sm">
-          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #f5f5f5"></div>
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #f5f5f5; border: 1px solid black;"></div>
           <div class="float-left ml-3">
             <p>WILD SAND</p>
             <p>#f5f5f5</p>
@@ -82,7 +82,7 @@ export const primary = () => {
 
       <div class="row my-3">
         <div class="col-sm">
-          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #f8f9fa"></div>
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #f8f9fa; border: 1px solid black;"></div>
           <div class="float-left ml-3">
             <p>ATHENS GRAY</p>
             <p>#f8f9fa</p>
@@ -158,10 +158,10 @@ export const primary = () => {
           </div>
         </div>
         <div class="col-sm">
-          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #868e96"></div>
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #bababa"></div>
           <div class="float-left ml-3">
             <p>GRAY 6</p>
-            <p>#868e96</p>
+            <p>#bababa</p>
           </div>
         </div>
         <div class="col-sm">
@@ -203,10 +203,10 @@ export const primary = () => {
 
       <div class="row my-3">
         <div class="col-sm">
-          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #e17700"></div>
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #df7900"></div>
           <div class="float-left ml-3">
             <p>YELLOW 9</p>
-            <p>#e17700</p>
+            <p>#df7900</p>
           </div>
         </div>
         <div class="col-sm">
@@ -246,6 +246,49 @@ export const primary = () => {
             <p>RED 3</p>
             <p>#ffa8a8</p>
           </div>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-sm">
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #1864ab"></div>
+          <div class="float-left ml-3">
+            <p>BLUE 9</p>
+            <p>#1864ab</p>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #4dadf7"></div>
+          <div class="float-left ml-3">
+            <p>BLUE 4</p>
+            <p>#4dadf7</p>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #a3daff"></div>
+          <div class="float-left ml-3">
+            <p>BLUE 2</p>
+            <p>#a3daff</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-sm">
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #cfcfcf"></div>
+          <div class="float-left ml-3">
+            <p>GRAY DISABLED</p>
+            <p>#cfcfcf</p>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="float-left" style="width: 50px; height: 50px; border-radius: 100%; background: #e5e8eb"></div>
+          <div class="float-left ml-3">
+            <p>GRAY READONLY</p>
+            <p>#e5e8eb</p>
+          </div>
+        </div>
+        <div class="col-sm">
         </div>
       </div>
 

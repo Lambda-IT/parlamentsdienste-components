@@ -21,20 +21,36 @@
 }
 
 .pd-table-filter-clear {
-    display: flex;
+    @include invisibleButton;
     align-items: center;
-    background-color: transparent;
-    border: none;
+    margin: 0 0.6875rem;
+    padding: 0 0.3125rem;
+    display: flex;
     fill: $cyan-9;
 }
 
 .pd-table-filter-confirm {
-    width: 4em;
+    padding: 0 0.8125rem;
     background-color: $blue-whale;
     fill: $white;
     border: none;
     border-top-right-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
+
+    &:hover {
+        background-color: setcolor(primary, enabled);
+        fill: setcolor(primary, enabledContrast);
+    }
+
+    &:active {
+        background-color: setcolor(primary, hover);
+        fill: setcolor(primary, hoverContrast);
+    }
+
+    &:focus-visible {
+        background-color: $focus;
+        fill: $blue-whale;
+    }
 }
 
 .pd-table-search-input-wrapper {
@@ -53,13 +69,8 @@
     border-right: none;
 
     &:focus-visible {
-        border: 0.125em solid $focus;
-        border-right: none;
-
-        & ~ .pd-table-search-button {
-            border: 0.125em solid $focus;
-            border-left: none;
-        }
+        background-color: $yellow-1;
+        color: $blue-whale;
     }
 }
 
@@ -77,7 +88,11 @@
     padding: 0;
     cursor: pointer;
 
-    &:hover:active {
+    &:hover {
+        background-color: setcolor(primary, hover);
+    }
+
+    &:active {
         background-color: setcolor(primary, pressed);
     }
 

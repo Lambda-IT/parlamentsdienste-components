@@ -80,3 +80,22 @@
         appearance: none;
     }
 }
+
+@mixin focus {
+    background-color: $focus;
+    color: $blue-whale;
+    fill: $blue-whale;
+}
+
+@mixin invisibleButton {
+    cursor: pointer;
+    appearance: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    &:focus-visible {
+        @include focus;
+    }
+}

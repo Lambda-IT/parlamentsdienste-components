@@ -26,13 +26,11 @@
     }
 
     .pd-menu-button {
-        border: none;
-        background: transparent;
+        @include invisibleButton;
         padding-top: var(--pd-menu-vertical-padding, 0.625em);
         padding-bottom: var(--pd-menu-vertical-padding, 0.625em);
         padding-left: 0;
         padding-right: var(--pd-menu-horizontal-padding, 0.4em);
-        cursor: pointer;
         display: flex;
         align-items: center;
 
@@ -47,12 +45,12 @@
         }
 
         &:focus-visible {
+            background-color: $focus;
             .pd-menu-label {
-                color: $focus;
+                color: $blue-whale;
             }
-
             .pd-menu-icon {
-                fill: $focus;
+                fill: $blue-whale;
             }
         }
 
@@ -72,22 +70,38 @@
     }
 
     &.pd-menu-inverted {
-        .pd-menu-label {
-            color: setcolor(primary, enabledContrast);
-        }
-
         .pd-menu-button {
+            .pd-menu-label {
+                color: $white;
+            }
             .pd-menu-icon {
-                fill: setcolor(primary, enabledContrast);
+                fill: $white;
+            }
+
+            &:hover {
+                .pd-menu-label {
+                    color: setcolor(dark, hover);
+                }
+                .pd-menu-icon {
+                    fill: setcolor(dark, hover);
+                }
+            }
+            &:active {
+                .pd-menu-label {
+                    color: setcolor(dark, pressed);
+                }
+                .pd-menu-icon {
+                    fill: setcolor(dark, pressed);
+                }
             }
 
             &:focus-visible {
+                background-color: $focus;
                 .pd-menu-label {
-                    color: $focus;
+                    color: $blue-whale;
                 }
-
                 .pd-menu-icon {
-                    fill: $focus;
+                    fill: $blue-whale;
                 }
             }
         }

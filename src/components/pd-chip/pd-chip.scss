@@ -96,14 +96,6 @@
 }
 
 .pd-chip-remove {
-    margin: 0;
+    @include invisibleButton;
     margin-left: 0.375rem;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    &:focus-visible pd-icon {
-        fill: $focus;
-    }
 }

@@ -605,6 +605,7 @@
 
                 <details>
                     <summary>Menu</summary>
+                    <h2>Button only</h2>
                     <pd-menu>
                         <pd-menu-item text="Drucken">
                             <pd-icon size="2" name="print"></pd-icon>
@@ -613,7 +614,17 @@
                             <pd-icon size="2" name="documents"></pd-icon>
                         </pd-menu-item>
                     </pd-menu>
+                    <h2>With label</h2>
                     <pd-menu label="My Menu" id="pd-menu-1">
+                        <pd-menu-item text="Drucken">
+                            <pd-icon size="2" name="print"></pd-icon>
+                        </pd-menu-item>
+                        <pd-menu-item text="Download">
+                            <pd-icon size="2" name="documents"></pd-icon>
+                        </pd-menu-item>
+                    </pd-menu>
+                    <h2>Inverted Color</h2>
+                    <pd-menu invert-color label="My Menu" id="pd-menu-1">
                         <pd-menu-item text="Drucken">
                             <pd-icon size="2" name="print"></pd-icon>
                         </pd-menu-item>
