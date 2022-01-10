@@ -871,6 +871,10 @@ export namespace Components {
     }
     interface PdTabs {
         /**
+          * Light mode
+         */
+        "light": boolean;
+        /**
           * List of tab texts
          */
         "tabs": TabValue[];
@@ -2241,6 +2245,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PdTabs {
+        /**
+          * Light mode
+         */
+        "light"?: boolean;
         /**
           * Emitted when the value has changed.
          */

@@ -96,7 +96,7 @@
                         <span>Outline Enabled</span>
                         <span>Outline Disable</span>
 
-                        <span>Primary</span>jnhghbzvnghztb
+                        <span>Primary</span>
                         <pd-button>Button</pd-button>
                         <pd-button disabled>Button</pd-button>
                         <pd-button outline>Button</pd-button>
@@ -187,7 +187,10 @@
 
                 <details open>
                     <summary>Tabs</summary>
+                    <h2>Default</h2>
                     <pd-tabs class="pd-tabs-items"></pd-tabs>
+                    <h2>Light</h2>
+                    <pd-tabs light class="pd-tabs-items"></pd-tabs>
                 </details>
             </details>
 
@@ -783,7 +786,7 @@
             for (let pdTabsItem of pdTabsItems) {
                 pdTabsItem.tabs = [
                     { id: 0, text: 'Tab one' },
-                    { id: 1, text: 'Tab two' },
+                    { id: 1, text: 'Tab two', checked: true },
                     { id: 2, text: 'Tab three' },
                     { id: 3, text: 'Tab four' },
                 ];
