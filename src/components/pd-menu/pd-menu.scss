@@ -45,7 +45,13 @@
         }
 
         &:focus-visible {
-            @include focusRing;
+            background-color: $focus;
+            .pd-menu-label {
+                color: $blue-whale;
+            }
+            .pd-menu-icon {
+                fill: $blue-whale;
+            }
         }
 
         &:active {
@@ -90,7 +96,13 @@
             }
 
             &:focus-visible {
-                @include focusRing;
+                background-color: $focus;
+                .pd-menu-label {
+                    color: $blue-whale;
+                }
+                .pd-menu-icon {
+                    fill: $blue-whale;
+                }
             }
         }
     }

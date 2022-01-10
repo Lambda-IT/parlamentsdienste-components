@@ -81,10 +81,10 @@
     }
 }
 
-@mixin focusRing {
-    border-radius: 2px;
-    box-shadow: 0 0 1px 3px $yellow-4;
-    outline: none;
+@mixin focus {
+    background-color: $focus;
+    color: $blue-whale;
+    fill: $blue-whale;
 }
 
 @mixin invisibleButton {
@@ -96,6 +96,6 @@
     border: none;
 
     &:focus-visible {
-        @include focusRing;
+        @include focus;
     }
 }

@@ -167,7 +167,7 @@
         text-decoration: underline;
 
         &:focus-visible {
-            @include focusRing;
+            @include focus;
         }
     }
 
@@ -176,7 +176,7 @@
         margin-left: 0.625rem;
 
         &:focus-visible .pd-alert-action-cancel {
-            @include focusRing;
+            @include focus;
         }
     }
 

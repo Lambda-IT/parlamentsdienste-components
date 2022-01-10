@@ -60,7 +60,7 @@
         }
 
         &:focus-visible {
-            @include focusRing;
+            @include focus;
         }
 
         &:active {
