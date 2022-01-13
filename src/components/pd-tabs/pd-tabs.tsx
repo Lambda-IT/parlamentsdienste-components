@@ -7,7 +7,7 @@ import { TabValue } from '../../interface';
     shadow: true,
 })
 export class PdTabs {
-    private tabsId = `ion-input-${tabsIds++}`;
+    private tabsId = `${tabsIds++}`;
 
     /**
      * List of tab texts
@@ -31,9 +31,12 @@ export class PdTabs {
     public render() {
         return (
             <Host>
-                {this.tabs.map((tab) => {
+                {this.tabs.map((tab, i) => {
                     return (
-                        <div class={{ 'pd-tabs-control': true, 'pd-tabs-light': this.light }}>
+                        <div
+                            class={{ 'pd-tabs-control': true, 'pd-tabs-light': this.light }}
+                            data-test={`pd-tabs-control-${i}`}
+                        >
                             <label class="pd-tabs-label">
                                 <input
                                     checked={tab?.checked}
@@ -41,8 +44,11 @@ export class PdTabs {
                                     type="radio"
                                     name={`pd-tabs-${this.tabsId}`}
                                     onChange={() => this.onChange(tab)}
+                                    data-test={`pd-tabs-radio-${i}`}
                                 />
-                                <span class="pd-tabs-text">{tab.text}</span>
+                                <span class="pd-tabs-text" data-test="pd-tabs-text">
+                                    {tab.text}
+                                </span>
                             </label>
                         </div>
                     );

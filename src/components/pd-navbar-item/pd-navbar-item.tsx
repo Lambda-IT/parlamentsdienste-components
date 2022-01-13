@@ -27,7 +27,9 @@ export class NavbarItem {
 
         return (
             <TagType {...typeAttrs} class={`pd-navbar-item ${enabled ? 'pd-navbar-enabled' : ''}`}>
-                <span class="pd-navbar-text">{text}</span>
+                <span class="pd-navbar-text" data-test="pd-navbar-text">
+                    {text}
+                </span>
             </TagType>
         );
     }

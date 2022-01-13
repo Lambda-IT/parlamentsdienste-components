@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
 
 @Component({
     tag: 'pd-pagination',
@@ -76,17 +76,17 @@ export class PdPagination {
     render() {
         return (
             <Host>
-                <button class="pd-pagination-first" onClick={() => this.firstPage()}>
+                <button class="pd-pagination-first" onClick={() => this.firstPage()} data-test="pd-pagination-first">
                     <span>&laquo;</span>
                 </button>
-                <button class="pd-pagination-prev" onClick={() => this.prevPage()}>
+                <button class="pd-pagination-prev" onClick={() => this.prevPage()} data-test="pd-pagination-prev">
                     <span>&#8249;</span>
                 </button>
                 {this.showPageButtons ? this.renderPageButtons() : this.renderSimplePages()}
-                <button class="pd-pagination-next" onClick={() => this.nextPage()}>
+                <button class="pd-pagination-next" onClick={() => this.nextPage()} data-test="pd-pagination-next">
                     <span>&#8250;</span>
                 </button>
-                <button class="pd-pagination-last" onClick={() => this.lastPage()}>
+                <button class="pd-pagination-last" onClick={() => this.lastPage()} data-test="pd-pagination-last">
                     <span>&raquo;</span>
                 </button>
             </Host>
@@ -101,6 +101,7 @@ export class PdPagination {
                     'pd-pagination-page': true,
                     'pd-pagination-active': value === this.currentPage,
                 }}
+                data-test={`pd-pagination-page-${value}`}
             >
                 {value}
             </button>

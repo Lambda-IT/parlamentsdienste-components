@@ -256,6 +256,7 @@ export class Search {
                         'pd-search-label': true,
                         'pd-search-disabled': this.disabled,
                     }}
+                    data-test="pd-search-label"
                 >
                     {this.renderLabel()}
                     <div class="pd-search-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
@@ -270,6 +271,7 @@ export class Search {
                             onBlur={this.onBlur}
                             onFocus={this.onFocus}
                             size={this.size}
+                            data-test="pd-search-input"
                         />
                         <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
                             <pd-icon class="pd-search-clear-icon" name="cancel" size={2.4}></pd-icon>
@@ -299,6 +301,7 @@ export class Search {
                         value={searchString}
                         highlight={this.highlight ? this.inputValue : ''}
                         onClick={() => this.selectItem(searchString, i)}
+                        data-test={`pd-search-dropdown-item-${i}`}
                     ></pd-dropdown-item>
                 ))}
             </div>

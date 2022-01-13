@@ -1,4 +1,4 @@
-import { Component, Host, h, Event, Prop, EventEmitter, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -100,6 +100,7 @@ export class Slider {
                     value={this.sliderValue}
                     onChange={this.onChange}
                     onInput={this.onInput}
+                    data-test="pd-slider-input"
                 />
             </Host>
         );

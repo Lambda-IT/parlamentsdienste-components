@@ -206,6 +206,7 @@ export class Dropdown {
                         'pd-dropdown-disabled': this.disabled,
                     }}
                     onClick={this.toggleDropdown}
+                    data-test="pd-dropdown-label"
                 >
                     {this.renderLabel()}
                 </label>
@@ -225,8 +226,11 @@ export class Dropdown {
                         aria-expanded={`${this.open}`}
                         onClick={this.toggleDropdown}
                         disabled={this.disabled || this.readonly}
+                        data-test="pd-dropdown-button"
                     >
-                        <span class="pd-dropdown-text">{this.selectedItem?.label || this.placeholder}</span>
+                        <span class="pd-dropdown-text" data-test="pd-dropdown-text">
+                            {this.selectedItem?.label || this.placeholder}
+                        </span>
                         <pd-icon
                             class="pd-dropdown-caret"
                             name="dropdown"
@@ -263,6 +267,7 @@ export class Dropdown {
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(item, true)}
+                data-test={`pd-dropdown-item-${item.id}`}
             ></pd-dropdown-item>
         ));
     }
@@ -274,6 +279,7 @@ export class Dropdown {
                 value={this.emptyItemData.label}
                 selected={this.emptyItemData.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(this.emptyItemData, true)}
+                data-test={`pd-dropdown-item-empty`}
             ></pd-dropdown-item>
         );
     }
@@ -281,6 +287,6 @@ export class Dropdown {
     private renderLabel() {
         if (!this.label) return;
 
-        return <span class="pd-combobox-label-text">{this.label}</span>;
+        return <span class="pd-dropdown-label-text">{this.label}</span>;
     }
 }

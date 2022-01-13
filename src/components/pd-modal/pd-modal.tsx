@@ -1,5 +1,5 @@
-import { Component, Host, h, Element, Listen, Prop, EventEmitter, Event } from '@stencil/core';
 import '@a11y/focus-trap';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import { PdModalConfig } from '../../interface';
 
 @Component({
@@ -62,8 +62,10 @@ export class Modal {
                     <pd-backdrop visible={this.config?.backdropVisible ?? false}></pd-backdrop>
                     <div tabindex="0" role="dialog" class="pd-modal-wrapper">
                         <div class="pd-modal-header">
-                            <span class="pd-modal-title">{this.config?.title}</span>
-                            <button class="pd-modal-close" onClick={() => this.closeModal()}>
+                            <span class="pd-modal-title" data-test="pd-modal-title">
+                                {this.config?.title}
+                            </span>
+                            <button class="pd-modal-close" onClick={() => this.closeModal()} data-test="pd-modal-close">
                                 <pd-icon name="close" size={2}></pd-icon>
                             </button>
                         </div>

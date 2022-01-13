@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-toast',
@@ -35,11 +35,13 @@ export class PdToast {
             >
                 <div class="pd-toast-header">
                     <div class="pd-toast-header-left">
-                        <span class="pd-toast-title">{this.header}</span>
+                        <span class="pd-toast-title" data-test="pd-toast-title">
+                            {this.header}
+                        </span>
                     </div>
                     <div class="pd-toast-header-right">
                         {this.renderInfo()}
-                        <button class="pd-toast-close-button" onClick={this.pdClosed.emit}>
+                        <button class="pd-toast-close-button" onClick={this.pdClosed.emit} data-test="pd-toast-close">
                             <pd-icon class="pd-toast-close" name="close" size={2}></pd-icon>
                         </button>
                     </div>
@@ -53,6 +55,10 @@ export class PdToast {
 
     private renderInfo() {
         if (!this.info || this.size === 'small') return;
-        return <span class="pd-toast-info">{this.info}</span>;
+        return (
+            <span class="pd-toast-info" data-test="pd-toast-info">
+                {this.info}
+            </span>
+        );
     }
 }

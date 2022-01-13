@@ -346,6 +346,7 @@ export class Combobox {
                     <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
                         <input
                             class="pd-combobox-input"
+                            data-test="pd-combobox-input"
                             ref={(input) => (this.nativeInput = input)}
                             disabled={this.disabled}
                             readOnly={this.readonly}
@@ -361,7 +362,7 @@ export class Combobox {
                         <button class="pd-combobox-icon left" tabindex="-1">
                             <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
                         </button>
-                        <button class="pd-combobox-icon right" tabindex="-1">
+                        <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
                             <pd-icon
                                 onClick={this.onClickInput}
                                 class="pd-icon pd-combobox-icon-toggle"
@@ -396,6 +397,7 @@ export class Combobox {
                     .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
                     .map((comboboxItem) => (
                         <pd-dropdown-item
+                            data-test={`pd-combobox-item-${comboboxItem.id}`}
                             selected={comboboxItem.id === this.selectedItem?.id || false}
                             value={comboboxItem?.label}
                             highlight={this.highlight ? this.inputValue : ''}
@@ -414,6 +416,10 @@ export class Combobox {
     private renderLabel() {
         if (!this.label) return;
 
-        return <div class="pd-combobox-label-text">{this.label}</div>;
+        return (
+            <div class="pd-combobox-label-text" data-test="pd-combobox-label">
+                {this.label}
+            </div>
+        );
     }
 }

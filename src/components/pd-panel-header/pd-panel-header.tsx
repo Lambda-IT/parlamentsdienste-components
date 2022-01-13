@@ -49,7 +49,11 @@ export class PanelHeader {
         if (!this.collapsible) return;
 
         return (
-            <button class="pd-panel-header-collapse" onClick={(e) => this.toggle(e)}>
+            <button
+                class="pd-panel-header-collapse"
+                onClick={(e) => this.toggle(e)}
+                data-test="pd-panel-header-collapse"
+            >
                 <pd-icon name="caret" size={2.4} rotate={this.collapsed ? 0 : 180}></pd-icon>
             </button>
         );

@@ -85,6 +85,7 @@ export class PdListItemExpandable {
                     class={{
                         'pd-list-item-expandable-actions': this.edit || this.expand || this.expandable || this.menu,
                     }}
+                    data-test="pd-list-item-expandable-actions"
                 >
                     <slot name="action-left"></slot>
                     {this.renderEdit()}
@@ -106,13 +107,21 @@ export class PdListItemExpandable {
 
     private renderStatus = () => {
         if (!this.status) return <div class="pd-list-item-expandable-status-placeholder"></div>;
-        return <div class="pd-list-item-expandable-status">{this.renderStatusIcon()}</div>;
+        return (
+            <div class="pd-list-item-expandable-status" data-test="pd-list-item-expandable-status">
+                {this.renderStatusIcon()}
+            </div>
+        );
     };
 
     private renderExpand = () => {
         if (!this.expandable && !this.expand) return;
         return (
-            <button class="pd-list-item-expandable-expand" onClick={() => this.handleExpand()}>
+            <button
+                class="pd-list-item-expandable-expand"
+                onClick={() => this.handleExpand()}
+                data-test="pd-list-item-expandable-expand"
+            >
                 <pd-icon name="caret" rotate={this.collapsed ? 0 : 180} size={2.2}></pd-icon>
             </button>
         );
@@ -121,7 +130,11 @@ export class PdListItemExpandable {
     private renderEdit() {
         if (!this.edit) return;
         return (
-            <button class="pd-list-item-expandable-edit" onClick={() => this.pdEdit.emit()}>
+            <button
+                class="pd-list-item-expandable-edit"
+                onClick={() => this.pdEdit.emit()}
+                data-test="pd-list-item-expandable-edit"
+            >
                 <pd-icon name="edit" size={2.2}></pd-icon>
             </button>
         );
@@ -130,7 +143,7 @@ export class PdListItemExpandable {
     private renderMenu() {
         if (!this.menu) return;
         return (
-            <pd-menu class="pd-list-item-expandable-menu">
+            <pd-menu class="pd-list-item-expandable-menu" data-test="pd-list-item-expandable-menu">
                 <slot name="menu"></slot>
             </pd-menu>
         );
@@ -155,6 +168,6 @@ export class PdListItemExpandable {
 
     private renderCheckbox() {
         if (!this.checkbox) return;
-        return <pd-checkbox checked={this.checked}></pd-checkbox>;
+        return <pd-checkbox checked={this.checked} data-test="pd-list-item-expandable-checkbox"></pd-checkbox>;
     }
 }

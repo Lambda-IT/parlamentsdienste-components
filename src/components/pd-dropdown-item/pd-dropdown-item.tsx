@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, Prop, Element } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-dropdown-item',
@@ -27,7 +27,10 @@ export class DropdownItem implements ComponentInterface {
         return (
             <Host>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
-                    <span innerHTML={this.strong(this.value, this.highlight?.toString())}></span>
+                    <span
+                        innerHTML={this.strong(this.value, this.highlight?.toString())}
+                        data-test="pd-dropdown-item-text"
+                    ></span>
                 </div>
             </Host>
         );

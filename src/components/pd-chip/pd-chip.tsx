@@ -78,6 +78,7 @@ export class Chip {
                 <slot></slot>
                 {type === 'toggle' && (
                     <button
+                        data-test="pd-chip-remove"
                         tabindex={this.disabled || this.readonly ? '-1' : null}
                         class="pd-chip-remove pd-chip-icon pd-chip-icon-right"
                         onClick={(e) => this.removeClicked(e)}
