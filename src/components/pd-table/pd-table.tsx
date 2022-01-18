@@ -416,11 +416,11 @@ export class Table {
                         style={this.calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => this.sort(headerCol)}
+                        data-test={`pd-table-header-col-${i}`}
                     >
                         <div
                             class="pd-table-header-cell-text"
                             style={{ justifyContent: this.getTextAlign(headerCol.textAlign) }}
-                            data-test={`pd-table-header-text-col-${i}`}
                         >
                             <span>{headerCol.label}</span>
                         </div>

@@ -273,10 +273,15 @@ export class Search {
                             size={this.size}
                             data-test="pd-search-input"
                         />
-                        <button class="pd-search-clear" onClick={this.reset} tabindex="-1">
+                        <button class="pd-search-clear" onClick={this.reset} tabindex="-1" data-test="pd-search-reset">
                             <pd-icon class="pd-search-clear-icon" name="cancel" size={2.4}></pd-icon>
                         </button>
-                        <button class="pd-search-button" onClick={this.search} tabindex="-1">
+                        <button
+                            class="pd-search-button"
+                            onClick={this.search}
+                            tabindex="-1"
+                            data-test="pd-search-enter"
+                        >
                             <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
                         </button>
                     </div>

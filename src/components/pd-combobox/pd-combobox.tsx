@@ -395,9 +395,9 @@ export class Combobox {
             >
                 {this._itemsState
                     .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
-                    .map((comboboxItem) => (
+                    .map((comboboxItem, i) => (
                         <pd-dropdown-item
-                            data-test={`pd-combobox-item-${comboboxItem.id}`}
+                            data-test={`pd-combobox-item-${i}`}
                             selected={comboboxItem.id === this.selectedItem?.id || false}
                             value={comboboxItem?.label}
                             highlight={this.highlight ? this.inputValue : ''}

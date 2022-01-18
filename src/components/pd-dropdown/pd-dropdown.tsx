@@ -262,12 +262,12 @@ export class Dropdown {
     }
 
     private renderDropDownItems() {
-        return this.items.map((item) => (
+        return this.items.map((item, i) => (
             <pd-dropdown-item
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(item, true)}
-                data-test={`pd-dropdown-item-${item.id}`}
+                data-test={`pd-dropdown-item-${i}`}
             ></pd-dropdown-item>
         ));
     }

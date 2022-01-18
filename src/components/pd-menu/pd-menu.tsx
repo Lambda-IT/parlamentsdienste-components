@@ -112,7 +112,6 @@ export class Menu {
                 style={{
                     display: this.isOpen ? 'block' : 'none',
                 }}
-                tabIndex={-1}
                 onClick={() => this.toggleOpenState()}
             >
                 <slot></slot>
