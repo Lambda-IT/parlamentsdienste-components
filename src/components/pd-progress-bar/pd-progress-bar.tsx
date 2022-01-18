@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 import { clamp } from '../../utils/helpers';
 
 @Component({
@@ -49,6 +49,7 @@ export class ProgressBar {
                         [`pd-progress-bar-${this.color}`]: !!this.color,
                     }}
                     style={{ width: `${percent}%` }}
+                    data-test="pd-progress-bar"
                 >
                     {this.label ? `${percent}%` : ''}
                 </div>

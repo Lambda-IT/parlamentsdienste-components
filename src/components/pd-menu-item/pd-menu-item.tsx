@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, Prop, Element } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-menu-item',
@@ -18,7 +18,9 @@ export class MenuItem implements ComponentInterface {
             <Host>
                 <div class="pd-menu-item">
                     <slot></slot>
-                    <div class="pd-menu-item-text">{this.text}</div>
+                    <div class="pd-menu-item-text" data-test="pd-menu-item-text">
+                        {this.text}
+                    </div>
                 </div>
             </Host>
         );

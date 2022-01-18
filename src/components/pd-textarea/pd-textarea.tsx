@@ -189,7 +189,13 @@ export class Textarea {
         return (
             <Host>
                 <label class="pd-textarea-label">
-                    {this.label ? <div class="pd-textarea-label-text">{this.label}</div> : ''}
+                    {this.label ? (
+                        <div class="pd-textarea-label-text" data-test="pd-textarea-label">
+                            {this.label}
+                        </div>
+                    ) : (
+                        ''
+                    )}
                     <textarea
                         class={{
                             'pd-textarea': true,
@@ -214,6 +220,7 @@ export class Textarea {
                         onInput={this.onInput}
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
+                        data-test="pd-textarea"
                     >
                         {value}
                     </textarea>

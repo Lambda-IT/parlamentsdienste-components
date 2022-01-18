@@ -88,16 +88,17 @@ export class PdTableFilter {
                             placeholder="Stichwort, Name …"
                             value={this.value}
                             onKeyDown={(ev) => this.onSubmit(ev)}
+                            data-test="pd-table-filter-input"
                         />
                         <button class="pd-table-search-button" onClick={this.onSearch} tabindex="-1">
                             <pd-icon class="pd-table-search-button-icon" name="search" size={2.375}></pd-icon>
                         </button>
                     </div>
-                    <button class="pd-table-filter-clear" onClick={this.onClear}>
+                    <button class="pd-table-filter-clear" onClick={this.onClear} data-test="pd-table-filter-clear">
                         <pd-icon class="pd-table-filter-close" size={2.375} name="close"></pd-icon>
                     </button>
                 </div>
-                <button class="pd-table-filter-confirm" onClick={this.onConfirm}>
+                <button class="pd-table-filter-confirm" onClick={this.onConfirm} data-test="pd-table-filter-confirm">
                     <pd-icon name="confirm" size={2.375}></pd-icon>
                 </button>
             </Host>

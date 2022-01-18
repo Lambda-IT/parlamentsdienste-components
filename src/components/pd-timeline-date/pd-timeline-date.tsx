@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-timeline-date',
@@ -31,7 +31,9 @@ export class PdTimelineDate {
             <Host>
                 <div class="pd-timeline-date">
                     <div class="pd-timeline-date-dot"></div>
-                    <div class="pd-timeline-date-text">{this.date}</div>
+                    <div class="pd-timeline-date-text" data-test="pd-timeline-date-text">
+                        {this.date}
+                    </div>
                 </div>
                 <div class={{ 'pd-timeline-content': true, 'pd-timeline-content-notitle': !this.header }}>
                     {this.renderTitle()}
@@ -48,9 +50,9 @@ export class PdTimelineDate {
         return (
             <div class="pd-timeline-content-title">
                 {!this.href ? (
-                    <span>{this.header}</span>
+                    <span data-test="pd-timeline-title">{this.header}</span>
                 ) : (
-                    <a href={this.href} target={this.target}>
+                    <a href={this.href} target={this.target} data-test="pd-timeline-title">
                         {this.header}
                     </a>
                 )}

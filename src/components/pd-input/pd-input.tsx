@@ -209,7 +209,13 @@ export class Input {
         return (
             <Host>
                 <label class="pd-input-label">
-                    {this.label ? <div class="pd-input-label-text">{this.label}</div> : ''}
+                    {this.label ? (
+                        <div class="pd-input-label-text" data-test="pd-input-label">
+                            {this.label}
+                        </div>
+                    ) : (
+                        ''
+                    )}
                     <input
                         class={{ 'pd-input': true, 'pd-input-readonly': this.readonly, 'pd-input-error': this.error }}
                         ref={(input) => (this.nativeInput = input)}
@@ -239,6 +245,7 @@ export class Input {
                         onFocus={this.onFocus}
                         onKeyDown={this.onKeydown}
                         style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
+                        data-test="pd-input"
                     />
                 </label>
             </Host>

@@ -400,7 +400,7 @@ export class Table {
     private renderHeader(fixed: boolean = false) {
         const columns = this.columns
             .filter((c) => !!c.fixed === fixed)
-            .map((headerCol) => {
+            .map((headerCol, i) => {
                 const columnSortDir = this.nextSortDir[headerCol.columnName];
                 return (
                     <div
@@ -416,6 +416,7 @@ export class Table {
                         style={this.calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => this.sort(headerCol)}
+                        data-test={`pd-table-header-col-${i}`}
                     >
                         <div
                             class="pd-table-header-cell-text"
@@ -423,7 +424,7 @@ export class Table {
                         >
                             <span>{headerCol.label}</span>
                         </div>
-                        <div class="pd-table-header-cell-actions">
+                        <div class="pd-table-header-cell-actions" data-test={`pd-table-header-actions-col-${i}`}>
                             {this.renderSort(columnSortDir, headerCol.columnName)}
                             {this.renderFilterIcon(headerCol)}
                         </div>
@@ -476,8 +477,8 @@ export class Table {
             rows = [...this.filteredRows.slice(pageStart, pageStart + this.pageSize)];
         }
 
-        return rows.map((row) => (
-            <div class="pd-table-row" role="row" style={rowStyle}>
+        return rows.map((row, i) => (
+            <div class="pd-table-row" role="row" style={rowStyle} data-test={`pd-table-row-${i}`}>
                 {this.showStatus ? this.renderStatus(row, fixed) : null}
                 {this.selectable ? this.renderSelectable(row, fixed) : null}
                 {this.columns.filter((c) => !!c.fixed === fixed).map((col) => this.renderColumn(row, col))}
@@ -504,6 +505,7 @@ export class Table {
                 style={cellStyle}
                 title={value}
                 onClick={() => this.rowClicked(row)}
+                data-test={`pd-table-cell`}
             >
                 {this.renderValue(col, value)}
             </div>
@@ -519,7 +521,11 @@ export class Table {
         });
         return (
             <div class={`pd-table-cell`} style={cellStyle} role="cell">
-                <pd-checkbox checked={row.pdSelected} onPd-checked={(ev) => this.select(ev.detail, row)}></pd-checkbox>
+                <pd-checkbox
+                    checked={row.pdSelected}
+                    onPd-checked={(ev) => this.select(ev.detail, row)}
+                    data-test="pd-table-cell-selectable"
+                ></pd-checkbox>
             </div>
         );
     }
@@ -532,7 +538,13 @@ export class Table {
             align: 'center',
         });
         return (
-            <div class={`pd-table-cell`} style={cellStyle} role="cell" onClick={() => this.rowClicked(row)}>
+            <div
+                class={`pd-table-cell`}
+                style={cellStyle}
+                role="cell"
+                onClick={() => this.rowClicked(row)}
+                data-test="pd-table-cell-status"
+            >
                 {this.renderIcon(row.pdStatus || 'unset')}
             </div>
         );
@@ -597,7 +609,7 @@ export class Table {
     private renderButton(visible: boolean, icon: string, trigger: EventEmitter, data) {
         if (!visible) return;
         return (
-            <button class="pd-table-action-btn">
+            <button class="pd-table-action-btn" data-test={`pd-table-action-${icon}`}>
                 <pd-icon
                     size={2.375}
                     name={icon}
@@ -657,6 +669,7 @@ export class Table {
                         onPd-checked={() => this.selectAll()}
                         checked={this.allSelected}
                         isIndeterminate={this.isIndeterminate}
+                        data-test="pd-table-header-selectall"
                     ></pd-checkbox>
                 </div>
                 <div class="pd-table-header-cell-actions"></div>
@@ -717,8 +730,13 @@ export class Table {
                     current-page={this.currentPage}
                     total-pages={this.totalPages}
                     onPd-change={(ev) => this.pageChanged(ev)}
+                    data-test="pd-table-pagination"
                 ></pd-pagination>
-                <pd-dropdown items={this.pageSizes} onPd-change={(ev) => this.pageSizeChanged(ev)}></pd-dropdown>
+                <pd-dropdown
+                    items={this.pageSizes}
+                    onPd-change={(ev) => this.pageSizeChanged(ev)}
+                    data-test="pd-table-pagination-dropdown"
+                ></pd-dropdown>
             </div>
         );
     }

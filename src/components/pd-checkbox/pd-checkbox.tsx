@@ -78,6 +78,7 @@ export class Checkbox {
                         'pd-checkbox-error': this.error,
                     }}
                     style={this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}}
+                    data-test="pd-checkbox-label"
                 >
                     <input
                         class="pd-checkbox-input"
@@ -89,7 +90,7 @@ export class Checkbox {
                         value={`${this.value}`}
                         name={this.name}
                         onClick={this.onClick}
-                    ></input>
+                    />
                     <div
                         class={{
                             'pd-checkbox-inner': true,
@@ -99,7 +100,9 @@ export class Checkbox {
                         <div class={{ 'pd-checkbox-checkmark': this.checked && !this.isIndeterminate }}></div>
                         <div class={{ 'pd-checkbox-indeterminate': this.isIndeterminate }}></div>
                     </div>
-                    <div class="pd-checkbox-text">{this.text}</div>
+                    <div class="pd-checkbox-text" data-test="pd-checkbox-text">
+                        {this.text}
+                    </div>
                 </label>
             </Host>
         );

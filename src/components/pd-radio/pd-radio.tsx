@@ -64,6 +64,7 @@ export class Radio {
                         'pd-radio-error': this.error,
                     }}
                     style={this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}}
+                    data-test="pd-radio-label"
                 >
                     <input
                         class="pd-radio-input"
@@ -75,7 +76,9 @@ export class Radio {
                         readonly={this.readonly}
                     />
                     <div class="pd-radio-inner"></div>
-                    <div class="pd-radio-text">{label}</div>
+                    <div class="pd-radio-text" data-test="pd-radio-text">
+                        {label}
+                    </div>
                 </label>
             </Host>
         );

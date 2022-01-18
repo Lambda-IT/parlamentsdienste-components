@@ -27,7 +27,7 @@ export class PdListItem {
     private renderStatus = () => {
         if (!this.status) return;
         return (
-            <div class="pd-list-item-status">
+            <div class="pd-list-item-status" data-test="pd-list-item-status">
                 <div class={`pd-list-item-status-background pd-list-item-status-${this.status}`}>
                     {this.renderIcon()}
                 </div>

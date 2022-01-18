@@ -49,13 +49,15 @@ export class SidebarItem {
         return (
             <TagType {...typeAttrs} class={{ 'pd-sidebar-item': true, 'pd-sidebar-active': active }}>
                 <div class="pd-sidebar-icon">{this.renderIcon()}</div>
-                <div class="pd-sidebar-text">{text}</div>
+                <div class="pd-sidebar-text" data-test="pd-sidebar-item-text">
+                    {text}
+                </div>
             </TagType>
         );
     }
 
     private renderIcon() {
         if (this.iconName) return <pd-icon name={this.iconName} size={this.size}></pd-icon>;
-        return <pd-icon src={this.icon} size={this.size}></pd-icon>;
+        return <pd-icon src={this.icon} size={this.size} data-test="pd-sidebar-item-icon"></pd-icon>;
     }
 }

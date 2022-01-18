@@ -174,6 +174,7 @@ export class Datepicker {
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">
                         <pd-input
+                            data-test="pd-datepicker-input"
                             class={{
                                 'pd-datepicker-input': true,
                                 'pd-datepicker-disabled': this.disabled,
@@ -199,7 +200,11 @@ export class Datepicker {
     private renderLabel() {
         if (!this.label) return;
 
-        return <div class="pd-datepicker-label-text">{this.label}</div>;
+        return (
+            <div class="pd-datepicker-label-text" data-test="pd-datepicker-label">
+                {this.label}
+            </div>
+        );
     }
 
     private renderIcon() {

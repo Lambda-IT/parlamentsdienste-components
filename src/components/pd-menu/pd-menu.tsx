@@ -93,6 +93,7 @@ export class Menu {
                         aria-haspopup="true"
                         aria-expanded={`${this.isOpen}`}
                         onClick={() => this.toggleOpenState()}
+                        data-test="pd-menu-button"
                     >
                         {this.renderLabel()}
                         <pd-icon class="pd-menu-icon" size={2} name="menu_actions"></pd-icon>
@@ -111,7 +112,6 @@ export class Menu {
                 style={{
                     display: this.isOpen ? 'block' : 'none',
                 }}
-                tabIndex={-1}
                 onClick={() => this.toggleOpenState()}
             >
                 <slot></slot>
@@ -121,6 +121,10 @@ export class Menu {
 
     private renderLabel() {
         if (!this.label) return;
-        return <span class="pd-menu-label">{this.label}</span>;
+        return (
+            <span class="pd-menu-label" data-test="pd-menu-label">
+                {this.label}
+            </span>
+        );
     }
 }

@@ -1,4 +1,4 @@
-import { Component, h, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
 import { collapse, expand } from '../../utils/animation';
 
 @Component({
@@ -111,7 +111,12 @@ export class PdAlert {
         const typeAttrs = TagType === 'button' ? { type: 'button' } : { href: actionHref, target: actionTarget };
 
         return (
-            <TagType class="pd-alert-action-text" {...typeAttrs} onClick={() => this.handleAction()}>
+            <TagType
+                class="pd-alert-action-text"
+                {...typeAttrs}
+                onClick={() => this.handleAction()}
+                data-test="pd-alert-action"
+            >
                 {!this.expanded ? actionText : actionTextExpanded}
             </TagType>
         );
@@ -120,7 +125,7 @@ export class PdAlert {
     private renderClose() {
         if (!this.closable) return;
         return (
-            <button class="pd-alert-close-button" onClick={this.pdClosed.emit}>
+            <button class="pd-alert-close-button" onClick={this.pdClosed.emit} data-test="pd-alert-close">
                 <pd-icon class="pd-alert-action-cancel" name="close" size={2}></pd-icon>
             </button>
         );
