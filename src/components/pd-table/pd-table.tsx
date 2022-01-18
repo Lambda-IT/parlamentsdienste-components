@@ -84,8 +84,8 @@ export class Table {
      * Available Page sizes for paging
      */
     @Prop() pageSizes: DropdownItem[] = [
-        { id: '1', label: '10', value: 10, selected: true },
-        { id: '2', label: '25', value: 25 },
+        { id: '1', label: '1', value: 1, selected: true },
+        { id: '2', label: '2', value: 2 },
         { id: '3', label: '100', value: 100 },
     ];
 
@@ -130,19 +130,20 @@ export class Table {
     @Watch('rows')
     handleRowsChanged() {
         this.filteredRows = [...this.rows];
+        this.reset();
     }
 
     private filterElement: HTMLPdTableFilterElement;
-    private currentFilter: string;
     private headerRefs: any = {};
     private nextSortDir = {};
-    private sortColumn = '';
     private popper: Instance;
     private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
     private selectableCellWidth: number = 50;
     private defaultPageSize = 10;
 
     @State() private totalPages = 1;
+    @State() private currentFilter: string;
+    @State() private sortColumn = '';
     @State() private currentPage = 1;
     @State() private pageSize = this.defaultPageSize;
     @State() private filterOpen = false;
@@ -356,6 +357,16 @@ export class Table {
         this.currentPage = 1;
         this.pageSize = pageSize;
         this.totalPages = Math.ceil(this.filteredRows.length / this.pageSize);
+    }
+
+    private reset() {
+        this.initPaging(this.pageSize);
+        this.currentPage = 1;
+        this.filterOpen = false;
+        this.allSelected = false;
+        this.sortColumn = '';
+        this.currentFilter = undefined;
+        this.calculateIsIndeterminate();
     }
 
     public render() {
