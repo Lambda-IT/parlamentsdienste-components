@@ -59,6 +59,8 @@ export interface DropdownItem {
     selected?: boolean;
 }
 
+export type TextWrap = 'wrap' | 'no-wrap';
+
 export interface ComboboxItem extends DropdownItem { }
 
 export interface SelectedEvent {
