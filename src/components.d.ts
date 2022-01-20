@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -334,6 +334,10 @@ export namespace Components {
           * Set a preselected entry by index
          */
         "setSelectedIndex": (index: number) => Promise<void>;
+        /**
+          * Selected item text wrap on words
+         */
+        "textWrap": TextWrap;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -1617,6 +1621,10 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Selected item text wrap on words
+         */
+        "textWrap"?: TextWrap;
         /**
           * Default vertical adjustment for inline forms
          */

@@ -1,6 +1,6 @@
 import { createPopper, Instance } from '@popperjs/core';
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core';
-import { DropdownItem } from '../../interface';
+import { DropdownItem, TextWrap } from '../../interface';
 import { closestParentElement } from '../../utils/helpers';
 @Component({
     tag: 'pd-dropdown',
@@ -72,6 +72,11 @@ export class Dropdown {
      * Default vertical adjustment for inline forms
      */
     @Prop() verticalAdjust: boolean = false;
+
+    /**
+     * Selected item text wrap on words
+     */
+    @Prop() textWrap: TextWrap = 'no-wrap';
 
     /**
      * Set a preselected entry by index
@@ -228,7 +233,10 @@ export class Dropdown {
                         disabled={this.disabled || this.readonly}
                         data-test="pd-dropdown-button"
                     >
-                        <span class="pd-dropdown-text" data-test="pd-dropdown-text">
+                        <span
+                            class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
+                            data-test="pd-dropdown-text"
+                        >
                             {this.selectedItem?.label || this.placeholder}
                         </span>
                         <pd-icon

@@ -44,7 +44,12 @@
             text-align: left;
             text-overflow: ellipsis;
             overflow-x: hidden;
+            white-space: nowrap;
             min-height: 1.5rem;
+
+            &.pd-dropdown-text-wrap {
+                white-space: normal;
+            }
         }
 
         .pd-dropdown-caret {
