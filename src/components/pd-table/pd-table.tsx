@@ -84,8 +84,8 @@ export class Table {
      * Available Page sizes for paging
      */
     @Prop() pageSizes: DropdownItem[] = [
-        { id: '1', label: '1', value: 1, selected: true },
-        { id: '2', label: '2', value: 2 },
+        { id: '1', label: '10', value: 10, selected: true },
+        { id: '2', label: '25', value: 25 },
         { id: '3', label: '100', value: 100 },
     ];
 
