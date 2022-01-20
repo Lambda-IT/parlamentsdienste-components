@@ -838,6 +838,7 @@ export namespace Components {
           * Location of paging element
          */
         "pagingLocation": PdPagingLocation;
+        "refresh": () => Promise<void>;
         /**
           * Height of rows
          */

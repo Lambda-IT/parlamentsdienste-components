@@ -127,10 +127,16 @@ export class Table {
         }));
     }
 
+    @Method() async refresh() {
+        this.filteredRows = [...this.rows];
+        this.update();
+        this.initPaging(this.pageSize);
+    }
+
     @Watch('rows')
     handleRowsChanged() {
         this.filteredRows = [...this.rows];
-        this.reset();
+        this.update();
     }
 
     private filterElement: HTMLPdTableFilterElement;
@@ -158,7 +164,7 @@ export class Table {
     }
 
     protected componentWillLoad() {
-        this.calculateIsIndeterminate();
+        this.checkIsIndeterminate();
         this.initPaging(+this.pageSizes.find((ps) => ps.selected)?.value || this.defaultPageSize);
     }
 
@@ -315,9 +321,8 @@ export class Table {
             row,
             rows: this.filteredRows.filter((r) => r.pdSelected),
         });
-
-        this.allSelected = this.filteredRows.every((r) => r.pdSelected); // reset if not all checkboxes are selected
-        this.calculateIsIndeterminate();
+        this.checkAllSelected();
+        this.checkIsIndeterminate();
     }
 
     private selectAll() {
@@ -340,9 +345,13 @@ export class Table {
         this.onRowClick.emit(row);
     }
 
-    private calculateIsIndeterminate() {
+    private checkIsIndeterminate() {
         const countSelected = this.filteredRows.reduce((acc, r) => (r.pdSelected ? acc + 1 : acc), 0);
         this.isIndeterminate = countSelected > 0 && !this.allSelected;
+    }
+
+    private checkAllSelected() {
+        this.allSelected = this.filteredRows.every((r) => r.pdSelected); // reset if not all checkboxes are selected
     }
 
     // paging functionality
@@ -359,14 +368,14 @@ export class Table {
         this.totalPages = Math.ceil(this.filteredRows.length / this.pageSize);
     }
 
-    private reset() {
-        this.initPaging(this.pageSize);
-        this.currentPage = 1;
+    private update() {
+        this.totalPages = Math.ceil(this.filteredRows.length / this.pageSize);
+        this.currentPage = this.currentPage > this.totalPages ? this.totalPages : this.currentPage;
         this.filterOpen = false;
-        this.allSelected = false;
         this.sortColumn = '';
         this.currentFilter = undefined;
-        this.calculateIsIndeterminate();
+        this.checkAllSelected();
+        this.checkIsIndeterminate();
     }
 
     public render() {
