@@ -127,22 +127,29 @@ export class Table {
         }));
     }
 
+    @Method() async refresh() {
+        this.filteredRows = [...this.rows];
+        this.update();
+        this.initPaging(this.pageSize);
+    }
+
     @Watch('rows')
     handleRowsChanged() {
         this.filteredRows = [...this.rows];
+        this.update();
     }
 
     private filterElement: HTMLPdTableFilterElement;
-    private currentFilter: string;
     private headerRefs: any = {};
     private nextSortDir = {};
-    private sortColumn = '';
     private popper: Instance;
     private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
     private selectableCellWidth: number = 50;
     private defaultPageSize = 10;
 
     @State() private totalPages = 1;
+    @State() private currentFilter: string;
+    @State() private sortColumn = '';
     @State() private currentPage = 1;
     @State() private pageSize = this.defaultPageSize;
     @State() private filterOpen = false;
@@ -157,7 +164,7 @@ export class Table {
     }
 
     protected componentWillLoad() {
-        this.calculateIsIndeterminate();
+        this.checkIsIndeterminate();
         this.initPaging(+this.pageSizes.find((ps) => ps.selected)?.value || this.defaultPageSize);
     }
 
@@ -314,9 +321,8 @@ export class Table {
             row,
             rows: this.filteredRows.filter((r) => r.pdSelected),
         });
-
-        this.allSelected = this.filteredRows.every((r) => r.pdSelected); // reset if not all checkboxes are selected
-        this.calculateIsIndeterminate();
+        this.checkAllSelected();
+        this.checkIsIndeterminate();
     }
 
     private selectAll() {
@@ -339,9 +345,13 @@ export class Table {
         this.onRowClick.emit(row);
     }
 
-    private calculateIsIndeterminate() {
+    private checkIsIndeterminate() {
         const countSelected = this.filteredRows.reduce((acc, r) => (r.pdSelected ? acc + 1 : acc), 0);
         this.isIndeterminate = countSelected > 0 && !this.allSelected;
+    }
+
+    private checkAllSelected() {
+        this.allSelected = this.filteredRows.every((r) => r.pdSelected); // reset if not all checkboxes are selected
     }
 
     // paging functionality
@@ -356,6 +366,16 @@ export class Table {
         this.currentPage = 1;
         this.pageSize = pageSize;
         this.totalPages = Math.ceil(this.filteredRows.length / this.pageSize);
+    }
+
+    private update() {
+        this.totalPages = Math.ceil(this.filteredRows.length / this.pageSize);
+        this.currentPage = this.currentPage > this.totalPages ? this.totalPages : this.currentPage;
+        this.filterOpen = false;
+        this.sortColumn = '';
+        this.currentFilter = undefined;
+        this.checkAllSelected();
+        this.checkIsIndeterminate();
     }
 
     public render() {

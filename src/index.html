@@ -185,7 +185,7 @@
                     </pd-button-group>
                 </details>
 
-                <details open>
+                <details>
                     <summary>Tabs</summary>
                     <h2>Default</h2>
                     <pd-tabs class="pd-tabs-items"></pd-tabs>
@@ -681,8 +681,10 @@
 
             <details open>
                 <summary>Table</summary>
-                <details>
+                <details open>
                     <summary>Table</summary>
+                    <pd-button id="pd-button-table">Change</pd-button>
+                    <pd-button id="pd-button-table-refresh">Refresh</pd-button>
                     <pd-table id="pd-table-0" header-style="dark" selectable show-status menu-label="Aktionen">
                         <pd-menu-item text="Drucken">
                             <pd-icon size="2" name="print"></pd-icon>
@@ -896,10 +898,27 @@
                 { no: 15, column1: 'Cell4', column2: 'Cell0', column3: 4563, pdSelected: true, pdStatus: 'warning' },
             ];
 
+            const rows1 = [
+                { no: 1, column1: 'Bell1', column2: 'Bell2', column3: 0.12 },
+                { no: 15, column1: 'Bell4', column2: 'Bell0', column3: 4563, pdStatus: 'warning', pdSelected: true },
+            ];
+
+            const pdButtonTable = document.getElementById('pd-button-table');
+            const pdButtonTableRef = document.getElementById('pd-button-table-refresh');
+
+            pdButtonTable.addEventListener('click', () => {
+                pdTable0.rows = rows1;
+            });
+
+            pdButtonTableRef.addEventListener('click', () => {
+                pdTable0.refresh();
+            });
+
             pdTable0.columns = columns;
             pdTable0.rows = rows;
             pdTable0.showActionColumn = true;
             pdTable0.iconConfig = { edit: true, select: true, delete: true };
+            pdTable0.paging = true;
             pdTable1.columns = columns;
             pdTable1.rows = rows;
             pdTable2.columns = columns;
