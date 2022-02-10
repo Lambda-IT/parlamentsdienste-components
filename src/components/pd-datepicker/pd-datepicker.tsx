@@ -84,6 +84,7 @@ export class Datepicker {
         onYearChange: (selectedDates, dateStr) => this.pdYearChange.emit({ selectedDates, dateStr }),
         onReady: (selectedDates, dateStr) => this.pdReady.emit({ selectedDates, dateStr }),
         onValueUpdate: (selectedDates, dateStr) => this.pdValueUpdate.emit({ selectedDates, dateStr }),
+        onChange: (selectedDates, dateStr) => this.pdChange.emit({ selectedDates, dateStr }),
         allowInput: this.allowInput,
         disableMobile: true,
     };
@@ -155,7 +156,7 @@ export class Datepicker {
     public componentDidLoad() {
         this.flatpickr = flatpickr(this.contentWrapperElement, Object.assign(this.defaultConfig, this.config));
 
-        if (this.date) this.setDate(this.date);
+        if (this.date) this.setDate(this.date, false);
     }
 
     public render() {
@@ -173,7 +174,7 @@ export class Datepicker {
                 >
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">
-                        <pd-input
+                        <input
                             data-test="pd-datepicker-input"
                             class={{
                                 'pd-datepicker-input': true,
@@ -184,7 +185,6 @@ export class Datepicker {
                             disabled={this.disabled}
                             readonly={this.readonly}
                             required={this.required}
-                            error={this.error}
                             placeholder={this.placeholder}
                             tabindex={this.readonly ? '-1' : null} // this is not an optimal solution as it removes ability to copy&paste with focus
                             size={this.size}
