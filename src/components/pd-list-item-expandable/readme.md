@@ -22,9 +22,10 @@
 
 ## Styles
 
-| Style                       | Default       | Description                   |
-| --------------------------- | ------------- | ----------------------------- |
-| `--pd-list-item-background` | `transparent` | background color of list item |
+| Style                          | Default       | Description                               |
+| ------------------------------ | ------------- | ----------------------------------------- |
+| `--pd-list-item-background`    | `transparent` | background color of list item             |
+| `--pd-list-item-content-hover` | `bon-jour`    | background color for content hover effect |
 
 ## Slots
 
@@ -37,40 +38,40 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property     | Attribute    | Description                                                         | Type                                                      | Default     |
-| ------------ | ------------ | ------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
-| `checkbox`   | `checkbox`   | Shows edit button                                                   | `boolean`                                                 | `false`     |
-| `checked`    | `checked`    | Sets check state of the checkbox true/false                         | `boolean`                                                 | `false`     |
-| `collapsed`  | `collapsed`  | Expands / collapses the inner content of the list item              | `boolean`                                                 | `true`      |
-| `edit`       | `edit`       | Shows edit button                                                   | `boolean`                                                 | `false`     |
-| `expand`     | `expand`     | Shows expand button with simple event (no expandable inner content) | `boolean`                                                 | `false`     |
-| `expandable` | `expandable` | Shows expand (toggle) button for expandable inner content           | `boolean`                                                 | `false`     |
-| `menu`       | `menu`       | Shows menu button                                                   | `boolean`                                                 | `false`     |
-| `status`     | `status`     | Status icon for list item                                           | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
-
+| Property       | Attribute       | Description                                                         | Type                                                      | Default     |
+| -------------- | --------------- | ------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
+| `checkbox`     | `checkbox`      | Shows edit button                                                   | `boolean`                                                 | `false`     |
+| `checked`      | `checked`       | Sets check state of the checkbox true/false                         | `boolean`                                                 | `false`     |
+| `collapsed`    | `collapsed`     | Expands / collapses the inner content of the list item              | `boolean`                                                 | `true`      |
+| `contentClick` | `content-click` | Adds content click event and style to item                          | `boolean`                                                 | `false`     |
+| `edit`         | `edit`          | Shows edit button                                                   | `boolean`                                                 | `false`     |
+| `expand`       | `expand`        | Shows expand button with simple event (no expandable inner content) | `boolean`                                                 | `false`     |
+| `expandable`   | `expandable`    | Shows expand (toggle) button for expandable inner content           | `boolean`                                                 | `false`     |
+| `menu`         | `menu`          | Shows menu button                                                   | `boolean`                                                 | `false`     |
+| `status`       | `status`        | Status icon for list item                                           | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
 
 ## Events
 
-| Event          | Description                      | Type                   |
-| -------------- | -------------------------------- | ---------------------- |
-| `pd-collapsed` | Inner content collapsed/expanded | `CustomEvent<boolean>` |
-| `pd-edit`      | Edit button click event          | `CustomEvent<void>`    |
-| `pd-expand`    | Expand button click event        | `CustomEvent<void>`    |
-| `pd-selected`  | Checkbox selected event          | `CustomEvent<boolean>` |
-
+| Event              | Description                                          | Type                   |
+| ------------------ | ---------------------------------------------------- | ---------------------- |
+| `pd-collapsed`     | Inner content collapsed/expanded                     | `CustomEvent<boolean>` |
+| `pd-content-click` | Event on content click (content-click has to be set) | `CustomEvent<void>`    |
+| `pd-edit`          | Edit button click event                              | `CustomEvent<void>`    |
+| `pd-expand`        | Expand button click event                            | `CustomEvent<void>`    |
+| `pd-selected`      | Checkbox selected event                              | `CustomEvent<boolean>` |
 
 ## Dependencies
 
 ### Depends on
 
-- [pd-icon](../pd-icon)
-- [pd-menu](../pd-menu)
-- [pd-checkbox](../pd-checkbox)
+-   [pd-icon](../pd-icon)
+-   [pd-menu](../pd-menu)
+-   [pd-checkbox](../pd-checkbox)
 
 ### Graph
+
 ```mermaid
 graph TD;
   pd-list-item-expandable --> pd-icon
@@ -80,6 +81,6 @@ graph TD;
   style pd-list-item-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
