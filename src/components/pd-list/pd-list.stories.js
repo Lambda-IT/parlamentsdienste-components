@@ -1,6 +1,6 @@
-import notes from './readme.md';
-import notesListItem from '../pd-list-item/readme.md';
 import notesListItemExpandable from '../pd-list-item-expandable/readme.md';
+import notesListItem from '../pd-list-item/readme.md';
+import notes from './readme.md';
 
 export default {
     title: 'Interactions/List',
@@ -11,7 +11,7 @@ export default {
             'List Item Expandable': notesListItemExpandable,
         },
         actions: {
-            handles: ['pd-expand', 'pd-edit', 'pd-selected', 'pd-collapsed'],
+            handles: ['pd-expand', 'pd-edit', 'pd-selected', 'pd-collapsed', 'pd-content-click'],
         },
     },
 };
@@ -66,6 +66,7 @@ export const ExpandableList = (args) => `
             ${args.expand ? 'expand' : ''} 
             ${args.expandable ? 'expandable' : ''} 
             ${args.menu ? 'menu' : ''} 
+            ${args.contentClick ? 'content-click' : ''} 
             status="${args.status}" 
             style="--pd-list-item-background: #fff"
         >
@@ -89,6 +90,7 @@ ExpandableList.args = {
     expand: false,
     expandable: true,
     menu: true,
+    contentClick: false,
     expandableContent: 'Expandable Content',
     status: 'success',
 };
@@ -100,6 +102,7 @@ ExpandableList.argTypes = {
     expand: { control: { type: 'boolean' } },
     expandable: { control: { type: 'boolean' } },
     menu: { control: { type: 'boolean' } },
+    contentClick: { control: { type: 'boolean' } },
     expandableContent: { control: { type: 'text' } },
     status: { control: { type: 'select', options: ['success', 'danger', 'warning', 'info', 'unset'] } },
 };
