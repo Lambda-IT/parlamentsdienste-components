@@ -17,10 +17,14 @@
 .pd-list-item-expandable-checkbox {
     padding-left: 0.75rem;
     --pd-checkbox-text-padding-left: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .pd-list-item-expandable-status {
     width: 3.125em;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,4 +83,9 @@
 
 .pd-list-item-expandable-status-placeholder {
     padding-left: 0.25rem;
+}
+
+:host(.pd-content-hover) {
+    background-color: var(--pd-list-item-content-hover, $bon-jour);
+    cursor: pointer;
 }

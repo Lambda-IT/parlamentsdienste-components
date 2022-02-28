@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { PdStatus } from '../../interface';
 import { collapse, expand } from '../../utils/animation';
 
@@ -13,6 +13,8 @@ export class PdListItemExpandable {
      */
     @Prop() status: PdStatus;
     private contentWrapperElement: HTMLElement;
+
+    @State() contentHover: boolean = false;
 
     /**
      * Expands / collapses the inner content of the list item
@@ -37,6 +39,9 @@ export class PdListItemExpandable {
     /** Sets check state of the checkbox true/false */
     @Prop() checked: boolean = false;
 
+    /** Adds content click event and style to item */
+    @Prop() contentClick: boolean = false;
+
     /** Edit button click event */
     @Event({ eventName: 'pd-edit' }) pdEdit: EventEmitter<void>;
 
@@ -48,6 +53,9 @@ export class PdListItemExpandable {
 
     /** Inner content collapsed/expanded */
     @Event({ eventName: 'pd-collapsed' }) pdCollapsed: EventEmitter<boolean>;
+
+    /** Event on content click (content-click has to be set) */
+    @Event({ eventName: 'pd-content-click' }) pdContentClick: EventEmitter<void>;
 
     @Watch('collapsed')
     valueChanged(collapsed: boolean) {
@@ -75,10 +83,15 @@ export class PdListItemExpandable {
 
     public render() {
         return (
-            <Host>
+            <Host class={{ 'pd-content-hover': this.contentHover }}>
                 <div class={{ 'pd-list-item-expandable-checkbox': this.checkbox }}>{this.renderCheckbox()}</div>
                 {this.renderStatus()}
-                <div class="pd-list-item-expandable-content">
+                <div
+                    class="pd-list-item-expandable-content"
+                    onClick={() => (this.contentClick ? this.pdContentClick.emit() : null)}
+                    onMouseOver={() => (this.contentClick ? (this.contentHover = true) : null)}
+                    onMouseOut={() => (this.contentClick ? (this.contentHover = false) : null)}
+                >
                     <slot></slot>
                 </div>
                 <div
@@ -108,7 +121,13 @@ export class PdListItemExpandable {
     private renderStatus = () => {
         if (!this.status) return <div class="pd-list-item-expandable-status-placeholder"></div>;
         return (
-            <div class="pd-list-item-expandable-status" data-test="pd-list-item-expandable-status">
+            <div
+                class="pd-list-item-expandable-status"
+                data-test="pd-list-item-expandable-status"
+                onClick={() => (this.contentClick ? this.pdContentClick.emit() : null)}
+                onMouseOver={() => (this.contentClick ? (this.contentHover = true) : null)}
+                onMouseOut={() => (this.contentClick ? (this.contentHover = false) : null)}
+            >
                 {this.renderStatusIcon()}
             </div>
         );

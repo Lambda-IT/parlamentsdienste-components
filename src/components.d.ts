@@ -541,6 +541,10 @@ export namespace Components {
          */
         "collapsed": boolean;
         /**
+          * Adds content click event and style to item
+         */
+        "contentClick": boolean;
+        /**
           * Shows edit button
          */
         "edit": boolean;
@@ -1840,6 +1844,10 @@ declare namespace LocalJSX {
          */
         "collapsed"?: boolean;
         /**
+          * Adds content click event and style to item
+         */
+        "contentClick"?: boolean;
+        /**
           * Shows edit button
          */
         "edit"?: boolean;
@@ -1859,6 +1867,10 @@ declare namespace LocalJSX {
           * Inner content collapsed/expanded
          */
         "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Event on content click (content-click has to be set)
+         */
+        "onPd-content-click"?: (event: CustomEvent<void>) => void;
         /**
           * Edit button click event
          */
