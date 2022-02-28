@@ -126,6 +126,13 @@ a {
             .numInput {
                 height: 100%;
             }
+
+            .flatpickr-monthDropdown-months {
+                font-family: inherit;
+                .flatpickr-monthDropdown-month {
+                    background-color: white;
+                }
+            }
         }
 
         .flatpickr-prev-month,

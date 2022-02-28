@@ -73,19 +73,6 @@ Type: `Promise<void>`
 
 
 
-## Dependencies
-
-### Used by
-
- - [pd-datepicker](../pd-datepicker)
-
-### Graph
-```mermaid
-graph TD;
-  pd-datepicker --> pd-input
-  style pd-input fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
