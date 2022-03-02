@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Listen, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Listen, Prop } from '@stencil/core';
 import { ChipType } from '../../interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { ChipType } from '../../interface';
     styleUrl: 'pd-chip.scss',
     shadow: true,
 })
-export class Chip {
+export class Chip implements ComponentInterface {
     /**
      * Sets chip to disabled state
      */

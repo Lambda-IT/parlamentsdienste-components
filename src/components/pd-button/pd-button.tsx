@@ -1,4 +1,4 @@
-import { Component, h, Host, Listen, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Listen, Prop } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../..
     styleUrl: 'pd-button.scss',
     shadow: true,
 })
-export class Button {
+export class Button implements ComponentInterface {
     /**
      * Sets button to disbaled state
      */

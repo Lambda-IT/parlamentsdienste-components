@@ -1,4 +1,16 @@
-import { Component, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentInterface,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Listen,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import { PdStatus } from '../../interface';
 import { collapse, expand } from '../../utils/animation';
 
@@ -7,14 +19,15 @@ import { collapse, expand } from '../../utils/animation';
     styleUrl: 'pd-list-item-expandable.scss',
     shadow: true,
 })
-export class PdListItemExpandable {
+export class ListItemExpandable implements ComponentInterface, ComponentDidLoad {
+    private contentWrapperElement: HTMLElement;
+
+    @State() contentHover: boolean = false;
+
     /**
      * Status icon for list item
      */
     @Prop() status: PdStatus;
-    private contentWrapperElement: HTMLElement;
-
-    @State() contentHover: boolean = false;
 
     /**
      * Expands / collapses the inner content of the list item

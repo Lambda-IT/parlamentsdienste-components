@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
 import { InputChangeEventDetail, TextFieldTypes } from '../../interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { InputChangeEventDetail, TextFieldTypes } from '../../interface';
     styleUrl: 'pd-input.scss',
     shadow: true,
 })
-export class Input {
+export class Input implements ComponentInterface {
     private nativeInput?: HTMLInputElement;
 
     /**
@@ -203,7 +203,7 @@ export class Input {
         return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
     }
 
-    render() {
+    public render() {
         const value = this.getValue();
 
         return (

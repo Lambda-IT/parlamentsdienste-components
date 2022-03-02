@@ -1,5 +1,20 @@
 import { createPopper, Instance } from '@popperjs/core';
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentDidUpdate,
+    ComponentInterface,
+    ComponentWillLoad,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+    State,
+} from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
 import { closestParentElement } from '../../utils/helpers';
 @Component({
@@ -8,11 +23,15 @@ import { closestParentElement } from '../../utils/helpers';
     assetsDirs: ['assets-dropdown'],
     shadow: true,
 })
-export class Dropdown {
-    @Element() element;
+export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
     private menuElement: HTMLElement;
     private buttonElement: HTMLElement;
     private popper: Instance;
+
+    @Element() element: HTMLElement;
+
+    @State() open: boolean = false;
+    @State() selectedItem: any;
 
     /**
      * Placeholder when no item is selected
@@ -78,6 +97,8 @@ export class Dropdown {
      */
     @Prop() textWrap: TextWrap = 'no-wrap';
 
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<DropdownItem>;
+
     /**
      * Set a preselected entry by index
      */
@@ -97,15 +118,13 @@ export class Dropdown {
         this.selectedItem = null;
     }
 
-    @State() open: boolean = false;
-
     @Listen('click', { target: 'body' })
-    protected handleClick(ev: MouseEvent) {
+    handleClick(ev: MouseEvent) {
         if (closestParentElement('pd-dropdown', ev.composedPath()) !== this.element) this.open = false;
     }
 
     @Listen('keydown')
-    protected handleKeyDown(ev: KeyboardEvent) {
+    handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
                 this.open = false;
@@ -153,9 +172,6 @@ export class Dropdown {
         }
     }
 
-    @Event({ eventName: 'pd-change' })
-    public pdChange!: EventEmitter<DropdownItem>;
-
     private currentSearch: string = '';
     private inputTime: number = 0;
 
@@ -169,17 +185,15 @@ export class Dropdown {
         this.open = !this.open;
     };
 
-    @State() selectedItem: any;
-
-    protected componentWillLoad() {
+    public componentWillLoad() {
         this.selectedItem = this.items.find((item) => item.selected);
     }
 
-    protected componentDidLoad() {
+    public componentDidLoad() {
         this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     }
 
-    protected componentDidUpdate() {
+    public componentDidUpdate() {
         if (!this.open) return;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement

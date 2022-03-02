@@ -38,6 +38,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                         | Type                                                      | Default     |
@@ -52,6 +53,7 @@
 | `menu`         | `menu`          | Shows menu button                                                   | `boolean`                                                 | `false`     |
 | `status`       | `status`        | Status icon for list item                                           | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
 
+
 ## Events
 
 | Event              | Description                                          | Type                   |
@@ -62,16 +64,16 @@
 | `pd-expand`        | Expand button click event                            | `CustomEvent<void>`    |
 | `pd-selected`      | Checkbox selected event                              | `CustomEvent<boolean>` |
 
+
 ## Dependencies
 
 ### Depends on
 
--   [pd-icon](../pd-icon)
--   [pd-menu](../pd-menu)
--   [pd-checkbox](../pd-checkbox)
+- [pd-icon](../pd-icon)
+- [pd-menu](../pd-menu)
+- [pd-checkbox](../pd-checkbox)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-list-item-expandable --> pd-icon
@@ -81,6 +83,6 @@ graph TD;
   style pd-list-item-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

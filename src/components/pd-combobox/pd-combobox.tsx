@@ -1,5 +1,21 @@
 import { createPopper, Instance } from '@popperjs/core';
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentDidUpdate,
+    ComponentInterface,
+    ComponentWillLoad,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import { ComboboxItem, InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -8,13 +24,17 @@ import { ComboboxItem, InputChangeEventDetail } from '../../interface';
     assetsDirs: ['assets-combobox'],
     shadow: true,
 })
-export class Combobox {
+export class Combobox implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
     private nativeInput?: HTMLInputElement;
-
-    @Element() element!: HTMLElement;
     private menuElement: HTMLElement;
     private wrapperElement: HTMLElement;
     private popper: Instance;
+
+    @Element() element!: HTMLElement;
+
+    @State() open: boolean = false;
+    @State() selectedItem: ComboboxItem = null;
+    @State() _itemsState: ComboboxItem[] = [];
 
     /**
      * Values shown as combobox items
@@ -124,7 +144,7 @@ export class Combobox {
     }
 
     @Watch('items')
-    protected resultsChanged(items: any) {
+    resultsChanged(items: any) {
         this._itemsState = this.validateItems(items);
         if (this._itemsState.length > 0) {
             this.selectedItem = null;
@@ -132,7 +152,7 @@ export class Combobox {
     }
 
     @Watch('selectedItem')
-    protected indexChanged(index: number) {
+    indexChanged(index: number) {
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
@@ -145,7 +165,7 @@ export class Combobox {
         this.pdChange.emit(this.selectedItem);
     }
 
-    protected componentWillLoad() {
+    public componentWillLoad() {
         this._itemsState = this.validateItems(this.items);
 
         let matchedItem = this._itemsState.find((i) => i.selected);
@@ -158,11 +178,11 @@ export class Combobox {
         }
     }
 
-    protected componentDidLoad() {
+    public componentDidLoad() {
         this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
-    protected componentDidUpdate() {
+    public componentDidUpdate() {
         if (!this.open) return;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
@@ -178,12 +198,8 @@ export class Combobox {
         });
     }
 
-    @State() open: boolean = false;
-    @State() selectedItem: ComboboxItem = null;
-    @State() _itemsState: ComboboxItem[] = [];
-
     @Listen('keydown')
-    protected handleKeyDown(ev: KeyboardEvent) {
+    handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
                 this.open = false;
@@ -248,7 +264,7 @@ export class Combobox {
     }
 
     @Listen('click', { target: 'body' })
-    protected handleClickOutside(ev: MouseEvent) {
+    handleClickOutside(ev: MouseEvent) {
         if (ev.target !== this.element) {
             this.open = false;
         }
@@ -259,7 +275,7 @@ export class Combobox {
      * `input.focus()`.
      */
     @Method()
-    public async setFocus() {
+    async setFocus() {
         if (this.nativeInput) {
             this.nativeInput.focus();
         }

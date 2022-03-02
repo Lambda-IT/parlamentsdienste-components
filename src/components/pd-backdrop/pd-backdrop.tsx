@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import { now } from '../../utils/helpers';
 
 @Component({
@@ -6,7 +6,7 @@ import { now } from '../../utils/helpers';
     styleUrl: 'pd-backdrop.scss',
     shadow: true,
 })
-export class Backdrop {
+export class Backdrop implements ComponentInterface {
     private lastClick = -10000;
 
     /**
@@ -23,13 +23,13 @@ export class Backdrop {
     pdTap: EventEmitter<void>;
 
     @Listen('touchstart', { passive: false, capture: true })
-    protected onTouchStart(ev: TouchEvent) {
+    onTouchStart(ev: TouchEvent) {
         this.lastClick = now(ev);
         this.tap(ev);
     }
 
     @Listen('click', { passive: false, capture: true })
-    protected click(ev: TouchEvent) {
+    click(ev: TouchEvent) {
         if (this.lastClick < now(ev) - 2500) {
             this.tap(ev);
         }

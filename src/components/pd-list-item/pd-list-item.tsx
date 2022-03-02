@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 import { PdStatus } from '../../interface';
 
 @Component({
@@ -7,7 +7,7 @@ import { PdStatus } from '../../interface';
     shadow: true,
     assetsDirs: ['assets-list-item'],
 })
-export class PdListItem {
+export class ListItem implements ComponentInterface {
     /**
      * Status icon for list item
      */

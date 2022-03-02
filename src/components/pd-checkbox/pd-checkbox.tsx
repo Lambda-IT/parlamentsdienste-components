@@ -1,11 +1,11 @@
-import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-checkbox',
     styleUrl: 'pd-checkbox.scss',
     shadow: true,
 })
-export class Checkbox {
+export class Checkbox implements ComponentInterface {
     /**
      * Checkbox description text
      */

@@ -1,11 +1,11 @@
-import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-toast',
     styleUrl: 'pd-toast.scss',
     shadow: true,
 })
-export class PdToast {
+export class Toast implements ComponentInterface {
     /**
      * The Toast title
      */

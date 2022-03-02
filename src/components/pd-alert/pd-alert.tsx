@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { Component, ComponentDidLoad, ComponentInterface, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
 import { collapse, expand } from '../../utils/animation';
 
 @Component({
@@ -6,7 +6,7 @@ import { collapse, expand } from '../../utils/animation';
     styleUrl: 'pd-alert.scss',
     shadow: true,
 })
-export class PdAlert {
+export class Alert implements ComponentInterface, ComponentDidLoad {
     private contentWrapperElement: HTMLElement;
 
     /** Color schema used for the alert */
@@ -30,15 +30,6 @@ export class PdAlert {
     /** Hide alert icon */
     @Prop() hideIcon: boolean = false;
 
-    /** Emitted when close button was pressed. */
-    @Event({ eventName: 'pd-closed' }) pdClosed!: EventEmitter<MouseEvent>;
-
-    /** Emitted when action button was pressed. */
-    @Event({ eventName: 'pd-action' }) pdAction!: EventEmitter<void>;
-
-    /** Emitted when inner content is expanded/collapsed. */
-    @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<boolean>;
-
     /** Enable expandable content */
     @Prop() expandable: boolean = false;
 
@@ -49,6 +40,15 @@ export class PdAlert {
     valueChanged(expanded: boolean) {
         expanded ? expand(this.contentWrapperElement) : collapse(this.contentWrapperElement);
     }
+
+    /** Emitted when close button was pressed. */
+    @Event({ eventName: 'pd-closed' }) pdClosed!: EventEmitter<MouseEvent>;
+
+    /** Emitted when action button was pressed. */
+    @Event({ eventName: 'pd-action' }) pdAction!: EventEmitter<void>;
+
+    /** Emitted when inner content is expanded/collapsed. */
+    @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<boolean>;
 
     public componentDidLoad() {
         // start collapsed

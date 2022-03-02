@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, State } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, State } from '@stencil/core';
 
 @Component({
     tag: 'pd-panel-header',
@@ -6,8 +6,8 @@ import { Component, Element, h, Host, State } from '@stencil/core';
     assetsDirs: ['assets-panel-header'],
     shadow: true,
 })
-export class PanelHeader {
-    @Element() element!: HTMLElement;
+export class PanelHeader implements ComponentInterface {
+    @Element() element: HTMLElement;
 
     @State() collapsed: boolean = false;
     private panel: any | null = null;

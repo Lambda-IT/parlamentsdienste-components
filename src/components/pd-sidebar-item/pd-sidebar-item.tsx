@@ -1,11 +1,11 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-sidebar-item',
     styleUrl: 'pd-sidebar-item.scss',
     shadow: true,
 })
-export class SidebarItem {
+export class SidebarItem implements ComponentInterface {
     /**
      * Item text
      */
@@ -41,7 +41,7 @@ export class SidebarItem {
      */
     @Prop() target: string = '_blank';
 
-    render() {
+    public render() {
         const { href, active, text, target } = this;
         const TagType = href ? 'a' : 'button';
         const typeAttrs = TagType === 'button' ? {} : { href, target };

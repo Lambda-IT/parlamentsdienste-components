@@ -1,11 +1,11 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-navbar-item',
     styleUrl: 'pd-navbar-item.scss',
     shadow: true,
 })
-export class NavbarItem {
+export class NavbarItem implements ComponentInterface {
     @Prop() text: string = '';
 
     @Prop() enabled: boolean = false;

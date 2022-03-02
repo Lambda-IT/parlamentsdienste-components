@@ -1,22 +1,20 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
 import { ResizeObserver } from '@juggle/resize-observer';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 
 @Component({
     tag: 'pd-navbar',
     styleUrl: 'pd-navbar.scss',
     shadow: true,
 })
-export class Navbar {
-    @Element() element: HTMLElement;
+export class Navbar implements ComponentInterface {
     private ro: ResizeObserver;
 
+    @Element() element: HTMLElement;
+
+    @State() private isMobile: boolean = false;
+    @State() private init: boolean = false;
+
     @Prop() mobileBreakpoint: number = 800;
-
-    @State()
-    private isMobile: boolean = false;
-
-    @State()
-    private init: boolean = false;
 
     @Event({ eventName: 'pd-menu' }) pdMenu!: EventEmitter<void>;
 
@@ -29,7 +27,7 @@ export class Navbar {
         this.ro.observe(this.element);
     }
 
-    disconnectedCallback() {
+    public disconnectedCallback() {
         this.ro.disconnect();
     }
 

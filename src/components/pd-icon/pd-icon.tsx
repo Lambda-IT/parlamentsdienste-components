@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, Element, State, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getURL } from '../../utils/path';
 import { getSvgContent, iconContent } from '../../utils/svg';
 
@@ -8,11 +8,14 @@ import { getSvgContent, iconContent } from '../../utils/svg';
     shadow: true,
     assetsDirs: ['assets-icon'],
 })
-export class PdIcon implements ComponentInterface {
+export class Icon implements ComponentInterface {
     private io?: IntersectionObserver;
     private wrapperElement?: HTMLDivElement;
 
     @Element() element!: HTMLElement;
+
+    @State() private svgContent?: string;
+    @State() private isVisible = false;
 
     /**
      * Specifies the `src` url of an SVG file to use.
@@ -29,10 +32,10 @@ export class PdIcon implements ComponentInterface {
      */
     @Prop() size?: number;
 
-  /**
-   * Icon will be loaded lazily when it is visible
-   */
-   @Prop() lazy = true;
+    /**
+     * Icon will be loaded lazily when it is visible
+     */
+    @Prop() lazy = true;
 
     /**
      * Rotation in 'deg'
@@ -57,9 +60,6 @@ export class PdIcon implements ComponentInterface {
 
     /** description tag in svg for accessability*/
     @Prop() iconDescription: string;
-
-    @State() private svgContent?: string;
-    @State() private isVisible = false;
 
     public componentDidRender() {
         // purposely do not return the promise here because loading
@@ -101,7 +101,7 @@ export class PdIcon implements ComponentInterface {
 
     @Watch('src')
     @Watch('name')
-    private loadIcon() {
+    loadIcon() {
         if (this.isVisible) {
             const url = this.src || (this.name ? getURL(`./assets-icon/icon_${this.name}.svg`) : null);
             if (url) {

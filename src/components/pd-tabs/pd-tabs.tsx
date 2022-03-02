@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { TabValue } from '../../interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { TabValue } from '../../interface';
     styleUrl: 'pd-tabs.scss',
     shadow: true,
 })
-export class PdTabs {
+export class Tabs implements ComponentInterface {
     private tabsId = `${tabsIds++}`;
 
     /**

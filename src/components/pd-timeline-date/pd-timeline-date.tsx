@@ -1,11 +1,11 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-timeline-date',
     styleUrl: 'pd-timeline-date.scss',
     shadow: true,
 })
-export class PdTimelineDate {
+export class TimelineDate implements ComponentInterface {
     /**
      * Header text
      */

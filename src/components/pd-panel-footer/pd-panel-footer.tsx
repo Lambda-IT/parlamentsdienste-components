@@ -1,11 +1,11 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
 @Component({
     tag: 'pd-panel-footer',
     styleUrl: 'pd-panel-footer.scss',
     shadow: true,
 })
-export class PanelFooter {
+export class PanelFooter implements ComponentInterface {
     public render() {
         return (
             <Host>

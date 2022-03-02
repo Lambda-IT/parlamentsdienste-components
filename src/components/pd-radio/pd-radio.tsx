@@ -1,12 +1,12 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-radio',
     styleUrl: 'pd-radio.scss',
     shadow: false,
 })
-export class Radio {
-    @Element() element!: HTMLElement;
+export class Radio implements ComponentInterface {
+    @Element() element: HTMLElement;
 
     /**
      * Checks radio
