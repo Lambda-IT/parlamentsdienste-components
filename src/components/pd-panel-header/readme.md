@@ -3,6 +3,14 @@
 <!-- Auto Generated Below -->
 
 
+## Slots
+
+| Slot      | Description                     |
+| --------- | ------------------------------- |
+|           | Header content                  |
+| `"icons"` | Additional icons left of carret |
+
+
 ## Dependencies
 
 ### Depends on

@@ -36,13 +36,21 @@
 </pd-list>
 ```
 
-## Styles
-
-| Style                    | Default  | Description                        |
-| ------------------------ | -------- | ---------------------------------- |
-| `--pd-list-border-color` | `gray-3` | bottom border color of a list item |
-
 <!-- Auto Generated Below -->
+
+
+## Slots
+
+| Slot | Description  |
+| ---- | ------------ |
+|      | List content |
+
+
+## CSS Custom Properties
+
+| Name                     | Description                        |
+| ------------------------ | ---------------------------------- |
+| `--pd-list-border-color` | Bottom border color of a list item |
 
 
 ----------------------------------------------

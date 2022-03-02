@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot - Icon
+ */
 @Component({
     tag: 'pd-menu-item',
     styleUrl: 'pd-menu-item.scss',

@@ -1,5 +1,9 @@
 import { Component, ComponentInterface, Element, h, Host, State } from '@stencil/core';
 
+/**
+ * @slot - Header content
+ * @slot icons - Additional icons left of carret
+ */
 @Component({
     tag: 'pd-panel-header',
     styleUrl: 'pd-panel-header.scss',

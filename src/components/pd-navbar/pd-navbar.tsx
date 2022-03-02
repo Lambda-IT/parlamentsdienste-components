@@ -1,6 +1,10 @@
 import { ResizeObserver } from '@juggle/resize-observer';
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 
+/**
+ * @slot - Navbar items
+ * @slot mobile - Mobile navbar items
+ */
 @Component({
     tag: 'pd-navbar',
     styleUrl: 'pd-navbar.scss',

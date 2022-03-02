@@ -23,16 +23,6 @@
 _To pass arrays or objects to webcomponents you need to append the attribute name with the `.prop` modifier._
 More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 
-## Styles
-
-| Style                              | Default                      | Description                                        |
-| ---------------------------------- | ---------------------------- | -------------------------------------------------- |
-| `--pd-menu-max-width`              | `undefined`                  | Max width for                                      |
-| `--pd-dropdown-vertical-padding`   | `0.625em`                    | Possibility to change inner height of the dropdown |
-| `--pd-dropdown-horizontal-padding` | `0.75em`                     | Possibility to change inner width of the dropdown  |
-| `--pd-menu-label-color`            | `setcolor(primary, enabled)` | Possibility to change color of label and icon      |
-| `--pd-menu-label-weight`           | `400`                        | Possibility to change the label font-weight        |
-
 <!-- Auto Generated Below -->
 
 
@@ -67,6 +57,24 @@ Open menu
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot | Description |
+| ---- | ----------- |
+|      | Menu items  |
+
+
+## CSS Custom Properties
+
+| Name                           | Description                                        |
+| ------------------------------ | -------------------------------------------------- |
+| `--pd-menu-horizontal-padding` | Possibility to change inner width of the dropdown  |
+| `--pd-menu-label-color`        | Possibility to change color of label and icon      |
+| `--pd-menu-label-weight`       | Possibility to change the label font-weight        |
+| `--pd-menu-max-width`          | Max width for                                      |
+| `--pd-menu-vertical-padding`   | Possibility to change inner height of the dropdown |
 
 
 ## Dependencies

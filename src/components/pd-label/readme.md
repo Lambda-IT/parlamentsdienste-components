@@ -14,12 +14,6 @@
 <pd-label has-dot color="#12B886">Label Name</pd-label>
 ```
 
-## Styles
-
-| Style                   | Default   | Description                                   |
-| ----------------------- | --------- | --------------------------------------------- |
-| `--pd-label-text-color` | `#0c0c0c` | border radius for the left side of the button |
-
 <!-- Auto Generated Below -->
 
 
@@ -29,6 +23,20 @@
 | -------- | --------- | -------------------------------------------- | --------- | ----------- |
 | `color`  | `color`   | Background or dot color depending on hasDot  | `string`  | `'#12B886'` |
 | `hasDot` | `has-dot` | Switch between background and dot color mode | `boolean` | `false`     |
+
+
+## Slots
+
+| Slot | Description   |
+| ---- | ------------- |
+|      | Label content |
+
+
+## CSS Custom Properties
+
+| Name                    | Description          |
+| ----------------------- | -------------------- |
+| `--pd-label-text-color` | Text color for label |
 
 
 ----------------------------------------------

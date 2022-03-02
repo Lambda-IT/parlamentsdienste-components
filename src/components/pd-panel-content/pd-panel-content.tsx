@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
+/**
+ * @slot - Main content
+ */
 @Component({
     tag: 'pd-panel-content',
     styleUrl: 'pd-panel-content.scss',

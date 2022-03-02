@@ -1,6 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 import { PdStatus } from '../../interface';
 
+/**
+ * @slot - ListItem content
+ */
 @Component({
     tag: 'pd-list-item',
     styleUrl: 'pd-list-item.scss',

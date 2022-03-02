@@ -1,6 +1,10 @@
 import { Component, ComponentInterface, h, Host, Listen, Prop } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
+/**
+ * @slot - button content
+ * @slot icon - slot for icons
+ */
 @Component({
     tag: 'pd-button',
     styleUrl: 'pd-button.scss',

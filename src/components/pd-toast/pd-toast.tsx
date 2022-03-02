@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot - toast content
+ */
 @Component({
     tag: 'pd-toast',
     styleUrl: 'pd-toast.scss',

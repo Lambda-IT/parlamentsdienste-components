@@ -20,13 +20,6 @@
 </pd-list>
 ```
 
-## Styles
-
-| Style                          | Default       | Description                               |
-| ------------------------------ | ------------- | ----------------------------------------- |
-| `--pd-list-item-background`    | `transparent` | background color of list item             |
-| `--pd-list-item-content-hover` | `bon-jour`    | background color for content hover effect |
-
 ## Slots
 
 | Name         | Description                                    |
@@ -63,6 +56,25 @@
 | `pd-edit`          | Edit button click event                              | `CustomEvent<void>`    |
 | `pd-expand`        | Expand button click event                            | `CustomEvent<void>`    |
 | `pd-selected`      | Checkbox selected event                              | `CustomEvent<boolean>` |
+
+
+## Slots
+
+| Slot             | Description                |
+| ---------------- | -------------------------- |
+|                  | ListItemExpandable content |
+| `"action-left"`  | Left of Actions            |
+| `"action-right"` | Right of Actions           |
+| `"expandable"`   | Expandable content         |
+| `"menu"`         | Slot for list item menu    |
+
+
+## CSS Custom Properties
+
+| Name                           | Description                               |
+| ------------------------------ | ----------------------------------------- |
+| `--pd-list-item-background`    | Background color of list item             |
+| `--pd-list-item-content-hover` | Background color for content hover effect |
 
 
 ## Dependencies

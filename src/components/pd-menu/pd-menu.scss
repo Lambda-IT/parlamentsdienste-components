@@ -11,6 +11,13 @@
     outline: none;
 }
 
+/**
+ * @prop --pd-menu-max-width: Max width for
+ * @prop --pd-menu-vertical-padding: Possibility to change inner height of the dropdown
+ * @prop --pd-menu-horizontal-padding: Possibility to change inner width of the dropdown
+ * @prop --pd-menu-label-color: Possibility to change color of label and icon
+ * @prop --pd-menu-label-weight: Possibility to change the label font-weight
+ */
 .pd-menu {
     display: flex;
     flex-wrap: nowrap;

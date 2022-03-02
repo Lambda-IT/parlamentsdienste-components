@@ -1,6 +1,10 @@
 import { Component, ComponentDidLoad, ComponentInterface, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
 import { collapse, expand } from '../../utils/animation';
 
+/**
+ * @slot - alert title
+ * @slot expandable - expandable content
+ */
 @Component({
     tag: 'pd-alert',
     styleUrl: 'pd-alert.scss',

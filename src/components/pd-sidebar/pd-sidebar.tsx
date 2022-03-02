@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
+/**
+ * @slot - Sidebar items
+ */
 @Component({
     tag: 'pd-sidebar',
     styleUrl: 'pd-sidebar.scss',

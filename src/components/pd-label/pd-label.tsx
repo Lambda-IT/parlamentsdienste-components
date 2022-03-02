@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot - Label content
+ */
 @Component({
     tag: 'pd-label',
     styleUrl: 'pd-label.scss',

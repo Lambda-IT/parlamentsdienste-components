@@ -31,6 +31,12 @@
     }
 }
 
+/**
+ * @prop --pd-button-left-radius: Border radius for the left side of the button
+ * @prop --pd-button-right-radius: Border radius for the right side of the button
+ * @prop --pd-button-padding-vertical: Vertical padding for 'normal' sized buttons
+ * @prop --pd-button-padding-horizontal: Horizontal padding for 'normal' sized buttons
+ */
 .pd-button {
     @include button-scheme(primary);
     display: flex;

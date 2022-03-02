@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot - timeline item content
+ */
 @Component({
     tag: 'pd-timeline-date',
     styleUrl: 'pd-timeline-date.scss',

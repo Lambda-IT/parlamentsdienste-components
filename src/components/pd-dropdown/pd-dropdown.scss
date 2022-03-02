@@ -22,6 +22,11 @@
     }
 }
 
+/**
+ * @prop --pd-datepicker-vertical-adjust: top margin of label
+ * @prop --pd-dropdown-vertical-padding: Possibility to change inner height of the dropdown
+ * @prop --pd-dropdown-horizontal-padding: Possibility to change inner width of the dropdown 
+ */
 .pd-dropdown {
     position: relative;
     margin-top: var(--pd-dropdown-vertical-adjust, inherit);

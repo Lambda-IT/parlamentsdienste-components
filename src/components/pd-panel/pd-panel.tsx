@@ -12,6 +12,11 @@ import {
 } from '@stencil/core';
 import { collapse, expand } from '../../utils/animation';
 
+/**
+ * @slot header - panel header content
+ * @slot - main content
+ * @slot footer - panel footer content
+ */
 @Component({
     tag: 'pd-panel',
     styleUrl: 'pd-panel.scss',

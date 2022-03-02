@@ -29,17 +29,6 @@ interface PdModalConfig {
 }
 ```
 
-## Styles
-
-| Style                   | Default | Description         |
-| ----------------------- | ------- | ------------------- |
-| `--pd-modal-min-width`  | `unset` | min-width of modal  |
-| `--pd-modal-max-width`  | `unset` | max-width of modal  |
-| `--pd-modal-min-height` | `unset` | min-height of modal |
-| `--pd-modal-max-height` | `unset` | max-height of modal |
-| `--pd-modal-width`      | `unset` | width of modal      |
-| `--pd-modal-height`     | `unset` | height of modal     |
-
 <!-- Auto Generated Below -->
 
 
@@ -57,6 +46,26 @@ interface PdModalConfig {
 | `pd-backdrop` | Event that will be executed when the modal backdrop is clicked | `CustomEvent<void>` |
 | `pd-closed`   | Event that will be executed when the is closed                 | `CustomEvent<void>` |
 | `pd-escape`   | Event that will be executed when the escape button was clicked | `CustomEvent<void>` |
+
+
+## Slots
+
+| Slot       | Description          |
+| ---------- | -------------------- |
+|            | Modal content        |
+| `"footer"` | Modal footer content |
+
+
+## CSS Custom Properties
+
+| Name                    | Description         |
+| ----------------------- | ------------------- |
+| `--pd-modal-height`     | height of modal     |
+| `--pd-modal-max-height` | max-height of modal |
+| `--pd-modal-max-width`  | max-width of modal  |
+| `--pd-modal-min-height` | min-height of modal |
+| `--pd-modal-min-width`  | min-width of modal  |
+| `--pd-modal-width`      | width of modal      |
 
 
 ## Dependencies

@@ -73,6 +73,13 @@ Type: `Promise<void>`
 
 
 
+## CSS Custom Properties
+
+| Name                         | Description         |
+| ---------------------------- | ------------------- |
+| `--pd-input-vertical-adjust` | top margin of input |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

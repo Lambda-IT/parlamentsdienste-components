@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
+/**
+ * @slot - List content
+ */
 @Component({
     tag: 'pd-list',
     styleUrl: 'pd-list.scss',

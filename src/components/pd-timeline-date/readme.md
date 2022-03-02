@@ -21,6 +21,13 @@
 | `target` | `target`  | Header link target   | `string` | `'_blank'`  |
 
 
+## Slots
+
+| Slot | Description           |
+| ---- | --------------------- |
+|      | timeline item content |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

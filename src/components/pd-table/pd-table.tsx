@@ -28,6 +28,9 @@ import {
     SelectedEvent,
 } from '../../interface';
 
+/**
+ * @slot - Action menu items
+ */
 @Component({
     tag: 'pd-table',
     styleUrl: 'pd-table.scss',

@@ -15,6 +15,10 @@ import {
 } from '@stencil/core';
 import { PdPlacement } from '../../interface';
 import { closestParentElement } from '../../utils/helpers';
+
+/**
+ * @slot - Menu items
+ */
 @Component({
     tag: 'pd-menu',
     styleUrl: 'pd-menu.scss',

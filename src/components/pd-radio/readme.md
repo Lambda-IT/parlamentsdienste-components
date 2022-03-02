@@ -40,6 +40,13 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 | `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms | `boolean` | `false`     |
 
 
+## CSS Custom Properties
+
+| Name                         | Description         |
+| ---------------------------- | ------------------- |
+| `--pd-radio-vertical-adjust` | top margin of label |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -14,6 +14,13 @@ import {
 import { PdStatus } from '../../interface';
 import { collapse, expand } from '../../utils/animation';
 
+/**
+ * @slot - ListItemExpandable content
+ * @slot action-left - Left of Actions
+ * @slot action-right - Right of Actions
+ * @slot expandable - Expandable content
+ * @slot menu - Slot for list item menu
+ */
 @Component({
     tag: 'pd-list-item-expandable',
     styleUrl: 'pd-list-item-expandable.scss',

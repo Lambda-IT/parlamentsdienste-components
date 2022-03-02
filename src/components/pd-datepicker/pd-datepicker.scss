@@ -12,6 +12,9 @@
     outline: none;
 }
 
+/**
+ * @prop --pd-datepicker-vertical-adjust: top margin of label
+ */
 .pd-datepicker-label {
     flex: 1 1 auto;
     display: flex;
@@ -130,6 +133,9 @@
     pointer-events: none;
 }
 
+/**
+ * @prop --pd-input-vertical-adjust: top margin of input
+ */
 .pd-datepicker-input {
     display: block;
     padding: 0.625rem 0.875rem;

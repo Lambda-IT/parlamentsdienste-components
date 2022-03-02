@@ -237,6 +237,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot | Description       |
+| ---- | ----------------- |
+|      | Action menu items |
+
+
 ## Dependencies
 
 ### Depends on

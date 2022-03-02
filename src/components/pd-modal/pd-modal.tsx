@@ -2,6 +2,10 @@ import '@a11y/focus-trap';
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import { PdModalConfig } from '../../interface';
 
+/**
+ * @slot - Modal content
+ * @slot footer - Modal footer content
+ */
 @Component({
     tag: 'pd-modal',
     styleUrl: 'pd-modal.scss',

@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
+/**
+ * @slot - Footer content
+ */
 @Component({
     tag: 'pd-panel-footer',
     styleUrl: 'pd-panel-footer.scss',
