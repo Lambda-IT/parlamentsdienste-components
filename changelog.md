@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   `BREAKING CHANGE!!!` Changed Dropdown to not break text by default to better align with <select>. Added property to enable text-wrap
+-   `BREAKING CHANGE!!!` Changed Dropdown to not break text by default to better align with `<select>`. Added property to enable text-wrap
 
 ## [2.0.1] - 2022-01-10
 
