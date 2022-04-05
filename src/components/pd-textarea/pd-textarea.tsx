@@ -75,7 +75,7 @@ export class Textarea {
     /**
      * The number of visible text lines for the control.
      */
-    @Prop() rows?: number;
+    @Prop() rows?: number = 1;
 
     /**
      * Indicates how the control wraps text.
@@ -155,11 +155,11 @@ export class Textarea {
         const nativeInput = this.nativeInput;
         if (nativeInput && this.autoGrow) {
             readTask(() => {
-                const paddingBottom = parseFloat(
-                    window.getComputedStyle(nativeInput, null).getPropertyValue('padding-bottom'),
+                const borderWidth = parseFloat(
+                    window.getComputedStyle(nativeInput, null).getPropertyValue('border-width'),
                 );
                 nativeInput.style.height = 'auto';
-                nativeInput.style.height = nativeInput.scrollHeight + paddingBottom + 'px';
+                nativeInput.style.height = nativeInput.scrollHeight + 2 * borderWidth + 'px';
             });
         }
     }
@@ -201,6 +201,7 @@ export class Textarea {
                             'pd-textarea': true,
                             'pd-textarea-readonly': this.readonly,
                             'pd-textarea-error': this.error,
+                            'pd-textarea-autogrow': this.autoGrow,
                         }}
                         ref={(textarea) => (this.nativeInput = textarea)}
                         autoCapitalize={this.autocapitalize}

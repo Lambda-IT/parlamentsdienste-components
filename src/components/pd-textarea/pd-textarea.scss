@@ -65,4 +65,8 @@
             border-color: setcolor(danger, hover);
         }
     }
+
+    &.pd-textarea-autogrow {
+        resize: none;
+    }
 }
