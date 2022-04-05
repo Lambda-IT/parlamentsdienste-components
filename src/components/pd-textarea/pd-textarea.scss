@@ -68,5 +68,6 @@
 
     &.pd-textarea-autogrow {
         resize: none;
+        overflow-x: hidden; // fixes issue with height (1 row) in Firefox
     }
 }
