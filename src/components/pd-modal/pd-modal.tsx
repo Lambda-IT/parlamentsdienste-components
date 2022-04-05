@@ -1,13 +1,17 @@
 import '@a11y/focus-trap';
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 import { PdModalConfig } from '../../interface';
 
+/**
+ * @slot - Modal content
+ * @slot footer - Modal footer content
+ */
 @Component({
     tag: 'pd-modal',
     styleUrl: 'pd-modal.scss',
     shadow: true,
 })
-export class Modal {
+export class Modal implements ComponentInterface {
     @Element() element!: HTMLElement;
 
     /**
@@ -31,7 +35,7 @@ export class Modal {
     @Event({ eventName: 'pd-escape' }) pdEscapeClicked!: EventEmitter<void>;
 
     @Listen('pd-tap', { passive: false, capture: true })
-    async backdropClick() {
+    backdropClick() {
         this.pdBackdropClicked.emit();
         this.closeModal();
     }

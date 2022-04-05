@@ -65,6 +65,13 @@ Type: `Promise<void>`
 
 
 
+## CSS Custom Properties
+
+| Name                         | Description            |
+| ---------------------------- | ---------------------- |
+| `--pd-input-vertical-adjust` | top margin of textarea |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

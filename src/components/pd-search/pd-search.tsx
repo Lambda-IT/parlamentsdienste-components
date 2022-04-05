@@ -1,5 +1,21 @@
 import { createPopper, Instance } from '@popperjs/core';
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentDidUpdate,
+    ComponentInterface,
+    ComponentWillLoad,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -8,12 +24,16 @@ import { InputChangeEventDetail } from '../../interface';
     assetsDirs: ['assets-search'],
     shadow: true,
 })
-export class Search {
-    @Element() element!: HTMLElement;
+export class Search implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
     private inputElement?: HTMLInputElement;
     private menuElement: HTMLElement;
     private wrapperElement: HTMLElement;
     private popper: Instance;
+
+    @Element() element: HTMLElement;
+
+    @State() open: boolean = false;
+    @State() selectedIndex: number = -1;
 
     /**
      * Values shown as search results
@@ -82,12 +102,12 @@ export class Search {
      * Update the native input element when the value changes
      */
     @Watch('value')
-    protected valueChanged() {
+    valueChanged() {
         this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
     }
 
     @Watch('results')
-    protected resultsChanged(results: any) {
+    resultsChanged(results: any) {
         this.results = this.validateResults(results);
         if (this.results.length > 0) {
             this.selectedIndex = -1;
@@ -96,7 +116,7 @@ export class Search {
     }
 
     @Watch('selectedIndex')
-    protected indexChanged(index: number) {
+    indexChanged(index: number) {
         const menu = this.element.shadowRoot.querySelector('.pd-search-dropdown') as HTMLElement;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
@@ -108,23 +128,20 @@ export class Search {
         });
     }
 
-    protected componentWillLoad() {
+    public componentWillLoad() {
         this.results = this.validateResults(this.results);
     }
 
-    protected componentDidLoad() {
+    public componentDidLoad() {
         this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
-    protected componentDidUpdate() {
+    public componentDidUpdate() {
         this.popper.forceUpdate();
     }
 
-    @State() open: boolean = false;
-    @State() selectedIndex: number = -1;
-
     @Listen('keydown')
-    protected handleKeyDown(ev: KeyboardEvent) {
+    handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
                 this.open = false;
@@ -170,7 +187,7 @@ export class Search {
     }
 
     @Listen('click', { target: 'body' })
-    protected handleClickOutside(ev: MouseEvent) {
+    handleClickOutside(ev: MouseEvent) {
         if (ev.target !== this.element) {
             this.open = false;
         }
@@ -181,7 +198,7 @@ export class Search {
      * `input.focus()`.
      */
     @Method()
-    public async setFocus() {
+    async setFocus() {
         if (this.inputElement) {
             this.inputElement.focus();
         }

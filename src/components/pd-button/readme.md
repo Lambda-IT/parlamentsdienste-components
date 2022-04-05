@@ -40,15 +40,6 @@
 ></pd-button>
 ```
 
-## Styles
-
-| Style                            | Default    | Description                                    |
-| -------------------------------- | ---------- | ---------------------------------------------- |
-| `--pd-button-left-radius`        | `0.25rem`  | border radius for the left side of the button  |
-| `--pd-button-right-radius`       | `0.25rem`  | border radius for the right side of the button |
-| `--pd-button-padding-vertical`   | `0.25rem`  | vertical padding for 'normal' sized buttons    |
-| `--pd-button-padding-horizontal` | `0.625rem` | horizontal padding for 'normal' sized buttons  |
-
 <!-- Auto Generated Below -->
 
 
@@ -65,6 +56,24 @@
 | `size`         | `size`          | Button size                               | `"large" \| "normal" \| "small"`                                                 | `'normal'`  |
 | `target`       | `target`        | Sets target for link button e.g. '_blank' | `string`                                                                         | `'_blank'`  |
 | `type`         | `type`          | Sets button type \|text\|submit\|reset\|  | `"button" \| "submit" \| "text"`                                                 | `'button'`  |
+
+
+## Slots
+
+| Slot     | Description    |
+| -------- | -------------- |
+|          | button content |
+| `"icon"` | slot for icons |
+
+
+## CSS Custom Properties
+
+| Name                             | Description                                    |
+| -------------------------------- | ---------------------------------------------- |
+| `--pd-button-left-radius`        | Border radius for the left side of the button  |
+| `--pd-button-padding-horizontal` | Horizontal padding for 'normal' sized buttons  |
+| `--pd-button-padding-vertical`   | Vertical padding for 'normal' sized buttons    |
+| `--pd-button-right-radius`       | Border radius for the right side of the button |
 
 
 ----------------------------------------------

@@ -18,6 +18,14 @@
     outline: none;
 }
 
+/**
+ * @prop --pd-modal-min-width: min-width of modal
+ * @prop --pd-modal-max-width: max-width of modal
+ * @prop --pd-modal-min-height: min-height of modal
+ * @prop --pd-modal-max-height: max-height of modal
+ * @prop --pd-modal-width: width of modal
+ * @prop --pd-modal-height: height of modal
+ */
 .pd-modal-wrapper {
     display: flex;
     flex-direction: column;

@@ -18,6 +18,13 @@
 | `text`   | `text`    | Text for this item | `string` | `''`    |
 
 
+## Slots
+
+| Slot | Description |
+| ---- | ----------- |
+|      | Icon        |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

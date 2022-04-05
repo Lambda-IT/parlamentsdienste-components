@@ -20,13 +20,6 @@
 </pd-list>
 ```
 
-## Styles
-
-| Style                          | Default       | Description                               |
-| ------------------------------ | ------------- | ----------------------------------------- |
-| `--pd-list-item-background`    | `transparent` | background color of list item             |
-| `--pd-list-item-content-hover` | `bon-jour`    | background color for content hover effect |
-
 ## Slots
 
 | Name         | Description                                    |
@@ -37,6 +30,7 @@
 | expandable   | for additional, expandable content             |
 
 <!-- Auto Generated Below -->
+
 
 ## Properties
 
@@ -52,6 +46,7 @@
 | `menu`         | `menu`          | Shows menu button                                                   | `boolean`                                                 | `false`     |
 | `status`       | `status`        | Status icon for list item                                           | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
 
+
 ## Events
 
 | Event              | Description                                          | Type                   |
@@ -62,16 +57,35 @@
 | `pd-expand`        | Expand button click event                            | `CustomEvent<void>`    |
 | `pd-selected`      | Checkbox selected event                              | `CustomEvent<boolean>` |
 
+
+## Slots
+
+| Slot             | Description                |
+| ---------------- | -------------------------- |
+|                  | ListItemExpandable content |
+| `"action-left"`  | Left of Actions            |
+| `"action-right"` | Right of Actions           |
+| `"expandable"`   | Expandable content         |
+| `"menu"`         | Slot for list item menu    |
+
+
+## CSS Custom Properties
+
+| Name                           | Description                               |
+| ------------------------------ | ----------------------------------------- |
+| `--pd-list-item-background`    | Background color of list item             |
+| `--pd-list-item-content-hover` | Background color for content hover effect |
+
+
 ## Dependencies
 
 ### Depends on
 
--   [pd-icon](../pd-icon)
--   [pd-menu](../pd-menu)
--   [pd-checkbox](../pd-checkbox)
+- [pd-icon](../pd-icon)
+- [pd-menu](../pd-menu)
+- [pd-checkbox](../pd-checkbox)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-list-item-expandable --> pd-icon
@@ -81,6 +95,6 @@ graph TD;
   style pd-list-item-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

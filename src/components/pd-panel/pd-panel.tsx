@@ -1,13 +1,30 @@
-import { Component, Host, h, Prop, Element, EventEmitter, Event, Watch } from '@stencil/core';
-import { expand, collapse } from '../../utils/animation';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentInterface,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Prop,
+    Watch,
+} from '@stencil/core';
+import { collapse, expand } from '../../utils/animation';
 
+/**
+ * @slot header - panel header content
+ * @slot - main content
+ * @slot footer - panel footer content
+ */
 @Component({
     tag: 'pd-panel',
     styleUrl: 'pd-panel.scss',
     shadow: true,
 })
-export class Panel {
-    @Element() element!: HTMLElement;
+export class Panel implements ComponentInterface, ComponentDidLoad {
+    @Element() element: HTMLElement;
+
     private contentWrapperElement: HTMLElement;
 
     /**

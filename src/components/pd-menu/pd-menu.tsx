@@ -1,15 +1,33 @@
 import { createPopper, Instance } from '@popperjs/core';
-import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentDidUpdate,
+    ComponentInterface,
+    Element,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import { PdPlacement } from '../../interface';
 import { closestParentElement } from '../../utils/helpers';
+
+/**
+ * @slot - Menu items
+ */
 @Component({
     tag: 'pd-menu',
     styleUrl: 'pd-menu.scss',
     assetsDirs: ['assets-menu'],
     shadow: true,
 })
-export class Menu {
-    @Element() element;
+export class Menu implements ComponentInterface, ComponentDidLoad, ComponentDidUpdate {
+    @Element() element: HTMLElement;
+
     private menuElement: HTMLElement;
     private buttonElement: HTMLElement;
     private popper: Instance;
@@ -35,7 +53,7 @@ export class Menu {
     @Prop() placement: PdPlacement = 'bottom-start';
 
     @Watch('placement')
-    protected placementChanged(placement: PdPlacement) {
+    placementChanged(placement: PdPlacement) {
         this.popper.setOptions({ placement });
     }
 
@@ -58,15 +76,15 @@ export class Menu {
     }
 
     @Listen('click', { target: 'body' })
-    protected handleClick(ev: MouseEvent) {
+    handleClick(ev: MouseEvent) {
         if (closestParentElement('pd-menu', ev.composedPath()) !== this.element) this.isOpen = false;
     }
 
-    protected componentDidLoad() {
+    public componentDidLoad() {
         this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     }
 
-    protected componentDidUpdate() {
+    public componentDidUpdate() {
         if (!this.isOpen) return;
         this.popper.forceUpdate();
     }
@@ -82,7 +100,7 @@ export class Menu {
         });
     }
 
-    render() {
+    public render() {
         return (
             <Host>
                 <div class={{ 'pd-menu': true, 'pd-menu-inverted': this.invertColor }}>

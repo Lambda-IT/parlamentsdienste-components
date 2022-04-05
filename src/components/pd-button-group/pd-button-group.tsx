@@ -1,11 +1,14 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
+/**
+ * @slot - Slot for buttons in group
+ */
 @Component({
     tag: 'pd-button-group',
     styleUrl: 'pd-button-group.scss',
     shadow: true,
 })
-export class ButtonGroup {
+export class ButtonGroup implements ComponentInterface {
     public render() {
         return (
             <Host>

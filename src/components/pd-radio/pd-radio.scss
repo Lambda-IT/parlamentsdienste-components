@@ -6,6 +6,9 @@ pd-radio {
     display: inline-block;
 }
 
+/**
+ * @prop --pd-radio-vertical-adjust: top margin of label
+ */
 .pd-radio-label {
     display: flex;
     align-items: center;

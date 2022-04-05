@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { InputChangeEventDetail } from '../../interface';
 
 @Component({
@@ -6,7 +6,9 @@ import { InputChangeEventDetail } from '../../interface';
     styleUrl: 'pd-slider.scss',
     shadow: true,
 })
-export class Slider {
+export class Slider implements ComponentInterface {
+    @State() sliderValue: number = 0;
+
     /**
      * max value
      */
@@ -46,8 +48,6 @@ export class Slider {
      * slider value
      */
     @Prop({ mutable: true }) value?: number | null = null;
-
-    @State() sliderValue: number = 0;
 
     @Watch('value')
     valueChanged(value) {

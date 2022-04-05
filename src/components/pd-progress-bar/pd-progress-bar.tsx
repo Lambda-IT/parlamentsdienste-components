@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 import { clamp } from '../../utils/helpers';
 
 @Component({
@@ -6,7 +6,7 @@ import { clamp } from '../../utils/helpers';
     styleUrl: 'pd-progress-bar.scss',
     shadow: true,
 })
-export class ProgressBar {
+export class ProgressBar implements ComponentInterface {
     /**
      * status color of progress-bar
      */

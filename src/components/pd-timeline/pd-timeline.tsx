@@ -1,11 +1,14 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot - timeline items
+ */
 @Component({
     tag: 'pd-timeline',
     styleUrl: 'pd-timeline.scss',
     shadow: true,
 })
-export class Timeline {
+export class Timeline implements ComponentInterface {
     /**
      * Adds rounded top of the date line to indicate that the timeline starts here
      */

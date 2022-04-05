@@ -1,11 +1,14 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, ComponentInterface, h, Host } from '@stencil/core';
 
+/**
+ * @slot - Main content
+ */
 @Component({
     tag: 'pd-panel-content',
     styleUrl: 'pd-panel-content.scss',
     shadow: false,
 })
-export class PanelContent {
+export class PanelContent implements ComponentInterface {
     public render() {
         return (
             <Host>

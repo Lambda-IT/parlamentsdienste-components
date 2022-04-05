@@ -36,6 +36,13 @@
 | `pd-closed` | When closing the toast using the close icon | `CustomEvent<any>` |
 
 
+## Slots
+
+| Slot | Description   |
+| ---- | ------------- |
+|      | toast content |
+
+
 ## Dependencies
 
 ### Depends on

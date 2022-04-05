@@ -1,4 +1,15 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
+import {
+    Component,
+    ComponentInterface,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+} from '@stencil/core';
 import { closestParentElement } from '../../utils/helpers';
 
 @Component({
@@ -6,8 +17,8 @@ import { closestParentElement } from '../../utils/helpers';
     styleUrl: 'pd-table-filter.scss',
     shadow: true,
 })
-export class PdTableFilter {
-    @Element() element;
+export class TableFilter implements ComponentInterface {
+    @Element() element: HTMLElement;
     private inputRef: HTMLInputElement;
 
     /**
@@ -70,7 +81,7 @@ export class PdTableFilter {
     }
 
     @Listen('click', { target: 'body' })
-    protected handleClick(ev: MouseEvent) {
+    handleClick(ev: MouseEvent) {
         // the filter is inside the shadowdom of the table, we need to find the clicked element inside of the shadow dom
         // ev.target doesn't work because of that
         if (closestParentElement('pd-table-filter', ev.composedPath()) !== this.element) this.pdClose.emit();

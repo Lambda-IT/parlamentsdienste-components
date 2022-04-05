@@ -37,6 +37,14 @@
 | `pd-menu` |             | `CustomEvent<void>` |
 
 
+## Slots
+
+| Slot       | Description         |
+| ---------- | ------------------- |
+|            | Navbar items        |
+| `"mobile"` | Mobile navbar items |
+
+
 ## Dependencies
 
 ### Depends on

@@ -1,11 +1,11 @@
-import { Component, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
 
 @Component({
     tag: 'pd-pagination',
     styleUrl: 'pd-pagination.scss',
     shadow: true,
 })
-export class PdPagination {
+export class Pagination implements ComponentInterface {
     /**
      * Current page number
      */
@@ -73,7 +73,7 @@ export class PdPagination {
         this.pdChange.emit(this.totalPages);
     }
 
-    render() {
+    public render() {
         return (
             <Host>
                 <button class="pd-pagination-first" onClick={() => this.firstPage()} data-test="pd-pagination-first">

@@ -41,6 +41,13 @@
 | `pd-remove-chip` | Event for clicking the cross to remove a chip | `CustomEvent<any>` |
 
 
+## Slots
+
+| Slot | Description  |
+| ---- | ------------ |
+|      | Chip content |
+
+
 ## Dependencies
 
 ### Depends on

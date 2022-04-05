@@ -1,11 +1,14 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot - Label content
+ */
 @Component({
     tag: 'pd-label',
     styleUrl: 'pd-label.scss',
     shadow: true,
 })
-export class PdLabel {
+export class Label implements ComponentInterface {
     /**
      * Switch between background and dot color mode
      */

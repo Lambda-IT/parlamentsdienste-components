@@ -1,4 +1,16 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentInterface,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Method,
+    Prop,
+    Watch,
+} from '@stencil/core';
 import flatpickr from 'flatpickr';
 import { Instance } from 'flatpickr/dist/types/instance';
 import { BaseOptions, DateOption, Options } from 'flatpickr/dist/types/options';
@@ -8,10 +20,10 @@ import { BaseOptions, DateOption, Options } from 'flatpickr/dist/types/options';
     styleUrl: 'pd-datepicker.scss',
     shadow: true,
 })
-export class Datepicker {
+export class Datepicker implements ComponentInterface, ComponentDidLoad {
     @Element() element: HTMLElement;
-    private contentWrapperElement: HTMLElement;
 
+    private contentWrapperElement: HTMLElement;
     private flatpickr: Instance;
 
     /**
@@ -89,56 +101,6 @@ export class Datepicker {
         disableMobile: true,
     };
 
-    @Watch('date')
-    protected handleDateChange(date: DateOption | DateOption[]) {
-        this.setDate(date);
-    }
-
-    /**
-     * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
-     * Check out https://flatpickr.js.org/options or https://flatpickr.js.org/instance-methods-properties-elements/#setoption-value for further documentation about this config
-     */
-    @Method() async set(option: any, value?: any) {
-        this.flatpickr.set(option, value);
-    }
-
-    /**
-     * Resets the selected dates (if any) and clears the input.
-     */
-    @Method() async clear() {
-        this.flatpickr.clear();
-    }
-
-    /**
-     * Closes the calendar.
-     */
-    @Method() async close() {
-        this.flatpickr.close();
-    }
-
-    /**
-     * Shows/opens the calendar.
-     */
-    @Method() async open() {
-        this.flatpickr.open();
-    }
-
-    /**
-     * Shows/opens the calendar if its closed, hides/closes it otherwise.
-     */
-    @Method() async toggle() {
-        this.flatpickr.toggle();
-    }
-
-    /**
-     * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates.
-     * Optionally, pass true as the second argument to force any onChange events to fire.
-     * And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
-     */
-    @Method() async setDate(date: DateOption | DateOption[], triggerChange?: boolean, format?: string) {
-        this.flatpickr.setDate(date, triggerChange, format);
-    }
-
     @Event({ eventName: 'pd-change' }) pdChange: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
     @Event({ eventName: 'pd-open' }) pdOpen: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
     @Event({ eventName: 'pd-close' }) pdClose: EventEmitter<{ selectedDates: Date[]; dateStr: string }>;
@@ -152,6 +114,62 @@ export class Datepicker {
         selectedDates: Date[];
         dateStr: string;
     }>;
+
+    @Watch('date')
+    handleDateChange(date: DateOption | DateOption[]) {
+        this.setDate(date);
+    }
+
+    /**
+     * Sets a config option to value, redrawing the calendar and updating the current view, if necessary.
+     * Check out https://flatpickr.js.org/options or https://flatpickr.js.org/instance-methods-properties-elements/#setoption-value for further documentation about this config
+     */
+    @Method()
+    async set(option: any, value?: any) {
+        this.flatpickr.set(option, value);
+    }
+
+    /**
+     * Resets the selected dates (if any) and clears the input.
+     */
+    @Method()
+    async clear() {
+        this.flatpickr.clear();
+    }
+
+    /**
+     * Closes the calendar.
+     */
+    @Method()
+    async close() {
+        this.flatpickr.close();
+    }
+
+    /**
+     * Shows/opens the calendar.
+     */
+    @Method()
+    async open() {
+        this.flatpickr.open();
+    }
+
+    /**
+     * Shows/opens the calendar if its closed, hides/closes it otherwise.
+     */
+    @Method()
+    async toggle() {
+        this.flatpickr.toggle();
+    }
+
+    /**
+     * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates.
+     * Optionally, pass true as the second argument to force any onChange events to fire.
+     * And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
+     */
+    @Method()
+    async setDate(date: DateOption | DateOption[], triggerChange?: boolean, format?: string) {
+        this.flatpickr.setDate(date, triggerChange, format);
+    }
 
     public componentDidLoad() {
         this.flatpickr = flatpickr(this.contentWrapperElement, Object.assign(this.defaultConfig, this.config));

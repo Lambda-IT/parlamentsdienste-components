@@ -28,6 +28,15 @@
 | `pd-collapsed` | Emitted when the value has changed. | `CustomEvent<any>` |
 
 
+## Slots
+
+| Slot       | Description          |
+| ---------- | -------------------- |
+|            | main content         |
+| `"footer"` | panel footer content |
+| `"header"` | panel header content |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

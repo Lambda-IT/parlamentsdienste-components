@@ -1,3 +1,6 @@
+/**
+ * @prop --pd-list-item-background: Background color of list item
+ */
 :host {
     display: grid;
     grid-template-columns: auto auto 1fr auto;
@@ -85,6 +88,9 @@
     padding-left: 0.25rem;
 }
 
+/**
+ * @prop --pd-list-item-content-hover: Background color for content hover effect
+ */
 :host(.pd-content-hover) {
     background-color: var(--pd-list-item-content-hover, $bon-jour);
     cursor: pointer;

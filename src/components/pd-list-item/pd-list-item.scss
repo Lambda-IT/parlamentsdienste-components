@@ -1,3 +1,6 @@
+/**
+ * @prop --pd-list-item-background: Background color of list item
+ */
 :host {
     display: flex;
     background-color: var(--pd-list-item-background, transparent);

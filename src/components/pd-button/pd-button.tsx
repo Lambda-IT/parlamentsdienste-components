@@ -1,12 +1,16 @@
-import { Component, h, Host, Listen, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Listen, Prop } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../interface';
 
+/**
+ * @slot - button content
+ * @slot icon - slot for icons
+ */
 @Component({
     tag: 'pd-button',
     styleUrl: 'pd-button.scss',
     shadow: true,
 })
-export class Button {
+export class Button implements ComponentInterface {
     /**
      * Sets button to disbaled state
      */

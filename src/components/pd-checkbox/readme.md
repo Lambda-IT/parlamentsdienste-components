@@ -19,13 +19,6 @@
 Webcomponents don't work with v-model out of the box therefore we provide a custom directive which allows the same behaviour.
 For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-directives--model-directive)
 
-## Styles
-
-| Style                             | Default       | Description                      |
-| --------------------------------- | ------------- | -------------------------------- |
-| `--pd-checkbox-text-padding-left` | `0.625rem`    | padding on the left side of text |
-| `--pd-checkbox-background-color`  | `transparent` | background color                 |
-
 <!-- Auto Generated Below -->
 
 
@@ -50,6 +43,15 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 | Event        | Description | Type                   |
 | ------------ | ----------- | ---------------------- |
 | `pd-checked` |             | `CustomEvent<boolean>` |
+
+
+## CSS Custom Properties
+
+| Name                              | Description                      |
+| --------------------------------- | -------------------------------- |
+| `--pd-checkbox-background-color`  | background color                 |
+| `--pd-checkbox-text-padding-left` | padding on the left side of text |
+| `--pd-checkbox-vertical-adjust`   | top margin of label              |
 
 
 ## Dependencies

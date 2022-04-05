@@ -65,6 +65,14 @@
 | `pd-collapsed` | Emitted when inner content is expanded/collapsed. | `CustomEvent<boolean>`    |
 
 
+## Slots
+
+| Slot           | Description        |
+| -------------- | ------------------ |
+|                | alert title        |
+| `"expandable"` | expandable content |
+
+
 ## Dependencies
 
 ### Depends on

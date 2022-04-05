@@ -17,12 +17,6 @@
 </pd-timeline>
 ```
 
-## Styles
-
-| Style                 | Default | Description                                                |
-| --------------------- | ------- | ---------------------------------------------------------- |
-| `--pd-timeline-width` | `300px` | Width of timeline. This includes the date line and content |
-
 <!-- Auto Generated Below -->
 
 
@@ -32,6 +26,20 @@
 | -------- | --------- | ---------------------------------------------------------------------------- | --------- | ------- |
 | `end`    | `end`     | Adds rounded bottom of the date line to indicate that the timeline ends here | `boolean` | `false` |
 | `start`  | `start`   | Adds rounded top of the date line to indicate that the timeline starts here  | `boolean` | `false` |
+
+
+## Slots
+
+| Slot | Description    |
+| ---- | -------------- |
+|      | timeline items |
+
+
+## CSS Custom Properties
+
+| Name                  | Description                                                |
+| --------------------- | ---------------------------------------------------------- |
+| `--pd-timeline-width` | Width of timeline. This includes the date line and content |
 
 
 ----------------------------------------------

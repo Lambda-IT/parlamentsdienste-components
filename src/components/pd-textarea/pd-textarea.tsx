@@ -1,11 +1,23 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, readTask, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentInterface,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Method,
+    Prop,
+    readTask,
+    Watch,
+} from '@stencil/core';
 
 @Component({
     tag: 'pd-textarea',
     styleUrl: 'pd-textarea.scss',
     shadow: true,
 })
-export class Textarea {
+export class Textarea implements ComponentInterface, ComponentDidLoad {
     private nativeInput?: HTMLTextAreaElement;
 
     /**
@@ -106,7 +118,7 @@ export class Textarea {
      * Update the native input element when the value changes
      */
     @Watch('value')
-    protected valueChanged() {
+    valueChanged() {
         const nativeInput = this.nativeInput;
         const value = this.getValue();
         if (nativeInput && nativeInput.value !== value) {
@@ -147,7 +159,7 @@ export class Textarea {
         }
     }
 
-    componentDidLoad() {
+    public componentDidLoad() {
         requestAnimationFrame(() => this.runAutoGrow());
     }
 
@@ -183,7 +195,7 @@ export class Textarea {
         if (!this.disabled || !this.readonly) this.pdBlur.emit(ev);
     };
 
-    render() {
+    public render() {
         const value = this.getValue();
 
         return (

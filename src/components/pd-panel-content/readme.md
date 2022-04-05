@@ -1,12 +1,20 @@
 # pd-panel-content
 
-## Styles
-
-| Style                        | Default   | Description                                          |
-| ---------------------------- | --------- | ---------------------------------------------------- |
-| `--pd-panel-content-padding` | `1.25rem` | horizontal and vertical padding of panel content box |
-
 <!-- Auto Generated Below -->
+
+
+## Slots
+
+| Slot | Description  |
+| ---- | ------------ |
+|      | Main content |
+
+
+## CSS Custom Properties
+
+| Name                         | Description                                          |
+| ---------------------------- | ---------------------------------------------------- |
+| `--pd-panel-content-padding` | Horizontal and vertical padding of panel content box |
 
 
 ----------------------------------------------

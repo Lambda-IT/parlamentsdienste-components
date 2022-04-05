@@ -1,11 +1,5 @@
 # pd-list-item
 
-## Styles
-
-| Style                       | Default       | Description                   |
-| --------------------------- | ------------- | ----------------------------- |
-| `--pd-list-item-background` | `transparent` | background color of list item |
-
 <!-- Auto Generated Below -->
 
 
@@ -14,6 +8,20 @@
 | Property | Attribute | Description               | Type                                                      | Default     |
 | -------- | --------- | ------------------------- | --------------------------------------------------------- | ----------- |
 | `status` | `status`  | Status icon for list item | `"danger" \| "info" \| "success" \| "unset" \| "warning"` | `undefined` |
+
+
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | ListItem content |
+
+
+## CSS Custom Properties
+
+| Name                        | Description                   |
+| --------------------------- | ----------------------------- |
+| `--pd-list-item-background` | Background color of list item |
 
 
 ## Dependencies

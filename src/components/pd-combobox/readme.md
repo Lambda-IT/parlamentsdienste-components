@@ -111,6 +111,13 @@ Type: `Promise<void>`
 
 
 
+## CSS Custom Properties
+
+| Name                            | Description         |
+| ------------------------------- | ------------------- |
+| `--pd-checkbox-vertical-adjust` | top margin of label |
+
+
 ## Dependencies
 
 ### Depends on

@@ -1,5 +1,21 @@
 import { createPopper, Instance } from '@popperjs/core';
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentDidUpdate,
+    ComponentInterface,
+    ComponentWillLoad,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import {
     DropdownItem,
     PdButtonCell,
@@ -12,13 +28,24 @@ import {
     SelectedEvent,
 } from '../../interface';
 
+/**
+ * @slot - Action menu items
+ */
 @Component({
     tag: 'pd-table',
     styleUrl: 'pd-table.scss',
     shadow: true,
 })
-export class Table {
-    @Element() element;
+export class Table implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
+    private filterElement: HTMLPdTableFilterElement;
+    private headerRefs: any = {};
+    private nextSortDir = {};
+    private popper: Instance;
+    private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
+    private selectableCellWidth: number = 50;
+    private defaultPageSize = 10;
+
+    @Element() element: HTMLElement;
 
     /**
      * Height of header cells
@@ -94,6 +121,17 @@ export class Table {
      */
     @Prop() pagingLocation: PdPagingLocation = 'right';
 
+    @State() private totalPages = 1;
+    @State() private currentFilter: string;
+    @State() private sortColumn = '';
+    @State() private currentPage = 1;
+    @State() private pageSize = this.defaultPageSize;
+    @State() private filterOpen = false;
+    @State() private columnFilters: any = {};
+    @State() private filteredRows: PdTableRow[] = [...this.rows];
+    @State() private allSelected: boolean = false;
+    @State() private isIndeterminate: boolean = false;
+
     /**
      * Triggers when one or all rows get selected
      */
@@ -119,7 +157,8 @@ export class Table {
      */
     @Event({ eventName: 'pd-clicked-row' }) onRowClick: EventEmitter<any>;
 
-    @Method() async unselectAll() {
+    @Method()
+    async unselectAll() {
         this.allSelected = false;
         this.filteredRows = this.filteredRows.map((r) => ({
             ...r,
@@ -127,7 +166,8 @@ export class Table {
         }));
     }
 
-    @Method() async refresh() {
+    @Method()
+    async refresh() {
         this.filteredRows = [...this.rows];
         this.update();
         this.initPaging(this.pageSize);
@@ -139,42 +179,23 @@ export class Table {
         this.update();
     }
 
-    private filterElement: HTMLPdTableFilterElement;
-    private headerRefs: any = {};
-    private nextSortDir = {};
-    private popper: Instance;
-    private btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
-    private selectableCellWidth: number = 50;
-    private defaultPageSize = 10;
-
-    @State() private totalPages = 1;
-    @State() private currentFilter: string;
-    @State() private sortColumn = '';
-    @State() private currentPage = 1;
-    @State() private pageSize = this.defaultPageSize;
-    @State() private filterOpen = false;
-    @State() private columnFilters: any = {};
-    @State() private filteredRows: PdTableRow[] = [...this.rows];
-    @State() private allSelected: boolean = false;
-    @State() private isIndeterminate: boolean = false;
-
     @Listen('keydown')
-    protected handleKeyDown(ev: KeyboardEvent) {
+    handleKeyDown(ev: KeyboardEvent) {
         if (ev.key === 'Escape') this.filterOpen = false;
     }
 
-    protected componentWillLoad() {
+    public componentWillLoad() {
         this.checkIsIndeterminate();
         this.initPaging(+this.pageSizes.find((ps) => ps.selected)?.value || this.defaultPageSize);
     }
 
-    protected componentDidLoad() {
+    public componentDidLoad() {
         const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
         this.filterElement = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
         this.popper = this.createMenuPopper(table, this.filterElement);
     }
 
-    protected componentDidUpdate() {
+    public componentDidUpdate() {
         if (!this.filterOpen) return;
         this.popper.forceUpdate();
         this.filterElement.focusInput();
