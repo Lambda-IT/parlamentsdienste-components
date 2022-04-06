@@ -73,6 +73,14 @@
 | `"expandable"` | expandable content |
 
 
+## CSS Custom Properties
+
+| Name                                     | Description                          |
+| ---------------------------------------- | ------------------------------------ |
+| `--pd-alert-expandable-background-color` | background color of expanded content |
+| `--pd-alert-expandable-color`            | text color of expanded content       |
+
+
 ## Dependencies
 
 ### Depends on

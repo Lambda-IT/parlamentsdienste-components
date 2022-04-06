@@ -29,8 +29,6 @@ export const Modal = (args) => {
 Modal.args = {
     config: {
         title: 'Modal Title',
-        minWidth: '400px',
-        maxWidth: '500px',
         backdropVisible: true,
     },
 };
