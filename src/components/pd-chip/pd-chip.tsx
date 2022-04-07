@@ -23,7 +23,7 @@ export class Chip implements ComponentInterface {
     /**
      * Sets chip to checked state
      */
-    @Prop() checked: boolean = false;
+    @Prop({ mutable: true }) checked: boolean = false;
 
     /**
      * Sets chip type |text|toggle|filter|

@@ -38,7 +38,7 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
     /**
      * Values shown as search results
      */
-    @Prop() results: string[] = [];
+    @Prop({ mutable: true }) results: string[] = [];
 
     /**
      * If `true`, the user cannot interact with the input.
