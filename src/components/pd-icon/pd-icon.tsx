@@ -81,12 +81,14 @@ export class Icon implements ComponentInterface {
     private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
         if (this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
             const io = (this.io = new (window as any).IntersectionObserver(
-                (data: IntersectionObserverEntry[]) => {
-                    if (data[0].isIntersecting) {
-                        io.disconnect();
-                        this.io = undefined;
-                        cb();
-                    }
+                (entries: IntersectionObserverEntry[]) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            io.disconnect();
+                            this.io = undefined;
+                            cb();
+                        }
+                    });
                 },
                 { rootMargin },
             ));
@@ -146,26 +148,32 @@ export class Icon implements ComponentInterface {
     }
 
     private appendSVGContent(svgContent: string, appendElement: HTMLElement) {
-        if (!appendElement.hasChildNodes()) {
-            const doc = new DOMParser().parseFromString(svgContent, 'image/svg+xml');
-            const svgElement = appendElement.ownerDocument.importNode(doc.documentElement, true);
+        if (appendElement.hasChildNodes()) this.removeAllChildNodes(appendElement);
 
-            // append accessability elements
-            if (this.iconDescription) {
-                const descriptionElement = doc.createElement('desc');
-                descriptionElement.innerHTML = this.iconDescription;
-                svgElement.prepend(descriptionElement);
-            }
+        const doc = new DOMParser().parseFromString(svgContent, 'image/svg+xml');
+        const svgElement = appendElement.ownerDocument.importNode(doc.documentElement, true);
 
-            let titleElement = svgElement.getElementsByTagName('title').item(0);
-            if (titleElement && this.iconTitle) titleElement.innerHTML = this.iconTitle;
-            if (!titleElement && this.iconTitle) {
-                titleElement = doc.createElement('title');
-                titleElement.innerHTML = this.iconTitle;
-                svgElement.prepend(titleElement);
-            }
+        // append accessability elements
+        if (this.iconDescription) {
+            const descriptionElement = doc.createElement('desc');
+            descriptionElement.innerHTML = this.iconDescription;
+            svgElement.prepend(descriptionElement);
+        }
 
-            appendElement.appendChild(svgElement);
+        let titleElement = svgElement.getElementsByTagName('title').item(0);
+        if (titleElement && this.iconTitle) titleElement.innerHTML = this.iconTitle;
+        if (!titleElement && this.iconTitle) {
+            titleElement = doc.createElement('title');
+            titleElement.innerHTML = this.iconTitle;
+            svgElement.prepend(titleElement);
+        }
+
+        appendElement.appendChild(svgElement);
+    }
+
+    private removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
         }
     }
 }
