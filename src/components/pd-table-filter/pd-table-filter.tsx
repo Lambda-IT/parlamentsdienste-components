@@ -24,7 +24,7 @@ export class TableFilter implements ComponentInterface {
     /**
      * filter value
      */
-    @Prop() value = '';
+    @Prop({ mutable: true }) value = '';
 
     /**
      * Emitted when filter changes.

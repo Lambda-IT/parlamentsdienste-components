@@ -38,7 +38,7 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
     @Prop() expandable: boolean = false;
 
     /** Expands / collapses the panel content */
-    @Prop() expanded: boolean = false;
+    @Prop({ mutable: true }) expanded: boolean = false;
 
     @Watch('expanded')
     valueChanged(expanded: boolean) {

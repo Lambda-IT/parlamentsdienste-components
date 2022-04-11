@@ -29,12 +29,12 @@ export class Checkbox implements ComponentInterface {
     /**
      * Sets check state of the checkbox true/false
      */
-    @Prop() checked: boolean = false;
+    @Prop({ mutable: true }) checked: boolean = false;
 
     /**
      * value of checkbox
      */
-    @Prop() value: boolean = false;
+    @Prop({ mutable: true }) value: boolean = false;
 
     /**
      * indeterminate state
