@@ -14,7 +14,6 @@ import {
     Watch,
 } from '@stencil/core';
 import { PdPlacement } from '../../interface';
-import { closestParentElement } from '../../utils/helpers';
 
 /**
  * @slot - Menu items
@@ -77,7 +76,7 @@ export class Menu implements ComponentInterface, ComponentDidLoad, ComponentDidU
 
     @Listen('click', { target: 'body' })
     handleClick(ev: MouseEvent) {
-        if (closestParentElement('pd-menu', ev.composedPath()) !== this.element) this.isOpen = false;
+        if (!ev.composedPath().includes(this.element)) this.isOpen = false;
     }
 
     public componentDidLoad() {
