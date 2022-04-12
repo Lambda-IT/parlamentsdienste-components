@@ -21,16 +21,3 @@ export const pointerCoord = (ev: any): { x: number; y: number } => {
     }
     return { x: 0, y: 0 };
 };
-
-export function closestParentElement(selector: keyof HTMLElementTagNameMap, composedPath: EventTarget[]) {
-    for (let element of composedPath) {
-        if (hasTagName(element, selector)) return element;
-    }
-}
-
-function hasTagName<K extends keyof HTMLElementTagNameMap>(
-    element: Element | EventTarget | null,
-    tagName: K,
-): HTMLElement {
-    if (element instanceof HTMLElement && element.tagName.toLowerCase() === tagName) return element;
-}

@@ -16,7 +16,6 @@ import {
     State,
 } from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
-import { closestParentElement } from '../../utils/helpers';
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
@@ -120,7 +119,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     @Listen('click', { target: 'body' })
     handleClick(ev: MouseEvent) {
-        if (closestParentElement('pd-dropdown', ev.composedPath()) !== this.element) this.open = false;
+        if (!ev.composedPath().includes(this.element)) this.open = false;
     }
 
     @Listen('keydown')
