@@ -11,6 +11,10 @@ export interface StyleEventDetail {
     [styleName: string]: boolean;
 }
 
+export type SortFunction = (a: any, b: any, dir: string) => number;
+export type FilterFunction = (value: any, filter: string) => boolean;
+export type DisplayFunction = (value: any) => any;
+
 export interface PdColumn {
     columnName: string;
     label: string;
@@ -22,9 +26,9 @@ export interface PdColumn {
     filter?: boolean;
     fixed?: boolean;
     textAlign?: 'left' | 'right' | 'center';
-    sortFunc?: (a: any, b: any, dir: string) => number;
-    displayFunc?: (value: any) => any;
-    filterFunc?: (value: any, filter: string) => boolean;
+    sortFunc?: SortFunction;
+    displayFunc?: DisplayFunction;
+    filterFunc?: FilterFunction;
 }
 
 export interface PdTableIconConfiguration {
@@ -61,7 +65,7 @@ export interface DropdownItem {
 
 export type TextWrap = 'wrap' | 'no-wrap';
 
-export interface ComboboxItem extends DropdownItem { }
+export interface ComboboxItem extends DropdownItem {}
 
 export interface SelectedEvent {
     selected: boolean;
