@@ -181,7 +181,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private toggleDropdown = () => {
-        this.open = !this.open;
+        if (!this.disabled && !this.readonly) this.open = !this.open;
     };
 
     public componentWillLoad() {
