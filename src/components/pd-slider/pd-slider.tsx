@@ -47,7 +47,7 @@ export class Slider implements ComponentInterface {
     /**
      * slider value
      */
-    @Prop({ mutable: true }) value?: number | null = null;
+    @Prop({ mutable: true }) value?: number = null;
 
     @Watch('value')
     valueChanged(value) {

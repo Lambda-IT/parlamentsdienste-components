@@ -3,18 +3,25 @@
     align-items: center;
     background-color: $blue-whale;
     color: white;
-    padding: 0 1.25em;
-    border-top-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
-    min-height: 3em;
+    padding: 0 1.25rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
     font-weight: 700;
     cursor: pointer;
     transition: border-radius 0.3s ease-in-out;
 }
 
 :host(.pd-panel-header-collapsed) {
-    border-bottom-left-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+:host(.pd-panel-header-hover) {
+    background-color: $blue-whale-hover;
+
+    .pd-panel-header-collapse {
+        fill: $white;
+    }
 }
 
 *,
@@ -32,20 +39,43 @@
 
     ::slotted(pd-icon:hover),
     pd-icon:hover {
-        fill: setcolor(primary, hover);
-    }
-
-    ::slotted(pd-icon:active),
-    pd-icon:active {
         fill: $white;
     }
 }
 
 .pd-panel-header-content {
+    display: flex;
     flex: 1 1 auto;
+    align-items: center;
+    min-height: 3rem;
 }
 .pd-panel-header-collapse {
     @include invisibleButton;
     display: flex;
     align-items: center;
+}
+
+/** Subpanel **/
+
+:host(.pd-panel-header-subpanel) {
+    background-color: transparent;
+    border-radius: 0;
+    color: $blue-whale;
+    padding: 0;
+    min-height: 2.75rem;
+
+    .pd-panel-header-icons {
+        margin-right: 0;
+    }
+
+    ::slotted(pd-icon:hover),
+    pd-icon:hover {
+        fill: $cyan-6;
+    }
+}
+
+:host(.pd-panel-header-subpanel.pd-panel-header-hover) {
+    .pd-panel-header-collapse {
+        fill: $cyan-6;
+    }
 }

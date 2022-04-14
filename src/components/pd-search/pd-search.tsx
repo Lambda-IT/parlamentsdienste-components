@@ -48,15 +48,15 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
     /**
      * Instructional text that shows before the input has a value.
      */
-    @Prop() placeholder?: string | null;
+    @Prop() placeholder?: string;
 
     /**
      * The value of the input.
      */
-    @Prop({ mutable: true }) value?: string | number | null = '';
+    @Prop({ mutable: true }) value?: string | number = '';
 
     // used to hold input value in case we need to reset on escape
-    private inputValue?: string | number | null = '';
+    private inputValue?: string | number = '';
 
     /**
      * Search box label

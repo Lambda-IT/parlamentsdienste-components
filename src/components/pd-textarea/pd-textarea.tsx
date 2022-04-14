@@ -62,7 +62,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
     /**
      * Instructional text that shows before the input has a value.
      */
-    @Prop() placeholder?: string | null;
+    @Prop() placeholder?: string;
 
     /**
      * If `true`, the user cannot modify the value.
@@ -112,7 +112,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
     /**
      * The value of the textarea.
      */
-    @Prop({ mutable: true }) value?: string | null = '';
+    @Prop({ mutable: true }) value?: string = '';
 
     /**
      * Update the native input element when the value changes

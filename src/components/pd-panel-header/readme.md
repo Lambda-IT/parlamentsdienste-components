@@ -3,6 +3,13 @@
 <!-- Auto Generated Below -->
 
 
+## Events
+
+| Event      | Description | Type                   |
+| ---------- | ----------- | ---------------------- |
+| `pd-hover` |             | `CustomEvent<boolean>` |
+
+
 ## Slots
 
 | Slot      | Description                     |

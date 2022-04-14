@@ -64,15 +64,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Instructional text that shows before the input has a value.
      */
-    @Prop() placeholder?: string | null;
+    @Prop() placeholder?: string;
 
     /**
      * The value of the input.
      */
-    @Prop({ mutable: true }) value?: string | null = '';
+    @Prop({ mutable: true }) value?: string = '';
 
     // used to hold input value in case we need to reset on escape
-    private inputValue?: string | null = '';
+    private inputValue?: string = '';
 
     /**
      * combobox box label
@@ -311,12 +311,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.pdFocus.emit();
     };
 
-    private setValue(value: string | null, isInput: boolean = false): void {
+    private setValue(value?: string, isInput: boolean = false): void {
         this.value = value;
         if (isInput) this.inputValue = value;
     }
 
-    private selectItem(comboboxItem: ComboboxItem | null, ev?: Event | KeyboardEvent) {
+    private selectItem(comboboxItem?: ComboboxItem, ev?: Event | KeyboardEvent) {
         this.pdCombobox.emit(comboboxItem);
 
         if (ev instanceof KeyboardEvent && ev.key.includes('Arrow')) {

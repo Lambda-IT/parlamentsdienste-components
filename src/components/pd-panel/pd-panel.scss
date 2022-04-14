@@ -1,7 +1,12 @@
+/**
+ * @prop --pd-panel-background: Background color of panel
+ * @prop --pd-panel-margin-bottom: bottom margin of panel. Can be used to separate subpanels
+ */
 :host {
     display: block;
-    background-color: $white;
-    border-radius: 0.25em;
+    background-color: var(--pd-panel-background, $white);
+    margin-bottom: var(--pd-panel-margin-bottom, 0);
+    border-radius: 0.25rem;
 }
 
 *,
@@ -14,4 +19,18 @@
 .pd-panel-content-wrapper {
     transition: height 0.3s ease-in-out;
     height: auto;
+}
+
+/** Subpanel **/
+
+:host(.pd-panel-subpanel) {
+    border-top: 0.125rem solid $gray-6;
+    border-bottom: 0.125rem solid $gray-6;
+    border-radius: 0;
+    --pd-panel-content-padding: 0.5rem 0 1rem 0;
+}
+
+:host(.pd-panel-subpanel.pd-panel-hover) {
+    border-top: 0.125rem solid $black;
+    border-bottom: 0.125rem solid $black;
 }

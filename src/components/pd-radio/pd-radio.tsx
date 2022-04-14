@@ -16,12 +16,12 @@ export class Radio implements ComponentInterface {
     /**
      * Value of radio
      */
-    @Prop() value?: any | null;
+    @Prop() value?: any;
 
     /**
      * Label used by radio
      */
-    @Prop() label?: string | null = null;
+    @Prop() label?: string = null;
 
     /**
      * Name of radio. Used to group radios together

@@ -19,6 +19,7 @@
 | ------------- | ------------- | ------------------------------------- | --------- | ------- |
 | `collapsed`   | `collapsed`   | Expands / collapses the panel content | `boolean` | `false` |
 | `collapsible` | `collapsible` | Show/hide collapse button             | `boolean` | `false` |
+| `subpanel`    | `subpanel`    | Use as a subpanel                     | `boolean` | `false` |
 
 
 ## Events
@@ -35,6 +36,14 @@
 |            | main content         |
 | `"footer"` | panel footer content |
 | `"header"` | panel header content |
+
+
+## CSS Custom Properties
+
+| Name                       | Description                                               |
+| -------------------------- | --------------------------------------------------------- |
+| `--pd-panel-background`    | Background color of panel                                 |
+| `--pd-panel-margin-bottom` | bottom margin of panel. Can be used to separate subpanels |
 
 
 ----------------------------------------------
