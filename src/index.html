@@ -665,15 +665,24 @@
                         <pd-panel collapsible>
                             <pd-panel-header slot="header">
                                 Featured
+                                <span slot="subtitle">Subtitle</span>
                                 <pd-icon slot="icons" size="2.4" name="configuration"></pd-icon>
                             </pd-panel-header>
-                            <pd-panel-content
-                                ><b style="color: #003840;">Special title treatment</b>
-                                <p>
-                                    With supporting text below as a natural lead-in to additional content.
-                                </p></pd-panel-content
-                            >
-                            <pd-panel-footer slot="footer"></pd-panel-footer>
+                            <pd-panel-content>
+                                <pd-panel collapsible subpanel>
+                                    <pd-panel-header slot="header">
+                                        Featured
+                                        <span slot="subtitle">Subtitle</span>
+                                        <pd-icon slot="icons" size="2.4" name="configuration"></pd-icon>
+                                    </pd-panel-header>
+                                    <pd-panel-content>
+                                        <p>
+                                            With supporting text below as a natural lead-in to additional content.
+                                        </p>
+                                    </pd-panel-content>
+                                </pd-panel>
+                            </pd-panel-content>
+                            <pd-panel-footer slot="footer">footer</pd-panel-footer>
                         </pd-panel>
                     </div>
                 </details>

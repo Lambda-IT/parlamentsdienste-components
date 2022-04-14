@@ -2,6 +2,7 @@ import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, S
 
 /**
  * @slot - Header content
+ * @slot subtitle - panel header subtitle content
  * @slot icons - Additional icons left of carret
  */
 @Component({
@@ -54,7 +55,7 @@ export class PanelHeader implements ComponentInterface {
                 class={{
                     'pd-panel-header-collapsed': this.collapsed,
                     'pd-panel-header-subpanel': this.subpanel,
-                    'pd-panel-header-hover': this.hover,
+                    'pd-panel-header-hover': this.hover && this.collapsible,
                 }}
             >
                 <div
@@ -64,6 +65,9 @@ export class PanelHeader implements ComponentInterface {
                     onClick={(e) => this.toggle(e)}
                 >
                     <slot></slot>
+                    <div class="pd-panel-header-subtitle">
+                        <slot name="subtitle"></slot>
+                    </div>
                 </div>
                 <div class="pd-panel-header-icons">
                     <slot name="icons"></slot>

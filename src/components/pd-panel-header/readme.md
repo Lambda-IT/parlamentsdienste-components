@@ -12,10 +12,11 @@
 
 ## Slots
 
-| Slot      | Description                     |
-| --------- | ------------------------------- |
-|           | Header content                  |
-| `"icons"` | Additional icons left of carret |
+| Slot         | Description                     |
+| ------------ | ------------------------------- |
+|              | Header content                  |
+| `"icons"`    | Additional icons left of carret |
+| `"subtitle"` | panel header subtitle content   |
 
 
 ## Dependencies

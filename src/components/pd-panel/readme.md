@@ -4,14 +4,31 @@
 
 ```html
 <pd-panel collapsible>
-    <pd-panel-header slot="header">Header</pd-panel-header>
-    <pd-panel-content>Content</pd-panel-content>
+    <pd-panel-header slot="header">
+        Header
+        <span slot="subtitle">Header Subtitle</span>
+    </pd-panel-header>
+    <pd-panel-content>
+        <pd-panel collapsible subpanel style="--pd-panel-margin-bottom: 1.25rem">
+            <pd-panel-header slot="header">
+                Subpanel Header
+                <span slot="subtitle">Subpanel Header Subtitle</span>
+            </pd-panel-header>
+            <pd-panel-content>Subpanel Content</pd-panel-content>
+        </pd-panel>
+        <pd-panel collapsible subpanel>
+            <pd-panel-header slot="header">
+                Subpanel Header
+                <span slot="subtitle">Subpanel Header Subtitle</span>
+            </pd-panel-header>
+            <pd-panel-content>Subpanel Content</pd-panel-content>
+        </pd-panel>
+    </pd-panel-content>
     <pd-panel-footer slot="footer">Footer</pd-panel-footer>
 </pd-panel>
 ```
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -21,13 +38,11 @@
 | `collapsible` | `collapsible` | Show/hide collapse button             | `boolean` | `false` |
 | `subpanel`    | `subpanel`    | Use as a subpanel                     | `boolean` | `false` |
 
-
 ## Events
 
 | Event          | Description                         | Type               |
 | -------------- | ----------------------------------- | ------------------ |
 | `pd-collapsed` | Emitted when the value has changed. | `CustomEvent<any>` |
-
 
 ## Slots
 
@@ -37,7 +52,6 @@
 | `"footer"` | panel footer content |
 | `"header"` | panel header content |
 
-
 ## CSS Custom Properties
 
 | Name                       | Description                                               |
@@ -45,7 +59,6 @@
 | `--pd-panel-background`    | Background color of panel                                 |
 | `--pd-panel-margin-bottom` | bottom margin of panel. Can be used to separate subpanels |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
