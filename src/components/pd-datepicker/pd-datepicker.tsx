@@ -70,7 +70,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     /**
      * Instructional text that shows before the input has a value.
      */
-    @Prop() placeholder?: string | null;
+    @Prop() placeholder?: string;
 
     /**
      * Allow manual input

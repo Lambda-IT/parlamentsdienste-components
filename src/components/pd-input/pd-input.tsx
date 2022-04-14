@@ -94,7 +94,7 @@ export class Input implements ComponentInterface {
     /**
      * Instructional text that shows before the input has a value.
      */
-    @Prop() placeholder?: string | null;
+    @Prop() placeholder?: string;
 
     /**
      * If `true`, the user cannot modify the value.
@@ -125,7 +125,7 @@ export class Input implements ComponentInterface {
     /**
      * The value of the input.
      */
-    @Prop({ mutable: true }) value?: string | number | null = '';
+    @Prop({ mutable: true }) value?: string | number = '';
 
     /**
      * Label text

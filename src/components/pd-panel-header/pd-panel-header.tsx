@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, h, Host, State } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, State } from '@stencil/core';
 
 /**
  * @slot - Header content
@@ -14,15 +14,23 @@ export class PanelHeader implements ComponentInterface {
     @Element() element: HTMLElement;
 
     @State() collapsed: boolean = false;
-    private panel: any | null = null;
+    @State() private hover = false;
+
+    /**
+     * Used for panel hover stylings
+     */
+    @Event({ eventName: 'pd-hover' }) pdHover!: EventEmitter<boolean>;
+    private panel?: HTMLPdPanelElement;
 
     private collapsible: boolean = false;
+    private subpanel: boolean = false;
 
     public connectedCallback() {
         this.panel = this.element.closest('pd-panel') as HTMLPdPanelElement;
         if (this.panel) {
             this.collapsible = this.panel.collapsible;
             this.collapsed = this.panel.collapsed;
+            this.subpanel = this.panel.subpanel;
         }
     }
 
@@ -35,10 +43,26 @@ export class PanelHeader implements ComponentInterface {
         this.panel.collapsed = this.collapsed;
     }
 
+    private handleHover(hover: boolean) {
+        this.hover = hover;
+        this.pdHover.emit(hover);
+    }
+
     public render() {
         return (
-            <Host class={{ 'pd-panel-header-collapsed': this.collapsed }} onClick={(e) => this.toggle(e)}>
-                <div class="pd-panel-header-content">
+            <Host
+                class={{
+                    'pd-panel-header-collapsed': this.collapsed,
+                    'pd-panel-header-subpanel': this.subpanel,
+                    'pd-panel-header-hover': this.hover,
+                }}
+            >
+                <div
+                    class="pd-panel-header-content"
+                    onMouseOver={() => this.handleHover(true)}
+                    onMouseOut={() => this.handleHover(false)}
+                    onClick={(e) => this.toggle(e)}
+                >
                     <slot></slot>
                 </div>
                 <div class="pd-panel-header-icons">
@@ -55,6 +79,8 @@ export class PanelHeader implements ComponentInterface {
         return (
             <button
                 class="pd-panel-header-collapse"
+                onMouseOver={() => this.handleHover(true)}
+                onMouseOut={() => this.handleHover(false)}
                 onClick={(e) => this.toggle(e)}
                 data-test="pd-panel-header-collapse"
             >

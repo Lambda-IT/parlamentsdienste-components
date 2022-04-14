@@ -7,7 +7,9 @@ import {
     EventEmitter,
     h,
     Host,
+    Listen,
     Prop,
+    State,
     Watch,
 } from '@stencil/core';
 import { collapse, expand } from '../../utils/animation';
@@ -26,6 +28,7 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
     @Element() element: HTMLElement;
 
     private contentWrapperElement: HTMLElement;
+    @State() hover: boolean = false;
 
     /**
      * Expands / collapses the panel content
@@ -36,6 +39,11 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
      * Show/hide collapse button
      */
     @Prop() collapsible: boolean = false;
+
+    /**
+     * Use as a subpanel
+     */
+    @Prop() subpanel: boolean = false;
 
     /**
      * Emitted when the value has changed.
@@ -50,6 +58,12 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
         }
     }
 
+    @Listen('pd-hover')
+    handleHover(ev: CustomEvent) {
+        ev.stopPropagation();
+        this.hover = ev.detail;
+    }
+
     public componentDidLoad() {
         // start collapsed
         if (this.collapsed) {
@@ -60,13 +74,20 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
 
     public render() {
         return (
-            <Host>
+            <Host
+                class={{
+                    'pd-panel-subpanel': this.subpanel,
+                    'pd-panel-hover': this.hover,
+                }}
+            >
                 <slot name="header"></slot>
                 <div
                     ref={(el) => (this.contentWrapperElement = el)}
-                    class={`pd-panel-content-wrapper ${
-                        this.collapsed ? 'pd-panel-content-collapsed' : 'pd-panel-content-expanded'
-                    }`}
+                    class={{
+                        'pd-panel-content-wrapper': true,
+                        'pd-panel-content-collapsed': this.collapsed,
+                        'pd-panel-content-expanded': !this.collapsed,
+                    }}
                     aria-expanded={this.collapsed ? 'false' : 'true'}
                 >
                     <slot></slot>

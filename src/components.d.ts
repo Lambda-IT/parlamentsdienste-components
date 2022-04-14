@@ -173,7 +173,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -205,7 +205,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | null;
+        "value"?: string;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -255,7 +255,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -475,7 +475,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -503,7 +503,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | number;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -649,6 +649,10 @@ export namespace Components {
           * Show/hide collapse button
          */
         "collapsible": boolean;
+        /**
+          * Use as a subpanel
+         */
+        "subpanel": boolean;
     }
     interface PdPanelContent {
     }
@@ -694,7 +698,7 @@ export namespace Components {
         /**
           * Label used by radio
          */
-        "label"?: string | null;
+        "label"?: string;
         /**
           * Name of radio. Used to group radios together
          */
@@ -706,7 +710,7 @@ export namespace Components {
         /**
           * Value of radio
          */
-        "value"?: any | null;
+        "value"?: any;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -728,7 +732,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * Values shown as search results
          */
@@ -744,7 +748,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | number;
     }
     interface PdSidebar {
     }
@@ -810,7 +814,7 @@ export namespace Components {
         /**
           * slider value
          */
-        "value"?: number | null;
+        "value"?: number;
     }
     interface PdTable {
         /**
@@ -936,7 +940,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -960,7 +964,7 @@ export namespace Components {
         /**
           * The value of the textarea.
          */
-        "value"?: string | null;
+        "value"?: string;
         /**
           * Indicates how the control wraps text.
          */
@@ -1494,7 +1498,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1514,7 +1518,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | null;
+        "value"?: string;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -1565,7 +1569,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1782,7 +1786,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1806,7 +1810,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | number;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -1985,12 +1989,20 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onPd-collapsed"?: (event: CustomEvent<any>) => void;
+        /**
+          * Use as a subpanel
+         */
+        "subpanel"?: boolean;
     }
     interface PdPanelContent {
     }
     interface PdPanelFooter {
     }
     interface PdPanelHeader {
+        /**
+          * Used for panel hover stylings
+         */
+        "onPd-hover"?: (event: CustomEvent<boolean>) => void;
     }
     interface PdProgressBar {
         /**
@@ -2030,7 +2042,7 @@ declare namespace LocalJSX {
         /**
           * Label used by radio
          */
-        "label"?: string | null;
+        "label"?: string;
         /**
           * Name of radio. Used to group radios together
          */
@@ -2042,7 +2054,7 @@ declare namespace LocalJSX {
         /**
           * Value of radio
          */
-        "value"?: any | null;
+        "value"?: any;
         /**
           * Default vertical adjustment for inline forms
          */
@@ -2084,7 +2096,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * Values shown as search results
          */
@@ -2096,7 +2108,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | number;
     }
     interface PdSidebar {
     }
@@ -2170,7 +2182,7 @@ declare namespace LocalJSX {
         /**
           * slider value
          */
-        "value"?: number | null;
+        "value"?: number;
     }
     interface PdTable {
         /**
@@ -2343,7 +2355,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -2363,7 +2375,7 @@ declare namespace LocalJSX {
         /**
           * The value of the textarea.
          */
-        "value"?: string | null;
+        "value"?: string;
         /**
           * Indicates how the control wraps text.
          */
