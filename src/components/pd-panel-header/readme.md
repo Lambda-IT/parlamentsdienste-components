@@ -5,9 +5,9 @@
 
 ## Events
 
-| Event      | Description | Type                   |
-| ---------- | ----------- | ---------------------- |
-| `pd-hover` |             | `CustomEvent<boolean>` |
+| Event      | Description                   | Type                   |
+| ---------- | ----------------------------- | ---------------------- |
+| `pd-hover` | Used for panel hover stylings | `CustomEvent<boolean>` |
 
 
 ## Slots
