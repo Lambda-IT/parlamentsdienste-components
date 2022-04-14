@@ -9,6 +9,11 @@
     align-items: center;
 }
 
+:host(.pd-list-item-expandable-selected) {
+    transition: background-color 0.15s ease-in-out;
+    --pd-list-item-background: #{$cyan-0} !important;
+}
+
 *,
 ::before,
 ::after {
