@@ -57,7 +57,7 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
     @Prop() expandable: boolean = false;
 
     /** Sets check state of the checkbox true/false */
-    @Prop() checked: boolean = false;
+    @Prop({ mutable: true }) checked: boolean = false;
 
     /** Adds content click event and style to item */
     @Prop() contentClick: boolean = false;
@@ -84,6 +84,7 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
 
     @Listen('pd-checked')
     checkboxChecked(event: CustomEvent<boolean>) {
+        this.checked = event.detail;
         this.pdSelected.emit(event.detail);
     }
 
@@ -103,7 +104,12 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
 
     public render() {
         return (
-            <Host class={{ 'pd-content-hover': this.contentHover }}>
+            <Host
+                class={{
+                    'pd-content-hover': this.contentHover,
+                    'pd-list-item-expandable-selected': this.checked,
+                }}
+            >
                 <div class={{ 'pd-list-item-expandable-checkbox': this.checkbox }}>{this.renderCheckbox()}</div>
                 {this.renderStatus()}
                 <div
