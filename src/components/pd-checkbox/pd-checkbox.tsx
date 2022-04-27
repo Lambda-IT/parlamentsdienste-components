@@ -84,8 +84,7 @@ export class Checkbox implements ComponentInterface {
                         class="pd-checkbox-input"
                         type="Checkbox"
                         checked={this.checked}
-                        disabled={this.disabled}
-                        readonly={this.readonly}
+                        disabled={this.disabled || this.readonly}
                         required={this.required}
                         value={`${this.value}`}
                         name={this.name}

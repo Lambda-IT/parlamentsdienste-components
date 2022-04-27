@@ -148,6 +148,9 @@
         & > .pd-checkbox-input {
             & + .pd-checkbox-inner {
                 background-color: setcolor(primary, readonly);
+                &.pd-checkbox-checked {
+                    background-color: setcolor(primary, readonly);
+                }
                 &:after {
                     border-color: setcolor(primary, readonly);
                 }
