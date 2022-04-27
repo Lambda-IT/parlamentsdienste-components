@@ -200,6 +200,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent) {
+        if (this.readonly || this.disabled) return;
+
         switch (ev.key) {
             case 'Tab': {
                 this.open = false;
