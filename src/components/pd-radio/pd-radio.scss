@@ -16,10 +16,7 @@ pd-radio {
     margin-top: var(--pd-radio-vertical-adjust, inherit);
 
     .pd-radio-input {
-        position: absolute;
-        height: 0;
-        width: 0;
-        opacity: 0;
+        @include visually-hidden;
 
         & + .pd-radio-inner {
             cursor: pointer;
