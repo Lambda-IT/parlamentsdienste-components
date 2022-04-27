@@ -72,8 +72,7 @@ export class Radio implements ComponentInterface {
                         checked={checked}
                         name={name}
                         value={value}
-                        disabled={this.disabled}
-                        readonly={this.readonly}
+                        disabled={this.disabled || this.readonly}
                     />
                     <div class="pd-radio-inner"></div>
                     <div class="pd-radio-text" data-test="pd-radio-text">
