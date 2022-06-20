@@ -513,7 +513,7 @@ export namespace Components {
         /**
           * Background or dot color depending on hasDot
          */
-        "color": string;
+        "color": string | undefined;
         /**
           * Switch between background and dot color mode
          */
@@ -1820,7 +1820,7 @@ declare namespace LocalJSX {
         /**
           * Background or dot color depending on hasDot
          */
-        "color"?: string;
+        "color"?: string | undefined;
         /**
           * Switch between background and dot color mode
          */

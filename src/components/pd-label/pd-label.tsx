@@ -17,12 +17,12 @@ export class Label implements ComponentInterface {
     /**
      * Background or dot color depending on hasDot
      */
-    @Prop() color = '#12B886';
+    @Prop() color: string | undefined;
 
     public render() {
         return (
             <Host>
-                <span class="pd-label" style={!this.hasDot ? { 'background-color': this.color } : {}}>
+                <span class="pd-label" style={!this.hasDot && this.color ? { 'background-color': this.color } : {}}>
                     {this.renderDot()}
                     <slot></slot>
                 </span>
