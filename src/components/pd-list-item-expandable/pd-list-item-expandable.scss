@@ -97,6 +97,6 @@
  * @prop --pd-list-item-content-hover: Background color for content hover effect
  */
 :host(.pd-content-hover) {
-    background-color: var(--pd-list-item-content-hover, $bon-jour);
+    background-color: var(--pd-list-item-content-hover, $gray-3);
     cursor: pointer;
 }
