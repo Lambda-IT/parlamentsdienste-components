@@ -160,6 +160,10 @@
                     border-color: $pd-black;
                 }
             }
+
+            & ~ .pd-checkbox-text {
+                font-style: normal;
+            }
         }
     }
 

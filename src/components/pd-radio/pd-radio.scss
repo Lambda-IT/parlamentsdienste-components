@@ -157,6 +157,10 @@ pd-radio {
                     }
                 }
             }
+
+            & ~ .pd-radio-text {
+                font-style: normal;
+            }
         }
     }
 
