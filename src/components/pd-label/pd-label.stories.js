@@ -18,6 +18,7 @@ export default {
 
 const StatesStory = (args) => `
     <pd-label class="mb-2" color="${args.color}">${args.text}</pd-label>
+    <pd-label>${args.text}</pd-label>
     <pd-label has-dot color="${args.color}">${args.text}</pd-label>
 `;
 

@@ -2,6 +2,12 @@
 
 ## Usage
 
+#### Without color
+
+```html
+<pd-label>Label Name</pd-label>
+```
+
 #### Background color label
 
 ```html
@@ -21,7 +27,7 @@
 
 | Property | Attribute | Description                                  | Type      | Default     |
 | -------- | --------- | -------------------------------------------- | --------- | ----------- |
-| `color`  | `color`   | Background or dot color depending on hasDot  | `string`  | `'#12B886'` |
+| `color`  | `color`   | Background or dot color depending on hasDot  | `string`  | `undefined` |
 | `hasDot` | `has-dot` | Switch between background and dot color mode | `boolean` | `false`     |
 
 
