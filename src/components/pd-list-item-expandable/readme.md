@@ -81,7 +81,7 @@
 
 ### Depends on
 
-- [pd-icon](../pd-icon)
+- [pd-icon](../pd-inline-icon)
 - [pd-menu](../pd-menu)
 - [pd-checkbox](../pd-checkbox)
 

@@ -145,6 +145,7 @@
     background: transparent;
 
     .pd-table-action-btn {
+        display: flex;
         @include invisibleButton;
         margin: 0 0.25rem;
         fill: setcolor(primary, enabled);

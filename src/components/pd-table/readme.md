@@ -251,7 +251,7 @@ Type: `Promise<void>`
 - [pd-table-filter](../pd-table-filter)
 - [pd-menu](../pd-menu)
 - [pd-checkbox](../pd-checkbox)
-- [pd-icon](../pd-icon)
+- [pd-icon](../pd-inline-icon)
 - [pd-pagination](../pd-pagination)
 - [pd-dropdown](../pd-dropdown)
 

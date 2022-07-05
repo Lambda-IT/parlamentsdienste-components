@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { svgOptimizerPlugin } from './src/utils/rollup-utils';
 
 export const config: Config = {
     namespace: 'ParlamentsdiensteCore',
@@ -34,5 +35,6 @@ export const config: Config = {
                 'src/styles/mixins.scss',
             ],
         }),
+        svgOptimizerPlugin(),
     ],
 };

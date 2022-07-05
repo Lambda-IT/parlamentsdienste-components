@@ -363,6 +363,186 @@ export namespace Components {
          */
         "flip": 'x' | 'y' | 'xy';
         /**
+          * The icon name
+         */
+        "name": string;
+        "rotate": number;
+        /**
+          * The icon size
+         */
+        "size": number;
+        /**
+          * Spin animation in ms per rotation
+         */
+        "spin": number;
+        /**
+          * change animation direction
+         */
+        "spinReverse": boolean;
+        "src": string;
+    }
+    interface PdIconAdd {
+        "size": string;
+    }
+    interface PdIconAlertDanger {
+        "size": string;
+    }
+    interface PdIconAlertInfo {
+        "size": string;
+    }
+    interface PdIconAlertSuccess {
+        "size": string;
+    }
+    interface PdIconAlertWarning {
+        "size": string;
+    }
+    interface PdIconAppview {
+        "size": string;
+    }
+    interface PdIconAudio {
+        "size": string;
+    }
+    interface PdIconBill {
+        "size": string;
+    }
+    interface PdIconBreadcrumb {
+        "size": string;
+    }
+    interface PdIconCalendar {
+        "size": string;
+    }
+    interface PdIconCancel {
+        "size": string;
+    }
+    interface PdIconCaret {
+        "size": string;
+    }
+    interface PdIconCheckboxChecked {
+        "size": string;
+    }
+    interface PdIconCheckboxDefault {
+        "size": string;
+    }
+    interface PdIconClipboard {
+        "size": string;
+    }
+    interface PdIconClose {
+        "size": string;
+    }
+    interface PdIconCloseBold {
+        "size": string;
+    }
+    interface PdIconCloseSmall {
+        "size": string;
+    }
+    interface PdIconComment {
+        "size": string;
+    }
+    interface PdIconCompensation {
+        "size": string;
+    }
+    interface PdIconConfiguration {
+        "size": string;
+    }
+    interface PdIconConfirm {
+        "size": string;
+    }
+    interface PdIconConfirmBold {
+        "size": string;
+    }
+    interface PdIconContact {
+        "size": string;
+    }
+    interface PdIconCopy {
+        "size": string;
+    }
+    interface PdIconDelete {
+        "size": string;
+    }
+    interface PdIconDetail {
+        "size": string;
+    }
+    interface PdIconDictionary {
+        "size": string;
+    }
+    interface PdIconDocuments {
+        "size": string;
+    }
+    interface PdIconDownload {
+        "size": string;
+    }
+    interface PdIconDragDrop {
+        "size": string;
+    }
+    interface PdIconDropdown {
+        "size": string;
+    }
+    interface PdIconEdit {
+        "size": string;
+    }
+    interface PdIconExcelExport {
+        "size": string;
+    }
+    interface PdIconExpand {
+        "size": string;
+    }
+    interface PdIconExport {
+        "size": string;
+    }
+    interface PdIconFile {
+        "size": string;
+    }
+    interface PdIconFilter {
+        "size": string;
+    }
+    interface PdIconFolderClosed {
+        "size": string;
+    }
+    interface PdIconFolderOpen {
+        "size": string;
+    }
+    interface PdIconGallery {
+        "size": string;
+    }
+    interface PdIconGroup {
+        "size": string;
+    }
+    interface PdIconHistory {
+        "size": string;
+    }
+    interface PdIconLink {
+        "size": string;
+    }
+    interface PdIconList {
+        "size": string;
+    }
+    interface PdIconLock {
+        "size": string;
+    }
+    interface PdIconMenu {
+        "size": string;
+    }
+    interface PdIconMenuActions {
+        "size": string;
+    }
+    interface PdIconMessage {
+        "size": string;
+    }
+    interface PdIconMicrophone {
+        "size": string;
+    }
+    interface PdIconMultipleFiles {
+        "size": string;
+    }
+    interface PdIconNotification {
+        "size": string;
+    }
+    interface PdIconOld {
+        /**
+          * Flip in X/Y direction
+         */
+        "flip": 'x' | 'y' | 'xy';
+        /**
           * description tag in svg for accessability
          */
         "iconDescription": string;
@@ -398,6 +578,87 @@ export namespace Components {
           * Specifies the `src` url of an SVG file to use.
          */
         "src"?: string;
+    }
+    interface PdIconParlament {
+        "size": string;
+    }
+    interface PdIconPdfFile {
+        "size": string;
+    }
+    interface PdIconPlanungOrgane {
+        "size": string;
+    }
+    interface PdIconPlanungSession {
+        "size": string;
+    }
+    interface PdIconPlay {
+        "size": string;
+    }
+    interface PdIconPress {
+        "size": string;
+    }
+    interface PdIconPrint {
+        "size": string;
+    }
+    interface PdIconProfile {
+        "size": string;
+    }
+    interface PdIconProposal {
+        "size": string;
+    }
+    interface PdIconRadioChecked {
+        "size": string;
+    }
+    interface PdIconRadioDefault {
+        "size": string;
+    }
+    interface PdIconRatsmitgliedGruppen {
+        "size": string;
+    }
+    interface PdIconResearch {
+        "size": string;
+    }
+    interface PdIconReservation {
+        "size": string;
+    }
+    interface PdIconResponse {
+        "size": string;
+    }
+    interface PdIconSearch {
+        "size": string;
+    }
+    interface PdIconShrink {
+        "size": string;
+    }
+    interface PdIconSign {
+        "size": string;
+    }
+    interface PdIconSitzungsdurchfuehrung {
+        "size": string;
+    }
+    interface PdIconSort {
+        "size": string;
+    }
+    interface PdIconStatusBlue {
+        "size": string;
+    }
+    interface PdIconStatusGreen {
+        "size": string;
+    }
+    interface PdIconStatusOrange {
+        "size": string;
+    }
+    interface PdIconStatusRed {
+        "size": string;
+    }
+    interface PdIconStatusUndefined {
+        "size": string;
+    }
+    interface PdIconSupport {
+        "size": string;
+    }
+    interface PdIconUpload {
+        "size": string;
     }
     interface PdInput {
         /**
@@ -1080,6 +1341,486 @@ declare global {
         prototype: HTMLPdIconElement;
         new (): HTMLPdIconElement;
     };
+    interface HTMLPdIconAddElement extends Components.PdIconAdd, HTMLStencilElement {
+    }
+    var HTMLPdIconAddElement: {
+        prototype: HTMLPdIconAddElement;
+        new (): HTMLPdIconAddElement;
+    };
+    interface HTMLPdIconAlertDangerElement extends Components.PdIconAlertDanger, HTMLStencilElement {
+    }
+    var HTMLPdIconAlertDangerElement: {
+        prototype: HTMLPdIconAlertDangerElement;
+        new (): HTMLPdIconAlertDangerElement;
+    };
+    interface HTMLPdIconAlertInfoElement extends Components.PdIconAlertInfo, HTMLStencilElement {
+    }
+    var HTMLPdIconAlertInfoElement: {
+        prototype: HTMLPdIconAlertInfoElement;
+        new (): HTMLPdIconAlertInfoElement;
+    };
+    interface HTMLPdIconAlertSuccessElement extends Components.PdIconAlertSuccess, HTMLStencilElement {
+    }
+    var HTMLPdIconAlertSuccessElement: {
+        prototype: HTMLPdIconAlertSuccessElement;
+        new (): HTMLPdIconAlertSuccessElement;
+    };
+    interface HTMLPdIconAlertWarningElement extends Components.PdIconAlertWarning, HTMLStencilElement {
+    }
+    var HTMLPdIconAlertWarningElement: {
+        prototype: HTMLPdIconAlertWarningElement;
+        new (): HTMLPdIconAlertWarningElement;
+    };
+    interface HTMLPdIconAppviewElement extends Components.PdIconAppview, HTMLStencilElement {
+    }
+    var HTMLPdIconAppviewElement: {
+        prototype: HTMLPdIconAppviewElement;
+        new (): HTMLPdIconAppviewElement;
+    };
+    interface HTMLPdIconAudioElement extends Components.PdIconAudio, HTMLStencilElement {
+    }
+    var HTMLPdIconAudioElement: {
+        prototype: HTMLPdIconAudioElement;
+        new (): HTMLPdIconAudioElement;
+    };
+    interface HTMLPdIconBillElement extends Components.PdIconBill, HTMLStencilElement {
+    }
+    var HTMLPdIconBillElement: {
+        prototype: HTMLPdIconBillElement;
+        new (): HTMLPdIconBillElement;
+    };
+    interface HTMLPdIconBreadcrumbElement extends Components.PdIconBreadcrumb, HTMLStencilElement {
+    }
+    var HTMLPdIconBreadcrumbElement: {
+        prototype: HTMLPdIconBreadcrumbElement;
+        new (): HTMLPdIconBreadcrumbElement;
+    };
+    interface HTMLPdIconCalendarElement extends Components.PdIconCalendar, HTMLStencilElement {
+    }
+    var HTMLPdIconCalendarElement: {
+        prototype: HTMLPdIconCalendarElement;
+        new (): HTMLPdIconCalendarElement;
+    };
+    interface HTMLPdIconCancelElement extends Components.PdIconCancel, HTMLStencilElement {
+    }
+    var HTMLPdIconCancelElement: {
+        prototype: HTMLPdIconCancelElement;
+        new (): HTMLPdIconCancelElement;
+    };
+    interface HTMLPdIconCaretElement extends Components.PdIconCaret, HTMLStencilElement {
+    }
+    var HTMLPdIconCaretElement: {
+        prototype: HTMLPdIconCaretElement;
+        new (): HTMLPdIconCaretElement;
+    };
+    interface HTMLPdIconCheckboxCheckedElement extends Components.PdIconCheckboxChecked, HTMLStencilElement {
+    }
+    var HTMLPdIconCheckboxCheckedElement: {
+        prototype: HTMLPdIconCheckboxCheckedElement;
+        new (): HTMLPdIconCheckboxCheckedElement;
+    };
+    interface HTMLPdIconCheckboxDefaultElement extends Components.PdIconCheckboxDefault, HTMLStencilElement {
+    }
+    var HTMLPdIconCheckboxDefaultElement: {
+        prototype: HTMLPdIconCheckboxDefaultElement;
+        new (): HTMLPdIconCheckboxDefaultElement;
+    };
+    interface HTMLPdIconClipboardElement extends Components.PdIconClipboard, HTMLStencilElement {
+    }
+    var HTMLPdIconClipboardElement: {
+        prototype: HTMLPdIconClipboardElement;
+        new (): HTMLPdIconClipboardElement;
+    };
+    interface HTMLPdIconCloseElement extends Components.PdIconClose, HTMLStencilElement {
+    }
+    var HTMLPdIconCloseElement: {
+        prototype: HTMLPdIconCloseElement;
+        new (): HTMLPdIconCloseElement;
+    };
+    interface HTMLPdIconCloseBoldElement extends Components.PdIconCloseBold, HTMLStencilElement {
+    }
+    var HTMLPdIconCloseBoldElement: {
+        prototype: HTMLPdIconCloseBoldElement;
+        new (): HTMLPdIconCloseBoldElement;
+    };
+    interface HTMLPdIconCloseSmallElement extends Components.PdIconCloseSmall, HTMLStencilElement {
+    }
+    var HTMLPdIconCloseSmallElement: {
+        prototype: HTMLPdIconCloseSmallElement;
+        new (): HTMLPdIconCloseSmallElement;
+    };
+    interface HTMLPdIconCommentElement extends Components.PdIconComment, HTMLStencilElement {
+    }
+    var HTMLPdIconCommentElement: {
+        prototype: HTMLPdIconCommentElement;
+        new (): HTMLPdIconCommentElement;
+    };
+    interface HTMLPdIconCompensationElement extends Components.PdIconCompensation, HTMLStencilElement {
+    }
+    var HTMLPdIconCompensationElement: {
+        prototype: HTMLPdIconCompensationElement;
+        new (): HTMLPdIconCompensationElement;
+    };
+    interface HTMLPdIconConfigurationElement extends Components.PdIconConfiguration, HTMLStencilElement {
+    }
+    var HTMLPdIconConfigurationElement: {
+        prototype: HTMLPdIconConfigurationElement;
+        new (): HTMLPdIconConfigurationElement;
+    };
+    interface HTMLPdIconConfirmElement extends Components.PdIconConfirm, HTMLStencilElement {
+    }
+    var HTMLPdIconConfirmElement: {
+        prototype: HTMLPdIconConfirmElement;
+        new (): HTMLPdIconConfirmElement;
+    };
+    interface HTMLPdIconConfirmBoldElement extends Components.PdIconConfirmBold, HTMLStencilElement {
+    }
+    var HTMLPdIconConfirmBoldElement: {
+        prototype: HTMLPdIconConfirmBoldElement;
+        new (): HTMLPdIconConfirmBoldElement;
+    };
+    interface HTMLPdIconContactElement extends Components.PdIconContact, HTMLStencilElement {
+    }
+    var HTMLPdIconContactElement: {
+        prototype: HTMLPdIconContactElement;
+        new (): HTMLPdIconContactElement;
+    };
+    interface HTMLPdIconCopyElement extends Components.PdIconCopy, HTMLStencilElement {
+    }
+    var HTMLPdIconCopyElement: {
+        prototype: HTMLPdIconCopyElement;
+        new (): HTMLPdIconCopyElement;
+    };
+    interface HTMLPdIconDeleteElement extends Components.PdIconDelete, HTMLStencilElement {
+    }
+    var HTMLPdIconDeleteElement: {
+        prototype: HTMLPdIconDeleteElement;
+        new (): HTMLPdIconDeleteElement;
+    };
+    interface HTMLPdIconDetailElement extends Components.PdIconDetail, HTMLStencilElement {
+    }
+    var HTMLPdIconDetailElement: {
+        prototype: HTMLPdIconDetailElement;
+        new (): HTMLPdIconDetailElement;
+    };
+    interface HTMLPdIconDictionaryElement extends Components.PdIconDictionary, HTMLStencilElement {
+    }
+    var HTMLPdIconDictionaryElement: {
+        prototype: HTMLPdIconDictionaryElement;
+        new (): HTMLPdIconDictionaryElement;
+    };
+    interface HTMLPdIconDocumentsElement extends Components.PdIconDocuments, HTMLStencilElement {
+    }
+    var HTMLPdIconDocumentsElement: {
+        prototype: HTMLPdIconDocumentsElement;
+        new (): HTMLPdIconDocumentsElement;
+    };
+    interface HTMLPdIconDownloadElement extends Components.PdIconDownload, HTMLStencilElement {
+    }
+    var HTMLPdIconDownloadElement: {
+        prototype: HTMLPdIconDownloadElement;
+        new (): HTMLPdIconDownloadElement;
+    };
+    interface HTMLPdIconDragDropElement extends Components.PdIconDragDrop, HTMLStencilElement {
+    }
+    var HTMLPdIconDragDropElement: {
+        prototype: HTMLPdIconDragDropElement;
+        new (): HTMLPdIconDragDropElement;
+    };
+    interface HTMLPdIconDropdownElement extends Components.PdIconDropdown, HTMLStencilElement {
+    }
+    var HTMLPdIconDropdownElement: {
+        prototype: HTMLPdIconDropdownElement;
+        new (): HTMLPdIconDropdownElement;
+    };
+    interface HTMLPdIconEditElement extends Components.PdIconEdit, HTMLStencilElement {
+    }
+    var HTMLPdIconEditElement: {
+        prototype: HTMLPdIconEditElement;
+        new (): HTMLPdIconEditElement;
+    };
+    interface HTMLPdIconExcelExportElement extends Components.PdIconExcelExport, HTMLStencilElement {
+    }
+    var HTMLPdIconExcelExportElement: {
+        prototype: HTMLPdIconExcelExportElement;
+        new (): HTMLPdIconExcelExportElement;
+    };
+    interface HTMLPdIconExpandElement extends Components.PdIconExpand, HTMLStencilElement {
+    }
+    var HTMLPdIconExpandElement: {
+        prototype: HTMLPdIconExpandElement;
+        new (): HTMLPdIconExpandElement;
+    };
+    interface HTMLPdIconExportElement extends Components.PdIconExport, HTMLStencilElement {
+    }
+    var HTMLPdIconExportElement: {
+        prototype: HTMLPdIconExportElement;
+        new (): HTMLPdIconExportElement;
+    };
+    interface HTMLPdIconFileElement extends Components.PdIconFile, HTMLStencilElement {
+    }
+    var HTMLPdIconFileElement: {
+        prototype: HTMLPdIconFileElement;
+        new (): HTMLPdIconFileElement;
+    };
+    interface HTMLPdIconFilterElement extends Components.PdIconFilter, HTMLStencilElement {
+    }
+    var HTMLPdIconFilterElement: {
+        prototype: HTMLPdIconFilterElement;
+        new (): HTMLPdIconFilterElement;
+    };
+    interface HTMLPdIconFolderClosedElement extends Components.PdIconFolderClosed, HTMLStencilElement {
+    }
+    var HTMLPdIconFolderClosedElement: {
+        prototype: HTMLPdIconFolderClosedElement;
+        new (): HTMLPdIconFolderClosedElement;
+    };
+    interface HTMLPdIconFolderOpenElement extends Components.PdIconFolderOpen, HTMLStencilElement {
+    }
+    var HTMLPdIconFolderOpenElement: {
+        prototype: HTMLPdIconFolderOpenElement;
+        new (): HTMLPdIconFolderOpenElement;
+    };
+    interface HTMLPdIconGalleryElement extends Components.PdIconGallery, HTMLStencilElement {
+    }
+    var HTMLPdIconGalleryElement: {
+        prototype: HTMLPdIconGalleryElement;
+        new (): HTMLPdIconGalleryElement;
+    };
+    interface HTMLPdIconGroupElement extends Components.PdIconGroup, HTMLStencilElement {
+    }
+    var HTMLPdIconGroupElement: {
+        prototype: HTMLPdIconGroupElement;
+        new (): HTMLPdIconGroupElement;
+    };
+    interface HTMLPdIconHistoryElement extends Components.PdIconHistory, HTMLStencilElement {
+    }
+    var HTMLPdIconHistoryElement: {
+        prototype: HTMLPdIconHistoryElement;
+        new (): HTMLPdIconHistoryElement;
+    };
+    interface HTMLPdIconLinkElement extends Components.PdIconLink, HTMLStencilElement {
+    }
+    var HTMLPdIconLinkElement: {
+        prototype: HTMLPdIconLinkElement;
+        new (): HTMLPdIconLinkElement;
+    };
+    interface HTMLPdIconListElement extends Components.PdIconList, HTMLStencilElement {
+    }
+    var HTMLPdIconListElement: {
+        prototype: HTMLPdIconListElement;
+        new (): HTMLPdIconListElement;
+    };
+    interface HTMLPdIconLockElement extends Components.PdIconLock, HTMLStencilElement {
+    }
+    var HTMLPdIconLockElement: {
+        prototype: HTMLPdIconLockElement;
+        new (): HTMLPdIconLockElement;
+    };
+    interface HTMLPdIconMenuElement extends Components.PdIconMenu, HTMLStencilElement {
+    }
+    var HTMLPdIconMenuElement: {
+        prototype: HTMLPdIconMenuElement;
+        new (): HTMLPdIconMenuElement;
+    };
+    interface HTMLPdIconMenuActionsElement extends Components.PdIconMenuActions, HTMLStencilElement {
+    }
+    var HTMLPdIconMenuActionsElement: {
+        prototype: HTMLPdIconMenuActionsElement;
+        new (): HTMLPdIconMenuActionsElement;
+    };
+    interface HTMLPdIconMessageElement extends Components.PdIconMessage, HTMLStencilElement {
+    }
+    var HTMLPdIconMessageElement: {
+        prototype: HTMLPdIconMessageElement;
+        new (): HTMLPdIconMessageElement;
+    };
+    interface HTMLPdIconMicrophoneElement extends Components.PdIconMicrophone, HTMLStencilElement {
+    }
+    var HTMLPdIconMicrophoneElement: {
+        prototype: HTMLPdIconMicrophoneElement;
+        new (): HTMLPdIconMicrophoneElement;
+    };
+    interface HTMLPdIconMultipleFilesElement extends Components.PdIconMultipleFiles, HTMLStencilElement {
+    }
+    var HTMLPdIconMultipleFilesElement: {
+        prototype: HTMLPdIconMultipleFilesElement;
+        new (): HTMLPdIconMultipleFilesElement;
+    };
+    interface HTMLPdIconNotificationElement extends Components.PdIconNotification, HTMLStencilElement {
+    }
+    var HTMLPdIconNotificationElement: {
+        prototype: HTMLPdIconNotificationElement;
+        new (): HTMLPdIconNotificationElement;
+    };
+    interface HTMLPdIconOldElement extends Components.PdIconOld, HTMLStencilElement {
+    }
+    var HTMLPdIconOldElement: {
+        prototype: HTMLPdIconOldElement;
+        new (): HTMLPdIconOldElement;
+    };
+    interface HTMLPdIconParlamentElement extends Components.PdIconParlament, HTMLStencilElement {
+    }
+    var HTMLPdIconParlamentElement: {
+        prototype: HTMLPdIconParlamentElement;
+        new (): HTMLPdIconParlamentElement;
+    };
+    interface HTMLPdIconPdfFileElement extends Components.PdIconPdfFile, HTMLStencilElement {
+    }
+    var HTMLPdIconPdfFileElement: {
+        prototype: HTMLPdIconPdfFileElement;
+        new (): HTMLPdIconPdfFileElement;
+    };
+    interface HTMLPdIconPlanungOrganeElement extends Components.PdIconPlanungOrgane, HTMLStencilElement {
+    }
+    var HTMLPdIconPlanungOrganeElement: {
+        prototype: HTMLPdIconPlanungOrganeElement;
+        new (): HTMLPdIconPlanungOrganeElement;
+    };
+    interface HTMLPdIconPlanungSessionElement extends Components.PdIconPlanungSession, HTMLStencilElement {
+    }
+    var HTMLPdIconPlanungSessionElement: {
+        prototype: HTMLPdIconPlanungSessionElement;
+        new (): HTMLPdIconPlanungSessionElement;
+    };
+    interface HTMLPdIconPlayElement extends Components.PdIconPlay, HTMLStencilElement {
+    }
+    var HTMLPdIconPlayElement: {
+        prototype: HTMLPdIconPlayElement;
+        new (): HTMLPdIconPlayElement;
+    };
+    interface HTMLPdIconPressElement extends Components.PdIconPress, HTMLStencilElement {
+    }
+    var HTMLPdIconPressElement: {
+        prototype: HTMLPdIconPressElement;
+        new (): HTMLPdIconPressElement;
+    };
+    interface HTMLPdIconPrintElement extends Components.PdIconPrint, HTMLStencilElement {
+    }
+    var HTMLPdIconPrintElement: {
+        prototype: HTMLPdIconPrintElement;
+        new (): HTMLPdIconPrintElement;
+    };
+    interface HTMLPdIconProfileElement extends Components.PdIconProfile, HTMLStencilElement {
+    }
+    var HTMLPdIconProfileElement: {
+        prototype: HTMLPdIconProfileElement;
+        new (): HTMLPdIconProfileElement;
+    };
+    interface HTMLPdIconProposalElement extends Components.PdIconProposal, HTMLStencilElement {
+    }
+    var HTMLPdIconProposalElement: {
+        prototype: HTMLPdIconProposalElement;
+        new (): HTMLPdIconProposalElement;
+    };
+    interface HTMLPdIconRadioCheckedElement extends Components.PdIconRadioChecked, HTMLStencilElement {
+    }
+    var HTMLPdIconRadioCheckedElement: {
+        prototype: HTMLPdIconRadioCheckedElement;
+        new (): HTMLPdIconRadioCheckedElement;
+    };
+    interface HTMLPdIconRadioDefaultElement extends Components.PdIconRadioDefault, HTMLStencilElement {
+    }
+    var HTMLPdIconRadioDefaultElement: {
+        prototype: HTMLPdIconRadioDefaultElement;
+        new (): HTMLPdIconRadioDefaultElement;
+    };
+    interface HTMLPdIconRatsmitgliedGruppenElement extends Components.PdIconRatsmitgliedGruppen, HTMLStencilElement {
+    }
+    var HTMLPdIconRatsmitgliedGruppenElement: {
+        prototype: HTMLPdIconRatsmitgliedGruppenElement;
+        new (): HTMLPdIconRatsmitgliedGruppenElement;
+    };
+    interface HTMLPdIconResearchElement extends Components.PdIconResearch, HTMLStencilElement {
+    }
+    var HTMLPdIconResearchElement: {
+        prototype: HTMLPdIconResearchElement;
+        new (): HTMLPdIconResearchElement;
+    };
+    interface HTMLPdIconReservationElement extends Components.PdIconReservation, HTMLStencilElement {
+    }
+    var HTMLPdIconReservationElement: {
+        prototype: HTMLPdIconReservationElement;
+        new (): HTMLPdIconReservationElement;
+    };
+    interface HTMLPdIconResponseElement extends Components.PdIconResponse, HTMLStencilElement {
+    }
+    var HTMLPdIconResponseElement: {
+        prototype: HTMLPdIconResponseElement;
+        new (): HTMLPdIconResponseElement;
+    };
+    interface HTMLPdIconSearchElement extends Components.PdIconSearch, HTMLStencilElement {
+    }
+    var HTMLPdIconSearchElement: {
+        prototype: HTMLPdIconSearchElement;
+        new (): HTMLPdIconSearchElement;
+    };
+    interface HTMLPdIconShrinkElement extends Components.PdIconShrink, HTMLStencilElement {
+    }
+    var HTMLPdIconShrinkElement: {
+        prototype: HTMLPdIconShrinkElement;
+        new (): HTMLPdIconShrinkElement;
+    };
+    interface HTMLPdIconSignElement extends Components.PdIconSign, HTMLStencilElement {
+    }
+    var HTMLPdIconSignElement: {
+        prototype: HTMLPdIconSignElement;
+        new (): HTMLPdIconSignElement;
+    };
+    interface HTMLPdIconSitzungsdurchfuehrungElement extends Components.PdIconSitzungsdurchfuehrung, HTMLStencilElement {
+    }
+    var HTMLPdIconSitzungsdurchfuehrungElement: {
+        prototype: HTMLPdIconSitzungsdurchfuehrungElement;
+        new (): HTMLPdIconSitzungsdurchfuehrungElement;
+    };
+    interface HTMLPdIconSortElement extends Components.PdIconSort, HTMLStencilElement {
+    }
+    var HTMLPdIconSortElement: {
+        prototype: HTMLPdIconSortElement;
+        new (): HTMLPdIconSortElement;
+    };
+    interface HTMLPdIconStatusBlueElement extends Components.PdIconStatusBlue, HTMLStencilElement {
+    }
+    var HTMLPdIconStatusBlueElement: {
+        prototype: HTMLPdIconStatusBlueElement;
+        new (): HTMLPdIconStatusBlueElement;
+    };
+    interface HTMLPdIconStatusGreenElement extends Components.PdIconStatusGreen, HTMLStencilElement {
+    }
+    var HTMLPdIconStatusGreenElement: {
+        prototype: HTMLPdIconStatusGreenElement;
+        new (): HTMLPdIconStatusGreenElement;
+    };
+    interface HTMLPdIconStatusOrangeElement extends Components.PdIconStatusOrange, HTMLStencilElement {
+    }
+    var HTMLPdIconStatusOrangeElement: {
+        prototype: HTMLPdIconStatusOrangeElement;
+        new (): HTMLPdIconStatusOrangeElement;
+    };
+    interface HTMLPdIconStatusRedElement extends Components.PdIconStatusRed, HTMLStencilElement {
+    }
+    var HTMLPdIconStatusRedElement: {
+        prototype: HTMLPdIconStatusRedElement;
+        new (): HTMLPdIconStatusRedElement;
+    };
+    interface HTMLPdIconStatusUndefinedElement extends Components.PdIconStatusUndefined, HTMLStencilElement {
+    }
+    var HTMLPdIconStatusUndefinedElement: {
+        prototype: HTMLPdIconStatusUndefinedElement;
+        new (): HTMLPdIconStatusUndefinedElement;
+    };
+    interface HTMLPdIconSupportElement extends Components.PdIconSupport, HTMLStencilElement {
+    }
+    var HTMLPdIconSupportElement: {
+        prototype: HTMLPdIconSupportElement;
+        new (): HTMLPdIconSupportElement;
+    };
+    interface HTMLPdIconUploadElement extends Components.PdIconUpload, HTMLStencilElement {
+    }
+    var HTMLPdIconUploadElement: {
+        prototype: HTMLPdIconUploadElement;
+        new (): HTMLPdIconUploadElement;
+    };
     interface HTMLPdInputElement extends Components.PdInput, HTMLStencilElement {
     }
     var HTMLPdInputElement: {
@@ -1260,6 +2001,86 @@ declare global {
         "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
+        "pd-icon-add": HTMLPdIconAddElement;
+        "pd-icon-alert-danger": HTMLPdIconAlertDangerElement;
+        "pd-icon-alert-info": HTMLPdIconAlertInfoElement;
+        "pd-icon-alert-success": HTMLPdIconAlertSuccessElement;
+        "pd-icon-alert-warning": HTMLPdIconAlertWarningElement;
+        "pd-icon-appview": HTMLPdIconAppviewElement;
+        "pd-icon-audio": HTMLPdIconAudioElement;
+        "pd-icon-bill": HTMLPdIconBillElement;
+        "pd-icon-breadcrumb": HTMLPdIconBreadcrumbElement;
+        "pd-icon-calendar": HTMLPdIconCalendarElement;
+        "pd-icon-cancel": HTMLPdIconCancelElement;
+        "pd-icon-caret": HTMLPdIconCaretElement;
+        "pd-icon-checkbox-checked": HTMLPdIconCheckboxCheckedElement;
+        "pd-icon-checkbox-default": HTMLPdIconCheckboxDefaultElement;
+        "pd-icon-clipboard": HTMLPdIconClipboardElement;
+        "pd-icon-close": HTMLPdIconCloseElement;
+        "pd-icon-close-bold": HTMLPdIconCloseBoldElement;
+        "pd-icon-close-small": HTMLPdIconCloseSmallElement;
+        "pd-icon-comment": HTMLPdIconCommentElement;
+        "pd-icon-compensation": HTMLPdIconCompensationElement;
+        "pd-icon-configuration": HTMLPdIconConfigurationElement;
+        "pd-icon-confirm": HTMLPdIconConfirmElement;
+        "pd-icon-confirm-bold": HTMLPdIconConfirmBoldElement;
+        "pd-icon-contact": HTMLPdIconContactElement;
+        "pd-icon-copy": HTMLPdIconCopyElement;
+        "pd-icon-delete": HTMLPdIconDeleteElement;
+        "pd-icon-detail": HTMLPdIconDetailElement;
+        "pd-icon-dictionary": HTMLPdIconDictionaryElement;
+        "pd-icon-documents": HTMLPdIconDocumentsElement;
+        "pd-icon-download": HTMLPdIconDownloadElement;
+        "pd-icon-drag-drop": HTMLPdIconDragDropElement;
+        "pd-icon-dropdown": HTMLPdIconDropdownElement;
+        "pd-icon-edit": HTMLPdIconEditElement;
+        "pd-icon-excel-export": HTMLPdIconExcelExportElement;
+        "pd-icon-expand": HTMLPdIconExpandElement;
+        "pd-icon-export": HTMLPdIconExportElement;
+        "pd-icon-file": HTMLPdIconFileElement;
+        "pd-icon-filter": HTMLPdIconFilterElement;
+        "pd-icon-folder-closed": HTMLPdIconFolderClosedElement;
+        "pd-icon-folder-open": HTMLPdIconFolderOpenElement;
+        "pd-icon-gallery": HTMLPdIconGalleryElement;
+        "pd-icon-group": HTMLPdIconGroupElement;
+        "pd-icon-history": HTMLPdIconHistoryElement;
+        "pd-icon-link": HTMLPdIconLinkElement;
+        "pd-icon-list": HTMLPdIconListElement;
+        "pd-icon-lock": HTMLPdIconLockElement;
+        "pd-icon-menu": HTMLPdIconMenuElement;
+        "pd-icon-menu-actions": HTMLPdIconMenuActionsElement;
+        "pd-icon-message": HTMLPdIconMessageElement;
+        "pd-icon-microphone": HTMLPdIconMicrophoneElement;
+        "pd-icon-multiple-files": HTMLPdIconMultipleFilesElement;
+        "pd-icon-notification": HTMLPdIconNotificationElement;
+        "pd-icon-old": HTMLPdIconOldElement;
+        "pd-icon-parlament": HTMLPdIconParlamentElement;
+        "pd-icon-pdf-file": HTMLPdIconPdfFileElement;
+        "pd-icon-planung-organe": HTMLPdIconPlanungOrganeElement;
+        "pd-icon-planung-session": HTMLPdIconPlanungSessionElement;
+        "pd-icon-play": HTMLPdIconPlayElement;
+        "pd-icon-press": HTMLPdIconPressElement;
+        "pd-icon-print": HTMLPdIconPrintElement;
+        "pd-icon-profile": HTMLPdIconProfileElement;
+        "pd-icon-proposal": HTMLPdIconProposalElement;
+        "pd-icon-radio-checked": HTMLPdIconRadioCheckedElement;
+        "pd-icon-radio-default": HTMLPdIconRadioDefaultElement;
+        "pd-icon-ratsmitglied-gruppen": HTMLPdIconRatsmitgliedGruppenElement;
+        "pd-icon-research": HTMLPdIconResearchElement;
+        "pd-icon-reservation": HTMLPdIconReservationElement;
+        "pd-icon-response": HTMLPdIconResponseElement;
+        "pd-icon-search": HTMLPdIconSearchElement;
+        "pd-icon-shrink": HTMLPdIconShrinkElement;
+        "pd-icon-sign": HTMLPdIconSignElement;
+        "pd-icon-sitzungsdurchfuehrung": HTMLPdIconSitzungsdurchfuehrungElement;
+        "pd-icon-sort": HTMLPdIconSortElement;
+        "pd-icon-status-blue": HTMLPdIconStatusBlueElement;
+        "pd-icon-status-green": HTMLPdIconStatusGreenElement;
+        "pd-icon-status-orange": HTMLPdIconStatusOrangeElement;
+        "pd-icon-status-red": HTMLPdIconStatusRedElement;
+        "pd-icon-status-undefined": HTMLPdIconStatusUndefinedElement;
+        "pd-icon-support": HTMLPdIconSupportElement;
+        "pd-icon-upload": HTMLPdIconUploadElement;
         "pd-input": HTMLPdInputElement;
         "pd-label": HTMLPdLabelElement;
         "pd-list": HTMLPdListElement;
@@ -1658,6 +2479,186 @@ declare namespace LocalJSX {
          */
         "flip"?: 'x' | 'y' | 'xy';
         /**
+          * The icon name
+         */
+        "name"?: string;
+        "rotate"?: number;
+        /**
+          * The icon size
+         */
+        "size"?: number;
+        /**
+          * Spin animation in ms per rotation
+         */
+        "spin"?: number;
+        /**
+          * change animation direction
+         */
+        "spinReverse"?: boolean;
+        "src"?: string;
+    }
+    interface PdIconAdd {
+        "size"?: string;
+    }
+    interface PdIconAlertDanger {
+        "size"?: string;
+    }
+    interface PdIconAlertInfo {
+        "size"?: string;
+    }
+    interface PdIconAlertSuccess {
+        "size"?: string;
+    }
+    interface PdIconAlertWarning {
+        "size"?: string;
+    }
+    interface PdIconAppview {
+        "size"?: string;
+    }
+    interface PdIconAudio {
+        "size"?: string;
+    }
+    interface PdIconBill {
+        "size"?: string;
+    }
+    interface PdIconBreadcrumb {
+        "size"?: string;
+    }
+    interface PdIconCalendar {
+        "size"?: string;
+    }
+    interface PdIconCancel {
+        "size"?: string;
+    }
+    interface PdIconCaret {
+        "size"?: string;
+    }
+    interface PdIconCheckboxChecked {
+        "size"?: string;
+    }
+    interface PdIconCheckboxDefault {
+        "size"?: string;
+    }
+    interface PdIconClipboard {
+        "size"?: string;
+    }
+    interface PdIconClose {
+        "size"?: string;
+    }
+    interface PdIconCloseBold {
+        "size"?: string;
+    }
+    interface PdIconCloseSmall {
+        "size"?: string;
+    }
+    interface PdIconComment {
+        "size"?: string;
+    }
+    interface PdIconCompensation {
+        "size"?: string;
+    }
+    interface PdIconConfiguration {
+        "size"?: string;
+    }
+    interface PdIconConfirm {
+        "size"?: string;
+    }
+    interface PdIconConfirmBold {
+        "size"?: string;
+    }
+    interface PdIconContact {
+        "size"?: string;
+    }
+    interface PdIconCopy {
+        "size"?: string;
+    }
+    interface PdIconDelete {
+        "size"?: string;
+    }
+    interface PdIconDetail {
+        "size"?: string;
+    }
+    interface PdIconDictionary {
+        "size"?: string;
+    }
+    interface PdIconDocuments {
+        "size"?: string;
+    }
+    interface PdIconDownload {
+        "size"?: string;
+    }
+    interface PdIconDragDrop {
+        "size"?: string;
+    }
+    interface PdIconDropdown {
+        "size"?: string;
+    }
+    interface PdIconEdit {
+        "size"?: string;
+    }
+    interface PdIconExcelExport {
+        "size"?: string;
+    }
+    interface PdIconExpand {
+        "size"?: string;
+    }
+    interface PdIconExport {
+        "size"?: string;
+    }
+    interface PdIconFile {
+        "size"?: string;
+    }
+    interface PdIconFilter {
+        "size"?: string;
+    }
+    interface PdIconFolderClosed {
+        "size"?: string;
+    }
+    interface PdIconFolderOpen {
+        "size"?: string;
+    }
+    interface PdIconGallery {
+        "size"?: string;
+    }
+    interface PdIconGroup {
+        "size"?: string;
+    }
+    interface PdIconHistory {
+        "size"?: string;
+    }
+    interface PdIconLink {
+        "size"?: string;
+    }
+    interface PdIconList {
+        "size"?: string;
+    }
+    interface PdIconLock {
+        "size"?: string;
+    }
+    interface PdIconMenu {
+        "size"?: string;
+    }
+    interface PdIconMenuActions {
+        "size"?: string;
+    }
+    interface PdIconMessage {
+        "size"?: string;
+    }
+    interface PdIconMicrophone {
+        "size"?: string;
+    }
+    interface PdIconMultipleFiles {
+        "size"?: string;
+    }
+    interface PdIconNotification {
+        "size"?: string;
+    }
+    interface PdIconOld {
+        /**
+          * Flip in X/Y direction
+         */
+        "flip"?: 'x' | 'y' | 'xy';
+        /**
           * description tag in svg for accessability
          */
         "iconDescription"?: string;
@@ -1693,6 +2694,87 @@ declare namespace LocalJSX {
           * Specifies the `src` url of an SVG file to use.
          */
         "src"?: string;
+    }
+    interface PdIconParlament {
+        "size"?: string;
+    }
+    interface PdIconPdfFile {
+        "size"?: string;
+    }
+    interface PdIconPlanungOrgane {
+        "size"?: string;
+    }
+    interface PdIconPlanungSession {
+        "size"?: string;
+    }
+    interface PdIconPlay {
+        "size"?: string;
+    }
+    interface PdIconPress {
+        "size"?: string;
+    }
+    interface PdIconPrint {
+        "size"?: string;
+    }
+    interface PdIconProfile {
+        "size"?: string;
+    }
+    interface PdIconProposal {
+        "size"?: string;
+    }
+    interface PdIconRadioChecked {
+        "size"?: string;
+    }
+    interface PdIconRadioDefault {
+        "size"?: string;
+    }
+    interface PdIconRatsmitgliedGruppen {
+        "size"?: string;
+    }
+    interface PdIconResearch {
+        "size"?: string;
+    }
+    interface PdIconReservation {
+        "size"?: string;
+    }
+    interface PdIconResponse {
+        "size"?: string;
+    }
+    interface PdIconSearch {
+        "size"?: string;
+    }
+    interface PdIconShrink {
+        "size"?: string;
+    }
+    interface PdIconSign {
+        "size"?: string;
+    }
+    interface PdIconSitzungsdurchfuehrung {
+        "size"?: string;
+    }
+    interface PdIconSort {
+        "size"?: string;
+    }
+    interface PdIconStatusBlue {
+        "size"?: string;
+    }
+    interface PdIconStatusGreen {
+        "size"?: string;
+    }
+    interface PdIconStatusOrange {
+        "size"?: string;
+    }
+    interface PdIconStatusRed {
+        "size"?: string;
+    }
+    interface PdIconStatusUndefined {
+        "size"?: string;
+    }
+    interface PdIconSupport {
+        "size"?: string;
+    }
+    interface PdIconUpload {
+        "size"?: string;
     }
     interface PdInput {
         /**
@@ -2439,6 +3521,86 @@ declare namespace LocalJSX {
         "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
+        "pd-icon-add": PdIconAdd;
+        "pd-icon-alert-danger": PdIconAlertDanger;
+        "pd-icon-alert-info": PdIconAlertInfo;
+        "pd-icon-alert-success": PdIconAlertSuccess;
+        "pd-icon-alert-warning": PdIconAlertWarning;
+        "pd-icon-appview": PdIconAppview;
+        "pd-icon-audio": PdIconAudio;
+        "pd-icon-bill": PdIconBill;
+        "pd-icon-breadcrumb": PdIconBreadcrumb;
+        "pd-icon-calendar": PdIconCalendar;
+        "pd-icon-cancel": PdIconCancel;
+        "pd-icon-caret": PdIconCaret;
+        "pd-icon-checkbox-checked": PdIconCheckboxChecked;
+        "pd-icon-checkbox-default": PdIconCheckboxDefault;
+        "pd-icon-clipboard": PdIconClipboard;
+        "pd-icon-close": PdIconClose;
+        "pd-icon-close-bold": PdIconCloseBold;
+        "pd-icon-close-small": PdIconCloseSmall;
+        "pd-icon-comment": PdIconComment;
+        "pd-icon-compensation": PdIconCompensation;
+        "pd-icon-configuration": PdIconConfiguration;
+        "pd-icon-confirm": PdIconConfirm;
+        "pd-icon-confirm-bold": PdIconConfirmBold;
+        "pd-icon-contact": PdIconContact;
+        "pd-icon-copy": PdIconCopy;
+        "pd-icon-delete": PdIconDelete;
+        "pd-icon-detail": PdIconDetail;
+        "pd-icon-dictionary": PdIconDictionary;
+        "pd-icon-documents": PdIconDocuments;
+        "pd-icon-download": PdIconDownload;
+        "pd-icon-drag-drop": PdIconDragDrop;
+        "pd-icon-dropdown": PdIconDropdown;
+        "pd-icon-edit": PdIconEdit;
+        "pd-icon-excel-export": PdIconExcelExport;
+        "pd-icon-expand": PdIconExpand;
+        "pd-icon-export": PdIconExport;
+        "pd-icon-file": PdIconFile;
+        "pd-icon-filter": PdIconFilter;
+        "pd-icon-folder-closed": PdIconFolderClosed;
+        "pd-icon-folder-open": PdIconFolderOpen;
+        "pd-icon-gallery": PdIconGallery;
+        "pd-icon-group": PdIconGroup;
+        "pd-icon-history": PdIconHistory;
+        "pd-icon-link": PdIconLink;
+        "pd-icon-list": PdIconList;
+        "pd-icon-lock": PdIconLock;
+        "pd-icon-menu": PdIconMenu;
+        "pd-icon-menu-actions": PdIconMenuActions;
+        "pd-icon-message": PdIconMessage;
+        "pd-icon-microphone": PdIconMicrophone;
+        "pd-icon-multiple-files": PdIconMultipleFiles;
+        "pd-icon-notification": PdIconNotification;
+        "pd-icon-old": PdIconOld;
+        "pd-icon-parlament": PdIconParlament;
+        "pd-icon-pdf-file": PdIconPdfFile;
+        "pd-icon-planung-organe": PdIconPlanungOrgane;
+        "pd-icon-planung-session": PdIconPlanungSession;
+        "pd-icon-play": PdIconPlay;
+        "pd-icon-press": PdIconPress;
+        "pd-icon-print": PdIconPrint;
+        "pd-icon-profile": PdIconProfile;
+        "pd-icon-proposal": PdIconProposal;
+        "pd-icon-radio-checked": PdIconRadioChecked;
+        "pd-icon-radio-default": PdIconRadioDefault;
+        "pd-icon-ratsmitglied-gruppen": PdIconRatsmitgliedGruppen;
+        "pd-icon-research": PdIconResearch;
+        "pd-icon-reservation": PdIconReservation;
+        "pd-icon-response": PdIconResponse;
+        "pd-icon-search": PdIconSearch;
+        "pd-icon-shrink": PdIconShrink;
+        "pd-icon-sign": PdIconSign;
+        "pd-icon-sitzungsdurchfuehrung": PdIconSitzungsdurchfuehrung;
+        "pd-icon-sort": PdIconSort;
+        "pd-icon-status-blue": PdIconStatusBlue;
+        "pd-icon-status-green": PdIconStatusGreen;
+        "pd-icon-status-orange": PdIconStatusOrange;
+        "pd-icon-status-red": PdIconStatusRed;
+        "pd-icon-status-undefined": PdIconStatusUndefined;
+        "pd-icon-support": PdIconSupport;
+        "pd-icon-upload": PdIconUpload;
         "pd-input": PdInput;
         "pd-label": PdLabel;
         "pd-list": PdList;
@@ -2484,6 +3646,86 @@ declare module "@stencil/core" {
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
+            "pd-icon-add": LocalJSX.PdIconAdd & JSXBase.HTMLAttributes<HTMLPdIconAddElement>;
+            "pd-icon-alert-danger": LocalJSX.PdIconAlertDanger & JSXBase.HTMLAttributes<HTMLPdIconAlertDangerElement>;
+            "pd-icon-alert-info": LocalJSX.PdIconAlertInfo & JSXBase.HTMLAttributes<HTMLPdIconAlertInfoElement>;
+            "pd-icon-alert-success": LocalJSX.PdIconAlertSuccess & JSXBase.HTMLAttributes<HTMLPdIconAlertSuccessElement>;
+            "pd-icon-alert-warning": LocalJSX.PdIconAlertWarning & JSXBase.HTMLAttributes<HTMLPdIconAlertWarningElement>;
+            "pd-icon-appview": LocalJSX.PdIconAppview & JSXBase.HTMLAttributes<HTMLPdIconAppviewElement>;
+            "pd-icon-audio": LocalJSX.PdIconAudio & JSXBase.HTMLAttributes<HTMLPdIconAudioElement>;
+            "pd-icon-bill": LocalJSX.PdIconBill & JSXBase.HTMLAttributes<HTMLPdIconBillElement>;
+            "pd-icon-breadcrumb": LocalJSX.PdIconBreadcrumb & JSXBase.HTMLAttributes<HTMLPdIconBreadcrumbElement>;
+            "pd-icon-calendar": LocalJSX.PdIconCalendar & JSXBase.HTMLAttributes<HTMLPdIconCalendarElement>;
+            "pd-icon-cancel": LocalJSX.PdIconCancel & JSXBase.HTMLAttributes<HTMLPdIconCancelElement>;
+            "pd-icon-caret": LocalJSX.PdIconCaret & JSXBase.HTMLAttributes<HTMLPdIconCaretElement>;
+            "pd-icon-checkbox-checked": LocalJSX.PdIconCheckboxChecked & JSXBase.HTMLAttributes<HTMLPdIconCheckboxCheckedElement>;
+            "pd-icon-checkbox-default": LocalJSX.PdIconCheckboxDefault & JSXBase.HTMLAttributes<HTMLPdIconCheckboxDefaultElement>;
+            "pd-icon-clipboard": LocalJSX.PdIconClipboard & JSXBase.HTMLAttributes<HTMLPdIconClipboardElement>;
+            "pd-icon-close": LocalJSX.PdIconClose & JSXBase.HTMLAttributes<HTMLPdIconCloseElement>;
+            "pd-icon-close-bold": LocalJSX.PdIconCloseBold & JSXBase.HTMLAttributes<HTMLPdIconCloseBoldElement>;
+            "pd-icon-close-small": LocalJSX.PdIconCloseSmall & JSXBase.HTMLAttributes<HTMLPdIconCloseSmallElement>;
+            "pd-icon-comment": LocalJSX.PdIconComment & JSXBase.HTMLAttributes<HTMLPdIconCommentElement>;
+            "pd-icon-compensation": LocalJSX.PdIconCompensation & JSXBase.HTMLAttributes<HTMLPdIconCompensationElement>;
+            "pd-icon-configuration": LocalJSX.PdIconConfiguration & JSXBase.HTMLAttributes<HTMLPdIconConfigurationElement>;
+            "pd-icon-confirm": LocalJSX.PdIconConfirm & JSXBase.HTMLAttributes<HTMLPdIconConfirmElement>;
+            "pd-icon-confirm-bold": LocalJSX.PdIconConfirmBold & JSXBase.HTMLAttributes<HTMLPdIconConfirmBoldElement>;
+            "pd-icon-contact": LocalJSX.PdIconContact & JSXBase.HTMLAttributes<HTMLPdIconContactElement>;
+            "pd-icon-copy": LocalJSX.PdIconCopy & JSXBase.HTMLAttributes<HTMLPdIconCopyElement>;
+            "pd-icon-delete": LocalJSX.PdIconDelete & JSXBase.HTMLAttributes<HTMLPdIconDeleteElement>;
+            "pd-icon-detail": LocalJSX.PdIconDetail & JSXBase.HTMLAttributes<HTMLPdIconDetailElement>;
+            "pd-icon-dictionary": LocalJSX.PdIconDictionary & JSXBase.HTMLAttributes<HTMLPdIconDictionaryElement>;
+            "pd-icon-documents": LocalJSX.PdIconDocuments & JSXBase.HTMLAttributes<HTMLPdIconDocumentsElement>;
+            "pd-icon-download": LocalJSX.PdIconDownload & JSXBase.HTMLAttributes<HTMLPdIconDownloadElement>;
+            "pd-icon-drag-drop": LocalJSX.PdIconDragDrop & JSXBase.HTMLAttributes<HTMLPdIconDragDropElement>;
+            "pd-icon-dropdown": LocalJSX.PdIconDropdown & JSXBase.HTMLAttributes<HTMLPdIconDropdownElement>;
+            "pd-icon-edit": LocalJSX.PdIconEdit & JSXBase.HTMLAttributes<HTMLPdIconEditElement>;
+            "pd-icon-excel-export": LocalJSX.PdIconExcelExport & JSXBase.HTMLAttributes<HTMLPdIconExcelExportElement>;
+            "pd-icon-expand": LocalJSX.PdIconExpand & JSXBase.HTMLAttributes<HTMLPdIconExpandElement>;
+            "pd-icon-export": LocalJSX.PdIconExport & JSXBase.HTMLAttributes<HTMLPdIconExportElement>;
+            "pd-icon-file": LocalJSX.PdIconFile & JSXBase.HTMLAttributes<HTMLPdIconFileElement>;
+            "pd-icon-filter": LocalJSX.PdIconFilter & JSXBase.HTMLAttributes<HTMLPdIconFilterElement>;
+            "pd-icon-folder-closed": LocalJSX.PdIconFolderClosed & JSXBase.HTMLAttributes<HTMLPdIconFolderClosedElement>;
+            "pd-icon-folder-open": LocalJSX.PdIconFolderOpen & JSXBase.HTMLAttributes<HTMLPdIconFolderOpenElement>;
+            "pd-icon-gallery": LocalJSX.PdIconGallery & JSXBase.HTMLAttributes<HTMLPdIconGalleryElement>;
+            "pd-icon-group": LocalJSX.PdIconGroup & JSXBase.HTMLAttributes<HTMLPdIconGroupElement>;
+            "pd-icon-history": LocalJSX.PdIconHistory & JSXBase.HTMLAttributes<HTMLPdIconHistoryElement>;
+            "pd-icon-link": LocalJSX.PdIconLink & JSXBase.HTMLAttributes<HTMLPdIconLinkElement>;
+            "pd-icon-list": LocalJSX.PdIconList & JSXBase.HTMLAttributes<HTMLPdIconListElement>;
+            "pd-icon-lock": LocalJSX.PdIconLock & JSXBase.HTMLAttributes<HTMLPdIconLockElement>;
+            "pd-icon-menu": LocalJSX.PdIconMenu & JSXBase.HTMLAttributes<HTMLPdIconMenuElement>;
+            "pd-icon-menu-actions": LocalJSX.PdIconMenuActions & JSXBase.HTMLAttributes<HTMLPdIconMenuActionsElement>;
+            "pd-icon-message": LocalJSX.PdIconMessage & JSXBase.HTMLAttributes<HTMLPdIconMessageElement>;
+            "pd-icon-microphone": LocalJSX.PdIconMicrophone & JSXBase.HTMLAttributes<HTMLPdIconMicrophoneElement>;
+            "pd-icon-multiple-files": LocalJSX.PdIconMultipleFiles & JSXBase.HTMLAttributes<HTMLPdIconMultipleFilesElement>;
+            "pd-icon-notification": LocalJSX.PdIconNotification & JSXBase.HTMLAttributes<HTMLPdIconNotificationElement>;
+            "pd-icon-old": LocalJSX.PdIconOld & JSXBase.HTMLAttributes<HTMLPdIconOldElement>;
+            "pd-icon-parlament": LocalJSX.PdIconParlament & JSXBase.HTMLAttributes<HTMLPdIconParlamentElement>;
+            "pd-icon-pdf-file": LocalJSX.PdIconPdfFile & JSXBase.HTMLAttributes<HTMLPdIconPdfFileElement>;
+            "pd-icon-planung-organe": LocalJSX.PdIconPlanungOrgane & JSXBase.HTMLAttributes<HTMLPdIconPlanungOrganeElement>;
+            "pd-icon-planung-session": LocalJSX.PdIconPlanungSession & JSXBase.HTMLAttributes<HTMLPdIconPlanungSessionElement>;
+            "pd-icon-play": LocalJSX.PdIconPlay & JSXBase.HTMLAttributes<HTMLPdIconPlayElement>;
+            "pd-icon-press": LocalJSX.PdIconPress & JSXBase.HTMLAttributes<HTMLPdIconPressElement>;
+            "pd-icon-print": LocalJSX.PdIconPrint & JSXBase.HTMLAttributes<HTMLPdIconPrintElement>;
+            "pd-icon-profile": LocalJSX.PdIconProfile & JSXBase.HTMLAttributes<HTMLPdIconProfileElement>;
+            "pd-icon-proposal": LocalJSX.PdIconProposal & JSXBase.HTMLAttributes<HTMLPdIconProposalElement>;
+            "pd-icon-radio-checked": LocalJSX.PdIconRadioChecked & JSXBase.HTMLAttributes<HTMLPdIconRadioCheckedElement>;
+            "pd-icon-radio-default": LocalJSX.PdIconRadioDefault & JSXBase.HTMLAttributes<HTMLPdIconRadioDefaultElement>;
+            "pd-icon-ratsmitglied-gruppen": LocalJSX.PdIconRatsmitgliedGruppen & JSXBase.HTMLAttributes<HTMLPdIconRatsmitgliedGruppenElement>;
+            "pd-icon-research": LocalJSX.PdIconResearch & JSXBase.HTMLAttributes<HTMLPdIconResearchElement>;
+            "pd-icon-reservation": LocalJSX.PdIconReservation & JSXBase.HTMLAttributes<HTMLPdIconReservationElement>;
+            "pd-icon-response": LocalJSX.PdIconResponse & JSXBase.HTMLAttributes<HTMLPdIconResponseElement>;
+            "pd-icon-search": LocalJSX.PdIconSearch & JSXBase.HTMLAttributes<HTMLPdIconSearchElement>;
+            "pd-icon-shrink": LocalJSX.PdIconShrink & JSXBase.HTMLAttributes<HTMLPdIconShrinkElement>;
+            "pd-icon-sign": LocalJSX.PdIconSign & JSXBase.HTMLAttributes<HTMLPdIconSignElement>;
+            "pd-icon-sitzungsdurchfuehrung": LocalJSX.PdIconSitzungsdurchfuehrung & JSXBase.HTMLAttributes<HTMLPdIconSitzungsdurchfuehrungElement>;
+            "pd-icon-sort": LocalJSX.PdIconSort & JSXBase.HTMLAttributes<HTMLPdIconSortElement>;
+            "pd-icon-status-blue": LocalJSX.PdIconStatusBlue & JSXBase.HTMLAttributes<HTMLPdIconStatusBlueElement>;
+            "pd-icon-status-green": LocalJSX.PdIconStatusGreen & JSXBase.HTMLAttributes<HTMLPdIconStatusGreenElement>;
+            "pd-icon-status-orange": LocalJSX.PdIconStatusOrange & JSXBase.HTMLAttributes<HTMLPdIconStatusOrangeElement>;
+            "pd-icon-status-red": LocalJSX.PdIconStatusRed & JSXBase.HTMLAttributes<HTMLPdIconStatusRedElement>;
+            "pd-icon-status-undefined": LocalJSX.PdIconStatusUndefined & JSXBase.HTMLAttributes<HTMLPdIconStatusUndefinedElement>;
+            "pd-icon-support": LocalJSX.PdIconSupport & JSXBase.HTMLAttributes<HTMLPdIconSupportElement>;
+            "pd-icon-upload": LocalJSX.PdIconUpload & JSXBase.HTMLAttributes<HTMLPdIconUploadElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-label": LocalJSX.PdLabel & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;

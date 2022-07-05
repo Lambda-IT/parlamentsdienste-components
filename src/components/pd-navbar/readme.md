@@ -49,7 +49,7 @@
 
 ### Depends on
 
-- [pd-icon](../pd-icon)
+- [pd-icon](../pd-inline-icon)
 
 ### Graph
 ```mermaid

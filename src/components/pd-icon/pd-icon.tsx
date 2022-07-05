@@ -3,12 +3,12 @@ import { getURL } from '../../utils/path';
 import { getSvgContent, iconContent } from '../../utils/svg';
 
 @Component({
-    tag: 'pd-icon',
+    tag: 'pd-icon-old',
     styleUrl: 'pd-icon.scss',
     shadow: true,
     assetsDirs: ['assets-icon'],
 })
-export class Icon implements ComponentInterface {
+export class IconOld implements ComponentInterface {
     private io?: IntersectionObserver;
     private wrapperElement?: HTMLDivElement;
 
