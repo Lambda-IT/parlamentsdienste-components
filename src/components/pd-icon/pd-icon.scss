@@ -1,8 +1,15 @@
 :host {
     display: inline-block;
-    width: 1em; // 1em
-    height: 1em; // 1em
-    vertical-align: bottom;
+    line-height: 0;
+
+    .icon {
+        display: block;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
 *,
@@ -10,13 +17,6 @@
 ::after {
     box-sizing: border-box;
     outline: none;
-}
-
-.pd-icon-inner,
-.pd-icon-inner svg {
-    display: block;
-    height: 100%;
-    width: 100%;
 }
 
 :host(.spin) {

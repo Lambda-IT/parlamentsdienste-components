@@ -107,7 +107,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [pd-icon](../pd-inline-icon)
+- [pd-icon](../pd-icon)
 - [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph

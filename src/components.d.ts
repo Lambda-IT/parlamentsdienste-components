@@ -363,12 +363,15 @@ export namespace Components {
          */
         "flip": 'x' | 'y' | 'xy';
         /**
-          * The icon name
+          * Name of an icon from the provided gallery
          */
         "name": string;
+        /**
+          * Rotation in 'deg'
+         */
         "rotate": number;
         /**
-          * The icon size
+          * Size of the icon in 'rem'
          */
         "size": number;
         /**
@@ -379,7 +382,6 @@ export namespace Components {
           * change animation direction
          */
         "spinReverse": boolean;
-        "src": string;
     }
     interface PdIconAdd {
         "size": string;
@@ -536,48 +538,6 @@ export namespace Components {
     }
     interface PdIconNotification {
         "size": string;
-    }
-    interface PdIconOld {
-        /**
-          * Flip in X/Y direction
-         */
-        "flip": 'x' | 'y' | 'xy';
-        /**
-          * description tag in svg for accessability
-         */
-        "iconDescription": string;
-        /**
-          * title tag in svg for accessability
-         */
-        "iconTitle": string;
-        /**
-          * Icon will be loaded lazily when it is visible
-         */
-        "lazy": boolean;
-        /**
-          * Name of an icon from the provided gallery
-         */
-        "name"?: string;
-        /**
-          * Rotation in 'deg'
-         */
-        "rotate": number;
-        /**
-          * Size of the icon in 'rem'
-         */
-        "size"?: number;
-        /**
-          * Spin animation in ms per rotation
-         */
-        "spin": number;
-        /**
-          * change animation direction
-         */
-        "spinReverse": boolean;
-        /**
-          * Specifies the `src` url of an SVG file to use.
-         */
-        "src"?: string;
     }
     interface PdIconParlament {
         "size": string;
@@ -1022,10 +982,6 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
-        /**
-          * Path to an svg asset
-         */
-        "icon": string;
         /**
           * Name of an icon from the library
          */
@@ -1653,12 +1609,6 @@ declare global {
         prototype: HTMLPdIconNotificationElement;
         new (): HTMLPdIconNotificationElement;
     };
-    interface HTMLPdIconOldElement extends Components.PdIconOld, HTMLStencilElement {
-    }
-    var HTMLPdIconOldElement: {
-        prototype: HTMLPdIconOldElement;
-        new (): HTMLPdIconOldElement;
-    };
     interface HTMLPdIconParlamentElement extends Components.PdIconParlament, HTMLStencilElement {
     }
     var HTMLPdIconParlamentElement: {
@@ -2053,7 +2003,6 @@ declare global {
         "pd-icon-microphone": HTMLPdIconMicrophoneElement;
         "pd-icon-multiple-files": HTMLPdIconMultipleFilesElement;
         "pd-icon-notification": HTMLPdIconNotificationElement;
-        "pd-icon-old": HTMLPdIconOldElement;
         "pd-icon-parlament": HTMLPdIconParlamentElement;
         "pd-icon-pdf-file": HTMLPdIconPdfFileElement;
         "pd-icon-planung-organe": HTMLPdIconPlanungOrganeElement;
@@ -2479,12 +2428,15 @@ declare namespace LocalJSX {
          */
         "flip"?: 'x' | 'y' | 'xy';
         /**
-          * The icon name
+          * Name of an icon from the provided gallery
          */
         "name"?: string;
+        /**
+          * Rotation in 'deg'
+         */
         "rotate"?: number;
         /**
-          * The icon size
+          * Size of the icon in 'rem'
          */
         "size"?: number;
         /**
@@ -2495,7 +2447,6 @@ declare namespace LocalJSX {
           * change animation direction
          */
         "spinReverse"?: boolean;
-        "src"?: string;
     }
     interface PdIconAdd {
         "size"?: string;
@@ -2652,48 +2603,6 @@ declare namespace LocalJSX {
     }
     interface PdIconNotification {
         "size"?: string;
-    }
-    interface PdIconOld {
-        /**
-          * Flip in X/Y direction
-         */
-        "flip"?: 'x' | 'y' | 'xy';
-        /**
-          * description tag in svg for accessability
-         */
-        "iconDescription"?: string;
-        /**
-          * title tag in svg for accessability
-         */
-        "iconTitle"?: string;
-        /**
-          * Icon will be loaded lazily when it is visible
-         */
-        "lazy"?: boolean;
-        /**
-          * Name of an icon from the provided gallery
-         */
-        "name"?: string;
-        /**
-          * Rotation in 'deg'
-         */
-        "rotate"?: number;
-        /**
-          * Size of the icon in 'rem'
-         */
-        "size"?: number;
-        /**
-          * Spin animation in ms per rotation
-         */
-        "spin"?: number;
-        /**
-          * change animation direction
-         */
-        "spinReverse"?: boolean;
-        /**
-          * Specifies the `src` url of an SVG file to use.
-         */
-        "src"?: string;
     }
     interface PdIconParlament {
         "size"?: string;
@@ -3204,10 +3113,6 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Path to an svg asset
-         */
-        "icon"?: string;
-        /**
           * Name of an icon from the library
          */
         "iconName"?: string;
@@ -3573,7 +3478,6 @@ declare namespace LocalJSX {
         "pd-icon-microphone": PdIconMicrophone;
         "pd-icon-multiple-files": PdIconMultipleFiles;
         "pd-icon-notification": PdIconNotification;
-        "pd-icon-old": PdIconOld;
         "pd-icon-parlament": PdIconParlament;
         "pd-icon-pdf-file": PdIconPdfFile;
         "pd-icon-planung-organe": PdIconPlanungOrgane;
@@ -3698,7 +3602,6 @@ declare module "@stencil/core" {
             "pd-icon-microphone": LocalJSX.PdIconMicrophone & JSXBase.HTMLAttributes<HTMLPdIconMicrophoneElement>;
             "pd-icon-multiple-files": LocalJSX.PdIconMultipleFiles & JSXBase.HTMLAttributes<HTMLPdIconMultipleFilesElement>;
             "pd-icon-notification": LocalJSX.PdIconNotification & JSXBase.HTMLAttributes<HTMLPdIconNotificationElement>;
-            "pd-icon-old": LocalJSX.PdIconOld & JSXBase.HTMLAttributes<HTMLPdIconOldElement>;
             "pd-icon-parlament": LocalJSX.PdIconParlament & JSXBase.HTMLAttributes<HTMLPdIconParlamentElement>;
             "pd-icon-pdf-file": LocalJSX.PdIconPdfFile & JSXBase.HTMLAttributes<HTMLPdIconPdfFileElement>;
             "pd-icon-planung-organe": LocalJSX.PdIconPlanungOrgane & JSXBase.HTMLAttributes<HTMLPdIconPlanungOrganeElement>;

@@ -73,7 +73,7 @@ interface PdModalConfig {
 ### Depends on
 
 - [pd-backdrop](../pd-backdrop)
-- [pd-icon](../pd-inline-icon)
+- [pd-icon](../pd-icon)
 
 ### Graph
 ```mermaid

@@ -186,6 +186,7 @@
     .pd-alert-close-button {
         @include invisibleButton;
         margin-left: 0.625rem;
+        display: flex;
 
         &:focus-visible .pd-alert-action-cancel {
             @include focus;

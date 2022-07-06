@@ -10,6 +10,6 @@ export class IconParlament implements ComponentInterface {
     @Prop() size: string;
 
     public render() {
-        return <Host style={{ height: this.size, width: this.size }} innerHTML={svg}></Host>;
+        return <Host style={{ height: '100%', width: '100%' }} innerHTML={svg}></Host>;
     }
 }

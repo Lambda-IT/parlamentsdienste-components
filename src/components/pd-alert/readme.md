@@ -85,7 +85,7 @@
 
 ### Depends on
 
-- [pd-icon](../pd-inline-icon)
+- [pd-icon](../pd-icon)
 
 ### Graph
 ```mermaid

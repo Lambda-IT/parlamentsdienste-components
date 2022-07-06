@@ -51,7 +51,7 @@ export class Navbar implements ComponentInterface {
     private renderItems() {
         return (
             <div class="pd-navbar-item">
-                <pd-icon class="pd-navbar-icon" name="parlament" size={2}></pd-icon>
+                <pd-icon class="pd-navbar-icon" name="parlament" size={3}></pd-icon>
                 <slot></slot>
             </div>
         );
