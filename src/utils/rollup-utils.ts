@@ -27,7 +27,6 @@ exports.svgOptimizerPlugin = () => {
             if (!svgBase64) {
                 return null;
             }
-            console.log(fileName);
 
             const svgo = new SVGO();
             return svgo.optimize(svgBase64, { path: fileName }).then((result) => {
