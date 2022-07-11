@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0-beta.0] - 2022-07-11
+
+### Changed
+
+-   #134 inlined svg icons as separate components `BREAKING CHANGE!!!` `src`, `lazy`, `iconTitle`, `iconDescription` were removed from pdIcon
+
 ## [2.3.2] - 2022-06-20
 
 ### Added
@@ -333,6 +339,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.4.0-beta.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.4.0-beta.0
 [2.3.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.3.2
 [2.3.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.3.1
 [2.3.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.3.0
