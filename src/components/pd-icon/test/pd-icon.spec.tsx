@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdIcon } from '../pd-icon';
+import { Icon } from '../pd-icon';
 
 describe('pd-icon', () => {
     it('renders', async () => {
         const page = await newSpecPage({
-            components: [PdIcon],
+            components: [Icon],
             html: `<pd-icon></pd-icon>`,
         });
         expect(page.root).toEqualHtml(`

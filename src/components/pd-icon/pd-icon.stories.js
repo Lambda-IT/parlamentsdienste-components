@@ -170,7 +170,7 @@ Rotate.args = {
 
 Rotate.argTypes = {
     icons: { control: { type: 'select', options: Object.keys(iconMap) } },
-    rotate: { control: { type: 'number', }},
+    rotate: { control: { type: 'number' } },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -202,7 +202,7 @@ Flip.args = {
 
 Flip.argTypes = {
     icons: { control: { type: 'select', options: Object.keys(iconMap) } },
-    flip: { control: { type: 'select', options: [ 'none', 'x', 'y','xy' ]} },
+    flip: { control: { type: 'select', options: ['none', 'x', 'y', 'xy'] } },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -239,6 +239,6 @@ Spin.args = {
 
 Spin.argTypes = {
     icons: { control: { type: 'select', options: Object.keys(iconMap) } },
-    direction: { control: { type: 'boolean'} },
-    speed: { control: { type: 'number' }},
+    direction: { control: { type: 'boolean' } },
+    speed: { control: { type: 'number' } },
 };

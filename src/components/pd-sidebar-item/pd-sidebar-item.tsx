@@ -22,11 +22,6 @@ export class SidebarItem implements ComponentInterface {
     @Prop() href: string;
 
     /**
-     * Path to an svg asset
-     */
-    @Prop() icon: string;
-
-    /**
      * Name of an icon from the library
      */
     @Prop() iconName: string;
@@ -58,6 +53,5 @@ export class SidebarItem implements ComponentInterface {
 
     private renderIcon() {
         if (this.iconName) return <pd-icon name={this.iconName} size={this.size}></pd-icon>;
-        return <pd-icon src={this.icon} size={this.size} data-test="pd-sidebar-item-icon"></pd-icon>;
     }
 }

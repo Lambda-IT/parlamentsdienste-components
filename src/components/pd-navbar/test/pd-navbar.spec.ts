@@ -10,7 +10,7 @@ describe('pd-navbar', () => {
         expect(page.root).toEqualHtml(`
           <pd-navbar role="navigation">
             <mock:shadow-root>
-                <pd-icon class="pd-navbar-icon" name="parlament" size="3"></pd-icon>
+                <pd-icon class="pd-navbar-icon" name="parlament" size="2.4"></pd-icon>
                 <slot></slot>
             </mock:shadow-root>
           </pd-navbar>

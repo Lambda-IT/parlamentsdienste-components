@@ -60,7 +60,8 @@
         "jest-cli": "26.0.1",
         "prettier": "2.0.5",
         "puppeteer": "2.1.1",
-        "sass": "^1.32.0"
+        "sass": "^1.32.0",
+        "svgo": "^1.3.2"
     },
     "license": "MIT",
     "dependencies": {
