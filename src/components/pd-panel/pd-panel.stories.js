@@ -16,11 +16,20 @@ export default {
             'Panel Footer': notesFooter,
         },
     },
+    argTypes: {
+        collapsed: { control: { type: 'boolean' } },
+        collapsible: { control: { type: 'boolean' } },
+        subpanel: { control: { type: 'boolean' } },
+    },
 };
 
-export const panel = () => {
+export const Panel = (args) => {
     return `
-        <pd-panel class="m-3" collapsible>
+        <pd-panel class="m-3" 
+            ${args.collapsed ? 'collapsed' : ''}
+            ${args.collapsible ? 'collapsible' : ''}
+            ${args.subpanel ? 'subpanel' : ''}
+        >
             <pd-panel-header slot="header">Header</pd-panel-header>
             <pd-panel-content>Content</pd-panel-content>
             <pd-panel-footer slot="footer">Footer</pd-panel-footer>
@@ -28,15 +37,29 @@ export const panel = () => {
     `;
 };
 
-export const subpanel = () => {
+Panel.args = {
+    collapsible: true,
+    collapsed: false,
+    subpanel: false,
+};
+
+export const Subpanel = (args) => {
     return `
-        <pd-panel class="m-3" collapsible>
+        <pd-panel class="m-3"
+            ${args.collapsed ? 'collapsed' : ''}
+            ${args.collapsible ? 'collapsible' : ''}
+        >
             <pd-panel-header slot="header">
                 Header
                 <span slot="subtitle">Header Subtitle</span>
             </pd-panel-header>
             <pd-panel-content>
-                <pd-panel collapsible subpanel style="--pd-panel-margin-bottom: 1.25rem">
+                <pd-panel
+                    ${args.collapsed ? 'collapsed' : ''}
+                    ${args.collapsible ? 'collapsible' : ''}
+                    subpanel
+                    style="--pd-panel-margin-bottom: 1.25rem"
+                >
                     <pd-panel-header slot="header">
                         Subpanel Header
                         <span slot="subtitle">Subpanel Header Subtitle</span>
@@ -45,7 +68,11 @@ export const subpanel = () => {
                         Subpanel Content
                     </pd-panel-content>
                 </pd-panel>
-                <pd-panel collapsible subpanel>
+                <pd-panel
+                    ${args.collapsed ? 'collapsed' : ''}
+                    ${args.collapsible ? 'collapsible' : ''}
+                    subpanel
+                >
                     <pd-panel-header slot="header">
                         Subpanel Header
                         <span slot="subtitle">Subpanel Header Subtitle</span>
@@ -58,4 +85,9 @@ export const subpanel = () => {
             <pd-panel-footer slot="footer">Footer</pd-panel-footer>
         </pd-panel>
     `;
+};
+
+Subpanel.args = {
+    collapsible: true,
+    collapsed: false,
 };
