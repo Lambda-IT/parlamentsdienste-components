@@ -122,7 +122,8 @@
     align-items: center;
     justify-content: center;
     right: 0.25rem;
-    height: 100% !important;
+    height: calc(100% - 0.25rem);
+    top: 1px; // misaligned icon
     border: none;
     padding: 0;
     background-color: transparent;

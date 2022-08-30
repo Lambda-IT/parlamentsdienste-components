@@ -604,13 +604,13 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     private renderIcon(status: PdStatus) {
         switch (status) {
             case 'success':
-                return <pd-icon name="status_green" size={1.875}></pd-icon>;
+                return <pd-icon name="status_green" size={3.6}></pd-icon>;
             case 'warning':
-                return <pd-icon name="status_orange" size={1.875}></pd-icon>;
+                return <pd-icon name="status_orange" size={3.6}></pd-icon>;
             case 'danger':
-                return <pd-icon name="status_red" size={1.875}></pd-icon>;
+                return <pd-icon name="status_red" size={3.6}></pd-icon>;
             case 'unset':
-                return <pd-icon name="status_undefined" size={1.875}></pd-icon>;
+                return <pd-icon name="status_undefined" size={3.6}></pd-icon>;
             default:
                 break;
         }
