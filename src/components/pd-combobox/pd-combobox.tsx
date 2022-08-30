@@ -385,6 +385,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 onClick={this.onClickInput}
                                 class="pd-icon pd-combobox-icon-toggle"
                                 name="dropdown"
+                                rotate={this.open ? 180 : 0}
                                 size={2.4}
                             ></pd-icon>
                         </button>
