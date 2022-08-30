@@ -79,7 +79,7 @@ export class Chip implements ComponentInterface {
                     </div>
                 )}
                 <slot></slot>
-                {type === 'toggle' && (
+                {type === 'toggle' && !this.readonly && (
                     <button
                         data-test="pd-chip-remove"
                         tabindex={this.disabled || this.readonly ? '-1' : null}
