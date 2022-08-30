@@ -256,7 +256,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                             class="pd-dropdown-caret"
                             name="dropdown"
                             rotate={this.open ? 180 : 0}
-                            size={2}
+                            size={2.4}
                         ></pd-icon>
                     </button>
                     {this.renderDropDown()}
