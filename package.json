@@ -1,6 +1,6 @@
 {
     "name": "@lambda-it/parlamentsdienste-component-library",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "description": "Component Library for Swiss Parliamentary Services",
     "main": "dist/index.cjs.js",
     "module": "dist/index.js",
@@ -46,6 +46,7 @@
         "@stencil/core": "^2.6.0",
         "@stencil/sass": "^1.4.1",
         "@stencil/store": "^1.5.0",
+        "@stencil/vue-output-target": "^0.6.2",
         "@storybook/addon-actions": "^6.3.4",
         "@storybook/addon-controls": "^6.3.4",
         "@storybook/addon-notes": "^5.3.21",
@@ -65,8 +66,8 @@
     "license": "MIT",
     "dependencies": {
         "@a11y/focus-trap": "^1.0.5",
+        "@juggle/resize-observer": "^3.3.0",
         "@popperjs/core": "^2.4.0",
-        "flatpickr": "^4.6.13",
-        "@juggle/resize-observer": "^3.3.0"
+        "flatpickr": "^4.6.13"
     }
 }

@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
     namespace: 'ParlamentsdiensteCore',
@@ -21,6 +22,10 @@ export const config: Config = {
             serviceWorker: null, // disable service workers
             copy: [{ src: 'vue.html' }, { src: 'index.html' }, { src: 'styles/typography.css' }],
         },
+        vueOutputTarget({
+            componentCorePackage: 'parlamentsdienstecore',
+            proxiesFile: './dist/vue/components.ts',
+        }),
     ],
     plugins: [
         sass({

@@ -1013,6 +1013,90 @@ export namespace Components {
         "size": 'small' | 'large';
     }
 }
+export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdAlertElement;
+}
+export interface PdBackdropCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdBackdropElement;
+}
+export interface PdCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdCheckboxElement;
+}
+export interface PdChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdChipElement;
+}
+export interface PdComboboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdComboboxElement;
+}
+export interface PdDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdDatepickerElement;
+}
+export interface PdDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdDropdownElement;
+}
+export interface PdInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdInputElement;
+}
+export interface PdListItemExpandableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdListItemExpandableElement;
+}
+export interface PdModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdModalElement;
+}
+export interface PdNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdNavbarElement;
+}
+export interface PdPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdPaginationElement;
+}
+export interface PdPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdPanelElement;
+}
+export interface PdPanelHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdPanelHeaderElement;
+}
+export interface PdSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdSearchElement;
+}
+export interface PdSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdSliderElement;
+}
+export interface PdTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTableElement;
+}
+export interface PdTableFilterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTableFilterElement;
+}
+export interface PdTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTabsElement;
+}
+export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTextareaElement;
+}
+export interface PdToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdToastElement;
+}
 declare global {
     interface HTMLPdAlertElement extends Components.PdAlert, HTMLStencilElement {
     }
@@ -1331,18 +1415,18 @@ declare namespace LocalJSX {
         /**
           * Emitted when action button was pressed.
          */
-        "onPd-action"?: (event: CustomEvent<void>) => void;
+        "onPd-action"?: (event: PdAlertCustomEvent<void>) => void;
         /**
           * Emitted when close button was pressed.
          */
-        "onPd-closed"?: (event: CustomEvent<MouseEvent>) => void;
+        "onPd-closed"?: (event: PdAlertCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when inner content is expanded/collapsed.
          */
-        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
+        "onPd-collapsed"?: (event: PdAlertCustomEvent<boolean>) => void;
     }
     interface PdBackdrop {
-        "onPd-tap"?: (event: CustomEvent<void>) => void;
+        "onPd-tap"?: (event: PdBackdropCustomEvent<void>) => void;
         /**
           * Invisible backdrop when set to false
          */
@@ -1406,7 +1490,7 @@ declare namespace LocalJSX {
           * checkbox name
          */
         "name"?: string;
-        "onPd-checked"?: (event: CustomEvent<boolean>) => void;
+        "onPd-checked"?: (event: PdCheckboxCustomEvent<boolean>) => void;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1440,11 +1524,11 @@ declare namespace LocalJSX {
         /**
           * Event for check chip
          */
-        "onPd-check-chip"?: (event: CustomEvent<any>) => void;
+        "onPd-check-chip"?: (event: PdChipCustomEvent<any>) => void;
         /**
           * Event for clicking the cross to remove a chip
          */
-        "onPd-remove-chip"?: (event: CustomEvent<any>) => void;
+        "onPd-remove-chip"?: (event: PdChipCustomEvent<any>) => void;
         /**
           * Sets chip to readonly state
          */
@@ -1478,23 +1562,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onPd-blur"?: (event: CustomEvent<void>) => void;
+        "onPd-blur"?: (event: PdComboboxCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<ComboboxItem>) => void;
+        "onPd-change"?: (event: PdComboboxCustomEvent<ComboboxItem>) => void;
         /**
           * Emitted when a combobox request occurred.
          */
-        "onPd-combobox"?: (event: CustomEvent<ComboboxItem>) => void;
+        "onPd-combobox"?: (event: PdComboboxCustomEvent<ComboboxItem>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPd-focus"?: (event: CustomEvent<void>) => void;
+        "onPd-focus"?: (event: PdComboboxCustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-input"?: (event: PdComboboxCustomEvent<InputChangeEventDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -1553,19 +1637,19 @@ declare namespace LocalJSX {
           * datepicker box label
          */
         "label"?: string;
-        "onPd-change"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
-        "onPd-close"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
-        "onPd-month-change"?: (event: CustomEvent<{
+        "onPd-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-close"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-month-change"?: (event: PdDatepickerCustomEvent<{
         selectedDates: Date[];
         dateStr: string;
     }>) => void;
-        "onPd-open"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
-        "onPd-ready"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
-        "onPd-value-update"?: (event: CustomEvent<{
+        "onPd-open"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-ready"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-value-update"?: (event: PdDatepickerCustomEvent<{
         selectedDates: Date[];
         dateStr: string;
     }>) => void;
-        "onPd-year-change"?: (event: CustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-year-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -1616,7 +1700,7 @@ declare namespace LocalJSX {
           * Dropdown box label
          */
         "label"?: string;
-        "onPd-change"?: (event: CustomEvent<DropdownItem>) => void;
+        "onPd-change"?: (event: PdDropdownCustomEvent<DropdownItem>) => void;
         /**
           * Placeholder when no item is selected
          */
@@ -1766,19 +1850,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onPd-blur"?: (event: CustomEvent<void>) => void;
+        "onPd-blur"?: (event: PdInputCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: PdInputCustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPd-focus"?: (event: CustomEvent<void>) => void;
+        "onPd-focus"?: (event: PdInputCustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-input"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onPd-input"?: (event: PdInputCustomEvent<KeyboardEvent>) => void;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */
@@ -1870,23 +1954,23 @@ declare namespace LocalJSX {
         /**
           * Inner content collapsed/expanded
          */
-        "onPd-collapsed"?: (event: CustomEvent<boolean>) => void;
+        "onPd-collapsed"?: (event: PdListItemExpandableCustomEvent<boolean>) => void;
         /**
           * Event on content click (content-click has to be set)
          */
-        "onPd-content-click"?: (event: CustomEvent<void>) => void;
+        "onPd-content-click"?: (event: PdListItemExpandableCustomEvent<void>) => void;
         /**
           * Edit button click event
          */
-        "onPd-edit"?: (event: CustomEvent<void>) => void;
+        "onPd-edit"?: (event: PdListItemExpandableCustomEvent<void>) => void;
         /**
           * Expand button click event
          */
-        "onPd-expand"?: (event: CustomEvent<void>) => void;
+        "onPd-expand"?: (event: PdListItemExpandableCustomEvent<void>) => void;
         /**
           * Checkbox selected event
          */
-        "onPd-selected"?: (event: CustomEvent<boolean>) => void;
+        "onPd-selected"?: (event: PdListItemExpandableCustomEvent<boolean>) => void;
         /**
           * Status icon for list item
          */
@@ -1924,19 +2008,19 @@ declare namespace LocalJSX {
         /**
           * Event that will be executed when the modal backdrop is clicked
          */
-        "onPd-backdrop"?: (event: CustomEvent<void>) => void;
+        "onPd-backdrop"?: (event: PdModalCustomEvent<void>) => void;
         /**
           * Event that will be executed when the is closed
          */
-        "onPd-closed"?: (event: CustomEvent<void>) => void;
+        "onPd-closed"?: (event: PdModalCustomEvent<void>) => void;
         /**
           * Event that will be executed when the escape button was clicked
          */
-        "onPd-escape"?: (event: CustomEvent<void>) => void;
+        "onPd-escape"?: (event: PdModalCustomEvent<void>) => void;
     }
     interface PdNavbar {
         "mobileBreakpoint"?: number;
-        "onPd-menu"?: (event: CustomEvent<void>) => void;
+        "onPd-menu"?: (event: PdNavbarCustomEvent<void>) => void;
     }
     interface PdNavbarItem {
         "enabled"?: boolean;
@@ -1958,7 +2042,7 @@ declare namespace LocalJSX {
         /**
           * Page change event. Returns selected page
          */
-        "onPd-change"?: (event: CustomEvent<number>) => void;
+        "onPd-change"?: (event: PdPaginationCustomEvent<number>) => void;
         /**
           * separator string in simple mode
          */
@@ -1988,7 +2072,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onPd-collapsed"?: (event: CustomEvent<any>) => void;
+        "onPd-collapsed"?: (event: PdPanelCustomEvent<any>) => void;
         /**
           * Use as a subpanel
          */
@@ -2002,7 +2086,7 @@ declare namespace LocalJSX {
         /**
           * Used for panel hover stylings
          */
-        "onPd-hover"?: (event: CustomEvent<boolean>) => void;
+        "onPd-hover"?: (event: PdPanelHeaderCustomEvent<boolean>) => void;
     }
     interface PdProgressBar {
         /**
@@ -2076,23 +2160,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onPd-blur"?: (event: CustomEvent<void>) => void;
+        "onPd-blur"?: (event: PdSearchCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: PdSearchCustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPd-focus"?: (event: CustomEvent<void>) => void;
+        "onPd-focus"?: (event: PdSearchCustomEvent<void>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-input"?: (event: PdSearchCustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when a search request occurred.
          */
-        "onPd-search"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-search"?: (event: PdSearchCustomEvent<InputChangeEventDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -2166,11 +2250,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when slider has been released.
          */
-        "onPd-change"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: PdSliderCustomEvent<InputChangeEventDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-input"?: (event: CustomEvent<InputChangeEventDetail>) => void;
+        "onPd-input"?: (event: PdSliderCustomEvent<InputChangeEventDetail>) => void;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -2209,23 +2293,23 @@ declare namespace LocalJSX {
         /**
           * Triggers an event when row was clicked
          */
-        "onPd-clicked-row"?: (event: CustomEvent<any>) => void;
+        "onPd-clicked-row"?: (event: PdTableCustomEvent<any>) => void;
         /**
           * Triggers an event when the delete icon was clicked
          */
-        "onPd-delete"?: (event: CustomEvent<any>) => void;
+        "onPd-delete"?: (event: PdTableCustomEvent<any>) => void;
         /**
           * Triggers an event when the edit icon was clicked
          */
-        "onPd-edit"?: (event: CustomEvent<any>) => void;
+        "onPd-edit"?: (event: PdTableCustomEvent<any>) => void;
         /**
           * Triggers when one or all rows get selected
          */
-        "onPd-selected"?: (event: CustomEvent<SelectedEvent>) => void;
+        "onPd-selected"?: (event: PdTableCustomEvent<SelectedEvent>) => void;
         /**
           * Triggers an event when the view icon was clicked
          */
-        "onPd-view"?: (event: CustomEvent<any>) => void;
+        "onPd-view"?: (event: PdTableCustomEvent<any>) => void;
         /**
           * Available Page sizes for paging
          */
@@ -2263,15 +2347,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when filter is confirmed.
          */
-        "onPd-close"?: (event: CustomEvent<void>) => void;
+        "onPd-close"?: (event: PdTableFilterCustomEvent<void>) => void;
         /**
           * Emitted when filter is confirmed.
          */
-        "onPd-confirm"?: (event: CustomEvent<string>) => void;
+        "onPd-confirm"?: (event: PdTableFilterCustomEvent<string>) => void;
         /**
           * Emitted when filter changes.
          */
-        "onPd-search"?: (event: CustomEvent<void>) => void;
+        "onPd-search"?: (event: PdTableFilterCustomEvent<void>) => void;
         /**
           * filter value
          */
@@ -2285,7 +2369,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<TabValue>) => void;
+        "onPd-change"?: (event: PdTabsCustomEvent<TabValue>) => void;
         /**
           * List of tab texts
          */
@@ -2339,19 +2423,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onPd-blur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onPd-blur"?: (event: PdTextareaCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onPd-change"?: (event: CustomEvent<any>) => void;
+        "onPd-change"?: (event: PdTextareaCustomEvent<any>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onPd-focus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onPd-focus"?: (event: PdTextareaCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onPd-input"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onPd-input"?: (event: PdTextareaCustomEvent<KeyboardEvent>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -2421,7 +2505,7 @@ declare namespace LocalJSX {
         /**
           * When closing the toast using the close icon
          */
-        "onPd-closed"?: (event: CustomEvent<any>) => void;
+        "onPd-closed"?: (event: PdToastCustomEvent<any>) => void;
         /**
           * Changes max-with of the toast
          */
