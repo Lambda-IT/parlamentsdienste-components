@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, State } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, State } from '@stencil/core';
 
 /**
  * @slot - Header content
@@ -42,6 +42,11 @@ export class PanelHeader implements ComponentInterface {
         e.stopPropagation();
         this.collapsed = !this.collapsed;
         this.panel.collapsed = this.collapsed;
+    }
+
+    @Method()
+    public setCollapsed(collapsed: boolean) {
+        this.collapsed = collapsed;
     }
 
     private handleHover(hover: boolean) {

@@ -10,6 +10,19 @@
 | `pd-hover` | Used for panel hover stylings | `CustomEvent<boolean>` |
 
 
+## Methods
+
+### `setCollapsed(collapsed: boolean) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Slots
 
 | Slot         | Description                     |
