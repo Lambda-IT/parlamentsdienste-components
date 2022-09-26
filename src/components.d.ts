@@ -659,6 +659,7 @@ export namespace Components {
     interface PdPanelFooter {
     }
     interface PdPanelHeader {
+        "setCollapsed": (collapsed: boolean) => Promise<void>;
     }
     interface PdProgressBar {
         /**

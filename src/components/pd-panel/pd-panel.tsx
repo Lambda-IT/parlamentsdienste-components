@@ -28,6 +28,8 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
     @Element() element: HTMLElement;
 
     private contentWrapperElement: HTMLElement;
+    private panelHeader?: HTMLPdPanelHeaderElement;
+
     @State() hover: boolean = false;
 
     /**
@@ -51,9 +53,10 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
     @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<any>;
 
     @Watch('collapsed')
-    valueChanged(collapsed: boolean) {
+    async valueChanged(collapsed: boolean) {
         if (this.collapsible) {
             this.pdCollapsed.emit({ collapsed });
+            await this.panelHeader.setCollapsed(collapsed);
             collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
         }
     }
@@ -62,6 +65,10 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
     handleHover(ev: CustomEvent) {
         ev.stopPropagation();
         this.hover = ev.detail;
+    }
+
+    public connectedCallback() {
+        this.panelHeader = this.element.querySelector('pd-panel-header') as HTMLPdPanelHeaderElement;
     }
 
     public componentDidLoad() {
