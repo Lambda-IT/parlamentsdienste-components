@@ -1,4 +1,7 @@
 export const collapse = (element) => {
+    // remove this event listener so it only gets triggered once
+    if (element.trDone) element.removeEventListener('transitionend', element.trDone);
+
     // get current height of element
     var sectionHeight = element.scrollHeight;
 
@@ -27,11 +30,12 @@ export const expand = (element) => {
     element.style.height = sectionHeight + 'px';
 
     // wait for transition to end
-    element.addEventListener('transitionend', function transitionDone() {
-        // remove this event listener so it only gets triggered once
-        element.removeEventListener('transitionend', transitionDone);
-        // set height back to auto when transition is done
-        element.style.height = null;
-        element.style.overflow = 'visible';
-    });
+    element.addEventListener(
+        'transitionend',
+        (element.trDone = function transitionDone() {
+            // set height back to auto when transition is done
+            element.style.height = null;
+            element.style.overflow = 'visible';
+        }),
+    );
 };

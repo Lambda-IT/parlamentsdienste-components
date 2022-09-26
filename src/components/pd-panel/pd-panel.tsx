@@ -53,10 +53,10 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
     @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<any>;
 
     @Watch('collapsed')
-    valueChanged(collapsed: boolean) {
+    async valueChanged(collapsed: boolean) {
         if (this.collapsible) {
             this.pdCollapsed.emit({ collapsed });
-            this.panelHeader.setCollapsed(collapsed);
+            await this.panelHeader.setCollapsed(collapsed);
             collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
         }
     }

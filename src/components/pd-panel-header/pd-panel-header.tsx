@@ -45,7 +45,7 @@ export class PanelHeader implements ComponentInterface {
     }
 
     @Method()
-    public setCollapsed(collapsed: boolean) {
+    public async setCollapsed(collapsed: boolean) {
         this.collapsed = collapsed;
     }
 
