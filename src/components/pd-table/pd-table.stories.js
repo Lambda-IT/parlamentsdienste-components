@@ -24,6 +24,8 @@ export default {
         paging: { control: { type: 'boolean' } },
         pagingLocation: { control: { type: 'select', options: ['left', 'right'] } },
         pageSizes: { control: { type: 'object' } },
+        disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
     },
 };
 
@@ -43,6 +45,8 @@ export const Table = (args) => {
     table0.paging = args.paging;
     table0.pagingLocation = args.pagingLocation;
     table0.pageSizes = args.pageSizes;
+    table0.disabled = args.disabled;
+    table0.readonly = args.readonly;
     generateTableMenu(args).forEach((m) => table0.appendChild(m));
 
     const wrapper = document.createElement('div');
@@ -136,10 +140,12 @@ Table.args = {
     paging: true,
     pagingLocation: 'right',
     pageSizes: [
-        {id: '1', value: 1, label: '1'},
-        {id: '2', value: 5, label: '5', selected: true},
-        {id: '3', value: 10, label: '10'},
-    ]
+        { id: '1', value: 1, label: '1' },
+        { id: '2', value: 5, label: '5', selected: true },
+        { id: '3', value: 10, label: '10' },
+    ],
+    disabled: false,
+    readonly: false,
 };
 
 function generateTableMenu(args) {
