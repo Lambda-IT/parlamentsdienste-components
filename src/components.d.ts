@@ -508,6 +508,10 @@ export namespace Components {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust": boolean;
+        /**
+          * If `true`, the input is replaced with a simple text
+         */
+        "viewOnly": boolean;
     }
     interface PdLabel {
         /**
@@ -966,6 +970,10 @@ export namespace Components {
           * The value of the textarea.
          */
         "value"?: string;
+        /**
+          * If `true`, the textarea is replaced with a simple text
+         */
+        "viewOnly": boolean;
         /**
           * Indicates how the control wraps text.
          */
@@ -1900,6 +1908,10 @@ declare namespace LocalJSX {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust"?: boolean;
+        /**
+          * If `true`, the input is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
     }
     interface PdLabel {
         /**
@@ -2461,6 +2473,10 @@ declare namespace LocalJSX {
           * The value of the textarea.
          */
         "value"?: string;
+        /**
+          * If `true`, the textarea is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
         /**
           * Indicates how the control wraps text.
          */

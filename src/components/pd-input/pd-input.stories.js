@@ -15,6 +15,7 @@ export default {
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
         readonly: { control: { type: 'boolean' } },
+        viewonly: { control: { type: 'boolean' } },
         required: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
     },
@@ -31,6 +32,7 @@ export const Input = (args) => {
         value="${args.value}"
         ${args.disabled ? 'disabled' : ''}
         ${args.readonly ? 'readonly' : ''}
+        ${args.viewonly ? 'view-only' : ''}
         ${args.required ? 'required' : ''}
         ${args.error ? 'error' : ''}></pd-input>
     `;
@@ -43,6 +45,7 @@ Input.args = {
     placeholder: 'Placehoder',
     disabled: false,
     readonly: false,
+    viewonly: false,
     required: false,
     error: false,
 };

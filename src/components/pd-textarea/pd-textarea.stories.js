@@ -14,6 +14,7 @@ export default {
         helperText: { control: { type: 'text' } },
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
+        viewonly: { control: { type: 'boolean' } },
         readonly: { control: { type: 'boolean' } },
         required: { control: { type: 'boolean' } },
         autoGrow: { control: { type: 'boolean' } },
@@ -32,6 +33,7 @@ export const Textarea = (args) => {
         value="${args.value}"
         ${args.disabled ? 'disabled' : ''}
         ${args.readonly ? 'readonly' : ''}
+        ${args.viewonly ? 'view-only' : ''}
         ${args.required ? 'required' : ''}
         ${args.autoGrow ? 'auto-grow' : ''}
         ${args.error ? 'error' : ''}></pd-textarea>
@@ -45,6 +47,7 @@ Textarea.args = {
     placeholder: 'Placehoder',
     disabled: false,
     readonly: false,
+    viewonly: false,
     required: false,
     autoGrow: true,
     error: false,

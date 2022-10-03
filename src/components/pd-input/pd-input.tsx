@@ -50,6 +50,11 @@ export class Input implements ComponentInterface {
     @Prop() disabled = false;
 
     /**
+     * If `true`, the input is replaced with a simple text
+     */
+    @Prop() viewOnly = false;
+
+    /**
      * A hint to the browser for which keyboard to display.
      * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
      * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -216,37 +221,45 @@ export class Input implements ComponentInterface {
                     ) : (
                         ''
                     )}
-                    <input
-                        class={{ 'pd-input': true, 'pd-input-readonly': this.readonly, 'pd-input-error': this.error }}
-                        ref={(input) => (this.nativeInput = input)}
-                        disabled={this.disabled}
-                        accept={this.accept}
-                        autoCapitalize={this.autocapitalize}
-                        autoComplete={this.autocomplete}
-                        autoCorrect={this.autocorrect}
-                        autoFocus={this.autofocus}
-                        inputMode={this.inputmode}
-                        min={this.min}
-                        max={this.max}
-                        minLength={this.minlength}
-                        maxLength={this.maxlength}
-                        multiple={this.multiple}
-                        name={this.name}
-                        pattern={this.pattern}
-                        placeholder={this.placeholder || ''}
-                        readonly={this.readonly}
-                        required={this.required}
-                        step={this.step}
-                        size={this.size}
-                        type={this.type}
-                        value={value}
-                        onInput={this.onInput}
-                        onBlur={this.onBlur}
-                        onFocus={this.onFocus}
-                        onKeyDown={this.onKeydown}
-                        style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
-                        data-test="pd-input"
-                    />
+                    {!this.viewOnly ? (
+                        <input
+                            class={{
+                                'pd-input': true,
+                                'pd-input-readonly': this.readonly,
+                                'pd-input-error': this.error,
+                            }}
+                            ref={(input) => (this.nativeInput = input)}
+                            disabled={this.disabled}
+                            accept={this.accept}
+                            autoCapitalize={this.autocapitalize}
+                            autoComplete={this.autocomplete}
+                            autoCorrect={this.autocorrect}
+                            autoFocus={this.autofocus}
+                            inputMode={this.inputmode}
+                            min={this.min}
+                            max={this.max}
+                            minLength={this.minlength}
+                            maxLength={this.maxlength}
+                            multiple={this.multiple}
+                            name={this.name}
+                            pattern={this.pattern}
+                            placeholder={this.placeholder || ''}
+                            readonly={this.readonly}
+                            required={this.required}
+                            step={this.step}
+                            size={this.size}
+                            type={this.type}
+                            value={value}
+                            onInput={this.onInput}
+                            onBlur={this.onBlur}
+                            onFocus={this.onFocus}
+                            onKeyDown={this.onKeydown}
+                            style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
+                            data-test="pd-input"
+                        />
+                    ) : (
+                        <p class="pd-input-viewonly">{this.value}</p>
+                    )}
                 </label>
             </Host>
         );
