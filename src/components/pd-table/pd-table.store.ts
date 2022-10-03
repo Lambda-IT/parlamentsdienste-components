@@ -33,7 +33,7 @@ export function filter(
     rows: PdTableRow[],
     filterFunctions: Record<string, FilterFunction>,
 ) {
-    state.filterValues = { ...this.state.filterValues, [columnName]: filter };
+    state.filterValues = { ...state.filterValues, [columnName]: filter };
     closeFilter(state);
     state.filteredRows = getFilteredRows(rows, state.filterValues, filterFunctions);
 }
@@ -84,7 +84,7 @@ export function refresh(state: TableState, rows: PdTableRow[]) {
     checkIsIndeterminate(state);
 }
 
-export function initPaging(state: TableState, pageSize: number = this.state.defaultPageSize) {
+export function initPaging(state: TableState, pageSize: number = state.defaultPageSize) {
     state.currentPage = 1;
     state.pageSize = pageSize;
     state.totalPages = Math.ceil(state.filteredRows.length / state.pageSize);
