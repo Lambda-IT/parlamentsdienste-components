@@ -52,7 +52,7 @@
         "@storybook/addon-notes": "^5.3.21",
         "@storybook/addon-viewport": "^6.3.4",
         "@storybook/addons": "^6.3.4",
-        "@storybook/html": "^6.3.4",
+        "@storybook/html": "^6.5.12",
         "@types/jest": "^25.2.1",
         "@types/puppeteer": "2.0.1",
         "babel-loader": "^8.1.0",
