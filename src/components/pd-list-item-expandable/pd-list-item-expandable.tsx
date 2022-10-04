@@ -6,7 +6,6 @@ import {
     EventEmitter,
     h,
     Host,
-    Listen,
     Prop,
     State,
     Watch,
@@ -82,12 +81,6 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
         collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
     }
 
-    @Listen('pd-checked')
-    checkboxChecked(event: CustomEvent<boolean>) {
-        this.checked = event.detail;
-        this.pdSelected.emit(event.detail);
-    }
-
     public componentDidLoad() {
         // start collapsed
         if (this.collapsed) {
@@ -100,6 +93,12 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
         if (this.expandable) this.collapsed = !this.collapsed;
         if (this.expand) this.pdExpand.emit();
         if (this.expandable) this.pdCollapsed.emit(this.collapsed);
+    }
+
+    private checkboxChecked(event: CustomEvent<boolean>) {
+        event.stopPropagation();
+        this.checked = event.detail;
+        this.pdSelected.emit(event.detail);
     }
 
     public render() {
@@ -213,6 +212,12 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
 
     private renderCheckbox() {
         if (!this.checkbox) return;
-        return <pd-checkbox checked={this.checked} data-test="pd-list-item-expandable-checkbox"></pd-checkbox>;
+        return (
+            <pd-checkbox
+                onPd-checked={(ev) => this.checkboxChecked(ev)}
+                checked={this.checked}
+                data-test="pd-list-item-expandable-checkbox"
+            ></pd-checkbox>
+        );
     }
 }
