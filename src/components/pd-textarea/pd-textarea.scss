@@ -74,3 +74,9 @@
         overflow-x: hidden; // fixes issue with height (1 row) in Firefox
     }
 }
+
+.pd-textarea-viewonly {
+    display: block;
+    margin: 0;
+    padding: 0.75rem 1rem;
+}

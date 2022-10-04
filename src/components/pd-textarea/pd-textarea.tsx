@@ -36,6 +36,11 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
     @Prop() disabled = false;
 
     /**
+     * If `true`, the textarea is replaced with a simple text
+     */
+    @Prop() viewOnly = false;
+
+    /**
      * A hint to the browser for which keyboard to display.
      * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
      * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -208,35 +213,39 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
                     ) : (
                         ''
                     )}
-                    <textarea
-                        class={{
-                            'pd-textarea': true,
-                            'pd-textarea-readonly': this.readonly,
-                            'pd-textarea-error': this.error,
-                            'pd-textarea-autogrow': this.autoGrow,
-                        }}
-                        ref={(textarea) => (this.nativeInput = textarea)}
-                        autoCapitalize={this.autocapitalize}
-                        autoFocus={this.autofocus}
-                        enterKeyHint={this.enterkeyhint}
-                        inputMode={this.inputmode}
-                        disabled={this.disabled}
-                        maxLength={this.maxlength}
-                        minLength={this.minlength}
-                        placeholder={this.placeholder || ''}
-                        readOnly={this.readonly}
-                        required={this.required}
-                        spellcheck={this.spellcheck}
-                        cols={this.cols}
-                        rows={this.rows}
-                        wrap={this.wrap}
-                        onInput={this.onInput}
-                        onBlur={this.onBlur}
-                        onFocus={this.onFocus}
-                        data-test="pd-textarea"
-                    >
-                        {value}
-                    </textarea>
+                    {!this.viewOnly ? (
+                        <textarea
+                            class={{
+                                'pd-textarea': true,
+                                'pd-textarea-readonly': this.readonly,
+                                'pd-textarea-error': this.error,
+                                'pd-textarea-autogrow': this.autoGrow,
+                            }}
+                            ref={(textarea) => (this.nativeInput = textarea)}
+                            autoCapitalize={this.autocapitalize}
+                            autoFocus={this.autofocus}
+                            enterKeyHint={this.enterkeyhint}
+                            inputMode={this.inputmode}
+                            disabled={this.disabled}
+                            maxLength={this.maxlength}
+                            minLength={this.minlength}
+                            placeholder={this.placeholder || ''}
+                            readOnly={this.readonly}
+                            required={this.required}
+                            spellcheck={this.spellcheck}
+                            cols={this.cols}
+                            rows={this.rows}
+                            wrap={this.wrap}
+                            onInput={this.onInput}
+                            onBlur={this.onBlur}
+                            onFocus={this.onFocus}
+                            data-test="pd-textarea"
+                        >
+                            {value}
+                        </textarea>
+                    ) : (
+                        <p class="pd-textarea-viewonly">{this.value}</p>
+                    )}
                 </label>
             </Host>
         );
