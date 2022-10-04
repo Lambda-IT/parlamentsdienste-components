@@ -103,33 +103,36 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
 
     public render() {
         return (
-            <Host
-                class={{
-                    'pd-content-hover': this.contentHover,
-                    'pd-list-item-expandable-selected': this.checked,
-                }}
-            >
-                <div class={{ 'pd-list-item-expandable-checkbox': this.checkbox }}>{this.renderCheckbox()}</div>
-                {this.renderStatus()}
-                <div
-                    class="pd-list-item-expandable-content"
-                    onClick={() => (this.contentClick ? this.pdContentClick.emit() : null)}
-                    onMouseOver={() => (this.contentClick ? (this.contentHover = true) : null)}
-                    onMouseOut={() => (this.contentClick ? (this.contentHover = false) : null)}
-                >
-                    <slot></slot>
-                </div>
+            <Host>
                 <div
                     class={{
-                        'pd-list-item-expandable-actions': this.edit || this.expand || this.expandable || this.menu,
+                        'pd-content-hover': this.contentHover,
+                        'pd-list-item-expandable-selected': this.checked,
+                        'pd-list-item-expandable-header': true,
                     }}
-                    data-test="pd-list-item-expandable-actions"
                 >
-                    <slot name="action-left"></slot>
-                    {this.renderEdit()}
-                    {this.renderMenu()}
-                    {this.renderExpand()}
-                    <slot name="action-right"></slot>
+                    <div class={{ 'pd-list-item-expandable-checkbox': this.checkbox }}>{this.renderCheckbox()}</div>
+                    {this.renderStatus()}
+                    <div
+                        class="pd-list-item-expandable-content"
+                        onClick={() => (this.contentClick ? this.pdContentClick.emit() : null)}
+                        onMouseOver={() => (this.contentClick ? (this.contentHover = true) : null)}
+                        onMouseOut={() => (this.contentClick ? (this.contentHover = false) : null)}
+                    >
+                        <slot></slot>
+                    </div>
+                    <div
+                        class={{
+                            'pd-list-item-expandable-actions': this.edit || this.expand || this.expandable || this.menu,
+                        }}
+                        data-test="pd-list-item-expandable-actions"
+                    >
+                        <slot name="action-left"></slot>
+                        {this.renderEdit()}
+                        {this.renderMenu()}
+                        {this.renderExpand()}
+                        <slot name="action-right"></slot>
+                    </div>
                 </div>
                 <div
                     ref={(el) => (this.contentWrapperElement = el)}

@@ -2,16 +2,27 @@
  * @prop --pd-list-item-background: Background color of list item
  */
 :host {
-    display: grid;
-    grid-template-columns: auto auto 1fr auto;
     background-color: var(--pd-list-item-background, transparent);
     border-radius: 0.25rem;
-    align-items: center;
 }
 
-:host(.pd-list-item-expandable-selected) {
+.pd-list-item-expandable-header {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
     transition: background-color 0.15s ease-in-out;
-    --pd-list-item-background: #{$cyan-0} !important;
+    align-items: center;
+
+    &.pd-list-item-expandable-selected {
+        background-color: $cyan-0;
+    }
+
+    /**
+     * @prop --pd-list-item-content-hover: Background color for content hover effect
+     */
+    &.pd-content-hover {
+        background-color: var(--pd-list-item-content-hover, $gray-3);
+        cursor: pointer;
+    }
 }
 
 *,
@@ -45,12 +56,11 @@
 }
 
 .pd-list-item-expandable-additional-content-wrapper {
-    grid-column: 1 / span 5;
     transition: height 0.3s ease-in-out;
     height: auto;
 
     .pd-list-item-expandable-additional-content {
-        padding: 0 0.75rem 0.75rem 0.75rem;
+        padding: 0.75rem 1rem 1.5rem 1rem;
     }
 }
 
@@ -91,12 +101,4 @@
 
 .pd-list-item-expandable-status-placeholder {
     padding-left: 0.25rem;
-}
-
-/**
- * @prop --pd-list-item-content-hover: Background color for content hover effect
- */
-:host(.pd-content-hover) {
-    background-color: var(--pd-list-item-content-hover, $gray-3);
-    cursor: pointer;
 }
