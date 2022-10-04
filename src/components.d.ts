@@ -823,6 +823,10 @@ export namespace Components {
          */
         "columns": PdColumn[];
         /**
+          * Sets selectable rows to disabled
+         */
+        "disabled": boolean;
+        /**
           * Height of header cells
          */
         "headerHeight": string;
@@ -851,6 +855,10 @@ export namespace Components {
           * Location of paging element
          */
         "pagingLocation": PdPagingLocation;
+        /**
+          * Sets selectable rows to readonly
+         */
+        "readonly": boolean;
         "refresh": () => Promise<void>;
         /**
           * Height of rows
@@ -2275,6 +2283,10 @@ declare namespace LocalJSX {
          */
         "columns"?: PdColumn[];
         /**
+          * Sets selectable rows to disabled
+         */
+        "disabled"?: boolean;
+        /**
           * Height of header cells
          */
         "headerHeight"?: string;
@@ -2323,6 +2335,10 @@ declare namespace LocalJSX {
           * Location of paging element
          */
         "pagingLocation"?: PdPagingLocation;
+        /**
+          * Sets selectable rows to readonly
+         */
+        "readonly"?: boolean;
         /**
           * Height of rows
          */

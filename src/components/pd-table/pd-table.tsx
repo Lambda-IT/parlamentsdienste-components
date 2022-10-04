@@ -104,6 +104,16 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Prop() selectable = false;
 
     /**
+     * Sets selectable rows to disabled
+     */
+    @Prop() disabled = false;
+
+    /**
+     * Sets selectable rows to readonly
+     */
+    @Prop() readonly = false;
+
+    /**
      * Allow to render a status icon per row
      */
     @Prop() showStatus = false;
@@ -449,6 +459,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                 <pd-checkbox
                     checked={row.pdSelected}
                     onPd-checked={(ev) => this.select(ev.detail, row)}
+                    disabled={this.disabled}
+                    readonly={this.readonly}
                     data-test="pd-table-cell-selectable"
                 ></pd-checkbox>
             </div>
@@ -568,6 +580,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                         onPd-checked={() => this.selectAll()}
                         checked={this.state.allSelected}
                         isIndeterminate={this.state.isIndeterminate}
+                        disabled={this.disabled}
+                        readonly={this.readonly}
                         data-test="pd-table-header-selectall"
                     ></pd-checkbox>
                 </div>
