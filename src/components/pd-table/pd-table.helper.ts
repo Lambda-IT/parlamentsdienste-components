@@ -14,7 +14,7 @@ export const defaultSortFunc = (a, b, dir: 'asc' | 'desc') => {
  * filter by string.includes()
  */
 export const defaultFilterFunc: FilterFunction = (value: any, filter: string) => {
-    return value.toLocaleLowerCase().includes(filter.toLocaleLowerCase());
+    return `${value}`.toLocaleLowerCase().includes(filter.toLocaleLowerCase());
 };
 
 // sum of width/min-width of all fixed columns
