@@ -4,6 +4,7 @@
 :host {
     background-color: var(--pd-list-item-background, transparent);
     border-radius: 0.25rem;
+    overflow: hidden;
 }
 
 .pd-list-item-expandable-header {
