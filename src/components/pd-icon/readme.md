@@ -24,28 +24,29 @@ If you want to host assets sepearate to the library, a custom base path can be s
 
 ## Available Icon Names
 
-| []()               |                    |                         |                        |
-| ------------------ | ------------------ | ----------------------- | ---------------------- |
-| `add`              | `alert_danger`     | `alert_info`            | `alert_success`        |
-| `alert_warning`    | `appview`          | `audio`                 | `bill`                 |
-| `breadcrumb`       | `calendar`         | `cancel`                | `caret`                |
-| `checkbox_checked` | `checkbox_default` | `clipboard`             | `close`                |
-| `close_bold`       | `close_small`      | `comment`               | `compensation`         |
-| `configuration`    | `confirm`          | `confirm_bold`          | `contact`              |
-| `copy`             | `delete`           | `detail`                | `dictionary`           |
-| `documents`        | `download`         | `drag_drop`             | `dropdown`             |
-| `edit`             | `excel_export`     | `expand`                | `export`               |
-| `file`             | `filter`           | `folder_closed`         | `folder_open`          |
-| `gallery`          | `group`            | `history`               | `link`                 |
-| `list`             | `lock`             | `menu`                  | `menu_actions`         |
-| `message`          | `microphone`       | `multiple_files`        | `notification`         |
-| `parlament`        | `pdf_file`         | `planung_organe`        | `planung_session`      |
-| `play`             | `press`            | `print`                 | `profile`              |
-| `proposal`         | `radio_checked`    | `radio_default`         | `ratsmitglied_gruppen` |
-| `research`         | `reservation`      | `response`              | `search`               |
-| `shrink`           | `sign`             | `sitzungsdurchfuehrung` | `sort`                 |
-| `status_blue`      | `status_green`     | `status_orange`         | `status_red`           |
-| `status_undefined` | `support`          | `upload`                |
+| []()                   |                     |                         |                         |
+| ---------------------- | ------------------- | ----------------------- | ----------------------- |
+| `add`                  | `alert_danger`      | `alert_info`            | `alert_success`         |
+| `alert_warning`        | `appview`           | `audio`                 | `bill`                  |
+| `breadcrumb`           | `calendar`          | `cancel`                | `caret`                 |
+| `checkbox_checked`     | `checkbox_default`  | `clipboard`             | `close`                 |
+| `close_bold`           | `close_small`       | `comment`               | `compensation`          |
+| `configuration`        | `confirm`           | `confirm_bold`          | `contact`               |
+| `copy`                 | `delete`            | `detail`                | `dictionary`            |
+| `documents`            | `download`          | `drag_drop`             | `dropdown`              |
+| `edit`                 | `excel_export`      | `expand`                | `export`                |
+| `file`                 | `filter`            | `folder_closed`         | `folder_open`           |
+| `gallery`              | `group`             | `history`               | `link`                  |
+| `list`                 | `lock`              | `menu`                  | `menu_actions`          |
+| `message`              | `microphone`        | `multiple_files`        | `notification`          |
+| `parlament`            | `pdf_file`          | `planung_organe`        | `planung_session`       |
+| `play`                 | `press`             | `print`                 | `profile`               |
+| `proposal`             | `radio_checked`     | `radio_default`         | `ratsmitglied_gruppen`  |
+| `research`             | `reservation`       | `response`              | `search`                |
+| `shrink`               | `sign`              | `sitzungsdurchfuehrung` | `sort`                  |
+| `status_blue`          | `status_green`      | `status_orange`         | `status_red`            |
+| `status_undefined`     | `support`           | `upload`                | `sessionsdurchfuehrung` |
+| `geschaeftsverwaltung` | `mehrjahresplanung` | `my_calendar`           | `my_clipboard`          |
 
 <!-- Auto Generated Below -->
 

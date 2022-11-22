@@ -40,6 +40,7 @@ export const iconMap = {
     folder_closed: 'folder_closed',
     folder_open: 'folder_open',
     gallery: 'gallery',
+    geschaeftsverwaltung: 'geschaeftsverwaltung',
     group: 'group',
     history: 'history',
     link: 'link',
@@ -47,9 +48,12 @@ export const iconMap = {
     lock: 'lock',
     menu: 'menu',
     menu_actions: 'menu_actions',
+    mehrjahresplaung: 'mehrjahresplaung',
     message: 'message',
     microphone: 'microphone',
     multiple_files: 'multiple_files',
+    my_calendar: 'my_calendar',
+    my_clipboard: 'my_clipboard',
     notification: 'notification',
     parlament: 'parlament',
     pdf_file: 'pdf_file',
@@ -69,6 +73,7 @@ export const iconMap = {
     search: 'search',
     shrink: 'shrink',
     sign: 'sign',
+    sessionsdurchfuehrung: 'sessionsdurchfuehrung',
     sitzungsdurchfuehrung: 'sitzungsdurchfuehrung',
     sort: 'sort',
     status_blue: 'status_blue',
@@ -77,5 +82,5 @@ export const iconMap = {
     status_red: 'status_red',
     status_undefined: 'status_undefined',
     support: 'support',
-    upload: 'upload'
-}
+    upload: 'upload',
+};
