@@ -215,7 +215,13 @@ export class Input implements ComponentInterface {
             <Host>
                 <label class="pd-input-label">
                     {this.label ? (
-                        <div class="pd-input-label-text" data-test="pd-input-label">
+                        <div
+                            class={{
+                                'pd-input-label-text': true,
+                                'pd-input-label-viewonly': this.viewOnly,
+                            }}
+                            data-test="pd-input-label"
+                        >
                             {this.label}
                         </div>
                     ) : (
