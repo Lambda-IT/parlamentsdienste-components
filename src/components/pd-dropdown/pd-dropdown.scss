@@ -16,9 +16,12 @@
     display: flex;
     flex-direction: column;
     font-size: 0.875rem;
+    max-width: 100%;
 
     .pd-dropdown-label-text {
         padding-bottom: 0.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

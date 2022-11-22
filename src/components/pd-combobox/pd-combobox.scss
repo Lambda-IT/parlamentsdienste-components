@@ -21,6 +21,14 @@
     display: flex;
     flex-direction: column;
     margin-top: var(--pd-combobox-vertical-adjust, inherit);
+    max-width: 100%;
+
+    .pd-combobox-label-text {
+        font-size: 00.875rem;
+        padding-bottom: 0.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     .pd-combobox-input-wrapper {
         display: flex;
@@ -233,11 +241,6 @@
                 }
             }
         }
-    }
-
-    .pd-combobox-label-text {
-        font-size: 00.875rem;
-        padding-bottom: 0.25rem;
     }
 }
 
