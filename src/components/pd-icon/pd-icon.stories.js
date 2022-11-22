@@ -51,6 +51,7 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="folder_closed"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="folder_open"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="gallery"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="geschaeftsverwaltung"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="group"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="history"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="link"></pd-icon>
@@ -58,9 +59,12 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="lock"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="menu"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="menu_actions"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="mehrjahresplanung"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="message"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="microphone"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="multiple_files"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="my_calendar"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="my_clipboard"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="notification"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="parlament"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="pdf_file"></pd-icon>
@@ -80,6 +84,7 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="search"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="shrink"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sign"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sessionsdurchfuehrung"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sitzungsdurchfuehrung"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="sort"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="status_blue"></pd-icon>
@@ -170,7 +175,7 @@ Rotate.args = {
 
 Rotate.argTypes = {
     icons: { control: { type: 'select', options: Object.keys(iconMap) } },
-    rotate: { control: { type: 'number', }},
+    rotate: { control: { type: 'number' } },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -202,7 +207,7 @@ Flip.args = {
 
 Flip.argTypes = {
     icons: { control: { type: 'select', options: Object.keys(iconMap) } },
-    flip: { control: { type: 'select', options: [ 'none', 'x', 'y','xy' ]} },
+    flip: { control: { type: 'select', options: ['none', 'x', 'y', 'xy'] } },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -239,6 +244,6 @@ Spin.args = {
 
 Spin.argTypes = {
     icons: { control: { type: 'select', options: Object.keys(iconMap) } },
-    direction: { control: { type: 'boolean'} },
-    speed: { control: { type: 'number' }},
+    direction: { control: { type: 'boolean' } },
+    speed: { control: { type: 'number' } },
 };
