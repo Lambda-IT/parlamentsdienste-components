@@ -15,10 +15,13 @@
 .pd-textarea-label {
     width: 100%;
     margin-bottom: 0;
+    max-width: 100%;
 
     .pd-textarea-label-text {
         padding-bottom: 0.25rem;
         font-size: 0.875rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

@@ -17,6 +17,14 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+
+    .pd-search-label-text {
+        padding-bottom: 0.25rem;
+        font-size: 0.875rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     .pd-search-input-wrapper {
         display: flex;
@@ -115,11 +123,6 @@
         background-color: transparent;
         cursor: pointer;
         fill: setcolor(primary, enabled);
-    }
-
-    .pd-search-label-text {
-        padding-bottom: 0.25rem;
-        font-size: 0.875rem;
     }
 }
 
