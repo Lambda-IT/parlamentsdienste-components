@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.1] - 2022-11-22
+
+### Added
+
+-   #206 added content padding css variable for pd-list
+-   #209 added new icons
+
+### Changed
+
+-   #205 fixed border radius on list-item-expandable
+-   #207 emit pd-search on reset
+-   #208 all input fields now use max-width: 100% and overflow elipsis
+-   #210 adjusted h6 styling
+
 ## [2.5.0] - 2022-10-04
 
 ### Added
@@ -375,7 +389,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
-[2.5.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.4.2
+[2.5.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.5.1
+[2.5.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.5.0
 [2.4.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.4.2
 [2.4.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.4.1
 [2.4.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.4.0
