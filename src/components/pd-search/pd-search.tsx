@@ -243,6 +243,7 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
     private reset = (ev: Event) => {
         ev.preventDefault();
         this.setValue('', true);
+        this.pdSearch.emit({ value: this.value });
         this.open = false;
     };
 
