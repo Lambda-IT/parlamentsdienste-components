@@ -207,7 +207,13 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
             <Host>
                 <label class="pd-textarea-label">
                     {this.label ? (
-                        <div class="pd-textarea-label-text" data-test="pd-textarea-label">
+                        <div
+                            class={{
+                                'pd-textarea-label-text': true,
+                                'pd-textarea-label-viewonly': this.viewOnly,
+                            }}
+                            data-test="pd-textarea-label"
+                        >
                             {this.label}
                         </div>
                     ) : (
