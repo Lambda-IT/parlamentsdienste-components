@@ -342,6 +342,10 @@ export namespace Components {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust": boolean;
+        /**
+          * If `true`, the dropdown# is replaced with a simple text
+         */
+        "viewOnly": boolean;
     }
     interface PdDropdownItem {
         /**
@@ -1738,6 +1742,10 @@ declare namespace LocalJSX {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust"?: boolean;
+        /**
+          * If `true`, the dropdown# is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
     }
     interface PdDropdownItem {
         /**
