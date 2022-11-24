@@ -68,7 +68,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() disabled = false;
 
     /**
-     * If `true`, the dropdown# is replaced with a simple text
+     * If `true`, the dropdown is replaced with a simple text
      */
     @Prop() viewOnly = false;
     private _viewOnly = false;
@@ -193,7 +193,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private toggleDropdown = () => {
-        if (!this.disabled && !this.readonly) this.open = !this.open;
+        if (!this.disabled && !this.readonly && !this.viewOnly) this.open = !this.open;
     };
 
     public componentWillLoad() {
@@ -281,7 +281,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                         {this.renderDropDown()}
                     </div>
                 ) : (
-                    <p class="pd-dropdown-viewonly">{this.selectedItem?.label || this.placeholder}</p>
+                    <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
                 )}
             </Host>
         );

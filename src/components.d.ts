@@ -210,6 +210,10 @@ export namespace Components {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust": boolean;
+        /**
+          * If `true`, the combobox is replaced with a simple text
+         */
+        "viewOnly": boolean;
     }
     interface PdDatepicker {
         /**
@@ -343,7 +347,7 @@ export namespace Components {
          */
         "verticalAdjust": boolean;
         /**
-          * If `true`, the dropdown# is replaced with a simple text
+          * If `true`, the dropdown is replaced with a simple text
          */
         "viewOnly": boolean;
     }
@@ -1628,6 +1632,10 @@ declare namespace LocalJSX {
           * Default vertical adjustment for inline forms
          */
         "verticalAdjust"?: boolean;
+        /**
+          * If `true`, the combobox is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
     }
     interface PdDatepicker {
         /**
@@ -1743,7 +1751,7 @@ declare namespace LocalJSX {
          */
         "verticalAdjust"?: boolean;
         /**
-          * If `true`, the dropdown# is replaced with a simple text
+          * If `true`, the dropdown is replaced with a simple text
          */
         "viewOnly"?: boolean;
     }

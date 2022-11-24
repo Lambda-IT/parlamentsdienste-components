@@ -47,6 +47,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() disabled = false;
 
     /**
+     * If `true`, the combobox is replaced with a simple text
+     */
+    @Prop() viewOnly = false;
+    private _viewOnly = false;
+
+    /**
      * If `true`, the user cannot modify the value.
      */
     @Prop() readonly = false;
@@ -143,6 +149,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.resetInternally(null);
     }
 
+    @Watch('viewOnly')
+    public viewOnlyChanged(viewOnly) {
+        if (viewOnly && this.popper) this.popper.destroy();
+    }
+
     @Watch('items')
     resultsChanged(items: any) {
         this._itemsState = this.validateItems(items);
@@ -179,10 +190,16 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     public componentDidLoad() {
-        this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
+        this._viewOnly = this.viewOnly;
+        if (!this._viewOnly) this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
     }
 
     public componentDidUpdate() {
+        if (this._viewOnly !== this.viewOnly) {
+            this._viewOnly = this.viewOnly;
+            if (!this._viewOnly) this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
+        }
+
         if (!this.open) return;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
@@ -361,35 +378,40 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
                     {this.renderLabel()}
-                    <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
-                        <input
-                            class="pd-combobox-input"
-                            data-test="pd-combobox-input"
-                            ref={(input) => (this.nativeInput = input)}
-                            disabled={this.disabled}
-                            readOnly={this.readonly}
-                            required={this.required}
-                            placeholder={this.placeholder || ''}
-                            value={this.value}
-                            onClick={this.onClickInput}
-                            onInput={this.onInput}
-                            onBlur={this.onBlur}
-                            onFocus={this.onFocus}
-                            size={this.size}
-                        />
-                        <button class="pd-combobox-icon left" tabindex="-1">
-                            <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
-                        </button>
-                        <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
-                            <pd-icon
+
+                    {!this.viewOnly ? (
+                        <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
+                            <input
+                                class="pd-combobox-input"
+                                data-test="pd-combobox-input"
+                                ref={(input) => (this.nativeInput = input)}
+                                disabled={this.disabled}
+                                readOnly={this.readonly}
+                                required={this.required}
+                                placeholder={this.placeholder || ''}
+                                value={this.value}
                                 onClick={this.onClickInput}
-                                class="pd-icon pd-combobox-icon-toggle"
-                                name="dropdown"
-                                rotate={this.open ? 180 : 0}
-                                size={2.4}
-                            ></pd-icon>
-                        </button>
-                    </div>
+                                onInput={this.onInput}
+                                onBlur={this.onBlur}
+                                onFocus={this.onFocus}
+                                size={this.size}
+                            />
+                            <button class="pd-combobox-icon left" tabindex="-1">
+                                <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
+                            </button>
+                            <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
+                                <pd-icon
+                                    onClick={this.onClickInput}
+                                    class="pd-icon pd-combobox-icon-toggle"
+                                    name="dropdown"
+                                    rotate={this.open ? 180 : 0}
+                                    size={2.4}
+                                ></pd-icon>
+                            </button>
+                        </div>
+                    ) : (
+                        <p class="pd-combobox-viewonly">{this.selectedItem?.label || ''}</p>
+                    )}
                 </label>
                 {this.renderDropdownItems()}
             </Host>
@@ -436,7 +458,13 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         if (!this.label) return;
 
         return (
-            <div class="pd-combobox-label-text" data-test="pd-combobox-label">
+            <div
+                class={{
+                    'pd-combobox-label-text': true,
+                    'pd-combobox-label-viewonly': this.viewOnly,
+                }}
+                data-test="pd-combobox-label"
+            >
                 {this.label}
             </div>
         );

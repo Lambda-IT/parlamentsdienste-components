@@ -58,6 +58,7 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 | `required`       | `required`        | If `true`, the user must fill in a value before submitting a form. | `boolean`             | `false`                                                             |
 | `textWrap`       | `text-wrap`       | Selected item text wrap on words                                   | `"no-wrap" \| "wrap"` | `'no-wrap'`                                                         |
 | `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                       | `boolean`             | `false`                                                             |
+| `viewOnly`       | `view-only`       | If `true`, the dropdown is replaced with a simple text             | `boolean`             | `false`                                                             |
 
 
 ## Events
