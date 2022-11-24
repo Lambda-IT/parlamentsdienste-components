@@ -12,6 +12,7 @@ export default {
         label: { control: { type: 'text' } },
         placeholder: { control: { type: 'text' } },
         disabled: { control: { type: 'boolean' } },
+        viewonly: { control: { type: 'boolean' } },
         readonly: { control: { type: 'boolean' } },
         selectable: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
@@ -31,6 +32,7 @@ export const combobox = (args) => {
     c1.items = args.items;
     c1.disabled = args.disabled;
     c1.readonly = args.readonly;
+    c1.viewOnly = args.viewonly;
     c1.selectable = args.selectable;
     c1.error = args.error;
     c1.required = args.required;
@@ -46,6 +48,7 @@ export const combobox = (args) => {
     c2.items = args.items;
     c2.disabled = args.disabled;
     c2.readonly = args.readonly;
+    c2.viewOnly = args.viewonly;
     c2.selectable = true;
     c2.error = args.error;
     c2.required = args.required;
@@ -65,6 +68,7 @@ combobox.args = {
     placeholder: 'Type for examples...',
     disabled: false,
     readonly: false,
+    viewonly: false,
     selectable: false,
     error: false,
     required: false,

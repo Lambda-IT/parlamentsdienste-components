@@ -1,5 +1,5 @@
-import notes from './readme.md';
 import notesDropdownItem from '../pd-dropdown-item/readme.md';
+import notes from './readme.md';
 
 export default {
     title: 'Forms + Inputs/Dropdown',
@@ -8,8 +8,8 @@ export default {
             handles: ['pd-change'],
         },
         notes: {
-            'Dropdown': notes,
-            'Dropdown Item': notesDropdownItem
+            Dropdown: notes,
+            'Dropdown Item': notesDropdownItem,
         },
         argTypes: {
             items: { controls: { type: 'object' } },
@@ -17,6 +17,7 @@ export default {
             label: { controls: { type: 'string' } },
             required: { controls: { type: 'boolean' } },
             readonly: { controls: { type: 'boolean' } },
+            viewonly: { controls: { type: 'boolean' } },
             error: { controls: { type: 'boolean' } },
         },
     },
@@ -30,6 +31,7 @@ export const Dropdown = (args) => {
     pdDropdown.disabled = args.disabled;
     pdDropdown.required = args.required;
     pdDropdown.readonly = args.readonly;
+    pdDropdown.viewOnly = args.viewonly;
     pdDropdown.error = args.error;
     pdDropdown.label = args.label;
     pdDropdown.classList = ['m-3'];
@@ -53,5 +55,6 @@ Dropdown.args = {
     label: 'Dropdown label text',
     required: false,
     readonly: false,
+    viewonly: false,
     error: false,
 };

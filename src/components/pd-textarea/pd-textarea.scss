@@ -78,8 +78,12 @@
     }
 }
 
+.pd-textarea-label-viewonly {
+    font-weight: 700;
+}
+
 .pd-textarea-viewonly {
     display: block;
     margin: 0;
-    padding: 0.75rem 1rem;
+    padding: 0.125rem 0 0.75rem 0;
 }

@@ -64,6 +64,7 @@ interface DropdownItem {
 | `size`           | `size`            | Input tag size (check pd-input 'size' for more info)               | `number`         | `1`         |
 | `value`          | `value`           | The value of the input.                                            | `string`         | `''`        |
 | `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                       | `boolean`        | `false`     |
+| `viewOnly`       | `view-only`       | If `true`, the combobox is replaced with a simple text             | `boolean`        | `false`     |
 
 
 ## Events

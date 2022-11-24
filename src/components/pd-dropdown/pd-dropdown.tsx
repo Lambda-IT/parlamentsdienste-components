@@ -14,6 +14,7 @@ import {
     Method,
     Prop,
     State,
+    Watch,
 } from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
 @Component({
@@ -67,6 +68,12 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() disabled = false;
 
     /**
+     * If `true`, the dropdown is replaced with a simple text
+     */
+    @Prop() viewOnly = false;
+    private _viewOnly = false;
+
+    /**
      * Dropdown box label
      */
     @Prop() label?: string;
@@ -115,6 +122,11 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Method()
     async reset() {
         this.selectedItem = null;
+    }
+
+    @Watch('viewOnly')
+    public viewOnlyChanged(viewOnly) {
+        if (viewOnly && this.popper) this.popper.destroy();
     }
 
     @Listen('click', { target: 'body' })
@@ -181,7 +193,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private toggleDropdown = () => {
-        if (!this.disabled && !this.readonly) this.open = !this.open;
+        if (!this.disabled && !this.readonly && !this.viewOnly) this.open = !this.open;
     };
 
     public componentWillLoad() {
@@ -189,10 +201,16 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     public componentDidLoad() {
-        this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+        this._viewOnly = this.viewOnly;
+        if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     }
 
     public componentDidUpdate() {
+        if (this._viewOnly !== this.viewOnly) {
+            this._viewOnly = this.viewOnly;
+            if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+        }
+
         if (!this.open) return;
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
@@ -228,39 +246,43 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 >
                     {this.renderLabel()}
                 </label>
-                <div
-                    class={{
-                        'pd-dropdown': true,
-                        'pd-dropdown-readonly': this.readonly,
-                        'pd-dropdown-error': this.error,
-                    }}
-                    style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}
-                >
-                    <button
-                        ref={(el) => (this.buttonElement = el)}
-                        class="pd-dropdown-button"
-                        type="button"
-                        aria-haspopup="true"
-                        aria-expanded={`${this.open}`}
-                        onClick={this.toggleDropdown}
-                        disabled={this.disabled || this.readonly}
-                        data-test="pd-dropdown-button"
+                {!this.viewOnly ? (
+                    <div
+                        class={{
+                            'pd-dropdown': true,
+                            'pd-dropdown-readonly': this.readonly,
+                            'pd-dropdown-error': this.error,
+                        }}
+                        style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}
                     >
-                        <span
-                            class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
-                            data-test="pd-dropdown-text"
+                        <button
+                            ref={(el) => (this.buttonElement = el)}
+                            class="pd-dropdown-button"
+                            type="button"
+                            aria-haspopup="true"
+                            aria-expanded={`${this.open}`}
+                            onClick={this.toggleDropdown}
+                            disabled={this.disabled || this.readonly}
+                            data-test="pd-dropdown-button"
                         >
-                            {this.selectedItem?.label || this.placeholder}
-                        </span>
-                        <pd-icon
-                            class="pd-dropdown-caret"
-                            name="dropdown"
-                            rotate={this.open ? 180 : 0}
-                            size={2.4}
-                        ></pd-icon>
-                    </button>
-                    {this.renderDropDown()}
-                </div>
+                            <span
+                                class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
+                                data-test="pd-dropdown-text"
+                            >
+                                {this.selectedItem?.label || this.placeholder}
+                            </span>
+                            <pd-icon
+                                class="pd-dropdown-caret"
+                                name="dropdown"
+                                rotate={this.open ? 180 : 0}
+                                size={2.4}
+                            ></pd-icon>
+                        </button>
+                        {this.renderDropDown()}
+                    </div>
+                ) : (
+                    <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
+                )}
             </Host>
         );
     }
@@ -308,6 +330,15 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     private renderLabel() {
         if (!this.label) return;
 
-        return <span class="pd-dropdown-label-text">{this.label}</span>;
+        return (
+            <span
+                class={{
+                    'pd-dropdown-label-text': true,
+                    'pd-dropdown-label-viewonly': this.viewOnly,
+                }}
+            >
+                {this.label}
+            </span>
+        );
     }
 }

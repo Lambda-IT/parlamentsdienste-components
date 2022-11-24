@@ -196,7 +196,7 @@
 
             <details open>
                 <summary>Forms</summary>
-                <details>
+                <details open>
                     <summary>Inputs</summary>
                     <div class="dropdown-grid">
                         <span></span>
@@ -204,6 +204,7 @@
                         <span>Disabled</span>
                         <span>Readonly</span>
                         <span>Error</span>
+                        <span>View-Only</span>
 
                         <span>Inputs</span>
                         <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
@@ -216,6 +217,7 @@
                             id="pd-input-1"
                         ></pd-input>
                         <pd-input label="Label" value="Text" placeholder="placeholder" error></pd-input>
+                        <pd-input view-only label="Label" value="Text" placeholder="placeholder" error></pd-input>
 
                         <span>Dropdowns</span>
                         <pd-dropdown class="pd-dropdown-items" label="Label" empty-item></pd-dropdown>
@@ -228,6 +230,7 @@
                             empty-item
                             error
                         ></pd-dropdown>
+                        <pd-dropdown view-only class="pd-dropdown-items" label="Label" empty-item></pd-dropdown>
 
                         <span>Textareas</span>
                         <pd-textarea
@@ -253,6 +256,12 @@
                             auto-grow
                             value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
                         ></pd-textarea>
+                        <pd-textarea
+                            view-only
+                            label="Label"
+                            auto-grow
+                            value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, voluptate et. Voluptas libero aperiam repellendus reiciendis esse odit debitis laudantium?"
+                        ></pd-textarea>
 
                         <span>Checkbox</span>
                         <div>
@@ -275,6 +284,7 @@
                             <pd-checkbox error checked text="Labeltext"></pd-checkbox>
                             <pd-checkbox error is-indeterminate text="Labeltext"></pd-checkbox>
                         </div>
+                        <span></span>
 
                         <span>Radio</span>
                         <div>
@@ -297,18 +307,21 @@
                             <pd-radio error name="radio-error" value="0.50" label="50%"></pd-radio>
                             <pd-radio error name="radio-error" value="1" label="100%"></pd-radio>
                         </div>
+                        <span></span>
 
                         <span>Datepicker (input enabled)</span>
                         <pd-datepicker label="Label" allow-input date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" allow-input disabled date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" allow-input readonly date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" allow-input error date="01/01/2021"></pd-datepicker>
+                        <span></span>
 
                         <span>Datepicker (input disabled)</span>
                         <pd-datepicker label="Label" date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" disabled date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" readonly date="01/01/2021"></pd-datepicker>
                         <pd-datepicker label="Label" error date="01/01/2021"></pd-datepicker>
+                        <span></span>
 
                         <span>Combobox</span>
                         <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label"></pd-combobox>
@@ -330,6 +343,13 @@
                             label="Label"
                             error
                         ></pd-combobox>
+                        <pd-combobox
+                            id="supibox"
+                            view-only
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                        ></pd-combobox>
 
                         <span>Combobox (selectable)</span>
                         <pd-combobox class="pd-combobox-items" selectable label="Label"></pd-combobox>
@@ -342,10 +362,12 @@
                             selectable
                         ></pd-combobox>
                         <pd-combobox class="pd-combobox-items" selectable label="Label" error selectable></pd-combobox>
+                        <pd-combobox view-only class="pd-combobox-items" selectable label="Label"></pd-combobox>
 
                         <span>Search</span>
                         <pd-search label="Label" placeholder="search..." id="pd-search-0"></pd-search>
                         <pd-search label="Label" disabled placeholder="search..." id="pd-search-0"></pd-search>
+                        <span></span>
                         <span></span>
                         <span></span>
 
@@ -354,11 +376,12 @@
                         <pd-slider disabled></pd-slider>
                         <pd-slider readonly></pd-slider>
                         <pd-slider error></pd-slider>
+                        <span></span>
                     </div>
                     <style>
                         .dropdown-grid {
                             display: grid;
-                            grid-template-columns: repeat(5, 1fr);
+                            grid-template-columns: repeat(6, 1fr);
                             grid-gap: 10px;
                         }
                     </style>
