@@ -295,7 +295,6 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 style={{
                     display: this.open ? 'block' : 'none',
                     maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
-                    borderColor: `red`, //TOM
                 }}
                 tabIndex={-1}
             >

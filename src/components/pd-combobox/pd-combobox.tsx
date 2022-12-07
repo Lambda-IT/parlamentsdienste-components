@@ -323,7 +323,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     };
 
     private onInput = (ev: Event) => {
-        console.log('adf');
         if (this.selectable) this.resetInternally(ev);
 
         const input = ev.target as HTMLInputElement | null;
