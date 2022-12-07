@@ -44,7 +44,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Enable selection of an empty item
      */
-    @Prop() emptyItem: boolean = false;
+    @Prop() emptyItem: boolean = true;
 
     /**
      * Data used for the empty item
@@ -323,6 +323,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     };
 
     private onInput = (ev: Event) => {
+        console.log('adf');
         if (this.selectable) this.resetInternally(ev);
 
         const input = ev.target as HTMLInputElement | null;
@@ -449,9 +450,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     display: this.open ? 'block' : 'none',
                 }}
             >
-                {/* TOM */}
                 {this.renderEmptyItem()}
-
                 {this._itemsState
                     .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
                     .map((comboboxItem, i) => (
@@ -467,17 +466,20 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         );
     }
 
-    /* TOM */
     private renderEmptyItem() {
+        console.log(this.emptyItem);
         if (!this.emptyItem) return;
         return (
-            <pd-dropdown-item
-                data-test={`pd-combobox-item-empty`}
-                selected={false}
-                value={this.emptyItemData.label}
-                highlight={this.highlight ? this.inputValue : ''}
-                onClick={(e) => this.selectItem(this.emptyItemData, e)}
-            ></pd-dropdown-item>
+            <div>
+                <pd-dropdown-item
+                    data-test={`pd-combobox-item-empty`}
+                    selected={false}
+                    value={this.emptyItemData.label}
+                    highlight={this.highlight ? this.inputValue : ''}
+                    // onClick={(e) => this.selectItem(this.emptyItemData, e)}
+                    onClick={(e) => this.resetInternally(e)}
+                ></pd-dropdown-item>
+            </div>
         );
     }
 
