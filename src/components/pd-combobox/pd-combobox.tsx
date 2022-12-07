@@ -42,6 +42,20 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() items: ComboboxItem[] = [];
 
     /**
+     * Enable selection of an empty item
+     */
+    @Prop() emptyItem: boolean = false;
+
+    /**
+     * Data used for the empty item
+     */
+    @Prop() emptyItemData: ComboboxItem = {
+        id: '0',
+        label: '-',
+        value: null,
+    };
+
+    /**
      * If `true`, the user cannot interact with the input.
      */
     @Prop() disabled = false;
@@ -413,6 +427,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         <p class="pd-combobox-viewonly">{this.selectedItem?.label || ''}</p>
                     )}
                 </label>
+
                 {this.renderDropdownItems()}
             </Host>
         );
@@ -434,6 +449,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     display: this.open ? 'block' : 'none',
                 }}
             >
+                {/* TOM */}
+                {this.renderEmptyItem()}
+
                 {this._itemsState
                     .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
                     .map((comboboxItem, i) => (
@@ -446,6 +464,20 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         ></pd-dropdown-item>
                     ))}
             </div>
+        );
+    }
+
+    /* TOM */
+    private renderEmptyItem() {
+        if (!this.emptyItem) return;
+        return (
+            <pd-dropdown-item
+                data-test={`pd-combobox-item-empty`}
+                selected={false}
+                value={this.emptyItemData.label}
+                highlight={this.highlight ? this.inputValue : ''}
+                onClick={(e) => this.selectItem(this.emptyItemData, e)}
+            ></pd-dropdown-item>
         );
     }
 

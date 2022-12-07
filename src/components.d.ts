@@ -155,6 +155,14 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": ComboboxItem;
+        /**
           * Shows error state
          */
         "error": boolean;
@@ -1568,6 +1576,14 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: ComboboxItem;
         /**
           * Shows error state
          */
