@@ -203,6 +203,10 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
+          * Set the open-close state of the dropdown
+         */
+        "setOpen": (open?: boolean) => Promise<void>;
+        /**
           * Set a preselected entry by index
          */
         "setSelectedIndex": (index: number) => Promise<void>;

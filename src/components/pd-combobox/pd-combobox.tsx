@@ -163,6 +163,17 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.resetInternally(null);
     }
 
+    /**
+     * Set the open-close state of the dropdown
+     */
+    @Method()
+    async setOpen(open: boolean = true) {
+        //To ignore the outside click who triggers the close-event
+        setTimeout(() => {
+            this.open = open;
+        }, 0);
+    }
+
     @Watch('viewOnly')
     public viewOnlyChanged(viewOnly) {
         if (viewOnly && this.popper) this.popper.destroy();
@@ -315,6 +326,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private onClickInput = () => {
+        console.log('clicked in input');
         if (this._itemsState?.length > 0 && !this.open && !(this.disabled || this.readonly)) {
             this.open = true;
         } else {
@@ -466,7 +478,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private renderEmptyItem() {
-        console.log(this.emptyItem);
         if (!this.emptyItem) return;
         return (
             <div>
