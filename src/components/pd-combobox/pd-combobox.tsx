@@ -44,7 +44,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Enable selection of an empty item
      */
-    @Prop() emptyItem: boolean = true;
+    @Prop() emptyItem: boolean = false;
 
     /**
      * Data used for the empty item
@@ -326,7 +326,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private onClickInput = () => {
-        console.log('clicked in input');
         if (this._itemsState?.length > 0 && !this.open && !(this.disabled || this.readonly)) {
             this.open = true;
         } else {
@@ -425,15 +424,29 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                             <button class="pd-combobox-icon left" tabindex="-1">
                                 <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
                             </button>
-                            <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
-                                <pd-icon
-                                    onClick={this.onClickInput}
-                                    class="pd-icon pd-combobox-icon-toggle"
-                                    name="dropdown"
-                                    rotate={this.open ? 180 : 0}
-                                    size={2.4}
-                                ></pd-icon>
-                            </button>
+                            {this.value && !this.disabled && !this.readonly ? (
+                                <button
+                                    class="pd-combobox-icon right"
+                                    onClick={() => {
+                                        this.resetInternally();
+                                        this.setFocus();
+                                    }}
+                                    tabindex="-1"
+                                    data-test="pd-combobox-reset"
+                                >
+                                    <pd-icon class="pd-icon" name="cancel" size={2.4}></pd-icon>
+                                </button>
+                            ) : (
+                                <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
+                                    <pd-icon
+                                        onClick={this.onClickInput}
+                                        class="pd-icon pd-combobox-icon-toggle"
+                                        name="dropdown"
+                                        rotate={this.open ? 180 : 0}
+                                        size={2.4}
+                                    ></pd-icon>
+                                </button>
+                            )}
                         </div>
                     ) : (
                         <p class="pd-combobox-viewonly">{this.selectedItem?.label || ''}</p>

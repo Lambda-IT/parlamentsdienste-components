@@ -47,6 +47,10 @@
         &:focus-visible {
             background-color: $yellow-1;
             color: $blue-whale;
+
+            & .pd-combobox-icon {
+                fill: $blue-whale;
+            }
         }
     }
 
@@ -60,6 +64,7 @@
         border: none;
         padding: 0;
         background-color: transparent;
+        cursor: pointer;
         fill: setcolor(primary, enabledOutlineContrast);
 
         &.left {
@@ -156,9 +161,18 @@
                 color: setcolor(primary, hoverContrast);
                 background-color: setcolor(primary, hover);
                 border-color: setcolor(primary, hover);
-            }
-            .pd-combobox-icon {
-                fill: setcolor(primary, hoverContrast);
+
+                &:focus-visible {
+                    ~ .pd-combobox-icon {
+                        fill: setcolor(primary, hoverContrast);
+                    }
+
+                    &:active {
+                        ~ .pd-combobox-icon {
+                            fill: setcolor(primary, pressedContrast);
+                        }
+                    }
+                }
             }
         }
 
@@ -224,6 +238,12 @@
                     color: setcolor(danger, hoverContrast);
                     background-color: setcolor(danger, hover);
                     border-color: setcolor(danger, hover);
+
+                    &:focus-visible:active {
+                        ~ .pd-combobox-icon {
+                            fill: setcolor(danger, pressedContrast);
+                        }
+                    }
                 }
                 .pd-combobox-icon {
                     fill: setcolor(danger, hoverContrast);
