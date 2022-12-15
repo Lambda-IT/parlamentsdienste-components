@@ -162,15 +162,15 @@
                 background-color: setcolor(primary, hover);
                 border-color: setcolor(primary, hover);
 
+                &:active:enabled {
+                    ~ .pd-combobox-icon {
+                        fill: setcolor(primary, pressedContrast);
+                    }
+                }
+
                 &:focus-visible {
                     ~ .pd-combobox-icon {
                         fill: setcolor(primary, hoverContrast);
-                    }
-
-                    &:active {
-                        ~ .pd-combobox-icon {
-                            fill: setcolor(primary, pressedContrast);
-                        }
                     }
                 }
             }
