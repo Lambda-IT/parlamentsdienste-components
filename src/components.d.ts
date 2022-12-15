@@ -155,6 +155,14 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": ComboboxItem;
+        /**
           * Shows error state
          */
         "error": boolean;
@@ -194,6 +202,10 @@ export namespace Components {
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Set the open-close state of the dropdown
+         */
+        "setOpen": (open?: boolean) => Promise<void>;
         /**
           * Set a preselected entry by index
          */
@@ -1568,6 +1580,14 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: ComboboxItem;
         /**
           * Shows error state
          */

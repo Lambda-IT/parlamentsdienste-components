@@ -42,6 +42,20 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() items: ComboboxItem[] = [];
 
     /**
+     * Enable selection of an empty item
+     */
+    @Prop() emptyItem: boolean = false;
+
+    /**
+     * Data used for the empty item
+     */
+    @Prop() emptyItemData: ComboboxItem = {
+        id: '0',
+        label: '-',
+        value: null,
+    };
+
+    /**
      * If `true`, the user cannot interact with the input.
      */
     @Prop() disabled = false;
@@ -147,6 +161,17 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Method()
     async reset() {
         this.resetInternally(null);
+    }
+
+    /**
+     * Set the open-close state of the dropdown
+     */
+    @Method()
+    async setOpen(open: boolean = true) {
+        //To ignore the outside click who triggers the close-event
+        setTimeout(() => {
+            this.open = open;
+        }, 0);
     }
 
     @Watch('viewOnly')
@@ -399,20 +424,35 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                             <button class="pd-combobox-icon left" tabindex="-1">
                                 <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
                             </button>
-                            <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
-                                <pd-icon
-                                    onClick={this.onClickInput}
-                                    class="pd-icon pd-combobox-icon-toggle"
-                                    name="dropdown"
-                                    rotate={this.open ? 180 : 0}
-                                    size={2.4}
-                                ></pd-icon>
-                            </button>
+                            {this.value && !this.disabled && !this.readonly ? (
+                                <button
+                                    class="pd-combobox-icon right"
+                                    onClick={() => {
+                                        this.resetInternally();
+                                        this.setFocus();
+                                    }}
+                                    tabindex="-1"
+                                    data-test="pd-combobox-reset"
+                                >
+                                    <pd-icon class="pd-icon" name="cancel" size={2.4}></pd-icon>
+                                </button>
+                            ) : (
+                                <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
+                                    <pd-icon
+                                        onClick={this.onClickInput}
+                                        class="pd-icon pd-combobox-icon-toggle"
+                                        name="dropdown"
+                                        rotate={this.open ? 180 : 0}
+                                        size={2.4}
+                                    ></pd-icon>
+                                </button>
+                            )}
                         </div>
                     ) : (
                         <p class="pd-combobox-viewonly">{this.selectedItem?.label || ''}</p>
                     )}
                 </label>
+
                 {this.renderDropdownItems()}
             </Host>
         );
@@ -434,6 +474,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     display: this.open ? 'block' : 'none',
                 }}
             >
+                {this.renderEmptyItem()}
                 {this._itemsState
                     .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
                     .map((comboboxItem, i) => (
@@ -445,6 +486,22 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                             onClick={(e) => this.selectItem(comboboxItem, e)}
                         ></pd-dropdown-item>
                     ))}
+            </div>
+        );
+    }
+
+    private renderEmptyItem() {
+        if (!this.emptyItem) return;
+        return (
+            <div>
+                <pd-dropdown-item
+                    data-test={`pd-combobox-item-empty`}
+                    selected={false}
+                    value={this.emptyItemData.label}
+                    highlight={this.highlight ? this.inputValue : ''}
+                    // onClick={(e) => this.selectItem(this.emptyItemData, e)}
+                    onClick={(e) => this.resetInternally(e)}
+                ></pd-dropdown-item>
             </div>
         );
     }
