@@ -378,7 +378,6 @@ export namespace Components {
         "value": string;
     }
     interface PdDropdownMenu {
-        "buttonElement": HTMLElement;
         /**
           * Enable selection of an empty item
          */
@@ -1843,7 +1842,6 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface PdDropdownMenu {
-        "buttonElement"?: HTMLElement;
         /**
           * Enable selection of an empty item
          */
@@ -1860,7 +1858,10 @@ declare namespace LocalJSX {
           * Items to display and select in dropdown
          */
         "items"?: DropdownItem[];
-        "onPd-change"?: (event: PdDropdownMenuCustomEvent<DropdownItem>) => void;
+        /**
+          * Triggers when one or all rows get selected
+         */
+        "onPd-dropdown-select-item"?: (event: PdDropdownMenuCustomEvent<DropdownItem>) => void;
         "open"?: boolean;
         /**
           * TODO

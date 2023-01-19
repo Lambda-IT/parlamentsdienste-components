@@ -1,4 +1,15 @@
-import { Component, ComponentInterface, EventEmitter, Event, h, Host, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentInterface,
+    EventEmitter,
+    Event,
+    h,
+    Host,
+    Prop,
+    Element,
+    State,
+    Watch,
+} from '@stencil/core';
 import { createPopper, Instance } from '@popperjs/core';
 import { DropdownItem } from '../../interface';
 /**
@@ -10,7 +21,7 @@ import { DropdownItem } from '../../interface';
     shadow: true,
 })
 export class Dropdownmenu implements ComponentInterface {
-    private menuElement: HTMLElement;
+    @Element() element: HTMLPdDropdownMenuElement;
 
     constructor() {}
 
@@ -34,47 +45,45 @@ export class Dropdownmenu implements ComponentInterface {
     /**
      * Data used for the empty item
      */
-    @Prop() emptyItemData: DropdownItem = {
-        id: '0',
-        label: '-',
-        value: null,
-    };
+    @Prop() emptyItemData: DropdownItem;
 
     /**
      * TODO
      */
-    @Prop() selectedItem: DropdownItem = null;
+    @Prop() selectedItem: DropdownItem;
 
-    // For popper.js
-    @Prop() buttonElement: HTMLElement;
+    /**
+     * Triggers when one or all rows get selected
+     */
+    @Event({ eventName: 'pd-dropdown-select-item' }) onDropdownSelectItem: EventEmitter<DropdownItem>;
 
-    // @Watch('show')
-    // public showChanged(show) {
-    //     // console.log(this.overlayElement);
-    //     if (show) {
-    //         document.body.appendChild(this.overlayElement);
-    //     } else {
-    //     }
-    // }
-
-    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<DropdownItem>;
-
-    public componentDidLoad() {}
-
-    private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
-        this.selectedItem = item;
-        if (closeDropdown) this.open = false;
-        this.pdChange.emit(item);
+    public componentDidLoad() {
+        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+            HTMLPdDropdownItemElement
+        >;
+        requestAnimationFrame(() => {
+            this.scrollToSelected(dropdownItemNodes, this.element);
+        });
+    }
+    private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
+        dropdownItemNodes.forEach((item) => {
+            const centerItem = Math.ceil(this.itemCount / 2) - 1;
+            console.log(item.selected, item.offsetTop - 48 * centerItem);
+            if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
+        });
+    }
+    private selectItem(item: DropdownItem) {
+        // this.selectedItem = item;
+        console.log(item);
+        this.onDropdownSelectItem.emit(item);
+        // if (closeDropdown) this.open = false;
+        // this.pdChange.emit(item);
     }
 
     public render() {
-        return <Host>{this.renderDropDown()}</Host>;
-    }
-
-    private renderDropDown() {
         return (
-            <div
-                ref={(el) => (this.menuElement = el)}
+            <Host
+                // ref={(el) => (this.menuElement = el)}
                 class={`pd-dropdown-menu`}
                 style={{
                     display: this.open ? 'block' : 'none',
@@ -84,7 +93,7 @@ export class Dropdownmenu implements ComponentInterface {
             >
                 {this.renderEmptyItem()}
                 {this.renderDropDownItems()}
-            </div>
+            </Host>
         );
     }
 
@@ -93,7 +102,7 @@ export class Dropdownmenu implements ComponentInterface {
             <pd-dropdown-item
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(item, true)}
+                onClick={() => this.selectItem(item)}
                 data-test={`pd-dropdown-item-${i}`}
             ></pd-dropdown-item>
         ));
@@ -105,7 +114,7 @@ export class Dropdownmenu implements ComponentInterface {
             <pd-dropdown-item
                 value={this.emptyItemData.label}
                 selected={this.emptyItemData.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(this.emptyItemData, true)}
+                onClick={() => this.selectItem(this.emptyItemData)}
                 data-test={`pd-dropdown-item-empty`}
             ></pd-dropdown-item>
         );

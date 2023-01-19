@@ -18,6 +18,16 @@ import {
 } from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
 
+// interface Person<A> {
+//     name: string;
+//     adress: A;
+// }
+
+// const x: Person<{street:string, plz:number}> = {
+//     name:"Hans",
+//     adress: {street:"sdf", plz:4444}
+// }
+
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
@@ -142,62 +152,67 @@ export class Dropdown implements ComponentInterface {
         this.open = false;
     }
 
-    @Listen('keydown')
-    handleKeyDown(ev: KeyboardEvent) {
-        switch (ev.key) {
-            case 'Tab': {
-                this.open = false;
-                break;
-            }
-            case 'Escape':
-            case 'Enter': {
-                ev.preventDefault();
-                this.open = false;
-                break;
-            }
+    // @Listen('keydown')
+    // handleKeyDown(ev: KeyboardEvent) {
+    //     switch (ev.key) {
+    //         case 'Tab': {
+    //             this.open = false;
+    //             break;
+    //         }
+    //         case 'Escape':
+    //         case 'Enter': {
+    //             ev.preventDefault();
+    //             this.open = false;
+    //             break;
+    //         }
 
-            case 'ArrowDown': {
-                ev.preventDefault();
-                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
-                const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
-                const nextItem = this.items[nextIndex];
-                if (nextItem !== this.selectedItem) this.selectItem(nextItem);
-                break;
-            }
-            case 'ArrowUp': {
-                ev.preventDefault();
-                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
-                const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-                const previousItem = this.items[previousIndex];
-                if (previousItem !== this.selectedItem) this.selectItem(previousItem);
-                break;
-            }
-            default: {
-                const current = performance.now();
+    //         case 'ArrowDown': {
+    //             ev.preventDefault();
+    //             const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
+    //             const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
+    //             const nextItem = this.items[nextIndex];
+    //             if (nextItem !== this.selectedItem) this.selectItem(nextItem);
+    //             break;
+    //         }
+    //         case 'ArrowUp': {
+    //             ev.preventDefault();
+    //             const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
+    //             const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
+    //             const previousItem = this.items[previousIndex];
+    //             if (previousItem !== this.selectedItem) this.selectItem(previousItem);
+    //             break;
+    //         }
+    //         default: {
+    //             const current = performance.now();
 
-                // search when < 500ms between keystrokes
-                if (current - this.inputTime < 500) {
-                    this.currentSearch += ev.key;
-                } else {
-                    this.currentSearch = ev.key;
-                }
-                const currentItem = this.items.find(
-                    (item) => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
-                );
-                if (currentItem) this.selectedItem = currentItem;
+    //             // search when < 500ms between keystrokes
+    //             if (current - this.inputTime < 500) {
+    //                 this.currentSearch += ev.key;
+    //             } else {
+    //                 this.currentSearch = ev.key;
+    //             }
+    //             const currentItem = this.items.find(
+    //                 (item) => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
+    //             );
+    //             if (currentItem) this.selectedItem = currentItem;
 
-                this.inputTime = current;
-            }
-        }
-    }
+    //             this.inputTime = current;
+    //         }
+    //     }
+    // }
 
     private currentSearch: string = '';
     private inputTime: number = 0;
 
-    private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
+    private selectItem(ev: CustomEvent<DropdownItem>) {
+        ev.stopPropagation();
+
+        const item: DropdownItem = ev.detail;
+        console.log(ev.detail);
+
         this.selectedItem = item;
-        if (closeDropdown) this.open = false;
-        this.pdChange.emit(item);
+        // if (closeDropdown) this.open = false;
+        // this.pdChange.emit(item);
     }
 
     private toggleDropdown = () => {
@@ -205,15 +220,19 @@ export class Dropdown implements ComponentInterface {
             this.open = !this.open;
 
             if (this.open) {
-                requestAnimationFrame(() => {
-                    this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+                // requestAnimationFrame(() => {
+                //     this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
 
-                    // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
-                    //     'pd-dropdown-item',
-                    // ) as NodeListOf<HTMLPdDropdownItemElement>;
-                    // this.scrollToSelected(dropdownItemNodes, this.menuElement);
-                    this.popper.forceUpdate();
-                });
+                //     // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
+                //     //     'pd-dropdown-item',
+                //     // ) as NodeListOf<HTMLPdDropdownItemElement>;
+                //     // this.scrollToSelected(dropdownItemNodes, this.menuElement);
+                //     // this.popper.forceUpdate();
+                // });
+
+                setTimeout(() => {
+                    this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+                }, 1000);
             } else {
                 // document.getElementById('overlay').remove();
             }
@@ -229,19 +248,19 @@ export class Dropdown implements ComponentInterface {
     //     if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     // }
 
-    // public componentDidUpdate() {
-    //     if (this._viewOnly !== this.viewOnly) {
-    //         this._viewOnly = this.viewOnly;
-    //         if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-    //     }
+    public componentDidUpdate() {
+        //     if (this._viewOnly !== this.viewOnly) {
+        //         this._viewOnly = this.viewOnly;
+        //         if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+        //     }
 
-    //     if (!this.open) return;
-    //     const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
-    //         HTMLPdDropdownItemElement
-    //     >;
-    //     this.scrollToSelected(dropdownItemNodes, this.menuElement);
-    //     this.popper.forceUpdate();
-    // }
+        //     if (!this.open) return;
+        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+            HTMLPdDropdownItemElement
+        >;
+        this.scrollToSelected(dropdownItemNodes, this.menuElement);
+        // this.popper.forceUpdate();
+    }
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
         dropdownItemNodes.forEach((item) => {
@@ -321,8 +340,12 @@ export class Dropdown implements ComponentInterface {
             <pd-dropdown-overlay show={this.open}>
                 <pd-dropdown-menu
                     items={this.items}
-                    buttonElement={this.buttonElement}
                     ref={(el) => (this.menuElement = el)}
+                    onPd-dropdown-select-item={(ev) => this.selectItem(ev)}
+                    selectedItem={this.selectedItem}
+                    emptyItem={this.emptyItem}
+                    emptyItemData={this.emptyItemData}
+                    itemCount={this.itemCount}
                 ></pd-dropdown-menu>
             </pd-dropdown-overlay>
         );
