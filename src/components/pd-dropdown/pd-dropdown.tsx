@@ -17,13 +17,15 @@ import {
     Watch,
 } from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
+
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
     assetsDirs: ['assets-dropdown'],
     shadow: true,
 })
-export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
+// export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
+export class Dropdown implements ComponentInterface {
     private menuElement: HTMLElement;
     private buttonElement: HTMLElement;
     private popper: Instance;
@@ -129,9 +131,15 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         if (viewOnly && this.popper) this.popper.destroy();
     }
 
-    @Listen('click', { target: 'body' })
-    handleClick(ev: MouseEvent) {
-        if (!ev.composedPath().includes(this.element)) this.open = false;
+    // @Listen('click', { target: 'body' })
+    // handleClick(ev: MouseEvent) {
+    //     if (!ev.composedPath().includes(this.element)) this.open = false;
+    // }
+
+    @Listen('pd-overlay-click', { target: 'body' })
+    handleClickOnOverlay(ev: MouseEvent) {
+        // console.log(ev);
+        this.open = false;
     }
 
     @Listen('keydown')
@@ -193,31 +201,47 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private toggleDropdown = () => {
-        if (!this.disabled && !this.readonly && !this.viewOnly) this.open = !this.open;
+        if (!this.disabled && !this.readonly && !this.viewOnly) {
+            this.open = !this.open;
+
+            if (this.open) {
+                requestAnimationFrame(() => {
+                    this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+
+                    // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
+                    //     'pd-dropdown-item',
+                    // ) as NodeListOf<HTMLPdDropdownItemElement>;
+                    // this.scrollToSelected(dropdownItemNodes, this.menuElement);
+                    this.popper.forceUpdate();
+                });
+            } else {
+                // document.getElementById('overlay').remove();
+            }
+        }
     };
 
     public componentWillLoad() {
         this.selectedItem = this.items.find((item) => item.selected);
     }
 
-    public componentDidLoad() {
-        this._viewOnly = this.viewOnly;
-        if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-    }
+    // public componentDidLoad() {
+    //     this._viewOnly = this.viewOnly;
+    //     if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+    // }
 
-    public componentDidUpdate() {
-        if (this._viewOnly !== this.viewOnly) {
-            this._viewOnly = this.viewOnly;
-            if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-        }
+    // public componentDidUpdate() {
+    //     if (this._viewOnly !== this.viewOnly) {
+    //         this._viewOnly = this.viewOnly;
+    //         if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+    //     }
 
-        if (!this.open) return;
-        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
-            HTMLPdDropdownItemElement
-        >;
-        this.scrollToSelected(dropdownItemNodes, this.menuElement);
-        this.popper.forceUpdate();
-    }
+    //     if (!this.open) return;
+    //     const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+    //         HTMLPdDropdownItemElement
+    //     >;
+    //     this.scrollToSelected(dropdownItemNodes, this.menuElement);
+    //     this.popper.forceUpdate();
+    // }
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
         dropdownItemNodes.forEach((item) => {
@@ -228,6 +252,8 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     // create a popper js element for the menu
     private createMenuPopper(button, menu) {
+        if (!menu) return;
+        // console.log(menu);
         return createPopper(button, menu, {
             placement: 'bottom-start',
         });
@@ -278,52 +304,27 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                                 size={2.4}
                             ></pd-icon>
                         </button>
-                        {this.renderDropDown()}
+                        {/* {this.renderDropDown()} */}
+                        {/* {this.renderOverlay()} */}
                     </div>
                 ) : (
                     <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
                 )}
+                {/* {this.renderOverlay()} */}
+                {this.open ? this.renderOverlay() : ''}
             </Host>
         );
     }
 
-    private renderDropDown() {
+    private renderOverlay() {
         return (
-            <div
-                ref={(el) => (this.menuElement = el)}
-                class={`pd-dropdown-menu`}
-                style={{
-                    display: this.open ? 'block' : 'none',
-                    maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
-                }}
-                tabIndex={-1}
-            >
-                {this.renderEmptyItem()}
-                {this.renderDropDownItems()}
-            </div>
-        );
-    }
-
-    private renderDropDownItems() {
-        return this.items.map((item, i) => (
-            <pd-dropdown-item
-                value={item.label}
-                selected={item.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(item, true)}
-                data-test={`pd-dropdown-item-${i}`}
-            ></pd-dropdown-item>
-        ));
-    }
-
-    private renderEmptyItem() {
-        if (!this.emptyItem) return;
-        return (
-            <pd-dropdown-item
-                value={this.emptyItemData.label}
-                selected={this.emptyItemData.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(this.emptyItemData, true)}
-                data-test={`pd-dropdown-item-empty`}
-            ></pd-dropdown-item>
+            <pd-dropdown-overlay show={this.open}>
+                <pd-dropdown-menu
+                    items={this.items}
+                    buttonElement={this.buttonElement}
+                    ref={(el) => (this.menuElement = el)}
+                ></pd-dropdown-menu>
+            </pd-dropdown-overlay>
         );
     }
 
