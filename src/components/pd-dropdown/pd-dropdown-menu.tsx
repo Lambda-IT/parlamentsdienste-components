@@ -23,6 +23,8 @@ import { DropdownItem } from '../../interface';
 export class Dropdownmenu implements ComponentInterface {
     @Element() element: HTMLPdDropdownMenuElement;
 
+    @State() isLoaded: boolean = false;
+
     constructor() {}
 
     @Prop() open = true;
@@ -54,27 +56,39 @@ export class Dropdownmenu implements ComponentInterface {
 
     /**
      * Triggers when one or all rows get selected
+     * onPd-dropdown-select-item
      */
     @Event({ eventName: 'pd-dropdown-select-item' }) onDropdownSelectItem: EventEmitter<DropdownItem>;
 
+    /**
+     * Tells the parent that this component is ready (for setting the position)
+     * onPd-dropdown-menu-did-load
+     */
+    @Event({ eventName: 'pd-dropdown-menu-did-load' }) onDropdownMenuDidLoad: EventEmitter<void>;
+
     public componentDidLoad() {
+        console.log('menu');
         const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
+
+        this.onDropdownMenuDidLoad.emit();
+
         requestAnimationFrame(() => {
+            // this.isLoaded = true;
             this.scrollToSelected(dropdownItemNodes, this.element);
         });
     }
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
         dropdownItemNodes.forEach((item) => {
             const centerItem = Math.ceil(this.itemCount / 2) - 1;
-            console.log(item.selected, item.offsetTop - 48 * centerItem);
+            // console.log(item.selected, item.offsetTop - 48 * centerItem);
             if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
     }
     private selectItem(item: DropdownItem) {
         // this.selectedItem = item;
-        console.log(item);
+        // console.log(item);
         this.onDropdownSelectItem.emit(item);
         // if (closeDropdown) this.open = false;
         // this.pdChange.emit(item);
@@ -86,7 +100,8 @@ export class Dropdownmenu implements ComponentInterface {
                 // ref={(el) => (this.menuElement = el)}
                 class={`pd-dropdown-menu`}
                 style={{
-                    display: this.open ? 'block' : 'none',
+                    opacity: this.open ? '1' : '0',
+                    // display: this.isLoaded ? 'block' : 'none',
                     maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
                 }}
                 tabIndex={-1}

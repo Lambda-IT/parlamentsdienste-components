@@ -1,0 +1,39 @@
+@include resetControlFonts;
+
+:host {
+    // display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    // border: 10px solid pink;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100vw;
+    height: 100%;
+    // display: none;
+}
+
+// :host(.pd-dropdown-overlay) {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+
+//     // border: 10px solid pink;
+//     z-index: 200;
+//     background-color: rgba(0, 0, 0, 0);
+//     width: 100vw;
+//     height: 100%;
+//     display: none;
+// }
+
+// :host(.pd-dropdown-overlay.show) {
+//     display: block;
+// }
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}

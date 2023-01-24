@@ -148,94 +148,109 @@ export class Dropdown implements ComponentInterface {
 
     @Listen('pd-overlay-click', { target: 'body' })
     handleClickOnOverlay(ev: MouseEvent) {
-        // console.log(ev);
+        console.log(ev);
         this.open = false;
     }
 
-    // @Listen('keydown')
-    // handleKeyDown(ev: KeyboardEvent) {
-    //     switch (ev.key) {
-    //         case 'Tab': {
-    //             this.open = false;
-    //             break;
-    //         }
-    //         case 'Escape':
-    //         case 'Enter': {
-    //             ev.preventDefault();
-    //             this.open = false;
-    //             break;
-    //         }
+    @Listen('keydown')
+    handleKeyDown(ev: KeyboardEvent) {
+        switch (ev.key) {
+            case 'Tab': {
+                this.open = false;
+                break;
+            }
+            case 'Escape':
+            case 'Enter': {
+                ev.preventDefault();
+                this.open = false;
+                break;
+            }
 
-    //         case 'ArrowDown': {
-    //             ev.preventDefault();
-    //             const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
-    //             const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
-    //             const nextItem = this.items[nextIndex];
-    //             if (nextItem !== this.selectedItem) this.selectItem(nextItem);
-    //             break;
-    //         }
-    //         case 'ArrowUp': {
-    //             ev.preventDefault();
-    //             const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
-    //             const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-    //             const previousItem = this.items[previousIndex];
-    //             if (previousItem !== this.selectedItem) this.selectItem(previousItem);
-    //             break;
-    //         }
-    //         default: {
-    //             const current = performance.now();
+            case 'ArrowDown': {
+                ev.preventDefault();
+                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
+                const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
+                const nextItem = this.items[nextIndex];
+                if (nextItem !== this.selectedItem) this.selectItem(nextItem);
+                requestAnimationFrame(() => {
+                    this.popper.forceUpdate();
+                });
+                break;
+            }
+            case 'ArrowUp': {
+                ev.preventDefault();
+                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
+                const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
+                const previousItem = this.items[previousIndex];
+                if (previousItem !== this.selectedItem) this.selectItem(previousItem);
+                requestAnimationFrame(() => {
+                    this.popper.forceUpdate();
+                });
+                break;
+            }
+            default: {
+                const current = performance.now();
 
-    //             // search when < 500ms between keystrokes
-    //             if (current - this.inputTime < 500) {
-    //                 this.currentSearch += ev.key;
-    //             } else {
-    //                 this.currentSearch = ev.key;
-    //             }
-    //             const currentItem = this.items.find(
-    //                 (item) => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
-    //             );
-    //             if (currentItem) this.selectedItem = currentItem;
+                // search when < 500ms between keystrokes
+                if (current - this.inputTime < 500) {
+                    this.currentSearch += ev.key;
+                } else {
+                    this.currentSearch = ev.key;
+                }
+                const currentItem = this.items.find(
+                    (item) => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
+                );
+                if (currentItem) this.selectedItem = currentItem;
 
-    //             this.inputTime = current;
-    //         }
-    //     }
-    // }
+                this.inputTime = current;
+            }
+        }
+    }
 
     private currentSearch: string = '';
     private inputTime: number = 0;
 
-    private selectItem(ev: CustomEvent<DropdownItem>) {
-        ev.stopPropagation();
+    // private selectItem(ev: CustomEvent<DropdownItem>) {
+    private selectItem(item: DropdownItem) {
+        // ev.stopPropagation();
 
-        const item: DropdownItem = ev.detail;
-        console.log(ev.detail);
+        // const item: DropdownItem = ev.detail;
+        // console.log(ev.detail);
 
         this.selectedItem = item;
         // if (closeDropdown) this.open = false;
         // this.pdChange.emit(item);
     }
 
+    private menuDidLoad(ev: CustomEvent<void>) {
+        console.log('recieved event');
+        ev.stopPropagation();
+
+        if (this.open) {
+            // requestAnimationFrame(() => {
+            //     this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+            //     // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
+            //     //     'pd-dropdown-item',
+            //     // ) as NodeListOf<HTMLPdDropdownItemElement>;
+            //     // this.scrollToSelected(dropdownItemNodes, this.menuElement);
+            //     // this.popper.forceUpdate();
+            // });
+            // setTimeout(() => {
+
+            // console.log(this.menuElement.getBoundingClientRect());
+            this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+            requestAnimationFrame(() => {
+                // console.log(this.menuElement.getBoundingClientRect());
+            });
+            // }, 1000);
+        } else {
+            // document.getElementById('overlay').remove();
+        }
+    }
+
     private toggleDropdown = () => {
         if (!this.disabled && !this.readonly && !this.viewOnly) {
             this.open = !this.open;
-
-            if (this.open) {
-                // requestAnimationFrame(() => {
-                //     this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-
-                //     // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
-                //     //     'pd-dropdown-item',
-                //     // ) as NodeListOf<HTMLPdDropdownItemElement>;
-                //     // this.scrollToSelected(dropdownItemNodes, this.menuElement);
-                //     // this.popper.forceUpdate();
-                // });
-
-                setTimeout(() => {
-                    this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-                }, 1000);
-            } else {
-                // document.getElementById('overlay').remove();
-            }
         }
     };
 
@@ -243,31 +258,31 @@ export class Dropdown implements ComponentInterface {
         this.selectedItem = this.items.find((item) => item.selected);
     }
 
-    // public componentDidLoad() {
-    //     this._viewOnly = this.viewOnly;
-    //     if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-    // }
+    public componentDidLoad() {
+        console.log('dropdown');
+        // this._viewOnly = this.viewOnly;
+        // if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+    }
 
     public componentDidUpdate() {
         //     if (this._viewOnly !== this.viewOnly) {
         //         this._viewOnly = this.viewOnly;
         //         if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
         //     }
-
         //     if (!this.open) return;
-        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
-            HTMLPdDropdownItemElement
-        >;
-        this.scrollToSelected(dropdownItemNodes, this.menuElement);
+        // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+        //     HTMLPdDropdownItemElement
+        // >;
+        //this.scrollToSelected(dropdownItemNodes, this.menuElement);
         // this.popper.forceUpdate();
     }
 
-    private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
-        dropdownItemNodes.forEach((item) => {
-            const centerItem = Math.ceil(this.itemCount / 2) - 1;
-            if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
-        });
-    }
+    // private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
+    //     dropdownItemNodes.forEach((item) => {
+    //         const centerItem = Math.ceil(this.itemCount / 2) - 1;
+    //         if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
+    //     });
+    // }
 
     // create a popper js element for the menu
     private createMenuPopper(button, menu) {
@@ -337,17 +352,24 @@ export class Dropdown implements ComponentInterface {
 
     private renderOverlay() {
         return (
-            <pd-dropdown-overlay show={this.open}>
+            <pd-overlay
+            // show={this.open}
+            // onPd-overlay-did-load={(ev) => this.menuDidLoad(ev)}
+            >
                 <pd-dropdown-menu
                     items={this.items}
                     ref={(el) => (this.menuElement = el)}
-                    onPd-dropdown-select-item={(ev) => this.selectItem(ev)}
+                    onPd-dropdown-select-item={(ev) => {
+                        ev.stopPropagation();
+                        this.selectItem(ev.detail);
+                    }}
+                    onPd-dropdown-menu-did-load={(ev) => this.menuDidLoad(ev)}
                     selectedItem={this.selectedItem}
                     emptyItem={this.emptyItem}
                     emptyItemData={this.emptyItemData}
                     itemCount={this.itemCount}
                 ></pd-dropdown-menu>
-            </pd-dropdown-overlay>
+            </pd-overlay>
         );
     }
 
