@@ -394,9 +394,8 @@ export namespace Components {
           * Items to display and select in dropdown
          */
         "items": DropdownItem[];
-        "open": boolean;
         /**
-          * TODO
+          * The selected Item
          */
         "selectedItem": DropdownItem;
     }
@@ -1796,6 +1795,9 @@ declare namespace LocalJSX {
           * Dropdown box label
          */
         "label"?: string;
+        /**
+          * Emitted when the value has changed.
+         */
         "onPd-change"?: (event: PdDropdownCustomEvent<DropdownItem>) => void;
         /**
           * Placeholder when no item is selected
@@ -1854,16 +1856,15 @@ declare namespace LocalJSX {
          */
         "items"?: DropdownItem[];
         /**
-          * Tells the parent that this component is ready (for setting the position) onPd-dropdown-menu-did-load
+          * Tells the parent that this component is ready (for setting the position with popperJS)
          */
         "onPd-dropdown-menu-did-load"?: (event: PdDropdownMenuCustomEvent<void>) => void;
         /**
-          * Triggers when one or all rows get selected onPd-dropdown-select-item
+          * Event for the parent (pd-dropdown) to select an item
          */
         "onPd-dropdown-select-item"?: (event: PdDropdownMenuCustomEvent<DropdownItem>) => void;
-        "open"?: boolean;
         /**
-          * TODO
+          * The selected Item
          */
         "selectedItem"?: DropdownItem;
     }
@@ -2171,7 +2172,6 @@ declare namespace LocalJSX {
     }
     interface PdOverlay {
         "onPd-overlay-click"?: (event: PdOverlayCustomEvent<void>) => void;
-        "onPd-overlay-did-load"?: (event: PdOverlayCustomEvent<void>) => void;
     }
     interface PdPagination {
         /**

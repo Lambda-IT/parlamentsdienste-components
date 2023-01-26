@@ -15,12 +15,11 @@ export class Overlay implements ComponentInterface {
 
     @Event({ eventName: 'pd-overlay-click' }) pdChange!: EventEmitter<void>;
 
-    @Event({ eventName: 'pd-overlay-did-load' }) onOverlayDidLoad: EventEmitter<void>;
+    // @Event({ eventName: 'pd-overlay-did-load' }) onOverlayDidLoad: EventEmitter<void>;
 
     public componentDidLoad() {
-        console.log('overlay');
         document.body.appendChild(this.element);
-        this.onOverlayDidLoad.emit();
+        // this.onOverlayDidLoad.emit();
     }
 
     public render() {

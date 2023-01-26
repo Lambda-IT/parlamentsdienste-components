@@ -1,4 +1,5 @@
-import { createPopper, Instance } from '@popperjs/core';
+import { Instance } from '@popperjs/core';
+import createMenuPopper from '../../utils/popper';
 import {
     Component,
     ComponentDidLoad,
@@ -18,24 +19,13 @@ import {
 } from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
 
-// interface Person<A> {
-//     name: string;
-//     adress: A;
-// }
-
-// const x: Person<{street:string, plz:number}> = {
-//     name:"Hans",
-//     adress: {street:"sdf", plz:4444}
-// }
-
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
     assetsDirs: ['assets-dropdown'],
     shadow: true,
 })
-// export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
-export class Dropdown implements ComponentInterface {
+export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
     private menuElement: HTMLElement;
     private buttonElement: HTMLElement;
     private popper: Instance;
@@ -115,6 +105,9 @@ export class Dropdown implements ComponentInterface {
      */
     @Prop() textWrap: TextWrap = 'no-wrap';
 
+    /**
+     * Emitted when the value has changed.
+     */
     @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<DropdownItem>;
 
     /**
@@ -141,28 +134,25 @@ export class Dropdown implements ComponentInterface {
         if (viewOnly && this.popper) this.popper.destroy();
     }
 
-    // @Listen('click', { target: 'body' })
-    // handleClick(ev: MouseEvent) {
-    //     if (!ev.composedPath().includes(this.element)) this.open = false;
-    // }
-
     @Listen('pd-overlay-click', { target: 'body' })
-    handleClickOnOverlay(ev: MouseEvent) {
-        console.log(ev);
-        this.open = false;
+    handleClickOnOverlay() {
+        // this.open = false;
+        this.closeDropdown();
     }
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
-                this.open = false;
+                // this.open = false;
+                this.closeDropdown();
                 break;
             }
             case 'Escape':
             case 'Enter': {
                 ev.preventDefault();
-                this.open = false;
+                // this.open = false;
+                this.closeDropdown();
                 break;
             }
 
@@ -172,9 +162,7 @@ export class Dropdown implements ComponentInterface {
                 const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = this.items[nextIndex];
                 if (nextItem !== this.selectedItem) this.selectItem(nextItem);
-                requestAnimationFrame(() => {
-                    this.popper.forceUpdate();
-                });
+
                 break;
             }
             case 'ArrowUp': {
@@ -183,9 +171,7 @@ export class Dropdown implements ComponentInterface {
                 const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
                 const previousItem = this.items[previousIndex];
                 if (previousItem !== this.selectedItem) this.selectItem(previousItem);
-                requestAnimationFrame(() => {
-                    this.popper.forceUpdate();
-                });
+
                 break;
             }
             default: {
@@ -210,41 +196,17 @@ export class Dropdown implements ComponentInterface {
     private currentSearch: string = '';
     private inputTime: number = 0;
 
-    // private selectItem(ev: CustomEvent<DropdownItem>) {
     private selectItem(item: DropdownItem) {
-        // ev.stopPropagation();
-
-        // const item: DropdownItem = ev.detail;
-        // console.log(ev.detail);
-
         this.selectedItem = item;
-        // if (closeDropdown) this.open = false;
-        // this.pdChange.emit(item);
+
+        this.pdChange.emit(this.selectedItem);
     }
 
     private menuDidLoad(ev: CustomEvent<void>) {
-        console.log('recieved event');
         ev.stopPropagation();
 
         if (this.open) {
-            // requestAnimationFrame(() => {
-            //     this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-            //     // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
-            //     //     'pd-dropdown-item',
-            //     // ) as NodeListOf<HTMLPdDropdownItemElement>;
-            //     // this.scrollToSelected(dropdownItemNodes, this.menuElement);
-            //     // this.popper.forceUpdate();
-            // });
-            // setTimeout(() => {
-
-            // console.log(this.menuElement.getBoundingClientRect());
-            this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-            requestAnimationFrame(() => {
-                // console.log(this.menuElement.getBoundingClientRect());
-            });
-            // }, 1000);
-        } else {
-            // document.getElementById('overlay').remove();
+            this.popper = createMenuPopper(this.buttonElement, this.menuElement);
         }
     }
 
@@ -254,12 +216,18 @@ export class Dropdown implements ComponentInterface {
         }
     };
 
+    private closeDropdown() {
+        if (!this.disabled && !this.readonly && !this.viewOnly && this.popper && this.open) {
+            this.open = false;
+            this.popper.destroy();
+        }
+    }
+
     public componentWillLoad() {
         this.selectedItem = this.items.find((item) => item.selected);
     }
 
     public componentDidLoad() {
-        console.log('dropdown');
         // this._viewOnly = this.viewOnly;
         // if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
     }
@@ -270,26 +238,17 @@ export class Dropdown implements ComponentInterface {
         //         if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
         //     }
         //     if (!this.open) return;
-        // const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
-        //     HTMLPdDropdownItemElement
-        // >;
-        //this.scrollToSelected(dropdownItemNodes, this.menuElement);
-        // this.popper.forceUpdate();
+        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+            HTMLPdDropdownItemElement
+        >;
+        this.scrollToSelected(dropdownItemNodes, this.menuElement);
+        if (this.popper) this.popper.forceUpdate();
     }
 
-    // private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
-    //     dropdownItemNodes.forEach((item) => {
-    //         const centerItem = Math.ceil(this.itemCount / 2) - 1;
-    //         if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
-    //     });
-    // }
-
-    // create a popper js element for the menu
-    private createMenuPopper(button, menu) {
-        if (!menu) return;
-        // console.log(menu);
-        return createPopper(button, menu, {
-            placement: 'bottom-start',
+    private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
+        dropdownItemNodes.forEach((item) => {
+            const centerItem = Math.ceil(this.itemCount / 2) - 1;
+            if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
     }
 
@@ -338,13 +297,10 @@ export class Dropdown implements ComponentInterface {
                                 size={2.4}
                             ></pd-icon>
                         </button>
-                        {/* {this.renderDropDown()} */}
-                        {/* {this.renderOverlay()} */}
                     </div>
                 ) : (
                     <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
                 )}
-                {/* {this.renderOverlay()} */}
                 {this.open ? this.renderOverlay() : ''}
             </Host>
         );
@@ -352,10 +308,7 @@ export class Dropdown implements ComponentInterface {
 
     private renderOverlay() {
         return (
-            <pd-overlay
-            // show={this.open}
-            // onPd-overlay-did-load={(ev) => this.menuDidLoad(ev)}
-            >
+            <pd-overlay>
                 <pd-dropdown-menu
                     items={this.items}
                     ref={(el) => (this.menuElement = el)}

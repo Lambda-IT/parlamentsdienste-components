@@ -991,6 +991,11 @@
 
             pdNavbar.addEventListener('pd-menu', () => console.log(`file: index.html ~ line 324`));
 
+            // pdDropDownItems[0].addEventListener('pd-change', console.log);
+            setTimeout(() => {
+                pdDropDownItems[0].setSelectedIndex(4);
+            }, 1000);
+
             for (let pdDropdown of pdDropDownItems) {
                 pdDropdown.items = [
                     { id: '1', label: 'Dropdown', value: 'a1', selected: true },
