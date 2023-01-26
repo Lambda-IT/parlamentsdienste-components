@@ -9,7 +9,6 @@ import {
     Host,
     Listen,
     Prop,
-    State,
     Watch,
 } from '@stencil/core';
 import { DropdownItem } from '../../interface';
@@ -21,11 +20,6 @@ import { DropdownItem } from '../../interface';
 })
 export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     @Element() element: HTMLPdDropdownMenuElement;
-
-    /**
-     * Set the opacity on 1 after the component is fully loaded and moved by popper
-     */
-    @State() isLoaded = false;
 
     /**
      * Items visible in dropdown
@@ -68,8 +62,8 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
         this.onDropdownMenuDidLoad.emit();
 
         requestAnimationFrame(() => {
-            this.isLoaded = true;
             this.scrollToSelected();
+            this.element.style.opacity = '1';
         });
     }
 
@@ -93,7 +87,6 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
                 role="listbox"
                 class={`pd-dropdown-menu`}
                 style={{
-                    opacity: this.isLoaded ? '1' : '0',
                     maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
                 }}
                 tabIndex={-1}
