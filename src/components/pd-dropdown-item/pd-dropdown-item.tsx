@@ -25,7 +25,7 @@ export class DropdownItem implements ComponentInterface {
 
     public render() {
         return (
-            <Host>
+            <Host role="option" aria-selected={this.selected ? 'true' : 'false'}>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
                     <span
                         innerHTML={this.strong(this.value, this.highlight?.toString())}

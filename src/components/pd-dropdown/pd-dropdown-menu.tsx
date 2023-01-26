@@ -1,15 +1,16 @@
 import {
     Component,
+    ComponentDidLoad,
     ComponentInterface,
-    EventEmitter,
+    Element,
     Event,
+    EventEmitter,
     h,
     Host,
+    Listen,
     Prop,
-    Element,
     State,
     Watch,
-    ComponentDidLoad,
 } from '@stencil/core';
 import { DropdownItem } from '../../interface';
 
@@ -37,16 +38,6 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     @Prop() items: DropdownItem[] = [];
 
     /**
-     * Enable selection of an empty item
-     */
-    @Prop() emptyItem: boolean = false;
-
-    /**
-     * Data used for the empty item
-     */
-    @Prop() emptyItemData: DropdownItem;
-
-    /**
      * The selected Item
      */
     @Prop() selectedItem: DropdownItem;
@@ -60,6 +51,13 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
      * Tells the parent that this component is ready (for setting the position with popperJS)
      */
     @Event({ eventName: 'pd-dropdown-menu-did-load' }) onDropdownMenuDidLoad: EventEmitter<void>;
+
+    @Event({ eventName: 'pd-keydown' }) pdKeydown!: EventEmitter<KeyboardEvent>;
+
+    @Listen('keydown')
+    handleKeyDown(ev: KeyboardEvent) {
+        this.pdKeydown.emit(ev);
+    }
 
     @Watch('selectedItem')
     public selectedItemChanged() {
@@ -92,6 +90,7 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     public render() {
         return (
             <Host
+                role="listbox"
                 class={`pd-dropdown-menu`}
                 style={{
                     opacity: this.isLoaded ? '1' : '0',
@@ -99,7 +98,6 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
                 }}
                 tabIndex={-1}
             >
-                {this.renderEmptyItem()}
                 {this.renderDropDownItems()}
             </Host>
         );
@@ -108,23 +106,16 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     private renderDropDownItems() {
         return this.items.map((item, i) => (
             <pd-dropdown-item
+                id={`pd-dropdown-item-${i}`}
+                ref={(el) => {
+                    if (item.id === this.selectedItem?.id) el.focus();
+                }}
+                tabindex="0"
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(item)}
                 data-test={`pd-dropdown-item-${i}`}
             ></pd-dropdown-item>
         ));
-    }
-
-    private renderEmptyItem() {
-        if (!this.emptyItem) return;
-        return (
-            <pd-dropdown-item
-                value={this.emptyItemData.label}
-                selected={this.emptyItemData.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(this.emptyItemData)}
-                data-test={`pd-dropdown-item-empty`}
-            ></pd-dropdown-item>
-        );
     }
 }

@@ -379,14 +379,6 @@ export namespace Components {
     }
     interface PdDropdownMenu {
         /**
-          * Enable selection of an empty item
-         */
-        "emptyItem": boolean;
-        /**
-          * Data used for the empty item
-         */
-        "emptyItemData": DropdownItem;
-        /**
           * Items visible in dropdown
          */
         "itemCount": number;
@@ -1840,14 +1832,6 @@ declare namespace LocalJSX {
     }
     interface PdDropdownMenu {
         /**
-          * Enable selection of an empty item
-         */
-        "emptyItem"?: boolean;
-        /**
-          * Data used for the empty item
-         */
-        "emptyItemData"?: DropdownItem;
-        /**
           * Items visible in dropdown
          */
         "itemCount"?: number;
@@ -1863,6 +1847,7 @@ declare namespace LocalJSX {
           * Event for the parent (pd-dropdown) to select an item
          */
         "onPd-dropdown-select-item"?: (event: PdDropdownMenuCustomEvent<DropdownItem>) => void;
+        "onPd-keydown"?: (event: PdDropdownMenuCustomEvent<KeyboardEvent>) => void;
         /**
           * The selected Item
          */
