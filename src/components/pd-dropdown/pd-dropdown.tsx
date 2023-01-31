@@ -263,11 +263,13 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         return (
             <Host>
                 <label
+                    id={`pd-dropdown-label-${this.dropdownId}`}
                     class={{
                         'pd-dropdown-label': true,
                         'pd-dropdown-disabled': this.disabled,
                     }}
-                    onClick={this.toggleDropdown}
+                    htmlFor={`pd-dropdown-button-${this.dropdownId}`}
+                    aria-owns={`pd-dropdown-button-${this.dropdownId}`}
                     data-test="pd-dropdown-label"
                 >
                     {this.renderLabel()}
@@ -283,18 +285,21 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                     >
                         <button
                             ref={(el) => (this.buttonElement = el)}
+                            id={`pd-dropdown-button-${this.dropdownId}`}
                             class="pd-dropdown-button"
+                            onClick={this.toggleDropdown}
+                            disabled={this.disabled || this.readonly}
                             type="button"
                             role="combobox"
+                            aria-labelledby={`pd-dropdown-label-${this.dropdownId} pd-dropdown-${this.dropdownId}-text`}
                             aria-haspopup="listbox"
                             aria-expanded={`${this.open}`}
                             aria-controls={`pd-dropdown-menu-${this.dropdownId}`}
                             aria-activedescendant={`pd-dropdown-item-${this.selectedItem?.id}`}
-                            onClick={this.toggleDropdown}
-                            disabled={this.disabled || this.readonly}
                             data-test="pd-dropdown-button"
                         >
                             <span
+                                id={`pd-dropdown-${this.dropdownId}-text`}
                                 class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
                                 data-test="pd-dropdown-text"
                             >
@@ -331,6 +336,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                     onPd-keydown={(ev) => this.handleKeyDown(ev.detail)}
                     selectedItem={this.selectedItem}
                     itemCount={this.itemCount}
+                    aria-labelledby={`pd-dropdown-label-${this.dropdownId}`}
                 ></pd-dropdown-menu>
             </pd-overlay>
         );

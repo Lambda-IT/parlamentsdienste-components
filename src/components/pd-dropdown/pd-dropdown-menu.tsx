@@ -84,11 +84,11 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     public render() {
         return (
             <Host
-                role="listbox"
                 class={`pd-dropdown-menu`}
                 style={{
                     maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
                 }}
+                role="listbox"
                 tabIndex={-1}
             >
                 {this.renderDropDownItems()}
@@ -100,9 +100,6 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
         return this.items.map((item, i) => (
             <pd-dropdown-item
                 id={`pd-dropdown-item-${i}`}
-                ref={(el) => {
-                    if (item.id === this.selectedItem?.id) el.focus();
-                }}
                 tabindex="0"
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
