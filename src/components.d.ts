@@ -386,6 +386,7 @@ export namespace Components {
           * Items to display and select in dropdown
          */
         "items": DropdownItem[];
+        "parentId": number;
         /**
           * The selected Item
          */
@@ -1848,6 +1849,7 @@ declare namespace LocalJSX {
          */
         "onPd-dropdown-select-item"?: (event: PdDropdownMenuCustomEvent<DropdownItem>) => void;
         "onPd-keydown"?: (event: PdDropdownMenuCustomEvent<KeyboardEvent>) => void;
+        "parentId"?: number;
         /**
           * The selected Item
          */

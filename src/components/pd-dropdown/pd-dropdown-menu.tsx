@@ -16,10 +16,12 @@ import { DropdownItem } from '../../interface';
 @Component({
     tag: 'pd-dropdown-menu',
     styleUrl: 'pd-dropdown-menu.scss',
-    shadow: true,
+    shadow: false,
 })
 export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     @Element() element: HTMLPdDropdownMenuElement;
+
+    @Prop() parentId: number;
 
     /**
      * Items visible in dropdown
@@ -68,7 +70,7 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     }
 
     private scrollToSelected() {
-        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+        const dropdownItemNodes = this.element.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
 
@@ -88,7 +90,6 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
                 style={{
                     maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
                 }}
-                role="listbox"
                 tabIndex={-1}
             >
                 {this.renderDropDownItems()}
@@ -99,10 +100,11 @@ export class Dropdownmenu implements ComponentInterface, ComponentDidLoad {
     private renderDropDownItems() {
         return this.items.map((item, i) => (
             <pd-dropdown-item
-                id={`pd-dropdown-item-${i}`}
-                tabindex="0"
+                id={`pd-dropdown-${this.parentId}-item-${i}`}
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
+                aria-setsize={this.items.length}
+                aria-posinset={i + 1}
                 onClick={() => this.selectItem(item)}
                 data-test={`pd-dropdown-item-${i}`}
             ></pd-dropdown-item>

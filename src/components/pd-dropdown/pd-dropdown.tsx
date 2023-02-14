@@ -22,7 +22,7 @@ import createMenuPopper from '../../utils/popper';
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
     assetsDirs: ['assets-dropdown'],
-    shadow: true,
+    shadow: false,
 })
 export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidUpdate {
     private menuElement: HTMLElement;
@@ -145,7 +145,6 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     @Listen('pd-overlay-click', { target: 'body' })
     handleClickOnOverlay() {
-        // this.open = false;
         this.closeDropdown();
     }
 
@@ -153,13 +152,11 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
-                // this.open = false;
                 this.closeDropdown();
                 break;
             }
             case 'Escape': {
                 ev.preventDefault();
-                // this.open = false;
                 this.closeDropdown();
                 break;
             }
@@ -245,7 +242,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     public componentDidUpdate() {
-        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+        const dropdownItemNodes = this.element.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
         this.scrollToSelected(dropdownItemNodes, this.menuElement);
@@ -269,7 +266,6 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                         'pd-dropdown-disabled': this.disabled,
                     }}
                     htmlFor={`pd-dropdown-button-${this.dropdownId}`}
-                    aria-owns={`pd-dropdown-button-${this.dropdownId}`}
                     data-test="pd-dropdown-label"
                 >
                     {this.renderLabel()}
@@ -291,11 +287,12 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                             disabled={this.disabled || this.readonly}
                             type="button"
                             role="combobox"
-                            aria-labelledby={`pd-dropdown-label-${this.dropdownId} pd-dropdown-${this.dropdownId}-text`}
+                            aria-labelledby={`pd-dropdown-label-${this.dropdownId}`}
                             aria-haspopup="listbox"
                             aria-expanded={`${this.open}`}
-                            aria-controls={`pd-dropdown-menu-${this.dropdownId}`}
-                            aria-activedescendant={`pd-dropdown-item-${this.selectedItem?.id}`}
+                            aria-activedescendant={
+                                this.open ? `pd-dropdown-${this.dropdownId}-item-${this.selectedItem?.id}` : null
+                            }
                             data-test="pd-dropdown-button"
                         >
                             <span
@@ -316,7 +313,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 ) : (
                     <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
                 )}
-                {this.open ? this.renderOverlay() : ''}
+                {this.open ? this.renderOverlay() : null}
             </Host>
         );
     }
@@ -326,6 +323,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
             <pd-overlay>
                 <pd-dropdown-menu
                     id={`pd-dropdown-menu-${this.dropdownId}`}
+                    parentId={this.dropdownId}
                     items={this._items}
                     ref={(el) => (this.menuElement = el)}
                     onPd-dropdown-select-item={(ev) => {
@@ -333,9 +331,9 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                         this.selectItem(ev.detail);
                     }}
                     onPd-dropdown-menu-did-load={(ev) => this.menuDidLoad(ev)}
-                    onPd-keydown={(ev) => this.handleKeyDown(ev.detail)}
                     selectedItem={this.selectedItem}
                     itemCount={this.itemCount}
+                    role="listbox"
                     aria-labelledby={`pd-dropdown-label-${this.dropdownId}`}
                 ></pd-dropdown-menu>
             </pd-overlay>

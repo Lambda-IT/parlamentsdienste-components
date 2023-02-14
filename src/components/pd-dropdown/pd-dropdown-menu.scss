@@ -1,6 +1,6 @@
 @include resetControlFonts;
 
-:host {
+pd-dropdown-menu {
     // display: block;
 }
 
@@ -11,7 +11,7 @@
     outline: none;
 }
 
-:host(.pd-dropdown-menu) {
+pd-dropdown-menu.pd-dropdown-menu {
     background-color: $white;
     border: 0.125em solid $cyan-9;
     border-radius: 0.25rem;

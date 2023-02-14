@@ -1,9 +1,9 @@
-import { Component, ComponentInterface, Element, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/core';
 
 @Component({
     tag: 'pd-dropdown-item',
     styleUrl: 'pd-dropdown-item.scss',
-    shadow: true,
+    shadow: false,
 })
 export class DropdownItem implements ComponentInterface {
     @Element() element!: HTMLPdDropdownItemElement;
@@ -23,18 +23,9 @@ export class DropdownItem implements ComponentInterface {
      */
     @Prop() highlight?: string | number;
 
-    @Watch('selected')
-    public selectedChanged() {
-        if (this.selected) this.element.focus();
-    }
-
-    public componentDidLoad() {
-        setTimeout(() => this.selectedChanged(), 0);
-    }
-
     public render() {
         return (
-            <Host role="option" aria-selected={this.selected ? 'true' : 'false'}>
+            <Host role="option" aria-selected={`${this.selected}`}>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
                     <span
                         innerHTML={this.strong(this.value, this.highlight?.toString())}
