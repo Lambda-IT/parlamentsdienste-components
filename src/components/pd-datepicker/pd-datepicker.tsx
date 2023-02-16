@@ -26,6 +26,9 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     private contentWrapperElement: HTMLElement;
     private flatpickr: Instance;
 
+    private dateInputField: HTMLInputElement;
+    private currentValue: string;
+
     /**
      * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
      */
@@ -91,12 +94,25 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         wrap: true,
         time_24hr: true,
         onOpen: (selectedDates, dateStr) => this.pdOpen.emit({ selectedDates, dateStr }),
-        onClose: (selectedDates, dateStr) => this.pdClose.emit({ selectedDates, dateStr }),
+        onClose: (selectedDates, dateStr) => {
+            // When deleting the date manually (allowInput = true) out of the input field and when leaving the fiel afterwards by clicking outside, no change and no valueUpdate event is emitted...
+            // Thats why we set a current value and why we emmit it manually here
+            if (this.dateInputField.value === '' && this.currentValue != '') {
+                this.pdChange.emit({ selectedDates: [], dateStr: '' });
+            }
+            this.pdClose.emit({ selectedDates, dateStr });
+        },
         onMonthChange: (selectedDates, dateStr) => this.pdMonthChange.emit({ selectedDates, dateStr }),
         onYearChange: (selectedDates, dateStr) => this.pdYearChange.emit({ selectedDates, dateStr }),
         onReady: (selectedDates, dateStr) => this.pdReady.emit({ selectedDates, dateStr }),
-        onValueUpdate: (selectedDates, dateStr) => this.pdValueUpdate.emit({ selectedDates, dateStr }),
-        onChange: (selectedDates, dateStr) => this.pdChange.emit({ selectedDates, dateStr }),
+        onValueUpdate: (selectedDates, dateStr) => {
+            this.currentValue = dateStr;
+            this.pdValueUpdate.emit({ selectedDates, dateStr });
+        },
+        onChange: (selectedDates, dateStr) => {
+            this.currentValue = dateStr;
+            this.pdChange.emit({ selectedDates, dateStr });
+        },
         allowInput: this.allowInput,
         disableMobile: true,
     };
@@ -193,6 +209,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                     {this.renderLabel()}
                     <div ref={(el) => (this.contentWrapperElement = el)} class="wrapper">
                         <input
+                            ref={(el) => (this.dateInputField = el)}
                             data-test="pd-datepicker-input"
                             class={{
                                 'pd-datepicker-input': true,
