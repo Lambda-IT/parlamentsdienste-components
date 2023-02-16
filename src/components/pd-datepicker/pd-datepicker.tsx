@@ -177,7 +177,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         if (this.date) this.setDate(this.date, false);
     }
 
-    disconnectedCallback() {
+    public disconnectedCallback() {
         if (this.flatpickr) {
             this.flatpickr.destroy();
         }
