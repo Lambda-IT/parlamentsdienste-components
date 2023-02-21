@@ -44,7 +44,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @State() open: boolean = false;
     @State() selectedItem: ComboboxItem = null;
-    @State() _itemsState: ComboboxItem[] = [];
+    // @State() _itemsState: ComboboxItem[] = [];
 
     /**
      * Values shown as combobox items
@@ -164,9 +164,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
      */
     @Method()
     async setSelectedIndex(index: number) {
-        if (index >= 0 && index < this.items.length) {
-            this._itemsState[index] = { ...this.items[index], selected: true };
-            this.selectItem(this._itemsState[index]);
+        if (index >= 0 && index < this.state.items.length) {
+            this.state.items[index] = { ...this.state.items[index], selected: true };
+            this.selectItem(this.state.items[index]);
         }
     }
 
@@ -195,9 +195,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     @Watch('items')
-    resultsChanged(items: any) {
-        this._itemsState = this.validateItems(items);
-        if (this._itemsState.length > 0) {
+    itemsChanged(items: any) {
+        this.state.items = this.validateItems(items);
+        if (this.state.items.length > 0) {
             this.selectedItem = null;
         } else this.open = false;
     }
@@ -226,9 +226,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         });
         this.state = state;
 
-        console.log(this.state);
-
-        this._itemsState = this.validateItems(this.items);
+        // this._itemsState = this.validateItems(this.items);
 
         // let matchedItem = this._itemsState.find((i) => i.selected);
         let matchedItem = this.state.items.find((i) => i.selected);
@@ -262,7 +260,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
         dropdownItemNodes.forEach((item) => {
-            const centerItem = Math.ceil(this._itemsState.length / 2) - 1;
+            const centerItem = Math.ceil(this.state.filteredItems.length / 2) - 1;
             if (item.selected) menu.scrollTop = item.offsetTop - 48 * centerItem;
         });
     }
@@ -285,46 +283,52 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             case 'Enter': {
                 ev.preventDefault();
                 this.open = false;
-                const matches = this._itemsState.filter((i) => i.label === this.value).length;
-                if (matches > 0) {
-                    this.selectItem(this.selectedItem, ev);
-                }
+                // const matches = this._itemsState.filter((i) => i.label === this.value).length;
+                // if (matches > 0) {
+                this.selectItem(this.selectedItem, ev);
+                // }
                 break;
             }
             case 'ArrowDown': {
                 ev.preventDefault();
                 // try to reopen if there are results
-                if (!this.open && this._itemsState?.length > 0) {
+                if (!this.open && this.state.filteredItems.length > 0) {
                     this.open = true;
                     return;
                 }
-                const currentFiltredItems = this._itemsState.filter((i) =>
-                    this.filterNotMatchingItems(i, this.inputValue),
-                );
-                const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
-                const nextIndex = currentIndex >= this._itemsState.length - 1 ? currentIndex : currentIndex + 1;
-                const nextItem = currentFiltredItems[nextIndex];
+                // const currentFiltredItems = this._itemsState.filter((i) =>
+                //     this.filterNotMatchingItems(i, this.inputValue),
+                // );
+                // const currentIndex =
+                //     this.state.filteredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
+                // const nextIndex = currentIndex >= this.state.filteredItems.length - 1 ? currentIndex : currentIndex + 1;
+                // const nextItem = this.state.filteredItems[nextIndex];
+                const nextItem = this.setNextItem('down');
                 if (nextItem && nextItem !== this.selectedItem) {
                     this.selectItem(nextItem, ev);
-                    this.setValue(nextItem.label);
+                    // this.setValue(nextItem.label);
+                    this.state.inputValue = nextItem.label;
                 }
                 break;
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                if (!this.open && this._itemsState?.length > 0) {
+                if (!this.open && this.state.filteredItems.length > 0) {
                     this.open = true;
                     return;
                 }
-                const currentFiltredItems = this._itemsState.filter((i) =>
-                    this.filterNotMatchingItems(i, this.inputValue),
-                );
-                const currentIndex = currentFiltredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
-                const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-                const previousItem = currentFiltredItems[previousIndex];
-                if (previousItem !== this.selectedItem) {
-                    this.selectItem(previousItem, ev);
-                    this.setValue(previousItem.label);
+                // const currentFiltredItems = this._itemsState.filter((i) =>
+                //     this.filterNotMatchingItems(i, this.inputValue),
+                // );
+                // const currentIndex =
+                //     this.state.filteredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
+                // const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
+                // const previousItem = this.state.filteredItems[previousIndex];
+                const nextItem = this.setNextItem('up');
+                if (nextItem && nextItem !== this.selectedItem) {
+                    this.selectItem(nextItem, ev);
+                    // this.setValue(nextItem.label);
+                    this.state.inputValue = nextItem.label;
                 }
                 break;
             }
@@ -332,6 +336,16 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 this.selectedItem = null;
             }
         }
+    }
+    private setNextItem(direction: 'up' | 'down') {
+        const currentIndex = this.state.filteredItems.findIndex((item) => item.id === this.selectedItem?.id) || 0;
+        let nextIndex: number;
+        if (direction === 'down') {
+            nextIndex = currentIndex >= this.state.filteredItems.length - 1 ? currentIndex : currentIndex + 1;
+        } else {
+            nextIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
+        }
+        return this.state.filteredItems[nextIndex];
     }
 
     @Listen('click', { target: 'body' })
@@ -353,7 +367,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private onClickInput = () => {
-        if (this._itemsState?.length > 0 && !this.open && !(this.disabled || this.readonly)) {
+        if (this.state.filteredItems.length > 0 && !this.open && !(this.disabled || this.readonly)) {
             this.open = true;
         } else {
             this.open = false;
@@ -361,18 +375,29 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     };
 
     private onInput = (ev: Event) => {
-        if (this.selectable) this.resetInternally(ev);
+        if (this.selectable) this.resetInternally(ev); // why?
 
         const input = ev.target as HTMLInputElement | null;
-        this.setValue(input?.value || '', true);
-        this.pdInput.emit({ value: this.value });
-        const currentFiltredItems = this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
-        if (currentFiltredItems.length > 0) {
+
+        this.state.inputValue = input?.value ?? '';
+        // this.setValue(input?.value || '', true); // why?
+        this.pdInput.emit({ value: this.state.inputValue });
+
+        // const currentFiltredItems = this.items.filter((i) => this.filterNotMatchingItems(i, this.inputValue));
+        this.state.filteredItems = this.state.items.filter((item) =>
+            this.filterNotMatchingItems(item, this.state.inputValue),
+        );
+        if (this.state.filteredItems.length > 0) {
             this.open = true;
         } else {
             this.open = false;
         }
     };
+
+    private filterNotMatchingItems(comboboxItem: ComboboxItem, input) {
+        if (!input) input = '';
+        return comboboxItem.label.toLowerCase().includes(input.toLowerCase());
+    }
 
     private onBlur = () => {
         if (!this.disabled || !this.readonly) this.pdBlur.emit();
@@ -382,10 +407,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.pdFocus.emit();
     };
 
-    private setValue(value?: string, isInput: boolean = false): void {
-        this.value = value;
-        if (isInput) this.inputValue = value;
-    }
+    //TODO why? isInput?
+    // private setValue(value?: string, isInput: boolean = false): void {
+    //     this.value = value;
+    //     if (isInput) this.inputValue = value;
+    // }
 
     private selectItem(comboboxItem?: ComboboxItem, ev?: Event | KeyboardEvent) {
         this.pdCombobox.emit(comboboxItem);
@@ -394,12 +420,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.open = true;
             this.selectedItem = comboboxItem;
         } else if (ev instanceof KeyboardEvent && ev.key.includes('Enter')) {
-            this.setValue(comboboxItem.label, true);
+            // this.setValue(comboboxItem.label, true);
             this.open = false;
             if (!this.selectable) this.resetInternally(ev);
         } else {
             this.selectedItem = comboboxItem;
-            this.setValue(comboboxItem.label, true);
+            // this.setValue(comboboxItem.label, true);
             this.open = false;
             if (!this.selectable) this.resetInternally(ev);
         }
@@ -441,7 +467,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 readOnly={this.readonly}
                                 required={this.required}
                                 placeholder={this.placeholder || ''}
-                                value={this.value}
+                                value={this.state.inputValue}
                                 onClick={this.onClickInput}
                                 onInput={this.onInput}
                                 onBlur={this.onBlur}
@@ -489,7 +515,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     private resetInternally = (ev?: Event) => {
         if (ev) ev.preventDefault();
-        this.setValue(null, true);
+        // this.setValue(null, true);
+        this.state.inputValue = '';
         this.open = false;
         this.selectedItem = null;
     };
@@ -504,17 +531,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 }}
             >
                 {this.renderEmptyItem()}
-                {this._itemsState
-                    .filter((i) => this.filterNotMatchingItems(i, this.inputValue))
-                    .map((comboboxItem, i) => (
-                        <pd-dropdown-item
-                            data-test={`pd-combobox-item-${i}`}
-                            selected={comboboxItem.id === this.selectedItem?.id || false}
-                            value={comboboxItem?.label}
-                            highlight={this.highlight ? this.inputValue : ''}
-                            onClick={(e) => this.selectItem(comboboxItem, e)}
-                        ></pd-dropdown-item>
-                    ))}
+                {this.state.filteredItems.map((comboboxItem, i) => (
+                    <pd-dropdown-item
+                        data-test={`pd-combobox-item-${i}`}
+                        selected={comboboxItem.id === this.selectedItem?.id || false}
+                        value={comboboxItem?.label}
+                        highlight={this.highlight ? this.inputValue : ''}
+                        onClick={(e) => this.selectItem(comboboxItem, e)}
+                    ></pd-dropdown-item>
+                ))}
             </div>
         );
     }
@@ -533,11 +558,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 ></pd-dropdown-item>
             </div>
         );
-    }
-
-    private filterNotMatchingItems(comboboxItem: ComboboxItem, input) {
-        if (!input) input = '';
-        return comboboxItem.label.toLowerCase().includes(input.toLowerCase());
     }
 
     private renderLabel() {
