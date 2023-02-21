@@ -151,6 +151,10 @@ export namespace Components {
     }
     interface PdCombobox {
         /**
+          * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+         */
+        "disableFilter": boolean;
+        /**
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
@@ -1576,6 +1580,10 @@ declare namespace LocalJSX {
         "type"?: ChipType;
     }
     interface PdCombobox {
+        /**
+          * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+         */
+        "disableFilter"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
          */

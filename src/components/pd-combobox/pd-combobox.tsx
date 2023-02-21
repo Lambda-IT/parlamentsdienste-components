@@ -120,6 +120,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() verticalAdjust: boolean = false;
 
     /**
+     * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+     */
+    @Prop() disableFilter: boolean = false;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<InputChangeEventDetail>;
