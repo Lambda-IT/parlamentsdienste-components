@@ -16,7 +16,16 @@ import {
     State,
     Watch,
 } from '@stencil/core';
+import { createStore } from '@stencil/store';
 import { ComboboxItem, InputChangeEventDetail } from '../../interface';
+
+interface ComboboxState {
+    items: ComboboxItem[];
+    filteredItems: ComboboxItem[];
+    open: boolean;
+    selectedItem: ComboboxItem;
+    inputValue: string;
+}
 
 @Component({
     tag: 'pd-combobox',
@@ -29,6 +38,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     private menuElement: HTMLElement;
     private wrapperElement: HTMLElement;
     private popper: Instance;
+    private state: ComboboxState;
 
     @Element() element!: HTMLElement;
 
@@ -207,11 +217,23 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     public componentWillLoad() {
+        const { state } = createStore<ComboboxState>({
+            items: this.validateItems(this.items),
+            filteredItems: this.validateItems(this.items),
+            open: false,
+            selectedItem: undefined,
+            inputValue: this.value,
+        });
+        this.state = state;
+
+        console.log(this.state);
+
         this._itemsState = this.validateItems(this.items);
 
-        let matchedItem = this._itemsState.find((i) => i.selected);
-        if (this.value) {
-            matchedItem = this._itemsState.filter((i) => i.label === this.value).shift();
+        // let matchedItem = this._itemsState.find((i) => i.selected);
+        let matchedItem = this.state.items.find((i) => i.selected);
+        if (this.state.inputValue) {
+            matchedItem = this.state.items.filter((i) => i.label === this.state.inputValue).shift();
         }
 
         if (matchedItem) {
@@ -459,6 +481,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 </label>
 
                 {this.renderDropdownItems()}
+                <br />
+                {JSON.stringify(this.state)}
             </Host>
         );
     }
