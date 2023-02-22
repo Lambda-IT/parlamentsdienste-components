@@ -167,7 +167,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
      */
     @Method()
     async reset() {
-        this.resetInternally(null);
+        this.resetInternally();
     }
 
     /**
@@ -367,6 +367,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     };
 
+    private emptyInputField = () => {
+        this.resetInternally();
+        this.pdChange.emit(null);
+        this.setFocus();
+    };
+
     private onInput = (ev: Event) => {
         if (this.selectable) this.resetInternally(ev); // why?
 
@@ -426,6 +432,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private resetInternally = (ev?: Event) => {
+        console.log('RESET');
         if (ev) ev.preventDefault();
         // this.setValue(null, true);
         this.state.filteredItems = this.state.items;
@@ -479,10 +486,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                             {this.state.inputValue && !this.disabled && !this.readonly ? (
                                 <button
                                     class="pd-combobox-icon right"
-                                    onClick={() => {
-                                        this.resetInternally();
-                                        this.setFocus();
-                                    }}
+                                    onClick={this.emptyInputField}
                                     tabindex="-1"
                                     data-test="pd-combobox-reset"
                                 >
