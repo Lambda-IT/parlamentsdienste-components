@@ -11,6 +11,12 @@
     outline: none;
 }
 
+:host(.currentNavigatingItem) {
+    background-color: aquamarine;
+    border: 2px solid red;
+    color: green;
+}
+
 .pd-dropdown-item {
     width: 100%;
     padding: 0.75rem 0.825rem;

@@ -1621,6 +1621,10 @@ declare namespace LocalJSX {
          */
         "onPd-change"?: (event: PdComboboxCustomEvent<ComboboxItem>) => void;
         /**
+          * Emitted when a combobox request occurred.
+         */
+        "onPd-combobox"?: (event: PdComboboxCustomEvent<ComboboxItem>) => void;
+        /**
           * Emitted when the input has focus.
          */
         "onPd-focus"?: (event: PdComboboxCustomEvent<void>) => void;
