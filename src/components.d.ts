@@ -175,6 +175,10 @@ export namespace Components {
          */
         "highlight"?: boolean;
         /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
           * Values shown as combobox items
          */
         "items": ComboboxItem[];
@@ -1604,6 +1608,10 @@ declare namespace LocalJSX {
           * Show matching parts in results as highlighted
          */
         "highlight"?: boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
         /**
           * Values shown as combobox items
          */

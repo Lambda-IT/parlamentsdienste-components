@@ -12,9 +12,8 @@
 }
 
 :host(.currentNavigatingItem) {
-    background-color: aquamarine;
-    border: 2px solid red;
-    color: green;
+    background-color: $focus;
+    color: $pd-black;
 }
 
 .pd-dropdown-item {
