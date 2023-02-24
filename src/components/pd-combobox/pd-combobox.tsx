@@ -106,7 +106,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Items visible in dropdown
      */
-    @Prop() itemCount: number = 5; // TODO: Implement this!
+    @Prop() itemCount: number = 9;
 
     /**
      * Show matching parts in results as highlighted
@@ -574,6 +574,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 class="pd-combobox-dropdown"
                 style={{
                     display: this.state.open ? 'block' : 'none',
+                    maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
                 }}
             >
                 {this.renderEmptyItem()}
