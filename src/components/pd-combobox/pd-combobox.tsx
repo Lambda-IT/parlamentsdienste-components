@@ -96,7 +96,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * The value of the input.
      */
-    @Prop({ mutable: true }) value?: string = '';
+    @Prop() value?: string = '';
 
     /**
      * combobox box label
@@ -106,7 +106,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Items visible in dropdown
      */
-    @Prop() itemCount: number = 9;
+    @Prop() itemCount: number = 10;
 
     /**
      * Show matching parts in results as highlighted
@@ -163,6 +163,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
      */
     @Method()
     async setSelectedIndex(index: number) {
+        console.log(index);
         if (index >= 0 && index < this.state.items.length) {
             this.state.items[index] = { ...this.state.items[index], selected: true };
             this.selectItem(this.state.items[index]);
@@ -224,10 +225,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    private validateItems(results: any) {
-        return Array.isArray(results) ? results : [];
-    }
-
     @Listen('click', { target: 'body' })
     handleClickOutside(ev: MouseEvent) {
         if (ev.target !== this.element) {
@@ -263,9 +260,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.selectItem(matchedItem);
         }
 
-        if (!this.selectable) {
-            this.resetCombobox();
-        }
+        // if (!this.selectable) {
+        //     this.resetCombobox();
+        // }
     }
 
     public componentDidLoad() {
@@ -289,12 +286,14 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         >;
 
         const itemHeight = dropdownItemNodes.length ? dropdownItemNodes[0].getBoundingClientRect().height : 0;
-        if (itemHeight > 0) {
-            const scrollingHeight =
-                this.state.currentNavigatedIndex * itemHeight - (Math.ceil(this.itemCount / 2) - 1) * itemHeight;
 
-            this.menuElement.scrollTop = scrollingHeight;
-        }
+        if (itemHeight === 0) return;
+
+        const scrollY =
+            this.state.currentNavigatedIndex * itemHeight - (Math.ceil(this.itemCount / 2) - 1) * itemHeight;
+
+        this.menuElement.scrollTop = scrollY;
+
         this.popper.forceUpdate();
 
         // if (this.state.currentNavigatedIndex > -1) {
@@ -318,6 +317,10 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     //         if (index === scrollToIndex) menu.scrollTop = item.offsetTop - 48 * centerItem;
     //     });
     // }
+
+    private validateItems(results: any) {
+        return Array.isArray(results) ? results : [];
+    }
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent) {
@@ -361,14 +364,14 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 }
 
                 // when we have a selected item, we want to set the currentNavigatedIndex to that item and dont navigate
-                if (this.state.selectedItem && this.state.currentNavigatedIndex < 0) {
-                    this.state.currentNavigatedIndex = this.state.filteredItems.indexOf(this.state.selectedItem);
-                    return;
-                }
+                // if (this.state.selectedItem && this.state.currentNavigatedIndex < 0) {
+                //     this.state.currentNavigatedIndex = this.state.filteredItems.indexOf(this.state.selectedItem);
+                //     return;
+                // }
 
                 if (this.state.currentNavigatedIndex < this.state.filteredItems.length - 1) {
                     this.state.currentNavigatedIndex++;
-                    this.state.inputValue = this.state.filteredItems[this.state.currentNavigatedIndex].label;
+                    // this.state.inputValue = this.state.filteredItems[this.state.currentNavigatedIndex].label;
                 }
                 break;
             }
@@ -379,14 +382,14 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 }
 
                 // when we have a selected item, we want to set the currentNavigatedIndex to that item and dont navigate
-                if (this.state.selectedItem && this.state.currentNavigatedIndex < 0) {
-                    this.state.currentNavigatedIndex = this.state.filteredItems.indexOf(this.state.selectedItem);
-                    return;
-                }
+                // if (this.state.selectedItem && this.state.currentNavigatedIndex < 0) {
+                //     this.state.currentNavigatedIndex = this.state.filteredItems.indexOf(this.state.selectedItem);
+                //     return;
+                // }
 
                 if (this.state.currentNavigatedIndex > 0) {
                     this.state.currentNavigatedIndex--;
-                    this.state.inputValue = this.state.filteredItems[this.state.currentNavigatedIndex].label;
+                    // this.state.inputValue = this.state.filteredItems[this.state.currentNavigatedIndex].label;
                 }
                 break;
             }
@@ -419,7 +422,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    private resetCombobox = (ev?: Event) => {
+    private resetCombobox = (ev?: Event, focus: boolean = false, emit: boolean = true) => {
         if (ev) ev.preventDefault();
 
         this.state.filteredItems = this.state.items;
@@ -428,7 +431,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.state.selectedItem = null;
         this.state.currentNavigatedIndex = -1;
 
-        // this.setFocus();
+        if (focus) this.setFocus();
     };
 
     private clearValueWithIconClick() {
@@ -464,16 +467,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     };
 
     private filterItems() {
-        if (!this.disableFilter) {
-            this.state.filteredItems = this.state.items.filter((item) =>
-                this.filterNotMatchingItems(item, this.state.inputValue),
-            );
-        }
+        if (this.disableFilter) return;
+        this.state.filteredItems = this.state.items.filter((item) =>
+            this.filterNotMatchingItems(item, this.state.inputValue),
+        );
     }
 
-    private filterNotMatchingItems(comboboxItem: ComboboxItem, input) {
+    private filterNotMatchingItems(comboboxItem: ComboboxItem, input: String) {
         if (!input) input = '';
-        return comboboxItem.label.toLowerCase().includes(input.toLowerCase());
+        return comboboxItem.label?.toLowerCase().includes(input.toLowerCase());
     }
 
     private onBlur = () => {
@@ -500,18 +502,17 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     public render() {
         return (
             <Host role="combobox">
-                <div>
+                {/* <div>
                     <div>currentNavigatedIndex: {this.state.currentNavigatedIndex}</div>
                     <div>items.length: {this.state.filteredItems.length}</div>
-                </div>
+                </div> */}
                 <label
                     class={{
                         'pd-combobox-label': true,
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-error': this.error,
-                        'pd-combobox-item-selected':
-                            this.state.currentNavigatedIndex > -1 || this.state.selectedItem !== null,
+                        'pd-combobox-item-selected': this.state.selectedItem !== null,
                     }}
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
@@ -574,7 +575,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 class="pd-combobox-dropdown"
                 style={{
                     display: this.state.open ? 'block' : 'none',
-                    maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
+                    maxHeight: `calc(3rem * ${this.itemCount} + 0.25rem)`,
                 }}
             >
                 {this.renderEmptyItem()}
@@ -583,7 +584,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         data-test={`pd-combobox-item-${i}`}
                         selected={comboboxItem.id === this.state.selectedItem?.id || false}
                         value={comboboxItem?.label}
-                        highlight={this.highlight && this.state.currentNavigatedIndex < 0 ? this.state.inputValue : ''}
+                        highlight={this.highlight ? this.state.inputValue : ''}
                         onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
                         class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}
                     ></pd-dropdown-item>
