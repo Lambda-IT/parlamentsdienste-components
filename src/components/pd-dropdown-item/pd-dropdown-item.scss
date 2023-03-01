@@ -22,6 +22,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    height: 3rem;
 
     &:hover {
         background-color: setcolor(primary, enabled);
