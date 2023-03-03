@@ -12,7 +12,8 @@
 }
 
 :host(.currentNavigatingItem) {
-    background-color: $focus;
+    // background-color: $focus;
+    background-color: $juniper;
     color: $pd-black;
 }
 

@@ -354,7 +354,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         if (ev) ev.preventDefault();
         this.state.inputValue = comboboxItem.label;
         this.state.selectedItem = comboboxItem;
-        // this.filterItems();
 
         this.pdCombobox.emit(this.state.selectedItem);
 
@@ -435,15 +434,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         return comboboxItem.label?.toLowerCase().includes(input.toLowerCase());
     }
 
-    private onBlur = (ev: FocusEvent) => {
-        console.log('blur target', ev.target);
+    private onBlur = () => {
         if (!this.disabled || !this.readonly) this.pdBlur.emit();
-
-        if (this.state.currentNavigatedIndex > -1) {
-            console.log('selected on blur!');
-            this.selectItem(this.state.filteredItems[this.state.currentNavigatedIndex]);
-            if (!this.selectable) this.resetCombobox();
-        }
     };
 
     private onFocus = () => {
@@ -470,8 +462,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-error': this.error,
-                        'pd-combobox-item-selected':
-                            this.state.currentNavigatedIndex > -1 || this.state.selectedItem !== null,
+                        'pd-combobox-item-selected': this.state.selectedItem !== null,
                     }}
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
@@ -540,17 +531,10 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 {this.state.filteredItems.map((comboboxItem, i) => (
                     <pd-dropdown-item
                         data-test={`pd-combobox-item-${i}`}
-                        selected={
-                            (this.state.selectedItem &&
-                                comboboxItem.id === this.state.selectedItem?.id &&
-                                this.state.currentNavigatedIndex === -1) ||
-                            false
-                        }
+                        selected={(this.state.selectedItem && comboboxItem.id === this.state.selectedItem?.id) || false}
                         value={comboboxItem?.label}
                         highlight={this.highlight ? this.state.inputValue : ''}
-                        // onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
-                        // This onMouseDown instead of onClick is a little hack, because the onclick event and the onblur event happen at the same time an cause conflict for the selection...
-                        onMouseDown={(ev) => this.selectItemByClick(comboboxItem, ev)}
+                        onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
                         class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}
                     ></pd-dropdown-item>
                 ))}

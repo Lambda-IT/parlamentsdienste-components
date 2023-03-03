@@ -46,24 +46,21 @@ export function navigateToNextItem(state: ComboboxState, direction: 'up' | 'down
         setCurrentNavigatedIndexToSelectedItem(state);
         return;
     }
-    let moved = false;
+
     switch (direction) {
         case 'down': {
             if (state.currentNavigatedIndex < state.filteredItems.length - 1) {
                 state.currentNavigatedIndex++;
-                moved = true;
             }
             break;
         }
         case 'up': {
             if (state.currentNavigatedIndex > 0) {
                 state.currentNavigatedIndex--;
-                moved = true;
             }
             break;
         }
     }
-    if (moved) state.inputValue = state.filteredItems[state.currentNavigatedIndex].label;
 }
 
 export function setCurrentNavigatedIndexToSelectedItem(state: ComboboxState) {
