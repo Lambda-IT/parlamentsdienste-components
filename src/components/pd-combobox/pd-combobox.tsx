@@ -290,17 +290,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         if (!Array.isArray(items)) return;
 
         return [...(this.emptyItem ? [this.emptyItemData] : []), ...items];
-        // let allItemsOk = true;
-        // items.forEach((item: any, i) => {
-        //     if (!item.hasOwnProperty('label')) allItemsOk = false;
-        // });
-
-        // if (allItemsOk) {
-        //     return [...(this.emptyItem ? [this.emptyItemData] : []), ...items];
-        // } else {
-        //     console.log('At least one Item had no label');
-        //     return [];
-        // }
     }
 
     @Listen('keydown')
@@ -344,9 +333,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 S.navigateToNextItem(this.state, 'up');
                 break;
             }
-            // default: {
-            //     this.state.selectedItem = null; ??????
-            // }
         }
     }
 
@@ -498,6 +484,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 onBlur={this.onBlur}
                                 onFocus={this.onFocus}
                                 size={this.size}
+                                aria-haspopup="true"
+                                aria-expanded={`${this.state.open}`}
                             />
                             <button class="pd-combobox-icon left" tabindex="-1">
                                 <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
@@ -548,7 +536,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         selected={(this.state.selectedItem && comboboxItem.id === this.state.selectedItem?.id) || false}
                         value={comboboxItem?.label}
                         highlight={this.highlight ? this.state.inputValue : ''}
-                        onMouseDown={(ev) => this.selectItemByClick(comboboxItem, ev)}
+                        onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
                         class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}
                     ></pd-dropdown-item>
                 ))}
