@@ -49,8 +49,8 @@
         color: $pd-black;
 
         &:hover {
-            background-color: setcolor(primary, enabled);
-            color: setcolor(primary, enabledContrast);
+            background-color: $focus;
+            color: $pd-black;
         }
 
         &:active {
