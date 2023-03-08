@@ -17,22 +17,30 @@ export function findSelectedItemFromInitialItemsOrInputValue(state: ComboboxStat
     return selectedItem;
 }
 
-export function getUserIsNavigating(state: ComboboxState): boolean {
+export function isUserNavigating(state: ComboboxState): boolean {
     return state.open && state.currentNavigatedIndex > -1;
 }
 
-export function openDropdownIfResults(
+export function openDropdownOrCloseWhenOpened(
     state: ComboboxState,
     disabled: boolean,
     viewOnly: boolean,
     readOnly: boolean,
-    closeDropdown = false,
 ) {
-    if (!state.open && state.filteredItems.length > 0 && !disabled && !viewOnly && !readOnly) {
+    if (isDropDownReadyToOpen(state, disabled, viewOnly, readOnly)) {
         state.open = true;
-    } else if (closeDropdown) {
-        state.open = false;
+        return;
     }
+    if (state.open) closeDropdown(state);
+}
+
+export function isDropDownReadyToOpen(
+    state: ComboboxState,
+    disabled: boolean,
+    viewOnly: boolean,
+    readOnly: boolean,
+): boolean {
+    return state.filteredItems.length > 0 && !disabled && !viewOnly && !readOnly;
 }
 
 export function closeDropdown(state: ComboboxState) {

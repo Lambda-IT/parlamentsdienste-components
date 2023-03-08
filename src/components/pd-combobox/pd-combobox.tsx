@@ -1,4 +1,4 @@
-import { createPopper, Instance } from '@popperjs/core';
+import { bottom, createPopper, Instance } from '@popperjs/core';
 import {
     Component,
     ComponentDidLoad,
@@ -197,8 +197,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Watch('items')
     itemsChanged(items: any) {
-        console.log('🎁 items changed', items);
-
         const selectedItemBeforeReset = this.state.selectedItem;
         const inputValueBeforeReset = this.state.inputValue;
 
@@ -216,7 +214,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.state.inputValue = inputValueBeforeReset;
         this.filterItems();
-        if (this.state.filteredItems.length > 0) {
+        if (S.isDropDownReadyToOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
             this.state.open = true;
         } else {
             this.state.open = false;
@@ -254,8 +252,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         if (selectedItem) {
             this.selectItem(selectedItem);
         }
-
-        // document.addEventListener('click', (e) => console.log(e));
     }
 
     public componentDidLoad() {
@@ -273,7 +269,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.popper.forceUpdate();
 
-        if (S.getUserIsNavigating(this.state)) {
+        if (S.isUserNavigating(this.state)) {
             this.scrollToItem(this.state.currentNavigatedIndex);
         }
     }
@@ -322,31 +318,35 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             }
             case 'Escape': {
                 ev.preventDefault();
+                if (this.selectable && this.state.selectedItem) {
+                    this.pdCombobox.emit(null);
+                }
                 this.resetCombobox();
+                this.setFocus();
                 break;
             }
             case 'Enter': {
                 ev.preventDefault();
-                if (S.getUserIsNavigating(this.state)) {
+                if (S.isUserNavigating(this.state)) {
                     this.selectItem(this.state.filteredItems[this.state.currentNavigatedIndex]);
                 }
                 break;
             }
             case 'ArrowDown': {
                 ev.preventDefault();
-                S.openDropdownIfResults(this.state, this.disabled, this.viewOnly, this.readonly);
+                S.openDropdownOrCloseWhenOpened(this.state, this.disabled, this.viewOnly, this.readonly);
                 S.navigateToNextItem(this.state, 'down');
                 break;
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                S.openDropdownIfResults(this.state, this.disabled, this.viewOnly, this.readonly);
+                S.openDropdownOrCloseWhenOpened(this.state, this.disabled, this.viewOnly, this.readonly);
                 S.navigateToNextItem(this.state, 'up');
                 break;
             }
-            default: {
-                this.state.selectedItem = null;
-            }
+            // default: {
+            //     this.state.selectedItem = null; ??????
+            // }
         }
     }
 
@@ -366,15 +366,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private selectItemByClick(comboboxItem: ComboboxItem, ev: MouseEvent) {
-        console.log('selectby click', ev);
         ev.preventDefault();
         this.selectItem(comboboxItem);
         if (!this.selectable) {
             this.resetCombobox();
+            this.setFocus();
         } else {
             S.closeDropdown(this.state);
+            this.nativeInput.blur();
         }
-        this.nativeInput.blur();
     }
 
     private resetCombobox = (ev?: Event) => {
@@ -393,7 +393,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private onClickInput = () => {
-        S.openDropdownIfResults(this.state, this.disabled, this.viewOnly, this.readonly, true);
+        if (this.state.open === true) {
+            S.closeDropdown(this.state);
+            return;
+        }
+        if (!S.isDropDownReadyToOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+            return;
+        }
+
+        this.state.open = true;
         if (this.state.selectedItem) {
             S.setCurrentNavigatedIndexToSelectedItem(this.state);
         }
@@ -406,12 +414,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.filterItems();
 
-        this.state.currentNavigatedIndex = -1;
-
-        if (this.state.filteredItems.length > 0) {
+        if (S.isDropDownReadyToOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+            this.state.currentNavigatedIndex = -1;
             this.state.open = true;
         } else {
-            this.state.open = false;
+            S.closeDropdown(this.state);
         }
     };
 
@@ -435,7 +442,14 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private onBlur = () => {
-        if (!this.disabled || !this.readonly) this.pdBlur.emit();
+        if (this.disabled || this.readonly || this.viewOnly) return;
+
+        this.pdBlur.emit();
+
+        if (this.selectable && this.state.selectedItem && this.state.inputValue !== this.state.selectedItem?.label) {
+            this.state.inputValue = this.state.selectedItem.label;
+            this.state.filteredItems = this.state.items;
+        }
     };
 
     private onFocus = () => {
@@ -534,7 +548,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         selected={(this.state.selectedItem && comboboxItem.id === this.state.selectedItem?.id) || false}
                         value={comboboxItem?.label}
                         highlight={this.highlight ? this.state.inputValue : ''}
-                        onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
+                        onMouseDown={(ev) => this.selectItemByClick(comboboxItem, ev)}
                         class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}
                     ></pd-dropdown-item>
                 ))}

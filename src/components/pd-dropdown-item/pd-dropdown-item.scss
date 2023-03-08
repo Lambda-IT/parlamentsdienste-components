@@ -12,8 +12,7 @@
 }
 
 :host(.currentNavigatingItem) {
-    // background-color: $focus;
-    background-color: $juniper;
+    background-color: $focus;
     color: $pd-black;
 }
 
@@ -26,8 +25,8 @@
     height: 3rem;
 
     &:hover {
-        background-color: setcolor(primary, enabled);
-        color: setcolor(primary, enabledContrast);
+        background-color: $focus;
+        color: $pd-black;
     }
 
     &:active {
@@ -46,7 +45,7 @@
     }
 
     &.pd-dropdown-item-selected {
-        background-color: $focus;
+        background-color: setcolor(primary, readonly);
         color: $pd-black;
 
         &:hover {
