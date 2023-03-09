@@ -151,6 +151,10 @@ export namespace Components {
     }
     interface PdCombobox {
         /**
+          * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+         */
+        "disableFilter": boolean;
+        /**
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
@@ -170,6 +174,10 @@ export namespace Components {
           * Show matching parts in results as highlighted
          */
         "highlight"?: boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
         /**
           * Values shown as combobox items
          */
@@ -1577,6 +1585,10 @@ declare namespace LocalJSX {
     }
     interface PdCombobox {
         /**
+          * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+         */
+        "disableFilter"?: boolean;
+        /**
           * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
@@ -1596,6 +1608,10 @@ declare namespace LocalJSX {
           * Show matching parts in results as highlighted
          */
         "highlight"?: boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
         /**
           * Values shown as combobox items
          */

@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.3] - 2023-03-09
+
+### Added
+
+-   #222 added disable-filter property on pd-combobox
+
+### Changed
+
+-   #222 and #232 pd-combobox (event) now only gets emitted when actively selecting an item. Just navigating over the items does not emit the event anymore. As a consequence selecting by blur is no longer possible.
+-   #222 Improved behaviour when changing the items from outside
+-   #222 Improved search behaviour when the combobox has the selectable property. One item can be selected while navigating over the others with arrow keys is possible
+-   #222 When the combobox has the selectable property the pd-combobox event now also gets emitted when the value is cleared with ESC or with a click on the delete icon
+-   adjusted styling according to the design system
+
+-   #228 Flatpicker instance gets destroyed in the disconnect-lifecycle hook of the component
+
 ## [2.6.2] - 2023-02-16
 
 ### Changed
@@ -410,6 +426,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.3]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.3
 [2.6.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.2
 [2.6.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.1
 [2.6.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.0
