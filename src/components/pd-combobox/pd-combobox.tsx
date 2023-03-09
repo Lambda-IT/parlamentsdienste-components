@@ -214,7 +214,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.state.inputValue = inputValueBeforeReset;
         this.filterItems();
-        if (S.isDropDownReadyToOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+        if (S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
             this.state.open = true;
         } else {
             this.state.open = false;
@@ -224,8 +224,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Listen('click', { target: 'body' })
     handleClickOutside(ev: MouseEvent) {
         if (ev.target !== this.element) {
-            this.state.open = false;
-            this.state.currentNavigatedIndex = -1;
+            S.closeDropdown(this.state);
         }
     }
 
@@ -247,7 +246,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.pdChange.emit(this.state.selectedItem);
         });
 
-        let selectedItem = S.findSelectedItemFromInitialItemsOrInputValue(this.state);
+        let selectedItem = S.findSelectedItem(this.state);
 
         if (selectedItem) {
             this.selectItem(selectedItem);
@@ -323,13 +322,13 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             }
             case 'ArrowDown': {
                 ev.preventDefault();
-                S.openDropdownOrCloseWhenOpened(this.state, this.disabled, this.viewOnly, this.readonly);
+                S.openDropdownOrCloseWhenNotAllowed(this.state, this.disabled, this.viewOnly, this.readonly);
                 S.navigateToNextItem(this.state, 'down');
                 break;
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                S.openDropdownOrCloseWhenOpened(this.state, this.disabled, this.viewOnly, this.readonly);
+                S.openDropdownOrCloseWhenNotAllowed(this.state, this.disabled, this.viewOnly, this.readonly);
                 S.navigateToNextItem(this.state, 'up');
                 break;
             }
@@ -359,7 +358,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.setFocus();
         } else {
             S.closeDropdown(this.state);
-            this.nativeInput.blur();
         }
     }
 
@@ -383,7 +381,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             S.closeDropdown(this.state);
             return;
         }
-        if (!S.isDropDownReadyToOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+        if (!S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
             return;
         }
 
@@ -400,7 +398,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.filterItems();
 
-        if (S.isDropDownReadyToOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+        if (S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
             this.state.currentNavigatedIndex = -1;
             this.state.open = true;
         } else {

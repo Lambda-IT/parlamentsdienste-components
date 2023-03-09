@@ -9,7 +9,7 @@ export interface ComboboxState {
     currentNavigatedIndex: number;
 }
 
-export function findSelectedItemFromInitialItemsOrInputValue(state: ComboboxState): ComboboxItem | undefined {
+export function findSelectedItem(state: ComboboxState): ComboboxItem | undefined {
     let selectedItem = state.items.find((item) => item.selected);
     if (state.inputValue) {
         selectedItem = state.items.filter((i) => i.label === state.inputValue).shift();
@@ -21,25 +21,20 @@ export function isUserNavigating(state: ComboboxState): boolean {
     return state.open && state.currentNavigatedIndex > -1;
 }
 
-export function openDropdownOrCloseWhenOpened(
+export function openDropdownOrCloseWhenNotAllowed(
     state: ComboboxState,
     disabled: boolean,
     viewOnly: boolean,
     readOnly: boolean,
 ) {
-    if (isDropDownReadyToOpen(state, disabled, viewOnly, readOnly)) {
+    if (isAllowOpen(state, disabled, viewOnly, readOnly)) {
         state.open = true;
         return;
     }
     if (state.open) closeDropdown(state);
 }
 
-export function isDropDownReadyToOpen(
-    state: ComboboxState,
-    disabled: boolean,
-    viewOnly: boolean,
-    readOnly: boolean,
-): boolean {
+export function isAllowOpen(state: ComboboxState, disabled: boolean, viewOnly: boolean, readOnly: boolean): boolean {
     return state.filteredItems.length > 0 && !disabled && !viewOnly && !readOnly;
 }
 
