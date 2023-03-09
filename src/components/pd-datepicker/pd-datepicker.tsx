@@ -193,6 +193,12 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         if (this.date) this.setDate(this.date, false);
     }
 
+    public disconnectedCallback() {
+        if (this.flatpickr) {
+            this.flatpickr.destroy();
+        }
+    }
+
     public render() {
         return (
             <Host>
