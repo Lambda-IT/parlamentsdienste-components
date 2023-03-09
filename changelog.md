@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   #222 When the combobox has the selectable property the pd-combobox event now also gets emitted when the value is cleared with ESC or with a click on the delete icon
 -   adjusted styling according to the design system
 
+-   #228 Flatpicker instance gets destroyed in the disconnect-lifecycle hook of the component
+
 ## [2.6.2] - 2023-02-16
 
 ### Changed
