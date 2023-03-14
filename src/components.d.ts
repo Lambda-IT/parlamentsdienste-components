@@ -377,6 +377,10 @@ export namespace Components {
          */
         "highlight"?: string | number;
         /**
+          * Find an highlight this text in value
+         */
+        "iconName"?: string;
+        /**
           * Sets this item to selected
          */
         "selected": boolean;
@@ -1796,6 +1800,10 @@ declare namespace LocalJSX {
           * Find an highlight this text in value
          */
         "highlight"?: string | number;
+        /**
+          * Find an highlight this text in value
+         */
+        "iconName"?: string;
         /**
           * Sets this item to selected
          */

@@ -1,4 +1,4 @@
-import { bottom, createPopper, Instance } from '@popperjs/core';
+import { createPopper, Instance } from '@popperjs/core';
 import {
     Component,
     ComponentDidLoad,
@@ -532,7 +532,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     <pd-dropdown-item
                         data-test={`pd-combobox-item-${i}`}
                         selected={(this.state.selectedItem && comboboxItem.id === this.state.selectedItem?.id) || false}
-                        value={comboboxItem?.label}
+                        value={comboboxItem.label ?? ''}
+                        iconName={comboboxItem.iconName || null}
                         highlight={this.highlight ? this.state.inputValue : ''}
                         onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
                         class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}

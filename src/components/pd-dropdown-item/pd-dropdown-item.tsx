@@ -23,10 +23,16 @@ export class DropdownItem implements ComponentInterface {
      */
     @Prop() highlight?: string | number;
 
+    /**
+     * Find an highlight this text in value
+     */
+    @Prop() iconName?: string;
+
     public render() {
         return (
             <Host>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
+                    # {this.iconName} #
                     <span
                         innerHTML={this.strong(this.value, this.highlight?.toString())}
                         data-test="pd-dropdown-item-text"
