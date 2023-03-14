@@ -143,6 +143,13 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Prop() pagingLocation: PdPagingLocation = 'right';
 
     /**
+     * Disables the sort, filter and pagination of the component.
+     * Enables pd-sort, pd-filter-input, pd-filter-change events
+     * Enables a slot for a external pagination-component
+     */
+    @Prop() externalRowHandling: boolean = false;
+
+    /**
      * Triggers when one or all rows get selected
      */
     @Event({ eventName: 'pd-selected' }) onSelected: EventEmitter<SelectedEvent>;
@@ -166,6 +173,11 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
      * Triggers an event when row was clicked
      */
     @Event({ eventName: 'pd-clicked-row' }) onRowClick: EventEmitter<any>;
+
+    /**
+     * pd-sort, pd-filter-input, pd-filter-change
+     */
+    @Event({ eventName: 'pd-sort' }) onSortClick: EventEmitter<any>;
 
     @Method()
     async unselectAll() {
@@ -350,7 +362,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                         role="cell"
                         style={calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
-                        onClick={() => S.sort(this.state, headerCol, headerCol.sortFunc ?? defaultSortFunc)}
+                        onClick={() => {
+                            this.onSortClick;
+                            S.sort(this.state, headerCol, headerCol.sortFunc ?? defaultSortFunc);
+                        }}
                         data-test={`pd-table-header-col-${i}`}
                     >
                         <div
