@@ -1,4 +1,4 @@
-import { bottom, createPopper, Instance } from '@popperjs/core';
+import { createPopper, Instance } from '@popperjs/core';
 import {
     Component,
     ComponentDidLoad,

@@ -22,6 +22,8 @@ export default {
         value: { control: { type: 'text' } },
         emptyItem: { control: { type: 'boolean' } },
         emptyItemData: { control: { type: 'object' } },
+        disableFilter: { control: { type: 'boolean' } },
+        itemCount: { control: { type: 'number' } },
     },
 };
 
@@ -44,6 +46,8 @@ export const combobox = (args) => {
     c1.value = args.value;
     c1.emptyItem = args.emptyItem;
     c1.emptyItemData = args.emptyItemData;
+    c1.disableFilter = args.disableFilter;
+    c1.itemCount = args.itemCount;
 
     elements.append(c1);
 
@@ -62,6 +66,8 @@ export const combobox = (args) => {
     c2.value = args.value;
     c2.emptyItem = args.emptyItem;
     c2.emptyItemData = args.emptyItemData;
+    c2.disableFilter = args.disableFilter;
+    c2.itemCount = args.itemCount;
 
     elements.append(c1);
     elements.append(c2);
@@ -86,6 +92,8 @@ combobox.args = {
         label: '-',
         value: null,
     },
+    disableFilter: false,
+    itemCount: 5,
     items: [
         { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
         { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
