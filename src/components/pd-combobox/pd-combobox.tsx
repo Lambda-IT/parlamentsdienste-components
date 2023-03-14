@@ -450,10 +450,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     public render() {
         return (
             <Host role="combobox">
-                {/* <div>
-                    <div>currentNavigatedIndex: {this.state.currentNavigatedIndex}</div>
-                    <div>items.length: {this.state.filteredItems.length}</div>
-                </div> */}
                 <label
                     class={{
                         'pd-combobox-label': true,
@@ -534,6 +530,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         selected={(this.state.selectedItem && comboboxItem.id === this.state.selectedItem?.id) || false}
                         value={comboboxItem.label ?? ''}
                         iconName={comboboxItem.iconName || null}
+                        iconSrc={comboboxItem.iconSrc || null}
                         highlight={this.highlight ? this.state.inputValue : ''}
                         onClick={(ev) => this.selectItemByClick(comboboxItem, ev)}
                         class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}
