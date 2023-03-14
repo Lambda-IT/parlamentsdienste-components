@@ -30,6 +30,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute     | Description                           | Type      | Default |
@@ -38,11 +39,13 @@
 | `collapsible` | `collapsible` | Show/hide collapse button             | `boolean` | `false` |
 | `subpanel`    | `subpanel`    | Use as a subpanel                     | `boolean` | `false` |
 
+
 ## Events
 
 | Event          | Description                         | Type               |
 | -------------- | ----------------------------------- | ------------------ |
 | `pd-collapsed` | Emitted when the value has changed. | `CustomEvent<any>` |
+
 
 ## Slots
 
@@ -52,6 +55,7 @@
 | `"footer"` | panel footer content |
 | `"header"` | panel header content |
 
+
 ## CSS Custom Properties
 
 | Name                       | Description                                               |
@@ -59,6 +63,7 @@
 | `--pd-panel-background`    | Background color of panel                                 |
 | `--pd-panel-margin-bottom` | bottom margin of panel. Can be used to separate subpanels |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
