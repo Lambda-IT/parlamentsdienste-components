@@ -38,12 +38,9 @@ export class DropdownItem implements ComponentInterface {
             <Host>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
                     {this.iconName || this.iconSrc ? (
-                        <pd-icon
-                            class="pd-dropdown-item-icon"
-                            name={this.iconName ?? null}
-                            src={this.iconSrc ?? null}
-                            size={2}
-                        ></pd-icon>
+                        <span class="pd-dropdown-item-icon">
+                            <pd-icon name={this.iconName ?? null} src={this.iconSrc ?? null} size={2}></pd-icon>
+                        </span>
                     ) : (
                         ''
                     )}
