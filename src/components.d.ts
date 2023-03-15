@@ -859,6 +859,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+         */
+        "externalRowHandling": boolean;
+        /**
           * Height of header cells
          */
         "headerHeight": string;
@@ -2351,6 +2355,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+         */
+        "externalRowHandling"?: boolean;
+        /**
           * Height of header cells
          */
         "headerHeight"?: string;
@@ -2383,6 +2391,10 @@ declare namespace LocalJSX {
           * Triggers when one or all rows get selected
          */
         "onPd-selected"?: (event: PdTableCustomEvent<SelectedEvent>) => void;
+        /**
+          * pd-sort, pd-filter-input, pd-filter-change
+         */
+        "onPd-sort"?: (event: PdTableCustomEvent<void>) => void;
         /**
           * Triggers an event when the view icon was clicked
          */

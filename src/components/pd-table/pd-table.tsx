@@ -147,7 +147,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
      * Enables pd-sort, pd-filter-input, pd-filter-change events
      * Enables a slot for a external pagination-component
      */
-    @Prop() externalRowHandling: boolean = false;
+    @Prop() externalRowHandling: boolean = true;
 
     /**
      * Triggers when one or all rows get selected
@@ -177,7 +177,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     /**
      * pd-sort, pd-filter-input, pd-filter-change
      */
-    @Event({ eventName: 'pd-sort' }) onSortClick: EventEmitter<any>;
+    @Event({ eventName: 'pd-sort' }) onExternalSort!: EventEmitter<void>;
 
     @Method()
     async unselectAll() {
@@ -305,6 +305,17 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         S.initPaging(this.state, +ev.detail.value);
     }
 
+    private onHeaderClick(headerCol: PdColumn) {
+        const { columnName, sortable } = headerCol;
+        if (!sortable || !this.externalRowHandling) return;
+
+        console.log({
+            sortColumnName: headerCol.columnName,
+            sortColumnLabel: headerCol.label,
+            sortDirection: this.state.nextSortDir[columnName] === 'asc' ? 'desc' : 'asc',
+        });
+    }
+
     public render() {
         const headerStyle = {
             height: `${this.headerHeight}px`,
@@ -363,8 +374,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                         style={calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => {
-                            this.onSortClick;
                             S.sort(this.state, headerCol, headerCol.sortFunc ?? defaultSortFunc);
+                            this.onHeaderClick(headerCol);
                         }}
                         data-test={`pd-table-header-col-${i}`}
                     >
