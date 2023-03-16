@@ -2394,7 +2394,7 @@ declare namespace LocalJSX {
         /**
           * pd-sort, pd-filter-input, pd-filter-change
          */
-        "onPd-sort"?: (event: PdTableCustomEvent<void>) => void;
+        "onPd-sort"?: (event: PdTableCustomEvent<{}>) => void;
         /**
           * Triggers an event when the view icon was clicked
          */

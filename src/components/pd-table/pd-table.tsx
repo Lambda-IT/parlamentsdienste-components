@@ -13,6 +13,7 @@ import {
     Listen,
     Method,
     Prop,
+    State,
     Watch,
 } from '@stencil/core';
 import { createStore } from '@stencil/store';
@@ -56,7 +57,6 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     private headerRefs: Record<string, HTMLElement> = {};
     private popper: Instance;
     private state: S.TableState;
-    private store: any;
 
     @Element() element: HTMLElement;
 
@@ -179,7 +179,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     /**
      * pd-sort, pd-filter-input, pd-filter-change
      */
-    @Event({ eventName: 'pd-sort' }) onExternalSort!: EventEmitter<void>;
+    @Event({ eventName: 'pd-sort' }) onExternalSort!: EventEmitter<{}>;
 
     @Method()
     async unselectAll() {
@@ -203,8 +203,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     constructor() {
-        // const { state } = createStore<S.TableState>({
-        const store = createStore<S.TableState>({
+        const { state } = createStore<S.TableState>({
+            // const store = createStore<S.TableState>({
             filteredRows: [],
             currentFilter: undefined,
             filterOpen: false,
@@ -219,9 +219,9 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             defaultPageSize: 10,
             reRender: false,
         });
-        this.state = store.state;
+        this.state = state;
         this.state.filteredRows = this.rows;
-        this.store = store;
+        // this.store = store;
     }
 
     public componentWillLoad() {
@@ -314,10 +314,15 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         const { columnName, sortable } = headerCol;
         if (!sortable || !this.externalRowHandling) return;
 
-        console.log({
+        // console.log({
+        //     sortColumnName: headerCol.columnName,
+        //     sortColumnLabel: headerCol.label,
+        //     sortDirection: this.state.nextSortDir[columnName],
+        // });
+        this.onExternalSort.emit({
             sortColumnName: headerCol.columnName,
             sortColumnLabel: headerCol.label,
-            sortDirection: this.state.nextSortDir[columnName] === 'asc' ? 'desc' : 'asc',
+            sortDirection: this.state.nextSortDir[columnName],
         });
     }
 
@@ -384,9 +389,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                                 headerCol,
                                 headerCol.sortFunc ?? defaultSortFunc,
                                 this.externalRowHandling,
-                                this.store,
                             );
-                            // if (this.externalRowHandling) this.emitExternalSorting(headerCol);
+                            if (this.externalRowHandling) this.emitExternalSorting(headerCol);
                         }}
                         data-test={`pd-table-header-col-${i}`}
                     >
@@ -397,7 +401,6 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                             <span>{headerCol.label}</span>
                         </div>
                         <div class="pd-table-header-cell-actions" data-test={`pd-table-header-actions-col-${i}`}>
-                            {JSON.stringify(this.state.reRender)}
                             {this.renderSort(this.state.nextSortDir[headerCol.columnName], headerCol.columnName)}
                             {this.renderFilterIcon(headerCol)}
                         </div>
@@ -554,9 +557,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private renderSort(nextSort, columnName) {
-        console.log('rendersort', nextSort, columnName, this.state.sortColumn);
         if (!nextSort || columnName !== this.state.sortColumn) return;
-        console.log('rendersort', nextSort, columnName);
         return <pd-icon name="sort" size={2} rotate={nextSort === 'asc' ? 180 : 0}></pd-icon>;
     }
 

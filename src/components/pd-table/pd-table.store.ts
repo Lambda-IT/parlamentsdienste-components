@@ -17,32 +17,19 @@ export interface TableState {
     reRender: boolean;
 }
 
-export function sort(
-    state: TableState,
-    headerCol: PdColumn,
-    sortFunction: SortFunction,
-    externalRowHandling: boolean,
-    store: any,
-) {
-    // console.log('sort');
+export function sort(state: TableState, headerCol: PdColumn, sortFunction: SortFunction, externalRowHandling: boolean) {
     const { columnName, sortable } = headerCol;
     if (!sortable) return;
 
     const dir = state.nextSortDir[columnName] || 'desc';
+    state.sortColumn = columnName;
     state.nextSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
 
-    store.set('reRender', true);
-    store.set('asdf', !store.state.reRender);
-    // store.set('nextSortDir', { ...store.state.nextSortDir, [columnName]: dir === 'asc' ? 'desc' : 'asc' });
-    // console.log(store.state.nextSortDir);
-    // console.log(store.state.reRender);
-
-    state.reRender = !state.reRender;
-
-    if (!externalRowHandling) {
+    if (externalRowHandling) {
+        state.filteredRows = [...state.filteredRows];
+    } else {
         state.filteredRows = [...state.filteredRows].sort((a, b) => sortFunction(a[columnName], b[columnName], dir));
     }
-    state.filteredRows = [...state.filteredRows].sort((a, b) => sortFunction(a[columnName], b[columnName], dir));
 }
 
 export function filter(
