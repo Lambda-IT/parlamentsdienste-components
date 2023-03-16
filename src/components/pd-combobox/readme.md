@@ -47,31 +47,33 @@ interface DropdownItem {
 }
 ```
 
-To add an icon to the label of the dropdownitem use the iconName (for the supported icon-gallery) or the iconSrc property.
+To add an icon to the label of the dropdownitem use the iconName (for the supported icon-gallery) or the iconSrc property (to embed an external svg ressource).
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property         | Attribute         | Description                                                                                                                | Type             | Default                                 |
-| ---------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------------------------- |
-| `disableFilter`  | `disable-filter`  | If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches) | `boolean`        | `false`                                 |
-| `disabled`       | `disabled`        | If `true`, the user cannot interact with the input.                                                                        | `boolean`        | `false`                                 |
-| `emptyItem`      | `empty-item`      | Enable selection of an empty item                                                                                          | `boolean`        | `false`                                 |
-| `emptyItemData`  | --                | Data used for the empty item                                                                                               | `ComboboxItem`   | `{ id: '0', label: '-', value: null, }` |
-| `error`          | `error`           | Shows error state                                                                                                          | `boolean`        | `false`                                 |
-| `highlight`      | `highlight`       | Show matching parts in results as highlighted                                                                              | `boolean`        | `true`                                  |
-| `itemCount`      | `item-count`      | Items visible in dropdown                                                                                                  | `number`         | `5`                                     |
-| `items`          | --                | Values shown as combobox items                                                                                             | `ComboboxItem[]` | `[]`                                    |
-| `label`          | `label`           | combobox box label                                                                                                         | `string`         | `undefined`                             |
-| `placeholder`    | `placeholder`     | Instructional text that shows before the input has a value.                                                                | `string`         | `undefined`                             |
-| `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                                                                               | `boolean`        | `false`                                 |
-| `required`       | `required`        | If `true`, the user must fill in a value before submitting a form.                                                         | `boolean`        | `false`                                 |
-| `selectable`     | `selectable`      | If `true`, the combobox get a selected state like a dropdown.                                                              | `boolean`        | `false`                                 |
-| `size`           | `size`            | Input tag size (check pd-input 'size' for more info)                                                                       | `number`         | `1`                                     |
-| `value`          | `value`           | The value of the input.                                                                                                    | `string`         | `''`                                    |
-| `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                                                                               | `boolean`        | `false`                                 |
-| `viewOnly`       | `view-only`       | If `true`, the combobox is replaced with a simple text                                                                     | `boolean`        | `false`                                 |
+| Property         | Attribute         | Description                                                                                                                | Type             | Default                                                             |
+| ---------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
+| `disableFilter`  | `disable-filter`  | If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches) | `boolean`        | `false`                                                             |
+| `disabled`       | `disabled`        | If `true`, the user cannot interact with the input.                                                                        | `boolean`        | `false`                                                             |
+| `emptyItem`      | `empty-item`      | Enable selection of an empty item                                                                                          | `boolean`        | `false`                                                             |
+| `emptyItemData`  | --                | Data used for the empty item                                                                                               | `ComboboxItem`   | `{         id: '0',         label: '-',         value: null,     }` |
+| `error`          | `error`           | Shows error state                                                                                                          | `boolean`        | `false`                                                             |
+| `highlight`      | `highlight`       | Show matching parts in results as highlighted                                                                              | `boolean`        | `true`                                                              |
+| `itemCount`      | `item-count`      | Items visible in dropdown                                                                                                  | `number`         | `5`                                                                 |
+| `items`          | --                | Values shown as combobox items                                                                                             | `ComboboxItem[]` | `[]`                                                                |
+| `label`          | `label`           | combobox box label                                                                                                         | `string`         | `undefined`                                                         |
+| `placeholder`    | `placeholder`     | Instructional text that shows before the input has a value.                                                                | `string`         | `undefined`                                                         |
+| `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                                                                               | `boolean`        | `false`                                                             |
+| `required`       | `required`        | If `true`, the user must fill in a value before submitting a form.                                                         | `boolean`        | `false`                                                             |
+| `selectable`     | `selectable`      | If `true`, the combobox get a selected state like a dropdown.                                                              | `boolean`        | `false`                                                             |
+| `size`           | `size`            | Input tag size (check pd-input 'size' for more info)                                                                       | `number`         | `1`                                                                 |
+| `value`          | `value`           | The value of the input.                                                                                                    | `string`         | `''`                                                                |
+| `verticalAdjust` | `vertical-adjust` | Default vertical adjustment for inline forms                                                                               | `boolean`        | `false`                                                             |
+| `viewOnly`       | `view-only`       | If `true`, the combobox is replaced with a simple text                                                                     | `boolean`        | `false`                                                             |
+
 
 ## Events
 
@@ -83,6 +85,7 @@ To add an icon to the label of the dropdownitem use the iconName (for the suppor
 | `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                   |
 | `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>` |
 
+
 ## Methods
 
 ### `reset() => Promise<void>`
@@ -93,6 +96,8 @@ Reset the selection of the dropdown
 
 Type: `Promise<void>`
 
+
+
 ### `setFocus() => Promise<void>`
 
 Sets focus on the specified `pd-input`. Use this method instead of the global
@@ -102,6 +107,8 @@ Sets focus on the specified `pd-input`. Use this method instead of the global
 
 Type: `Promise<void>`
 
+
+
 ### `setOpen(open?: boolean) => Promise<void>`
 
 Set the open-close state of the dropdown
@@ -109,6 +116,8 @@ Set the open-close state of the dropdown
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `setSelectedIndex(index: number) => Promise<void>`
 
@@ -118,28 +127,32 @@ Set a preselected entry by index
 
 Type: `Promise<void>`
 
+
+
+
 ## CSS Custom Properties
 
 | Name                            | Description         |
 | ------------------------------- | ------------------- |
 | `--pd-checkbox-vertical-adjust` | top margin of label |
 
+
 ## Dependencies
 
 ### Depends on
 
--   [pd-icon](../pd-icon)
--   [pd-dropdown-item](../pd-dropdown-item)
+- [pd-icon](../pd-icon)
+- [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
-
 ```mermaid
 graph TD;
   pd-combobox --> pd-icon
   pd-combobox --> pd-dropdown-item
+  pd-dropdown-item --> pd-icon
   style pd-combobox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
