@@ -16,6 +16,7 @@ import {
     Watch,
 } from '@stencil/core';
 import { createStore } from '@stencil/store';
+import { head } from 'lodash';
 import {
     DropdownItem,
     PdColumn,
@@ -55,6 +56,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     private headerRefs: Record<string, HTMLElement> = {};
     private popper: Instance;
     private state: S.TableState;
+    private store: any;
 
     @Element() element: HTMLElement;
 
@@ -201,7 +203,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     constructor() {
-        const { state } = createStore<S.TableState>({
+        // const { state } = createStore<S.TableState>({
+        const store = createStore<S.TableState>({
             filteredRows: [],
             currentFilter: undefined,
             filterOpen: false,
@@ -214,9 +217,11 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             totalPages: 1,
             pageSize: 10,
             defaultPageSize: 10,
+            reRender: false,
         });
-        this.state = state;
-        state.filteredRows = this.rows;
+        this.state = store.state;
+        this.state.filteredRows = this.rows;
+        this.store = store;
     }
 
     public componentWillLoad() {
@@ -305,7 +310,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         S.initPaging(this.state, +ev.detail.value);
     }
 
-    private onHeaderClick(headerCol: PdColumn) {
+    private emitExternalSorting(headerCol: PdColumn) {
         const { columnName, sortable } = headerCol;
         if (!sortable || !this.externalRowHandling) return;
 
@@ -374,8 +379,14 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                         style={calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => {
-                            S.sort(this.state, headerCol, headerCol.sortFunc ?? defaultSortFunc);
-                            this.onHeaderClick(headerCol);
+                            S.sort(
+                                this.state,
+                                headerCol,
+                                headerCol.sortFunc ?? defaultSortFunc,
+                                this.externalRowHandling,
+                                this.store,
+                            );
+                            // if (this.externalRowHandling) this.emitExternalSorting(headerCol);
                         }}
                         data-test={`pd-table-header-col-${i}`}
                     >
@@ -386,7 +397,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                             <span>{headerCol.label}</span>
                         </div>
                         <div class="pd-table-header-cell-actions" data-test={`pd-table-header-actions-col-${i}`}>
-                            {this.renderSort(columnSortDir, headerCol.columnName)}
+                            {JSON.stringify(this.state.reRender)}
+                            {this.renderSort(this.state.nextSortDir[headerCol.columnName], headerCol.columnName)}
                             {this.renderFilterIcon(headerCol)}
                         </div>
                     </div>
@@ -542,7 +554,9 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private renderSort(nextSort, columnName) {
+        console.log('rendersort', nextSort, columnName, this.state.sortColumn);
         if (!nextSort || columnName !== this.state.sortColumn) return;
+        console.log('rendersort', nextSort, columnName);
         return <pd-icon name="sort" size={2} rotate={nextSort === 'asc' ? 180 : 0}></pd-icon>;
     }
 
