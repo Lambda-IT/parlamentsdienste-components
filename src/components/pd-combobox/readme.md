@@ -40,10 +40,14 @@ More info on [props modifier](https://vuejs.org/v2/api/#v-bind)
 interface DropdownItem {
     id: string;
     label: string;
-    value: string;
+    value: string | number;
     selected?: boolean;
+    iconName?: string;
+    iconSrc?: string;
 }
 ```
+
+To add an icon to the label of the dropdownitem use the iconName (for the supported icon-gallery) or the iconSrc property (to embed an external svg ressource).
 
 <!-- Auto Generated Below -->
 
@@ -145,6 +149,7 @@ Type: `Promise<void>`
 graph TD;
   pd-combobox --> pd-icon
   pd-combobox --> pd-dropdown-item
+  pd-dropdown-item --> pd-icon
   style pd-combobox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

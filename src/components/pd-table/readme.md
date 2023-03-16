@@ -270,6 +270,7 @@ graph TD;
   pd-menu --> pd-icon
   pd-dropdown --> pd-icon
   pd-dropdown --> pd-dropdown-item
+  pd-dropdown-item --> pd-icon
   style pd-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

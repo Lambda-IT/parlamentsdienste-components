@@ -61,6 +61,8 @@ export interface DropdownItem {
     label: string;
     value: string | number;
     selected?: boolean;
+    iconName?: string;
+    iconSrc?: string;
 }
 
 export type TextWrap = 'wrap' | 'no-wrap';

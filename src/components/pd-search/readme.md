@@ -98,6 +98,7 @@ Type: `Promise<void>`
 graph TD;
   pd-search --> pd-icon
   pd-search --> pd-dropdown-item
+  pd-dropdown-item --> pd-icon
   style pd-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

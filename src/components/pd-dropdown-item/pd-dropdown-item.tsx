@@ -23,10 +23,27 @@ export class DropdownItem implements ComponentInterface {
      */
     @Prop() highlight?: string | number;
 
+    /**
+     * Displays an item from the provided gallery
+     */
+    @Prop() iconName?: string;
+
+    /**
+     * Specifies the `src` url of an SVG file to use as icon.
+     */
+    @Prop() iconSrc?: string;
+
     public render() {
         return (
             <Host>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
+                    {this.iconName || this.iconSrc ? (
+                        <span class="pd-dropdown-item-icon">
+                            <pd-icon name={this.iconName ?? null} src={this.iconSrc ?? null} size={2}></pd-icon>
+                        </span>
+                    ) : (
+                        ''
+                    )}
                     <span
                         innerHTML={this.strong(this.value, this.highlight?.toString())}
                         data-test="pd-dropdown-item-text"

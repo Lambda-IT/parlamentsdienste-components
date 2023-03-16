@@ -58,4 +58,10 @@
             color: setcolor(primary, pressedContrast);
         }
     }
+
+    .pd-dropdown-item-icon {
+        margin-left: -0.25rem;
+        margin-right: 0.25rem;
+        flex: 0 0 2rem;
+    }
 }

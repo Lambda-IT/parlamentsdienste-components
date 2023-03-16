@@ -69,3 +69,7 @@ export function navigateToNextItem(state: ComboboxState, direction: 'up' | 'down
 export function setCurrentNavigatedIndexToSelectedItem(state: ComboboxState) {
     state.currentNavigatedIndex = state.filteredItems.indexOf(state.selectedItem);
 }
+
+export function selectedHasIcon(state: ComboboxState): boolean {
+    return state.selectedItem?.iconName || state.selectedItem?.iconSrc ? true : false;
+}

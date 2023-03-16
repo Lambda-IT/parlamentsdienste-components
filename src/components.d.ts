@@ -377,6 +377,14 @@ export namespace Components {
          */
         "highlight"?: string | number;
         /**
+          * Displays an item from the provided gallery
+         */
+        "iconName"?: string;
+        /**
+          * Specifies the `src` url of an SVG file to use as icon.
+         */
+        "iconSrc"?: string;
+        /**
           * Sets this item to selected
          */
         "selected": boolean;
@@ -1796,6 +1804,14 @@ declare namespace LocalJSX {
           * Find an highlight this text in value
          */
         "highlight"?: string | number;
+        /**
+          * Displays an item from the provided gallery
+         */
+        "iconName"?: string;
+        /**
+          * Specifies the `src` url of an SVG file to use as icon.
+         */
+        "iconSrc"?: string;
         /**
           * Sets this item to selected
          */
