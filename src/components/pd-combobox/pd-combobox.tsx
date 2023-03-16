@@ -374,6 +374,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.pdCombobox.emit(null);
         }
         this.resetCombobox();
+        this.setFocus();
     }
 
     private onClickInput = () => {
@@ -465,7 +466,10 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     {!this.viewOnly ? (
                         <div class="pd-combobox-input-wrapper" ref={(el) => (this.wrapperElement = el)}>
                             <input
-                                class="pd-combobox-input"
+                                class={{
+                                    'pd-combobox-input': true,
+                                    'pd-combobox-input-with-icon': this.selectable && S.selectedHasIcon(this.state),
+                                }}
                                 data-test="pd-combobox-input"
                                 ref={(input) => (this.nativeInput = input)}
                                 disabled={this.disabled}
@@ -481,9 +485,22 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 aria-haspopup="true"
                                 aria-expanded={`${this.state.open}`}
                             />
-                            <button class="pd-combobox-icon left" tabindex="-1">
-                                <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
-                            </button>
+                            {!this.state.selectedItem ? (
+                                <button class="pd-combobox-icon left" tabindex="-1" onClick={() => this.setFocus()}>
+                                    <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
+                                </button>
+                            ) : null}
+
+                            {this.selectable && S.selectedHasIcon(this.state) ? (
+                                <div class="pd-combobox-icon left">
+                                    <pd-icon
+                                        name={this.state.selectedItem.iconName || null}
+                                        src={this.state.selectedItem.iconSrc || null}
+                                        size={2}
+                                    ></pd-icon>
+                                </div>
+                            ) : null}
+
                             {this.state.inputValue && !this.disabled && !this.readonly ? (
                                 <button
                                     class="pd-combobox-icon right"

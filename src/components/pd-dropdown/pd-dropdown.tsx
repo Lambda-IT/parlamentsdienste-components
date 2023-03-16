@@ -311,8 +311,6 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 selected={item.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(item, true)}
                 data-test={`pd-dropdown-item-${i}`}
-                iconName={item.iconName || null}
-                iconSrc={item.iconSrc || null}
             ></pd-dropdown-item>
         ));
     }

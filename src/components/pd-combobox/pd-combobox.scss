@@ -131,10 +131,6 @@
     }
 
     &.pd-combobox-item-selected {
-        .pd-combobox-icon-search {
-            display: none;
-        }
-
         .pd-combobox-icon {
             fill: setcolor(primary, enabledContrast);
         }
@@ -153,6 +149,10 @@
                 & ~ .pd-combobox-icon {
                     fill: $blue-whale;
                 }
+            }
+
+            &.pd-combobox-input-with-icon {
+                padding-left: 3rem;
             }
         }
 
