@@ -40,6 +40,11 @@ export class TableFilter implements ComponentInterface {
      */
     @Event({ eventName: 'pd-close' }) pdClose!: EventEmitter<void>;
 
+    /**
+     * Emitted when filter input value changed.
+     */
+    @Event({ eventName: 'pd-filter-input' }) pdInputChange!: EventEmitter<string>;
+
     @Method()
     async reset() {
         this.value = '';
@@ -71,6 +76,7 @@ export class TableFilter implements ComponentInterface {
 
     private handleFilterChange(ev) {
         this.value = ev.target.value;
+        this.pdInputChange.emit(this.value);
     }
 
     private onSubmit(ev: KeyboardEvent) {

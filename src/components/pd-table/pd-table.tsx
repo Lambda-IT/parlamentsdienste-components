@@ -18,6 +18,7 @@ import {
 } from '@stencil/core';
 import { createStore } from '@stencil/store';
 import { head } from 'lodash';
+import { PdTableFilterCustomEvent } from '../../components';
 import {
     DropdownItem,
     PdColumn,
@@ -177,9 +178,19 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Event({ eventName: 'pd-clicked-row' }) onRowClick: EventEmitter<any>;
 
     /**
-     * pd-sort, pd-filter-input, pd-filter-change
+     * Gets emitted when externalRowHandling is true a column gets sorted
      */
     @Event({ eventName: 'pd-sort' }) onExternalSort!: EventEmitter<{}>;
+
+    /**
+     * Get emitted when externalRowHandling is true and the filter changes
+     */
+    @Event({ eventName: 'pd-filter-change' }) onExternalFilterChange!: EventEmitter<{}>;
+
+    /**
+     * TODO: is this needed? The event bubbles up from pd-table-filter
+     */
+    // @Event({ eventName: 'pd-filter-input' }) onExternalFilterInput!: EventEmitter<string>;
 
     @Method()
     async unselectAll() {
@@ -251,7 +262,9 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             this.state.currentFilter,
             this.rows,
             getFilterFunctions(this.columns, defaultFilterFunc),
+            this.externalRowHandling,
         );
+        if (this.externalRowHandling) this.emitExternalFilterChange();
     }
 
     private openFilter(ev: MouseEvent, columnName: string) {
@@ -265,7 +278,14 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     private clearFilter(ev: MouseEvent, columnName: string) {
         ev.stopPropagation();
-        S.filter(this.state, undefined, columnName, this.rows, getFilterFunctions(this.columns, defaultFilterFunc));
+        S.filter(
+            this.state,
+            undefined,
+            columnName,
+            this.rows,
+            getFilterFunctions(this.columns, defaultFilterFunc),
+            this.externalRowHandling,
+        );
     }
 
     // create a popper js element for the menu
@@ -310,21 +330,24 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         S.initPaging(this.state, +ev.detail.value);
     }
 
-    private emitExternalSorting(headerCol: PdColumn) {
-        const { columnName, sortable } = headerCol;
-        if (!sortable || !this.externalRowHandling) return;
+    private emitExternalSort(headerCol: PdColumn) {
+        const { columnName } = headerCol;
 
-        // console.log({
-        //     sortColumnName: headerCol.columnName,
-        //     sortColumnLabel: headerCol.label,
-        //     sortDirection: this.state.nextSortDir[columnName],
-        // });
         this.onExternalSort.emit({
             sortColumnName: headerCol.columnName,
             sortColumnLabel: headerCol.label,
-            sortDirection: this.state.nextSortDir[columnName],
+            sortDirection: this.state.nextSortDir[columnName] === 'asc' ? 'desc' : 'asc',
         });
     }
+
+    private emitExternalFilterChange() {
+        this.onExternalFilterChange.emit(this.state.filterValues);
+    }
+
+    // private emitExternalFilterInput(ev: CustomEvent<string>) {
+    //     console.log('emitExternalFilterInput', ev.detail);
+    //     // this.onExternalFilterInput.emit(ev.detail);
+    // }
 
     public render() {
         const headerStyle = {
@@ -346,6 +369,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                     class={{ 'pd-table-filter-hidden': !this.state.filterOpen }}
                     onPd-confirm={(ev) => this.filterConfirm(ev)}
                     onPd-close={() => (this.state.filterOpen = false)}
+                    // onPd-filter-input={(ev) => this.emitExternalFilterInput(ev)}
                 ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
@@ -362,6 +386,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                     </div>
                 </div>
                 {this.renderFooter()}
+                {this.renderExternalPagination()}
             </Host>
         );
     }
@@ -390,7 +415,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                                 headerCol.sortFunc ?? defaultSortFunc,
                                 this.externalRowHandling,
                             );
-                            if (this.externalRowHandling) this.emitExternalSorting(headerCol);
+                            if (this.externalRowHandling) this.emitExternalSort(headerCol);
                         }}
                         data-test={`pd-table-header-col-${i}`}
                     >
@@ -691,6 +716,21 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                     onPd-change={(ev) => this.pageSizeChanged(ev)}
                     data-test="pd-table-pagination-dropdown"
                 ></pd-dropdown>
+            </div>
+        );
+    }
+
+    private renderExternalPagination() {
+        if (!this.externalRowHandling) return;
+
+        return (
+            <div
+                class={{
+                    'pd-table-footer': true,
+                    [`pd-table-paging-location-${this.pagingLocation}`]: true,
+                }}
+            >
+                <slot name="external-pagination" />
             </div>
         );
     }

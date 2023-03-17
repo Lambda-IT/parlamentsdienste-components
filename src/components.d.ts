@@ -916,6 +916,9 @@ export namespace Components {
           * Allow to render a status icon per row
          */
         "showStatus": boolean;
+        /**
+          * TODO: is this needed? The event bubbles up from pd-table-filter
+         */
         "unselectAll": () => Promise<void>;
     }
     interface PdTableFilter {
@@ -2388,11 +2391,15 @@ declare namespace LocalJSX {
          */
         "onPd-edit"?: (event: PdTableCustomEvent<any>) => void;
         /**
+          * Get emitted when externalRowHandling is true and the filter changes
+         */
+        "onPd-filter-change"?: (event: PdTableCustomEvent<{}>) => void;
+        /**
           * Triggers when one or all rows get selected
          */
         "onPd-selected"?: (event: PdTableCustomEvent<SelectedEvent>) => void;
         /**
-          * pd-sort, pd-filter-input, pd-filter-change
+          * Gets emitted when externalRowHandling is true a column gets sorted
          */
         "onPd-sort"?: (event: PdTableCustomEvent<{}>) => void;
         /**
@@ -2445,6 +2452,10 @@ declare namespace LocalJSX {
           * Emitted when filter is confirmed.
          */
         "onPd-confirm"?: (event: PdTableFilterCustomEvent<string>) => void;
+        /**
+          * Emitted when filter input value changed.
+         */
+        "onPd-filter-input"?: (event: PdTableFilterCustomEvent<string>) => void;
         /**
           * Emitted when filter changes.
          */

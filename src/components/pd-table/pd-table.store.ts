@@ -38,10 +38,16 @@ export function filter(
     columnName: string,
     rows: PdTableRow[],
     filterFunctions: Record<string, FilterFunction>,
+    externalRowHandling: boolean,
 ) {
     state.filterValues = { ...state.filterValues, [columnName]: filter };
+
     closeFilter(state);
-    state.filteredRows = getFilteredRows(rows, state.filterValues, filterFunctions);
+    if (externalRowHandling) {
+        state.filteredRows = [...state.filteredRows];
+    } else {
+        state.filteredRows = getFilteredRows(rows, state.filterValues, filterFunctions);
+    }
 }
 
 export function openFilter(state: TableState, columnName: string) {
