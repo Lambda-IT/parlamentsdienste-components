@@ -9,7 +9,16 @@ export default {
             'Table Filter': notesTableFilter,
         },
         actions: {
-            handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete', 'pd-clicked-row'],
+            handles: [
+                'pd-selected',
+                'pd-edit',
+                'pd-view',
+                'pd-delete',
+                'pd-clicked-row',
+                'pd-sort',
+                'pd-filter-change',
+                'pd-filter-input',
+            ],
         },
     },
     argTypes: {
@@ -42,6 +51,7 @@ export const Table = (args) => {
     table0.selectable = args.selectable;
     table0.showStatus = args.showStatus;
     table0.menuLabel = args.menuLabel;
+    table0.externalRowHandling = args.externalRowHandling;
     table0.paging = args.paging;
     table0.pagingLocation = args.pagingLocation;
     table0.pageSizes = args.pageSizes;
@@ -137,6 +147,7 @@ Table.args = {
     showStatus: true,
     headerStyle: 'dark',
     menuLabel: 'Aktionen',
+    externalRowHandling: false,
     paging: true,
     pagingLocation: 'right',
     pageSizes: [

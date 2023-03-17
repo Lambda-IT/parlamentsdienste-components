@@ -181,14 +181,14 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Event({ eventName: 'pd-sort' }) onExternalSort!: EventEmitter<{}>;
 
     /**
-     * Get emitted when externalRowHandling is true and the filter changes
+     * Gets emitted when externalRowHandling is true and the filter changes
      */
     @Event({ eventName: 'pd-filter-change' }) onExternalFilterChange!: EventEmitter<{}>;
 
     /**
-     * TODO: is this needed? The event bubbles up from pd-table-filter
+     * TODO: Gets emitted when externalRowHandling is true and the filter input changes
      */
-    // @Event({ eventName: 'pd-filter-input' }) onExternalFilterInput!: EventEmitter<string>;
+    @Event({ eventName: 'pd-filter-input' }) onExternalFilterInput!: EventEmitter<string>;
 
     @Method()
     async unselectAll() {
@@ -284,6 +284,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             getFilterFunctions(this.columns, defaultFilterFunc),
             this.externalRowHandling,
         );
+        if (this.externalRowHandling) this.emitExternalFilterChange();
     }
 
     // create a popper js element for the menu
@@ -339,13 +340,19 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private emitExternalFilterChange() {
-        this.onExternalFilterChange.emit(this.state.filterValues);
+        if (Object.values(this.state.filterValues).every((el) => !el)) {
+            this.onExternalFilterChange.emit(null);
+        } else {
+            this.onExternalFilterChange.emit(this.state.filterValues);
+        }
     }
 
-    // private emitExternalFilterInput(ev: CustomEvent<string>) {
-    //     console.log('emitExternalFilterInput', ev.detail);
-    //     // this.onExternalFilterInput.emit(ev.detail);
-    // }
+    private emitExternalFilterInput(ev: CustomEvent<string>) {
+        ev.stopPropagation();
+        if (this.externalRowHandling) {
+            this.onExternalFilterInput.emit(ev.detail);
+        }
+    }
 
     public render() {
         const headerStyle = {
@@ -367,7 +374,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                     class={{ 'pd-table-filter-hidden': !this.state.filterOpen }}
                     onPd-confirm={(ev) => this.filterConfirm(ev)}
                     onPd-close={() => (this.state.filterOpen = false)}
-                    // onPd-filter-input={(ev) => this.emitExternalFilterInput(ev)}
+                    onPd-filter-input={(ev) => this.emitExternalFilterInput(ev)}
                 ></pd-table-filter>
                 <div class="pd-table" role="grid" style={{ minWidth: `${this.minWidth}px` }}>
                     <div class="pd-table-fixed" style={fixedStyle}>
