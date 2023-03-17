@@ -909,6 +909,10 @@ export namespace Components {
          */
         "selectable": boolean;
         /**
+          * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+         */
+        "selectedStatus": 'all' | 'none' | 'indeterminate';
+        /**
           * Show button column and context menu
          */
         "showActionColumn": boolean;
@@ -2435,6 +2439,10 @@ declare namespace LocalJSX {
           * Make rows selectable with a checkbox
          */
         "selectable"?: boolean;
+        /**
+          * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+         */
+        "selectedStatus"?: 'all' | 'none' | 'indeterminate';
         /**
           * Show button column and context menu
          */

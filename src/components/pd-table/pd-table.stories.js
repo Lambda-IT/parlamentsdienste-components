@@ -30,6 +30,8 @@ export default {
         showStatus: { control: { type: 'boolean' } },
         headerStyle: { control: { type: 'select', options: ['light', 'dark', 'gray'] } },
         menuLabel: { control: { type: 'string' } },
+        externalRowHandling: { control: { type: 'boolean' } },
+        selectedStatus: { control: { type: 'select', options: ['all', 'none', 'indeterminate'] } },
         paging: { control: { type: 'boolean' } },
         pagingLocation: { control: { type: 'select', options: ['left', 'right'] } },
         pageSizes: { control: { type: 'object' } },
@@ -52,6 +54,7 @@ export const Table = (args) => {
     table0.showStatus = args.showStatus;
     table0.menuLabel = args.menuLabel;
     table0.externalRowHandling = args.externalRowHandling;
+    table0.selectedStatus = args.selectedStatus;
     table0.paging = args.paging;
     table0.pagingLocation = args.pagingLocation;
     table0.pageSizes = args.pageSizes;
@@ -148,6 +151,7 @@ Table.args = {
     headerStyle: 'dark',
     menuLabel: 'Aktionen',
     externalRowHandling: false,
+    selectedStatus: 'none',
     paging: true,
     pagingLocation: 'right',
     pageSizes: [

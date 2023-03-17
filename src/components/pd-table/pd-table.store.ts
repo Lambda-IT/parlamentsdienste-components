@@ -98,7 +98,6 @@ export function refresh(state: TableState, rows: PdTableRow[], externalRowHandli
         //TODO:
         // Should state.filterValues be reset here?
     }
-    console.log(state);
 }
 
 export function initPaging(state: TableState, pageSize: number = state.defaultPageSize) {

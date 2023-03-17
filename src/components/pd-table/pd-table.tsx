@@ -151,6 +151,11 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Prop() externalRowHandling: boolean = false;
 
     /**
+     * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+     */
+    @Prop() selectedStatus: 'all' | 'none' | 'indeterminate' = 'none';
+
+    /**
      * Triggers when one or all rows get selected
      */
     @Event({ eventName: 'pd-selected' }) onSelected: EventEmitter<SelectedEvent>;
@@ -204,6 +209,23 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Watch('rows')
     handleRowsChanged() {
         S.refresh(this.state, this.rows, this.externalRowHandling);
+    }
+
+    @Watch('selectedStatus')
+    handleSelectedStatusChanged() {
+        //only if table is handled externally
+        if (!this.externalRowHandling) return;
+        switch (this.selectedStatus) {
+            case 'all':
+                S.selectAll(this.state);
+                break;
+            case 'none':
+                S.unselectAll(this.state);
+                break;
+            case 'indeterminate':
+                this.state.isIndeterminate = true;
+                break;
+        }
     }
 
     @Listen('keydown')
@@ -553,7 +575,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                 onClick={() => this.rowClicked(row)}
                 data-test="pd-table-cell-status"
             >
-                {this.renderIcon(row.pdStatus || 'unset')}
+                AAA{this.renderIcon(row.pdStatus || 'unset')}
             </div>
         );
     }
@@ -648,8 +670,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             >
                 <div class="pd-table-header-cell-text" style={{ justifyContent: getTextAlign(btnCellStyle.align) }}>
                     <pd-checkbox
-                        onPd-checked={() => this.selectAll()}
-                        checked={this.state.allSelected}
+                        onPd-checked={() => {
+                            this.selectAll();
+                        }}
+                        checked={this.state.allSelected || this.selectedStatus === 'all'}
                         isIndeterminate={this.state.isIndeterminate}
                         disabled={this.disabled}
                         readonly={this.readonly}
@@ -702,7 +726,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private renderFooter() {
-        if (!this.paging) return;
+        if (!this.paging || this.externalRowHandling) return;
         return (
             <div
                 class={{
