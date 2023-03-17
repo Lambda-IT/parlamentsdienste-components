@@ -148,7 +148,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
      * Enables pd-sort, pd-filter-input, pd-filter-change events
      * Enables a slot for a external pagination-component
      */
-    @Prop() externalRowHandling: boolean = true;
+    @Prop() externalRowHandling: boolean = false;
 
     /**
      * Triggers when one or all rows get selected
@@ -197,13 +197,13 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     @Method()
     async refresh() {
-        S.refresh(this.state, this.rows);
+        S.refresh(this.state, this.rows, this.externalRowHandling);
         S.initPaging(this.state, this.state.pageSize);
     }
 
     @Watch('rows')
     handleRowsChanged() {
-        S.refresh(this.state, this.rows);
+        S.refresh(this.state, this.rows, this.externalRowHandling);
     }
 
     @Listen('keydown')

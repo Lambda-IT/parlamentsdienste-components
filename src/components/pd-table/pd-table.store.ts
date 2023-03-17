@@ -85,15 +85,20 @@ export function checkIsIndeterminate(state: TableState) {
     state.isIndeterminate = countSelected > 0 && !state.allSelected;
 }
 
-export function refresh(state: TableState, rows: PdTableRow[]) {
+export function refresh(state: TableState, rows: PdTableRow[], externalRowHandling: boolean) {
     state.filteredRows = [...rows];
-    state.totalPages = Math.ceil(state.filteredRows.length / state.pageSize);
-    state.currentPage = state.currentPage > state.totalPages ? state.totalPages : state.currentPage;
-    state.sortColumn = undefined;
-    state.currentFilter = undefined;
     closeFilter(state);
-    checkAllSelected(state);
-    checkIsIndeterminate(state);
+    if (!externalRowHandling) {
+        state.totalPages = Math.ceil(state.filteredRows.length / state.pageSize);
+        state.currentPage = state.currentPage > state.totalPages ? state.totalPages : state.currentPage;
+        state.sortColumn = undefined;
+        state.currentFilter = undefined;
+        checkAllSelected(state);
+        checkIsIndeterminate(state);
+        //TODO:
+        // Should state.filterValues be reset here?
+    }
+    console.log(state);
 }
 
 export function initPaging(state: TableState, pageSize: number = state.defaultPageSize) {
