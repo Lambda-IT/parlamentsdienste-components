@@ -13,12 +13,10 @@ import {
     Listen,
     Method,
     Prop,
-    State,
     Watch,
 } from '@stencil/core';
 import { createStore } from '@stencil/store';
-import { head } from 'lodash';
-import { PdTableFilterCustomEvent } from '../../components';
+
 import {
     DropdownItem,
     PdColumn,
