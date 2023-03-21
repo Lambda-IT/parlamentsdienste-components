@@ -14,7 +14,6 @@ export interface TableState {
     totalPages: number;
     pageSize: number;
     defaultPageSize: number;
-    reRender: boolean;
 }
 
 export function sort(state: TableState, headerCol: PdColumn, sortFunction: SortFunction, externalRowHandling: boolean) {

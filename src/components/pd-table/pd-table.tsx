@@ -213,17 +213,13 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     @Watch('selectedStatus')
     handleSelectedStatusChanged() {
-        console.log('watch', this.selectedStatus);
-        //only if table is handled externally
         if (!this.externalRowHandling) return;
         switch (this.selectedStatus) {
             case 'all':
-                // S.selectAll(this.state);
                 this.state.isIndeterminate = false;
                 this.state.allSelected = true;
                 break;
             case 'none':
-                // S.unselectAll(this.state);
                 this.state.isIndeterminate = false;
                 this.state.allSelected = false;
                 break;
@@ -240,7 +236,6 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     constructor() {
         const { state } = createStore<S.TableState>({
-            // const store = createStore<S.TableState>({
             filteredRows: [],
             currentFilter: undefined,
             filterOpen: false,
@@ -253,7 +248,6 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             totalPages: 1,
             pageSize: 10,
             defaultPageSize: 10,
-            reRender: false,
         });
         this.state = state;
         this.state.filteredRows = this.rows;
@@ -311,7 +305,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             getFilterFunctions(this.columns, defaultFilterFunc),
             this.externalRowHandling,
         );
-        if (this.externalRowHandling) this.emitFilterChange();
+        this.emitFilterChange();
     }
 
     // create a popper js element for the menu
