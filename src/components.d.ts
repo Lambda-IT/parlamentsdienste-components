@@ -83,7 +83,7 @@ export namespace Components {
          */
         "target": string;
         /**
-          * Sets button type |text|submit|reset|
+          * Sets button type |button|submit|reset|
          */
         "type": PdButtonType;
     }
@@ -1516,7 +1516,7 @@ declare namespace LocalJSX {
          */
         "target"?: string;
         /**
-          * Sets button type |text|submit|reset|
+          * Sets button type |button|submit|reset|
          */
         "type"?: PdButtonType;
     }

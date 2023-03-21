@@ -17,7 +17,7 @@ export class Button implements ComponentInterface {
     @Prop() disabled = false;
 
     /**
-     * Sets button type |text|submit|reset|
+     * Sets button type |button|submit|reset|
      */
     @Prop() type: PdButtonType = 'button';
 

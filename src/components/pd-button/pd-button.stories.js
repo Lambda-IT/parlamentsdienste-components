@@ -13,13 +13,27 @@ export default {
 ///////////////////////////////////////////////////////////////////////////
 
 const StatesStory = (args) => `
-    <pd-button class="mt-3 ml-3" ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="success">Success</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger">Danger</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning">Warning</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="info">Info</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="light">Light</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark">Dark</pd-button>
+    <pd-button class="mt-3 ml-3" ${args.disabled ? 'disabled' : ''} size=${args.size} type="${
+    args.type
+}">Primary</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="success" type="${
+    args.type
+}">Success</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger" type="${
+    args.type
+}">Danger</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning" type="${
+    args.type
+}">Warning</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="info" type="${
+    args.type
+}">Info</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="light" type="${
+    args.type
+}">Light</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark" type="${
+    args.type
+}">Dark</pd-button>
 `;
 
 export const States = StatesStory.bind({});
@@ -39,19 +53,27 @@ States.argTypes = {
 ///////////////////////////////////////////////////////////////////////////
 
 const OutlineStory = (args) => `
-    <pd-button class="mt-3 ml-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
-    args.size
-} color="success">Success</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
-    args.size
-} color="danger">Danger</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
-    args.size
-} color="warning">Warning</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="info">Info</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="light">Light</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark">Dark</pd-button>
+    <pd-button class="mt-3 ml-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} type="${
+    args.type
+}">Primary</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="success" type="${
+    args.type
+}">Success</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger" type="${
+    args.type
+}">Danger</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning" type="${
+    args.type
+}">Warning</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="info" type="${
+    args.type
+}">Info</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="light" type="${
+    args.type
+}">Light</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark" type="${
+    args.type
+}">Dark</pd-button>
 `;
 
 export const Outline = OutlineStory.bind({});
@@ -113,9 +135,9 @@ Link.argTypes = {
 
 const GroupStory = (args) => `
     <pd-button-group class="m-3">
-        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
-        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Success</pd-button>
-        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Danger</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}">Primary</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}">Success</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}">Danger</pd-button>
     </pd-button-group>
 `;
 
