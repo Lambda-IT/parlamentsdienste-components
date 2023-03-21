@@ -26,11 +26,6 @@ export class TableFilter implements ComponentInterface {
     @Prop({ mutable: true }) value = '';
 
     /**
-     * Emitted when filter changes.
-     */
-    @Event({ eventName: 'pd-search' }) pdSearch!: EventEmitter<void>;
-
-    /**
      * Emitted when filter is confirmed.
      */
     @Event({ eventName: 'pd-confirm' }) pdConfirm!: EventEmitter<string>;
@@ -59,10 +54,6 @@ export class TableFilter implements ComponentInterface {
     async focusInput() {
         this.inputRef.focus();
     }
-
-    private onSearch = () => {
-        this.pdSearch.emit();
-    };
 
     private onClear = () => {
         this.value = '';
@@ -106,7 +97,7 @@ export class TableFilter implements ComponentInterface {
                             onKeyDown={(ev) => this.onSubmit(ev)}
                             data-test="pd-table-filter-input"
                         />
-                        <button class="pd-table-search-button" onClick={this.onSearch} tabindex="-1">
+                        <button class="pd-table-search-button" onClick={this.onConfirm} tabindex="-1">
                             <pd-icon class="pd-table-search-button-icon" name="search" size={2.375}></pd-icon>
                         </button>
                     </div>
@@ -114,9 +105,6 @@ export class TableFilter implements ComponentInterface {
                         <pd-icon class="pd-table-filter-close" size={2.375} name="close"></pd-icon>
                     </button>
                 </div>
-                <button class="pd-table-filter-confirm" onClick={this.onConfirm} data-test="pd-table-filter-confirm">
-                    <pd-icon name="confirm" size={2.375}></pd-icon>
-                </button>
             </Host>
         );
     }

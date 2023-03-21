@@ -97,10 +97,9 @@ export function refresh(state: TableState, rows: PdTableRow[], externalRowHandli
         state.currentPage = state.currentPage > state.totalPages ? state.totalPages : state.currentPage;
         state.sortColumn = undefined;
         state.currentFilter = undefined;
+        state.filterValues = {};
         checkAllSelected(state);
         checkIsIndeterminate(state);
-        //TODO:
-        // Should state.filterValues be reset here?
     }
 }
 

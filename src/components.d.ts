@@ -2392,11 +2392,11 @@ declare namespace LocalJSX {
          */
         "onPd-edit"?: (event: PdTableCustomEvent<any>) => void;
         /**
-          * Gets emitted when externalRowHandling is true and the filter changes
+          * Gets emitted when the filter changes
          */
         "onPd-filter-change"?: (event: PdTableCustomEvent<{}>) => void;
         /**
-          * TODO: Gets emitted when externalRowHandling is true and the filter input changes
+          * Gets emitted when the filter input changes
          */
         "onPd-filter-input"?: (event: PdTableCustomEvent<string>) => void;
         /**
@@ -2404,7 +2404,7 @@ declare namespace LocalJSX {
          */
         "onPd-selected"?: (event: PdTableCustomEvent<SelectedEvent>) => void;
         /**
-          * Gets emitted when externalRowHandling is true a column gets sorted
+          * Gets emitted when a column gets sorted
          */
         "onPd-sort"?: (event: PdTableCustomEvent<{}>) => void;
         /**
@@ -2465,10 +2465,6 @@ declare namespace LocalJSX {
           * Emitted when filter input value changed.
          */
         "onPd-filter-input"?: (event: PdTableFilterCustomEvent<string>) => void;
-        /**
-          * Emitted when filter changes.
-         */
-        "onPd-search"?: (event: PdTableFilterCustomEvent<void>) => void;
         /**
           * filter value
          */
