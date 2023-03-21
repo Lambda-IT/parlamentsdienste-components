@@ -27,11 +27,13 @@ export const States = StatesStory.bind({});
 States.args = {
     disabled: false,
     size: 'normal',
+    type: 'button',
 };
 
 States.argTypes = {
     disabled: { control: { type: 'boolean' } },
     size: { control: { type: 'select', options: ['large', 'normal', 'small'] } },
+    type: { control: { type: 'select', options: ['button', 'submit', 'reset'] } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
