@@ -45,6 +45,7 @@ import * as S from './pd-table.store';
 
 /**
  * @slot - Action menu items
+ * @slot external-pagination - Pagination component for external row handling
  */
 @Component({
     tag: 'pd-table',
