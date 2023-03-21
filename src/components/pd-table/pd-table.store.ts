@@ -40,7 +40,11 @@ export function filter(
     filterFunctions: Record<string, FilterFunction>,
     externalRowHandling: boolean,
 ) {
-    state.filterValues = { ...state.filterValues, [columnName]: filter };
+    if (!filter) {
+        delete state.filterValues[columnName];
+    } else {
+        state.filterValues = { ...state.filterValues, [columnName]: filter };
+    }
 
     closeFilter(state);
     if (externalRowHandling) {

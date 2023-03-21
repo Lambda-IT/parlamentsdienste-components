@@ -213,14 +213,19 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     @Watch('selectedStatus')
     handleSelectedStatusChanged() {
+        console.log('watch', this.selectedStatus);
         //only if table is handled externally
         if (!this.externalRowHandling) return;
         switch (this.selectedStatus) {
             case 'all':
-                S.selectAll(this.state);
+                // S.selectAll(this.state);
+                this.state.isIndeterminate = false;
+                this.state.allSelected = true;
                 break;
             case 'none':
-                S.unselectAll(this.state);
+                // S.unselectAll(this.state);
+                this.state.isIndeterminate = false;
+                this.state.allSelected = false;
                 break;
             case 'indeterminate':
                 this.state.isIndeterminate = true;
@@ -252,7 +257,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         });
         this.state = state;
         this.state.filteredRows = this.rows;
-        // this.store = store;
+        this.handleSelectedStatusChanged();
     }
 
     public componentWillLoad() {
@@ -362,11 +367,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private emitExternalFilterChange() {
-        if (Object.values(this.state.filterValues).every((el) => !el)) {
-            this.onExternalFilterChange.emit(null);
-        } else {
-            this.onExternalFilterChange.emit(this.state.filterValues);
-        }
+        this.onExternalFilterChange.emit(this.state.filterValues);
     }
 
     private emitExternalFilterInput(ev: CustomEvent<string>) {
