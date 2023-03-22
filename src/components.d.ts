@@ -867,6 +867,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+         */
+        "externalRowHandling": boolean;
+        /**
           * Height of header cells
          */
         "headerHeight": string;
@@ -912,6 +916,10 @@ export namespace Components {
           * Make rows selectable with a checkbox
          */
         "selectable": boolean;
+        /**
+          * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+         */
+        "selectedStatus": 'all' | 'none' | 'indeterminate';
         /**
           * Show button column and context menu
          */
@@ -2367,6 +2375,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+         */
+        "externalRowHandling"?: boolean;
+        /**
           * Height of header cells
          */
         "headerHeight"?: string;
@@ -2396,9 +2408,21 @@ declare namespace LocalJSX {
          */
         "onPd-edit"?: (event: PdTableCustomEvent<any>) => void;
         /**
+          * Gets emitted when the filter changes
+         */
+        "onPd-filter-change"?: (event: PdTableCustomEvent<{}>) => void;
+        /**
+          * Gets emitted when the filter input changes
+         */
+        "onPd-filter-input"?: (event: PdTableCustomEvent<string>) => void;
+        /**
           * Triggers when one or all rows get selected
          */
         "onPd-selected"?: (event: PdTableCustomEvent<SelectedEvent>) => void;
+        /**
+          * Gets emitted when a column gets sorted
+         */
+        "onPd-sort"?: (event: PdTableCustomEvent<{}>) => void;
         /**
           * Triggers an event when the view icon was clicked
          */
@@ -2432,6 +2456,10 @@ declare namespace LocalJSX {
          */
         "selectable"?: boolean;
         /**
+          * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+         */
+        "selectedStatus"?: 'all' | 'none' | 'indeterminate';
+        /**
           * Show button column and context menu
          */
         "showActionColumn"?: boolean;
@@ -2450,9 +2478,9 @@ declare namespace LocalJSX {
          */
         "onPd-confirm"?: (event: PdTableFilterCustomEvent<string>) => void;
         /**
-          * Emitted when filter changes.
+          * Emitted when filter input value changed.
          */
-        "onPd-search"?: (event: PdTableFilterCustomEvent<void>) => void;
+        "onPd-filter-input"?: (event: PdTableFilterCustomEvent<string>) => void;
         /**
           * filter value
          */

@@ -66,6 +66,20 @@ const rowsData = [
 Make rows selectable by setting the `selectable` property to true. Selecting a row triggers the `pd-selected` Event that contains the selected row/rows.  
 A Row can be preselected by adding the internal property `pdSelected: true` to any row.
 
+###exernalRowHandling
+
+Disables the sort, filter and pagination of the component for external handling of these things.
+Pd-sort, pd-filter-input, pd-filter-change events can then be used for external sorting functions.
+New (filtered, sorted) rows need to be set over the row property.
+
+Enables a slot for a external pagination-component. This slot needs to have the slot property with the value: 'external-pagination'.
+
+```html
+<pd-table ... external-row-handling>
+    <pd-pagination slot="external-pagination" total-pages="10" current-page="3" visible-pages="5"></pd-pagination>
+</pd-table>
+```
+
 ### vuejs Sample
 
 ```javascript
@@ -185,35 +199,40 @@ interface PdColumn {
 
 ## Properties
 
-| Property           | Attribute            | Description                                            | Type                          | Default                                                                                                                                                            |
-| ------------------ | -------------------- | ------------------------------------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `columns`          | --                   | A definition for each column of the table              | `PdColumn[]`                  | `[]`                                                                                                                                                               |
-| `disabled`         | `disabled`           | Sets selectable rows to disabled                       | `boolean`                     | `false`                                                                                                                                                            |
-| `headerHeight`     | `header-height`      | Height of header cells                                 | `string`                      | `'48'`                                                                                                                                                             |
-| `headerStyle`      | `header-style`       | The table style                                        | `"dark" \| "gray" \| "light"` | `'dark'`                                                                                                                                                           |
-| `iconConfig`       | --                   | The configuration for the last column, the icon column | `PdTableIconConfiguration`    | `undefined`                                                                                                                                                        |
-| `menuLabel`        | `menu-label`         |                                                        | `string`                      | `undefined`                                                                                                                                                        |
-| `minWidth`         | `min-width`          | The minimum width the table should take                | `string`                      | `'300'`                                                                                                                                                            |
-| `pageSizes`        | --                   | Available Page sizes for paging                        | `DropdownItem[]`              | `[         { id: '1', label: '10', value: 10, selected: true },         { id: '2', label: '25', value: 25 },         { id: '3', label: '100', value: 100 },     ]` |
-| `paging`           | `paging`             | Enables paging                                         | `boolean`                     | `false`                                                                                                                                                            |
-| `pagingLocation`   | `paging-location`    | Location of paging element                             | `"left" \| "right"`           | `'right'`                                                                                                                                                          |
-| `readonly`         | `readonly`           | Sets selectable rows to readonly                       | `boolean`                     | `false`                                                                                                                                                            |
-| `rowHeight`        | `row-height`         | Height of rows                                         | `string`                      | `'48'`                                                                                                                                                             |
-| `rows`             | --                   | The data definition for each row to display            | `PdTableRow[]`                | `[]`                                                                                                                                                               |
-| `selectable`       | `selectable`         | Make rows selectable with a checkbox                   | `boolean`                     | `false`                                                                                                                                                            |
-| `showActionColumn` | `show-action-column` | Show button column and context menu                    | `boolean`                     | `false`                                                                                                                                                            |
-| `showStatus`       | `show-status`        | Allow to render a status icon per row                  | `boolean`                     | `false`                                                                                                                                                            |
+| Property              | Attribute               | Description                                                                                                                                                             | Type                                 | Default                                                                                                                                                            |
+| --------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `columns`             | --                      | A definition for each column of the table                                                                                                                               | `PdColumn[]`                         | `[]`                                                                                                                                                               |
+| `disabled`            | `disabled`              | Sets selectable rows to disabled                                                                                                                                        | `boolean`                            | `false`                                                                                                                                                            |
+| `externalRowHandling` | `external-row-handling` | Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component | `boolean`                            | `false`                                                                                                                                                            |
+| `headerHeight`        | `header-height`         | Height of header cells                                                                                                                                                  | `string`                             | `'48'`                                                                                                                                                             |
+| `headerStyle`         | `header-style`          | The table style                                                                                                                                                         | `"dark" \| "gray" \| "light"`        | `'dark'`                                                                                                                                                           |
+| `iconConfig`          | --                      | The configuration for the last column, the icon column                                                                                                                  | `PdTableIconConfiguration`           | `undefined`                                                                                                                                                        |
+| `menuLabel`           | `menu-label`            |                                                                                                                                                                         | `string`                             | `undefined`                                                                                                                                                        |
+| `minWidth`            | `min-width`             | The minimum width the table should take                                                                                                                                 | `string`                             | `'300'`                                                                                                                                                            |
+| `pageSizes`           | --                      | Available Page sizes for paging                                                                                                                                         | `DropdownItem[]`                     | `[         { id: '1', label: '10', value: 10, selected: true },         { id: '2', label: '25', value: 25 },         { id: '3', label: '100', value: 100 },     ]` |
+| `paging`              | `paging`                | Enables paging                                                                                                                                                          | `boolean`                            | `false`                                                                                                                                                            |
+| `pagingLocation`      | `paging-location`       | Location of paging element                                                                                                                                              | `"left" \| "right"`                  | `'right'`                                                                                                                                                          |
+| `readonly`            | `readonly`              | Sets selectable rows to readonly                                                                                                                                        | `boolean`                            | `false`                                                                                                                                                            |
+| `rowHeight`           | `row-height`            | Height of rows                                                                                                                                                          | `string`                             | `'48'`                                                                                                                                                             |
+| `rows`                | --                      | The data definition for each row to display                                                                                                                             | `PdTableRow[]`                       | `[]`                                                                                                                                                               |
+| `selectable`          | `selectable`            | Make rows selectable with a checkbox                                                                                                                                    | `boolean`                            | `false`                                                                                                                                                            |
+| `selectedStatus`      | `selected-status`       | If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table                                                | `"all" \| "indeterminate" \| "none"` | `'none'`                                                                                                                                                           |
+| `showActionColumn`    | `show-action-column`    | Show button column and context menu                                                                                                                                     | `boolean`                            | `false`                                                                                                                                                            |
+| `showStatus`          | `show-status`           | Allow to render a status icon per row                                                                                                                                   | `boolean`                            | `false`                                                                                                                                                            |
 
 
 ## Events
 
-| Event            | Description                                        | Type                         |
-| ---------------- | -------------------------------------------------- | ---------------------------- |
-| `pd-clicked-row` | Triggers an event when row was clicked             | `CustomEvent<any>`           |
-| `pd-delete`      | Triggers an event when the delete icon was clicked | `CustomEvent<any>`           |
-| `pd-edit`        | Triggers an event when the edit icon was clicked   | `CustomEvent<any>`           |
-| `pd-selected`    | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
-| `pd-view`        | Triggers an event when the view icon was clicked   | `CustomEvent<any>`           |
+| Event              | Description                                        | Type                         |
+| ------------------ | -------------------------------------------------- | ---------------------------- |
+| `pd-clicked-row`   | Triggers an event when row was clicked             | `CustomEvent<any>`           |
+| `pd-delete`        | Triggers an event when the delete icon was clicked | `CustomEvent<any>`           |
+| `pd-edit`          | Triggers an event when the edit icon was clicked   | `CustomEvent<any>`           |
+| `pd-filter-change` | Gets emitted when the filter changes               | `CustomEvent<{}>`            |
+| `pd-filter-input`  | Gets emitted when the filter input changes         | `CustomEvent<string>`        |
+| `pd-selected`      | Triggers when one or all rows get selected         | `CustomEvent<SelectedEvent>` |
+| `pd-sort`          | Gets emitted when a column gets sorted             | `CustomEvent<{}>`            |
+| `pd-view`          | Triggers an event when the view icon was clicked   | `CustomEvent<any>`           |
 
 
 ## Methods
@@ -241,9 +260,10 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot | Description       |
-| ---- | ----------------- |
-|      | Action menu items |
+| Slot                    | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+|                         | Action menu items                              |
+| `"external-pagination"` | Pagination component for external row handling |
 
 
 ## Dependencies

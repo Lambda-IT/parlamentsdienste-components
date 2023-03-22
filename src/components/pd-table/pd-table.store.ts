@@ -16,14 +16,19 @@ export interface TableState {
     defaultPageSize: number;
 }
 
-export function sort(state: TableState, headerCol: PdColumn, sortFunction: SortFunction) {
+export function sort(state: TableState, headerCol: PdColumn, sortFunction: SortFunction, externalRowHandling: boolean) {
     const { columnName, sortable } = headerCol;
     if (!sortable) return;
 
     const dir = state.nextSortDir[columnName] || 'desc';
     state.sortColumn = columnName;
     state.nextSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
-    state.filteredRows = [...state.filteredRows].sort((a, b) => sortFunction(a[columnName], b[columnName], dir));
+
+    if (externalRowHandling) {
+        state.filteredRows = [...state.filteredRows];
+    } else {
+        state.filteredRows = [...state.filteredRows].sort((a, b) => sortFunction(a[columnName], b[columnName], dir));
+    }
 }
 
 export function filter(
@@ -32,10 +37,20 @@ export function filter(
     columnName: string,
     rows: PdTableRow[],
     filterFunctions: Record<string, FilterFunction>,
+    externalRowHandling: boolean,
 ) {
-    state.filterValues = { ...state.filterValues, [columnName]: filter };
+    if (!filter) {
+        delete state.filterValues[columnName];
+    } else {
+        state.filterValues = { ...state.filterValues, [columnName]: filter };
+    }
+
     closeFilter(state);
-    state.filteredRows = getFilteredRows(rows, state.filterValues, filterFunctions);
+    if (externalRowHandling) {
+        state.filteredRows = [...state.filteredRows];
+    } else {
+        state.filteredRows = getFilteredRows(rows, state.filterValues, filterFunctions);
+    }
 }
 
 export function openFilter(state: TableState, columnName: string) {
@@ -73,15 +88,18 @@ export function checkIsIndeterminate(state: TableState) {
     state.isIndeterminate = countSelected > 0 && !state.allSelected;
 }
 
-export function refresh(state: TableState, rows: PdTableRow[]) {
+export function refresh(state: TableState, rows: PdTableRow[], externalRowHandling: boolean) {
     state.filteredRows = [...rows];
-    state.totalPages = Math.ceil(state.filteredRows.length / state.pageSize);
-    state.currentPage = state.currentPage > state.totalPages ? state.totalPages : state.currentPage;
-    state.sortColumn = undefined;
-    state.currentFilter = undefined;
     closeFilter(state);
-    checkAllSelected(state);
-    checkIsIndeterminate(state);
+    if (!externalRowHandling) {
+        state.totalPages = Math.ceil(state.filteredRows.length / state.pageSize);
+        state.currentPage = state.currentPage > state.totalPages ? state.totalPages : state.currentPage;
+        state.sortColumn = undefined;
+        state.currentFilter = undefined;
+        state.filterValues = {};
+        checkAllSelected(state);
+        checkIsIndeterminate(state);
+    }
 }
 
 export function initPaging(state: TableState, pageSize: number = state.defaultPageSize) {
