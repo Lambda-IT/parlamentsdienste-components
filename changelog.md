@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   #235 Added the selected-status property to pd-table which can be used to set the selected status of all rows on the top left of the table. The property can be set to 'all', 'none' or 'indeterminate'. It is only available when the external-row-handling property is set.
 -   #235 Added a slot for an external pd-pagination component. The slot is only available when the external-row-handling property is set. The slot needs to be named with slot="external-pagination"
 
--   #163 Addes missing storybook controls for pd-slider, pd-radio, pd-checkbox, pd-button
+-   #163 Added missing storybook controls for pd-slider, pd-radio, pd-checkbox, pd-button
 
 ### Changed
 
