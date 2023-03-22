@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.6] - 2023-03-22
+
+### Added
+
+-   #235 Added the external-row-handling property to pd-table which deactivates internal sorting, filtering and pagination.
+-   #235 Added events pd-sort (emitted when sorting a column), pd-filter-change (emits all the set filters when a new one is set or one is modified or deleted) and pd-filter-input (emits the filter value when the user types in the filter input field)
+-   #235 Added the selected-status property to pd-table which can be used to set the selected status of all rows on the top left of the table. The property can be set to 'all', 'none' or 'indeterminate'. It is only available when the external-row-handling property is set.
+-   #235 Added a slot for an external pd-pagination component. The slot is only available when the external-row-handling property is set. The slot needs to be named with slot="external-pagination"
+
+-   #163 Addes missing storybook controls for pd-slider, pd-radio, pd-checkbox, pd-button
+
+### Changed
+
+-   Adjusted colors of pd-chip according to the design system
+
 ## [2.6.5] - 2023-03-16
 
 ### Added
@@ -438,6 +453,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.6]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.6
 [2.6.5]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.5
 [2.6.4]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.4
 [2.6.3]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.3
