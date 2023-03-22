@@ -71,7 +71,6 @@ export class Button implements ComponentInterface {
         const TagType = href ? 'a' : 'button';
         const role = 'button';
         const typeAttrs = TagType === 'button' ? { type, role } : { href, target };
-        if (typeAttrs.href) console.log('typeAttrs', typeAttrs);
         return (
             <Host class={{ 'pd-button-fullwidth': this.fullWidth }}>
                 <TagType
