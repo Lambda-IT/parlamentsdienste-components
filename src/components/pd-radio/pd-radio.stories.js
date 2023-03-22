@@ -30,8 +30,14 @@ export const radio = (args) => {
             ${args.error ? 'error' : ''}
             ${args.verticalAdjust ? 'vertical-adjust' : ''}
             ></pd-radio>
-            <pd-radio name="radio-test" value="2" label="radio 2"></pd-radio>
-            <pd-radio name="radio-test" value="3" label="radio 3"></pd-radio>
+            <pd-radio name="radio-test" value="2" label="radio 2" ${args.disabled ? 'disabled' : ''}
+            ${args.readonly ? 'readonly' : ''}
+            ${args.error ? 'error' : ''}
+            ${args.verticalAdjust ? 'vertical-adjust' : ''}></pd-radio>
+            <pd-radio name="radio-test" value="3" label="radio 3" ${args.disabled ? 'disabled' : ''}
+            ${args.readonly ? 'readonly' : ''}
+            ${args.error ? 'error' : ''}
+            ${args.verticalAdjust ? 'vertical-adjust' : ''}></pd-radio>
         </div>
     `;
 };
