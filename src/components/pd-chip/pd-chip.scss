@@ -56,10 +56,10 @@
     }
 
     &:active:enabled {
-        background-color: setcolor(primary, pressed);
-        color: setcolor(primary, pressedContrast);
+        background-color: setcolor(primary, enabled);
+        color: setcolor(primary, enabledContrast);
         .pd-chip-icon {
-            fill: setcolor(primary, pressedContrast);
+            fill: setcolor(primary, enabledContrast);
         }
     }
 

@@ -17,7 +17,7 @@ export class Button implements ComponentInterface {
     @Prop() disabled = false;
 
     /**
-     * Sets button type |text|submit|reset|
+     * Sets button type |button|submit|reset|
      */
     @Prop() type: PdButtonType = 'button';
 
@@ -71,7 +71,6 @@ export class Button implements ComponentInterface {
         const TagType = href ? 'a' : 'button';
         const role = 'button';
         const typeAttrs = TagType === 'button' ? { type, role } : { href, target };
-
         return (
             <Host class={{ 'pd-button-fullwidth': this.fullWidth }}>
                 <TagType

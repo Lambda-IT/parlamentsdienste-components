@@ -13,13 +13,27 @@ export default {
 ///////////////////////////////////////////////////////////////////////////
 
 const StatesStory = (args) => `
-    <pd-button class="mt-3 ml-3" ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="success">Success</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger">Danger</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning">Warning</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="info">Info</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="light">Light</pd-button>
-    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark">Dark</pd-button>
+    <pd-button class="mt-3 ml-3" ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}" full-width="${
+    args.fullWidth
+}">Primary</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="success" type="${
+    args.type
+}" full-width="${args.fullWidth}">Success</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger" type="${
+    args.type
+}" full-width="${args.fullWidth}">Danger</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning" type="${
+    args.type
+}" full-width="${args.fullWidth}">Warning</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="info" type="${
+    args.type
+}" full-width="${args.fullWidth}">Info</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="light" type="${
+    args.type
+}" full-width="${args.fullWidth}">Light</pd-button>
+    <pd-button class="mt-3" ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark" type="${
+    args.type
+}" full-width="${args.fullWidth}">Dark</pd-button>
 `;
 
 export const States = StatesStory.bind({});
@@ -27,29 +41,41 @@ export const States = StatesStory.bind({});
 States.args = {
     disabled: false,
     size: 'normal',
+    type: 'button',
+    fullWidth: false,
 };
 
 States.argTypes = {
     disabled: { control: { type: 'boolean' } },
     size: { control: { type: 'select', options: ['large', 'normal', 'small'] } },
+    type: { control: { type: 'select', options: ['button', 'submit', 'reset'] } },
+    fullWidth: { control: { type: 'boolean' } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 const OutlineStory = (args) => `
-    <pd-button class="mt-3 ml-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
-    args.size
-} color="success">Success</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
-    args.size
-} color="danger">Danger</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${
-    args.size
-} color="warning">Warning</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="info">Info</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="light">Light</pd-button>
-    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark">Dark</pd-button>
+    <pd-button class="mt-3 ml-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} type="${
+    args.type
+}" full-width="${args.fullWidth}">Primary</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="success" type="${
+    args.type
+}" full-width="${args.fullWidth}">Success</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger" type="${
+    args.type
+}" full-width="${args.fullWidth}">Danger</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning" type="${
+    args.type
+}" full-width="${args.fullWidth}">Warning</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="info" type="${
+    args.type
+}" full-width="${args.fullWidth}">Info</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="light" type="${
+    args.type
+}" full-width="${args.fullWidth}">Light</pd-button>
+    <pd-button class="mt-3" outline ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark" type="${
+    args.type
+}" full-width="${args.fullWidth}">Dark</pd-button>
 `;
 
 export const Outline = OutlineStory.bind({});
@@ -66,13 +92,13 @@ Outline.argTypes = {
 
 const IconStory = (args) => `
     <div>
-        <pd-button class="m-3" icon-location="${args.location}">
+        <pd-button class="m-3" icon-location="${args.location}" full-width="${args.fullWidth}">
             <pd-icon size="2" style="fill: white" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
     </div>
     <div>
-        <pd-button class="m-3" icon-location="${args.location}" href="http://www.google.ch" target="_blank">
+        <pd-button class="m-3" icon-location="${args.location}" href="http://www.google.ch" target="_blank" full-width="${args.fullWidth}">
             <pd-icon size="1.2" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
             external link
         </pd-button>
@@ -83,10 +109,12 @@ export const Icon = IconStory.bind({});
 
 Icon.args = {
     location: 'left',
+    fullWidth: false,
 };
 
 Icon.argTypes = {
     location: { control: { type: 'select', options: ['left', 'right', 'center'] } },
+    fullWidth: { control: { type: 'boolean' } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -111,18 +139,14 @@ Link.argTypes = {
 
 const GroupStory = (args) => `
     <pd-button-group class="m-3">
-        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Primary</pd-button>
-        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Success</pd-button>
-        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size}>Danger</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}">Primary</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}">Success</pd-button>
+        <pd-button ${args.disabled ? 'disabled' : ''} size=${args.size} type="${args.type}">Danger</pd-button>
     </pd-button-group>
 `;
 
 export const Group = GroupStory.bind({});
 
-Group.args = {
-    ...States.args,
-};
+Group.args = (({ fullWidth, ...rest }) => rest)(States.args); // remove fullWidth
 
-Group.argTypes = {
-    ...States.argTypes,
-};
+Group.argTypes = (({ fullWidth, ...rest }) => rest)(States.argTypes); // remove fullWidth
