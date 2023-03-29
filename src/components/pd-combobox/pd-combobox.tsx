@@ -156,7 +156,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     async setSelectedIndex(index: number) {
         if (index >= 0 && index < this.state.items.length) {
             this.state.items[index] = { ...this.state.items[index], selected: true };
-            this.selectItem(this.state.items[index]);
+            this.selectItem(this.state.items[index], null, false);
         }
     }
 
@@ -197,27 +197,24 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Watch('items')
     itemsChanged(items: any) {
-        const selectedItemBeforeReset = this.state.selectedItem;
         const inputValueBeforeReset = this.state.inputValue;
 
         this.state.items = this.validateItems(items);
 
         this.resetCombobox();
 
-        if (selectedItemBeforeReset) {
-            this.pdCombobox.emit(null);
+        if (inputValueBeforeReset !== '') {
+            this.state.inputValue = inputValueBeforeReset;
+            this.filterItems();
+            return;
         }
 
-        this.setFocus();
+        if (this.selectable) {
+            let selectedItem = S.findSelectedItem(this.state);
 
-        if (inputValueBeforeReset === '') return;
-
-        this.state.inputValue = inputValueBeforeReset;
-        this.filterItems();
-        if (S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
-            this.state.open = true;
-        } else {
-            this.state.open = false;
+            if (selectedItem) {
+                this.selectItem(selectedItem, null, false);
+            }
         }
     }
 
@@ -249,7 +246,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         let selectedItem = S.findSelectedItem(this.state);
 
         if (selectedItem) {
-            this.selectItem(selectedItem);
+            this.selectItem(selectedItem, null, false);
         }
     }
 
@@ -335,12 +332,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    private selectItem(comboboxItem: ComboboxItem, ev?: Event) {
+    private selectItem(comboboxItem: ComboboxItem, ev?: Event, emitPdCombobox = true) {
         if (ev) ev.preventDefault();
         this.state.inputValue = comboboxItem.label;
         this.state.selectedItem = comboboxItem;
 
-        this.pdCombobox.emit(this.state.selectedItem);
+        if (emitPdCombobox) this.pdCombobox.emit(this.state.selectedItem);
 
         if (this.selectable) {
             S.closeDropdown(this.state);
