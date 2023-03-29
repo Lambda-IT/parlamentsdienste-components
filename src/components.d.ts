@@ -7,8 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./interface";
-export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
         /**
