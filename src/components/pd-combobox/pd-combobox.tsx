@@ -197,22 +197,21 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Watch('items')
     itemsChanged(items: any) {
-        const inputValueBeforeReset = this.state.inputValue;
-
         this.state.items = this.validateItems(items);
 
-        this.resetCombobox();
+        this.state.filteredItems = this.state.items;
 
-        if (inputValueBeforeReset !== '') {
-            this.state.inputValue = inputValueBeforeReset;
-            this.filterItems();
-            return;
-        }
+        this.filterItems();
 
         if (this.selectable) {
-            let selectedItem = S.findSelectedItem(this.state);
+            let selectedItem = this.state.items.find((item) => item.selected) ?? null;
 
-            if (selectedItem) {
+            //if this condition is true the user is typing and we dont want to interupt such a behaviour
+            if (this.state.inputValue !== '' && this.state.inputValue !== this.state.selectedItem?.label) {
+                //we just want so set the state (used for styling)
+                this.state.selectedItem = selectedItem;
+            } else if (selectedItem) {
+                // really select it
                 this.selectItem(selectedItem, null, false);
             }
         }
@@ -220,7 +219,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Listen('click', { target: 'body' })
     handleClickOutside(ev: MouseEvent) {
-        if (ev.target !== this.element) {
+        if (ev.target !== this.element && this.state) {
             S.closeDropdown(this.state);
         }
     }
@@ -243,8 +242,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.pdChange.emit(this.state.selectedItem);
         });
 
-        let selectedItem = S.findSelectedItem(this.state);
-
+        let selectedItem = state.items.find((item) => item.selected) ?? null;
+        //If there is an input value, we want to see if it matches an item
+        if (state.inputValue) {
+            selectedItem = state.items.filter((i) => i.label === state.inputValue).shift();
+        }
         if (selectedItem) {
             this.selectItem(selectedItem, null, false);
         }

@@ -9,14 +9,6 @@ export interface ComboboxState {
     currentNavigatedIndex: number;
 }
 
-export function findSelectedItem(state: ComboboxState): ComboboxItem | undefined {
-    let selectedItem = state.items.find((item) => item.selected);
-    if (state.inputValue) {
-        selectedItem = state.items.filter((i) => i.label === state.inputValue).shift();
-    }
-    return selectedItem;
-}
-
 export function isUserNavigating(state: ComboboxState): boolean {
     return state.open && state.currentNavigatedIndex > -1;
 }
