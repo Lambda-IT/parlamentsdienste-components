@@ -86,7 +86,7 @@
             </details>
             <details open>
                 <summary>Buttons</summary>
-                <details>
+                <details open>
                     <summary>Buttons</summary>
                     <h2>States</h2>
                     <div class="button-grid">
@@ -144,7 +144,7 @@
                     </div>
                     <div>
                         <h2>Sizes</h2>
-                        <pd-button size="small">Button</pd-button>
+                        <pd-button size="small">Button Button Button Button ButtonButton Button</pd-button>
                         <pd-button size="normal">Button</pd-button>
                         <pd-button size="large">Button</pd-button>
                     </div>
@@ -197,6 +197,62 @@
             <details open>
                 <summary>Forms</summary>
                 <details open>
+                    <div class="dropdown-grid">
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            id="pd-combobox-1"
+                            empty-item
+                            disable-filter
+                        ></pd-combobox>
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            readonly
+                        ></pd-combobox>
+
+                        <pd-combobox
+                            class="pd-combobox-items"
+                            selectable
+                            label="Label"
+                            id="pd-combobox-2"
+                            empty-item
+                            disable-filter
+                        ></pd-combobox>
+                        <pd-combobox class="pd-combobox-items" selectable label="Label" disabled></pd-combobox>
+
+                        <pd-dropdown class="pd-dropdown-items" label="Label" empty-item></pd-dropdown>
+                        <pd-dropdown class="pd-dropdown-items" label="Label" empty-item disabled></pd-dropdown>
+                    </div>
+                    <div style="width: 200px;">
+                        <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label"></pd-combobox>
+                    </div>
+                    <span>Datepicker (input enabled)</span>
+                    <pd-datepicker label="Label" allow-input date="01/01/2021"></pd-datepicker>
+                    <pd-datepicker label="Label" allow-input disabled date="01/01/2021"></pd-datepicker>
+                    <pd-datepicker label="Label" allow-input readonly date="01/01/2021"></pd-datepicker>
+                    <pd-datepicker label="Label" allow-input error date="01/01/2021"></pd-datepicker>
+                    <span></span>
+
+                    <span>Datepicker (input disabled)</span>
+                    <pd-datepicker label="Label" date="01/01/2021"></pd-datepicker>
+                    <pd-datepicker label="Label" disabled date="01/01/2021"></pd-datepicker>
+                    <pd-datepicker label="Label" readonly date="01/01/2021"></pd-datepicker>
+                    <pd-datepicker label="Label" error date="01/01/2021"></pd-datepicker>
+                    <span></span>
+
+                    <style>
+                        .dropdown-grid {
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-gap: 30px;
+                        }
+                    </style>
+                </details>
+
+                <!-- <details open>
                     <summary>Inputs</summary>
                     <div class="dropdown-grid">
                         <span></span>
@@ -324,7 +380,12 @@
                         <span></span>
 
                         <span>Combobox</span>
-                        <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label"></pd-combobox>
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            id="pd-combobox-1"
+                        ></pd-combobox>
                         <pd-combobox
                             placeholder="search..."
                             class="pd-combobox-items"
@@ -352,7 +413,12 @@
                         ></pd-combobox>
 
                         <span>Combobox (selectable)</span>
-                        <pd-combobox class="pd-combobox-items" selectable label="Label"></pd-combobox>
+                        <pd-combobox
+                            class="pd-combobox-items"
+                            selectable
+                            label="Label"
+                            id="pd-combobox-2"
+                        ></pd-combobox>
                         <pd-combobox class="pd-combobox-items" selectable label="Label" disabled></pd-combobox>
                         <pd-combobox
                             class="pd-combobox-items"
@@ -385,7 +451,7 @@
                             grid-gap: 10px;
                         }
                     </style>
-                </details>
+                </details> -->
 
                 <details>
                     <summary>Chips</summary>
@@ -598,7 +664,7 @@
                     </pd-list>
                     <h2>List item expandable</h2>
                     <pd-list>
-                        <pd-list-item-expandable expandable>
+                        <pd-list-item-expandable expandable content-click>
                             <div>Expandable List Item</div>
                             <div slot="expandable">
                                 <span
@@ -864,11 +930,137 @@
                     { id: '1', label: 'Dropdown Link 01', value: 'a1' },
                     { id: '2', label: 'Dropdown Link 02', value: 'a2' },
                     { id: '3', label: 'Dropdown Link 03', value: 'a3' },
-                    { id: '4', label: 'Dropdown Link 04', value: 'a4' },
-                    { id: '5', label: 'Dropdown Link 05', value: 'a5' },
-                    { id: '6', label: 'Preselected', value: 'a6', selected: true },
+                    { id: '4', label: 'Dropdown Link 04', value: 'a4', selected: true },
+                    {
+                        id: '5',
+                        label:
+                            'Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 ',
+                        value: 'a5',
+                    },
+                    { id: '6', label: 'Preselected', value: 'a6' },
+                    { id: '7', label: 'some more 1', value: 'a7' },
+                    { id: '8', label: 'some more 2', value: 'a8' },
+                    { id: '9', label: 'some other 3', value: 'a9' },
+                    { id: '10', label: 'some other 4', value: 'a10' },
                 ];
             }
+
+            // setTimeout(() => {
+            //     pdComboBox1.items = [];
+            // }, 3000);
+            // setTimeout(() => {
+            //     pdComboBox1.items = createRandomItems(200);
+            // }, 4000);
+
+            const words = [
+                'Apfel',
+                'Buch',
+                'Computer',
+                'Dach',
+                'Elefant',
+                'Fahrrad',
+                'Garten',
+                'Haus',
+                'Igel',
+                'Junge',
+                'Kaffee',
+                'Lampe',
+                'Maus',
+                'Nase',
+                'Ohr',
+                'Pflanze',
+                'Qualle',
+                'Regen',
+                'Schuh',
+                'Tasse',
+                'Uhr',
+                'Vogel',
+                'Wasser',
+                'Xylophon',
+                'Yacht',
+                'Ziege',
+                'Adler',
+                'Blume',
+                'Cello',
+                'Dose',
+            ];
+
+            const random = Math.floor(Math.random() * words.length);
+            // console.log(random, words[random]);
+
+            function createRandomItems(length, selected = false) {
+                let items = [];
+                for (i = 0; i < length; i++) {
+                    items.push({
+                        id: i,
+                        label: `${words[Math.floor(Math.random() * words.length)]} ${
+                            words[Math.floor(Math.random() * words.length)]
+                        } ${words[Math.floor(Math.random() * words.length)]}`,
+                        value: makeid(5),
+                        selected: selected && i === 5,
+                    });
+                }
+                return items;
+            }
+
+            function makeid(length) {
+                let result = '';
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ';
+                const charactersLength = characters.length;
+                let counter = 0;
+                while (counter < length) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                    counter += 1;
+                }
+                return result;
+            }
+
+            function makeFakeRespone(input, combobox) {
+                setTimeout(() => {
+                    let items = createRandomItems(10, true);
+                    items.forEach((item) => {
+                        item.label = `${input}${makeid(5)}`;
+                    });
+                    combobox.items = items;
+                    // combobox.setOpen(true);
+                }, 2000);
+            }
+
+            // pdComboBox1.items = createRandomItems(30);
+            // pdComboBox2.items = createRandomItems(30);
+
+            // setTimeout(() => {
+            //     pdComboBox2.setSelectedIndex(5);
+            // }, 4000);
+
+            // setTimeout(() => {
+            //     pdComboBox2.items = [];
+            // }, 5000);
+
+            setTimeout(() => {
+                console.log('3 ## set items');
+                pdComboBox2.items = createRandomItems(20, true);
+            }, 3000);
+            // setTimeout(() => {
+            //     console.log('10 ## set items');
+            //     pdComboBox2.items = createRandomItems(20, true);
+            // }, 10000);
+            // setTimeout(() => {
+            //     console.log('15 ## set items');
+            //     pdComboBox2.items = createRandomItems(20, true);
+            // }, 15000);
+
+            pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
+            pdComboBox1.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
+            pdComboBox1.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox1));
+            // pdComboBox1.addEventListener('pd-blur', (e) => console.log('pd-blur', e));
+            // pdComboBox1.addEventListener('pd-focus', (e) => console.log('pd-focus', e));
+
+            pdComboBox2.addEventListener('pd-change', (e) => console.log('pd-change', e));
+            pdComboBox2.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
+            pdComboBox2.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox2));
+            // pdComboBox2.addEventListener('pd-blur', (e) => console.log('pd-blur', e));
+            // pdComboBox2.addEventListener('pd-focus', (e) => console.log('pd-focus', e));
 
             const columns = [
                 {
@@ -968,24 +1160,24 @@
             pdTable2.addEventListener('pd-selected', (ev) => console.log('pdTable2 > selected', ev.detail));
             pdTable2.addEventListener('pd-clicked-row', (ev) => console.log('pdTable2 > clicked-row', ev.detail));
 
-            pdInput.addEventListener('pd-change', (value) => {
-                pdProgress.setAttribute('value', value.detail.value);
-            });
+            // pdInput.addEventListener('pd-change', (value) => {
+            //     pdProgress.setAttribute('value', value.detail.value);
+            // });
 
-            pdSearch.addEventListener('pd-search', (value) => {
-                console.log('LOG: value', value);
-            });
+            // pdSearch.addEventListener('pd-search', (value) => {
+            //     console.log('LOG: value', value);
+            // });
 
-            pdSearch.addEventListener('pd-input', (value) => {
-                pdSearch.results = [
-                    `Some random results`,
-                    `Some random (results)`,
-                    `Some "random" results`,
-                    `Some random results with random extra words`,
-                    `Some random results with random extra words words words`,
-                    `RanDoM`,
-                ];
-            });
+            // pdSearch.addEventListener('pd-input', (value) => {
+            //     pdSearch.results = [
+            //         `Some random results`,
+            //         `Some random (results)`,
+            //         `Some "random" results`,
+            //         `Some random results with random extra words`,
+            //         `Some random results with random extra words words words`,
+            //         `RanDoM`,
+            //     ];
+            // });
 
             pdNavbar.addEventListener('pd-menu', () => console.log(`file: index.html ~ line 324`));
 

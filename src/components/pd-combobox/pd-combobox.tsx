@@ -211,7 +211,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 //we just want so set the state (used for styling)
                 this.state.selectedItem = selectedItem;
             } else if (selectedItem) {
-                // really select it
+                // really select it (set label to selected)
                 this.selectItem(selectedItem, null, false);
             }
         }
@@ -305,17 +305,26 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             }
             case 'Escape': {
                 ev.preventDefault();
-                if (this.selectable && this.state.selectedItem) {
-                    this.pdCombobox.emit(null);
+
+                if (this.state.open) {
+                    this.escape();
+                    S.closeDropdown(this.state);
+                } else {
+                    if (this.selectable && this.state.selectedItem) {
+                        this.pdCombobox.emit(null);
+                    }
+                    this.resetCombobox();
+                    this.setFocus();
                 }
-                this.resetCombobox();
-                this.setFocus();
                 break;
             }
             case 'Enter': {
                 ev.preventDefault();
                 if (S.isUserNavigating(this.state)) {
                     this.selectItem(this.state.filteredItems[this.state.currentNavigatedIndex]);
+                } else if (S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+                    this.state.open = true;
+                    S.navigateToNextItem(this.state, 'up');
                 }
                 break;
             }
@@ -430,11 +439,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.pdBlur.emit();
 
-        if (this.selectable && this.state.selectedItem && this.state.inputValue !== this.state.selectedItem?.label) {
+        this.escape();
+    };
+
+    private escape() {
+        if (this.selectable && this.state.selectedItem && this.state.inputValue !== this.state.selectedItem.label) {
             this.state.inputValue = this.state.selectedItem.label;
             this.state.filteredItems = this.state.items;
         }
-    };
+    }
 
     private onFocus = () => {
         this.pdFocus.emit();
@@ -456,7 +469,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-error': this.error,
-                        'pd-combobox-item-selected': this.state.selectedItem !== null,
+                        'pd-combobox-item-selected': this.state.inputValue === this.state.selectedItem?.label,
                     }}
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
@@ -484,7 +497,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 aria-haspopup="true"
                                 aria-expanded={`${this.state.open}`}
                             />
-                            {!this.state.selectedItem ? (
+                            {this.state.inputValue !== this.state.selectedItem?.label ? (
                                 <button class="pd-combobox-icon left" tabindex="-1" onClick={() => this.setFocus()}>
                                     <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
                                 </button>
