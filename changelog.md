@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   #240 Additional: Its highly recommended to set the disable-filter property when using backend searches.
 
 -   Pd-Combobox: The first escape-key will just close the dropdown. A second escape-key will clear the input field and emit the pd-combobox event with null as value.
--   Pd-Combobox: The min-widht css property is removed.
+-   Pd-Combobox: The min-width css property is removed.
 
 -   Pd-Button: Heights are now flexible. 2 or more rows of text are possible.
 
