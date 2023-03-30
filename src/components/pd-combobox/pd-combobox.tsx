@@ -156,7 +156,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     async setSelectedIndex(index: number) {
         if (index >= 0 && index < this.state.items.length) {
             this.state.items[index] = { ...this.state.items[index], selected: true };
-            this.selectItem(this.state.items[index]);
+            this.selectItem(this.state.items[index], null, false);
         }
     }
 
@@ -197,33 +197,29 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Watch('items')
     itemsChanged(items: any) {
-        const selectedItemBeforeReset = this.state.selectedItem;
-        const inputValueBeforeReset = this.state.inputValue;
-
         this.state.items = this.validateItems(items);
 
-        this.resetCombobox();
+        this.state.filteredItems = this.state.items;
 
-        if (selectedItemBeforeReset) {
-            this.pdCombobox.emit(null);
-        }
-
-        this.setFocus();
-
-        if (inputValueBeforeReset === '') return;
-
-        this.state.inputValue = inputValueBeforeReset;
         this.filterItems();
-        if (S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
-            this.state.open = true;
-        } else {
-            this.state.open = false;
+
+        if (this.selectable) {
+            let selectedItem = this.state.items.find((item) => item.selected) ?? null;
+
+            //if this condition is true the user is typing and we dont want to interupt such a behaviour
+            if (this.state.inputValue !== '' && this.state.inputValue !== this.state.selectedItem?.label) {
+                //we just want so set the state (used for styling)
+                this.state.selectedItem = selectedItem;
+            } else if (selectedItem) {
+                // really select it (set label to selected)
+                this.selectItem(selectedItem, null, false);
+            }
         }
     }
 
     @Listen('click', { target: 'body' })
     handleClickOutside(ev: MouseEvent) {
-        if (ev.target !== this.element) {
+        if (ev.target !== this.element && this.state) {
             S.closeDropdown(this.state);
         }
     }
@@ -246,10 +242,13 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.pdChange.emit(this.state.selectedItem);
         });
 
-        let selectedItem = S.findSelectedItem(this.state);
-
+        let selectedItem = state.items.find((item) => item.selected) ?? null;
+        //If there is an input value, we want to see if it matches an item
+        if (state.inputValue) {
+            selectedItem = state.items.filter((i) => i.label === state.inputValue).shift();
+        }
         if (selectedItem) {
-            this.selectItem(selectedItem);
+            this.selectItem(selectedItem, null, false);
         }
     }
 
@@ -306,17 +305,26 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             }
             case 'Escape': {
                 ev.preventDefault();
-                if (this.selectable && this.state.selectedItem) {
-                    this.pdCombobox.emit(null);
+
+                if (this.state.open) {
+                    this.escape();
+                    S.closeDropdown(this.state);
+                } else {
+                    if (this.selectable && this.state.selectedItem) {
+                        this.pdCombobox.emit(null);
+                    }
+                    this.resetCombobox();
+                    this.setFocus();
                 }
-                this.resetCombobox();
-                this.setFocus();
                 break;
             }
             case 'Enter': {
                 ev.preventDefault();
                 if (S.isUserNavigating(this.state)) {
                     this.selectItem(this.state.filteredItems[this.state.currentNavigatedIndex]);
+                } else if (S.isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
+                    this.state.open = true;
+                    S.navigateToNextItem(this.state, 'up');
                 }
                 break;
             }
@@ -335,12 +343,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    private selectItem(comboboxItem: ComboboxItem, ev?: Event) {
+    private selectItem(comboboxItem: ComboboxItem, ev?: Event, emitPdCombobox = true) {
         if (ev) ev.preventDefault();
         this.state.inputValue = comboboxItem.label;
         this.state.selectedItem = comboboxItem;
 
-        this.pdCombobox.emit(this.state.selectedItem);
+        if (emitPdCombobox) this.pdCombobox.emit(this.state.selectedItem);
 
         if (this.selectable) {
             S.closeDropdown(this.state);
@@ -431,11 +439,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
         this.pdBlur.emit();
 
-        if (this.selectable && this.state.selectedItem && this.state.inputValue !== this.state.selectedItem?.label) {
+        this.escape();
+    };
+
+    private escape() {
+        if (this.selectable && this.state.selectedItem && this.state.inputValue !== this.state.selectedItem.label) {
             this.state.inputValue = this.state.selectedItem.label;
             this.state.filteredItems = this.state.items;
         }
-    };
+    }
 
     private onFocus = () => {
         this.pdFocus.emit();
@@ -457,7 +469,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-error': this.error,
-                        'pd-combobox-item-selected': this.state.selectedItem !== null,
+                        'pd-combobox-item-selected': this.state.inputValue === this.state.selectedItem?.label,
                     }}
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
@@ -485,7 +497,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 aria-haspopup="true"
                                 aria-expanded={`${this.state.open}`}
                             />
-                            {!this.state.selectedItem ? (
+                            {this.state.inputValue !== this.state.selectedItem?.label ? (
                                 <button class="pd-combobox-icon left" tabindex="-1" onClick={() => this.setFocus()}>
                                     <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
                                 </button>

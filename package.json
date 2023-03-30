@@ -1,6 +1,6 @@
 {
     "name": "@lambda-it/parlamentsdienste-component-library",
-    "version": "2.6.6",
+    "version": "2.6.7",
     "description": "Component Library for Swiss Parliamentary Services",
     "main": "dist/index.cjs.js",
     "module": "dist/index.js",

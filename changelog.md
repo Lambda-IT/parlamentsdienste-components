@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.7] - 2023-03-30
+
+### Changed
+
+-   #240 The pd-combobox event only gets emitted when the user selects a new item or empties the combobox manually.
+-   #240 If new items are set from outside, the pd-combobox event does not emit. Not even if an item was previously selected. We assume that the backend already knows which item is selected when new items are passed to the combobox.
+-   #240 The setSelectedIndex method (accessible from the outside) does not emit the pd-combobox event anymore.
+-   #240 Additional: Its highly recommended to set the disable-filter property when using backend searches.
+
+-   Pd-Combobox: The first escape-key will just close the dropdown. A second escape-key will clear the input field and emit the pd-combobox event with null as value.
+-   Pd-Combobox: The min-width css property is removed.
+
+-   Pd-Button: Heights are now flexible. 2 or more rows of text are possible.
+
 ## [2.6.6] - 2023-03-22
 
 ### Added

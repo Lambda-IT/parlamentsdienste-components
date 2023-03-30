@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     margin-top: var(--pd-combobox-vertical-adjust, inherit);
+    width: 100%;
     max-width: 100%;
 
     .pd-combobox-label-text {
@@ -37,7 +38,7 @@
 
     .pd-combobox-input {
         flex: 1 1 auto;
-        min-width: 8rem;
+        width: 100%;
         padding: 0.625em 0.875rem;
         padding-right: 3rem;
         padding-left: 3rem;
