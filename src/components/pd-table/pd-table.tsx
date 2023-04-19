@@ -264,8 +264,6 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
         this.filterElement = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
         this.popper = this.createMenuPopper(table, this.filterElement);
-        console.log('SELECTABLE', this.selectable);
-        console.log('STATUS', this.showStatus);
     }
 
     public componentDidUpdate() {
@@ -319,6 +317,11 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private select(isSelected: boolean, row) {
+        // Select the row in the filtered rows in the store
+        this.state.filteredRows = this.state.filteredRows.map((filteredRow, index) =>
+            this.state.filteredRows.indexOf(row) === index ? { ...filteredRow, pdSelected: true } : filteredRow,
+        );
+
         row.pdSelected = isSelected;
         this.onSelected.emit({
             selected: isSelected,
@@ -485,8 +488,6 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         const additionalColumns = [];
         if (fixed && this.showStatus) additionalColumns.push(this.renderShowStatus());
         if (fixed && this.selectable) additionalColumns.push(this.renderSelectAll());
-
-        console.log('additionalColumns', additionalColumns);
 
         return [...additionalColumns, ...columns, ...(!fixed && this.showActionColumn ? [btnColumn] : [])];
     }
