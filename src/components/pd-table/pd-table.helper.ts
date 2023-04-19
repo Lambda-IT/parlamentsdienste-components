@@ -3,6 +3,7 @@
 import { FilterFunction, PdButtonCell, PdColumn, PdTableIconConfiguration, PdTableRow } from '../../interface';
 
 export const selectableCellWidth: number = 50;
+export const statusCellWidth: number = 50;
 export const btnCellStyle: PdButtonCell = { width: 50, minWidth: 20, align: 'right' };
 
 export const defaultSortFunc = (a, b, dir: 'asc' | 'desc') => {
@@ -18,16 +19,17 @@ export const defaultFilterFunc: FilterFunction = (value: any, filter: string) =>
 };
 
 // sum of width/min-width of all fixed columns
-export function calcFixedMinWidth(columns: PdColumn[], selectable: boolean) {
+export function calcFixedMinWidth(columns: PdColumn[], selectable: boolean, status: boolean) {
     const fixedCols = columns.filter((c) => c.fixed);
     let minWidth = fixedCols.map((c) => c.width || c.minWidth || 0).reduce((a, b) => a + b, 0);
     minWidth += selectable ? selectableCellWidth : 0;
+    minWidth += status ? statusCellWidth : 0;
     return minWidth === 0 ? '0' : `${minWidth}px`;
 }
 
 // calculate flex for left side (fixed) of table
 // has a fixed width when no column is auto
-export function calcFixedFlex(columns: PdColumn[], selectable: boolean) {
+export function calcFixedFlex(columns: PdColumn[], selectable: boolean, status: boolean) {
     const fixedCols = columns.filter((c) => c.fixed);
     const hasAuto = fixedCols.findIndex((c) => c.width === 0) !== -1;
 
@@ -36,6 +38,7 @@ export function calcFixedFlex(columns: PdColumn[], selectable: boolean) {
     } else {
         let width = fixedCols.map((c) => c.width).reduce((a, b) => a + b, 0);
         width += selectable ? selectableCellWidth : 0;
+        width += status ? statusCellWidth : 0;
         return `0 0 ${width}px`;
     }
 }

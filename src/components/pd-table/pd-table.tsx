@@ -317,6 +317,11 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private select(isSelected: boolean, row) {
+        // Select the row in the filtered rows in the store
+        this.state.filteredRows = this.state.filteredRows.map((filteredRow, index) =>
+            this.state.filteredRows.indexOf(row) === index ? { ...filteredRow, pdSelected: true } : filteredRow,
+        );
+
         row.pdSelected = isSelected;
         this.onSelected.emit({
             selected: isSelected,
@@ -378,8 +383,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         };
 
         const fixedStyle = {
-            flex: calcFixedFlex(this.columns, this.selectable),
-            minWidth: calcFixedMinWidth(this.columns, this.selectable),
+            flex: calcFixedFlex(this.columns, this.selectable, this.showStatus),
+            minWidth: calcFixedMinWidth(this.columns, this.selectable, this.showStatus),
         };
 
         const scrollStyle = {
