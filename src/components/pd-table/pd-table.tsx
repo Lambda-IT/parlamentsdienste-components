@@ -264,6 +264,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         const table = this.element.shadowRoot.querySelector('.pd-table-header-row') as HTMLElement;
         this.filterElement = this.element.shadowRoot.querySelector('pd-table-filter') as HTMLPdTableFilterElement;
         this.popper = this.createMenuPopper(table, this.filterElement);
+        console.log('SELECTABLE', this.selectable);
+        console.log('STATUS', this.showStatus);
     }
 
     public componentDidUpdate() {
@@ -378,8 +380,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         };
 
         const fixedStyle = {
-            flex: calcFixedFlex(this.columns, this.selectable),
-            minWidth: calcFixedMinWidth(this.columns, this.selectable),
+            flex: calcFixedFlex(this.columns, this.selectable, this.showStatus),
+            minWidth: calcFixedMinWidth(this.columns, this.selectable, this.showStatus),
         };
 
         const scrollStyle = {
@@ -483,6 +485,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         const additionalColumns = [];
         if (fixed && this.showStatus) additionalColumns.push(this.renderShowStatus());
         if (fixed && this.selectable) additionalColumns.push(this.renderSelectAll());
+
+        console.log('additionalColumns', additionalColumns);
 
         return [...additionalColumns, ...columns, ...(!fixed && this.showActionColumn ? [btnColumn] : [])];
     }
