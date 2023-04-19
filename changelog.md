@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.8] - 2023-04-19
+
+### Changed
+
+-   #242 Fixed the bug, that the filtered rows of pd-table were not right after deleting a filter.
+
+-   Fixed: selectable columns and state columns are now displayed correctly.
+
 ## [2.6.7] - 2023-03-30
 
 ### Changed
@@ -467,6 +475,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.8]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.8
+[2.6.7]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.7
 [2.6.6]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.6
 [2.6.5]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.5
 [2.6.4]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.4
