@@ -34,10 +34,8 @@ import {
     calcScrollFlex,
     calculateCellStyle,
     calculateHeaderCellStyle,
-    defaultFilterFunc,
     defaultSortFunc,
     evaluateBtnColumnWidth,
-    getFilterFunctions,
     getTextAlign,
     selectableCellWidth,
 } from './pd-table.helper';
