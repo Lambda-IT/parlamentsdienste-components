@@ -42,6 +42,7 @@ export interface PdTableRow {
     pdIconConfig: PdTableIconConfiguration;
     pdStatus: PdStatus;
     pdSelected: boolean;
+    _id: number;
 }
 
 export interface PdButtonCell {
