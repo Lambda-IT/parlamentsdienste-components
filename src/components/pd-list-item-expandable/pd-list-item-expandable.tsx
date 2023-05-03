@@ -1,17 +1,5 @@
-import {
-    Component,
-    ComponentDidLoad,
-    ComponentInterface,
-    Event,
-    EventEmitter,
-    h,
-    Host,
-    Prop,
-    State,
-    Watch,
-} from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 import { PdStatus } from '../../interface';
-import { collapse, expand } from '../../utils/animation';
 
 /**
  * @slot - ListItemExpandable content
@@ -25,9 +13,7 @@ import { collapse, expand } from '../../utils/animation';
     styleUrl: 'pd-list-item-expandable.scss',
     shadow: true,
 })
-export class ListItemExpandable implements ComponentInterface, ComponentDidLoad {
-    private contentWrapperElement: HTMLElement;
-
+export class ListItemExpandable implements ComponentInterface {
     @State() contentHover: boolean = false;
 
     /**
@@ -76,19 +62,6 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
     /** Event on content click (content-click has to be set) */
     @Event({ eventName: 'pd-content-click' }) pdContentClick: EventEmitter<void>;
 
-    @Watch('collapsed')
-    valueChanged(collapsed: boolean) {
-        collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
-    }
-
-    public componentDidLoad() {
-        // start collapsed
-        if (this.collapsed) {
-            this.contentWrapperElement.style.height = '0';
-            this.contentWrapperElement.style.overflow = 'hidden';
-        }
-    }
-
     private handleExpand() {
         if (this.expandable) this.collapsed = !this.collapsed;
         if (this.expand) this.pdExpand.emit();
@@ -135,11 +108,16 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
                     </div>
                 </div>
                 <div
-                    ref={(el) => (this.contentWrapperElement = el)}
-                    class="pd-list-item-expandable-additional-content-wrapper"
+                    class={{
+                        'pd-list-item-expandable-additional-content-wrapper': true,
+                        'pd-list-item-expandable-additional-content-expanded': !this.collapsed && this.expandable,
+                        'pd-list-item-expandable-additional-content-collapsed': this.collapsed && this.expandable,
+                    }}
                 >
-                    <div class="pd-list-item-expandable-additional-content">
-                        <slot name="expandable"></slot>
+                    <div>
+                        <div class="pd-list-item-expandable-additional-content">
+                            <slot name="expandable"></slot>
+                        </div>
                     </div>
                 </div>
             </Host>

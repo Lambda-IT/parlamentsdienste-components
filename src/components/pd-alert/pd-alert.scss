@@ -214,8 +214,20 @@
     color: var(--pd-alert-expandable-color, $black);
     grid-column: 1 / span 2;
     font-weight: 400;
-    transition: height 0.3s ease-in-out;
-    height: auto;
+    display: grid;
+    transition: grid-template-rows 0.3s ease-in-out;
+
+    & > div {
+        overflow: hidden;
+    }
+
+    &.pd-alert-expandable-content-expanded {
+        grid-template-rows: 1fr;
+    }
+
+    &.pd-alert-expandable-content-collapsed {
+        grid-template-rows: 0fr;
+    }
 
     .pd-alert-expandable-content {
         padding: 1rem;

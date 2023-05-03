@@ -1,5 +1,4 @@
-import { Component, ComponentDidLoad, ComponentInterface, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
-import { collapse, expand } from '../../utils/animation';
+import { Component, ComponentInterface, Event, EventEmitter, h, Prop } from '@stencil/core';
 
 /**
  * @slot - alert title
@@ -10,9 +9,7 @@ import { collapse, expand } from '../../utils/animation';
     styleUrl: 'pd-alert.scss',
     shadow: true,
 })
-export class Alert implements ComponentInterface, ComponentDidLoad {
-    private contentWrapperElement: HTMLElement;
-
+export class Alert implements ComponentInterface {
     /** Color schema used for the alert */
     @Prop() color: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
 
@@ -40,11 +37,6 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
     /** Expands / collapses the panel content */
     @Prop({ mutable: true }) expanded: boolean = false;
 
-    @Watch('expanded')
-    valueChanged(expanded: boolean) {
-        expanded ? expand(this.contentWrapperElement) : collapse(this.contentWrapperElement);
-    }
-
     /** Emitted when close button was pressed. */
     @Event({ eventName: 'pd-closed' }) pdClosed!: EventEmitter<MouseEvent>;
 
@@ -53,14 +45,6 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
 
     /** Emitted when inner content is expanded/collapsed. */
     @Event({ eventName: 'pd-collapsed' }) pdCollapsed!: EventEmitter<boolean>;
-
-    public componentDidLoad() {
-        // start collapsed
-        if (!this.expanded) {
-            this.contentWrapperElement.style.height = '0';
-            this.contentWrapperElement.style.overflow = 'hidden';
-        }
-    }
 
     private handleAction() {
         if (this.expandable) this.expanded = !this.expanded;
@@ -90,7 +74,13 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
                     {this.renderAction()}
                     {this.renderClose()}
                 </div>
-                <div class="pd-alert-expandable-content-wrapper" ref={(el) => (this.contentWrapperElement = el)}>
+                <div
+                    class={{
+                        'pd-alert-expandable-content-wrapper': true,
+                        'pd-alert-expandable-content-expanded': this.expanded && this.expandable,
+                        'pd-alert-expandable-content-collapsed': !this.expanded && this.expandable,
+                    }}
+                >
                     {this.renderExpandable()}
                 </div>
             </div>
@@ -100,8 +90,10 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
     private renderExpandable() {
         if (!this.expandable) return;
         return (
-            <div class="pd-alert-expandable-content">
-                <slot name="expandable"></slot>
+            <div>
+                <div class="pd-alert-expandable-content">
+                    <slot name="expandable"></slot>
+                </div>
             </div>
         );
     }

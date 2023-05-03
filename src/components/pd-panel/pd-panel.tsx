@@ -1,6 +1,5 @@
 import {
     Component,
-    ComponentDidLoad,
     ComponentInterface,
     Element,
     Event,
@@ -12,7 +11,6 @@ import {
     State,
     Watch,
 } from '@stencil/core';
-import { collapse, expand } from '../../utils/animation';
 
 /**
  * @slot header - panel header content
@@ -24,10 +22,9 @@ import { collapse, expand } from '../../utils/animation';
     styleUrl: 'pd-panel.scss',
     shadow: true,
 })
-export class Panel implements ComponentInterface, ComponentDidLoad {
+export class Panel implements ComponentInterface {
     @Element() element: HTMLElement;
 
-    private contentWrapperElement: HTMLElement;
     private panelHeader?: HTMLPdPanelHeaderElement;
 
     @State() hover: boolean = false;
@@ -57,7 +54,6 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
         if (this.collapsible) {
             this.pdCollapsed.emit({ collapsed });
             await this.panelHeader.setCollapsed(collapsed);
-            collapsed ? collapse(this.contentWrapperElement) : expand(this.contentWrapperElement);
         }
     }
 
@@ -71,14 +67,6 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
         this.panelHeader = this.element.querySelector('pd-panel-header') as HTMLPdPanelHeaderElement;
     }
 
-    public componentDidLoad() {
-        // start collapsed
-        if (this.collapsed) {
-            this.contentWrapperElement.style.height = '0';
-            this.contentWrapperElement.style.overflow = 'hidden';
-        }
-    }
-
     public render() {
         return (
             <Host
@@ -89,7 +77,6 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
             >
                 <slot name="header"></slot>
                 <div
-                    ref={(el) => (this.contentWrapperElement = el)}
                     class={{
                         'pd-panel-content-wrapper': true,
                         'pd-panel-content-collapsed': this.collapsed,
@@ -97,8 +84,10 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
                     }}
                     aria-expanded={this.collapsed ? 'false' : 'true'}
                 >
-                    <slot></slot>
-                    <slot name="footer"></slot>
+                    <div>
+                        <slot></slot>
+                        <slot name="footer"></slot>
+                    </div>
                 </div>
             </Host>
         );

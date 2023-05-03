@@ -17,8 +17,20 @@
 }
 
 .pd-panel-content-wrapper {
-    transition: height 0.3s ease-in-out;
-    height: auto;
+    display: grid;
+    transition: grid-template-rows 0.3s ease-in-out;
+
+    > div {
+        overflow: hidden;
+    }
+
+    &.pd-panel-content-expanded {
+        grid-template-rows: 1fr;
+    }
+
+    &.pd-panel-content-collapsed {
+        grid-template-rows: 0fr;
+    }
 }
 
 /** Subpanel **/

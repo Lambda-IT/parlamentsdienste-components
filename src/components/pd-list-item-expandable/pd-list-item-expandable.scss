@@ -57,8 +57,20 @@
 }
 
 .pd-list-item-expandable-additional-content-wrapper {
-    transition: height 0.3s ease-in-out;
-    height: auto;
+    display: grid;
+    transition: grid-template-rows 0.3s ease-in-out;
+
+    & > div {
+        overflow: hidden;
+    }
+
+    &.pd-list-item-expandable-additional-content-expanded {
+        grid-template-rows: 1fr;
+    }
+
+    &.pd-list-item-expandable-additional-content-collapsed {
+        grid-template-rows: 0fr;
+    }
 
     .pd-list-item-expandable-additional-content {
         padding: 0.75rem 1rem 1.5rem 1rem;
