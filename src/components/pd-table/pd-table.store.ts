@@ -1,5 +1,5 @@
-import { PdColumn, PdTableRow, SortFunction } from '../../interface';
-import { getFilterFunctions, defaultFilterFunc } from './pd-table.helper';
+import { PdColumn, PdTableRow } from '../../interface';
+import { getFilterFunctions, defaultFilterFunc, defaultSortFunc } from './pd-table.helper';
 
 export interface TableState {
     allRows: PdTableRow[];
@@ -24,7 +24,7 @@ export function getVisibleRows(state: TableState, columns: PdColumn[], externalR
 
     const filterFunctions = getFilterFunctions(columns, defaultFilterFunc);
 
-    return state.allRows.filter((row) => {
+    const filteredRows = state.allRows.filter((row) => {
         // loop all current filter columns
         return Object.keys(state.filterValues).every((key) => {
             // skip if filter is empty
@@ -33,21 +33,25 @@ export function getVisibleRows(state: TableState, columns: PdColumn[], externalR
             return filterFunctions[key](row[key], state.filterValues[key]);
         });
     });
+
+    const sortCol = columns.find((col) => col.columnName === state.sortColumn);
+    if (!sortCol || !sortCol.sortable) return filteredRows;
+
+    const { columnName } = sortCol;
+    const sortFunction = sortCol.sortFunc ?? defaultSortFunc;
+
+    const dir = state.nextSortDir[columnName] || 'desc';
+
+    return [...filteredRows].sort((a, b) => sortFunction(a[columnName], b[columnName], dir));
 }
 
-export function sort(state: TableState, headerCol: PdColumn, sortFunction: SortFunction, externalRowHandling: boolean) {
+export function setSort(state: TableState, headerCol: PdColumn) {
     const { columnName, sortable } = headerCol;
     if (!sortable) return;
 
     const dir = state.nextSortDir[columnName] || 'desc';
     state.sortColumn = columnName;
     state.nextSortDir[columnName] = dir === 'asc' ? 'desc' : 'asc';
-
-    if (externalRowHandling) {
-        state.visibleRows = [...state.visibleRows];
-    } else {
-        state.visibleRows = [...state.visibleRows].sort((a, b) => sortFunction(a[columnName], b[columnName], dir));
-    }
 }
 
 export function setFilter(state: TableState, filter: string, columnName: string) {

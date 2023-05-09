@@ -34,7 +34,6 @@ import {
     calcScrollFlex,
     calculateCellStyle,
     calculateHeaderCellStyle,
-    defaultSortFunc,
     evaluateBtnColumnWidth,
     getTextAlign,
     selectableCellWidth,
@@ -436,10 +435,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                         style={calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => {
-                            S.sort(
+                            S.setSort(this.state, headerCol);
+                            this.state.visibleRows = S.getVisibleRows(
                                 this.state,
-                                headerCol,
-                                headerCol.sortFunc ?? defaultSortFunc,
+                                this.columns,
                                 this.externalRowHandling,
                             );
                             this.emitSort(headerCol);
