@@ -34,10 +34,7 @@ import {
     calcScrollFlex,
     calculateCellStyle,
     calculateHeaderCellStyle,
-    defaultFilterFunc,
-    defaultSortFunc,
     evaluateBtnColumnWidth,
-    getFilterFunctions,
     getTextAlign,
     selectableCellWidth,
 } from './pd-table.helper';
@@ -199,17 +196,19 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     @Method()
     async unselectAll() {
         S.unselectAll(this.state);
+        this.state.visibleRows = S.getVisibleRows(this.state, this.columns, this.externalRowHandling);
     }
 
     @Method()
     async refresh() {
-        S.refresh(this.state, this.rows, this.externalRowHandling);
+        S.refresh(this.state, this.rows, this.externalRowHandling, this.columns);
         S.initPaging(this.state, this.state.pageSize);
     }
 
     @Watch('rows')
     handleRowsChanged() {
-        S.refresh(this.state, this.rows, this.externalRowHandling);
+        S.refresh(this.state, this.rows, this.externalRowHandling, this.columns);
+        S.initPaging(this.state, this.state.pageSize);
     }
 
     @Watch('selectedStatus')
@@ -237,7 +236,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     constructor() {
         const { state } = createStore<S.TableState>({
-            filteredRows: [],
+            allRows: [],
+            visibleRows: [],
             currentFilter: undefined,
             filterOpen: false,
             allSelected: false,
@@ -251,11 +251,18 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             defaultPageSize: 10,
         });
         this.state = state;
-        this.state.filteredRows = this.rows;
+        this.state.allRows = this.rows.map((r, i) => ({ ...r, _id: i }));
+        if (this.externalRowHandling) {
+            this.state.visibleRows = this.state.allRows;
+        } else {
+            this.state.visibleRows = S.getVisibleRows(this.state, this.columns, this.externalRowHandling);
+        }
+
         this.handleSelectedStatusChanged();
     }
 
     public componentWillLoad() {
+        S.checkAllSelected(this.state);
         S.checkIsIndeterminate(this.state);
         S.initPaging(this.state, +this.pageSizes.find((ps) => ps.selected)?.value || this.state.defaultPageSize);
     }
@@ -276,14 +283,9 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
      * new filter set
      */
     private filterConfirm(ev: CustomEvent<string>) {
-        S.filter(
-            this.state,
-            ev.detail,
-            this.state.currentFilter,
-            this.rows,
-            getFilterFunctions(this.columns, defaultFilterFunc),
-            this.externalRowHandling,
-        );
+        S.setFilter(this.state, ev.detail, this.state.currentFilter);
+        this.state.visibleRows = S.getVisibleRows(this.state, this.columns, this.externalRowHandling);
+        S.initPaging(this.state, this.state.pageSize);
         this.emitFilterChange();
     }
 
@@ -298,14 +300,11 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
     private clearFilter(ev: MouseEvent, columnName: string) {
         ev.stopPropagation();
-        S.filter(
-            this.state,
-            undefined,
-            columnName,
-            this.rows,
-            getFilterFunctions(this.columns, defaultFilterFunc),
-            this.externalRowHandling,
-        );
+        S.setFilter(this.state, undefined, columnName);
+        this.state.visibleRows = S.getVisibleRows(this.state, this.columns, this.externalRowHandling);
+        S.initPaging(this.state, this.state.pageSize);
+        S.checkAllSelected(this.state);
+        S.checkIsIndeterminate(this.state);
         this.emitFilterChange();
     }
 
@@ -317,29 +316,29 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
     }
 
     private select(isSelected: boolean, row) {
-        // Select the row in the filtered rows in the store
-        this.state.filteredRows = this.state.filteredRows.map((filteredRow, index) =>
-            this.state.filteredRows.indexOf(row) === index ? { ...filteredRow, pdSelected: true } : filteredRow,
-        );
+        this.state.allRows.find((r) => r._id === row._id).pdSelected = isSelected;
+        this.state.visibleRows = S.getVisibleRows(this.state, this.columns, this.externalRowHandling);
 
-        row.pdSelected = isSelected;
         this.onSelected.emit({
             selected: isSelected,
             selectAll: false,
             row,
-            rows: this.state.filteredRows.filter((r) => r.pdSelected),
+            rows: this.state.allRows.filter((r) => r.pdSelected),
         });
-        S.checkAllSelected(this.state);
-        S.checkIsIndeterminate(this.state);
+        if (!this.externalRowHandling) {
+            S.checkAllSelected(this.state);
+            S.checkIsIndeterminate(this.state);
+        }
     }
 
     private selectAll() {
         S.selectAll(this.state);
+        this.state.visibleRows = S.getVisibleRows(this.state, this.columns, this.externalRowHandling);
         this.onSelected.emit({
             selected: false,
             selectAll: this.state.allSelected,
             row: {},
-            rows: this.state.filteredRows.filter((r) => r.pdSelected),
+            rows: this.state.visibleRows.filter((r) => r.pdSelected),
         });
     }
 
@@ -436,10 +435,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                         style={calculateHeaderCellStyle(headerCol)}
                         title={headerCol.label}
                         onClick={() => {
-                            S.sort(
+                            S.setSort(this.state, headerCol);
+                            this.state.visibleRows = S.getVisibleRows(
                                 this.state,
-                                headerCol,
-                                headerCol.sortFunc ?? defaultSortFunc,
+                                this.columns,
                                 this.externalRowHandling,
                             );
                             this.emitSort(headerCol);
@@ -499,10 +498,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
 
         let rows: PdTableRow[] = [];
         if (!this.paging) {
-            rows = [...this.state.filteredRows];
+            rows = [...this.state.visibleRows];
         } else {
             const pageStart = (this.state.currentPage - 1) * this.state.pageSize;
-            rows = [...this.state.filteredRows.slice(pageStart, pageStart + this.state.pageSize)];
+            rows = [...this.state.visibleRows.slice(pageStart, pageStart + this.state.pageSize)];
         }
 
         return rows.map((row, i) => (
