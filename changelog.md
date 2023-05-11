@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 -   #242 Fixed the bug, that the selected state wasnt't correct after unselecting rows.
--   #134 Set the daufault lazyloading of the pd-icon to false.
+-   #134 Set the default lazyloading of the pd-icon to false.
 
 ## [2.6.8] - 2023-04-19
 
