@@ -35,7 +35,7 @@ export class Icon implements ComponentInterface {
     /**
      * Icon will be loaded lazily when it is visible
      */
-    @Prop() lazy = true;
+    @Prop() lazy = false;
 
     /**
      * Rotation in 'deg'
