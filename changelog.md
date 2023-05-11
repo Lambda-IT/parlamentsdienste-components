@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 -   #242 Fixed the bug, that the selected state wasnt't correct after unselecting rows.
+-   #134 Set the daufault lazyloading of the pd-icon to false.
 
 ## [2.6.8] - 2023-04-19
 
@@ -481,6 +482,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.9]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.9
 [2.6.8]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.8
 [2.6.7]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.7
 [2.6.6]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.6
