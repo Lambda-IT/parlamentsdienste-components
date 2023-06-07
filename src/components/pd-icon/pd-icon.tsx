@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Prop, Watch } from '@stencil/core';
 import { getURL } from '../../utils/path';
 import { getSvgContent, iconContent } from '../../utils/svg';
 
@@ -14,8 +14,8 @@ export class Icon implements ComponentInterface {
 
     @Element() element!: HTMLElement;
 
-    @State() private svgContent?: string;
-    @State() private isVisible = false;
+    private svgContent?: string;
+    private isVisible = false;
 
     /**
      * Specifies the `src` url of an SVG file to use.
@@ -35,7 +35,7 @@ export class Icon implements ComponentInterface {
     /**
      * Icon will be loaded lazily when it is visible
      */
-    @Prop() lazy = false;
+    @Prop() lazy = true;
 
     /**
      * Rotation in 'deg'
@@ -61,6 +61,7 @@ export class Icon implements ComponentInterface {
     /** description tag in svg for accessability*/
     @Prop() iconDescription: string;
 
+    // public componentDidLoad() {
     public componentDidRender() {
         // purposely do not return the promise here because loading
         // the svg file should not hold up loading the app

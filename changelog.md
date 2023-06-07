@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.10] - 2023-06-07
+
+### Changed
+
+-   #249 Moved the initialization of the PdCombobox store into the constructor to prevent errors when new items are passed while the component is rendering.
+-   #248 Fixed the drag&drop icon typo error.
+-   #134 Changed two state variables to normal variables to have prevent a lazy loading bug and see how this affects the #134 issue.
+
 ## [2.6.9] - 2023-04-28
 
 ### Changed
@@ -482,6 +490,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.10]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.10
 [2.6.9]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.9
 [2.6.8]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.8
 [2.6.7]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.7

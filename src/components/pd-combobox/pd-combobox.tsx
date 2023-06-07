@@ -37,7 +37,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Values shown as combobox items
      */
-    @Prop() items: ComboboxItem[] = [];
+    @Prop({ mutable: true }) items: ComboboxItem[] = [];
 
     /**
      * Enable selection of an empty item
@@ -224,7 +224,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    public componentWillLoad() {
+    constructor() {
         /* **************************************************
          ***                 Initial State                 ***
          ****************************************************/
@@ -242,14 +242,18 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.pdChange.emit(this.state.selectedItem);
         });
 
-        let selectedItem = state.items.find((item) => item.selected) ?? null;
+        let selectedItem = this.state.items.find((item) => item.selected) ?? null;
         //If there is an input value, we want to see if it matches an item
-        if (state.inputValue) {
-            selectedItem = state.items.filter((i) => i.label === state.inputValue).shift();
+        if (this.state.inputValue) {
+            selectedItem = this.state.items.filter((i) => i.label === this.state.inputValue).shift();
         }
         if (selectedItem) {
             this.selectItem(selectedItem, null, false);
         }
+    }
+
+    public componentWillLoad() {
+        // this.items = [...this.items];
     }
 
     public componentDidLoad() {

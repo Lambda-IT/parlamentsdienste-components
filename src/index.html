@@ -890,13 +890,6 @@
                 ];
             }
 
-            // setTimeout(() => {
-            //     pdComboBox1.items = [];
-            // }, 3000);
-            // setTimeout(() => {
-            //     pdComboBox1.items = createRandomItems(200);
-            // }, 4000);
-
             const words = [
                 'Apfel',
                 'Buch',
@@ -929,9 +922,6 @@
                 'Cello',
                 'Dose',
             ];
-
-            const random = Math.floor(Math.random() * words.length);
-            // console.log(random, words[random]);
 
             function createRandomItems(length, selected = false) {
                 let items = [];
@@ -971,39 +961,20 @@
                 }, 2000);
             }
 
-            // pdComboBox1.items = createRandomItems(30);
-            // pdComboBox2.items = createRandomItems(30);
-
-            // setTimeout(() => {
-            //     pdComboBox2.setSelectedIndex(5);
-            // }, 4000);
-
-            // setTimeout(() => {
-            //     pdComboBox2.items = [];
-            // }, 5000);
-
-            setTimeout(() => {
-                console.log('3 ## set items');
-                pdComboBox2.items = createRandomItems(20, true);
-            }, 3000);
-            // setTimeout(() => {
-            //     console.log('10 ## set items');
-            //     pdComboBox2.items = createRandomItems(20, true);
-            // }, 10000);
-            // setTimeout(() => {
-            //     console.log('15 ## set items');
-            //     pdComboBox2.items = createRandomItems(20, true);
-            // }, 15000);
-
-            pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
-            pdComboBox1.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
-            pdComboBox1.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox1));
+            // pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
+            // pdComboBox1.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
+            // pdComboBox1.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox1));
             // pdComboBox1.addEventListener('pd-blur', (e) => console.log('pd-blur', e));
             // pdComboBox1.addEventListener('pd-focus', (e) => console.log('pd-focus', e));
 
-            pdComboBox2.addEventListener('pd-change', (e) => console.log('pd-change', e));
-            pdComboBox2.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
-            pdComboBox2.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox2));
+            // setTimeout(() => {
+            //     pdComboBox1.items = createRandomItems(10, true);
+            // }, 1000);
+            // pdComboBox1.items = createRandomItems(10, true);
+
+            // pdComboBox2.addEventListener('pd-change', (e) => console.log('pd-change', e));
+            // pdComboBox2.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
+            // pdComboBox2.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox2));
             // pdComboBox2.addEventListener('pd-blur', (e) => console.log('pd-blur', e));
             // pdComboBox2.addEventListener('pd-focus', (e) => console.log('pd-focus', e));
 
