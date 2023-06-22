@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.12] - 2023-06-22
+
+### Changed
+
+-   #251 Changed the padding-left of the pd-panel-content and pd-panel-footer to 1rem
+
 ## [2.6.11] - 2023-06-20
 
 ### Changed
@@ -497,6 +503,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.12]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.12
 [2.6.11]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.11
 [2.6.10]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.10
 [2.6.9]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.9
