@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.13] - 2023-09-01
+
+### Changed
+
+-   #253 Changed the curser of pd-combobox to default when the combobox is disabled
+-   #257 pd-panel: Removed the border-bottom of the subpanel when it is opened
+    Added 5 new icons to pd-icon: file_exel, file_image, file_powerpoint, file_word, link_connection
+
 ## [2.6.12] - 2023-06-22
 
 ### Changed
@@ -503,6 +511,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.13]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.13
 [2.6.12]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.12
 [2.6.11]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.11
 [2.6.10]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.10
