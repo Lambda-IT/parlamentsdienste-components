@@ -25,9 +25,12 @@
 
 :host(.pd-panel-subpanel) {
     border-top: 0.125rem solid $gray-6;
-    border-bottom: 0.125rem solid $gray-6;
     border-radius: 0;
     --pd-panel-content-padding: 0.5rem 0 1rem 0;
+}
+
+:host(.pd-panel-subpanel.pd-panel-content-collapsed) {
+    border-bottom: 0.125rem solid $gray-6;
 }
 
 :host(.pd-panel-subpanel.pd-panel-hover) {

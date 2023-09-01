@@ -85,6 +85,7 @@ export class Panel implements ComponentInterface, ComponentDidLoad {
                 class={{
                     'pd-panel-subpanel': this.subpanel,
                     'pd-panel-hover': this.hover && this.collapsible,
+                    'pd-panel-content-collapsed': this.collapsed,
                 }}
             >
                 <slot name="header"></slot>

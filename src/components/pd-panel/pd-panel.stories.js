@@ -58,7 +58,7 @@ export const Subpanel = (args) => {
                     ${args.collapsed ? 'collapsed' : ''}
                     ${args.collapsible ? 'collapsible' : ''}
                     subpanel
-                    style="--pd-panel-margin-bottom: 1.25rem"
+                    style="--pd-panel-margin-bottom: 0.5rem"
                 >
                     <pd-panel-header slot="header">
                         Subpanel Header
