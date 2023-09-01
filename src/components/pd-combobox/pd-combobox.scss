@@ -95,6 +95,7 @@
 
         .pd-combobox-icon {
             fill: setcolor(primary, disabled);
+            cursor: default;
         }
     }
 
@@ -198,6 +199,7 @@
             }
             .pd-combobox-icon {
                 fill: setcolor(primary, disabledContrast);
+                cursor: default;
             }
         }
 

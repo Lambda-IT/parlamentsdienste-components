@@ -47,6 +47,10 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="expand"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="export"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="file"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="file_excel"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="file_image"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="file_powerpoint"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="file_word"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="filter"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="folder_closed"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="folder_open"></pd-icon>
@@ -55,6 +59,7 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="group"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="history"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="link"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="link_connection"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="list"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="lock"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="menu"></pd-icon>
