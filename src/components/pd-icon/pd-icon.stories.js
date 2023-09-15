@@ -40,6 +40,7 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="dictionary"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="documents"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="download"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="drag_drop"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="dropdown"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="edit"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="excel_export"></pd-icon>
@@ -99,8 +100,6 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="support"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="upload"></pd-icon>
     `;
-
-// <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="drag_drop"></pd-icon>
 
 ///////////////////////////////////////////////////////////////////////////
 
