@@ -58,10 +58,10 @@
 
 ## CSS Custom Properties
 
-| Name                       | Description                                               |
-| -------------------------- | --------------------------------------------------------- |
-| `--pd-panel-background`    | Background color of panel                                 |
-| `--pd-panel-margin-bottom` | bottom margin of panel. Can be used to separate subpanels |
+| Name                         | Description                                                      |
+| ---------------------------- | ---------------------------------------------------------------- |
+| `--pd-panel-background`      | Background color of panel                                        |
+| `--pd-panel-subpanel-margin` | margin of subpanel. Can be used to separate and indent subpanels |
 
 
 ----------------------------------------------

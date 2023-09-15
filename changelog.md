@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.14] - 2023-09-15
+
+### Changed
+
+-   #259 icon_drag_drop.svg renamed capital I of Icon to lowercase i. Replaced the path of the svg with the original path from the design system.
+-   #257 pd-panel: (1) removed --pdd-panel-margin-bottom css property because it affecte the margin of the subpanels and the main panel as well.
+    (2) removed the hover-effect of the border bottom of the subpanel when it is opened
+    (3) added --pd-panel-subpanel-margin. Only effectiv if panel is a subpanel. Can be used to separate and indent subpanels. If nothing else is set, it has a default value of 0 0 1rem 1rem to indent the subpanels slightly.
+-   #258 pd-timeline: changed--pd-timeline-width to auto to prevent overflows.
+
 ## [2.6.13] - 2023-09-01
 
 ### Changed
@@ -511,6 +521,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.14]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.14
 [2.6.13]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.13
 [2.6.12]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.12
 [2.6.11]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.11
