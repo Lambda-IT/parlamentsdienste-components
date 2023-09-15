@@ -4,7 +4,7 @@
 :host {
     display: block;
     position: relative;
-    width: var(--pd-timeline-width, 300px);
+    width: var(--pd-timeline-width, auto);
 }
 
 *,

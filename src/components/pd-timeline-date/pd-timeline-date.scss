@@ -15,14 +15,22 @@
     position: relative;
     z-index: 10;
 
-    .pd-timeline-date-dot {
-        width: 0.875em;
-        min-width: 0.875em;
-        height: 0.875em;
-        border-radius: 100%;
-        background-color: $blue-whale;
-        border: 0.0625em solid $white;
-        box-shadow: 0px 0.125em 0.25em rgba($color: $pd-black, $alpha: 0.45);
+    .pd-timeline-date-dot-wrapper {
+        width: 1em;
+        height: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .pd-timeline-date-dot {
+            width: 0.875em;
+            min-width: 0.875em;
+            height: 0.875em;
+            border-radius: 100%;
+            background-color: $blue-whale;
+            border: 0.0625em solid $white;
+            box-shadow: 0px 0.125em 0.25em rgba($color: $pd-black, $alpha: 0.45);
+        }
     }
 
     .pd-timeline-date-text {

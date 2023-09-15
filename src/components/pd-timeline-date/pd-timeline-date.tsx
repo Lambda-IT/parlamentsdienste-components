@@ -33,7 +33,9 @@ export class TimelineDate implements ComponentInterface {
         return (
             <Host>
                 <div class="pd-timeline-date">
-                    <div class="pd-timeline-date-dot"></div>
+                    <div class="pd-timeline-date-dot-wrapper">
+                        <div class="pd-timeline-date-dot"></div>
+                    </div>
                     <div class="pd-timeline-date-text" data-test="pd-timeline-date-text">
                         {this.date}
                     </div>
