@@ -1,7 +1,6 @@
-import { createPopper, Instance } from '@popperjs/core';
+import { Instance } from '@popperjs/core';
 import {
     Component,
-    ComponentDidLoad,
     ComponentDidUpdate,
     ComponentInterface,
     ComponentWillLoad,
@@ -17,16 +16,23 @@ import {
     Watch,
 } from '@stencil/core';
 import { DropdownItem, TextWrap } from '../../interface';
+import createMenuPopper from '../../utils/popper';
+
 @Component({
     tag: 'pd-dropdown',
     styleUrl: 'pd-dropdown.scss',
     assetsDirs: ['assets-dropdown'],
-    shadow: true,
+    shadow: false,
 })
-export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidLoad, ComponentDidUpdate {
+export class Dropdown implements ComponentInterface, ComponentWillLoad, ComponentDidUpdate {
     private menuElement: HTMLElement;
     private buttonElement: HTMLElement;
     private popper: Instance;
+    private dropdownId = dropdownIds++;
+
+    constructor() {
+        this.setItems(this.items);
+    }
 
     @Element() element: HTMLElement;
 
@@ -42,6 +48,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
      * Items to display and select in dropdown
      */
     @Prop() items: DropdownItem[] = [];
+    private _items: DropdownItem[] = [];
 
     /**
      * Items visible in dropdown
@@ -71,7 +78,6 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
      * If `true`, the dropdown is replaced with a simple text
      */
     @Prop() viewOnly = false;
-    private _viewOnly = false;
 
     /**
      * Dropdown box label
@@ -103,6 +109,9 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
      */
     @Prop() textWrap: TextWrap = 'no-wrap';
 
+    /**
+     * Emitted when the value has changed.
+     */
     @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<DropdownItem>;
 
     /**
@@ -110,9 +119,9 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
      */
     @Method()
     async setSelectedIndex(index: number) {
-        if (index >= 0 && index < this.items.length) {
-            this.items[index] = { ...this.items[index], selected: true };
-            this.selectedItem = this.items[index];
+        if (index >= 0 && index < this._items.length) {
+            this._items[index] = { ...this._items[index], selected: true };
+            this.selectedItem = this._items[index];
         }
     }
 
@@ -129,39 +138,52 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         if (viewOnly && this.popper) this.popper.destroy();
     }
 
-    @Listen('click', { target: 'body' })
-    handleClick(ev: MouseEvent) {
-        if (!ev.composedPath().includes(this.element)) this.open = false;
+    @Watch('items')
+    public setItems(items: DropdownItem[]) {
+        this._items = [...(this.emptyItem ? [this.emptyItemData] : []), ...items];
+    }
+
+    @Listen('pd-overlay-click', { target: 'body' })
+    handleClickOnOverlay() {
+        this.closeDropdown();
     }
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent) {
         switch (ev.key) {
             case 'Tab': {
-                this.open = false;
+                this.closeDropdown();
                 break;
             }
-            case 'Escape':
+            case 'Escape': {
+                ev.preventDefault();
+                this.closeDropdown();
+                break;
+            }
+
+            case ' ': // space
             case 'Enter': {
                 ev.preventDefault();
-                this.open = false;
+                this.toggleDropdown();
                 break;
             }
 
             case 'ArrowDown': {
                 ev.preventDefault();
-                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
-                const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
-                const nextItem = this.items[nextIndex];
+                const currentIndex = this._items.findIndex((item) => item === this.selectedItem);
+                const nextIndex = currentIndex >= this._items.length - 1 ? currentIndex : currentIndex + 1;
+                const nextItem = this._items[nextIndex];
                 if (nextItem !== this.selectedItem) this.selectItem(nextItem);
+
                 break;
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                const currentIndex = this.items.findIndex((item) => item === this.selectedItem);
+                const currentIndex = this._items.findIndex((item) => item === this.selectedItem);
                 const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
-                const previousItem = this.items[previousIndex];
+                const previousItem = this._items[previousIndex];
                 if (previousItem !== this.selectedItem) this.selectItem(previousItem);
+
                 break;
             }
             default: {
@@ -173,7 +195,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 } else {
                     this.currentSearch = ev.key;
                 }
-                const currentItem = this.items.find(
+                const currentItem = this._items.find(
                     (item) => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
                 );
                 if (currentItem) this.selectedItem = currentItem;
@@ -186,37 +208,45 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     private currentSearch: string = '';
     private inputTime: number = 0;
 
-    private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
+    private selectItem(item: DropdownItem) {
         this.selectedItem = item;
-        if (closeDropdown) this.open = false;
-        this.pdChange.emit(item);
+
+        this.pdChange.emit(this.selectedItem);
+    }
+
+    private menuDidLoad(ev: CustomEvent<void>) {
+        ev.stopPropagation();
+
+        if (this.open) {
+            this.popper = createMenuPopper(this.buttonElement, this.menuElement);
+        }
     }
 
     private toggleDropdown = () => {
-        if (!this.disabled && !this.readonly && !this.viewOnly) this.open = !this.open;
+        if (!this.disabled && !this.readonly && !this.viewOnly) {
+            this.open = !this.open;
+            if (!this.open) this.buttonElement.focus();
+        }
     };
 
-    public componentWillLoad() {
-        this.selectedItem = this.items.find((item) => item.selected);
+    private closeDropdown() {
+        if (!this.disabled && !this.readonly && !this.viewOnly && this.popper && this.open) {
+            this.open = false;
+            this.buttonElement.focus();
+            this.popper.destroy();
+        }
     }
 
-    public componentDidLoad() {
-        this._viewOnly = this.viewOnly;
-        if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
+    public componentWillLoad() {
+        this.selectedItem = this._items.find((item) => item.selected);
     }
 
     public componentDidUpdate() {
-        if (this._viewOnly !== this.viewOnly) {
-            this._viewOnly = this.viewOnly;
-            if (!this._viewOnly) this.popper = this.createMenuPopper(this.buttonElement, this.menuElement);
-        }
-
-        if (!this.open) return;
-        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<
+        const dropdownItemNodes = this.element.querySelectorAll('pd-dropdown-item') as NodeListOf<
             HTMLPdDropdownItemElement
         >;
         this.scrollToSelected(dropdownItemNodes, this.menuElement);
-        this.popper.forceUpdate();
+        if (this.popper) this.popper.forceUpdate();
     }
 
     private scrollToSelected(dropdownItemNodes: NodeListOf<HTMLPdDropdownItemElement>, menu: HTMLElement) {
@@ -226,22 +256,16 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         });
     }
 
-    // create a popper js element for the menu
-    private createMenuPopper(button, menu) {
-        return createPopper(button, menu, {
-            placement: 'bottom-start',
-        });
-    }
-
     public render() {
         return (
             <Host>
                 <label
+                    id={`pd-dropdown-label-${this.dropdownId}`}
                     class={{
                         'pd-dropdown-label': true,
                         'pd-dropdown-disabled': this.disabled,
                     }}
-                    onClick={this.toggleDropdown}
+                    htmlFor={`pd-dropdown-button-${this.dropdownId}`}
                     data-test="pd-dropdown-label"
                 >
                     {this.renderLabel()}
@@ -257,15 +281,22 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                     >
                         <button
                             ref={(el) => (this.buttonElement = el)}
+                            id={`pd-dropdown-button-${this.dropdownId}`}
                             class="pd-dropdown-button"
-                            type="button"
-                            aria-haspopup="true"
-                            aria-expanded={`${this.open}`}
                             onClick={this.toggleDropdown}
                             disabled={this.disabled || this.readonly}
+                            type="button"
+                            role="combobox"
+                            aria-labelledby={`pd-dropdown-label-${this.dropdownId}`}
+                            aria-haspopup="listbox"
+                            aria-expanded={`${this.open}`}
+                            aria-activedescendant={
+                                this.open ? `pd-dropdown-${this.dropdownId}-item-${this.selectedItem?.id}` : null
+                            }
                             data-test="pd-dropdown-button"
                         >
                             <span
+                                id={`pd-dropdown-${this.dropdownId}-text`}
                                 class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
                                 data-test="pd-dropdown-text"
                             >
@@ -278,52 +309,34 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                                 size={2.4}
                             ></pd-icon>
                         </button>
-                        {this.renderDropDown()}
                     </div>
                 ) : (
                     <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
                 )}
+                {this.open ? this.renderOverlay() : null}
             </Host>
         );
     }
 
-    private renderDropDown() {
+    private renderOverlay() {
         return (
-            <div
-                ref={(el) => (this.menuElement = el)}
-                class={`pd-dropdown-menu`}
-                style={{
-                    display: this.open ? 'block' : 'none',
-                    maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
-                }}
-                tabIndex={-1}
-            >
-                {this.renderEmptyItem()}
-                {this.renderDropDownItems()}
-            </div>
-        );
-    }
-
-    private renderDropDownItems() {
-        return this.items.map((item, i) => (
-            <pd-dropdown-item
-                value={item.label}
-                selected={item.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(item, true)}
-                data-test={`pd-dropdown-item-${i}`}
-            ></pd-dropdown-item>
-        ));
-    }
-
-    private renderEmptyItem() {
-        if (!this.emptyItem) return;
-        return (
-            <pd-dropdown-item
-                value={this.emptyItemData.label}
-                selected={this.emptyItemData.id === this.selectedItem?.id || false}
-                onClick={() => this.selectItem(this.emptyItemData, true)}
-                data-test={`pd-dropdown-item-empty`}
-            ></pd-dropdown-item>
+            <pd-overlay>
+                <pd-dropdown-menu
+                    id={`pd-dropdown-menu-${this.dropdownId}`}
+                    parentId={this.dropdownId}
+                    items={this._items}
+                    ref={(el) => (this.menuElement = el)}
+                    onPd-dropdown-select-item={(ev) => {
+                        ev.stopPropagation();
+                        this.selectItem(ev.detail);
+                    }}
+                    onPd-dropdown-menu-did-load={(ev) => this.menuDidLoad(ev)}
+                    selectedItem={this.selectedItem}
+                    itemCount={this.itemCount}
+                    role="listbox"
+                    aria-labelledby={`pd-dropdown-label-${this.dropdownId}`}
+                ></pd-dropdown-menu>
+            </pd-overlay>
         );
     }
 
@@ -342,3 +355,5 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         );
     }
 }
+
+let dropdownIds = 0;

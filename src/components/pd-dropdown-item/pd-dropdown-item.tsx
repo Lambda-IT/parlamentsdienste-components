@@ -3,10 +3,10 @@ import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/
 @Component({
     tag: 'pd-dropdown-item',
     styleUrl: 'pd-dropdown-item.scss',
-    shadow: true,
+    shadow: false,
 })
 export class DropdownItem implements ComponentInterface {
-    @Element() element!: HTMLElement;
+    @Element() element!: HTMLPdDropdownItemElement;
 
     /**
      * Value for this item
@@ -35,7 +35,7 @@ export class DropdownItem implements ComponentInterface {
 
     public render() {
         return (
-            <Host>
+            <Host role="option" aria-selected={`${this.selected}`}>
                 <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
                     {this.iconName || this.iconSrc ? (
                         <span class="pd-dropdown-item-icon">

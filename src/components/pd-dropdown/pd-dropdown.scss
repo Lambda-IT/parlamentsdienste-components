@@ -1,6 +1,6 @@
 @include resetControlFonts;
 
-:host {
+pd-dropdown {
     display: block;
 }
 
@@ -144,15 +144,6 @@
             }
         }
     }
-}
-
-.pd-dropdown-menu {
-    background-color: $white;
-    border: 0.125em solid $cyan-9;
-    border-radius: 0.25rem;
-    z-index: 100;
-    width: 100%;
-    overflow: auto;
 }
 
 .pd-dropdown-viewonly {

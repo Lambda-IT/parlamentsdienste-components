@@ -393,6 +393,21 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdDropdownMenu {
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items": DropdownItem[];
+        "parentId": number;
+        /**
+          * The selected Item
+         */
+        "selectedItem": DropdownItem;
+    }
     interface PdIcon {
         /**
           * Flip in X/Y direction
@@ -657,6 +672,8 @@ export namespace Components {
          */
         "target": string;
         "text": string;
+    }
+    interface PdOverlay {
     }
     interface PdPagination {
         /**
@@ -1102,6 +1119,10 @@ export interface PdDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdDropdownElement;
 }
+export interface PdDropdownMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdDropdownMenuElement;
+}
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
@@ -1117,6 +1138,10 @@ export interface PdModalCustomEvent<T> extends CustomEvent<T> {
 export interface PdNavbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdNavbarElement;
+}
+export interface PdOverlayCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdOverlayElement;
 }
 export interface PdPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1219,6 +1244,12 @@ declare global {
         prototype: HTMLPdDropdownItemElement;
         new (): HTMLPdDropdownItemElement;
     };
+    interface HTMLPdDropdownMenuElement extends Components.PdDropdownMenu, HTMLStencilElement {
+    }
+    var HTMLPdDropdownMenuElement: {
+        prototype: HTMLPdDropdownMenuElement;
+        new (): HTMLPdDropdownMenuElement;
+    };
     interface HTMLPdIconElement extends Components.PdIcon, HTMLStencilElement {
     }
     var HTMLPdIconElement: {
@@ -1284,6 +1315,12 @@ declare global {
     var HTMLPdNavbarItemElement: {
         prototype: HTMLPdNavbarItemElement;
         new (): HTMLPdNavbarItemElement;
+    };
+    interface HTMLPdOverlayElement extends Components.PdOverlay, HTMLStencilElement {
+    }
+    var HTMLPdOverlayElement: {
+        prototype: HTMLPdOverlayElement;
+        new (): HTMLPdOverlayElement;
     };
     interface HTMLPdPaginationElement extends Components.PdPagination, HTMLStencilElement {
     }
@@ -1404,6 +1441,7 @@ declare global {
         "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
+        "pd-dropdown-menu": HTMLPdDropdownMenuElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
         "pd-label": HTMLPdLabelElement;
@@ -1415,6 +1453,7 @@ declare global {
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
+        "pd-overlay": HTMLPdOverlayElement;
         "pd-pagination": HTMLPdPaginationElement;
         "pd-panel": HTMLPdPanelElement;
         "pd-panel-content": HTMLPdPanelContentElement;
@@ -1781,6 +1820,9 @@ declare namespace LocalJSX {
           * Dropdown box label
          */
         "label"?: string;
+        /**
+          * Emitted when the value has changed.
+         */
         "onPd-change"?: (event: PdDropdownCustomEvent<DropdownItem>) => void;
         /**
           * Placeholder when no item is selected
@@ -1828,6 +1870,30 @@ declare namespace LocalJSX {
           * Value for this item
          */
         "value"?: string;
+    }
+    interface PdDropdownMenu {
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items"?: DropdownItem[];
+        /**
+          * Tells the parent that this component is ready (for setting the position with popperJS)
+         */
+        "onPd-dropdown-menu-did-load"?: (event: PdDropdownMenuCustomEvent<void>) => void;
+        /**
+          * Event for the parent (pd-dropdown) to select an item
+         */
+        "onPd-dropdown-select-item"?: (event: PdDropdownMenuCustomEvent<DropdownItem>) => void;
+        "onPd-keydown"?: (event: PdDropdownMenuCustomEvent<KeyboardEvent>) => void;
+        "parentId"?: number;
+        /**
+          * The selected Item
+         */
+        "selectedItem"?: DropdownItem;
     }
     interface PdIcon {
         /**
@@ -2130,6 +2196,9 @@ declare namespace LocalJSX {
          */
         "target"?: string;
         "text"?: string;
+    }
+    interface PdOverlay {
+        "onPd-overlay-click"?: (event: PdOverlayCustomEvent<void>) => void;
     }
     interface PdPagination {
         /**
@@ -2651,6 +2720,7 @@ declare namespace LocalJSX {
         "pd-datepicker": PdDatepicker;
         "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
+        "pd-dropdown-menu": PdDropdownMenu;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
         "pd-label": PdLabel;
@@ -2662,6 +2732,7 @@ declare namespace LocalJSX {
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
+        "pd-overlay": PdOverlay;
         "pd-pagination": PdPagination;
         "pd-panel": PdPanel;
         "pd-panel-content": PdPanelContent;
@@ -2696,6 +2767,7 @@ declare module "@stencil/core" {
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
+            "pd-dropdown-menu": LocalJSX.PdDropdownMenu & JSXBase.HTMLAttributes<HTMLPdDropdownMenuElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-label": LocalJSX.PdLabel & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
@@ -2707,6 +2779,7 @@ declare module "@stencil/core" {
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
+            "pd-overlay": LocalJSX.PdOverlay & JSXBase.HTMLAttributes<HTMLPdOverlayElement>;
             "pd-pagination": LocalJSX.PdPagination & JSXBase.HTMLAttributes<HTMLPdPaginationElement>;
             "pd-panel": LocalJSX.PdPanel & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
             "pd-panel-content": LocalJSX.PdPanelContent & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;

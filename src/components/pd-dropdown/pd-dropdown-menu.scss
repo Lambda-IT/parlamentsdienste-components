@@ -1,0 +1,23 @@
+@include resetControlFonts;
+
+pd-dropdown-menu {
+    // display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+pd-dropdown-menu.pd-dropdown-menu {
+    background-color: $white;
+    border: 0.125em solid $cyan-9;
+    border-radius: 0.25rem;
+    z-index: 100;
+    // width: 100%;
+    overflow: auto;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
