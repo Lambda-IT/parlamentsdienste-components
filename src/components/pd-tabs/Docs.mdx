@@ -1,6 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdtabsStories from './pd-tabs.stories';
-import ReadMeEvents from './readme_events.md?raw';
 
 <Meta of={pdtabsStories} />
 
@@ -8,5 +7,6 @@ import ReadMeEvents from './readme_events.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeEvents}</Markdown>
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-change</td><td>Emitted when the value has changed.</td><td>CustomEvent\<TabValue\></td></tr></tbody></table>
 <Stories />

@@ -1,7 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdtableStories from './pd-table.stories';
-import ReadMeEvents from './readme_events.md?raw';
-import ReadMeSlots from './readme_slots.md?raw';
 
 <Meta of={pdtableStories} />
 
@@ -9,6 +7,8 @@ import ReadMeSlots from './readme_slots.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeEvents}</Markdown>
-<Markdown>{ReadMeSlots}</Markdown>
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-clicked-row</td><td>Triggers an event when row was clicked</td><td>CustomEvent\<any\></td></tr><tr><td>pd-delete</td><td>Triggers an event when the delete icon was clicked</td><td>CustomEvent\<any\></td></tr><tr><td>pd-edit</td><td>Triggers an event when the edit icon was clicked</td><td>CustomEvent\<any\></td></tr><tr><td>pd-filter-change</td><td>Gets emitted when the filter changes</td><td>CustomEvent\<\{\}\></td></tr><tr><td>pd-filter-input</td><td>Gets emitted when the filter input changes</td><td>CustomEvent\<string\></td></tr><tr><td>pd-selected</td><td>Triggers when one or all rows get selected</td><td>CustomEvent\<SelectedEvent\></td></tr><tr><td>pd-sort</td><td>Gets emitted when a column gets sorted</td><td>CustomEvent\<\{\}\></td></tr><tr><td>pd-view</td><td>Triggers an event when the view icon was clicked</td><td>CustomEvent\<any\></td></tr></tbody></table>
+<h3>Slots</h3>
+<table><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td></td><td>Action menu items</td></tr><tr><td>external-pagination</td><td>Pagination component for external row handling</td></tr></tbody></table>
 <Stories />

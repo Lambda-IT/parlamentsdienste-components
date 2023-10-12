@@ -1,7 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdtimelineStories from './pd-timeline.stories';
-import ReadMeStyles from './readme_styles.md?raw';
-import ReadMeSlots from './readme_slots.md?raw';
 
 <Meta of={pdtimelineStories} />
 
@@ -9,6 +7,8 @@ import ReadMeSlots from './readme_slots.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeStyles}</Markdown>
-<Markdown>{ReadMeSlots}</Markdown>
+<h3>CSS Custom Properties</h3>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>--pd-timeline-width</td><td>Width of timeline. This includes the date line and content</td></tr></tbody></table>
+<h3>Slots</h3>
+<table><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td></td><td>timeline items</td></tr></tbody></table>
 <Stories />

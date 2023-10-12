@@ -1,7 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdnavbarStories from './pd-navbar.stories';
-import ReadMeEvents from './readme_events.md?raw';
-import ReadMeSlots from './readme_slots.md?raw';
 
 <Meta of={pdnavbarStories} />
 
@@ -9,6 +7,8 @@ import ReadMeSlots from './readme_slots.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeEvents}</Markdown>
-<Markdown>{ReadMeSlots}</Markdown>
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-menu</td><td></td><td>CustomEvent\<void\></td></tr></tbody></table>
+<h3>Slots</h3>
+<table><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td></td><td>Navbar items</td></tr><tr><td>mobile</td><td>Mobile navbar items</td></tr></tbody></table>
 <Stories />

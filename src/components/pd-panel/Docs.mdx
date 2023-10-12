@@ -1,8 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdpanelStories from './pd-panel.stories';
-import ReadMeStyles from './readme_styles.md?raw';
-import ReadMeEvents from './readme_events.md?raw';
-import ReadMeSlots from './readme_slots.md?raw';
 
 <Meta of={pdpanelStories} />
 
@@ -10,7 +7,10 @@ import ReadMeSlots from './readme_slots.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeStyles}</Markdown>
-<Markdown>{ReadMeEvents}</Markdown>
-<Markdown>{ReadMeSlots}</Markdown>
+<h3>CSS Custom Properties</h3>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>--pd-panel-background</td><td>Background color of panel</td></tr><tr><td>--pd-panel-subpanel-margin</td><td>margin of subpanel. Can be used to separate and indent subpanels</td></tr></tbody></table>
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-collapsed</td><td>Emitted when the value has changed.</td><td>CustomEvent\<any\></td></tr></tbody></table>
+<h3>Slots</h3>
+<table><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td></td><td>main content</td></tr><tr><td>footer</td><td>panel footer content</td></tr><tr><td>header</td><td>panel header content</td></tr></tbody></table>
 <Stories />

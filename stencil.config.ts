@@ -3,7 +3,7 @@ import { JsonDocs } from '@stencil/core/internal';
 import { sass } from '@stencil/sass';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
-import { mdGenerator, mdxGenerator } from './utils/markdown';
+import { mdxGenerator } from './utils/markdown';
 
 export const config: Config = {
   namespace: 'ParlamentsdiensteCore',
@@ -20,10 +20,6 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
-    },
-    {
-      type: 'docs-custom',
-      generator: (docs: JsonDocs) => mdGenerator(docs),
     },
     {
       type: 'docs-custom',

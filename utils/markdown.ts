@@ -2,32 +2,20 @@ import { JsonDocs } from '@stencil/core/internal';
 import path from 'path';
 import fs from 'fs/promises';
 
-export async function mdGenerator(docs: JsonDocs) {
-  for (const component of docs.components) {
-    const stylesMarkdownContent = `<h3>CSS Custom Properties</h3>\n| Name | Description |\n | --- | --- |\n${component.styles.map(s => `|${s.name}|${s.docs}|`).join('\n') || ''}`;
-    const eventsMarkdownContent = `<h3>Events</h3>\n| Event | Description | Type |\n | --- | --- | --- |\n${
-      component.events.map(s => `|${s.event}|${s.docs}|CustomEvent\\<${s.complexType.resolved}\\>|`).join('\n') || ''
-    }`;
-    const slotsMarkdownContent = `<h3>Slots</h3>\n| Slot | Description |\n | --- | --- |\n${component.slots.map(s => `|${s.name}|${s.docs}|`).join('\n') || ''}`;
-
-    if (component.dirPath) {
-      if (component.styles.length > 0) {
-        const stylesFilePath = path.join(component.dirPath, 'readme_styles.md');
-        await fs.writeFile(stylesFilePath, stylesMarkdownContent);
-      }
-
-      if (component.events.length > 0) {
-        const eventsFilePath = path.join(component.dirPath, 'readme_events.md');
-        await fs.writeFile(eventsFilePath, eventsMarkdownContent);
-      }
-
-      if (component.slots.length > 0) {
-        const slotsFilePath = path.join(component.dirPath, 'readme_slots.md');
-        await fs.writeFile(slotsFilePath, slotsMarkdownContent);
-      }
-    }
-  }
-}
+const generateTable = (head: any[], rows: any[][]) => {
+  return [
+    `<table>`,
+    `<thead>`,
+    `<tr>`,
+    head.map((h: any) => `<th>${h}</th>`).join(''),
+    `</tr>`,
+    `</thead>`,
+    `<tbody>`,
+    rows.map((r: any[]) => `<tr>${r.map(d => `<td>${d}</td>`).join('')}</tr>`).join(''),
+    `</tbody>`,
+    `</table>\n`,
+  ].join('');
+};
 
 export async function mdxGenerator(docs: JsonDocs) {
   const exclude = [
@@ -51,20 +39,40 @@ export async function mdxGenerator(docs: JsonDocs) {
     const mdx = [
       `import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';\n`,
       `import * as ${componentName}Stories from './${component.tag}.stories';\n`,
-      component.styles.length > 0 ? `import ReadMeStyles from './readme_styles.md?raw';\n` : ``,
-      component.events.length > 0 ? `import ReadMeEvents from './readme_events.md?raw';\n` : ``,
-      component.slots.length > 0 ? `import ReadMeSlots from './readme_slots.md?raw';\n` : ``,
       `\n`,
       `<Meta of={${componentName}Stories} />\n`,
       `\n`,
       `<Title />\n`,
       component.docs ? `<Description>${component.docs}</Description>\n` : ``,
       `<Primary />\n`,
+
       `<h3>Controls</h3>\n`,
       `<Controls />\n`,
-      component.styles.length > 0 ? `<Markdown>{ReadMeStyles}</Markdown>\n` : ``,
-      component.events.length > 0 ? `<Markdown>{ReadMeEvents}</Markdown>\n` : ``,
-      component.slots.length > 0 ? `<Markdown>{ReadMeSlots}</Markdown>\n` : ``,
+
+      component.styles.length > 0 ? `<h3>CSS Custom Properties</h3>\n` : '',
+      component.styles.length > 0
+        ? generateTable(
+            ['Name', 'Description'],
+            component.styles.map(p => [p.name, p.docs]),
+          )
+        : '',
+
+      component.events.length > 0 ? `<h3>Events</h3>\n` : '',
+      component.events.length > 0
+        ? generateTable(
+            ['Event', 'Description', 'Type'],
+            component.events.map(p => [p.event, p.docs, `CustomEvent\\<${p.complexType.original.replace(/{/g, '\\{').replace(/}/g, '\\}')}\\>`]),
+          )
+        : '',
+
+      component.slots.length > 0 ? `<h3>Slots</h3>\n` : '',
+      component.slots.length > 0
+        ? generateTable(
+            ['Slot', 'Description'],
+            component.slots.map(p => [p.name, p.docs]),
+          )
+        : '',
+      ,
       `<Stories />\n`,
     ];
 

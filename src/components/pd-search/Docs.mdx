@@ -1,6 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdsearchStories from './pd-search.stories';
-import ReadMeEvents from './readme_events.md?raw';
 
 <Meta of={pdsearchStories} />
 
@@ -8,5 +7,6 @@ import ReadMeEvents from './readme_events.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeEvents}</Markdown>
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-blur</td><td>Emitted when the input loses focus.</td><td>CustomEvent\<void\></td></tr><tr><td>pd-change</td><td>Emitted when the value has changed.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr><tr><td>pd-focus</td><td>Emitted when the input has focus.</td><td>CustomEvent\<void\></td></tr><tr><td>pd-input</td><td>Emitted when a keyboard input occurred.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr><tr><td>pd-search</td><td>Emitted when a search request occurred.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr></tbody></table>
 <Stories />

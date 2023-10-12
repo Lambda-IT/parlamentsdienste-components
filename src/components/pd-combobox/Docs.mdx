@@ -1,7 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdcomboboxStories from './pd-combobox.stories';
-import ReadMeStyles from './readme_styles.md?raw';
-import ReadMeEvents from './readme_events.md?raw';
 
 <Meta of={pdcomboboxStories} />
 
@@ -9,6 +7,8 @@ import ReadMeEvents from './readme_events.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeStyles}</Markdown>
-<Markdown>{ReadMeEvents}</Markdown>
+<h3>CSS Custom Properties</h3>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>--pd-checkbox-vertical-adjust</td><td>top margin of label</td></tr></tbody></table>
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-blur</td><td>Emitted when the input loses focus.</td><td>CustomEvent\<void\></td></tr><tr><td>pd-change</td><td>Emitted when the value has changed.</td><td>CustomEvent\<ComboboxItem\></td></tr><tr><td>pd-combobox</td><td>Emitted when a combobox request occurred.</td><td>CustomEvent\<ComboboxItem\></td></tr><tr><td>pd-focus</td><td>Emitted when the input has focus.</td><td>CustomEvent\<void\></td></tr><tr><td>pd-input</td><td>Emitted when a keyboard input occurred.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr></tbody></table>
 <Stories />

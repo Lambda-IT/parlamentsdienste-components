@@ -1,7 +1,5 @@
 import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
 import * as pdlistStories from './pd-list.stories';
-import ReadMeStyles from './readme_styles.md?raw';
-import ReadMeSlots from './readme_slots.md?raw';
 
 <Meta of={pdlistStories} />
 
@@ -9,6 +7,8 @@ import ReadMeSlots from './readme_slots.md?raw';
 <Primary />
 <h3>Controls</h3>
 <Controls />
-<Markdown>{ReadMeStyles}</Markdown>
-<Markdown>{ReadMeSlots}</Markdown>
+<h3>CSS Custom Properties</h3>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>--pd-list-border-color</td><td>Bottom border color of a list item</td></tr><tr><td>--pd-list-content-padding</td><td>Padding around list items</td></tr></tbody></table>
+<h3>Slots</h3>
+<table><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td></td><td>List content</td></tr></tbody></table>
 <Stories />
