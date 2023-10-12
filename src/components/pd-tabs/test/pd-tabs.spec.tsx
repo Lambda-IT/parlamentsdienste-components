@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdTabs } from '../pd-tabs';
+import { Tabs } from '../pd-tabs';
 
 describe('pd-tabs', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [PdTabs],
+      components: [Tabs],
       html: `<pd-tabs></pd-tabs>`,
     });
     expect(page.root).toEqualHtml(`

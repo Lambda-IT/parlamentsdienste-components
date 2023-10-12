@@ -1,42 +1,6 @@
 # pd-alert
 
-## Usage
 
-#### Alert
-
-```html
-<pd-alert color="primary">A simple primary alert</pd-alert>
-```
-
-#### Alert with action
-
-```html
-<pd-alert action-text="a button action">
-    A simple alert with a button action
-</pd-alert>
-<pd-alert action-text="a link action" action-href="...">
-    A simple alert with a link action
-</pd-alert>
-```
-
-#### Expandable alert
-
-```html
-<pd-alert color="warning" action-text="Mehr anzeigen" expandable closable>
-    <div>Infobox Heading</div>
-    <div slot="expandable">
-        Expandable content
-    </div>
-</pd-alert>
-
-> The alert button
-```
-
-### vuejs Sample
-
-```html
-<pd-alert :color="alert.status" closable="true" @pd-closed="removeAlert">{{alert.message}}</pd-alert>
-```
 
 <!-- Auto Generated Below -->
 

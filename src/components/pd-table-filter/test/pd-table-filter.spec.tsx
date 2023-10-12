@@ -1,13 +1,13 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdTableFilter } from '../pd-table-filter';
+import { TableFilter } from '../pd-table-filter';
 
 describe('pd-table-filter', () => {
-    it('renders', async () => {
-        const page = await newSpecPage({
-            components: [PdTableFilter],
-            html: `<pd-table-filter></pd-table-filter>`,
-        });
-        expect(page.root).toEqualHtml(`
+  it('renders', async () => {
+    const page = await newSpecPage({
+      components: [TableFilter],
+      html: `<pd-table-filter></pd-table-filter>`,
+    });
+    expect(page.root).toEqualHtml(`
           <pd-table-filter>
             <mock:shadow-root>
               <div class="pd-table-filter-wrapper">
@@ -27,5 +27,5 @@ describe('pd-table-filter', () => {
             </mock:shadow-root>
           </pd-table-filter>
         `);
-    });
+  });
 });

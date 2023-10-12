@@ -1,0 +1,14 @@
+import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
+import * as pddropdownStories from './pd-dropdown.stories';
+import ReadMeStyles from './readme_styles.md?raw';
+import ReadMeEvents from './readme_events.md?raw';
+
+<Meta of={pddropdownStories} />
+
+<Title />
+<Primary />
+<h3>Controls</h3>
+<Controls />
+<Markdown>{ReadMeStyles}</Markdown>
+<Markdown>{ReadMeEvents}</Markdown>
+<Stories />

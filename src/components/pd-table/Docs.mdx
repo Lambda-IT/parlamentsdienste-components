@@ -1,0 +1,14 @@
+import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
+import * as pdtableStories from './pd-table.stories';
+import ReadMeEvents from './readme_events.md?raw';
+import ReadMeSlots from './readme_slots.md?raw';
+
+<Meta of={pdtableStories} />
+
+<Title />
+<Primary />
+<h3>Controls</h3>
+<Controls />
+<Markdown>{ReadMeEvents}</Markdown>
+<Markdown>{ReadMeSlots}</Markdown>
+<Stories />

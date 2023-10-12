@@ -1,13 +1,13 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PdToast } from '../pd-toast';
+import { Toast } from '../pd-toast';
 
 describe('pd-toast', () => {
-    it('renders', async () => {
-        const page = await newSpecPage({
-            components: [PdToast],
-            html: `<pd-toast></pd-toast>`,
-        });
-        expect(page.root).toEqualHtml(`
+  it('renders', async () => {
+    const page = await newSpecPage({
+      components: [Toast],
+      html: `<pd-toast></pd-toast>`,
+    });
+    expect(page.root).toEqualHtml(`
           <pd-toast style="max-width:550px;">
             <mock:shadow-root>
               <div class="pd-toast-header">
@@ -24,5 +24,5 @@ describe('pd-toast', () => {
             </mock:shadow-root>
           </pd-toast>
         `);
-    });
+  });
 });

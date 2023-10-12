@@ -4,28 +4,28 @@ import { Component, ComponentInterface, Element, h, Host, Prop } from '@stencil/
  * @slot - Icon
  */
 @Component({
-    tag: 'pd-menu-item',
-    styleUrl: 'pd-menu-item.scss',
-    shadow: true,
+  tag: 'pd-menu-item',
+  styleUrl: 'pd-menu-item.scss',
+  shadow: true,
 })
 export class MenuItem implements ComponentInterface {
-    @Element() element!: HTMLElement;
+  @Element() element!: HTMLElement;
 
-    /**
-     * Text for this item
-     */
-    @Prop() text: string = '';
+  /**
+   * Text for this item
+   */
+  @Prop() text: string = '';
 
-    public render() {
-        return (
-            <Host>
-                <div class="pd-menu-item">
-                    <slot></slot>
-                    <div class="pd-menu-item-text" data-test="pd-menu-item-text">
-                        {this.text}
-                    </div>
-                </div>
-            </Host>
-        );
-    }
+  public render() {
+    return (
+      <Host>
+        <div class="pd-menu-item">
+          <slot></slot>
+          <div class="pd-menu-item-text" data-test="pd-menu-item-text">
+            {this.text}
+          </div>
+        </div>
+      </Host>
+    );
+  }
 }

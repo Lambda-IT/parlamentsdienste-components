@@ -5,8 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./types";
+export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
         /**
@@ -1721,15 +1723,15 @@ declare namespace LocalJSX {
         "onPd-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-close"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-month-change"?: (event: PdDatepickerCustomEvent<{
-        selectedDates: Date[];
-        dateStr: string;
-    }>) => void;
+    selectedDates: Date[];
+    dateStr: string;
+  }>) => void;
         "onPd-open"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-ready"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-value-update"?: (event: PdDatepickerCustomEvent<{
-        selectedDates: Date[];
-        dateStr: string;
-    }>) => void;
+    selectedDates: Date[];
+    dateStr: string;
+  }>) => void;
         "onPd-year-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         /**
           * Instructional text that shows before the input has a value.

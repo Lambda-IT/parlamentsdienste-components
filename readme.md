@@ -35,8 +35,8 @@ npm run build-storybook
 
 **Links Dokumentation**
 
--   [StencilJS](https://stenciljs.com/docs/introduction)
--   [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
+- [StencilJS](https://stenciljs.com/docs/introduction)
+- [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
 
 ## Lizenz
 

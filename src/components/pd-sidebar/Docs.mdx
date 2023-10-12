@@ -1,0 +1,12 @@
+import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
+import * as pdsidebarStories from './pd-sidebar.stories';
+import ReadMeSlots from './readme_slots.md?raw';
+
+<Meta of={pdsidebarStories} />
+
+<Title />
+<Primary />
+<h3>Controls</h3>
+<Controls />
+<Markdown>{ReadMeSlots}</Markdown>
+<Stories />

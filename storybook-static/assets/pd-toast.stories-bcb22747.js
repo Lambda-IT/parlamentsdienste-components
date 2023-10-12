@@ -1,0 +1,4 @@
+const r={title:"Dialogs/Toast",parameters:{actions:{handles:["pd-closed"]}},argTypes:{header:{control:{type:"text"}},info:{control:{type:"text"}},body:{control:{type:"text"}},size:{control:{type:"select",options:["large","small"]}}}},e=s=>`
+    <pd-toast class="m-3" header="${s.header}" info="${s.info}" size="${s.size}">${s.body}</pd-toast>
+`;e.args={header:"Toast Title",info:"11 minutes ago",body:"Toast body text goes here",size:"large"};var o,t,a;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:'args => `\n    <pd-toast class="m-3" header="${args.header}" info="${args.info}" size="${args.size}">${args.body}</pd-toast>\n`',...(a=(t=e.parameters)==null?void 0:t.docs)==null?void 0:a.source}}};const d=["Toast"];export{e as Toast,d as __namedExportsOrder,r as default};
+//# sourceMappingURL=pd-toast.stories-bcb22747.js.map
