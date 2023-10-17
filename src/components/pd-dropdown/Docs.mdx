@@ -10,5 +10,7 @@ import * as pddropdownStories from './pd-dropdown.stories';
 <h3>CSS Custom Properties</h3>
 <table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>--pd-datepicker-vertical-adjust</td><td>top margin of label</td></tr><tr><td>--pd-dropdown-horizontal-padding</td><td>Possibility to change inner width of the dropdown</td></tr><tr><td>--pd-dropdown-vertical-padding</td><td>Possibility to change inner height of the dropdown</td></tr></tbody></table>
 <h3>Events</h3>
-<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-change</td><td></td><td>CustomEvent\<DropdownItem\></td></tr></tbody></table>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-change</td><td></td><td>`CustomEvent<DropdownItem>`</td></tr></tbody></table>
+<h3>Methods</h3>
+<table><thead><tr><th>Method</th><th>Description</th><th>Returns</th></tr></thead><tbody><tr><td>`reset() => Promise<void>`</td><td>Reset the selection of the dropdown</td><td>`Promise<void>`</td></tr><tr><td>`setSelectedIndex(index: number) => Promise<void>`</td><td>Set a preselected entry by index</td><td>`Promise<void>`</td></tr></tbody></table>
 <Stories />

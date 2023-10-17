@@ -61,7 +61,15 @@ export async function mdxGenerator(docs: JsonDocs) {
       component.events.length > 0
         ? generateTable(
             ['Event', 'Description', 'Type'],
-            component.events.map(p => [p.event, p.docs, `CustomEvent\\<${p.complexType.original.replace(/{/g, '\\{').replace(/}/g, '\\}')}\\>`]),
+            component.events.map(p => [p.event, p.docs, `\`CustomEvent\<${p.complexType.original}\>\``]),
+          )
+        : '',
+
+      component.methods.length > 0 ? `<h3>Methods</h3>\n` : '',
+      component.methods.length > 0
+        ? generateTable(
+            ['Method', 'Description', 'Returns'],
+            component.methods.map(p => [`\`${p.signature}\``, p.docs, `\`${p.complexType.return}\``]),
           )
         : '',
 

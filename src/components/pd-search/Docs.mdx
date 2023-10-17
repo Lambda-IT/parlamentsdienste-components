@@ -8,5 +8,8 @@ import * as pdsearchStories from './pd-search.stories';
 <h3>Controls</h3>
 <Controls />
 <h3>Events</h3>
-<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-blur</td><td>Emitted when the input loses focus.</td><td>CustomEvent\<void\></td></tr><tr><td>pd-change</td><td>Emitted when the value has changed.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr><tr><td>pd-focus</td><td>Emitted when the input has focus.</td><td>CustomEvent\<void\></td></tr><tr><td>pd-input</td><td>Emitted when a keyboard input occurred.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr><tr><td>pd-search</td><td>Emitted when a search request occurred.</td><td>CustomEvent\<InputChangeEventDetail\></td></tr></tbody></table>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-blur</td><td>Emitted when the input loses focus.</td><td>`CustomEvent<void>`</td></tr><tr><td>pd-change</td><td>Emitted when the value has changed.</td><td>`CustomEvent<InputChangeEventDetail>`</td></tr><tr><td>pd-focus</td><td>Emitted when the input has focus.</td><td>`CustomEvent<void>`</td></tr><tr><td>pd-input</td><td>Emitted when a keyboard input occurred.</td><td>`CustomEvent<InputChangeEventDetail>`</td></tr><tr><td>pd-search</td><td>Emitted when a search request occurred.</td><td>`CustomEvent<InputChangeEventDetail>`</td></tr></tbody></table>
+<h3>Methods</h3>
+<table><thead><tr><th>Method</th><th>Description</th><th>Returns</th></tr></thead><tbody><tr><td>`setFocus() => Promise<void>`</td><td>Sets focus on the specified `pd-input`. Use this method instead of the global
+`input.focus()`.</td><td>`Promise<void>`</td></tr></tbody></table>
 <Stories />
