@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.15] - 2023-10-20
+
+### Changed
+
+-   #260 The text of the action in pdAlert now wraps
+-   #257 changed the default margin of subpanels to 0
+
+### Added
+
+-   #263 New pd-sort component. See the storybook for more information.
+
 ## [2.6.14] - 2023-09-15
 
 ### Changed
@@ -521,6 +532,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.15]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.15
 [2.6.14]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.14
 [2.6.13]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.13
 [2.6.12]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.12
