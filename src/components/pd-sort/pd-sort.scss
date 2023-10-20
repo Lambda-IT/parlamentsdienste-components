@@ -1,0 +1,65 @@
+@include resetControlFonts;
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pd-sort {
+    position: relative;
+    display: inline-block;
+
+    .pd-sort-button {
+        color: $cyan-9;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        .pd-sort-text {
+            text-align: left;
+            text-overflow: ellipsis;
+            overflow-x: hidden;
+            white-space: nowrap;
+            min-height: 1.5rem;
+        }
+
+        .pd-sort-caret {
+            fill: setcolor(primary, enabled);
+        }
+
+        &:hover:enabled {
+            .pd-sort-caret {
+                fill: setcolor(primary, hover);
+            }
+        }
+
+        &:disabled {
+            cursor: default;
+            .pd-sort-caret {
+                fill: $gray;
+            }
+        }
+
+        &:focus-visible {
+            .pd-sort-caret {
+                fill: $blue-whale;
+            }
+        }
+    }
+}
+
+.pd-sort-menu {
+    background-color: $white;
+    border: 0.125em solid $cyan-9;
+    border-radius: 0.25rem;
+    z-index: 100;
+    overflow: auto;
+
+    .pd-sort-menu-bottom-separator {
+        border-top: 0.125em solid $cyan-9;
+    }
+}

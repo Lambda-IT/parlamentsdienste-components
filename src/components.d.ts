@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, TabValue, TextFieldTypes, TextWrap } from "./interface";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableStyle, SelectedEvent, SortDropdownItem, TabValue, TextFieldTypes, TextWrap } from "./interface";
 import { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -857,6 +857,44 @@ export namespace Components {
          */
         "value"?: number;
     }
+    interface PdSort {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": SortDropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items": SortDropdownItem[];
+        /**
+          * Label
+         */
+        "label": string;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder": string;
+        /**
+          * Reset the selection of the dropdown
+         */
+        "reset": () => Promise<void>;
+        /**
+          * Set a preselected entry by index
+         */
+        "setSelectedIndex": (index: number) => Promise<void>;
+    }
     interface PdTable {
         /**
           * A definition for each column of the table
@@ -1138,6 +1176,10 @@ export interface PdSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdSliderElement;
 }
+export interface PdSortCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdSortElement;
+}
 export interface PdTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdTableElement;
@@ -1351,6 +1393,12 @@ declare global {
         prototype: HTMLPdSliderElement;
         new (): HTMLPdSliderElement;
     };
+    interface HTMLPdSortElement extends Components.PdSort, HTMLStencilElement {
+    }
+    var HTMLPdSortElement: {
+        prototype: HTMLPdSortElement;
+        new (): HTMLPdSortElement;
+    };
     interface HTMLPdTableElement extends Components.PdTable, HTMLStencilElement {
     }
     var HTMLPdTableElement: {
@@ -1426,6 +1474,7 @@ declare global {
         "pd-sidebar": HTMLPdSidebarElement;
         "pd-sidebar-item": HTMLPdSidebarItemElement;
         "pd-slider": HTMLPdSliderElement;
+        "pd-sort": HTMLPdSortElement;
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
         "pd-tabs": HTMLPdTabsElement;
@@ -2365,6 +2414,37 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface PdSort {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: SortDropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items"?: SortDropdownItem[];
+        /**
+          * Label
+         */
+        "label"?: string;
+        "onPd-change"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder"?: string;
+    }
     interface PdTable {
         /**
           * A definition for each column of the table
@@ -2673,6 +2753,7 @@ declare namespace LocalJSX {
         "pd-sidebar": PdSidebar;
         "pd-sidebar-item": PdSidebarItem;
         "pd-slider": PdSlider;
+        "pd-sort": PdSort;
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
         "pd-tabs": PdTabs;
@@ -2718,6 +2799,7 @@ declare module "@stencil/core" {
             "pd-sidebar": LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
+            "pd-sort": LocalJSX.PdSort & JSXBase.HTMLAttributes<HTMLPdSortElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
             "pd-tabs": LocalJSX.PdTabs & JSXBase.HTMLAttributes<HTMLPdTabsElement>;

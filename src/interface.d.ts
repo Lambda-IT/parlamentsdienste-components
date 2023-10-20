@@ -65,6 +65,32 @@ export interface DropdownItem {
     iconName?: string;
     iconSrc?: string;
 }
+export interface SortDropdownItem {
+    id: string;
+    label: string;
+    value?: string | number;
+    selected?: boolean;
+    sort?: 'desc' | 'asc' | null;
+    bottomSection?: boolean;
+}
+
+// interface BaseSortDropdownItem {
+//     id: string;
+//     label: string;
+//     value: string | number;
+//     selected?: boolean;
+// }
+
+// interface SortDropdownItemNormal extends BaseSortDropdownItem {
+//     _tag: 'normal';
+//     sort: 'desc' | 'asc' | null;
+// }
+// interface SortDropdownItemWInBottomSection extends BaseSortDropdownItem {
+//     _tag: 'inBottomSection';
+//     bottomSection: true;
+// }
+
+// export type SortDropdownItem = SortDropdownItemWInBottomSection | SortDropdownItemNormal;
 
 export type TextWrap = 'wrap' | 'no-wrap';
 

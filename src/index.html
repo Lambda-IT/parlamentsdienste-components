@@ -84,9 +84,9 @@
                     <p><i>This line rendered as italicized text.</i></p>
                 </details>
             </details>
-            <details open>
+            <details>
                 <summary>Buttons</summary>
-                <details open>
+                <details>
                     <summary>Buttons</summary>
                     <h2>States</h2>
                     <div class="button-grid">
@@ -194,10 +194,10 @@
                 </details>
             </details>
 
-            <details open>
+            <details>
                 <summary>Forms</summary>
 
-                <details open>
+                <details>
                     <summary>Inputs</summary>
                     <div class="dropdown-grid">
                         <span></span>
@@ -596,7 +596,7 @@
                     </pd-timeline>
                 </details>
 
-                <details>
+                <details open>
                     <summary>List</summary>
                     <h2>List item</h2>
                     <pd-list>
@@ -640,6 +640,13 @@
                             </pd-menu-item>
                         </pd-list-item-expandable>
                     </pd-list>
+                    <h2>Sort item</h2>
+                    <div>
+                        <pd-sort class="pd-sort"></pd-sort>
+                    </div>
+                    <div>
+                        <pd-sort class="pd-sort" empty-item></pd-sort>
+                    </div>
                 </details>
 
                 <details>
@@ -835,6 +842,7 @@
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
             const pdNavbar = document.getElementById('pd-navbar-1');
+            const pdSorts = document.getElementsByClassName('pd-sort');
 
             const pdTable0 = document.getElementById('pd-table-0');
             const pdTable1 = document.getElementById('pd-table-1');
@@ -868,6 +876,18 @@
                     { id: '3', label: '50', value: '50' },
                     { id: '4', label: '100', value: '100' },
                 ];
+            }
+
+            for (let pdSort of pdSorts) {
+                pdSort.items = [
+                    { id: '1', label: 'Name', value: 'name', sort: 'asc', selected: true },
+                    { id: '2', label: 'Dokumententitel', value: 'documentTitle', sort: 'desc' },
+                    { id: '3', label: 'Änderungsdatum', value: 'changedAt', sort: 'asc' },
+                    { id: '4', label: 'Erstellungsdatum', value: 'createdAt', sort: 'asc' },
+                    { id: '6', label: 'Author/in', value: 'author', sort: 'asc' },
+                    { id: '7', label: 'Umkehren', value: 'reverse', bottomSection: true },
+                ];
+                // pdSort.addEventListener('pd-change', (e) => console.log('pd-change', e));
             }
 
             for (let pdComboBoxItem of pdComboBoxItems) {
@@ -961,7 +981,7 @@
                 }, 2000);
             }
 
-            // pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
+            pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
             // pdComboBox1.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
             // pdComboBox1.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox1));
             // pdComboBox1.addEventListener('pd-blur', (e) => console.log('pd-blur', e));
