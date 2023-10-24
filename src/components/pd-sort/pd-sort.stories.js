@@ -4,7 +4,7 @@ export default {
     title: 'Interactions/Sort',
     parameters: {
         actions: {
-            handles: ['pd-change', 'pd-revert'],
+            handles: ['pd-change', 'pd-reverse'],
         },
         notes,
     },
@@ -12,8 +12,8 @@ export default {
         label: { controls: { type: 'string' } },
         items: { controls: { type: 'object' } },
         disabled: { controls: { type: 'boolean' } },
-        revertItem: { controls: { type: 'boolean' } },
-        revertItemData: { controls: { type: 'object' } },
+        reverseItem: { controls: { type: 'boolean' } },
+        reverseItemData: { controls: { type: 'object' } },
         label: { controls: { type: 'string' } },
         placeholder: { controls: { type: 'string' } },
         itemCount: { controls: { type: 'number' } },
@@ -29,8 +29,8 @@ export const Sort = (args) => {
     pdSort.label = args.label;
     pdSort.items = args.items;
     pdSort.disabled = args.disabled;
-    pdSort.revertItem = args.revertItem;
-    pdSort.revertItemData = args.revertItemData;
+    pdSort.reverseItem = args.reverseItem;
+    pdSort.reverseItemData = args.reverseItemData;
     pdSort.placeholder = args.placeholder;
     pdSort.itemCount = args.itemCount;
     pdSort.emptyItem = args.emptyItem;
@@ -49,8 +49,8 @@ Sort.args = {
         { id: '6', label: 'Author/in', value: 'author', sort: 'asc' },
     ],
     disabled: false,
-    revertItem: true,
-    revertItemData: { label: 'Sort. Umkehren', selected: false },
+    reverseItem: true,
+    reverseItemData: { label: 'Sort. Umkehren', selected: false },
     label: 'Sortieren nach:',
     placeholder: '',
     itemCount: 7,

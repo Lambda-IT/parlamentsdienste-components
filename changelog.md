@@ -5,13 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.17] - 2023-10-24
+
+### Changed
+
+-   #263 pd-sort: typo fix (it is pd-reverse NOT pd-revert event)
+    -   the pd-change event emits the selected item (which has a sort property (asc | desc) --> sort the list that way )
+    -   the pd-reverse event emits the selected item too (which has a sort property (asc | desc) --> sort the list THE OTHER WAY way than its saved in the sort property ❗)
+    -   storybook readme updated
+    -   alignment of the dropdown to right and hover effect of the button
+
 ## [2.6.16] - 2023-10-24
 
 ### Changed
 
 -   #263 pd-sort:
     -   the pd-change event emits the selected item (which has a sort property (asc | desc) --> sort the list that way )
-    -   the pd-revert event emits the selected item too (which has a sort property (asc | desc) --> sort the list THE OTHER WAY way than its saved in the sort property ❗)
+    -   the pd-revert event emits the selected item too (which has a sort property (asc | desc) --> sort the list THE OTHER WAY way than its saved in the sort property)
 
 ## [2.6.15] - 2023-10-20
 
@@ -540,6 +550,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.6.17]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.17
+[2.6.16]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.16
 [2.6.15]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.15
 [2.6.14]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.14
 [2.6.13]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.13

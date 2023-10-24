@@ -86,7 +86,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() label: string = 'Sortieren nach:';
 
     @Event({ eventName: 'pd-change' }) pdChange: EventEmitter<SortDropdownItem>;
-    @Event({ eventName: 'pd-revert' }) pdRevert: EventEmitter<SortDropdownItem>;
+    @Event({ eventName: 'pd-reverse' }) pdReverse: EventEmitter<SortDropdownItem>;
 
     /**
      * Set a preselected entry by index
@@ -163,7 +163,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         }
         this.reverseItemData.selected = true;
         this.open = false;
-        this.pdRevert.emit(this.selectedItem);
+        this.pdReverse.emit(this.selectedItem);
     }
 
     private toggleDropdown = () => {

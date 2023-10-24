@@ -2448,7 +2448,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         "onPd-change"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
-        "onPd-revert"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
+        "onPd-reverse"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
         /**
           * Placeholder when no item is selected
          */

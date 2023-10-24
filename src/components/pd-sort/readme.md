@@ -3,8 +3,11 @@
 ## Usage
 
 ```html
-<pd-sort items="..."></pd-sort>
+<pd-sort items="..." reverse-item></pd-sort>
 ```
+
+-   the pd-change event emits the selected item (which has a sort property (asc | desc) --> sort the list that way )
+-   the pd-reverse event emits the selected item too (which has a sort property (asc | desc) --> sort the list THE OTHER WAY way than its saved in the sort property ❗)
 
 Dropdown items are defined using the following data structure. _Be aware that these cannot be defined directly in html._
 
@@ -20,7 +23,18 @@ const items = [
 ```
 
 the sort property can either be 'asc', 'desc' or null (for the emptyitem)<br>
-'action'-items who are seperated by a line and placed the bottom of the menu need the bottomSection property with a 'true'-value<br>
+
+## Reverse Item
+
+If there is a reverseItem = true property passed to the component, the dropdown will show a reverse item at the bottom of the dropdown.
+The reverse item is defined by a default or can be overwritten using the following data structure. _Be aware that these cannot be defined directly in html._
+
+```javascript
+const reverseItem = {
+    label: 'Sort. umkehren',
+    selected: false,
+};
+```
 
 ## Interfaces
 
@@ -31,7 +45,6 @@ interface SortDropdownItem {
     value?: string | number;
     selected?: boolean;
     sort?: 'desc' | 'asc' | null;
-    bottomSection?: boolean;
 }
 ```
 
@@ -55,10 +68,10 @@ interface SortDropdownItem {
 
 ## Events
 
-| Event       | Description | Type                            |
-| ----------- | ----------- | ------------------------------- |
-| `pd-change` |             | `CustomEvent<SortDropdownItem>` |
-| `pd-revert` |             | `CustomEvent<SortDropdownItem>` |
+| Event        | Description | Type                            |
+| ------------ | ----------- | ------------------------------- |
+| `pd-change`  |             | `CustomEvent<SortDropdownItem>` |
+| `pd-reverse` |             | `CustomEvent<SortDropdownItem>` |
 
 
 ## Methods
