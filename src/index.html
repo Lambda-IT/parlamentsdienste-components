@@ -642,7 +642,7 @@
                     </pd-list>
                     <h2>Sort item</h2>
                     <div>
-                        <pd-sort class="pd-sort"></pd-sort>
+                        <pd-sort class="pd-sort" reverse-item></pd-sort>
                     </div>
                     <div>
                         <pd-sort class="pd-sort" empty-item></pd-sort>
@@ -885,9 +885,12 @@
                     { id: '3', label: 'Änderungsdatum', value: 'changedAt', sort: 'asc' },
                     { id: '4', label: 'Erstellungsdatum', value: 'createdAt', sort: 'asc' },
                     { id: '6', label: 'Author/in', value: 'author', sort: 'asc' },
-                    { id: '7', label: 'Umkehren', value: 'reverse', bottomSection: true },
+                    // { id: '7', label: 'Umkehren', value: 'reverse', bottomSection: true },
+                    // { id: '8', label: 'Alle Löschen', value: 'delete', bottomSection: true },
                 ];
-                // pdSort.addEventListener('pd-change', (e) => console.log('pd-change', e));
+                // pdSort.reverseItemData = { label: 'Umdräie', selected: false };
+                pdSort.addEventListener('pd-change', (e) => console.log(e));
+                pdSort.addEventListener('pd-revert', (e) => console.log(e));
             }
 
             for (let pdComboBoxItem of pdComboBoxItems) {
@@ -981,7 +984,7 @@
                 }, 2000);
             }
 
-            pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
+            // pdComboBox1.addEventListener('pd-change', (e) => console.log('pd-change', e));
             // pdComboBox1.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
             // pdComboBox1.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox1));
             // pdComboBox1.addEventListener('pd-blur', (e) => console.log('pd-blur', e));

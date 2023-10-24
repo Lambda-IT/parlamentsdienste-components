@@ -70,27 +70,13 @@ export interface SortDropdownItem {
     label: string;
     value?: string | number;
     selected?: boolean;
-    sort?: 'desc' | 'asc' | null;
-    bottomSection?: boolean;
+    sort: 'desc' | 'asc';
 }
 
-// interface BaseSortDropdownItem {
-//     id: string;
-//     label: string;
-//     value: string | number;
-//     selected?: boolean;
-// }
-
-// interface SortDropdownItemNormal extends BaseSortDropdownItem {
-//     _tag: 'normal';
-//     sort: 'desc' | 'asc' | null;
-// }
-// interface SortDropdownItemWInBottomSection extends BaseSortDropdownItem {
-//     _tag: 'inBottomSection';
-//     bottomSection: true;
-// }
-
-// export type SortDropdownItem = SortDropdownItemWInBottomSection | SortDropdownItemNormal;
+export interface SortRevertItem {
+    label: string;
+    selected: boolean;
+}
 
 export type TextWrap = 'wrap' | 'no-wrap';
 

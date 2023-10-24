@@ -15,7 +15,7 @@ import {
     Prop,
     State,
 } from '@stencil/core';
-import { SortDropdownItem } from '../../interface';
+import { SortDropdownItem, SortRevertItem } from '../../interface';
 
 @Component({
     tag: 'pd-sort',
@@ -31,7 +31,6 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     @State() open: boolean = false;
     @State() selectedItem: SortDropdownItem;
-    @State() selectedBottomSectionItems: SortDropdownItem[] = [];
 
     /**
      * Placeholder when no item is selected
@@ -64,6 +63,19 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     };
 
     /**
+     * Enables the revert item at the bottom of the dropdown
+     */
+    @Prop() reverseItem: boolean = false;
+
+    /**
+     * Data used for the reverse item at the bottom of the dropdown
+     */
+    @Prop() reverseItemData: SortRevertItem = {
+        label: 'Sort. Umkehren',
+        selected: false,
+    };
+
+    /**
      * If `true`, the user cannot interact with the input.
      */
     @Prop() disabled = false;
@@ -73,7 +85,8 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
      */
     @Prop() label: string = 'Sortieren nach:';
 
-    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<SortDropdownItem>;
+    @Event({ eventName: 'pd-change' }) pdChange: EventEmitter<SortDropdownItem>;
+    @Event({ eventName: 'pd-revert' }) pdRevert: EventEmitter<SortDropdownItem>;
 
     /**
      * Set a preselected entry by index
@@ -134,18 +147,23 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     private selectItem(item: SortDropdownItem, closeDropdown: boolean = false) {
         this.selectedItem = item;
+        if (this.reverseItem && this.reverseItemData.selected) {
+            this.reverseItemData.selected = false;
+        }
         if (closeDropdown) this.open = false;
         this.pdChange.emit(item);
     }
-    private selectItemFromBottomSection(item: SortDropdownItem, closeDropdown: boolean = false) {
-        if (this.selectedBottomSectionItems.includes(item)) {
-            this.selectedBottomSectionItems = this.selectedBottomSectionItems.filter((i) => i !== item);
-        } else {
-            this.selectedBottomSectionItems = [...this.selectedBottomSectionItems, item];
-        }
+    private reverseItemClicked() {
+        if (!this.selectedItem) return;
 
-        if (closeDropdown) this.open = false;
-        this.pdChange.emit(item);
+        // If we already have a reverse item selected, we reselect the already selected item which will trigger the pdChange event and unselect the reverse item
+        if (this.reverseItemData.selected) {
+            this.selectItem(this.selectedItem, true);
+            return;
+        }
+        this.reverseItemData.selected = true;
+        this.open = false;
+        this.pdRevert.emit(this.selectedItem);
     }
 
     private toggleDropdown = () => {
@@ -169,7 +187,15 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     // create a popper js element for the menu
     private createMenuPopper(button, menu) {
         return createPopper(button, menu, {
-            placement: 'bottom-start',
+            placement: 'bottom-end',
+            modifiers: [
+                {
+                    name: 'offset',
+                    options: {
+                        offset: [-12, 0],
+                    },
+                },
+            ],
         });
     }
 
@@ -221,7 +247,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
             >
                 {this.renderEmptyItem()}
                 {this.renderDropDownItems()}
-                {this.renderBottomSection()}
+                {this.renderReverseItem()}
             </div>
         );
     }
@@ -239,19 +265,16 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
             ));
     }
 
-    private renderBottomSection() {
+    private renderReverseItem() {
+        if (!this.reverseItem || !this.selectedItem) return;
         return (
             <div class="pd-sort-menu-bottom-separator">
-                {this.items
-                    .filter((item) => item.bottomSection)
-                    .map((item, i) => (
-                        <pd-dropdown-item
-                            value={item.label}
-                            selected={this.selectedBottomSectionItems.includes(item) || false}
-                            onClick={() => this.selectItemFromBottomSection(item, true)}
-                            data-test={`pd-sort-item-${i}`}
-                        ></pd-dropdown-item>
-                    ))}
+                <pd-dropdown-item
+                    value={this.reverseItemData.label}
+                    selected={this.reverseItemData.selected || false}
+                    onClick={() => this.reverseItemClicked()}
+                    data-test={`pd-sort-revert-item`}
+                ></pd-dropdown-item>
             </div>
         );
     }

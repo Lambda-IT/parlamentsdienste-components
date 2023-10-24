@@ -40,15 +40,17 @@ interface SortDropdownItem {
 
 ## Properties
 
-| Property        | Attribute     | Description                                         | Type                 | Default                                                                                 |
-| --------------- | ------------- | --------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------- |
-| `disabled`      | `disabled`    | If `true`, the user cannot interact with the input. | `boolean`            | `false`                                                                                 |
-| `emptyItem`     | `empty-item`  | Enable selection of an empty item                   | `boolean`            | `false`                                                                                 |
-| `emptyItemData` | --            | Data used for the empty item                        | `SortDropdownItem`   | `{         id: '0',         label: '-',         value: null,         sort: null,     }` |
-| `itemCount`     | `item-count`  | Items visible in dropdown                           | `number`             | `7`                                                                                     |
-| `items`         | --            | Items to display and select in dropdown             | `SortDropdownItem[]` | `[]`                                                                                    |
-| `label`         | `label`       | Label                                               | `string`             | `'Sortieren nach:'`                                                                     |
-| `placeholder`   | `placeholder` | Placeholder when no item is selected                | `string`             | `''`                                                                                    |
+| Property          | Attribute      | Description                                                  | Type                 | Default                                                                                 |
+| ----------------- | -------------- | ------------------------------------------------------------ | -------------------- | --------------------------------------------------------------------------------------- |
+| `disabled`        | `disabled`     | If `true`, the user cannot interact with the input.          | `boolean`            | `false`                                                                                 |
+| `emptyItem`       | `empty-item`   | Enable selection of an empty item                            | `boolean`            | `false`                                                                                 |
+| `emptyItemData`   | --             | Data used for the empty item                                 | `SortDropdownItem`   | `{         id: '0',         label: '-',         value: null,         sort: null,     }` |
+| `itemCount`       | `item-count`   | Items visible in dropdown                                    | `number`             | `7`                                                                                     |
+| `items`           | --             | Items to display and select in dropdown                      | `SortDropdownItem[]` | `[]`                                                                                    |
+| `label`           | `label`        | Label                                                        | `string`             | `'Sortieren nach:'`                                                                     |
+| `placeholder`     | `placeholder`  | Placeholder when no item is selected                         | `string`             | `''`                                                                                    |
+| `reverseItem`     | `reverse-item` | Enables the revert item at the bottom of the dropdown        | `boolean`            | `false`                                                                                 |
+| `reverseItemData` | --             | Data used for the reverse item at the bottom of the dropdown | `SortRevertItem`     | `{         label: 'Sort. Umkehren',         selected: false,     }`                     |
 
 
 ## Events
@@ -56,6 +58,7 @@ interface SortDropdownItem {
 | Event       | Description | Type                            |
 | ----------- | ----------- | ------------------------------- |
 | `pd-change` |             | `CustomEvent<SortDropdownItem>` |
+| `pd-revert` |             | `CustomEvent<SortDropdownItem>` |
 
 
 ## Methods
