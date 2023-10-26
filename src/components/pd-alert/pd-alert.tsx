@@ -74,20 +74,18 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
                 class={{
                     'pd-alert': true,
                     [`pd-alert-${this.color}`]: true,
-                    'pd-alert-has-status':
-                        !this.hideIcon &&
-                        (this.color === 'danger' ||
-                            this.color === 'success' ||
-                            this.color === 'warning' ||
-                            this.color === 'info'),
                 }}
             >
-                {this.renderIcon()}
-                <div class="pd-alert-text">
-                    <slot></slot>
-                </div>
-                <div class="pd-alert-action">
-                    {this.renderAction()}
+                <div class="pd-alert-top-section">
+                    <div class="pd-alert-message-action">
+                        <div class="pd-alert-icon-message">
+                            {this.renderIcon()}
+                            <div>
+                                <slot></slot>
+                            </div>
+                        </div>
+                        <div class="pd-alert-action">{this.renderAction()}</div>
+                    </div>
                     {this.renderClose()}
                 </div>
                 <div class="pd-alert-expandable-content-wrapper" ref={(el) => (this.contentWrapperElement = el)}>
@@ -129,9 +127,11 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
     private renderClose() {
         if (!this.closable) return;
         return (
-            <button class="pd-alert-close-button" onClick={this.pdClosed.emit} data-test="pd-alert-close">
-                <pd-icon class="pd-alert-action-cancel" name="close" size={2}></pd-icon>
-            </button>
+            <div>
+                <button class="pd-alert-close-button" onClick={this.pdClosed.emit} data-test="pd-alert-close">
+                    <pd-icon class="pd-alert-action-cancel" name="close" size={2}></pd-icon>
+                </button>
+            </div>
         );
     }
 
