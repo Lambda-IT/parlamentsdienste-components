@@ -21,7 +21,6 @@
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
-        justify-content: space-between;
         padding: 0.625rem 1rem;
 
         .pd-alert-message-action {
@@ -29,18 +28,14 @@
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
-            // align-items: center;
             justify-content: space-between;
-            row-gap: 0.5rem;
+        }
 
-            .pd-alert-icon-message {
-                display: flex;
-                align-items: center;
-            }
-
-            .pd-alert-action {
-                align-self: flex-start;
-            }
+        .pd-alert-icon {
+            margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+            width: 2.5rem;
+            min-width: 2.5rem;
+            align-self: center;
         }
 
         .pd-alert-close-button {
@@ -178,12 +173,6 @@
             }
         }
     }
-}
-
-.pd-alert-icon {
-    margin: -0.5rem 0.5rem -0.5rem -0.5rem;
-    width: 2.5rem;
-    min-width: 2.5rem;
 }
 
 .pd-alert-action-text {

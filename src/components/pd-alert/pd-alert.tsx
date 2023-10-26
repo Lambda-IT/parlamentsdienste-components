@@ -77,14 +77,10 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
                 }}
             >
                 <div class="pd-alert-top-section">
+                    {this.renderIcon()}
                     <div class="pd-alert-message-action">
-                        <div class="pd-alert-icon-message">
-                            {this.renderIcon()}
-                            <div>
-                                <slot></slot>
-                            </div>
-                        </div>
-                        <div class="pd-alert-action">{this.renderAction()}</div>
+                        <slot></slot>
+                        <div>{this.renderAction()}</div>
                     </div>
                     {this.renderClose()}
                 </div>
