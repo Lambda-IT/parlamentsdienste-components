@@ -267,7 +267,10 @@
                         <span>Checkbox</span>
                         <div>
                             <pd-checkbox text="Labeltext"></pd-checkbox>
-                            <pd-checkbox checked text="Labeltext"></pd-checkbox>
+                            <pd-checkbox
+                                checked
+                                text="asdf asdf asdf asf a asdf asdfasdf asdf asdfasdfasdfasdfasfdasdfasdfasdfasdf aadfasdfasdfasdf as asdf asdfasdf"
+                            ></pd-checkbox>
                             <pd-checkbox is-indeterminate text="Labeltext"></pd-checkbox>
                         </div>
                         <div>
@@ -459,7 +462,7 @@
 
             <details open>
                 <summary>Dialogs</summary>
-                <details>
+                <details open>
                     <summary>Alerts</summary>
 
                     <h2>Primary alert</h2>
@@ -467,11 +470,19 @@
 
                     <h2>Primary alert with link</h2>
                     <pd-alert action-text="a link to click" action-href="http://www.google.ch">
-                        Primary alert with link
+                        <div>
+                            <p>Primary alert with link</p>
+                            <p>Primary alert with link</p>
+                        </div>
                     </pd-alert>
 
                     <h2>Primary alert with expandable content</h2>
-                    <pd-alert action-text="Mehr anzeigen" action-text-expanded="Weniger anzeigen" expandable>
+                    <pd-alert
+                        color="success"
+                        action-text="Mehr anzeigen"
+                        action-text-expanded="Weniger anzeigen"
+                        expandable
+                    >
                         <div>Primary alert with expandable content</div>
                         <div slot="expandable">
                             <p>
@@ -494,7 +505,12 @@
 
                     <h2>States</h2>
                     <pd-alert closable color="primary">Primary alert</pd-alert>
-                    <pd-alert closable color="success">Success alert</pd-alert>
+                    <pd-alert closable color="success">
+                        <div>
+                            <p>Primary alert with link</p>
+                            <p>Primary alert with link</p>
+                        </div>
+                    </pd-alert>
                     <pd-alert closable color="danger">Danger alert</pd-alert>
                     <pd-alert closable color="warning">Warning alert</pd-alert>
                     <pd-alert closable color="info">Info alert</pd-alert>

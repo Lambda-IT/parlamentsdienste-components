@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - 2023-10-26
+
+### Added
+
+-   new pd-sort component in final version
+
+### Changed
+
+-   #260 Refactored pdAlert to flexbox for better responsiveness
+-   #264 Added a min-width to the pd-checkbox checkbox and the text of the pd-checkbox now has an overflow hidden and an ellipsis. The overflow and ellipsis only works if the parent of the pd-checkbox has a width.
+
 ## [2.6.17] - 2023-10-24
 
 ### Changed
@@ -550,6 +561,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[2.7.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.7.0
 [2.6.17]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.17
 [2.6.16]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.16
 [2.6.15]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.6.15
