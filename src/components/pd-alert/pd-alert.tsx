@@ -80,7 +80,7 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
                     {this.renderIcon()}
                     <div class="pd-alert-message-action">
                         <slot></slot>
-                        <div>{this.renderAction()}</div>
+                        {this.renderAction()}
                     </div>
                     {this.renderClose()}
                 </div>
@@ -109,14 +109,16 @@ export class Alert implements ComponentInterface, ComponentDidLoad {
         const typeAttrs = TagType === 'button' ? { type: 'button' } : { href: actionHref, target: actionTarget };
 
         return (
-            <TagType
-                class="pd-alert-action-text"
-                {...typeAttrs}
-                onClick={() => this.handleAction()}
-                data-test="pd-alert-action"
-            >
-                {!this.expanded ? actionText : actionTextExpanded}
-            </TagType>
+            <div>
+                <TagType
+                    class="pd-alert-action-text"
+                    {...typeAttrs}
+                    onClick={() => this.handleAction()}
+                    data-test="pd-alert-action"
+                >
+                    {!this.expanded ? actionText : actionTextExpanded}
+                </TagType>
+            </div>
         );
     }
 
