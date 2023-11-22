@@ -1,0 +1,14 @@
+import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/blocks';
+import * as pdsortStories from './pd-sort.stories';
+
+<Meta of={pdsortStories} />
+
+<Title />
+<Primary />
+<h3>Controls</h3>
+<Controls />
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-change</td><td></td><td>`CustomEvent<SortDropdownItem>`</td></tr><tr><td>pd-reverse</td><td></td><td>`CustomEvent<SortDropdownItem>`</td></tr></tbody></table>
+<h3>Methods</h3>
+<table><thead><tr><th>Method</th><th>Description</th><th>Returns</th></tr></thead><tbody><tr><td>`reset() => Promise<void>`</td><td>Reset the selection of the dropdown</td><td>`Promise<void>`</td></tr><tr><td>`setSelectedIndex(index: number) => Promise<void>`</td><td>Set a preselected entry by index</td><td>`Promise<void>`</td></tr></tbody></table>
+<Stories />

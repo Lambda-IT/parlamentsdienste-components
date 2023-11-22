@@ -1,4 +1,4 @@
-import notes from './readme.md';
+// import notes from './readme.md';
 
 export default {
     title: 'Interactions/Sort',
@@ -6,7 +6,7 @@ export default {
         actions: {
             handles: ['pd-change', 'pd-reverse'],
         },
-        notes,
+        // notes,
     },
     argTypes: {
         label: { controls: { type: 'string' } },
@@ -24,7 +24,7 @@ export default {
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Sort = (args) => {
+export const Sort = args => {
     const pdSort = document.createElement('pd-sort');
     pdSort.label = args.label;
     pdSort.items = args.items;
