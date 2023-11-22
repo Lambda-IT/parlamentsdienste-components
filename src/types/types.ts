@@ -65,6 +65,18 @@ export interface DropdownItem {
   iconName?: string;
   iconSrc?: string;
 }
+export interface SortDropdownItem {
+    id: string;
+    label: string;
+    value?: string | number;
+    selected?: boolean;
+    sort: 'desc' | 'asc';
+}
+
+export interface SortRevertItem {
+    label: string;
+    selected: boolean;
+}
 
 export type TextWrap = 'wrap' | 'no-wrap';
 

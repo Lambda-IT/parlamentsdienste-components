@@ -87,6 +87,7 @@ If you want to host assets sepearate to the library, a custom base path can be s
  - [pd-panel-header](../pd-panel-header)
  - [pd-search](../pd-search)
  - [pd-sidebar-item](../pd-sidebar-item)
+ - [pd-sort](../pd-sort)
  - [pd-table](../pd-table)
  - [pd-table-filter](../pd-table-filter)
  - [pd-toast](../pd-toast)
@@ -108,6 +109,7 @@ graph TD;
   pd-panel-header --> pd-icon
   pd-search --> pd-icon
   pd-sidebar-item --> pd-icon
+  pd-sort --> pd-icon
   pd-table --> pd-icon
   pd-table-filter --> pd-icon
   pd-toast --> pd-icon

@@ -16,13 +16,37 @@
     border-width: 0.25rem;
     border-style: solid;
     font-weight: 700;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    align-items: center;
 
-    &.pd-alert-has-status {
-        grid-template-columns: auto 1fr auto;
+    .pd-alert-top-section {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        padding: 0.625rem 1rem;
+
+        .pd-alert-message-action {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 1rem;
+        }
+
+        .pd-alert-icon {
+            margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+            width: 2.5rem;
+            min-width: 2.5rem;
+            align-self: center;
+        }
+
+        .pd-alert-close-button {
+            @include invisibleButton;
+            margin-left: 0.625rem;
+
+            &:focus-visible .pd-alert-action-cancel {
+                @include focus;
+            }
+        }
     }
 
     &.pd-alert-primary {
@@ -152,57 +176,28 @@
     }
 }
 
-.pd-alert-text {
-    padding: 0.625rem 1rem;
+.pd-alert-action-text {
+    padding: 0;
+    cursor: pointer;
+    font-weight: 700 !important;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    text-align: left;
+
+    &:focus-visible {
+        @include focus;
+    }
 }
 
-.pd-alert-icon {
+.pd-alert-action-cancel {
+    cursor: pointer;
     margin: -0.5rem -0.5rem -0.5rem 0.5rem;
-    width: 2.5rem;
-    min-width: 2.5rem;
-    grid-row: 1 / 3;
-}
+    transform: translateY(-0.25rem);
 
-.pd-alert-action {
-    margin: 0 0.5rem 0 0;
-    display: flex;
-    align-items: center;
-
-    .pd-alert-action-text {
-        margin-left: 0.625rem;
-        padding: 0.0625rem 0.375rem;
-        white-space: nowrap;
-        cursor: pointer;
-        font-weight: 700 !important;
-        background-color: transparent;
-        border: none;
-        text-decoration: underline;
-
-        &:focus-visible {
-            @include focus;
-        }
+    &:hover {
+        fill: $bon-jour;
     }
-
-    .pd-alert-close-button {
-        @include invisibleButton;
-        margin-left: 0.625rem;
-
-        &:focus-visible .pd-alert-action-cancel {
-            @include focus;
-        }
-    }
-
-    .pd-alert-action-cancel {
-        cursor: pointer;
-
-        &:hover {
-            fill: $bon-jour;
-        }
-    }
-}
-
-.pd-alert-has-status .pd-alert-expandable-content-wrapper {
-    grid-column: 1 / span 3;
 }
 
 /**
@@ -212,7 +207,6 @@
 .pd-alert-expandable-content-wrapper {
     background-color: var(--pd-alert-expandable-background-color, $white);
     color: var(--pd-alert-expandable-color, $black);
-    grid-column: 1 / span 2;
     font-weight: 400;
     transition: height 0.3s ease-in-out;
     height: auto;

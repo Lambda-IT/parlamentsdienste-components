@@ -72,29 +72,31 @@
           <h6>h6. Heading</h6>
         </details>
 
-        <details>
-          <summary>Inline</summary>
-          <p>You can use the <mark>mark</mark> tag to highlight text.</p>
-          <p><del>This line of text is meant to be treated as deleted text.</del></p>
-          <p><del>This line of text is meant to be treated as no longer accurate.</del></p>
-          <p style="text-decoration: underline">This line of text is meant to be treated as an addition to the document.</p>
-          <p style="text-decoration: underline">This line of text will render as underlined</p>
-          <p style="font: 14px/20px Avenir">This line of text is meant to be treated as fine print.</p>
-          <p><strong>This line rendered as bold text.</strong></p>
-          <p><i>This line rendered as italicized text.</i></p>
-        </details>
-      </details>
-      <details open>
-        <summary>Buttons</summary>
-        <details open>
-          <summary>Buttons</summary>
-          <h2>States</h2>
-          <div class="button-grid">
-            <span></span>
-            <span>Enabled</span>
-            <span>Disable</span>
-            <span>Outline Enabled</span>
-            <span>Outline Disable</span>
+                <details>
+                    <summary>Inline</summary>
+                    <p>You can use the <mark>mark</mark> tag to highlight text.</p>
+                    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+                    <p><del>This line of text is meant to be treated as no longer accurate.</del></p>
+                    <p style="text-decoration: underline;">
+                        This line of text is meant to be treated as an addition to the document.
+                    </p>
+                    <p style="text-decoration: underline;">This line of text will render as underlined</p>
+                    <p style="font: 14px/20px Avenir;">This line of text is meant to be treated as fine print.</p>
+                    <p><strong>This line rendered as bold text.</strong></p>
+                    <p><i>This line rendered as italicized text.</i></p>
+                </details>
+            </details>
+            <details>
+                <summary>Buttons</summary>
+                <details>
+                    <summary>Buttons</summary>
+                    <h2>States</h2>
+                    <div class="button-grid">
+                        <span></span>
+                        <span>Enabled</span>
+                        <span>Disable</span>
+                        <span>Outline Enabled</span>
+                        <span>Outline Disable</span>
 
             <span>Primary</span>
             <pd-button>Button</pd-button>
@@ -186,18 +188,18 @@
         </details>
       </details>
 
-      <details open>
-        <summary>Forms</summary>
+            <details>
+                <summary>Forms</summary>
 
-        <details open>
-          <summary>Inputs</summary>
-          <div class="dropdown-grid">
-            <span></span>
-            <span>Enabled</span>
-            <span>Disabled</span>
-            <span>Readonly</span>
-            <span>Error</span>
-            <span>View-Only</span>
+                <details>
+                    <summary>Inputs</summary>
+                    <div class="dropdown-grid">
+                        <span></span>
+                        <span>Enabled</span>
+                        <span>Disabled</span>
+                        <span>Readonly</span>
+                        <span>Error</span>
+                        <span>View-Only</span>
 
             <span>Inputs</span>
             <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
@@ -400,28 +402,38 @@
         </details>
       </details>
 
-      <details open>
-        <summary>Dialogs</summary>
-        <details>
-          <summary>Alerts</summary>
+            <details open>
+                <summary>Dialogs</summary>
+                <details open>
+                    <summary>Alerts</summary>
 
           <h2>Primary alert</h2>
           <pd-alert>Primary alert</pd-alert>
 
-          <h2>Primary alert with link</h2>
-          <pd-alert action-text="a link to click" action-href="http://www.google.ch"> Primary alert with link </pd-alert>
+                    <h2>Primary alert with link</h2>
+                    <pd-alert action-text="a link to click" action-href="http://www.google.ch">
+                        <div>
+                            <p>Primary alert with link</p>
+                            <p>Primary alert with link</p>
+                        </div>
+                    </pd-alert>
 
-          <h2>Primary alert with expandable content</h2>
-          <pd-alert action-text="Mehr anzeigen" action-text-expanded="Weniger anzeigen" expandable>
-            <div>Primary alert with expandable content</div>
-            <div slot="expandable">
-              <p>
-                1: a state of careful watching and readiness especially for danger or opportunity<br />
-                2a: an alarm or other signal of danger<br />
-                2b: an urgent notice
-              </p>
-            </div>
-          </pd-alert>
+                    <h2>Primary alert with expandable content</h2>
+                    <pd-alert
+                        color="success"
+                        action-text="Mehr anzeigen"
+                        action-text-expanded="Weniger anzeigen"
+                        expandable
+                    >
+                        <div>Primary alert with expandable content</div>
+                        <div slot="expandable">
+                            <p>
+                                1: a state of careful watching and readiness especially for danger or opportunity<br />
+                                2a: an alarm or other signal of danger<br />
+                                2b: an urgent notice
+                            </p>
+                        </div>
+                    </pd-alert>
 
           <h2>Primary closeable alert</h2>
           <pd-alert closable color="primary"> Primary closeable alert </pd-alert>
@@ -429,15 +441,20 @@
           <h2>Primary closeable alert with link</h2>
           <pd-alert closable action-text="a link to click" action-href="http://www.google.ch"> Primary alert with link </pd-alert>
 
-          <h2>States</h2>
-          <pd-alert closable color="primary">Primary alert</pd-alert>
-          <pd-alert closable color="success">Success alert</pd-alert>
-          <pd-alert closable color="danger">Danger alert</pd-alert>
-          <pd-alert closable color="warning">Warning alert</pd-alert>
-          <pd-alert closable color="info">Info alert</pd-alert>
-          <pd-alert closable color="light">Light alert</pd-alert>
-          <pd-alert closable color="dark">Dark alert</pd-alert>
-        </details>
+                    <h2>States</h2>
+                    <pd-alert closable color="primary">Primary alert</pd-alert>
+                    <pd-alert closable color="success">
+                        <div>
+                            <p>Primary alert with link</p>
+                            <p>Primary alert with link</p>
+                        </div>
+                    </pd-alert>
+                    <pd-alert closable color="danger">Danger alert</pd-alert>
+                    <pd-alert closable color="warning">Warning alert</pd-alert>
+                    <pd-alert closable color="info">Info alert</pd-alert>
+                    <pd-alert closable color="light">Light alert</pd-alert>
+                    <pd-alert closable color="dark">Dark alert</pd-alert>
+                </details>
 
         <details>
           <summary>Toast</summary>
@@ -517,45 +534,58 @@
           </pd-timeline>
         </details>
 
-        <details>
-          <summary>List</summary>
-          <h2>List item</h2>
-          <pd-list>
-            <pd-list-item>List item</pd-list-item>
-            <pd-list-item status="unset">Success</pd-list-item>
-            <pd-list-item status="success">Success</pd-list-item>
-            <pd-list-item status="info">Info</pd-list-item>
-            <pd-list-item status="danger">Danger</pd-list-item>
-            <pd-list-item status="warning">Warning</pd-list-item>
-          </pd-list>
-          <h2>List item expandable</h2>
-          <pd-list>
-            <pd-list-item-expandable expandable content-click>
-              <div>Expandable List Item</div>
-              <div slot="expandable">
-                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem obcaecati quo inventore numquam aliquid nulla nisi! Eveniet, quam!</span>
-              </div>
-              <pd-menu-item text="Drucken" slot="menu">
-                <pd-icon size="2" name="print"></pd-icon>
-              </pd-menu-item>
-              <pd-menu-item text="Drucken" slot="menu">
-                <pd-icon size="2" name="print"></pd-icon>
-              </pd-menu-item>
-            </pd-list-item-expandable>
-            <pd-list-item-expandable status="success" expandable edit menu checked checkbox>
-              <div>Expandable List Item</div>
-              <div slot="expandable">
-                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem obcaecati quo inventore numquam aliquid nulla nisi! Eveniet, quam!</span>
-              </div>
-              <pd-menu-item text="Edit" slot="menu">
-                <pd-icon size="2" name="edit"></pd-icon>
-              </pd-menu-item>
-              <pd-menu-item text="Drucken" slot="menu">
-                <pd-icon size="2" name="print"></pd-icon>
-              </pd-menu-item>
-            </pd-list-item-expandable>
-          </pd-list>
-        </details>
+                <details open>
+                    <summary>List</summary>
+                    <h2>List item</h2>
+                    <pd-list>
+                        <pd-list-item>List item</pd-list-item>
+                        <pd-list-item status="unset">Success</pd-list-item>
+                        <pd-list-item status="success">Success</pd-list-item>
+                        <pd-list-item status="info">Info</pd-list-item>
+                        <pd-list-item status="danger">Danger</pd-list-item>
+                        <pd-list-item status="warning">Warning</pd-list-item>
+                    </pd-list>
+                    <h2>List item expandable</h2>
+                    <pd-list>
+                        <pd-list-item-expandable expandable content-click>
+                            <div>Expandable List Item</div>
+                            <div slot="expandable">
+                                <span
+                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem
+                                    obcaecati quo inventore numquam aliquid nulla nisi! Eveniet, quam!</span
+                                >
+                            </div>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                        </pd-list-item-expandable>
+                        <pd-list-item-expandable status="success" expandable edit menu checked checkbox>
+                            <div>Expandable List Item</div>
+                            <div slot="expandable">
+                                <span
+                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem
+                                    obcaecati quo inventore numquam aliquid nulla nisi! Eveniet, quam!</span
+                                >
+                            </div>
+                            <pd-menu-item text="Edit" slot="menu">
+                                <pd-icon size="2" name="edit"></pd-icon>
+                            </pd-menu-item>
+                            <pd-menu-item text="Drucken" slot="menu">
+                                <pd-icon size="2" name="print"></pd-icon>
+                            </pd-menu-item>
+                        </pd-list-item-expandable>
+                    </pd-list>
+                    <h2>Sort item</h2>
+                    <div>
+                        <pd-sort class="pd-sort" reverse-item></pd-sort>
+                    </div>
+                    <div>
+                        <pd-sort class="pd-sort" empty-item></pd-sort>
+                    </div>
+                </details>
 
         <details>
           <summary>Menu</summary>
@@ -711,30 +741,31 @@
           </div>
         </details>
 
-        <details>
-          <summary>Form</summary>
-          <form style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1rem">
-            <pd-input style="width: 100%" readonly placeholder="placeholder" label="fromgroup"></pd-input>
-            <pd-datepicker style="width: 100%" label="normal"></pd-datepicker>
-          </form>
-        </details>
-      </details>
-    </div>
-    <script>
-      const pdInput = document.getElementById('pd-input-0');
-      const pdBreadcrumbs = document.getElementById('pd-breadcrumbs-0');
-      const pdProgress = document.getElementById('pd-progress-0');
-      const pdSlider = document.getElementById('pd-slider-0');
-      const pdBackdrop = document.getElementById('pd-backdrop-0');
-      const pdSearch = document.getElementById('pd-search-0');
-      const pdDropDown = document.getElementById('pd-dropdown-0');
-      const pdDropDownItems = document.getElementsByClassName('pd-dropdown-items');
-      const pdPaginationItems = document.getElementsByClassName('pd-pagination-items');
-      const pdTabsItems = document.getElementsByClassName('pd-tabs-items');
-      const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
-      const pdComboBox1 = document.getElementById('pd-combobox-1');
-      const pdComboBox2 = document.getElementById('pd-combobox-2');
-      const pdNavbar = document.getElementById('pd-navbar-1');
+                <details>
+                    <summary>Form</summary>
+                    <form style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1rem;">
+                        <pd-input style="width: 100%;" readonly placeholder="placeholder" label="fromgroup"></pd-input>
+                        <pd-datepicker style="width: 100%;" label="normal"></pd-datepicker>
+                    </form>
+                </details>
+            </details>
+        </div>
+        <script>
+            const pdInput = document.getElementById('pd-input-0');
+            const pdBreadcrumbs = document.getElementById('pd-breadcrumbs-0');
+            const pdProgress = document.getElementById('pd-progress-0');
+            const pdSlider = document.getElementById('pd-slider-0');
+            const pdBackdrop = document.getElementById('pd-backdrop-0');
+            const pdSearch = document.getElementById('pd-search-0');
+            const pdDropDown = document.getElementById('pd-dropdown-0');
+            const pdDropDownItems = document.getElementsByClassName('pd-dropdown-items');
+            const pdPaginationItems = document.getElementsByClassName('pd-pagination-items');
+            const pdTabsItems = document.getElementsByClassName('pd-tabs-items');
+            const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
+            const pdComboBox1 = document.getElementById('pd-combobox-1');
+            const pdComboBox2 = document.getElementById('pd-combobox-2');
+            const pdNavbar = document.getElementById('pd-navbar-1');
+            const pdSorts = document.getElementsByClassName('pd-sort');
 
       const pdTable0 = document.getElementById('pd-table-0');
       const pdTable1 = document.getElementById('pd-table-1');
@@ -761,14 +792,29 @@
         };
       }
 
-      for (let pdPaginationItem of pdPaginationItems) {
-        pdPaginationItem.items = [
-          { id: '1', label: '1', value: '1' },
-          { id: '2', label: '10', value: '10', selected: true },
-          { id: '3', label: '50', value: '50' },
-          { id: '4', label: '100', value: '100' },
-        ];
-      }
+            for (let pdPaginationItem of pdPaginationItems) {
+                pdPaginationItem.items = [
+                    { id: '1', label: '1', value: '1' },
+                    { id: '2', label: '10', value: '10', selected: true },
+                    { id: '3', label: '50', value: '50' },
+                    { id: '4', label: '100', value: '100' },
+                ];
+            }
+
+            for (let pdSort of pdSorts) {
+                pdSort.items = [
+                    { id: '1', label: 'Name', value: 'name', sort: 'asc', selected: true },
+                    { id: '2', label: 'Dokumententitel', value: 'documentTitle', sort: 'desc' },
+                    { id: '3', label: 'Änderungsdatum', value: 'changedAt', sort: 'asc' },
+                    { id: '4', label: 'Erstellungsdatum', value: 'createdAt', sort: 'asc' },
+                    { id: '6', label: 'Author/in', value: 'author', sort: 'asc' },
+                    // { id: '7', label: 'Umkehren', value: 'reverse', bottomSection: true },
+                    // { id: '8', label: 'Alle Löschen', value: 'delete', bottomSection: true },
+                ];
+                // pdSort.reverseItemData = { label: 'Umdräie', selected: false };
+                pdSort.addEventListener('pd-change', (e) => console.log(e));
+                pdSort.addEventListener('pd-revert', (e) => console.log(e));
+            }
 
       for (let pdComboBoxItem of pdComboBoxItems) {
         pdComboBoxItem.items = [
