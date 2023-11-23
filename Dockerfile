@@ -1,4 +1,4 @@
-FROM node:12-alpine as ui-builder
+FROM node:20-alpine as ui-builder
 WORKDIR /app
 COPY . .
 
@@ -17,7 +17,7 @@ WORKDIR /usr/share/nginx/html
 COPY --from=ui-builder /app/storybook-static ./
 COPY --from=ui-builder /app/dist/parlamentsdienstecore ./build
 COPY --from=ui-builder /app/src/assets ./assets
-COPY --from=ui-builder /app/src/vue.html ./vue/index.html
+# COPY --from=ui-builder /app/src/vue.html ./vue/index.html
 
 # this nginx base image will parse the template and will move it to 
 # /etc/nginx/conf.d/default.conf before it starts nginx process
