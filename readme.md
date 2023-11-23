@@ -10,8 +10,8 @@ wurde die vorliegende Bibliothek mit StencilJS umgesetzt.
 Stencil Demo Page:  
 https://parlamentsdienstecore.app.lambda-it.ch
 
-VueJS Demo Page:  
-https://parlamentsdienstecore.app.lambda-it.ch/vue/
+<!-- VueJS Demo Page:
+https://parlamentsdienstecore.app.lambda-it.ch/vue/ -->
 
 ## Entwicklung
 
@@ -35,8 +35,8 @@ npm run build-storybook
 
 **Links Dokumentation**
 
-- [StencilJS](https://stenciljs.com/docs/introduction)
-- [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
+-   [StencilJS](https://stenciljs.com/docs/introduction)
+-   [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
 
 ## Lizenz
 
