@@ -82,6 +82,15 @@ a {
     }
 }
 
+.breadcrumb-item {
+    // The separator between breadcrumbs (by default, a forward-slash: "/")
+    + .breadcrumb-item {
+        &::before {
+            content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4LjEyNSIgaGVpZ2h0PSIxMy40MzgiIHZpZXdCb3g9IjAgMCA4LjEyNSAxMy40MzgiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiNiYWJhYmE7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNMTQuMjE5LDkuMjgxbC0xLjQzNywxLjQzOEwxOC4wNjMsMTZsLTUuMjgxLDUuMjgxLDEuNDM4LDEuNDM4LDYtNkwyMC45MDYsMTZsLS42ODctLjcxOVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMi43ODEgLTkuMjgxKSIvPjwvc3ZnPg==);
+        }
+    }
+}
+
 .form-group {
     margin-bottom: $form-group-margin-bottom;
 }
