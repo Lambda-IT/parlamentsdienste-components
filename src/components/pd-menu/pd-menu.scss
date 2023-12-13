@@ -22,7 +22,6 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    height: 2.375rem;
 
     .pd-menu-label {
         color: var(--pd-menu-label-color, setcolor(primary, enabled));
@@ -34,12 +33,20 @@
 
     .pd-menu-button {
         @include invisibleButton;
-        padding-top: var(--pd-menu-vertical-padding, 0.625em);
-        padding-bottom: var(--pd-menu-vertical-padding, 0.625em);
+        padding-top: var(--pd-menu-vertical-padding, 0.2em);
+        padding-bottom: var(--pd-menu-vertical-padding, 0.2em);
         padding-left: 0;
         padding-right: var(--pd-menu-horizontal-padding, 0.4em);
         display: flex;
         align-items: center;
+
+        &.pd-menu-large {
+            --pd-menu-vertical-padding: 0.5em;
+        }
+
+        &.pd-menu-small {
+            --pd-menu-vertical-padding: 0;
+        }
 
         &:hover {
             .pd-menu-label {

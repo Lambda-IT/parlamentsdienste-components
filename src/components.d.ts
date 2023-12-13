@@ -632,6 +632,10 @@ export namespace Components {
           * Prefered placement of menu dropdown
          */
         "placement": PdPlacement;
+        /**
+          * Menu size
+         */
+        "size": PdButtonSize;
     }
     interface PdMenuItem {
         /**
@@ -2437,6 +2441,10 @@ declare namespace LocalJSX {
           * Prefered placement of menu dropdown
          */
         "placement"?: PdPlacement;
+        /**
+          * Menu size
+         */
+        "size"?: PdButtonSize;
     }
     interface PdMenuItem {
         /**
