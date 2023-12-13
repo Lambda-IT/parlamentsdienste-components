@@ -221,7 +221,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                             {this.label + ' '}
                             {this.selectedItem?.label || this.placeholder}
                         </span>
-                        <pd-icon class="pd-sort-caret" name="dropdown" rotate={this.open ? 180 : 0} size={2.4}></pd-icon>
+                        <pd-icon class="pd-sort-caret" name="dropdown" rotate={this.open ? 180 : 0} size={2.4} lazy={false}></pd-icon>
                     </button>
                     {this.renderDropDown()}
                 </div>
