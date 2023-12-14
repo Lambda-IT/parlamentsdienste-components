@@ -60,6 +60,7 @@
         &:focus-visible:enabled {
             border-color: $gray-3;
             cursor: default;
+            background-color: $gray-3;
         }
     }
 
