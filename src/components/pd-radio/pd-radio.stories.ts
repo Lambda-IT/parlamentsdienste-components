@@ -1,24 +1,24 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Forms + Inputs/Radio',
-  parameters: {
-    // notes,
-  },
-  argTypes: {
-    checked: { control: { type: 'boolean' } },
-    value: { control: { type: 'text' } },
-    label: { control: { type: 'text' } },
-    name: { control: { type: 'text' } },
-    disabled: { control: { type: 'boolean' } },
-    readonly: { control: { type: 'boolean' } },
-    error: { control: { type: 'boolean' } },
-    verticalAdjust: { control: { type: 'boolean' } },
-  },
+    title: 'Forms + Inputs/Radio',
+    parameters: {
+        // notes,
+    },
+    argTypes: {
+        checked: { control: { type: 'boolean' } },
+        value: { control: { type: 'text' } },
+        label: { control: { type: 'text' } },
+        name: { control: { type: 'text' } },
+        disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
+        error: { control: { type: 'boolean' } },
+        verticalAdjust: { control: { type: 'boolean' } },
+    },
 };
 
 export const radio = args => {
-  return `
+    return `
         <div class="m-3">
             <pd-radio
             name="${args.name}"
@@ -43,12 +43,12 @@ export const radio = args => {
 };
 
 radio.args = {
-  checked: false,
-  value: '1',
-  label: 'radio 1',
-  name: 'radio-test',
-  disabled: false,
-  readonly: false,
-  error: false,
-  verticalAdjust: false,
+    checked: false,
+    value: '1',
+    label: 'radio 1',
+    name: 'radio-test',
+    disabled: false,
+    readonly: false,
+    error: false,
+    verticalAdjust: false,
 };

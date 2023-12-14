@@ -1,36 +1,36 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Tabs',
-  parameters: {
-    actions: {
-      handles: ['pd-change'],
+    title: 'Interactions/Tabs',
+    parameters: {
+        actions: {
+            handles: ['pd-change'],
+        },
+        // notes,
     },
-    // notes,
-  },
-  argTypes: {
-    tabs: { control: { type: 'array' } },
-    light: { control: { type: 'boolean' } },
-  },
+    argTypes: {
+        tabs: { control: { type: 'array' } },
+        light: { control: { type: 'boolean' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 export const Tabs = args => {
-  const tabs = document.createElement('pd-tabs');
-  tabs.classList.add('m-3');
-  tabs.tabs = args.tabs;
-  tabs.light = args.light;
+    const tabs = document.createElement('pd-tabs');
+    tabs.classList.add('m-3');
+    tabs.tabs = args.tabs;
+    tabs.light = args.light;
 
-  return tabs;
+    return tabs;
 };
 
 Tabs.args = {
-  tabs: [
-    { id: 0, text: 'Tab one' },
-    { id: 1, text: 'Tab two' },
-    { id: 2, text: 'Tab three', checked: true },
-    { id: 3, text: 'Tab four' },
-  ],
-  light: false,
+    tabs: [
+        { id: 0, text: 'Tab one' },
+        { id: 1, text: 'Tab two' },
+        { id: 2, text: 'Tab three', checked: true },
+        { id: 3, text: 'Tab four' },
+    ],
+    light: false,
 };

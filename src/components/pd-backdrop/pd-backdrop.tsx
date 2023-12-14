@@ -2,53 +2,53 @@ import { Component, ComponentInterface, Event, EventEmitter, h, Host, Listen, Pr
 import { now } from '../../utils';
 
 @Component({
-  tag: 'pd-backdrop',
-  styleUrl: 'pd-backdrop.scss',
-  shadow: true,
+    tag: 'pd-backdrop',
+    styleUrl: 'pd-backdrop.scss',
+    shadow: true,
 })
 export class Backdrop implements ComponentInterface {
-  private lastClick = -10000;
+    private lastClick = -10000;
 
-  /**
-   * Invisible backdrop when set to false
-   */
-  @Prop() visible = true;
+    /**
+     * Invisible backdrop when set to false
+     */
+    @Prop() visible = true;
 
-  @Event({
-    eventName: 'pd-tap',
-    composed: true,
-    cancelable: true,
-    bubbles: true,
-  })
-  pdTap: EventEmitter<void>;
+    @Event({
+        eventName: 'pd-tap',
+        composed: true,
+        cancelable: true,
+        bubbles: true,
+    })
+    pdTap: EventEmitter<void>;
 
-  @Listen('touchstart', { passive: false, capture: true })
-  onTouchStart(ev: TouchEvent) {
-    this.lastClick = now(ev);
-    this.tap(ev);
-  }
-
-  @Listen('click', { passive: false, capture: true })
-  click(ev: TouchEvent) {
-    if (this.lastClick < now(ev) - 2500) {
-      this.tap(ev);
+    @Listen('touchstart', { passive: false, capture: true })
+    onTouchStart(ev: TouchEvent) {
+        this.lastClick = now(ev);
+        this.tap(ev);
     }
-  }
 
-  private tap(ev: Event) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    this.pdTap.emit();
-  }
+    @Listen('click', { passive: false, capture: true })
+    click(ev: TouchEvent) {
+        if (this.lastClick < now(ev) - 2500) {
+            this.tap(ev);
+        }
+    }
 
-  public render() {
-    return (
-      <Host
-        tabindex="-1"
-        class={{
-          'pd-backdrop-visible': this.visible,
-        }}
-      ></Host>
-    );
-  }
+    private tap(ev: Event) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.pdTap.emit();
+    }
+
+    public render() {
+        return (
+            <Host
+                tabindex="-1"
+                class={{
+                    'pd-backdrop-visible': this.visible,
+                }}
+            ></Host>
+        );
+    }
 }

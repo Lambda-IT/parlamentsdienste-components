@@ -1,19 +1,19 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Layout/Navbar',
-  parameters: {
-    actions: {
-      handles: ['pd-menu'],
+    title: 'Layout/Navbar',
+    parameters: {
+        actions: {
+            handles: ['pd-menu'],
+        },
+        // notes: {
+        //     'Navbar': notes,
+        //     'Navbar Item': notesNavbarItem
+        // },
     },
-    // notes: {
-    //     'Navbar': notes,
-    //     'Navbar Item': notesNavbarItem
-    // },
-  },
-  argTypes: {
-    mobileBreakpoint: { control: { type: 'number' } },
-  },
+    argTypes: {
+        mobileBreakpoint: { control: { type: 'number' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -27,5 +27,5 @@ export const Navbar = args => `
 `;
 
 Navbar.args = {
-  mobileBreakpoint: 800,
+    mobileBreakpoint: 800,
 };

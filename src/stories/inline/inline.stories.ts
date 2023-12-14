@@ -1,14 +1,14 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Typography/Inline',
-  parameters: {
-    // notes
-  },
+    title: 'Typography/Inline',
+    parameters: {
+        // notes
+    },
 };
 
 export const InlineTextElements = () => {
-  return `
+    return `
     <div class="m-3">
       <p>You can use the <mark>mark</mark> tag to highlight text.</p>
       <p><del>This line of text is meant to be treated as deleted text.</del></p>

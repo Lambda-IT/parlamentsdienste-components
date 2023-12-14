@@ -1,18 +1,18 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Chip',
-  parameters: {
-    actions: {
-      handles: ['click', 'removeChip', 'checkChip'],
+    title: 'Interactions/Chip',
+    parameters: {
+        actions: {
+            handles: ['click', 'removeChip', 'checkChip'],
+        },
+        // notes,
     },
-    // notes,
-  },
-  argTypes: {
-    disabled: { control: { type: 'boolean' } },
-    readonly: { control: { type: 'boolean' } },
-    checked: { control: { type: 'boolean' } },
-  },
+    argTypes: {
+        disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
+        checked: { control: { type: 'boolean' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -26,15 +26,15 @@ const StatesStory = args => `
 export const States = StatesStory.bind({});
 
 States.args = {
-  disabled: false,
-  readonly: false,
-  checked: false,
+    disabled: false,
+    readonly: false,
+    checked: false,
 };
 
 States.argTypes = {
-  disabled: { control: { type: 'boolean' } },
-  readonly: { control: { type: 'boolean' } },
-  checked: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
+    readonly: { control: { type: 'boolean' } },
+    checked: { control: { type: 'boolean' } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -59,9 +59,9 @@ const GroupStory = args => `
 export const Group = GroupStory.bind({});
 
 Group.args = {
-  ...States.args,
+    ...States.args,
 };
 
 Group.argTypes = {
-  ...States.argTypes,
+    ...States.argTypes,
 };

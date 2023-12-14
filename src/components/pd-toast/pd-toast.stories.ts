@@ -1,19 +1,19 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Dialogs/Toast',
-  parameters: {
-    actions: {
-      handles: ['pd-closed'],
+    title: 'Dialogs/Toast',
+    parameters: {
+        actions: {
+            handles: ['pd-closed'],
+        },
+        // notes,
     },
-    // notes,
-  },
-  argTypes: {
-    header: { control: { type: 'text' } },
-    info: { control: { type: 'text' } },
-    body: { control: { type: 'text' } },
-    size: { control: { type: 'select' }, options: ['large', 'small'] },
-  },
+    argTypes: {
+        header: { control: { type: 'text' } },
+        info: { control: { type: 'text' } },
+        body: { control: { type: 'text' } },
+        size: { control: { type: 'select' }, options: ['large', 'small'] },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -23,8 +23,8 @@ export const Toast = args => `
 `;
 
 Toast.args = {
-  header: 'Toast Title',
-  info: '11 minutes ago',
-  body: 'Toast body text goes here',
-  size: 'large',
+    header: 'Toast Title',
+    info: '11 minutes ago',
+    body: 'Toast body text goes here',
+    size: 'large',
 };

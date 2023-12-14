@@ -1,14 +1,14 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Timeline',
-  parameters: {
-    // notes,
-  },
-  argsTypes: {
-    continueStart: { control: { type: 'boolean' } },
-    continueEnd: { control: { type: 'boolean' } },
-  },
+    title: 'Interactions/Timeline',
+    parameters: {
+        // notes,
+    },
+    argsTypes: {
+        continueStart: { control: { type: 'boolean' } },
+        continueEnd: { control: { type: 'boolean' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -38,6 +38,6 @@ export const Timeline = args => `
 `;
 
 Timeline.args = {
-  continueStart: true,
-  continueEnd: true,
+    continueStart: true,
+    continueEnd: true,
 };

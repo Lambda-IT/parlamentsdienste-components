@@ -3,17 +3,17 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/List',
-  parameters: {
-    // notes: {
-    //     List: notes,
-    //     'List Item': notesListItem,
-    //     'List Item Expandable': notesListItemExpandable,
-    // },
-    actions: {
-      handles: ['pd-expand', 'pd-edit', 'pd-selected', 'pd-collapsed', 'pd-content-click'],
+    title: 'Interactions/List',
+    parameters: {
+        // notes: {
+        //     List: notes,
+        //     'List Item': notesListItem,
+        //     'List Item Expandable': notesListItemExpandable,
+        // },
+        actions: {
+            handles: ['pd-expand', 'pd-edit', 'pd-selected', 'pd-collapsed', 'pd-content-click'],
+        },
     },
-  },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -84,25 +84,25 @@ export const ExpandableList = args => `
 `;
 
 ExpandableList.args = {
-  checkbox: false,
-  checked: false,
-  edit: true,
-  expand: false,
-  expandable: true,
-  menu: true,
-  contentClick: false,
-  expandableContent: 'Expandable Content',
-  status: 'success',
+    checkbox: false,
+    checked: false,
+    edit: true,
+    expand: false,
+    expandable: true,
+    menu: true,
+    contentClick: false,
+    expandableContent: 'Expandable Content',
+    status: 'success',
 };
 
 ExpandableList.argTypes = {
-  checkbox: { control: { type: 'boolean' } },
-  checked: { control: { type: 'boolean' } },
-  edit: { control: { type: 'boolean' } },
-  expand: { control: { type: 'boolean' } },
-  expandable: { control: { type: 'boolean' } },
-  menu: { control: { type: 'boolean' } },
-  contentClick: { control: { type: 'boolean' } },
-  expandableContent: { control: { type: 'text' } },
-  status: { control: { type: 'select' }, options: ['success', 'danger', 'warning', 'info', 'unset'] },
+    checkbox: { control: { type: 'boolean' } },
+    checked: { control: { type: 'boolean' } },
+    edit: { control: { type: 'boolean' } },
+    expand: { control: { type: 'boolean' } },
+    expandable: { control: { type: 'boolean' } },
+    menu: { control: { type: 'boolean' } },
+    contentClick: { control: { type: 'boolean' } },
+    expandableContent: { control: { type: 'text' } },
+    status: { control: { type: 'select' }, options: ['success', 'danger', 'warning', 'info', 'unset'] },
 };

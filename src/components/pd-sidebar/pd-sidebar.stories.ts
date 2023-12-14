@@ -2,17 +2,17 @@
 // import notesSidebarItem from '../pd-sidebar-item/readme.md';
 
 export default {
-  title: 'Layout/Sidebar',
-  parameters: {
-    // notes: {
-    //     'Sidebar': notes,
-    //     'Sidebar Item': notesSidebarItem
-    // },
-  },
+    title: 'Layout/Sidebar',
+    parameters: {
+        // notes: {
+        //     'Sidebar': notes,
+        //     'Sidebar Item': notesSidebarItem
+        // },
+    },
 };
 
 export const sidebar = () => {
-  return `
+    return `
         <pd-sidebar>
             <pd-sidebar-item icon-name="parlament" text="Startseite"></pd-sidebar-item>
             <pd-sidebar-item icon-name="search" text="Geschäfte suchen"></pd-sidebar-item>

@@ -1,21 +1,21 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Progress Bar',
-  parameters: {
-    // notes,
-  },
-  argTypes: {
-    value: {
-      control: {
-        type: 'select',
-      },
-      options: { '0%': '0', '25%': '0.25', '33.33333%': '0.33333', '50%': '0.5', '75%': '0.75', '100%': '1' },
+    title: 'Interactions/Progress Bar',
+    parameters: {
+        // notes,
     },
-    striped: { control: { type: 'boolean' } },
-    label: { control: { type: 'boolean' } },
-    decimals: { control: { type: 'number' } },
-  },
+    argTypes: {
+        value: {
+            control: {
+                type: 'select',
+            },
+            options: { '0%': '0', '25%': '0.25', '33.33333%': '0.33333', '50%': '0.5', '75%': '0.75', '100%': '1' },
+        },
+        striped: { control: { type: 'boolean' } },
+        label: { control: { type: 'boolean' } },
+        decimals: { control: { type: 'number' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -29,8 +29,8 @@ export const ProgressBar = args => `
 `;
 
 ProgressBar.args = {
-  value: '0.25',
-  striped: false,
-  label: false,
-  decimals: 2,
+    value: '0.25',
+    striped: false,
+    label: false,
+    decimals: 2,
 };

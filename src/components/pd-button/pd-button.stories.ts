@@ -1,13 +1,13 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Button',
-  parameters: {
-    actions: {
-      handles: ['click'],
+    title: 'Interactions/Button',
+    parameters: {
+        actions: {
+            handles: ['click'],
+        },
+        // notes,
     },
-    // notes,
-  },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -25,17 +25,17 @@ const StatesStory = args => `
 export const States = StatesStory.bind({});
 
 States.args = {
-  disabled: false,
-  size: 'normal',
-  type: 'button',
-  fullWidth: false,
+    disabled: false,
+    size: 'normal',
+    type: 'button',
+    fullWidth: false,
 };
 
 States.argTypes = {
-  disabled: { control: { type: 'boolean' } },
-  size: { control: { type: 'select' }, options: ['large', 'normal', 'small'] },
-  type: { control: { type: 'select' }, options: ['button', 'submit', 'reset'] },
-  fullWidth: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
+    size: { control: { type: 'select' }, options: ['large', 'normal', 'small'] },
+    type: { control: { type: 'select' }, options: ['button', 'submit', 'reset'] },
+    fullWidth: { control: { type: 'boolean' } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -53,11 +53,11 @@ const OutlineStory = args => `
 export const Outline = OutlineStory.bind({});
 
 Outline.args = {
-  ...States.args,
+    ...States.args,
 };
 
 Outline.argTypes = {
-  ...States.argTypes,
+    ...States.argTypes,
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -80,13 +80,13 @@ const IconStory = args => `
 export const Icon = IconStory.bind({});
 
 Icon.args = {
-  location: 'left',
-  fullWidth: false,
+    location: 'left',
+    fullWidth: false,
 };
 
 Icon.argTypes = {
-  location: { control: { type: 'select' }, options: ['left', 'right', 'center'] },
-  fullWidth: { control: { type: 'boolean' } },
+    location: { control: { type: 'select' }, options: ['left', 'right', 'center'] },
+    fullWidth: { control: { type: 'boolean' } },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -98,13 +98,13 @@ const LinkStory = args => `
 export const Link = LinkStory.bind({});
 
 Link.args = {
-  href: 'http://www.google.ch',
-  target: '_blank',
+    href: 'http://www.google.ch',
+    target: '_blank',
 };
 
 Link.argTypes = {
-  href: { control: { type: 'text' } },
-  target: { control: { type: 'select' }, options: ['', '_blank'] },
+    href: { control: { type: 'text' } },
+    target: { control: { type: 'select' }, options: ['', '_blank'] },
 };
 
 ///////////////////////////////////////////////////////////////////////////

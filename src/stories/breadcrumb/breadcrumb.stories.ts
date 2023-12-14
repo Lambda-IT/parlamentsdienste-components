@@ -1,14 +1,14 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Breadcrumb',
-  parameters: {
-    // notes
-  },
+    title: 'Interactions/Breadcrumb',
+    parameters: {
+        // notes
+    },
 };
 
 export const breadcrumb = () => {
-  return `
+    return `
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>

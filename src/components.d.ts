@@ -1324,15 +1324,15 @@ declare global {
         "pd-open": { selectedDates: Date[]; dateStr: string };
         "pd-close": { selectedDates: Date[]; dateStr: string };
         "pd-month-change": {
-    selectedDates: Date[];
-    dateStr: string;
-  };
+        selectedDates: Date[];
+        dateStr: string;
+    };
         "pd-year-change": { selectedDates: Date[]; dateStr: string };
         "pd-ready": { selectedDates: Date[]; dateStr: string };
         "pd-value-update": {
-    selectedDates: Date[];
-    dateStr: string;
-  };
+        selectedDates: Date[];
+        dateStr: string;
+    };
     }
     interface HTMLPdDatepickerElement extends Components.PdDatepicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPdDatepickerElementEventMap>(type: K, listener: (this: HTMLPdDatepickerElement, ev: PdDatepickerCustomEvent<HTMLPdDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2072,15 +2072,15 @@ declare namespace LocalJSX {
         "onPd-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-close"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-month-change"?: (event: PdDatepickerCustomEvent<{
-    selectedDates: Date[];
-    dateStr: string;
-  }>) => void;
+        selectedDates: Date[];
+        dateStr: string;
+    }>) => void;
         "onPd-open"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-ready"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         "onPd-value-update"?: (event: PdDatepickerCustomEvent<{
-    selectedDates: Date[];
-    dateStr: string;
-  }>) => void;
+        selectedDates: Date[];
+        dateStr: string;
+    }>) => void;
         "onPd-year-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
         /**
           * Instructional text that shows before the input has a value.

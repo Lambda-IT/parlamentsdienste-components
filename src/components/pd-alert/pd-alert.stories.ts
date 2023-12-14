@@ -1,11 +1,11 @@
 export default {
-  title: 'Dialogs/Alert',
-  parameters: {
-    actions: {
-      handles: ['pd-closed', 'pd-action', 'pd-collapsed'],
+    title: 'Dialogs/Alert',
+    parameters: {
+        actions: {
+            handles: ['pd-closed', 'pd-action', 'pd-collapsed'],
+        },
+        // notes,
     },
-    // notes,
-  },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -32,21 +32,21 @@ export const Basic = args => `
 `;
 
 Basic.args = {
-  closable: false,
-  actionText: 'this is an action',
-  actionHref: 'http://www.google.ch',
-  actionTarget: '_blank',
-  hideIcon: false,
+    closable: false,
+    actionText: 'this is an action',
+    actionHref: 'http://www.google.ch',
+    actionTarget: '_blank',
+    hideIcon: false,
 
-  color: 'primary',
+    color: 'primary',
 };
 
 Basic.argTypes = {
-  actionTarget: { control: { type: 'select', labels: { '': '-' } }, options: ['', '_blank'] },
-  color: {
-    control: { type: 'select' },
-    options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'],
-  },
+    actionTarget: { control: { type: 'select', labels: { '': '-' } }, options: ['', '_blank'] },
+    color: {
+        control: { type: 'select' },
+        options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'],
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -104,9 +104,9 @@ export const Color = args => `
 `;
 
 Color.args = {
-  closable: true,
-  hideIcon: false,
-  actionText: 'this is an action',
+    closable: true,
+    hideIcon: false,
+    actionText: 'this is an action',
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -131,18 +131,18 @@ export const Expandable = args => `
 `;
 
 Expandable.args = {
-  expandable: true,
-  expanded: false,
-  closable: true,
-  actionText: 'show more',
-  actionTextExpanded: 'show less',
-  hideIcon: false,
-  color: 'info',
+    expandable: true,
+    expanded: false,
+    closable: true,
+    actionText: 'show more',
+    actionTextExpanded: 'show less',
+    hideIcon: false,
+    color: 'info',
 };
 
 Expandable.argTypes = {
-  color: {
-    control: { type: 'select' },
-    options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'],
-  },
+    color: {
+        control: { type: 'select' },
+        options: ['primary', 'success', 'warning', 'danger', 'info', 'dark', 'light'],
+    },
 };

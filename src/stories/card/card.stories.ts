@@ -1,14 +1,14 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Layout/Card',
-  parameters: {
-    // notes
-  },
+    title: 'Layout/Card',
+    parameters: {
+        // notes
+    },
 };
 
 export const basic = () => {
-  return `
+    return `
     <div class="mt-3 ml-3 card" style="width: 18rem;">
         <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
         <div class="card-body">

@@ -2,14 +2,14 @@ import { iconMap } from './../../utils';
 // import notes from './readme.md';
 
 export default {
-  title: 'Typography/Icon',
-  parameters: {
-    // notes,
-  },
+    title: 'Typography/Icon',
+    parameters: {
+        // notes,
+    },
 };
 
 export const basic = () =>
-  `
+    `
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="add"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_danger"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_info"></pd-icon>
@@ -104,7 +104,7 @@ export const basic = () =>
 ///////////////////////////////////////////////////////////////////////////
 
 const SizeStory = args =>
-  `
+    `
     <div class="m-3">
         <h3>Size 1</h3>
         <pd-icon name="${args.icons}" size="1"></pd-icon>
@@ -122,17 +122,17 @@ const SizeStory = args =>
 export const Size = SizeStory.bind({});
 
 Size.args = {
-  icons: 'parlament',
+    icons: 'parlament',
 };
 
 Size.argTypes = {
-  icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
+    icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
 const ColorStory = args =>
-  `
+    `
     <pd-icon class="mt-3 ml-3" size="3" name="${args.icons}" style="fill: ${args.color}" size="large"></pd-icon>
     <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: red"></pd-icon>
     <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: blue"></pd-icon>
@@ -142,13 +142,13 @@ const ColorStory = args =>
 export const Color = ColorStory.bind({});
 
 Color.args = {
-  ...Size.args,
-  color: '#0b7285',
+    ...Size.args,
+    color: '#0b7285',
 };
 
 Color.argTypes = {
-  ...Size.argTypes,
-  color: { control: { type: 'color' } },
+    ...Size.argTypes,
+    color: { control: { type: 'color' } },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -174,13 +174,13 @@ const RotateStory = args => `
 export const Rotate = RotateStory.bind({});
 
 Rotate.args = {
-  icons: 'parlament',
-  rotate: 0,
+    icons: 'parlament',
+    rotate: 0,
 };
 
 Rotate.argTypes = {
-  icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
-  rotate: { control: { type: 'number' } },
+    icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
+    rotate: { control: { type: 'number' } },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -206,13 +206,13 @@ const FlipStory = args => `
 export const Flip = FlipStory.bind({});
 
 Flip.args = {
-  icons: 'parlament',
-  flip: 'x',
+    icons: 'parlament',
+    flip: 'x',
 };
 
 Flip.argTypes = {
-  icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
-  flip: { control: { type: 'select' }, options: ['none', 'x', 'y', 'xy'] },
+    icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
+    flip: { control: { type: 'select' }, options: ['none', 'x', 'y', 'xy'] },
 };
 
 // ///////////////////////////////////////////////////////////////////////////
@@ -242,13 +242,13 @@ const SpinStory = args => `
 export const Spin = SpinStory.bind({});
 
 Spin.args = {
-  icons: 'parlament',
-  direction: false,
-  speed: 1000,
+    icons: 'parlament',
+    direction: false,
+    speed: 1000,
 };
 
 Spin.argTypes = {
-  icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
-  direction: { control: { type: 'boolean' } },
-  speed: { control: { type: 'number' } },
+    icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
+    direction: { control: { type: 'boolean' } },
+    speed: { control: { type: 'number' } },
 };

@@ -1,17 +1,17 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Label',
-  parameters: {
-    actions: {
-      handles: [],
+    title: 'Interactions/Label',
+    parameters: {
+        actions: {
+            handles: [],
+        },
+        // notes,
     },
-    // notes,
-  },
-  argTypes: {
-    color: { control: { type: 'color' } },
-    text: { control: { type: 'text' } },
-  },
+    argTypes: {
+        color: { control: { type: 'color' } },
+        text: { control: { type: 'text' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -25,6 +25,6 @@ const StatesStory = args => `
 export const States = StatesStory.bind({});
 
 States.args = {
-  color: '#12B886',
-  text: 'This is a label',
+    color: '#12B886',
+    text: 'This is a label',
 };

@@ -1,17 +1,17 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Interactions/Timeline Date',
-  parameters: {
-    // notes,
-  },
-  argTypes: {
-    date: { control: { type: 'text' } },
-    header: { control: { type: 'text' } },
-    href: { control: { type: 'text' } },
-    target: { control: { type: 'select' }, options: ['_blank', ''] },
-    content: { control: { type: 'text' } },
-  },
+    title: 'Interactions/Timeline Date',
+    parameters: {
+        // notes,
+    },
+    argTypes: {
+        date: { control: { type: 'text' } },
+        header: { control: { type: 'text' } },
+        href: { control: { type: 'text' } },
+        target: { control: { type: 'select' }, options: ['_blank', ''] },
+        content: { control: { type: 'text' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -23,9 +23,9 @@ export const Timeline = args => `
 `;
 
 Timeline.args = {
-  date: 'date',
-  header: 'header',
-  href: 'http://www.lambda-it.ch',
-  target: '_blank',
-  content: 'Content text',
+    date: 'date',
+    header: 'header',
+    href: 'http://www.lambda-it.ch',
+    target: '_blank',
+    content: 'Content text',
 };

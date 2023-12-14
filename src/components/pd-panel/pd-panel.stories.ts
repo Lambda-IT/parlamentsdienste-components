@@ -1,27 +1,27 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Layout/Panel',
-  parameters: {
-    actions: {
-      handles: ['pd-collapsed'],
+    title: 'Layout/Panel',
+    parameters: {
+        actions: {
+            handles: ['pd-collapsed'],
+        },
+        // notes: {
+        //     Panel: notes,
+        //     'Panel Header': notesPanelHeader,
+        //     'Panel Content': notesPanelContent,
+        //     'Panel Footer': notesFooter,
+        // },
     },
-    // notes: {
-    //     Panel: notes,
-    //     'Panel Header': notesPanelHeader,
-    //     'Panel Content': notesPanelContent,
-    //     'Panel Footer': notesFooter,
-    // },
-  },
-  argTypes: {
-    collapsed: { control: { type: 'boolean' } },
-    collapsible: { control: { type: 'boolean' } },
-    subpanel: { control: { type: 'boolean' } },
-  },
+    argTypes: {
+        collapsed: { control: { type: 'boolean' } },
+        collapsible: { control: { type: 'boolean' } },
+        subpanel: { control: { type: 'boolean' } },
+    },
 };
 
 export const Panel = args => {
-  return `
+    return `
         <pd-panel class="m-3" 
             ${args.collapsed ? 'collapsed' : ''}
             ${args.collapsible ? 'collapsible' : ''}
@@ -35,13 +35,13 @@ export const Panel = args => {
 };
 
 Panel.args = {
-  collapsible: true,
-  collapsed: false,
-  subpanel: false,
+    collapsible: true,
+    collapsed: false,
+    subpanel: false,
 };
 
 export const Subpanel = args => {
-  return `
+    return `
         <pd-panel class="m-3"
             ${args.collapsed ? 'collapsed' : ''}
             ${args.collapsible ? 'collapsible' : ''}
@@ -85,6 +85,6 @@ export const Subpanel = args => {
 };
 
 Subpanel.args = {
-  collapsible: true,
-  collapsed: false,
+    collapsible: true,
+    collapsed: false,
 };

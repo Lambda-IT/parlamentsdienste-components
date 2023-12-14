@@ -1,22 +1,22 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Forms + Inputs/Checkbox',
-  parameters: {
-    actions: {
-      handles: ['pd-checked'],
+    title: 'Forms + Inputs/Checkbox',
+    parameters: {
+        actions: {
+            handles: ['pd-checked'],
+        },
+        // notes,
     },
-    // notes,
-  },
-  argTypes: {
-    checked: { control: { type: 'boolean' } },
-    text: { control: { type: 'text' } },
-    disabled: { control: { type: 'boolean' } },
-    readonly: { control: { type: 'boolean' } },
-    required: { control: { type: 'boolean' } },
-    error: { control: { type: 'boolean' } },
-    isIndeterminate: { control: { type: 'boolean' } },
-  },
+    argTypes: {
+        checked: { control: { type: 'boolean' } },
+        text: { control: { type: 'text' } },
+        disabled: { control: { type: 'boolean' } },
+        readonly: { control: { type: 'boolean' } },
+        required: { control: { type: 'boolean' } },
+        error: { control: { type: 'boolean' } },
+        isIndeterminate: { control: { type: 'boolean' } },
+    },
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -34,11 +34,11 @@ export const Checkbox = args => `
 `;
 
 Checkbox.args = {
-  disabled: false,
-  text: 'checkbox',
-  readonly: false,
-  required: false,
-  error: false,
-  checked: false,
-  isIndeterminate: false,
+    disabled: false,
+    text: 'checkbox',
+    readonly: false,
+    required: false,
+    error: false,
+    checked: false,
+    isIndeterminate: false,
 };

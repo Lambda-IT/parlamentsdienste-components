@@ -1,14 +1,14 @@
 // import notes from './readme.md';
 
 export default {
-  title: 'Typography/Heading',
-  parameters: {
-    // notes
-  },
+    title: 'Typography/Heading',
+    parameters: {
+        // notes
+    },
 };
 
 export const Heading = () => {
-  return `
+    return `
       <h1 class="mt-3 ml-3">h1. Heading</h1>
       <h2 class="mt-3 ml-3">h2. Heading</h2>
       <h3 class="mt-3 ml-3">h3. Heading</h3>
