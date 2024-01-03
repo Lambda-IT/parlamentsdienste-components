@@ -34,6 +34,7 @@ More info on [prop modifier](https://vuejs.org/v2/api/#v-bind)
 | `items`       | --             | Items to display and select in dropdown | `any[]`                                                                                                                                                                                                      | `[]`             |
 | `label`       | `label`        | Label nearby to the dot menu icon       | `string`                                                                                                                                                                                                     | `''`             |
 | `placement`   | `placement`    | Prefered placement of menu dropdown     | `"auto" \| "auto-end" \| "auto-start" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom-start'` |
+| `size`        | `size`         | Menu size                               | `"large" \| "normal" \| "small"`                                                                                                                                                                             | `'normal'`       |
 
 
 ## Methods

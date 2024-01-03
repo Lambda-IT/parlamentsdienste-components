@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.2] - 2024-01-03
+
+### Changed
+
+-   #266 Added onAuxClick to pdTable-rows and added the original pointerevent to the emitted details.
+-   #267 Added a min-width to the pdRadio and the text of the pd-radio now has an overflow hidden and an ellipsis. The overflow and ellipsis only works if the parent of the pdRadio has a width. (Same as pdCheckbox)
+-   #268 pdInput and pdTextarea arent focusable anymore when readonly
+-   #269 The icon of pdSort is not lazy loaded anymore
+-   #270 Added a size property to pdMenu (small, medium, large). It has the same heights as pdButton
+-   #271 removed fill from newer icons
+-   #272 removed padding-left from breadcrumbs
+
 ## [3.0.1] - 2023-12-05
 
 ### Changed
@@ -574,6 +586,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[3.0.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.2
 [3.0.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.1
 [3.0.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.0
 [2.7.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v2.7.0
