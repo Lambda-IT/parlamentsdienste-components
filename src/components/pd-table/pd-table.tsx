@@ -333,8 +333,9 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         });
     }
 
-    private rowClicked(row: PdTableRow) {
-        this.onRowClick.emit(row);
+    private rowClicked(row: PdTableRow, event: MouseEvent) {
+        event.preventDefault();
+        this.onRowClick.emit({ ...row, event });
     }
 
     // paging functionality
@@ -515,7 +516,8 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                 role="cell"
                 style={cellStyle}
                 title={value}
-                onClick={() => this.rowClicked(row)}
+                onClick={e => this.rowClicked(row, e)}
+                onAuxClick={e => this.rowClicked(row, e)}
                 data-test={`pd-table-cell`}
             >
                 {this.renderValue(col, value)}
@@ -551,7 +553,14 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             align: 'center',
         });
         return (
-            <div class={`pd-table-cell`} style={cellStyle} role="cell" onClick={() => this.rowClicked(row)} data-test="pd-table-cell-status">
+            <div
+                class={`pd-table-cell`}
+                style={cellStyle}
+                role="cell"
+                onClick={e => this.rowClicked(row, e)}
+                onAuxClick={e => this.rowClicked(row, e)}
+                data-test="pd-table-cell-status"
+            >
                 {this.renderIcon(row.pdStatus || 'unset')}
             </div>
         );
