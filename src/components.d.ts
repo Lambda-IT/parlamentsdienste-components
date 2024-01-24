@@ -639,6 +639,10 @@ export namespace Components {
     }
     interface PdMenuItem {
         /**
+          * Sets item to disbaled state
+         */
+        "disabled": boolean;
+        /**
           * Text for this item
          */
         "text": string;
@@ -2447,6 +2451,10 @@ declare namespace LocalJSX {
         "size"?: PdButtonSize;
     }
     interface PdMenuItem {
+        /**
+          * Sets item to disbaled state
+         */
+        "disabled"?: boolean;
         /**
           * Text for this item
          */

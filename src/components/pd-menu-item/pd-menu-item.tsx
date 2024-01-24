@@ -16,15 +16,20 @@ export class MenuItem implements ComponentInterface {
      */
     @Prop() text: string = '';
 
+    /**
+     * Sets item to disbaled state
+     */
+    @Prop() disabled = false;
+
     public render() {
         return (
             <Host>
-                <div class="pd-menu-item">
+                <button class="pd-menu-item" disabled={this.disabled}>
                     <slot></slot>
                     <div class="pd-menu-item-text" data-test="pd-menu-item-text">
                         {this.text}
                     </div>
-                </div>
+                </button>
             </Host>
         );
     }
