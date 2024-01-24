@@ -19,6 +19,8 @@
     cursor: pointer;
     color: $cyan-9;
     fill: $cyan-9;
+    border: none;
+    background-color: $white;
 
     .pd-menu-item-text {
         margin-left: 0.5rem;
@@ -44,5 +46,15 @@
         white-space: pre;
         overflow-x: hidden;
         text-overflow: ellipsis;
+    }
+
+    &:disabled {
+        cursor: default;
+        color: $gray-disabled;
+        fill: $gray-disabled;
+
+        &:hover {
+            background-color: $white;
+        }
     }
 }
