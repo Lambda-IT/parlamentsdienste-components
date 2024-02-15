@@ -19,6 +19,11 @@ export class DropdownItem implements ComponentInterface {
     @Prop() selected: boolean = false;
 
     /**
+     * If `true`, the item displays a checkbox (for multiselect comboboxes).
+     */
+    @Prop() multiselect = false;
+
+    /**
      * Find an highlight this text in value
      */
     @Prop() highlight?: string | number;
@@ -36,7 +41,8 @@ export class DropdownItem implements ComponentInterface {
     public render() {
         return (
             <Host>
-                <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected }}>
+                <div class={{ 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected && !this.multiselect }}>
+                    {this.multiselect ? <pd-checkbox checked={this.selected}></pd-checkbox> : null}
                     {this.iconName || this.iconSrc ? (
                         <span class="pd-dropdown-item-icon">
                             <pd-icon name={this.iconName ?? null} src={this.iconSrc ?? null} size={2}></pd-icon>

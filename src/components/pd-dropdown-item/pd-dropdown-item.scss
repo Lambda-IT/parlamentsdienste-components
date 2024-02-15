@@ -11,7 +11,7 @@
     outline: none;
 }
 
-:host(.currentNavigatingItem) {
+:host(.pd-dropdown-current-navigating-item) {
     background-color: $focus;
     color: $pd-black;
 }

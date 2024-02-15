@@ -189,6 +189,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * If `true`, the combobox can select multiple items.
+         */
+        "multiselect": boolean;
+        /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string;
@@ -386,6 +390,10 @@ export namespace Components {
           * Specifies the `src` url of an SVG file to use as icon.
          */
         "iconSrc"?: string;
+        /**
+          * If `true`, the item displays a checkbox (for multiselect comboboxes).
+         */
+        "multiselect": boolean;
         /**
           * Sets this item to selected
          */
@@ -1304,8 +1312,8 @@ declare global {
     };
     interface HTMLPdComboboxElementEventMap {
         "pd-input": InputChangeEventDetail;
-        "pd-change": ComboboxItem;
-        "pd-combobox": ComboboxItem;
+        "pd-change": ComboboxItem | ComboboxItem[];
+        "pd-combobox": ComboboxItem | ComboboxItem[];
         "pd-blur": void;
         "pd-focus": void;
     }
@@ -1992,17 +2000,21 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * If `true`, the combobox can select multiple items.
+         */
+        "multiselect"?: boolean;
+        /**
           * Emitted when the input loses focus.
          */
         "onPd-blur"?: (event: PdComboboxCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-change"?: (event: PdComboboxCustomEvent<ComboboxItem>) => void;
+        "onPd-change"?: (event: PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>) => void;
         /**
           * Emitted when a combobox request occurred.
          */
-        "onPd-combobox"?: (event: PdComboboxCustomEvent<ComboboxItem>) => void;
+        "onPd-combobox"?: (event: PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -2175,6 +2187,10 @@ declare namespace LocalJSX {
           * Specifies the `src` url of an SVG file to use as icon.
          */
         "iconSrc"?: string;
+        /**
+          * If `true`, the item displays a checkbox (for multiselect comboboxes).
+         */
+        "multiselect"?: boolean;
         /**
           * Sets this item to selected
          */
