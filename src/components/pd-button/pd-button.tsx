@@ -47,10 +47,18 @@ export class Button implements ComponentInterface {
     @Prop() href: string;
 
     /**
+     * Set href to create a link button
+     */
+    @Prop() showAsLink: boolean = false;
+
+    /**
      * Sets target for link button e.g. '_blank'
      */
     @Prop() target: string = '_blank';
 
+    /**
+     * Sets the position of the icon
+     */
     @Prop({ attribute: 'icon-location' }) iconLocation: PdIconLocation = 'none';
 
     /**
@@ -77,8 +85,8 @@ export class Button implements ComponentInterface {
                     {...typeAttrs}
                     disabled={disabled}
                     class={{
-                        'pd-button': TagType === 'button',
-                        'pd-link': TagType !== 'button',
+                        'pd-button': TagType === 'button' && !this.showAsLink,
+                        'pd-link': this.showAsLink ? true : TagType !== 'button',
                         [`pd-button-${this.color}`]: true,
                         [`pd-button-${this.size}`]: true,
                         'pd-button-outline': this.outline,

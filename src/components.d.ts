@@ -71,11 +71,18 @@ export namespace Components {
           * Set href to create a link button
          */
         "href": string;
+        /**
+          * Sets the position of the icon
+         */
         "iconLocation": PdIconLocation;
         /**
           * Use outline schema
          */
         "outline": boolean;
+        /**
+          * Set href to create a link button
+         */
+        "showAsLink": boolean;
         /**
           * Button size
          */
@@ -1865,11 +1872,18 @@ declare namespace LocalJSX {
           * Set href to create a link button
          */
         "href"?: string;
+        /**
+          * Sets the position of the icon
+         */
         "iconLocation"?: PdIconLocation;
         /**
           * Use outline schema
          */
         "outline"?: boolean;
+        /**
+          * Set href to create a link button
+         */
+        "showAsLink"?: boolean;
         /**
           * Button size
          */
