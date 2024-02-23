@@ -1,5 +1,18 @@
 import { createPopper, Instance } from '@popperjs/core';
-import { Component, ComponentDidLoad, ComponentDidUpdate, ComponentInterface, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentDidUpdate,
+    ComponentInterface,
+    Element,
+    h,
+    Host,
+    Listen,
+    Method,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import { PdButtonSize, PdPlacement } from '../../types';
 
 /**
@@ -105,7 +118,7 @@ export class Menu implements ComponentInterface, ComponentDidLoad, ComponentDidU
                         data-test="pd-menu-button"
                     >
                         {this.renderLabel()}
-                        <pd-icon class="pd-menu-icon" size={2} name="menu_actions"></pd-icon>
+                        <pd-icon class="pd-menu-icon" size={2} name="menu_actions" lazy={false}></pd-icon>
                     </button>
                     <div>{this.renderMenu()}</div>
                 </div>
