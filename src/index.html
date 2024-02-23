@@ -189,8 +189,12 @@
                     </div>
                     <div>
                         <h2>Icons</h2>
-                        <pd-button icon-location="left"> <pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button>
-                        <pd-button icon-location="right"><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button>
+                        <pd-button icon-location="left">
+                            <pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button
+                        >
+                        <pd-button icon-location="right"
+                            ><pd-icon slot="icon" size="1.5" name="confirm" style="fill: #fff"></pd-icon>Button</pd-button
+                        >
                         <pd-button outline icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                     </div>
                     <div>
@@ -249,7 +253,13 @@
                         <pd-dropdown class="pd-dropdown-items" label="Label" empty-item></pd-dropdown>
                         <pd-dropdown class="pd-dropdown-items" label="Label" empty-item disabled></pd-dropdown>
                         <pd-dropdown class="pd-dropdown-items" label="Label" empty-item readonly></pd-dropdown>
-                        <pd-dropdown class="pd-dropdown-items" label="Label" helper-text="dropdown helper text" empty-item error></pd-dropdown>
+                        <pd-dropdown
+                            class="pd-dropdown-items"
+                            label="Label"
+                            helper-text="dropdown helper text"
+                            empty-item
+                            error
+                        ></pd-dropdown>
                         <pd-dropdown view-only class="pd-dropdown-items" label="Label" empty-item></pd-dropdown>
 
                         <span>Textareas</span>
@@ -350,8 +360,21 @@
                         <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label" error></pd-combobox>
                         <pd-combobox id="supibox" view-only placeholder="search..." class="pd-combobox-items" label="Label"></pd-combobox>
 
+                        <span>Combobox (multiselect)</span>
+                        <pd-combobox
+                            placeholder="search..."
+                            class="pd-combobox-items"
+                            label="Label"
+                            id="pd-combobox-2"
+                            multiselect
+                        ></pd-combobox>
+                        <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label" disabled></pd-combobox>
+                        <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label" readonly></pd-combobox>
+                        <pd-combobox placeholder="search..." class="pd-combobox-items" label="Label" error></pd-combobox>
+                        <pd-combobox id="supibox" view-only placeholder="search..." class="pd-combobox-items" label="Label"></pd-combobox>
+
                         <span>Combobox (selectable)</span>
-                        <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-2"></pd-combobox>
+                        <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-3"></pd-combobox>
                         <pd-combobox class="pd-combobox-items" selectable label="Label" disabled></pd-combobox>
                         <pd-combobox class="pd-combobox-items" selectable label="Label" readonly selectable></pd-combobox>
                         <pd-combobox class="pd-combobox-items" selectable label="Label" error selectable></pd-combobox>
@@ -490,7 +513,9 @@
 
                 <details>
                     <summary>Toast</summary>
-                    <pd-toast header="Toast title goes here in case there is enough space otherwise it breaks" info="5min ago" size="large"> Toast body text goes here </pd-toast>
+                    <pd-toast header="Toast title goes here in case there is enough space otherwise it breaks" info="5min ago" size="large">
+                        Toast body text goes here
+                    </pd-toast>
                     <pd-toast header="Toast Title" info="11 minutes ago" size="small"> Toast body text goes here </pd-toast>
                 </details>
             </details>
@@ -526,7 +551,9 @@
                         <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                            </p>
                         </div>
                         <pd-list>
                             <pd-list-item>
@@ -560,7 +587,8 @@
                         </pd-timeline-date>
                         <pd-timeline-date date="19.09.2019" header="Nationalrat">Ablehnung</pd-timeline-date>
                         <pd-timeline-date date="30.10.2019">
-                            Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche Kredite mit Vorschuss zu. <br /><a href="#">Audioaufnahme</a>
+                            Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche Kredite mit Vorschuss
+                            zu. <br /><a href="#">Audioaufnahme</a>
                             <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
                         </pd-timeline-date>
                     </pd-timeline>
@@ -583,8 +611,8 @@
                             <div>Expandable List Item</div>
                             <div slot="expandable">
                                 <span
-                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem obcaecati quo inventore numquam aliquid nulla nisi! Eveniet,
-                                    quam!</span
+                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem obcaecati quo inventore
+                                    numquam aliquid nulla nisi! Eveniet, quam!</span
                                 >
                             </div>
                             <pd-menu-item text="Drucken" slot="menu">
@@ -598,8 +626,8 @@
                             <div>Expandable List Item</div>
                             <div slot="expandable">
                                 <span
-                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem obcaecati quo inventore numquam aliquid nulla nisi! Eveniet,
-                                    quam!</span
+                                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptate dolorem obcaecati quo inventore
+                                    numquam aliquid nulla nisi! Eveniet, quam!</span
                                 >
                             </div>
                             <pd-menu-item text="Edit" slot="menu">
@@ -821,6 +849,7 @@
             const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
+            const pdComboBox3 = document.getElementById('pd-combobox-3');
             const pdNavbar = document.getElementById('pd-navbar-1');
             const pdSorts = document.getElementsByClassName('pd-sort');
 
@@ -875,10 +904,10 @@
 
             for (let pdComboBoxItem of pdComboBoxItems) {
                 pdComboBoxItem.items = [
-                    { id: '1', label: 'Dropdown Link 01', value: 'a1' },
+                    { id: '1', label: 'Dropdown Link 01AAA', value: 'a1' },
                     { id: '2', label: 'Dropdown Link 02', value: 'a2' },
                     { id: '3', label: 'Dropdown Link 03', value: 'a3' },
-                    { id: '4', label: 'Dropdown Link 04', value: 'a4', selected: true },
+                    { id: '4', label: 'Dropdown Link 04A', value: 'a4', selected: true },
                     {
                         id: '5',
                         label: 'Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 ',
@@ -964,8 +993,28 @@
             }
 
             pdComboBox1.addEventListener('pd-change', e => console.log('pd-change', e));
-            pdComboBox1.addEventListener('pd-combobox', e => console.log('pd-combobox', e));
-            pdComboBox1.addEventListener('pd-input', e => makeFakeRespone(e.detail.value, pdComboBox1));
+            pdComboBox1.addEventListener('pd-combobox', e => {
+                // setTimeout(() => {
+                //     pdComboBox1.items = [
+                //         { id: '1', label: 'Dropdown Link 01A', value: 'a1', selected: true },
+                //         { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+                //         { id: '3', label: 'Dropdown Link 03', value: 'a3' },
+                //         { id: '4', label: 'Dropdown Link 04A', value: 'a4', selected: true },
+                //         {
+                //             id: '5',
+                //             label: 'Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 ',
+                //             value: 'a5',
+                //         },
+                //         { id: '6', label: 'Preselected', value: 'a6' },
+                //         { id: '7', label: 'some more 1', value: 'a7' },
+                //         { id: '8', label: 'some more 2', value: 'a8' },
+                //         { id: '9', label: 'some other 3', value: 'a9' },
+                //         { id: '10', label: 'some other 4', value: 'a10' },
+                //     ];
+                // }, 2000);
+                console.log('pd-combobox', e);
+            });
+            // pdComboBox1.addEventListener('pd-input', e => makeFakeRespone(e.detail.value, pdComboBox1));
             pdComboBox1.addEventListener('pd-blur', e => console.log('pd-blur', e));
             pdComboBox1.addEventListener('pd-focus', e => console.log('pd-focus', e));
 
@@ -974,11 +1023,14 @@
             // }, 1000);
             // pdComboBox1.items = createRandomItems(10, true);
 
-            // pdComboBox2.addEventListener('pd-change', (e) => console.log('pd-change', e));
-            // pdComboBox2.addEventListener('pd-combobox', (e) => console.log('pd-combobox', e));
-            // pdComboBox2.addEventListener('pd-input', (e) => makeFakeRespone(e.detail.value, pdComboBox2));
-            // pdComboBox2.addEventListener('pd-blur', (e) => console.log('pd-blur', e));
-            // pdComboBox2.addEventListener('pd-focus', (e) => console.log('pd-focus', e));
+            pdComboBox2.addEventListener('pd-change', e => console.log('pd-change', e));
+            pdComboBox2.addEventListener('pd-combobox', e => console.log('pd-combobox', e));
+            // pdComboBox2.addEventListener('pd-input', e => makeFakeRespone(e.detail.value, pdComboBox2));
+            pdComboBox2.addEventListener('pd-blur', e => console.log('pd-blur', e));
+            pdComboBox2.addEventListener('pd-focus', e => console.log('pd-focus', e));
+
+            pdComboBox3.addEventListener('pd-change', e => console.log('pd-change', e));
+            pdComboBox3.addEventListener('pd-combobox', e => console.log('pd-combobox', e));
 
             const columns = [
                 {
@@ -1086,16 +1138,16 @@
             //     console.log('LOG: value', value);
             // });
 
-            // pdSearch.addEventListener('pd-input', (value) => {
-            //     pdSearch.results = [
-            //         `Some random results`,
-            //         `Some random (results)`,
-            //         `Some "random" results`,
-            //         `Some random results with random extra words`,
-            //         `Some random results with random extra words words words`,
-            //         `RanDoM`,
-            //     ];
-            // });
+            pdSearch.addEventListener('pd-input', value => {
+                pdSearch.results = [
+                    `Some random results`,
+                    `Some random (results)`,
+                    `Some "random" results`,
+                    `Some random results with random extra words`,
+                    `Some random results with random extra words words words`,
+                    `RanDoM`,
+                ];
+            });
 
             pdNavbar.addEventListener('pd-menu', () => console.log(`file: index.html ~ line 324`));
 

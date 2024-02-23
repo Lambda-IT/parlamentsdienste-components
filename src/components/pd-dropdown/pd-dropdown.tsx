@@ -151,6 +151,10 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
             case 'ArrowDown': {
                 ev.preventDefault();
+                if (!this.open) {
+                    this.open = true;
+                    break;
+                }
                 const currentIndex = this.items.findIndex(item => item === this.selectedItem);
                 const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = this.items[nextIndex];
@@ -174,7 +178,9 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 } else {
                     this.currentSearch = ev.key;
                 }
-                const currentItem = this.items.find(item => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch);
+                const currentItem = this.items.find(
+                    item => item.label.substring(0, this.currentSearch.length)?.toLowerCase() === this.currentSearch,
+                );
                 if (currentItem) this.selectedItem = currentItem;
 
                 this.inputTime = current;
@@ -262,7 +268,10 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                             disabled={this.disabled || this.readonly}
                             data-test="pd-dropdown-button"
                         >
-                            <span class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }} data-test="pd-dropdown-text">
+                            <span
+                                class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
+                                data-test="pd-dropdown-text"
+                            >
                                 {this.selectedItem?.label || this.placeholder}
                             </span>
                             <pd-icon class="pd-dropdown-caret" name="dropdown" rotate={this.open ? 180 : 0} size={2.4}></pd-icon>

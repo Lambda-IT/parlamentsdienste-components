@@ -81,6 +81,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() selectable = false;
 
     /**
+     * If `true`, the combobox can select multiple items.
+     */
+    @Prop() multiselect = false;
+
+    /**
      * Instructional text that shows before the input has a value.
      */
     @Prop() placeholder?: string;
@@ -133,12 +138,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<ComboboxItem>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<ComboboxItem | ComboboxItem[]>;
 
     /**
      * Emitted when a combobox request occurred.
      */
-    @Event({ eventName: 'pd-combobox' }) pdCombobox!: EventEmitter<ComboboxItem>;
+    @Event({ eventName: 'pd-combobox' }) pdCombobox!: EventEmitter<ComboboxItem | ComboboxItem[]>;
 
     /**
      * Emitted when the input loses focus.
@@ -220,6 +225,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Listen('click', { target: 'body' })
     handleClickOutside(ev: MouseEvent) {
+        if (!this.state.open) return;
         if (ev.target !== this.element && this.state) {
             S.closeDropdown(this.state);
         }
@@ -243,13 +249,19 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.pdChange.emit(this.state.selectedItem);
         });
 
-        let selectedItem = this.state.items.find(item => item.selected) ?? null;
-        //If there is an input value, we want to see if it matches an item
-        if (this.state.inputValue) {
-            selectedItem = this.state.items.filter(i => i.label === this.state.inputValue).shift();
-        }
-        if (selectedItem) {
-            this.selectItem(selectedItem, null, false);
+        onChange('items', () => {
+            if (this.multiselect) this.pdChange.emit(this.state.items.filter(item => item.selected));
+        });
+
+        if (!this.multiselect) {
+            let selectedItem = this.state.items.find(item => item.selected) ?? null;
+            //If there is an input value, we want to see if it matches an item
+            if (this.state.inputValue) {
+                selectedItem = this.state.items.filter(i => i.label === this.state.inputValue).shift();
+            }
+            if (selectedItem) {
+                this.selectItem(selectedItem, null, false);
+            }
         }
     }
 
@@ -265,7 +277,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     public componentDidUpdate() {
         if (this._viewOnly !== this.viewOnly) {
             this._viewOnly = this.viewOnly;
-            if (!this._viewOnly) this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
+            if (!this._viewOnly) {
+                this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
+            }
         }
 
         if (!this.state.open) return;
@@ -290,7 +304,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     private validateItems(items: any) {
         if (!Array.isArray(items)) return;
 
-        return [...(this.emptyItem ? [this.emptyItemData] : []), ...items];
+        const _items = !this.multiselect && !this.selectable ? items.map(item => ({ ...item, selected: false })) : items;
+
+        return [...(this.emptyItem ? [this.emptyItemData] : []), ..._items];
     }
 
     @Listen('keydown')
@@ -348,28 +364,49 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     private selectItem(comboboxItem: ComboboxItem, ev?: Event, emitPdCombobox = true) {
         if (ev) ev.preventDefault();
+
+        if (this.multiselect) {
+            comboboxItem.selected = !comboboxItem.selected;
+            this.state.items = this.state.items.map(item => (item.id === comboboxItem.id ? comboboxItem : item));
+            this.state.filteredItems = this.state.filteredItems.map(item => (item.id === comboboxItem.id ? comboboxItem : item));
+
+            if (emitPdCombobox) {
+                this.pdCombobox.emit(this.state.items.filter(item => item.selected));
+            }
+            this.setFocus();
+            return;
+        }
+
         this.state.inputValue = comboboxItem.label;
         this.state.selectedItem = comboboxItem;
 
+        if (this.selectable) {
+            this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === comboboxItem.id }));
+            this.state.filteredItems = this.state.items;
+
+            S.closeDropdown(this.state);
+        }
+
         if (emitPdCombobox) this.pdCombobox.emit(this.state.selectedItem);
 
-        if (this.selectable) {
-            S.closeDropdown(this.state);
-            this.state.filteredItems = this.state.items;
-        } else {
-            this.resetCombobox();
-        }
+        if (!this.selectable) this.resetCombobox();
     }
 
     private selectItemByClick(comboboxItem: ComboboxItem, ev: MouseEvent) {
         ev.preventDefault();
         this.selectItem(comboboxItem);
-        if (!this.selectable) {
-            this.resetCombobox();
-            this.setFocus();
-        } else {
-            S.closeDropdown(this.state);
+
+        if (this.multiselect) {
+            this.state.currentNavigatedIndex = -1;
+            return;
         }
+
+        if (this.selectable) {
+            S.closeDropdown(this.state);
+            return;
+        }
+
+        this.resetCombobox();
     }
 
     private resetCombobox = (ev?: Event) => {
@@ -388,7 +425,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.setFocus();
     }
 
-    private onClickInput = () => {
+    private onInputClick = () => {
         if (this.state.open === true) {
             S.closeDropdown(this.state);
             return;
@@ -398,7 +435,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
 
         this.state.open = true;
-        if (this.state.selectedItem) {
+        if (S.getFirstSelectedItem(this.state)) {
             S.setCurrentNavigatedIndexToSelectedItem(this.state);
         }
     };
@@ -421,7 +458,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     private filterItems() {
         if (this.disableFilter) return;
 
-        //This is necessary to display items with no label property
         if (this.state.inputValue === '') {
             this.state.filteredItems = this.state.items;
             return;
@@ -470,7 +506,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-error': this.error,
-                        'pd-combobox-item-selected': this.state.inputValue === this.state.selectedItem?.label,
+                        'pd-combobox-item-selected': this.selectable && this.state.inputValue === this.state.selectedItem?.label,
                     }}
                     style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}
                 >
@@ -490,7 +526,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 required={this.required}
                                 placeholder={this.placeholder || ''}
                                 value={this.state.inputValue}
-                                onClick={this.onClickInput}
+                                onClick={this.onInputClick}
                                 onInput={this.onInput}
                                 onBlur={this.onBlur}
                                 onFocus={this.onFocus}
@@ -507,18 +543,27 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
                             {this.selectable && S.selectedHasIcon(this.state) ? (
                                 <div class="pd-combobox-icon left">
-                                    <pd-icon name={this.state.selectedItem.iconName || null} src={this.state.selectedItem.iconSrc || null} size={2}></pd-icon>
+                                    <pd-icon
+                                        name={this.state.selectedItem.iconName || null}
+                                        src={this.state.selectedItem.iconSrc || null}
+                                        size={2}
+                                    ></pd-icon>
                                 </div>
                             ) : null}
 
                             {this.state.inputValue && !this.disabled && !this.readonly ? (
-                                <button class="pd-combobox-icon right" onClick={() => this.clearValueWithIconClick()} tabindex="-1" data-test="pd-combobox-reset">
+                                <button
+                                    class="pd-combobox-icon right"
+                                    onClick={() => this.clearValueWithIconClick()}
+                                    tabindex="-1"
+                                    data-test="pd-combobox-reset"
+                                >
                                     <pd-icon class="pd-icon" name="cancel" size={2.4}></pd-icon>
                                 </button>
                             ) : (
                                 <button data-test="pd-combobox-toggle" class="pd-combobox-icon right" tabindex="-1">
                                     <pd-icon
-                                        onClick={this.onClickInput}
+                                        onClick={this.onInputClick}
                                         class="pd-icon pd-combobox-icon-toggle"
                                         name="dropdown"
                                         rotate={this.state.open ? 180 : 0}
@@ -549,13 +594,16 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                 {this.state.filteredItems.map((comboboxItem, i) => (
                     <pd-dropdown-item
                         data-test={`pd-combobox-item-${i}`}
-                        selected={(this.state.selectedItem && comboboxItem.id === this.state.selectedItem?.id) || false}
+                        selected={this.multiselect ? comboboxItem.selected : comboboxItem.id === this.state.selectedItem?.id}
+                        multiselect={this.multiselect}
                         value={comboboxItem.label ?? ''}
                         iconName={comboboxItem.iconName || null}
                         iconSrc={comboboxItem.iconSrc || null}
                         highlight={this.highlight ? this.state.inputValue : ''}
                         onClick={ev => this.selectItemByClick(comboboxItem, ev)}
-                        class={i === this.state.currentNavigatedIndex ? 'currentNavigatingItem' : ''}
+                        class={{
+                            'pd-dropdown-current-navigating-item': i === this.state.currentNavigatedIndex,
+                        }}
                     ></pd-dropdown-item>
                 ))}
             </div>
