@@ -15,6 +15,7 @@ export default {
         viewonly: { control: { type: 'boolean' } },
         readonly: { control: { type: 'boolean' } },
         selectable: { control: { type: 'boolean' } },
+        mulitselect: { control: { type: 'boolean' } },
         error: { control: { type: 'boolean' } },
         required: { control: { type: 'boolean' } },
         highlight: { control: { type: 'boolean' } },
@@ -58,6 +59,7 @@ export const combobox = args => {
     c2.readonly = args.readonly;
     c2.viewOnly = args.viewonly;
     c2.selectable = true;
+    c2.multiselect = false;
     c2.error = args.error;
     c2.required = args.required;
     c2.label = args.label + ' (selectable)';
@@ -69,8 +71,28 @@ export const combobox = args => {
     c2.disableFilter = args.disableFilter;
     c2.itemCount = args.itemCount;
 
-    elements.append(c1);
     elements.append(c2);
+
+    const c3 = document.createElement('pd-combobox');
+    c3.classList.add('m-3');
+    c3.items = args.items;
+    c3.disabled = args.disabled;
+    c3.readonly = args.readonly;
+    c3.viewOnly = args.viewonly;
+    c3.selectable = false;
+    c3.multiselect = true;
+    c3.error = args.error;
+    c3.required = args.required;
+    c3.label = args.label + ' (mulitselect)';
+    c3.placeholder = args.placeholder;
+    c3.highlight = args.highlight;
+    c3.value = args.value;
+    c3.emptyItem = args.emptyItem;
+    c3.emptyItemData = args.emptyItemData;
+    c3.disableFilter = args.disableFilter;
+    c3.itemCount = args.itemCount;
+
+    elements.append(c3);
 
     return elements;
 };

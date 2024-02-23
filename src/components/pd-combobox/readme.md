@@ -65,6 +65,7 @@ To add an icon to the label of the dropdownitem use the iconName (for the suppor
 | `itemCount`      | `item-count`      | Items visible in dropdown                                                                                                  | `number`         | `5`                                                                 |
 | `items`          | --                | Values shown as combobox items                                                                                             | `ComboboxItem[]` | `[]`                                                                |
 | `label`          | `label`           | combobox box label                                                                                                         | `string`         | `undefined`                                                         |
+| `multiselect`    | `multiselect`     | If `true`, the combobox can select multiple items.                                                                         | `boolean`        | `false`                                                             |
 | `placeholder`    | `placeholder`     | Instructional text that shows before the input has a value.                                                                | `string`         | `undefined`                                                         |
 | `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                                                                               | `boolean`        | `false`                                                             |
 | `required`       | `required`        | If `true`, the user must fill in a value before submitting a form.                                                         | `boolean`        | `false`                                                             |
@@ -77,13 +78,13 @@ To add an icon to the label of the dropdownitem use the iconName (for the suppor
 
 ## Events
 
-| Event         | Description                               | Type                                  |
-| ------------- | ----------------------------------------- | ------------------------------------- |
-| `pd-blur`     | Emitted when the input loses focus.       | `CustomEvent<void>`                   |
-| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<ComboboxItem>`           |
-| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<ComboboxItem>`           |
-| `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                   |
-| `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>` |
+| Event         | Description                               | Type                                          |
+| ------------- | ----------------------------------------- | --------------------------------------------- |
+| `pd-blur`     | Emitted when the input loses focus.       | `CustomEvent<void>`                           |
+| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<ComboboxItem \| ComboboxItem[]>` |
+| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<ComboboxItem \| ComboboxItem[]>` |
+| `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                           |
+| `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>`         |
 
 
 ## Methods
@@ -149,6 +150,7 @@ Type: `Promise<void>`
 graph TD;
   pd-combobox --> pd-icon
   pd-combobox --> pd-dropdown-item
+  pd-dropdown-item --> pd-checkbox
   pd-dropdown-item --> pd-icon
   style pd-combobox fill:#f9f,stroke:#333,stroke-width:4px
 ```

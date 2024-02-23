@@ -109,6 +109,7 @@ Type: `Promise<void>`
 graph TD;
   pd-sort --> pd-icon
   pd-sort --> pd-dropdown-item
+  pd-dropdown-item --> pd-checkbox
   pd-dropdown-item --> pd-icon
   style pd-sort fill:#f9f,stroke:#333,stroke-width:4px
 ```

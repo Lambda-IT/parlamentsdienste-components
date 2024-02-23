@@ -13,9 +13,10 @@
 
 ## Properties
 
-| Property | Attribute | Description        | Type     | Default |
-| -------- | --------- | ------------------ | -------- | ------- |
-| `text`   | `text`    | Text for this item | `string` | `''`    |
+| Property   | Attribute  | Description                 | Type      | Default |
+| ---------- | ---------- | --------------------------- | --------- | ------- |
+| `disabled` | `disabled` | Sets item to disbaled state | `boolean` | `false` |
+| `text`     | `text`     | Text for this item          | `string`  | `''`    |
 
 
 ## Slots
