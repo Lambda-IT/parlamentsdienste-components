@@ -1,44 +1,8 @@
 // import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
-    title: 'Forms + Inputs/Dropdown',
-    parameters: {
-        actions: {
-            handles: ['pd-change'],
-        },
-        // notes: {
-        // Dropdown: notes,
-        // 'Dropdown Item': notesDropdownItem,
-        // },
-        argTypes: {
-            items: { controls: { type: 'object' } },
-            disabled: { controls: { type: 'boolean' } },
-            label: { controls: { type: 'string' } },
-            required: { controls: { type: 'boolean' } },
-            readonly: { controls: { type: 'boolean' } },
-            viewonly: { controls: { type: 'boolean' } },
-            error: { controls: { type: 'boolean' } },
-        },
-    },
-};
-
-///////////////////////////////////////////////////////////////////////////
-
-export const Dropdown = args => {
-    const pdDropdown = document.createElement('pd-dropdown');
-    pdDropdown.items = args.items;
-    pdDropdown.disabled = args.disabled;
-    pdDropdown.required = args.required;
-    pdDropdown.readonly = args.readonly;
-    pdDropdown.viewOnly = args.viewonly;
-    pdDropdown.error = args.error;
-    pdDropdown.label = args.label;
-    pdDropdown.classList.add('m-3');
-
-    return pdDropdown;
-};
-
-Dropdown.args = {
+const defaultArgs = {
     items: [
         { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
         { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
@@ -56,4 +20,43 @@ Dropdown.args = {
     readonly: false,
     viewonly: false,
     error: false,
+};
+
+type DropdownArgs = typeof defaultArgs;
+
+const meta: Meta<DropdownArgs> = {
+    /* 👇 The title prop is optional.
+     * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+     * to learn how to generate automatic titles
+     */
+    title: 'Forms + Inputs/Dropdown',
+    // component: 'pd-dropdown',
+    parameters: {
+        actions: {
+            handles: ['pd-change'],
+        },
+    },
+    decorators: [withActions],
+};
+export default meta;
+
+type Story = StoryObj<DropdownArgs>;
+
+const dropdown = (args: DropdownArgs) => {
+    const pdDropdown = document.createElement('pd-dropdown');
+    pdDropdown.items = args.items;
+    pdDropdown.disabled = args.disabled;
+    pdDropdown.required = args.required;
+    pdDropdown.readonly = args.readonly;
+    pdDropdown.viewOnly = args.viewonly;
+    pdDropdown.error = args.error;
+    pdDropdown.label = args.label;
+    pdDropdown.classList.add('m-3');
+
+    return pdDropdown;
+};
+
+export const Dropdown: Story = {
+    render: dropdown,
+    args: defaultArgs,
 };
