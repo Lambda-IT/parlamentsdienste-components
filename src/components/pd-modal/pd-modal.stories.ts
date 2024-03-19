@@ -1,19 +1,28 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    config: {
+        title: 'Modal Title',
+        backdropVisible: true,
+    },
+};
+
+type ModalArgs = typeof defaultArgs;
+
+const meta: Meta = {
     title: 'Dialogs/Modal',
     parameters: {
         actions: {
             handles: ['pd-closed', 'pd-backdrop', 'pd-escape'],
         },
-        // notes,
     },
-    argTypes: {
-        config: { control: { type: 'object' } },
-    },
+    decorators: [withActions],
 };
 
-export const Modal = args => {
+export default meta;
+
+const modal = (args: ModalArgs) => {
     const modal = document.createElement('pd-modal');
     modal.config = args.config;
     modal.innerHTML = `
@@ -26,9 +35,10 @@ export const Modal = args => {
     return modal;
 };
 
-Modal.args = {
-    config: {
-        title: 'Modal Title',
-        backdropVisible: true,
+export const Modal: StoryObj = {
+    render: modal,
+    args: defaultArgs,
+    argTypes: {
+        config: { control: { type: 'object' } },
     },
 };

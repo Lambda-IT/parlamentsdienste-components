@@ -1,32 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-type ButtonArgs = {
-    disabled: boolean;
-    size: 'normal' | 'large' | 'small';
-    type: 'button' | 'submit' | 'reset';
-    fullWidth: boolean;
-};
-
 const defaultArgs = {
     disabled: false,
     size: 'normal',
     type: 'button',
     fullWidth: false,
 };
+
+type ButtonArgs = typeof defaultArgs;
+
 const defaultArgTypes = {
     size: { options: ['large', 'normal', 'small'], control: { type: 'select' } },
     type: { options: ['button', 'submit', 'reset'], control: { type: 'select' } },
 };
 
-// type ButtonArgs = typeof defaultArgs;
-
 const meta: Meta<ButtonArgs> = {
-    /* 👇 The title prop is optional.
-     * See https://storybook.js.org/docs/configure/#configure-story-loading
-     * to learn how to generate automatic titles
-     */
-    title: 'Interactions/ButtonNEW',
+    title: 'Interactions/Button',
     parameters: {
         actions: {
             handles: ['click'],

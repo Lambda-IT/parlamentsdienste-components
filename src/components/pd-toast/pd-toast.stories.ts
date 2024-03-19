@@ -1,30 +1,35 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    header: 'Toast Title',
+    info: '11 minutes ago',
+    body: 'Toast body text goes here',
+    size: 'large',
+};
+
+type ToastArgs = typeof defaultArgs;
+
+const meta: Meta = {
     title: 'Dialogs/Toast',
     parameters: {
         actions: {
             handles: ['pd-closed'],
         },
-        // notes,
     },
-    argTypes: {
-        header: { control: { type: 'text' } },
-        info: { control: { type: 'text' } },
-        body: { control: { type: 'text' } },
-        size: { control: { type: 'select' }, options: ['large', 'small'] },
-    },
+    decorators: [withActions],
 };
 
-///////////////////////////////////////////////////////////////////////////
+export default meta;
 
-export const Toast = args => `
-    <pd-toast class="m-3" header="${args.header}" info="${args.info}" size="${args.size}">${args.body}</pd-toast>
+const modal = (args: ToastArgs) => `
+<pd-toast class="m-3" header="${args.header}" info="${args.info}" size="${args.size}">${args.body}</pd-toast>
 `;
 
-Toast.args = {
-    header: 'Toast Title',
-    info: '11 minutes ago',
-    body: 'Toast body text goes here',
-    size: 'large',
+export const Toast: StoryObj = {
+    render: modal,
+    args: defaultArgs,
+    argTypes: {
+        size: { control: { type: 'select' }, options: ['large', 'small'] },
+    },
 };
