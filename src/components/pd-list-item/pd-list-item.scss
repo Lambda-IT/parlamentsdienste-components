@@ -1,9 +1,12 @@
 /**
  * @prop --pd-list-item-background: Background color of list item
+ * @prop --pd-list-item-padding: Padding around the list item
  */
 :host {
     display: flex;
+    align-items: center;
     background-color: var(--pd-list-item-background, transparent);
+    padding: var(--pd-list-item-padding, 0.75rem);
 }
 
 .pd-list-item-status {
@@ -22,10 +25,9 @@
 }
 
 .pd-list-item-content {
-    padding: 0.75rem;
     flex: 1 1 auto;
 }
 
-.pd-list-item-status + .pd-list-item-content {
-    padding: 0.75rem 0.75rem 0.75rem 0;
+.pd-list-item-status {
+    padding-right: 0.75rem;
 }

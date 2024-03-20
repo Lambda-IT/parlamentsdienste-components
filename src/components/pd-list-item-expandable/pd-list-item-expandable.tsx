@@ -134,7 +134,7 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
     }
 
     private renderStatus = () => {
-        if (!this.status) return <div class="pd-list-item-expandable-status-placeholder"></div>;
+        if (!this.status) return;
         return (
             <div
                 class="pd-list-item-expandable-status"
@@ -194,6 +194,12 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
 
     private renderCheckbox() {
         if (!this.checkbox) return;
-        return <pd-checkbox onPd-checked={ev => this.checkboxChecked(ev)} checked={this.checked} data-test="pd-list-item-expandable-checkbox"></pd-checkbox>;
+        return (
+            <pd-checkbox
+                onPd-checked={ev => this.checkboxChecked(ev)}
+                checked={this.checked}
+                data-test="pd-list-item-expandable-checkbox"
+            ></pd-checkbox>
+        );
     }
 }
