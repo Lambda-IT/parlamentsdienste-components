@@ -51,8 +51,9 @@
 | `disabled`     | `disabled`      | Sets button to disbaled state              | `boolean`                                                                        | `false`     |
 | `fullWidth`    | `full-width`    | Sets button to 100% width                  | `boolean`                                                                        | `false`     |
 | `href`         | `href`          | Set href to create a link button           | `string`                                                                         | `undefined` |
-| `iconLocation` | `icon-location` |                                            | `"center" \| "left" \| "none" \| "right"`                                        | `'none'`    |
+| `iconLocation` | `icon-location` | Sets the position of the icon              | `"center" \| "left" \| "none" \| "right"`                                        | `'none'`    |
 | `outline`      | `outline`       | Use outline schema                         | `boolean`                                                                        | `false`     |
+| `showAsLink`   | `show-as-link`  | Set href to create a link button           | `boolean`                                                                        | `false`     |
 | `size`         | `size`          | Button size                                | `"large" \| "normal" \| "small"`                                                 | `'normal'`  |
 | `target`       | `target`        | Sets target for link button e.g. '_blank'  | `string`                                                                         | `'_blank'`  |
 | `type`         | `type`          | Sets button type \|button\|submit\|reset\| | `"button" \| "reset" \| "submit"`                                                | `'button'`  |

@@ -22,6 +22,7 @@
 | Name                        | Description                   |
 | --------------------------- | ----------------------------- |
 | `--pd-list-item-background` | Background color of list item |
+| `--pd-list-item-padding`    | Padding around the list item  |
 
 
 ## Dependencies

@@ -1,47 +1,52 @@
-// import notes from './readme.md';
-// import notesMenuItem from '../pd-menu-item/readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
 
-export default {
-    title: 'Interactions/Menu',
-    parameters: {
-        // notes: {
-        //     'Menu': notes,
-        //     'Menu Item': notesMenuItem
-        // }
-    },
-    argTypes: {
-        items: { control: { type: 'object' } },
-        label: { control: { type: 'string' } },
-        size: { control: { type: 'select' }, options: ['normal', 'small', 'large'] },
-        invertColor: { control: { type: 'boolean' } },
-        placement: {
-            control: {
-                type: 'select',
-            },
-            options: [
-                'auto',
-                'auto-start',
-                'auto-end',
-                'top',
-                'top-start',
-                'top-end',
-                'bottom',
-                'bottom-start',
-                'bottom-end',
-                'right',
-                'right-start',
-                'right-end',
-                'left',
-                'left-start',
-                'left-end',
-            ],
+const defaultArgs = {
+    menuItems: [
+        { icon: 'print', text: 'Print' },
+        { icon: 'documents', text: 'Download', disabled: true },
+    ],
+    label: 'Aktionen',
+    invertColor: false,
+    placement: 'bottom-start',
+};
+
+type MenuArgs = typeof defaultArgs;
+
+const defaultArgTypes = {
+    size: { control: { type: 'select' }, options: ['normal', 'small', 'large'] },
+    placement: {
+        control: {
+            type: 'select',
         },
+        options: [
+            'auto',
+            'auto-start',
+            'auto-end',
+            'top',
+            'top-start',
+            'top-end',
+            'bottom',
+            'bottom-start',
+            'bottom-end',
+            'right',
+            'right-start',
+            'right-end',
+            'left',
+            'left-start',
+            'left-end',
+        ],
     },
 };
 
+const meta: Meta<MenuArgs> = {
+    title: 'Interactions/Menu-NEW',
+};
+
+export default meta;
+
 ///////////////////////////////////////////////////////////////////////////
 
-export const Menu = args => {
+const menu = args => {
     const pdMenu = document.createElement('pd-menu');
 
     args.menuItems.forEach(i => {
@@ -66,12 +71,8 @@ export const Menu = args => {
     return pdMenu;
 };
 
-Menu.args = {
-    menuItems: [
-        { icon: 'print', text: 'Print' },
-        { icon: 'documents', text: 'Download', disabled: true },
-    ],
-    label: 'Aktionen',
-    invertColor: false,
-    placement: 'bottom-start',
+export const Menu: StoryObj = {
+    render: menu,
+    args: defaultArgs,
+    argTypes: defaultArgTypes,
 };

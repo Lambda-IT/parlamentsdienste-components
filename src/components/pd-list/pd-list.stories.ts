@@ -1,24 +1,21 @@
-// import notesListItemExpandable from '../pd-list-item-expandable/readme.md';
-// import notesListItem from '../pd-list-item/readme.md';
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const meta: Meta = {
     title: 'Interactions/List',
     parameters: {
-        // notes: {
-        //     List: notes,
-        //     'List Item': notesListItem,
-        //     'List Item Expandable': notesListItemExpandable,
-        // },
         actions: {
             handles: ['pd-expand', 'pd-edit', 'pd-selected', 'pd-collapsed', 'pd-content-click'],
         },
     },
+    decorators: [withActions],
 };
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Basic = () => `
+const basic = () => `
     <pd-list class="m-3">
         <pd-list-item>
             <span>List Item 1</span>
@@ -32,9 +29,13 @@ export const Basic = () => `
     </pd-list>
 `;
 
+export const Basic: StoryObj = {
+    render: basic,
+};
+
 ///////////////////////////////////////////////////////////////////////////
 
-export const StatusList = () => `
+const statusList = () => `
     <pd-list class="m-3">
         <pd-list-item status="unset">
             <div>16.3112</div>
@@ -55,9 +56,13 @@ export const StatusList = () => `
     </pd-list>
 `;
 
+export const StatusList: StoryObj = {
+    render: statusList,
+};
+
 ///////////////////////////////////////////////////////////////////////////
 
-export const ExpandableList = args => `
+const expandableList = args => `
     <pd-list class="m-3">
         <pd-list-item-expandable 
             ${args.checkbox ? 'checkbox' : ''} 
@@ -83,7 +88,7 @@ export const ExpandableList = args => `
     </pd-list>
 `;
 
-ExpandableList.args = {
+const expandableArgs = {
     checkbox: false,
     checked: false,
     edit: true,
@@ -95,14 +100,12 @@ ExpandableList.args = {
     status: 'success',
 };
 
-ExpandableList.argTypes = {
-    checkbox: { control: { type: 'boolean' } },
-    checked: { control: { type: 'boolean' } },
-    edit: { control: { type: 'boolean' } },
-    expand: { control: { type: 'boolean' } },
-    expandable: { control: { type: 'boolean' } },
-    menu: { control: { type: 'boolean' } },
-    contentClick: { control: { type: 'boolean' } },
-    expandableContent: { control: { type: 'text' } },
+const expandableArgTypes = {
     status: { control: { type: 'select' }, options: ['success', 'danger', 'warning', 'info', 'unset'] },
+};
+
+export const ExpandableList: StoryObj = {
+    render: expandableList,
+    args: expandableArgs,
+    argTypes: expandableArgTypes,
 };

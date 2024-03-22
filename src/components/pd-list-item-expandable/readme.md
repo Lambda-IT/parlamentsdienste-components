@@ -75,6 +75,7 @@
 | ------------------------------ | ----------------------------------------- |
 | `--pd-list-item-background`    | Background color of list item             |
 | `--pd-list-item-content-hover` | Background color for content hover effect |
+| `--pd-list-item-padding`       | Padding around the list item              |
 
 
 ## Dependencies
