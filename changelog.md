@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.4] - 2024-03-22
+
+### Changed
+
+-   #278 Added a css variable `--pd-list-item-padding` to pd-list-item-expandable and pd-list-item.
+-   #277 Added a new property `show-as-link` to the pd-button component. If set, the button will be displayed as a link but in a <button>-tag.
+-   Improved the styling of the pd-button component: If the button contains an icon, the icon now hovers correctly in the colorscheme of the button.
+
 ## [3.0.3] - 2024-02-23
 
 ### Changed
@@ -594,6 +602,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[3.0.4]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.4
 [3.0.3]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.3
 [3.0.2]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.2
 [3.0.1]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.1

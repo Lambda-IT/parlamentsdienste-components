@@ -92,55 +92,66 @@
                     <div class="button-grid">
                         <span></span>
                         <span>Enabled</span>
+                        <span>Enabled (Icon)</span>
                         <span>Disable</span>
                         <span>Outline Enabled</span>
                         <span>Outline Disable</span>
 
                         <span>Primary</span>
                         <pd-button>Button</pd-button>
+                        <pd-button icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button disabled>Button</pd-button>
                         <pd-button outline>Button</pd-button>
                         <pd-button outline disabled>Button</pd-button>
 
                         <span>Success</span>
                         <pd-button color="success">Button</pd-button>
+                        <pd-button color="success" icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button color="success" disabled>Button</pd-button>
                         <pd-button outline color="success">Button</pd-button>
                         <pd-button outline color="success" disabled>Button</pd-button>
 
                         <span>Danger</span>
                         <pd-button color="danger">Button</pd-button>
+                        <pd-button color="danger" icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button color="danger" disabled>Button</pd-button>
                         <pd-button outline color="danger">Button</pd-button>
                         <pd-button outline color="danger" disabled>Button</pd-button>
 
                         <span>Warning</span>
                         <pd-button color="warning">Button</pd-button>
+                        <pd-button color="warning" icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button color="warning" disabled>Button</pd-button>
                         <pd-button outline color="warning">Button</pd-button>
                         <pd-button outline color="warning" disabled>Button</pd-button>
 
                         <span>Info</span>
                         <pd-button color="info">Button</pd-button>
+                        <pd-button color="info" icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button color="info" disabled>Button</pd-button>
                         <pd-button outline color="info">Button</pd-button>
                         <pd-button outline color="info" disabled>Button</pd-button>
 
                         <span>Light</span>
                         <pd-button color="light">Button</pd-button>
+                        <pd-button color="light" icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button color="light" disabled>Button</pd-button>
                         <pd-button outline color="light">Button</pd-button>
                         <pd-button outline color="light" disabled>Button</pd-button>
 
                         <span>Dark</span>
                         <pd-button color="dark">Button</pd-button>
+                        <pd-button color="dark" icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button>
                         <pd-button color="dark" disabled>Button</pd-button>
                         <pd-button outline color="dark">Button</pd-button>
                         <pd-button outline color="dark" disabled>Button</pd-button>
 
                         <span>Link</span>
                         <pd-button href="http://www.google.ch">Button</pd-button>
-                        <pd-button href="http://www.google.ch" disabled>Button</pd-button>
+                        <p>Text <pd-button show-as-link>Button</pd-button> Text</p>
+                        <p>
+                            Text <pd-button show-as-link icon-location="left"><pd-icon slot="icon" size="1.5" name="confirm"></pd-icon>Button</pd-button> Text
+                        </p>
                     </div>
                     <div>
                         <h2>Sizes</h2>
@@ -205,7 +216,7 @@
                     <style>
                         .button-grid {
                             display: grid;
-                            grid-template-columns: repeat(5, 1fr);
+                            grid-template-columns: repeat(6, 1fr);
                             grid-gap: 10px;
                         }
                     </style>
@@ -643,6 +654,9 @@
                             <pd-menu-item text="Drucken" slot="menu">
                                 <pd-icon size="2" name="print"></pd-icon>
                             </pd-menu-item>
+                        </pd-list-item-expandable>
+                        <pd-list-item-expandable>
+                            <div>Expandable List Item</div>
                         </pd-list-item-expandable>
                     </pd-list>
                     <h2>Sort item</h2>

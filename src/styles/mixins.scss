@@ -63,6 +63,50 @@
     }
 }
 
+@mixin button-icon-scheme($colorscheme) {
+    ::slotted(pd-icon) {
+        fill: setcolor($colorscheme, enabledContrast);
+    }
+
+    &:hover {
+        ::slotted(pd-icon) {
+            fill: setcolor($colorscheme, hoverContrast);
+        }
+    }
+    &:active:enabled {
+        ::slotted(pd-icon) {
+            fill: setcolor($colorscheme, pressedContrast);
+        }
+    }
+    &:disabled {
+        ::slotted(pd-icon) {
+            fill: setcolor($colorscheme, disabledContrast);
+        }
+    }
+
+    &.pd-button-outline {
+        ::slotted(pd-icon) {
+            fill: setcolor($colorscheme, enabledOutlineContrast);
+        }
+
+        &:hover {
+            ::slotted(pd-icon) {
+                fill: setcolor($colorscheme, hoverOutlineContrast);
+            }
+        }
+        &:active:enabled {
+            ::slotted(pd-icon) {
+                fill: setcolor($colorscheme, pressedOutlineContrast);
+            }
+        }
+        &:disabled {
+            ::slotted(pd-icon) {
+                fill: setcolor($colorscheme, disabled);
+            }
+        }
+    }
+}
+
 @mixin resetControlFonts {
     input,
     textarea,
