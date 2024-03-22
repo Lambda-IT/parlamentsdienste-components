@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     background-color: var(--pd-list-item-background, transparent);
-    padding: var(--pd-list-item-padding, 0.75rem);
+    padding: var(--pd-list-item-padding, 0.75rem 1rem);
 }
 
 .pd-list-item-status {
@@ -29,5 +29,5 @@
 }
 
 .pd-list-item-status {
-    padding-right: 0.75rem;
+    margin: -0.375rem 0 -0.375rem -0.75rem;
 }
