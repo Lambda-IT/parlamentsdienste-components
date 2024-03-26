@@ -106,7 +106,7 @@
         font-weight: 500;
     }
 
-    &:hover(:not(:disabled)) {
+    &:hover:not(:disabled) {
         color: $cyan-6;
 
         ::slotted(pd-icon) {
@@ -118,7 +118,7 @@
         @include focus;
     }
 
-    &:active(:not(:disabled)) {
+    &:active:not(:disabled) {
         color: $cyan-3;
 
         ::slotted(pd-icon) {
