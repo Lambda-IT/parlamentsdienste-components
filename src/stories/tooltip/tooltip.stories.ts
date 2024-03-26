@@ -1,22 +1,36 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
-    title: 'Interactions/Tooltip & Popover',
-    parameters: {
-        // notes,
-        layout: 'centered',
-    },
-    argTypes: {
-        text: { controls: { type: 'string' } },
-        header: { controls: { type: 'string' } },
-        placement: {
-            control: { type: 'select' },
-            options: ['left', 'right', 'left-start', 'right-start', 'top', 'bottom'],
-        },
+const defaultArgs = {
+    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+    placement: 'bottom',
+};
+
+type TooltipArgs = typeof defaultArgs;
+
+const defaultArgTypes = {
+    placement: {
+        control: { type: 'select' },
+        options: ['left', 'right', 'left-start', 'right-start', 'top', 'bottom'],
     },
 };
 
-export const Tooltip = args => {
+const meta: Meta<TooltipArgs> = {
+    title: 'Interactions/Tooltip & Popover',
+    parameters: {
+        actions: {
+            handles: ['click'],
+        },
+        layout: 'centered',
+    },
+    decorators: [withActions],
+};
+
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
+const tooltip = args => {
     const wrapper = document.createElement('div');
     const buttonTooltip = document.createElement('pd-button');
     buttonTooltip.innerHTML = 'Tooltip';
@@ -34,12 +48,21 @@ export const Tooltip = args => {
     return wrapper;
 };
 
-Tooltip.args = {
+export const Tooltip: StoryObj = {
+    render: tooltip,
+    args: defaultArgs,
+    argTypes: defaultArgTypes,
+};
+
+///////////////////////////////////////////////////////////////////////////
+
+const popOverArgs = {
     text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+    header: 'Popover Header',
     placement: 'bottom',
 };
 
-export const Popover = args => {
+const popover = args => {
     const wrapper = document.createElement('div');
     const buttonHeader = document.createElement('pd-button');
     buttonHeader.innerHTML = 'Popover with Header';
@@ -71,8 +94,8 @@ export const Popover = args => {
     return wrapper;
 };
 
-Popover.args = {
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
-    header: 'Popover Header',
-    placement: 'bottom',
+export const Popover: StoryObj = {
+    render: popover,
+    args: popOverArgs,
+    argTypes: defaultArgTypes,
 };

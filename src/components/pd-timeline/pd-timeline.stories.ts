@@ -1,20 +1,22 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
 
-export default {
-    title: 'Interactions/Timeline',
-    parameters: {
-        // notes,
-    },
-    argsTypes: {
-        continueStart: { control: { type: 'boolean' } },
-        continueEnd: { control: { type: 'boolean' } },
-    },
+const defaultArgs = {
+    start: true,
+    end: true,
 };
+
+type TimelineArgs = typeof defaultArgs;
+
+const meta: Meta<TimelineArgs> = {
+    title: 'Interactions/Timeline',
+};
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Timeline = args => `
-    <pd-timeline class="m-3" start="${args.continueStart}" end="${args.continueEnd}">
+const timeline = args => `
+    <pd-timeline class="m-3" start="${args.start}" end="${args.end}">
         <pd-timeline-date date="13.03.2019" header="Ständerat">
             Annahme
         </pd-timeline-date>
@@ -37,7 +39,7 @@ export const Timeline = args => `
     </pd-timeline>
 `;
 
-Timeline.args = {
-    continueStart: true,
-    continueEnd: true,
+export const Timeline: StoryObj = {
+    render: timeline,
+    args: defaultArgs,
 };

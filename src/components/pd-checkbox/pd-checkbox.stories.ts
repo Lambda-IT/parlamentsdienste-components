@@ -1,27 +1,33 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    disabled: false,
+    text: 'checkbox',
+    readonly: false,
+    required: false,
+    error: false,
+    checked: false,
+    isIndeterminate: false,
+};
+
+type ButtonArgs = typeof defaultArgs;
+
+const meta: Meta<ButtonArgs> = {
     title: 'Forms + Inputs/Checkbox',
     parameters: {
         actions: {
             handles: ['pd-checked'],
         },
-        // notes,
     },
-    argTypes: {
-        checked: { control: { type: 'boolean' } },
-        text: { control: { type: 'text' } },
-        disabled: { control: { type: 'boolean' } },
-        readonly: { control: { type: 'boolean' } },
-        required: { control: { type: 'boolean' } },
-        error: { control: { type: 'boolean' } },
-        isIndeterminate: { control: { type: 'boolean' } },
-    },
+    decorators: [withActions],
 };
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Checkbox = args => `
+const checkbox = args => `
         <pd-checkbox class="m-3"
         ${args.checked ? 'checked' : ''}
         text="${args.text}"
@@ -33,12 +39,7 @@ export const Checkbox = args => `
         ></pd-checkbox>
 `;
 
-Checkbox.args = {
-    disabled: false,
-    text: 'checkbox',
-    readonly: false,
-    required: false,
-    error: false,
-    checked: false,
-    isIndeterminate: false,
+export const Checkbox: StoryObj = {
+    render: checkbox,
+    args: defaultArgs,
 };

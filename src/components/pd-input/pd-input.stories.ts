@@ -1,29 +1,35 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    label: 'Label',
+    value: 'Text',
+    helperText: 'Helper Text',
+    placeholder: 'Placehoder',
+    disabled: false,
+    readonly: false,
+    viewonly: false,
+    required: false,
+    error: false,
+};
+
+type InputArgs = typeof defaultArgs;
+
+const meta: Meta<InputArgs> = {
     title: 'Forms + Inputs/Input',
     parameters: {
         actions: {
             handles: ['pd-input', 'pd-change', 'pd-blur', 'pd-focus'],
         },
-        // notes,
     },
-    argTypes: {
-        label: { control: { type: 'text' } },
-        value: { control: { type: 'text' } },
-        helperText: { control: { type: 'text' } },
-        placeholder: { control: { type: 'text' } },
-        disabled: { control: { type: 'boolean' } },
-        readonly: { control: { type: 'boolean' } },
-        viewonly: { control: { type: 'boolean' } },
-        required: { control: { type: 'boolean' } },
-        error: { control: { type: 'boolean' } },
-    },
+    decorators: [withActions],
 };
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Input = args => {
+const input = args => {
     return `
         <pd-input class="m-3"
         label="${args.label}"
@@ -38,14 +44,7 @@ export const Input = args => {
     `;
 };
 
-Input.args = {
-    label: 'Label',
-    value: 'Text',
-    helperText: 'Helper Text',
-    placeholder: 'Placehoder',
-    disabled: false,
-    readonly: false,
-    viewonly: false,
-    required: false,
-    error: false,
+export const Input: StoryObj = {
+    render: input,
+    args: defaultArgs,
 };

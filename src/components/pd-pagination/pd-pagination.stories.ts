@@ -1,26 +1,40 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    currentPage: 3,
+    totalPages: 10,
+    visiblePages: 5,
+    showPageButtons: false,
+    separator: 'von',
+    items: [
+        { id: '1', label: '25', value: 25, selected: true },
+        { id: '2', label: '50', value: 50 },
+        { id: '3', label: '100', value: 100 },
+    ],
+};
+
+type ButtonArgs = typeof defaultArgs;
+
+const defaultArgTypes = {
+    items: { controls: { type: 'object' } },
+};
+
+const meta: Meta<ButtonArgs> = {
     title: 'Forms + Inputs/Pagination',
     parameters: {
         actions: {
             handles: ['pd-change'],
         },
-        // notes,
     },
-    argTypes: {
-        currentPage: { control: { type: 'number' } },
-        totalPages: { control: { type: 'number' } },
-        visiblePages: { control: { type: 'number' } },
-        showPageButtons: { control: { type: 'boolean' } },
-        separator: { control: { type: 'text' } },
-        items: { controls: { type: 'object' } },
-    },
+    decorators: [withActions],
 };
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Pagination = args => {
+const pagination = args => {
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.cssText = '--pd-dropdown-vertical-padding: 0.125em; display: flex';
@@ -44,15 +58,8 @@ export const Pagination = args => {
     return wrapper;
 };
 
-Pagination.args = {
-    currentPage: 3,
-    totalPages: 10,
-    visiblePages: 5,
-    showPageButtons: false,
-    separator: 'von',
-    items: [
-        { id: '1', label: '25', value: 25, selected: true },
-        { id: '2', label: '50', value: 50 },
-        { id: '3', label: '100', value: 100 },
-    ],
+export const Pagination: StoryObj = {
+    render: pagination,
+    args: defaultArgs,
+    argTypes: defaultArgTypes,
 };
