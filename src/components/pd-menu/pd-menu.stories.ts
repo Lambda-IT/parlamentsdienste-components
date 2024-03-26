@@ -39,7 +39,7 @@ const defaultArgTypes = {
 };
 
 const meta: Meta<MenuArgs> = {
-    title: 'Interactions/Menu-NEW',
+    title: 'Interactions/Menu',
 };
 
 export default meta;

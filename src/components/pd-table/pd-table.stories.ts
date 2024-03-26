@@ -1,64 +1,7 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
-    title: 'Interactions/Table',
-    parameters: {
-        // notes: {
-        //     Table: notes,
-        //     'Table Filter': notesTableFilter,
-        // },
-        actions: {
-            handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete', 'pd-clicked-row', 'pd-sort', 'pd-filter-change', 'pd-filter-input'],
-        },
-    },
-    argTypes: {
-        rows: { control: { type: 'object' } },
-        columns: { control: { type: 'object' } },
-        iconConfig: { control: { type: 'object' } },
-        showActionColumn: { control: { type: 'boolean' } },
-        selectable: { control: { type: 'boolean' } },
-        showStatus: { control: { type: 'boolean' } },
-        headerStyle: { control: { type: 'select' }, options: ['light', 'dark', 'gray'] },
-        menuLabel: { control: { type: 'string' } },
-        externalRowHandling: { control: { type: 'boolean' } },
-        selectedStatus: { control: { type: 'select' }, options: ['all', 'none', 'indeterminate'] },
-        paging: { control: { type: 'boolean' } },
-        pagingLocation: { control: { type: 'select' }, options: ['left', 'right'] },
-        pageSizes: { control: { type: 'object' } },
-        disabled: { control: { type: 'boolean' } },
-        readonly: { control: { type: 'boolean' } },
-    },
-};
-
-///////////////////////////////////////////////////////////////////////////
-
-export const Table = args => {
-    const table0 = document.createElement('pd-table');
-    table0.classList.add('m-3');
-    table0.rows = args.rows;
-    table0.columns = args.columns;
-    table0.iconConfig = args.iconConfig;
-    table0.showActionColumn = args.showActionColumn;
-    table0.setAttribute('header-style', args.headerStyle);
-    table0.selectable = args.selectable;
-    table0.showStatus = args.showStatus;
-    table0.menuLabel = args.menuLabel;
-    table0.externalRowHandling = args.externalRowHandling;
-    table0.selectedStatus = args.selectedStatus;
-    table0.paging = args.paging;
-    table0.pagingLocation = args.pagingLocation;
-    table0.pageSizes = args.pageSizes;
-    table0.disabled = args.disabled;
-    table0.readonly = args.readonly;
-    generateTableMenu(args).forEach(m => table0.appendChild(m));
-
-    const wrapper = document.createElement('div');
-    wrapper.append(table0);
-
-    return wrapper;
-};
-
-Table.args = {
+const defaultArgs = {
     rows: [
         {
             no: 1,
@@ -153,6 +96,32 @@ Table.args = {
     readonly: false,
 };
 
+type TableArgs = typeof defaultArgs;
+
+const defaultArgTypes = {
+    rows: { control: { type: 'object' } },
+    columns: { control: { type: 'object' } },
+    iconConfig: { control: { type: 'object' } },
+    headerStyle: { control: { type: 'select' }, options: ['light', 'dark', 'gray'] },
+    selectedStatus: { control: { type: 'select' }, options: ['all', 'none', 'indeterminate'] },
+    pagingLocation: { control: { type: 'select' }, options: ['left', 'right'] },
+    pageSizes: { control: { type: 'object' } },
+};
+
+const meta: Meta<TableArgs> = {
+    title: 'Interactions/Table',
+    parameters: {
+        actions: {
+            handles: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete', 'pd-clicked-row', 'pd-sort', 'pd-filter-change', 'pd-filter-input'],
+        },
+    },
+    decorators: [withActions],
+};
+
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
 function generateTableMenu(args) {
     let menuItems = [];
 
@@ -168,3 +137,35 @@ function generateTableMenu(args) {
 
     return menuItems;
 }
+
+const table = args => {
+    const table0 = document.createElement('pd-table');
+    table0.classList.add('m-3');
+    table0.rows = args.rows;
+    table0.columns = args.columns;
+    table0.iconConfig = args.iconConfig;
+    table0.showActionColumn = args.showActionColumn;
+    table0.setAttribute('header-style', args.headerStyle);
+    table0.selectable = args.selectable;
+    table0.showStatus = args.showStatus;
+    table0.menuLabel = args.menuLabel;
+    table0.externalRowHandling = args.externalRowHandling;
+    table0.selectedStatus = args.selectedStatus;
+    table0.paging = args.paging;
+    table0.pagingLocation = args.pagingLocation;
+    table0.pageSizes = args.pageSizes;
+    table0.disabled = args.disabled;
+    table0.readonly = args.readonly;
+    generateTableMenu(args).forEach(m => table0.appendChild(m));
+
+    const wrapper = document.createElement('div');
+    wrapper.append(table0);
+
+    return wrapper;
+};
+
+export const Table: StoryObj = {
+    render: table,
+    args: defaultArgs,
+    argTypes: defaultArgTypes,
+};

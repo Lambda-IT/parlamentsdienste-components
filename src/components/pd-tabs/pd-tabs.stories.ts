@@ -1,22 +1,37 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    tabs: [
+        { id: 0, text: 'Tab one' },
+        { id: 1, text: 'Tab two' },
+        { id: 2, text: 'Tab three', checked: true },
+        { id: 3, text: 'Tab four' },
+    ],
+    light: false,
+};
+
+type TabArgs = typeof defaultArgs;
+
+const defaultArgTypes = {
+    tabs: { control: { type: 'array' } },
+};
+
+const meta: Meta<TabArgs> = {
     title: 'Interactions/Tabs',
     parameters: {
         actions: {
             handles: ['pd-change'],
         },
-        // notes,
     },
-    argTypes: {
-        tabs: { control: { type: 'array' } },
-        light: { control: { type: 'boolean' } },
-    },
+    decorators: [withActions],
 };
 
-///////////////////////////////////////////////////////////////////////////
+export default meta;
 
-export const Tabs = args => {
+///////////////////////////////////////////////////////////////////////////////
+
+const tabs = args => {
     const tabs = document.createElement('pd-tabs');
     tabs.classList.add('m-3');
     tabs.tabs = args.tabs;
@@ -25,12 +40,8 @@ export const Tabs = args => {
     return tabs;
 };
 
-Tabs.args = {
-    tabs: [
-        { id: 0, text: 'Tab one' },
-        { id: 1, text: 'Tab two' },
-        { id: 2, text: 'Tab three', checked: true },
-        { id: 3, text: 'Tab four' },
-    ],
-    light: false,
+export const Tabs: StoryObj = {
+    render: tabs,
+    args: defaultArgs,
+    argTypes: defaultArgTypes,
 };
