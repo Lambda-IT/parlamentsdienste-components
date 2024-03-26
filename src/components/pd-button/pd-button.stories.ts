@@ -97,43 +97,45 @@ export const Outline: StoryObj = {
 
 const iconArgs = {
     location: 'left',
+    size: 'normal',
     fullWidth: false,
     showAsLink: false,
 };
 
 const iconArgTypes = {
     location: { control: { type: 'select' }, options: ['left', 'right', 'center'] },
+    size: { control: { type: 'select' }, options: ['small', 'normal', 'large'] },
 };
 
 type IconArgs = typeof iconArgs;
 
 const iconButtons = (args: IconArgs) => `
     <div>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}" color="success">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="success">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}" color="danger">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="danger">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}" color="warning">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="warning">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}" color="info">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="info">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}" color="light">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="light">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" show-as-link="${args.showAsLink}" color="dark">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="dark">
             <pd-icon size="2" slot="icon" name="link"></pd-icon>
             button
         </pd-button>
