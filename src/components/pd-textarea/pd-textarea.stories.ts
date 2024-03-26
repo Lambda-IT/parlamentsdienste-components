@@ -1,30 +1,36 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    label: 'Label',
+    value: 'Text',
+    helperText: 'Helper Text',
+    placeholder: 'Placehoder',
+    disabled: false,
+    readonly: false,
+    viewonly: false,
+    required: false,
+    autoGrow: true,
+    error: false,
+};
+
+type TextareaArgs = typeof defaultArgs;
+
+const meta: Meta<TextareaArgs> = {
     title: 'Forms + Inputs/Textarea',
     parameters: {
         actions: {
             handles: ['pd-input', 'pd-change', 'pd-blur', 'pd-focus'],
         },
-        // notes,
     },
-    argTypes: {
-        label: { control: { type: 'text' } },
-        value: { control: { type: 'text' } },
-        helperText: { control: { type: 'text' } },
-        placeholder: { control: { type: 'text' } },
-        disabled: { control: { type: 'boolean' } },
-        viewonly: { control: { type: 'boolean' } },
-        readonly: { control: { type: 'boolean' } },
-        required: { control: { type: 'boolean' } },
-        autoGrow: { control: { type: 'boolean' } },
-        error: { control: { type: 'boolean' } },
-    },
+    decorators: [withActions],
 };
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Textarea = args => {
+const textarea = args => {
     return `
         <pd-textarea class="m-3"
         label="${args.label}"
@@ -40,15 +46,7 @@ export const Textarea = args => {
     `;
 };
 
-Textarea.args = {
-    label: 'Label',
-    value: 'Text',
-    helperText: 'Helper Text',
-    placeholder: 'Placehoder',
-    disabled: false,
-    readonly: false,
-    viewonly: false,
-    required: false,
-    autoGrow: true,
-    error: false,
+export const Textarea: StoryObj = {
+    render: textarea,
+    args: defaultArgs,
 };

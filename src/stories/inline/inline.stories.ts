@@ -1,13 +1,14 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
 
-export default {
+const meta: Meta = {
     title: 'Typography/Inline',
-    parameters: {
-        // notes
-    },
 };
 
-export const InlineTextElements = () => {
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
+const inlineTextElements = () => {
     return `
     <div class="m-3">
       <p>You can use the <mark>mark</mark> tag to highlight text.</p>
@@ -20,4 +21,8 @@ export const InlineTextElements = () => {
       <p><i>This line rendered as italicized text.</i></p>
     </div>
     `;
+};
+
+export const InlineTextElements: StoryObj = {
+    render: inlineTextElements,
 };

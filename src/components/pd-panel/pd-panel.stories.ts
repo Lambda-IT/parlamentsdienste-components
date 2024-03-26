@@ -1,26 +1,29 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    collapsible: true,
+    collapsed: false,
+    subpanel: false,
+};
+
+type PanelArgs = typeof defaultArgs;
+
+const meta: Meta<PanelArgs> = {
     title: 'Layout/Panel',
     parameters: {
         actions: {
             handles: ['pd-collapsed'],
         },
-        // notes: {
-        //     Panel: notes,
-        //     'Panel Header': notesPanelHeader,
-        //     'Panel Content': notesPanelContent,
-        //     'Panel Footer': notesFooter,
-        // },
     },
-    argTypes: {
-        collapsed: { control: { type: 'boolean' } },
-        collapsible: { control: { type: 'boolean' } },
-        subpanel: { control: { type: 'boolean' } },
-    },
+    decorators: [withActions],
 };
 
-export const Panel = args => {
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
+const panel = args => {
     return `
         <pd-panel class="m-3" 
             ${args.collapsed ? 'collapsed' : ''}
@@ -34,13 +37,18 @@ export const Panel = args => {
     `;
 };
 
-Panel.args = {
-    collapsible: true,
-    collapsed: false,
-    subpanel: false,
+export const Panel: StoryObj = {
+    render: panel,
+    args: defaultArgs,
 };
 
-export const Subpanel = args => {
+///////////////////////////////////////////////////////////////////////////$
+const subpanelArgs = {
+    collapsible: true,
+    collapsed: false,
+};
+
+const subpanel = args => {
     return `
         <pd-panel class="m-3"
             ${args.collapsed ? 'collapsed' : ''}
@@ -84,7 +92,7 @@ export const Subpanel = args => {
     `;
 };
 
-Subpanel.args = {
-    collapsible: true,
-    collapsed: false,
+export const Subpanel: StoryObj = {
+    render: subpanel,
+    args: subpanelArgs,
 };

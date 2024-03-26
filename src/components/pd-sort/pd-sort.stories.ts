@@ -52,7 +52,7 @@ const sort = args => {
     pdSort.itemCount = args.itemCount;
     pdSort.emptyItem = args.emptyItem;
     pdSort.emptyItemData = args.emptyItemData;
-    pdSort.classList = ['m-3'];
+    pdSort.classList.add('m-3');
 
     return pdSort;
 };

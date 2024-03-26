@@ -1,17 +1,14 @@
-// import notes from './readme.md';
-// import notesSidebarItem from '../pd-sidebar-item/readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
 
-export default {
+const meta: Meta = {
     title: 'Layout/Sidebar',
-    parameters: {
-        // notes: {
-        //     'Sidebar': notes,
-        //     'Sidebar Item': notesSidebarItem
-        // },
-    },
 };
 
-export const sidebar = () => {
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
+const sidebar = () => {
     return `
         <pd-sidebar>
             <pd-sidebar-item icon-name="parlament" text="Startseite"></pd-sidebar-item>
@@ -19,4 +16,8 @@ export const sidebar = () => {
             <pd-sidebar-item icon-name="link" href="http://www.google.ch" text="VORSTOSSplus"></pd-sidebar-item>
         </pd-sidebar>
     `;
+};
+
+export const Sidebar: StoryObj = {
+    render: sidebar,
 };

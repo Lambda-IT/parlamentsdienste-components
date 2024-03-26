@@ -1,14 +1,15 @@
+import type { Meta, StoryObj } from '@storybook/html';
 import { iconMap } from './../../utils';
-// import notes from './readme.md';
 
-export default {
+const meta: Meta = {
     title: 'Typography/Icon',
-    parameters: {
-        // notes,
-    },
 };
 
-export const basic = () =>
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
+const basic = () =>
     `
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="add"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="alert_danger"></pd-icon>
@@ -101,9 +102,13 @@ export const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="upload"></pd-icon>
     `;
 
+export const Basic: StoryObj = {
+    render: basic,
+};
+
 ///////////////////////////////////////////////////////////////////////////
 
-const SizeStory = args =>
+const size = args =>
     `
     <div class="m-3">
         <h3>Size 1</h3>
@@ -119,19 +124,23 @@ const SizeStory = args =>
     </div>
     `;
 
-export const Size = SizeStory.bind({});
-
-Size.args = {
+const sizeArgs = {
     icons: 'parlament',
 };
 
-Size.argTypes = {
+const sizeArgTypes = {
     icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
+};
+
+export const Size: StoryObj = {
+    render: size,
+    args: sizeArgs,
+    argTypes: sizeArgTypes,
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
-const ColorStory = args =>
+const color = args =>
     `
     <pd-icon class="mt-3 ml-3" size="3" name="${args.icons}" style="fill: ${args.color}" size="large"></pd-icon>
     <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: red"></pd-icon>
@@ -139,21 +148,25 @@ const ColorStory = args =>
     <pd-icon class="mt-3" size="3" name="${args.icons}" style="fill: lime"></pd-icon>
     `;
 
-export const Color = ColorStory.bind({});
-
-Color.args = {
-    ...Size.args,
+const colorArgs = {
+    ...sizeArgs,
     color: '#0b7285',
 };
 
-Color.argTypes = {
-    ...Size.argTypes,
+const colorArgTypes = {
+    ...sizeArgTypes,
     color: { control: { type: 'color' } },
+};
+
+export const Color: StoryObj = {
+    render: color,
+    args: colorArgs,
+    argTypes: colorArgTypes,
 };
 
 // ///////////////////////////////////////////////////////////////////////////
 
-const RotateStory = args => `
+const rotate = args => `
     <div class="m-3">
         <h3>${args.rotate}deg</h3>
         <pd-icon name="${args.icons}" size="3" rotate="${args.rotate}"></pd-icon>
@@ -171,21 +184,25 @@ const RotateStory = args => `
         <pd-icon name="${args.icons}" size="3" rotate="295"></pd-icon>
     </div>`;
 
-export const Rotate = RotateStory.bind({});
-
-Rotate.args = {
+const rotateArgs = {
     icons: 'parlament',
     rotate: 0,
 };
 
-Rotate.argTypes = {
+const rotateArgTypes = {
     icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
     rotate: { control: { type: 'number' } },
 };
 
+export const Rotate: StoryObj = {
+    render: rotate,
+    args: rotateArgs,
+    argTypes: rotateArgTypes,
+};
+
 // ///////////////////////////////////////////////////////////////////////////
 
-const FlipStory = args => `
+const flip = args => `
     <div class="m-3">
         <h3>${args.flip}</h3>
         <pd-icon name="${args.icons}" size="3" flip="${args.flip}"></pd-icon>
@@ -203,21 +220,25 @@ const FlipStory = args => `
         <pd-icon name="${args.icons}" size="3" flip="xy"></pd-icon>
     </div>`;
 
-export const Flip = FlipStory.bind({});
-
-Flip.args = {
+const flipArgs = {
     icons: 'parlament',
     flip: 'x',
 };
 
-Flip.argTypes = {
+const flipArgTypes = {
     icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
     flip: { control: { type: 'select' }, options: ['none', 'x', 'y', 'xy'] },
 };
 
+export const Flip: StoryObj = {
+    render: flip,
+    args: flipArgs,
+    argTypes: flipArgTypes,
+};
+
 // ///////////////////////////////////////////////////////////////////////////
 
-const SpinStory = args => `
+const spin = args => `
     <div class="m-3">
         <h3>${args.speed}ms ${!args.direction ? '(cw)' : '(ccw)'}</h3>
         <pd-icon name="${args.icons}" size="3" spin="${args.speed}" spin-reverse="${args.direction}"></pd-icon>
@@ -239,16 +260,18 @@ const SpinStory = args => `
         <pd-icon name="${args.icons}" size="3" spin="5000" spin-reverse></pd-icon>
     </div>`;
 
-export const Spin = SpinStory.bind({});
-
-Spin.args = {
+const spinArgs = {
     icons: 'parlament',
     direction: false,
     speed: 1000,
 };
 
-Spin.argTypes = {
+const spinArgTypes = {
     icons: { control: { type: 'select' }, options: Object.keys(iconMap) },
-    direction: { control: { type: 'boolean' } },
-    speed: { control: { type: 'number' } },
+};
+
+export const Spin: StoryObj = {
+    render: spin,
+    args: spinArgs,
+    argTypes: spinArgTypes,
 };

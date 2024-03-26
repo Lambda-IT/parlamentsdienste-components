@@ -1,11 +1,12 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
 
-export default {
+const meta: Meta = {
     title: 'Layout/Card',
-    parameters: {
-        // notes
-    },
 };
+
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
 
 export const basic = () => {
     return `
@@ -32,4 +33,8 @@ export const basic = () => {
         </div>
     </div>
   `;
+};
+
+export const Basic: StoryObj = {
+    render: basic,
 };
