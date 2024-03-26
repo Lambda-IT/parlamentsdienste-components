@@ -63,85 +63,60 @@ export const States: StoryObj = {
 
 ///////////////////////////////////////////////////////////////////////////
 
-const outlineButtons = (args: ButtonArgs) => `
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Primary</pd-button>
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} color="success" type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Success</pd-button>
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} color="danger" type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Danger</pd-button>
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} color="warning" type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Warning</pd-button>
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} color="info" type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Info</pd-button>
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} color="light" type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Light</pd-button>
-<pd-button class="mt-3 ml-3" ${args.outline ? 'outline' : ''} ${args.disabled ? 'disabled' : ''} size=${args.size} color="dark" type="${
-    args.type
-}" full-width="${args.fullWidth}" ${args.showAsLink ? 'show-as-link' : ''}>Dark</pd-button>
-`;
-
 export const Outline: StoryObj = {
-    render: outlineButtons,
+    render: statesButtons,
     args: { ...defaultArgs, outline: true },
     argTypes: defaultArgTypes,
 };
 
 ///////////////////////////////////////////////////////////////////////////
 
-const iconArgs = {
-    location: 'left',
-    size: 'normal',
-    fullWidth: false,
-    showAsLink: false,
-};
-
 const iconArgTypes = {
     location: { control: { type: 'select' }, options: ['left', 'right', 'center'] },
-    size: { control: { type: 'select' }, options: ['small', 'normal', 'large'] },
 };
 
-type IconArgs = typeof iconArgs;
-
-const iconButtons = (args: IconArgs) => `
+const iconButtons = args => `
     <div>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="success">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="danger">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="warning">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="info">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="light">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" full-width="${args.fullWidth}" size=${args.size} show-as-link="${args.showAsLink}" color="dark">
-            <pd-icon size="2" slot="icon" name="link"></pd-icon>
-            button
-        </pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Primary</pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} color="success" type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Success</pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} color="danger" type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Danger</pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} color="warning" type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Warning</pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} color="info" type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Info</pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} color="light" type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Light</pd-button>
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" ${args.outline ? 'outline' : ''} ${
+    args.disabled ? 'disabled' : ''
+} size=${args.size} color="dark" type="${args.type}" full-width="${args.fullWidth}" ${
+    args.showAsLink ? 'show-as-link' : ''
+}><pd-icon size="2" slot="icon" name="link"></pd-icon>Dark</pd-button>
     </div>
     <div>
-        <pd-button class="mt-3 ml-3" icon-location="${args.location}" href="http://www.google.ch" target="_blank" full-width="${args.fullWidth}">
+        <pd-button class="mt-3 ml-3" icon-location="${args.location}" href="http://www.google.ch" target="_blank" full-width="${
+    args.fullWidth
+}">
             <pd-icon size="1.2" style="fill: #0b7285" slot="icon" name="link"></pd-icon>
             external link
         </pd-button>
@@ -150,7 +125,7 @@ const iconButtons = (args: IconArgs) => `
 
 export const Icon: StoryObj = {
     render: iconButtons,
-    args: iconArgs,
+    args: { ...defaultArgs, location: 'left' },
     argTypes: iconArgTypes,
 };
 
