@@ -1,23 +1,27 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
 
-export default {
-    title: 'Forms + Inputs/Radio',
-    parameters: {
-        // notes,
-    },
-    argTypes: {
-        checked: { control: { type: 'boolean' } },
-        value: { control: { type: 'text' } },
-        label: { control: { type: 'text' } },
-        name: { control: { type: 'text' } },
-        disabled: { control: { type: 'boolean' } },
-        readonly: { control: { type: 'boolean' } },
-        error: { control: { type: 'boolean' } },
-        verticalAdjust: { control: { type: 'boolean' } },
-    },
+const defaultArgs = {
+    checked: false,
+    value: '1',
+    label: 'radio 1',
+    name: 'radio-test',
+    disabled: false,
+    readonly: false,
+    error: false,
+    verticalAdjust: false,
 };
 
-export const radio = args => {
+type RadioArgs = typeof defaultArgs;
+
+const meta: Meta<RadioArgs> = {
+    title: 'Forms + Inputs/Radio',
+};
+
+export default meta;
+
+///////////////////////////////////////////////////////////////////////////
+
+const radio = args => {
     return `
         <div class="m-3">
             <pd-radio
@@ -42,13 +46,7 @@ export const radio = args => {
     `;
 };
 
-radio.args = {
-    checked: false,
-    value: '1',
-    label: 'radio 1',
-    name: 'radio-test',
-    disabled: false,
-    readonly: false,
-    error: false,
-    verticalAdjust: false,
+export const Radio: StoryObj = {
+    render: radio,
+    args: defaultArgs,
 };

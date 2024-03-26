@@ -1,28 +1,38 @@
-// import notes from './readme.md';
+import type { Meta, StoryObj } from '@storybook/html';
+import { withActions } from '@storybook/addon-actions/decorator';
 
-export default {
+const defaultArgs = {
+    name: '',
+    max: 100,
+    min: 0,
+    step: 1,
+    value: null,
+    disabled: false,
+    readonly: false,
+    error: false,
+};
+
+type SliderArgs = typeof defaultArgs;
+
+const defaultArgTypes = {
+    value: { control: { type: 'number' } },
+};
+
+const meta: Meta<SliderArgs> = {
     title: 'Forms + Inputs/Slider',
     parameters: {
         actions: {
             handles: ['pd-input', 'pd-change'],
         },
-        // notes,
     },
-    argTypes: {
-        value: { control: { type: 'number' } },
-        name: { control: { type: 'text' } },
-        max: { control: { type: 'number' } },
-        min: { control: { type: 'number' } },
-        step: { control: { type: 'number' } },
-        disabled: { control: { type: 'boolean' } },
-        readonly: { control: { type: 'boolean' } },
-        error: { control: { type: 'boolean' } },
-    },
+    decorators: [withActions],
 };
+
+export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
 
-export const Slider = args => {
+const slider = args => {
     return `
         <pd-slider class="m-3"
         name="${args.name}"
@@ -38,13 +48,8 @@ export const Slider = args => {
     `;
 };
 
-Slider.args = {
-    name: '',
-    max: 100,
-    min: 0,
-    step: 1,
-    value: null,
-    disabled: false,
-    readonly: false,
-    error: false,
+export const Slider: StoryObj = {
+    render: slider,
+    args: defaultArgs,
+    argTypes: defaultArgTypes,
 };
