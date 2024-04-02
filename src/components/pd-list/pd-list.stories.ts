@@ -72,7 +72,7 @@ const expandableList = args => `
             ${args.expandable ? 'expandable' : ''} 
             ${args.menu ? 'menu' : ''} 
             ${args.contentClick ? 'content-click' : ''} 
-            status="${args.status}" 
+            ${args.status === '-none-' ? '' : `status="${args.status}"`}
             style="--pd-list-item-background: #fff"
         >
             <div>16.3112</div>
@@ -101,7 +101,7 @@ const expandableArgs = {
 };
 
 const expandableArgTypes = {
-    status: { control: { type: 'select' }, options: ['success', 'danger', 'warning', 'info', 'unset'] },
+    status: { control: { type: 'select' }, options: ['-none-', 'success', 'danger', 'warning', 'info', 'unset'] },
 };
 
 export const ExpandableList: StoryObj = {
