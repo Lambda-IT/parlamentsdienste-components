@@ -7,7 +7,7 @@
     background-color: var(--pd-list-item-background, transparent);
     border-radius: 0.25rem;
     overflow: hidden;
-    --negative-icon-margin: -0.5rem 0;
+    --negative-icon-margin: -0.5rem 0.25rem -0.5rem -0.5rem;
 
     .pd-list-item-expandable-header {
         display: grid;
@@ -42,11 +42,10 @@
         display: flex;
         align-items: center;
         height: 100%;
-        margin: var(--negative-icon-margin);
+        padding-right: 0.875rem;
     }
 
     .pd-list-item-expandable-status {
-        width: 3.125em;
         height: 100%;
         display: flex;
         justify-content: center;

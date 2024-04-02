@@ -101,7 +101,7 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
                         'pd-list-item-expandable-header': true,
                     }}
                 >
-                    <div class={{ 'pd-list-item-expandable-checkbox': this.checkbox }}>{this.renderCheckbox()}</div>
+                    {this.renderCheckbox()}
                     {this.renderStatus()}
                     <div
                         class="pd-list-item-expandable-content"
@@ -195,11 +195,13 @@ export class ListItemExpandable implements ComponentInterface, ComponentDidLoad 
     private renderCheckbox() {
         if (!this.checkbox) return;
         return (
-            <pd-checkbox
-                onPd-checked={ev => this.checkboxChecked(ev)}
-                checked={this.checked}
-                data-test="pd-list-item-expandable-checkbox"
-            ></pd-checkbox>
+            <div class="pd-list-item-expandable-checkbox">
+                <pd-checkbox
+                    onPd-checked={ev => this.checkboxChecked(ev)}
+                    checked={this.checked}
+                    data-test="pd-list-item-expandable-checkbox"
+                ></pd-checkbox>
+            </div>
         );
     }
 }
