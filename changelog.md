@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Updated all storybook stories to have the actions back after the update of stencil and storybook.
 -   Added different icon-button-states to storybook.
 
+## [3.0.4] - 2024-03-22
+
 ### Changed
 
 -   #278 Added a css variable `--pd-list-item-padding` to pd-list-item-expandable and pd-list-item.
