@@ -44,6 +44,7 @@
     "dependencies": {
         "@a11y/focus-trap": "^1.0.5",
         "@juggle/resize-observer": "^3.4.0",
+        "@lottiefiles/lottie-player": "^2.0.4",
         "@popperjs/core": "^2.4.0",
         "@stencil/core": "^4.7.2",
         "@stencil/store": "^2.0.11",
