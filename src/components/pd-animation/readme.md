@@ -9,8 +9,14 @@ If you want to host assets (lottie json files in this case) sepearate to the lib
 
 <!-- Auto Generated Below -->
 
-## Properties | Property | Attribute | Description | Type | Default | | -------- | --------- | ----------------------------------------- |
-------------------------------------------------------------- | ----------- | | `name` | `name` | Name of an icon from the provided gallery
-| `"404" \| "access-denied" \| "error" \| "under-construction"` | `undefined` | ---------------------------------------------- *Built with
-[StencilJS](https://stenciljs.com/)*
-```
+
+## Properties
+
+| Property | Attribute | Description                               | Type                                                          | Default     |
+| -------- | --------- | ----------------------------------------- | ------------------------------------------------------------- | ----------- |
+| `name`   | `name`    | Name of an icon from the provided gallery | `"404" \| "access-denied" \| "error" \| "under-construction"` | `undefined` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
