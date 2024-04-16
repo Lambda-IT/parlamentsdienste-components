@@ -48,6 +48,12 @@ export namespace Components {
          */
         "hideIcon": boolean;
     }
+    interface PdAnimation {
+        /**
+          * Name of an icon from the provided gallery
+         */
+        "name": '404' | 'access-denied' | 'error' | 'under-construction';
+    }
     interface PdBackdrop {
         /**
           * Invisible backdrop when set to false
@@ -1253,6 +1259,12 @@ declare global {
         prototype: HTMLPdAlertElement;
         new (): HTMLPdAlertElement;
     };
+    interface HTMLPdAnimationElement extends Components.PdAnimation, HTMLStencilElement {
+    }
+    var HTMLPdAnimationElement: {
+        prototype: HTMLPdAnimationElement;
+        new (): HTMLPdAnimationElement;
+    };
     interface HTMLPdBackdropElementEventMap {
         "pd-tap": void;
     }
@@ -1764,6 +1776,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
+        "pd-animation": HTMLPdAnimationElement;
         "pd-backdrop": HTMLPdBackdropElement;
         "pd-button": HTMLPdButtonElement;
         "pd-button-group": HTMLPdButtonGroupElement;
@@ -1855,6 +1868,12 @@ declare namespace LocalJSX {
           * Emitted when inner content is expanded/collapsed.
          */
         "onPd-collapsed"?: (event: PdAlertCustomEvent<boolean>) => void;
+    }
+    interface PdAnimation {
+        /**
+          * Name of an icon from the provided gallery
+         */
+        "name"?: '404' | 'access-denied' | 'error' | 'under-construction';
     }
     interface PdBackdrop {
         "onPd-tap"?: (event: PdBackdropCustomEvent<void>) => void;
@@ -3075,6 +3094,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
+        "pd-animation": PdAnimation;
         "pd-backdrop": PdBackdrop;
         "pd-button": PdButton;
         "pd-button-group": PdButtonGroup;
@@ -3121,6 +3141,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
+            "pd-animation": LocalJSX.PdAnimation & JSXBase.HTMLAttributes<HTMLPdAnimationElement>;
             "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
