@@ -70,6 +70,7 @@
     .pd-list-item-expandable-actions {
         display: flex;
         margin: var(--negative-icon-margin);
+        margin-left: 1rem;
 
         .pd-list-item-expandable-expand,
         .pd-list-item-expandable-edit {
