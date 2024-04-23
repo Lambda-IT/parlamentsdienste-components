@@ -4,18 +4,19 @@ import { defineCustomElements } from '../dist/esm/loader';
 defineCustomElements();
 
 const config: StorybookConfig = {
-  stories: ['../src/stories/welcome/welcome.stories.js', '../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
-  framework: {
-    name: '@storybook/html-vite',
-    options: {},
-  },
-  docs: {
-    autodocs: 'tag',
-  },
-  staticDirs: [
-    { from: '../dist/parlamentsdienstecore/assets-fonts', to: '/assets/fonts' },
-    { from: '../dist/parlamentsdienstecore/assets-icon', to: '/assets/assets-icon' },
-  ],
+    stories: ['../src/stories/welcome/welcome.stories.js', '../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+    addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+    framework: {
+        name: '@storybook/html-vite',
+        options: {},
+    },
+    docs: {
+        autodocs: 'tag',
+    },
+    staticDirs: [
+        { from: '../dist/parlamentsdienstecore/assets-fonts', to: '/assets/fonts' },
+        { from: '../dist/parlamentsdienstecore/assets-icon', to: '/assets/assets-icon' },
+        { from: '../dist/parlamentsdienstecore/assets-animation', to: '/assets/assets-animation' },
+    ],
 };
 export default config;
