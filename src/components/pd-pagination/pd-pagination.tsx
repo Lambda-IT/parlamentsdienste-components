@@ -72,17 +72,37 @@ export class Pagination implements ComponentInterface {
     public render() {
         return (
             <Host>
-                <button class="pd-pagination-first" onClick={() => this.firstPage()} data-test="pd-pagination-first">
+                <button
+                    class={{ 'pd-pagination-first': true, 'pd-pagination-disabled': this.currentPage <= 1 }}
+                    onClick={() => this.firstPage()}
+                    data-test="pd-pagination-first"
+                    disabled={this.currentPage <= 1}
+                >
                     <span>&laquo;</span>
                 </button>
-                <button class="pd-pagination-prev" onClick={() => this.prevPage()} data-test="pd-pagination-prev">
+                <button
+                    class={{ 'pd-pagination-prev': true, 'pd-pagination-disabled': this.currentPage <= 1 }}
+                    onClick={() => this.prevPage()}
+                    data-test="pd-pagination-prev"
+                    disabled={this.currentPage <= 1}
+                >
                     <span>&#8249;</span>
                 </button>
                 {this.showPageButtons ? this.renderPageButtons() : this.renderSimplePages()}
-                <button class="pd-pagination-next" onClick={() => this.nextPage()} data-test="pd-pagination-next">
+                <button
+                    class={{ 'pd-pagination-next': true, 'pd-pagination-disabled': this.currentPage >= this.totalPages }}
+                    onClick={() => this.nextPage()}
+                    data-test="pd-pagination-next"
+                    disabled={this.currentPage >= this.totalPages}
+                >
                     <span>&#8250;</span>
                 </button>
-                <button class="pd-pagination-last" onClick={() => this.lastPage()} data-test="pd-pagination-last">
+                <button
+                    class={{ 'pd-pagination-last': true, 'pd-pagination-disabled': this.currentPage >= this.totalPages }}
+                    onClick={() => this.lastPage()}
+                    data-test="pd-pagination-last"
+                    disabled={this.currentPage >= this.totalPages}
+                >
                     <span>&raquo;</span>
                 </button>
             </Host>

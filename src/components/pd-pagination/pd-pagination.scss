@@ -25,13 +25,13 @@
     background-color: white;
     padding: 0.25rem;
 
-    &:hover {
+    &:not(.pd-pagination-disabled):hover {
         background-color: setcolor(primary, hover);
         color: white;
         cursor: pointer;
     }
 
-    &:active {
+    &:not(.pd-pagination-disabled):active {
         background-color: setcolor(primary, pressed);
         color: white;
     }
@@ -42,6 +42,10 @@
 
     span {
         margin-top: -0.2rem;
+    }
+
+    &.pd-pagination-disabled {
+        color: $gray-3;
     }
 }
 
