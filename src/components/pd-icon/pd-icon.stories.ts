@@ -84,6 +84,7 @@ const basic = () =>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="radio_checked"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="radio_default"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="ratsmitglied_gruppen"></pd-icon>
+    <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="refresh"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="research"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="reservation"></pd-icon>
     <pd-icon style="background-color:#fff" class="mt-3" size="2.5" name="response"></pd-icon>

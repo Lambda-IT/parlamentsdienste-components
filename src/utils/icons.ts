@@ -72,6 +72,7 @@ export const iconMap = {
     radio_checked: 'radio_checked',
     radio_default: 'radio_default',
     ratsmitglied_gruppen: 'ratsmitglied_gruppen',
+    refresh: 'refresh',
     research: 'research',
     reservation: 'reservation',
     response: 'response',
