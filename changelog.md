@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.8] - 2024-06-18
+
+### Changed
+
+-   #282 New component pd-skeleton
+    Has two properties: `width` and `height`. Width is set to 100% by default. Height is set to 32px by default.
+-   #284 Added a counter-chip-button to pd-combobox in multiselect-mode. It shows how many items are selected and with a click on it, all items are deselected.
+    I also added a new property `disable-multiselect-counter` to the pd-combobox. If set to true, the counter will not be show, e.g. when the space is limited.
+-   #281 pd-icon: Added a new icon `refresh`
+-   #279 pd-pagination: disabled pagination buttons when there is no page to go to
+
 ## [3.0.7] - 2024-04-16
 
 ### Changed
@@ -624,6 +635,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[3.0.8]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.8
+[3.0.7]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.7
 [3.0.6]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.6
 [3.0.5]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.5
 [3.0.4]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.4
