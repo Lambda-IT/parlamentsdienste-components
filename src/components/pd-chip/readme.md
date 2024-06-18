@@ -50,6 +50,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [pd-combobox](../pd-combobox)
+
 ### Depends on
 
 - [pd-icon](../pd-icon)
@@ -58,6 +62,7 @@
 ```mermaid
 graph TD;
   pd-chip --> pd-icon
+  pd-combobox --> pd-chip
   style pd-chip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
