@@ -509,6 +509,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     public render() {
+        const showMultiSelectCounter =
+            this.multiselect && !this.disableMultiselectCounter && !this.error && this.state.items.filter(item => item.selected).length > 0;
         return (
             <Host role="combobox">
                 <label
@@ -529,11 +531,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 class={{
                                     'pd-combobox-input': true,
                                     'pd-combobox-input-with-icon': this.selectable && S.selectedHasIcon(this.state),
-                                    'pd-combobox-input-with-multiselect-counter':
-                                        this.multiselect &&
-                                        !this.disableMultiselectCounter &&
-                                        !this.error &&
-                                        this.state.items.filter(item => item.selected).length > 0,
+                                    'pd-combobox-input-with-multiselect-counter': showMultiSelectCounter,
                                 }}
                                 data-test="pd-combobox-input"
                                 ref={input => (this.nativeInput = input)}
@@ -557,15 +555,15 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 </button>
                             ) : null}
 
-                            {this.multiselect &&
-                            !this.disableMultiselectCounter &&
-                            !this.error &&
-                            this.state.items.filter(item => item.selected).length > 0 ? (
+                            {showMultiSelectCounter ? (
                                 <div class="pd-combobox-icon pd-combobox-multiselect-counter">
                                     <pd-chip
                                         disabled={this.disabled}
                                         type={this.readonly || this.disabled ? 'text' : 'toggle'}
-                                        onClick={() => this.deselectAllItems()}
+                                        onClick={() => {
+                                            if (this.disabled || this.readonly) return;
+                                            return this.deselectAllItems();
+                                        }}
                                     >
                                         {this.state.items.filter(item => item.selected).length}
                                     </pd-chip>
