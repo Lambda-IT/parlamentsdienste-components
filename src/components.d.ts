@@ -854,6 +854,16 @@ export namespace Components {
          */
         "text": string;
     }
+    interface PdSkeleton {
+        /**
+          * Sets the height of the skeleton loader
+         */
+        "height": string;
+        /**
+          * Sets the widht of the skeleton loader
+         */
+        "width": string;
+    }
     interface PdSlider {
         /**
           * If `true`, the user cannot interact with the input.
@@ -1629,6 +1639,12 @@ declare global {
         prototype: HTMLPdSidebarItemElement;
         new (): HTMLPdSidebarItemElement;
     };
+    interface HTMLPdSkeletonElement extends Components.PdSkeleton, HTMLStencilElement {
+    }
+    var HTMLPdSkeletonElement: {
+        prototype: HTMLPdSkeletonElement;
+        new (): HTMLPdSkeletonElement;
+    };
     interface HTMLPdSliderElementEventMap {
         "pd-input": InputChangeEventDetail;
         "pd-change": InputChangeEventDetail;
@@ -1807,6 +1823,7 @@ declare global {
         "pd-search": HTMLPdSearchElement;
         "pd-sidebar": HTMLPdSidebarElement;
         "pd-sidebar-item": HTMLPdSidebarItemElement;
+        "pd-skeleton": HTMLPdSkeletonElement;
         "pd-slider": HTMLPdSliderElement;
         "pd-sort": HTMLPdSortElement;
         "pd-table": HTMLPdTableElement;
@@ -2735,6 +2752,16 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
+    interface PdSkeleton {
+        /**
+          * Sets the height of the skeleton loader
+         */
+        "height"?: string;
+        /**
+          * Sets the widht of the skeleton loader
+         */
+        "width"?: string;
+    }
     interface PdSlider {
         /**
           * If `true`, the user cannot interact with the input.
@@ -3125,6 +3152,7 @@ declare namespace LocalJSX {
         "pd-search": PdSearch;
         "pd-sidebar": PdSidebar;
         "pd-sidebar-item": PdSidebarItem;
+        "pd-skeleton": PdSkeleton;
         "pd-slider": PdSlider;
         "pd-sort": PdSort;
         "pd-table": PdTable;
@@ -3172,6 +3200,7 @@ declare module "@stencil/core" {
             "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
             "pd-sidebar": LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
+            "pd-skeleton": LocalJSX.PdSkeleton & JSXBase.HTMLAttributes<HTMLPdSkeletonElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-sort": LocalJSX.PdSort & JSXBase.HTMLAttributes<HTMLPdSortElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
