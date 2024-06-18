@@ -9,6 +9,7 @@ const defaultArgs = {
     viewonly: false,
     selectable: false,
     multiselect: false,
+    disableMultiselectCounter: false,
     error: false,
     required: false,
     highlight: false,
@@ -70,6 +71,7 @@ const basic = args => {
     c1.viewOnly = args.viewonly;
     c1.selectable = args.selectable;
     c1.multiselect = args.multiselect;
+    c1.disableMultiselectCounter = args.disableMultiselectCounter;
     c1.error = args.error;
     c1.required = args.required;
     c1.label = args.label;
@@ -104,6 +106,7 @@ const selectable = args => {
     c2.viewOnly = args.viewonly;
     c2.selectable = args.selectable;
     c2.multiselect = args.multiselect;
+    c2.disableMultiselectCounter = args.disableMultiselectCounter;
     c2.error = args.error;
     c2.required = args.required;
     c2.label = args.label + ' (selectable)';
@@ -138,6 +141,7 @@ const multiSelect = args => {
     c3.viewOnly = args.viewonly;
     c3.selectable = args.selectable;
     c3.multiselect = args.multiselect;
+    c3.disableMultiselectCounter = args.disableMultiselectCounter;
     c3.error = args.error;
     c3.required = args.required;
     c3.label = args.label + ' (mulitselect)';

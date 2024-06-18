@@ -86,6 +86,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() multiselect = false;
 
     /**
+     * If `true`, the button to deselect all selected items will not be shown.
+     */
+    @Prop() disableMultiselectCounter = false;
+
+    /**
      * Instructional text that shows before the input has a value.
      */
     @Prop() placeholder?: string;
@@ -425,6 +430,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.setFocus();
     }
 
+    private deselectAllItems() {
+        this.state.items = this.state.items.map(item => ({ ...item, selected: false }));
+        this.state.filteredItems = this.state.items;
+        this.pdCombobox.emit(null);
+    }
+
     private onInputClick = () => {
         if (this.state.open === true) {
             S.closeDropdown(this.state);
@@ -518,6 +529,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 class={{
                                     'pd-combobox-input': true,
                                     'pd-combobox-input-with-icon': this.selectable && S.selectedHasIcon(this.state),
+                                    'pd-combobox-input-with-multiselect-counter':
+                                        this.multiselect &&
+                                        !this.disableMultiselectCounter &&
+                                        !this.error &&
+                                        this.state.items.filter(item => item.selected).length > 0,
                                 }}
                                 data-test="pd-combobox-input"
                                 ref={input => (this.nativeInput = input)}
@@ -539,6 +555,21 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                                 <button class="pd-combobox-icon left" tabindex="-1" onClick={() => this.setFocus()}>
                                     <pd-icon class="pd-icon pd-combobox-icon-search" name="search" size={2.4}></pd-icon>
                                 </button>
+                            ) : null}
+
+                            {this.multiselect &&
+                            !this.disableMultiselectCounter &&
+                            !this.error &&
+                            this.state.items.filter(item => item.selected).length > 0 ? (
+                                <div class="pd-combobox-icon pd-combobox-multiselect-counter">
+                                    <pd-chip
+                                        disabled={this.disabled}
+                                        type={this.readonly || this.disabled ? 'text' : 'toggle'}
+                                        onClick={() => this.deselectAllItems()}
+                                    >
+                                        {this.state.items.filter(item => item.selected).length}
+                                    </pd-chip>
+                                </div>
                             ) : null}
 
                             {this.selectable && S.selectedHasIcon(this.state) ? (

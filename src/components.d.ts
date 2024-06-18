@@ -170,6 +170,10 @@ export namespace Components {
          */
         "disableFilter": boolean;
         /**
+          * If `true`, the button to deselect all selected items will not be shown.
+         */
+        "disableMultiselectCounter": boolean;
+        /**
           * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
@@ -2017,6 +2021,10 @@ declare namespace LocalJSX {
           * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
          */
         "disableFilter"?: boolean;
+        /**
+          * If `true`, the button to deselect all selected items will not be shown.
+         */
+        "disableMultiselectCounter"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
          */

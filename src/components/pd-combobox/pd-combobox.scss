@@ -44,6 +44,8 @@
         padding-left: 3rem;
         border-radius: 0.25rem;
         border: 0.125rem solid setcolor(primary, enabled);
+        transition-property: padding-left;
+        transition-duration: 0.1s;
 
         &:focus-visible {
             background-color: $yellow-1;
@@ -52,6 +54,10 @@
             & .pd-combobox-icon {
                 fill: $blue-whale;
             }
+        }
+
+        &.pd-combobox-input-with-multiselect-counter {
+            padding-left: 8rem;
         }
     }
 
@@ -74,6 +80,10 @@
 
         &.right {
             right: 0.25rem;
+        }
+
+        &.pd-combobox-multiselect-counter {
+            left: 3.5rem;
         }
     }
 
