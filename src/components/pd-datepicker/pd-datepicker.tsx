@@ -130,6 +130,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
      */
     @Method()
     async set(option: any, value?: any) {
+        this.setFlatpickrInstance();
         this.flatpickr.set(option, value);
     }
 
@@ -172,11 +173,17 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
      */
     @Method()
     async setDate(date: DateOption | DateOption[], triggerChange?: boolean, format?: string) {
+        this.setFlatpickrInstance();
         this.flatpickr.setDate(date, triggerChange, format);
     }
 
-    public componentDidLoad() {
+    public setFlatpickrInstance() {
+        if (this.flatpickr) return;
         this.flatpickr = flatpickr(this.contentWrapperElement, Object.assign(this.defaultConfig, this.config));
+    }
+
+    public componentDidLoad() {
+        this.setFlatpickrInstance();
 
         if (this.date) this.setDate(this.date, false);
     }
@@ -184,6 +191,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     public disconnectedCallback() {
         if (this.flatpickr) {
             this.flatpickr.destroy();
+            this.flatpickr = null;
         }
     }
 
