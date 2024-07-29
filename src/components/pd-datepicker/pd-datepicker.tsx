@@ -202,7 +202,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         if (this.date) this.flatpickr.setDate(this.date, false);
     }
 
-    public componentWillLoad(): Promise<void> | void {
+    public componentWillLoad() {
         if (this.date) this.currentValue = this.date.toString();
     }
 
