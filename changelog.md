@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.9] - 2024-07-31
+
+### Changed
+
+-   #294 Added a activate() function to pd-datepicker. It re-initializes the flatpickr instance if its destroyed. Usefull if the flatpickr instance gets destroyed during Vue Keepalive and then you can reactive it within on the Vue onActivated hook.
+    The instance gets also re-initialized (if destroyed before) if you use the setDate() function or the value property .date to set a new date. So you can directly set a date if you have one or call the activate() function to just re-initialize the instance.
+-   #295 Added a clear-icon to pd-datepicker. It is shown by default. If you want to hide it, set the property `hide-clear-icon` to true.
+
 ## [3.0.8] - 2024-06-18
 
 ### Changed
@@ -635,6 +643,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[3.0.9]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.9
 [3.0.8]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.8
 [3.0.7]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.7
 [3.0.6]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.6
