@@ -59,61 +59,61 @@
     flex: 1 1 auto;
 
     &:hover {
-        + .pd-datepicker-icon {
+        ~ .pd-datepicker-icon {
             fill: setcolor(primary, hover);
         }
     }
 
     &.pd-datepicker-error:hover {
-        + .pd-datepicker-icon {
+        ~ .pd-datepicker-icon {
             fill: setcolor(danger, hover);
         }
     }
 }
 
 .pd-datepicker-input[readonly] {
-    + .pd-datepicker-icon {
+    ~ .pd-datepicker-icon {
         fill: setcolor(primary, enabledContrast);
     }
 
     &:hover {
-        + .pd-datepicker-icon {
+        ~ .pd-datepicker-icon {
             fill: setcolor(primary, hoverContrast);
         }
     }
 
     &:active {
-        + .pd-datepicker-icon {
+        ~ .pd-datepicker-icon {
             fill: setcolor(primary, pressedContrast);
         }
     }
 }
 
 .pd-datepicker-input[readonly].pd-datepicker-disabled {
-    + .pd-datepicker-icon {
+    ~ .pd-datepicker-icon {
         fill: setcolor(primary, disabledContrast);
     }
 }
 
 .pd-datepicker-input[readonly].pd-datepicker-readonly {
-    + .pd-datepicker-icon {
+    ~ .pd-datepicker-icon {
         fill: setcolor(primary, readonlyContrast);
     }
 }
 
 .pd-datepicker-input[readonly].pd-datepicker-error {
-    + .pd-datepicker-icon {
+    ~ .pd-datepicker-icon {
         fill: setcolor(danger, enabledContrast);
     }
 
     &:hover {
-        + .pd-datepicker-icon {
+        ~ .pd-datepicker-icon {
             fill: setcolor(danger, hoverContrast);
         }
     }
 
     &:active {
-        + .pd-datepicker-icon {
+        ~ .pd-datepicker-icon {
             fill: setcolor(danger, pressedContrast);
         }
     }
@@ -124,7 +124,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    right: 0.25rem;
     height: calc(100% - 0.25rem);
     top: 1px; // misaligned icon
     border: none;
@@ -134,6 +133,14 @@
     font-size: 4em;
     fill: setcolor(primary, enabled);
     pointer-events: none;
+
+    &.calendar-icon {
+        right: 0.25rem;
+    }
+    &.clear-icon {
+        right: 2.8rem;
+        pointer-events: all;
+    }
 }
 
 /**
@@ -147,6 +154,10 @@
     border: 0.125rem solid setcolor(primary, enabled);
     width: 100%;
     margin-top: var(--pd-input-vertical-adjust, inherit);
+
+    &.pd-datepicker-clearicon {
+        padding-right: 5.5rem;
+    }
 
     &:hover:enabled {
         border-color: setcolor(primary, hover);
@@ -197,7 +208,7 @@
         background-color: setcolor(primary, hover);
         border-color: setcolor(primary, hover);
         color: setcolor(primary, hoverContrast);
-        & + .pd-datepicker-icon {
+        & ~ .pd-datepicker-icon {
             fill: setcolor(primary, hoverContrast);
         }
     }
@@ -206,7 +217,7 @@
         background-color: setcolor(primary, pressed);
         border-color: setcolor(primary, pressed);
         color: setcolor(primary, pressedContrast);
-        & + .pd-datepicker-icon {
+        & ~ .pd-datepicker-icon {
             fill: setcolor(primary, pressedContrast);
         }
     }
@@ -215,7 +226,7 @@
         background-color: $focus;
         border-color: $focus;
         color: $blue-whale;
-        & + .pd-datepicker-icon {
+        & ~ .pd-datepicker-icon {
             fill: $blue-whale;
         }
     }
@@ -241,7 +252,7 @@
         background-color: setcolor(danger, hover);
         border-color: setcolor(danger, hover);
         color: setcolor(danger, hoverContrast);
-        & + .pd-datepicker-icon {
+        & ~ .pd-datepicker-icon {
             fill: setcolor(danger, hoverContrast);
         }
     }
@@ -250,7 +261,7 @@
         background-color: setcolor(danger, pressed);
         border-color: setcolor(danger, pressed);
         color: setcolor(danger, pressedContrast);
-        & + .pd-datepicker-icon {
+        & ~ .pd-datepicker-icon {
             fill: setcolor(danger, pressedContrast);
         }
     }
@@ -259,7 +270,7 @@
         background-color: $focus;
         border-color: $focus;
         color: $blue-whale;
-        & + .pd-datepicker-icon {
+        & ~ .pd-datepicker-icon {
             fill: $blue-whale;
         }
     }

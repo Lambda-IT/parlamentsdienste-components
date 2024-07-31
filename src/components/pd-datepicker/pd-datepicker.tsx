@@ -1,4 +1,17 @@
-import { Component, ComponentDidLoad, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentInterface,
+    Element,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Method,
+    Prop,
+    State,
+    Watch,
+} from '@stencil/core';
 import flatpickr from 'flatpickr';
 import { Instance } from 'flatpickr/dist/types/instance';
 import { BaseOptions, DateOption, Options } from 'flatpickr/dist/types/options';
@@ -15,12 +28,13 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     private flatpickr: Instance;
 
     private dateInputField: HTMLInputElement;
-    private currentValue: string;
+
+    @State() currentValue: string = '';
 
     /**
      * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
      */
-    @Prop() date: DateOption | DateOption[];
+    @Prop({ mutable: true }) date: DateOption | DateOption[];
 
     /**
      * Set the configuration for the datepicker (only applied at instantiation)
@@ -78,6 +92,11 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
      */
     @Prop() size?: number = 1;
 
+    /**
+     * Hides the clear icon
+     */
+    @Prop() hideClearIcon?: boolean = false;
+
     private defaultConfig: Partial<BaseOptions> = {
         wrap: true,
         time_24hr: true,
@@ -100,6 +119,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         onChange: (selectedDates, dateStr) => {
             this.currentValue = dateStr;
             this.pdChange.emit({ selectedDates, dateStr });
+            if (this.currentValue === '') this.pdValueUpdate.emit({ selectedDates, dateStr });
         },
         allowInput: this.allowInput,
         disableMobile: true,
@@ -139,6 +159,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     @Method()
     async clear() {
         this.flatpickr.clear();
+        this.date = null;
     }
 
     /**
@@ -173,12 +194,16 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     @Method()
     async setDate(date: DateOption | DateOption[], triggerChange?: boolean, format?: string) {
         this.flatpickr.setDate(date, triggerChange, format);
+        this.currentValue = this.flatpickr.input.value;
     }
 
     public componentDidLoad() {
         this.flatpickr = flatpickr(this.contentWrapperElement, Object.assign(this.defaultConfig, this.config));
+        if (this.date) this.flatpickr.setDate(this.date, false);
+    }
 
-        if (this.date) this.setDate(this.date, false);
+    public componentWillLoad() {
+        if (this.date) this.currentValue = this.date.toString();
     }
 
     public disconnectedCallback() {
@@ -210,6 +235,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                                 'pd-datepicker-disabled': this.disabled,
                                 'pd-datepicker-readonly': this.readonly,
                                 'pd-datepicker-error': this.error,
+                                'pd-datepicker-clearicon': !this.hideClearIcon,
                             }}
                             disabled={this.disabled}
                             readonly={this.readonly}
@@ -219,6 +245,8 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                             size={this.size}
                             data-input
                         />
+
+                        {this.renderClearIcon()}
                         {this.renderIcon()}
                     </div>
                 </label>
@@ -238,6 +266,15 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
 
     private renderIcon() {
         if (!this.icon) return;
-        return <pd-icon class="pd-datepicker-icon" name="calendar" data-toggle size={2.4}></pd-icon>;
+        return <pd-icon class="pd-datepicker-icon calendar-icon" name="calendar" data-toggle size={2.4}></pd-icon>;
+    }
+
+    private renderClearIcon() {
+        if (this.hideClearIcon || this.currentValue === '' || this.readonly || this.disabled) return;
+        return (
+            <button class="pd-datepicker-icon clear-icon" onClick={() => this.clear()} tabindex="-1" data-test="pd-datepicker-reset">
+                <pd-icon name="cancel" size={2.4}></pd-icon>
+            </button>
+        );
     }
 }
