@@ -271,12 +271,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     private renderClearIcon() {
         if (this.hideClearIcon || this.currentValue === '' || this.readonly || this.disabled) return;
         return (
-            <button
-                class="pd-datepicker-icon clear-icon"
-                onClick={() => this.flatpickr.clear()}
-                tabindex="-1"
-                data-test="pd-datepicker-reset"
-            >
+            <button class="pd-datepicker-icon clear-icon" onClick={() => this.clear()} tabindex="-1" data-test="pd-datepicker-reset">
                 <pd-icon name="cancel" size={2.4}></pd-icon>
             </button>
         );
