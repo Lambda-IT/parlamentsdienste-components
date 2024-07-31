@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/html';
 import { withActions } from '@storybook/addon-actions/decorator';
+import type { Meta, StoryObj } from '@storybook/html';
 
 const defaultArgs = {
     label: 'Label Text',
@@ -8,6 +8,7 @@ const defaultArgs = {
     placeholder: null,
     error: false,
     icon: true,
+    hideClearIcon: false,
     config_allow_input: false,
 };
 
@@ -40,6 +41,7 @@ const datepicker = args => {
     datepicker.placeholder = args.placeholder;
     datepicker.error = args.error;
     datepicker.icon = args.icon;
+    datepicker.hideClearIcon = args.hideClearIcon;
     datepicker.config = {
         allowInput: args.config_allow_input,
     };

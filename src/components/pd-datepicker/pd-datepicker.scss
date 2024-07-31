@@ -155,6 +155,10 @@
     width: 100%;
     margin-top: var(--pd-input-vertical-adjust, inherit);
 
+    &.pd-datepicker-clearicon {
+        padding-right: 5.5rem;
+    }
+
     &:hover:enabled {
         border-color: setcolor(primary, hover);
     }
