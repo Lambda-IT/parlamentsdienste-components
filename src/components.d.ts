@@ -288,6 +288,10 @@ export namespace Components {
          */
         "error": boolean;
         /**
+          * Hides the clear icon
+         */
+        "hideClearIcon"?: boolean;
+        /**
           * If `true`, a calendar icon is shown at the end of the input.
          */
         "icon": boolean;
@@ -2135,6 +2139,10 @@ declare namespace LocalJSX {
           * Shows error state
          */
         "error"?: boolean;
+        /**
+          * Hides the clear icon
+         */
+        "hideClearIcon"?: boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
          */
