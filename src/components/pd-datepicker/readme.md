@@ -37,6 +37,16 @@
 
 ## Methods
 
+### `activate() => Promise<void>`
+
+Initializes the datepicker again without setting a date. Needed for example in Vue's KeepAlive, when the Instance was destroyed and needs to be re-initialized.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `clear() => Promise<void>`
 
 Resets the selected dates (if any) and clears the input.

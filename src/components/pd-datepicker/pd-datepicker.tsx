@@ -188,6 +188,14 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     }
 
     /**
+     * Initializes the datepicker again without setting a date. Needed for example in Vue's KeepAlive, when the Instance was destroyed and needs to be re-initialized.
+     */
+    @Method()
+    async activate() {
+        this.setFlatpickrInstance();
+    }
+
+    /**
      * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates.
      * Optionally, pass true as the second argument to force any onChange events to fire.
      * And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
@@ -207,10 +215,6 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     public componentDidLoad() {
         this.setFlatpickrInstance();
         if (this.date) this.flatpickr.setDate(this.date, false);
-    }
-
-    public componentWillLoad() {
-        if (this.date) this.currentValue = this.date.toString();
     }
 
     public disconnectedCallback() {

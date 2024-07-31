@@ -260,6 +260,10 @@ export namespace Components {
     }
     interface PdDatepicker {
         /**
+          * Initializes the datepicker again without setting a date. Needed for example in Vue's KeepAlive, when the Instance was destroyed and needs to be re-initialized.
+         */
+        "activate": () => Promise<void>;
+        /**
           * Allow manual input
          */
         "allowInput": boolean;
