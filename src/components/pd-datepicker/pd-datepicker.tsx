@@ -214,7 +214,10 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
 
     public componentDidLoad() {
         this.setFlatpickrInstance();
-        if (this.date) this.flatpickr.setDate(this.date, false);
+        if (this.date) {
+            this.flatpickr.setDate(this.date, false);
+            this.currentValue = this.flatpickr.input.value;
+        }
     }
 
     public disconnectedCallback() {
@@ -247,7 +250,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                                 'pd-datepicker-disabled': this.disabled,
                                 'pd-datepicker-readonly': this.readonly,
                                 'pd-datepicker-error': this.error,
-                                'pd-datepicker-clearicon': !this.hideClearIcon,
+                                'pd-datepicker-clearicon': !this.hideClearIcon && this.currentValue !== '',
                             }}
                             disabled={this.disabled}
                             readonly={this.readonly}
