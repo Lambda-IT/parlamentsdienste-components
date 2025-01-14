@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Listen, Prop } from '@stencil/core';
+import { AttachInternals, Component, ComponentInterface, h, Host, Listen, Prop } from '@stencil/core';
 import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../../types';
 
 /**
@@ -9,6 +9,7 @@ import { PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation } from '../..
     tag: 'pd-button',
     styleUrl: 'pd-button.scss',
     shadow: true,
+    formAssociated: true,
 })
 export class Button implements ComponentInterface {
     /**
@@ -62,6 +63,11 @@ export class Button implements ComponentInterface {
     @Prop({ attribute: 'icon-location' }) iconLocation: PdIconLocation = 'none';
 
     /**
+     * Internals for form association
+     */
+    @AttachInternals() internals: ElementInternals;
+
+    /**
      * Click event
      */
     @Listen('click', { capture: true })
@@ -70,6 +76,9 @@ export class Button implements ComponentInterface {
             e.preventDefault();
             e.stopPropagation();
             return;
+        }
+        if (this.type === 'submit' && this.internals.form) {
+            this.internals.form.submit();
         }
         return e;
     }
