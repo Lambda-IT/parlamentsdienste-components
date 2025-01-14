@@ -1,4 +1,5 @@
-FROM node:20-alpine as ui-builder
+FROM registry.lambda-it.ch/proxy_cache/library/node:20-alpine AS ui-builder
+
 WORKDIR /app
 COPY . .
 
