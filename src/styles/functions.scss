@@ -1,4 +1,0 @@
-// Our function for shorter usage of map-get();
-@function setcolor($scheme, $tone: enabled) {
-    @return map-get(map-get($colorscheme, $scheme), $tone);
-}
