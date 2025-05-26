@@ -1,0 +1,13 @@
+{
+  "name": "@parlamentsdienste-components/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/js": "21.1.2",
+    "@nx/workspace": "21.1.2",
+    "nx": "21.1.2"
+  }
+}
