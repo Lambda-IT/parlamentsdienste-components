@@ -1,13 +1,11 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "declaration": false,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2022"
-    ],
+    "lib": ["dom", "es2022"],
     "moduleResolution": "bundler",
     "module": "esnext",
     "target": "es2022",
@@ -17,10 +15,6 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment"
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

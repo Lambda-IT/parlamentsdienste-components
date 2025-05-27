@@ -9,18 +9,15 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/core/core.esm.js",
   "exports": {
-    ".": {
-      "import": "./dist/core/core.esm.js",
-      "require": "./dist/core/core.cjs.js"
-    },
-    "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
-    },
     "./loader": {
       "import": "./loader/index.js",
       "require": "./loader/index.cjs",
       "types": "./loader/index.d.ts"
+    },
+    "./components": {
+      "import": "./components/index.js",
+      "require": "./components/index.cjs",
+      "types": "./components/index.d.ts"
     }
   },
   "repository": {
@@ -28,6 +25,7 @@
     "url": "https://github.com/stenciljs/component-starter.git"
   },
   "files": [
+    "components/",
     "dist/",
     "loader/"
   ],

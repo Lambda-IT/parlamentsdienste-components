@@ -11,6 +11,7 @@ export const config: Config = {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'auto-define-custom-elements',
       externalRuntime: false,
+      dir: 'components',
     },
     {
       type: 'docs-readme',
@@ -21,6 +22,6 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "shell",
+    browserHeadless: 'shell',
   },
 };
