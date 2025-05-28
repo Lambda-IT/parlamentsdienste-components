@@ -5,10 +5,7 @@
   "scripts": {},
   "private": true,
   "workspaces": [
-    "packages/*",
-    "libs/*",
-    "docs",
-    "e2e"
+    "packages/*"
   ],
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~1.14.1",
