@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "@storybook/addon-docs": "9.0.4",
+    "@storybook/html-vite": "9.0.4",
+    "@parlamentsdienste-components/core": "0.0.1",
+    "storybook": "9.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
