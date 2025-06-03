@@ -18,7 +18,8 @@
       "import": "./components/index.js",
       "require": "./components/index.cjs",
       "types": "./components/index.d.ts"
-    }
+    },
+    "./components/my-component": "./components/my-component.js"
   },
   "repository": {
     "type": "git",

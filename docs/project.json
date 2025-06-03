@@ -9,6 +9,13 @@
         "cwd": "{projectRoot}",
         "command": "npx storybook dev -p 6006"
       }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "npx storybook build"
+      }
     }
   }
 }

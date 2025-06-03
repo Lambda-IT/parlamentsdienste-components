@@ -60,6 +60,7 @@ var registerHost = (hostElement, cmpMeta) => {
   }
   return ref;
 };
+var isMemberInElement = (elm, memberName) => memberName in elm;
 var consoleError = (e, el) => (0, console.error)(e, el);
 
 // src/client/client-style.ts
@@ -279,6 +280,22 @@ var parsePropertyValue = (propValue, propType) => {
   }
   return propValue;
 };
+var getElement = (ref) => ref;
+
+// src/runtime/event-emitter.ts
+var createEvent = (ref, name, flags) => {
+  const elm = getElement(ref);
+  return {
+    emit: (detail) => {
+      return emitEvent(elm, name, {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail
+      });
+    }
+  };
+};
 var emitEvent = (elm, name, opts) => {
   const ev = plt.ce(name, opts);
   elm.dispatchEvent(ev);
@@ -384,8 +401,29 @@ var setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags, initialRen
   if (oldValue === newValue) {
     return;
   }
-  memberName.toLowerCase();
+  let ln = memberName.toLowerCase();
+  if (memberName === "key") ; else if ((!elm.__lookupSetter__(memberName)) && memberName[0] === "o" && memberName[1] === "n") {
+    if (memberName[2] === "-") {
+      memberName = memberName.slice(3);
+    } else if (isMemberInElement(win, ln)) {
+      memberName = ln.slice(2);
+    } else {
+      memberName = ln[2] + memberName.slice(3);
+    }
+    if (oldValue || newValue) {
+      const capture = memberName.endsWith(CAPTURE_EVENT_SUFFIX);
+      memberName = memberName.replace(CAPTURE_EVENT_REGEX, "");
+      if (oldValue) {
+        plt.rel(elm, memberName, oldValue, capture);
+      }
+      if (newValue) {
+        plt.ael(elm, memberName, newValue, capture);
+      }
+    }
+  } else ;
 };
+var CAPTURE_EVENT_SUFFIX = "Capture";
+var CAPTURE_EVENT_REGEX = new RegExp(CAPTURE_EVENT_SUFFIX + "$");
 
 // src/runtime/vdom/update-element.ts
 var updateElement = (oldVnode, newVnode, isSvgMode2, isInitialRender) => {
@@ -1049,7 +1087,7 @@ function format(first, middle, last) {
     return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
 }
 
-export { H, format, getAssetPath, h, proxyCustomElement as p, render, setAssetPath, setNonce, setPlatformOptions };
+export { H, Host as a, createEvent as c, format, getAssetPath, h, proxyCustomElement as p, render, setAssetPath, setNonce, setPlatformOptions };
 //# sourceMappingURL=index.js.map
 
 //# sourceMappingURL=index.js.map

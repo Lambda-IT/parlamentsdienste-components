@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, format, h } from './index.js';
+import { p as proxyCustomElement, H, c as createEvent, format, h, a as Host } from './index.js';
 
 const myComponentCss = ":host{display:block}";
 
@@ -7,6 +7,7 @@ const MyComponent$1 = /*@__PURE__*/ proxyCustomElement(class MyComponent extends
         super();
         this.__registerHost();
         this.__attachShadow();
+        this.out = createEvent(this, "out");
     }
     /**
      * The first name
@@ -20,11 +21,15 @@ const MyComponent$1 = /*@__PURE__*/ proxyCustomElement(class MyComponent extends
      * The last name
      */
     last;
+    out;
     getText() {
         return format(this.first, this.middle, this.last);
     }
+    outputText() {
+        this.out.emit('This is text from my-component');
+    }
     render() {
-        return h("div", { key: '70654fc83039b5f659efe99cc990e9b86d20dbe0' }, "Hello, World! I'm ", this.getText());
+        return (h(Host, { key: 'a5ab60418d7c29d7ef8482dd440f6a5135e0a931' }, h("div", { key: '8d17a25a5ae0c3fa8ab0902e9b9176095cdfe308' }, "Hello, World! I'm ", this.getText()), h("button", { key: '920056223c224f4d256e14298231ea8c59ff9eb0', onClick: () => this.outputText() }, "This is button from my-component")));
     }
     static get style() { return myComponentCss; }
 }, [1, "my-component", {

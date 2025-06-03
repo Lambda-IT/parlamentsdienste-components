@@ -2,9 +2,14 @@
   "name": "@parlamentsdienste-components/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "npx nx run-many -t build",
+    "start:angular": "npx nx run test:serve",
+    "start:storybook": "npx nx run docs:start"
+  },
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*",
     "docs"
   ],
@@ -55,6 +60,8 @@
     "vitest": "^3.0.0"
   },
   "dependencies": {
+    "@parlamentsdienste-components/core": "0.0.1",
+    "@parlamentsdienste-components/angular": "0.0.1",
     "@angular/common": "~19.2.0",
     "@angular/compiler": "~19.2.0",
     "@angular/core": "~19.2.0",
