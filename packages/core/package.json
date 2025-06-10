@@ -45,7 +45,7 @@
         "generate": "stencil generate"
     },
     "devDependencies": {
-        "@stencil/angular-output-target": "^0.10.2",
+        "@parlamentsdienste-components/angular-output-target": "0.0.1",
         "@stencil/core": "^4.27.1",
         "@types/jest": "^29.5.14",
         "@types/node": "^22.13.5",

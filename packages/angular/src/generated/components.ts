@@ -22,18 +22,6 @@ import { defineCustomElement as defineMyComponent2 } from '@parlamentsdienste-co
 })
 export class MyComponent {
   protected el: HTMLMyComponentElement;
-    /**
-   * The first name
-   */
-  set first(_: Components.MyComponent['first']) {};
-    /**
-   * The middle name
-   */
-  set middle(_: Components.MyComponent['middle']) {};
-    /**
-   * The last name
-   */
-  set last(_: Components.MyComponent['last']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -62,18 +50,6 @@ export declare interface MyComponent extends Components.MyComponent {
 })
 export class MyComponent2 {
   protected el: HTMLMyComponent2Element;
-    /**
-   * The first name
-   */
-  set first(_: Components.MyComponent2['first']) {};
-    /**
-   * The middle name
-   */
-  set middle(_: Components.MyComponent2['middle']) {};
-    /**
-   * The last name
-   */
-  set last(_: Components.MyComponent2['last']) {};
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
