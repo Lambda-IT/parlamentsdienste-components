@@ -2,11 +2,11 @@ import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { format } from '../../utils/utils';
 
 @Component({
-    tag: 'my-component',
-    styleUrl: 'my-component.css',
+    tag: 'my-component-2',
+    styleUrl: 'my-component-2.css',
     shadow: true,
 })
-export class MyComponent {
+export class MyComponent2 {
     /**
      * The first name
      */
@@ -22,21 +22,21 @@ export class MyComponent {
      */
     @Prop() last: string;
 
-    @Event() myOut: EventEmitter<string>;
+    @Event() myOtherOut: EventEmitter<string>;
 
     private getText(): string {
         return format(this.first, this.middle, this.last);
     }
 
     outputText() {
-        this.myOut.emit('This is text from my-component');
+        this.myOtherOut.emit('This is text from my-component-2');
     }
 
     render() {
         return (
             <Host>
-                <div>Hello, World! I'm {this.getText()}</div>
-                <button onClick={() => this.outputText()}>This is button from my-component</button>
+                <div>Hello, World! I'm {this.getText()} 🚀🚀🚀🚀🚀🚀🚀🧑‍🚀</div>
+                <button onClick={() => this.outputText()}>This is button from my-component-2</button>
             </Host>
         );
     }

@@ -1,8 +1,8 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/packages/angular",
-  "lib": {
-    "entryFile": "src/index.ts"
-  },
-  "allowedNonPeerDependencies": ["@parlamentsdienste-components/core"]
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/packages/angular",
+    "lib": {
+        "entryFile": "src/index.ts"
+    },
+    "allowedNonPeerDependencies": ["@parlamentsdienste-components/core"]
 }

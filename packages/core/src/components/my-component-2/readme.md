@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event   | Description | Type                  |
-| ------- | ----------- | --------------------- |
-| `myOut` |             | `CustomEvent<string>` |
+| Event        | Description | Type                  |
+| ------------ | ----------- | --------------------- |
+| `myOtherOut` |             | `CustomEvent<string>` |
 
 
 ----------------------------------------------

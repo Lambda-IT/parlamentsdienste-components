@@ -20,14 +20,32 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyComponent2 {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
 }
 export interface MyComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMyComponentElement;
 }
+export interface MyComponent2CustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyComponent2Element;
+}
 declare global {
     interface HTMLMyComponentElementEventMap {
-        "out": string;
+        "myOut": string;
     }
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMyComponentElementEventMap>(type: K, listener: (this: HTMLMyComponentElement, ev: MyComponentCustomEvent<HTMLMyComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -43,8 +61,26 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyComponent2ElementEventMap {
+        "myOtherOut": string;
+    }
+    interface HTMLMyComponent2Element extends Components.MyComponent2, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMyComponent2ElementEventMap>(type: K, listener: (this: HTMLMyComponent2Element, ev: MyComponent2CustomEvent<HTMLMyComponent2ElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMyComponent2ElementEventMap>(type: K, listener: (this: HTMLMyComponent2Element, ev: MyComponent2CustomEvent<HTMLMyComponent2ElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMyComponent2Element: {
+        prototype: HTMLMyComponent2Element;
+        new (): HTMLMyComponent2Element;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "my-component-2": HTMLMyComponent2Element;
     }
 }
 declare namespace LocalJSX {
@@ -61,10 +97,26 @@ declare namespace LocalJSX {
           * The middle name
          */
         "middle"?: string;
-        "onOut"?: (event: MyComponentCustomEvent<string>) => void;
+        "onMyOut"?: (event: MyComponentCustomEvent<string>) => void;
+    }
+    interface MyComponent2 {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+        "onMyOtherOut"?: (event: MyComponent2CustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "my-component-2": MyComponent2;
     }
 }
 export { LocalJSX as JSX };
@@ -72,6 +124,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-component-2": LocalJSX.MyComponent2 & JSXBase.HTMLAttributes<HTMLMyComponent2Element>;
         }
     }
 }

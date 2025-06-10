@@ -1,14 +1,15 @@
 {
-  "name": "@parlamentsdienste-components/angular",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/core": "^19.2.0",
-    "vite": "^6.0.0",
-    "@analogjs/vite-plugin-angular": "~1.14.1",
-    "@nx/vite": "21.1.2"
-  },
-  "dependencies": {
-    "@parlamentsdienste-components/core": "0.0.1"
-  },
-  "sideEffects": false
+    "name": "@parlamentsdienste-components/angular",
+    "version": "0.0.4",
+    "peerDependencies": {
+        "@angular/core": "^19.2.0",
+        "vite": "^6.0.0",
+        "@analogjs/vite-plugin-angular": "~1.14.1",
+        "@nx/vite": "21.1.2",
+        "rxjs": "~7.8.0"
+    },
+    "dependencies": {
+        "@parlamentsdienste-components/core": "0.0.4"
+    },
+    "sideEffects": false
 }
