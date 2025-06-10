@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { InputChangeEventDetail, TextFieldTypes } from "./types";
+export { InputChangeEventDetail, TextFieldTypes } from "./types";
 export namespace Components {
     interface PdAlert {
         /**
@@ -44,10 +46,128 @@ export namespace Components {
          */
         "hideIcon": boolean;
     }
+    interface PdInput {
+        /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": 'on' | 'off';
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect": 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
+          * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
+         */
+        "clearInput": boolean;
+        /**
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        "clearOnEdit"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
+        "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+         */
+        "pattern"?: string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+         */
+        "size"?: number;
+        /**
+          * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
+         */
+        "step"?: string;
+        /**
+          * The type of control to display. The default type is text.
+         */
+        "type": TextFieldTypes;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
+        /**
+          * If `true`, the input is replaced with a simple text
+         */
+        "viewOnly": boolean;
+    }
 }
 export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdAlertElement;
+}
+export interface PdInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdInputElement;
 }
 declare global {
     interface HTMLPdAlertElementEventMap {
@@ -69,8 +189,29 @@ declare global {
         prototype: HTMLPdAlertElement;
         new (): HTMLPdAlertElement;
     };
+    interface HTMLPdInputElementEventMap {
+        "pd-input": KeyboardEvent;
+        "pd-change": InputChangeEventDetail;
+        "pd-blur": void;
+        "pd-focus": void;
+    }
+    interface HTMLPdInputElement extends Components.PdInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdInputElementEventMap>(type: K, listener: (this: HTMLPdInputElement, ev: PdInputCustomEvent<HTMLPdInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdInputElementEventMap>(type: K, listener: (this: HTMLPdInputElement, ev: PdInputCustomEvent<HTMLPdInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdInputElement: {
+        prototype: HTMLPdInputElement;
+        new (): HTMLPdInputElement;
+    };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
+        "pd-input": HTMLPdInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -124,8 +265,135 @@ declare namespace LocalJSX {
          */
         "onPd-collapsed"?: (event: PdAlertCustomEvent<boolean>) => void;
     }
+    interface PdInput {
+        /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: 'on' | 'off';
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect"?: 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
+          * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
+         */
+        "clearInput"?: boolean;
+        /**
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        "clearOnEdit"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
+        "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onPd-blur"?: (event: PdInputCustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-change"?: (event: PdInputCustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onPd-focus"?: (event: PdInputCustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPd-input"?: (event: PdInputCustomEvent<KeyboardEvent>) => void;
+        /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+         */
+        "pattern"?: string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+         */
+        "size"?: number;
+        /**
+          * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
+         */
+        "step"?: string;
+        /**
+          * The type of control to display. The default type is text.
+         */
+        "type"?: TextFieldTypes;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
+        /**
+          * If `true`, the input is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
+    }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
+        "pd-input": PdInput;
     }
 }
 export { LocalJSX as JSX };
@@ -133,6 +401,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
+            "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
         }
     }
 }
