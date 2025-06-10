@@ -6,63 +6,43 @@ import { ProxyCmp, proxyOutputs } from './../generated/angular-component-lib/uti
 
 import type { Components } from '@parlamentsdienste-components/core';
 
-import { defineCustomElement as defineMyComponent } from '@parlamentsdienste-components/core/components/my-component.js';
-import { defineCustomElement as defineMyComponent2 } from '@parlamentsdienste-components/core/components/my-component-2.js';
+import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
 @ProxyCmp({
-  defineCustomElementFn: defineMyComponent,
-  inputs: ['first', 'last', 'middle']
+  defineCustomElementFn: definePdAlert,
+  inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon']
 })
 @Component({
-  selector: 'my-component',
+  selector: 'pd-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['first', 'last', 'middle'],
-  outputs: ['myOut'],
+  inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon'],
+  outputs: ['pd-closed', 'pd-action', 'pd-collapsed'],
   standalone: true
 })
-export class MyComponent {
-  protected el: HTMLMyComponentElement;
+export class PdAlert {
+  protected el: HTMLPdAlertElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['myOut']);
+    proxyOutputs(this, this.el, ['pd-closed', 'pd-action', 'pd-collapsed']);
   }
 }
 
 
-export declare interface MyComponent extends Components.MyComponent {
-
-  myOut: EventEmitter<CustomEvent<string>>;
-}
-
-
-@ProxyCmp({
-  defineCustomElementFn: defineMyComponent2,
-  inputs: ['first', 'last', 'middle']
-})
-@Component({
-  selector: 'my-component-2',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['first', 'last', 'middle'],
-  outputs: ['myOtherOut'],
-  standalone: true
-})
-export class MyComponent2 {
-  protected el: HTMLMyComponent2Element;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['myOtherOut']);
-  }
-}
-
-
-export declare interface MyComponent2 extends Components.MyComponent2 {
-
-  myOtherOut: EventEmitter<CustomEvent<string>>;
+export declare interface PdAlert extends Components.PdAlert {
+  /**
+   * Emitted when close button was pressed.
+   */
+  'pd-closed': EventEmitter<CustomEvent<MouseEvent>>;
+  /**
+   * Emitted when action button was pressed.
+   */
+  'pd-action': EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when inner content is expanded/collapsed.
+   */
+  'pd-collapsed': EventEmitter<CustomEvent<boolean>>;
 }
 
 

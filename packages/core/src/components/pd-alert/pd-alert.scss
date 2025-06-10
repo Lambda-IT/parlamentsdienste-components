@@ -1,0 +1,217 @@
+@include resetControlFonts;
+
+:host {
+    display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pd-alert {
+    border-radius: 0.25rem;
+    border-width: 0.25rem;
+    border-style: solid;
+    font-weight: 700;
+
+    .pd-alert-top-section {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        padding: 0.625rem 1rem;
+
+        .pd-alert-message-action {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 1rem;
+        }
+
+        .pd-alert-icon {
+            margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+            width: 2.5rem;
+            min-width: 2.5rem;
+            align-self: center;
+        }
+
+        .pd-alert-close-button {
+            @include invisibleButton;
+            margin-left: 0.625rem;
+
+            &:focus-visible .pd-alert-action-cancel {
+                @include focus;
+            }
+        }
+    }
+
+    &.pd-alert-primary {
+        background-color: setcolor(primary, enabled);
+        border-color: setcolor(primary, enabled);
+        color: setcolor(primary, enabledContrast);
+        fill: setcolor(primary, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(primary, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(primary, hover);
+            }
+            &:active {
+                fill: setcolor(primary, pressed);
+            }
+        }
+    }
+
+    &.pd-alert-danger {
+        background-color: setcolor(danger, enabled);
+        border-color: setcolor(danger, enabled);
+        color: setcolor(danger, enabledContrast);
+        fill: setcolor(danger, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(danger, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(danger, hover);
+            }
+            &:active {
+                fill: setcolor(danger, pressed);
+            }
+        }
+    }
+
+    &.pd-alert-warning {
+        background-color: setcolor(warning, enabled);
+        border-color: setcolor(warning, enabled);
+        color: setcolor(warning, enabledContrast);
+        fill: setcolor(warning, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(warning, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(warning, hover);
+            }
+            &:active {
+                fill: setcolor(warning, pressed);
+            }
+        }
+    }
+
+    &.pd-alert-info {
+        background-color: setcolor(info, enabled);
+        border-color: setcolor(info, enabled);
+        color: setcolor(info, enabledContrast);
+        fill: setcolor(info, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(info, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(info, hover);
+            }
+            &:active {
+                fill: setcolor(info, pressed);
+            }
+        }
+    }
+
+    &.pd-alert-success {
+        background-color: setcolor(success, enabled);
+        border-color: setcolor(success, enabled);
+        color: setcolor(success, enabledContrast);
+        fill: setcolor(success, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(success, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(success, hover);
+            }
+            &:active {
+                fill: setcolor(success, pressed);
+            }
+        }
+    }
+
+    &.pd-alert-dark {
+        background-color: setcolor(dark, enabled);
+        border-color: setcolor(dark, enabled);
+        color: setcolor(dark, enabledContrast);
+        fill: setcolor(dark, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(dark, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(dark, hover);
+            }
+            &:active {
+                fill: setcolor(dark, pressed);
+            }
+        }
+    }
+
+    &.pd-alert-light {
+        background-color: setcolor(light, enabled);
+        border-color: setcolor(light, enabled);
+        color: $pd-black;
+        fill: setcolor(light, enabledContrast);
+        .pd-alert-action-text {
+            color: setcolor(light, enabledContrast);
+        }
+        .pd-alert-action-cancel {
+            &:hover {
+                fill: setcolor(light, hover);
+            }
+            &:active {
+                fill: setcolor(light, pressed);
+            }
+        }
+    }
+}
+
+.pd-alert-action-text {
+    padding: 0;
+    cursor: pointer;
+    font-weight: 700 !important;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    text-align: left;
+
+    &:focus-visible {
+        @include focus;
+    }
+}
+
+.pd-alert-action-cancel {
+    cursor: pointer;
+    margin: -0.5rem -0.5rem -0.5rem 0.5rem;
+    transform: translateY(-0.25rem);
+
+    &:hover {
+        fill: $bon-jour;
+    }
+}
+
+/**
+ * @prop --pd-alert-expandable-background-color: background color of expanded content
+ * @prop --pd-alert-expandable-color: text color of expanded content
+ */
+.pd-alert-expandable-content-wrapper {
+    background-color: var(--pd-alert-expandable-background-color, $white);
+    color: var(--pd-alert-expandable-color, $black);
+    font-weight: 400;
+    transition: height 0.3s ease-in-out;
+    height: auto;
+
+    .pd-alert-expandable-content {
+        padding: 1rem;
+    }
+}

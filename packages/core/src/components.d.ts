@@ -6,125 +6,133 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface PdAlert {
         /**
-          * The first name
+          * A link displayed to the right side of the alert
          */
-        "first": string;
+        "actionHref": string;
         /**
-          * The last name
+          * Target for action href (eg. _blank)
          */
-        "last": string;
+        "actionTarget": string;
         /**
-          * The middle name
+          * Text to show on action
          */
-        "middle": string;
-    }
-    interface MyComponent2 {
+        "actionText": string;
         /**
-          * The first name
+          * Text to show on expanded action
          */
-        "first": string;
+        "actionTextExpanded": string;
         /**
-          * The last name
+          * Display an option to close the alert
          */
-        "last": string;
+        "closable": boolean;
         /**
-          * The middle name
+          * Color schema used for the alert
          */
-        "middle": string;
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        /**
+          * Enable expandable content
+         */
+        "expandable": boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded": boolean;
+        /**
+          * Hide alert icon
+         */
+        "hideIcon": boolean;
     }
 }
-export interface MyComponentCustomEvent<T> extends CustomEvent<T> {
+export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLMyComponentElement;
-}
-export interface MyComponent2CustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMyComponent2Element;
+    target: HTMLPdAlertElement;
 }
 declare global {
-    interface HTMLMyComponentElementEventMap {
-        "myOut": string;
+    interface HTMLPdAlertElementEventMap {
+        "pd-closed": MouseEvent;
+        "pd-action": void;
+        "pd-collapsed": boolean;
     }
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMyComponentElementEventMap>(type: K, listener: (this: HTMLMyComponentElement, ev: MyComponentCustomEvent<HTMLMyComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLPdAlertElement extends Components.PdAlert, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdAlertElementEventMap>(type: K, listener: (this: HTMLPdAlertElement, ev: PdAlertCustomEvent<HTMLPdAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMyComponentElementEventMap>(type: K, listener: (this: HTMLMyComponentElement, ev: MyComponentCustomEvent<HTMLMyComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdAlertElementEventMap>(type: K, listener: (this: HTMLPdAlertElement, ev: PdAlertCustomEvent<HTMLPdAlertElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
-    interface HTMLMyComponent2ElementEventMap {
-        "myOtherOut": string;
-    }
-    interface HTMLMyComponent2Element extends Components.MyComponent2, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMyComponent2ElementEventMap>(type: K, listener: (this: HTMLMyComponent2Element, ev: MyComponent2CustomEvent<HTMLMyComponent2ElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMyComponent2ElementEventMap>(type: K, listener: (this: HTMLMyComponent2Element, ev: MyComponent2CustomEvent<HTMLMyComponent2ElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMyComponent2Element: {
-        prototype: HTMLMyComponent2Element;
-        new (): HTMLMyComponent2Element;
+    var HTMLPdAlertElement: {
+        prototype: HTMLPdAlertElement;
+        new (): HTMLPdAlertElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
-        "my-component-2": HTMLMyComponent2Element;
+        "pd-alert": HTMLPdAlertElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface PdAlert {
         /**
-          * The first name
+          * A link displayed to the right side of the alert
          */
-        "first"?: string;
+        "actionHref"?: string;
         /**
-          * The last name
+          * Target for action href (eg. _blank)
          */
-        "last"?: string;
+        "actionTarget"?: string;
         /**
-          * The middle name
+          * Text to show on action
          */
-        "middle"?: string;
-        "onMyOut"?: (event: MyComponentCustomEvent<string>) => void;
-    }
-    interface MyComponent2 {
+        "actionText"?: string;
         /**
-          * The first name
+          * Text to show on expanded action
          */
-        "first"?: string;
+        "actionTextExpanded"?: string;
         /**
-          * The last name
+          * Display an option to close the alert
          */
-        "last"?: string;
+        "closable"?: boolean;
         /**
-          * The middle name
+          * Color schema used for the alert
          */
-        "middle"?: string;
-        "onMyOtherOut"?: (event: MyComponent2CustomEvent<string>) => void;
+        "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        /**
+          * Enable expandable content
+         */
+        "expandable"?: boolean;
+        /**
+          * Expands / collapses the panel content
+         */
+        "expanded"?: boolean;
+        /**
+          * Hide alert icon
+         */
+        "hideIcon"?: boolean;
+        /**
+          * Emitted when action button was pressed.
+         */
+        "onPd-action"?: (event: PdAlertCustomEvent<void>) => void;
+        /**
+          * Emitted when close button was pressed.
+         */
+        "onPd-closed"?: (event: PdAlertCustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when inner content is expanded/collapsed.
+         */
+        "onPd-collapsed"?: (event: PdAlertCustomEvent<boolean>) => void;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
-        "my-component-2": MyComponent2;
+        "pd-alert": PdAlert;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "my-component-2": LocalJSX.MyComponent2 & JSXBase.HTMLAttributes<HTMLMyComponent2Element>;
+            "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
         }
     }
 }

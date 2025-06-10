@@ -44,6 +44,11 @@
         "test.watch": "stencil test --spec --e2e --watchAll",
         "generate": "stencil generate"
     },
+    "dependencies": {
+        "@stencil/sass": "3.0.7",
+        "bootstrap": "^4.4.1",
+        "flatpickr": "^4.6.13"
+    },
     "devDependencies": {
         "@parlamentsdienste-components/angular-output-target": "0.0.1",
         "@stencil/core": "^4.27.1",
