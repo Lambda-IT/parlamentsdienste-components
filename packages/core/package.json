@@ -22,6 +22,9 @@
         "./components/pd-alert.js": {
             "import": "./components/pd-alert.js",
             "types": "./components/pd-alert.d.ts"
+        },
+        "./styles/*.css": {
+            "import": "./dist/parlamentsdienstecore/*.css"
         }
     },
     "repository": {
