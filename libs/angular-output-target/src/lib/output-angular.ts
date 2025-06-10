@@ -1,4 +1,3 @@
-import * as path from 'path';
 import type { CompilerCtx, ComponentCompilerMeta, ComponentCompilerProperty, Config } from '@stencil/core/internal';
 import type { OutputTargetAngular, PackageJSON } from './types';
 import {
@@ -15,6 +14,7 @@ import { createAngularComponentDefinition, createComponentTypeDefinition } from 
 import { generateAngularDirectivesFile } from './generate-angular-directives-file';
 import generateValueAccessors from './generate-value-accessors';
 import { generateAngularModuleForComponent } from './generate-angular-modules';
+import { dirname, join } from 'path';
 
 export async function angularDirectiveProxyOutput(
     compilerCtx: CompilerCtx,
@@ -44,8 +44,8 @@ async function copyResources(config: Config, outputTarget: OutputTargetAngular) 
     if (!config.sys || !config.sys.copy || !config.sys.glob) {
         throw new Error('stencil is not properly initialized at this step. Notify the developer');
     }
-    const srcDirectory = path.join(__dirname, '..', 'angular-component-lib');
-    const destDirectory = path.join(path.dirname(outputTarget.directivesProxyFile), 'angular-component-lib');
+    const srcDirectory = join(__dirname, '../../../angular-component-lib');
+    const destDirectory = join(dirname(outputTarget.directivesProxyFile), '..', '/generated/', 'angular-component-lib');
 
     return config.sys.copy(
         [
@@ -67,8 +67,8 @@ export function generateProxies(
     outputTarget: OutputTargetAngular,
     rootDir: string,
 ) {
-    const distTypesDir = path.dirname(pkgData.types);
-    const dtsFilePath = path.join(rootDir, distTypesDir, GENERATED_DTS);
+    const distTypesDir = dirname(pkgData.types);
+    const dtsFilePath = join(rootDir, distTypesDir, GENERATED_DTS);
     const { outputType } = outputTarget;
     const componentsTypeFile = relativeImport(outputTarget.directivesProxyFile, dtsFilePath, '.d.ts');
     const includeSingleComponentAngularModules = outputType === OutputTypes['Scam'];
@@ -104,7 +104,7 @@ export function generateProxies(
 /* auto-generated angular directive proxies */
 ${createImportStatement(angularCoreImports, '@angular/core')}
 
-${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n`;
+${createImportStatement(componentLibImports, './../generated/angular-component-lib/utils')}\n`;
     /**
      * Generate JSX import type from correct location.
      * When using custom elements build, we need to import from
@@ -112,10 +112,9 @@ ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n
      * otherwise we risk bundlers pulling in lazy loaded imports.
      */
     const generateTypeImports = () => {
-        let importLocation = outputTarget.componentCorePackage
+        const importLocation = outputTarget.componentCorePackage
             ? normalizePath(outputTarget.componentCorePackage)
             : normalizePath(componentsTypeFile);
-        importLocation += isCustomElementsBuild ? `/${outputTarget.customElementsDir}` : '';
         return `import ${isCustomElementsBuild ? 'type ' : ''}{ ${IMPORT_TYPES} } from '${importLocation}';\n`;
     };
 

@@ -24,8 +24,8 @@ export const config: Config = {
         angularOutputTarget({
             componentCorePackage: '@parlamentsdienste-components/core',
             outputType: 'standalone',
-            directivesProxyFile: '../angular/src/generated/components.ts',
-            directivesArrayFile: '../angular/src/generated/index.ts',
+            directivesProxyFile: '../angular/src/lib/angular/components.ts',
+            directivesArrayFile: '../angular/src/lib/angular/index.ts',
         }),
     ],
     testing: {
