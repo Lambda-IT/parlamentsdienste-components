@@ -19,9 +19,13 @@
             "require": "./components/index.cjs",
             "types": "./components/index.d.ts"
         },
-        "./components/pd-alert.js": {
-            "import": "./components/pd-alert.js",
-            "types": "./components/pd-alert.d.ts"
+        "./components/my-component.js": {
+            "import": "./components/my-component.js",
+            "types": "./components/my-component.d.ts"
+        },
+        "./components/my-component-2.js": {
+            "import": "./components/my-component-2.js",
+            "types": "./components/my-component-2.d.ts"
         }
     },
     "repository": {

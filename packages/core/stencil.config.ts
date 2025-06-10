@@ -9,6 +9,10 @@ export const config: Config = {
         {
             type: 'dist',
             esmLoaderPath: '../loader',
+            copy: [
+                { src: 'styles/typography.css', dest: 'typography.css' },
+                { src: 'assets/fonts', dest: 'assets/fonts' },
+            ],
         },
         {
             type: 'dist-custom-elements',
