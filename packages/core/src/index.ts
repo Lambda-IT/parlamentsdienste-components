@@ -9,3 +9,8 @@
  */
 
 export type * from './components.d.ts';
+
+/**
+ * Types
+ */
+export * from './types';

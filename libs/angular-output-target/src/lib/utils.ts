@@ -129,7 +129,6 @@ export const isOutputTypeCustomElementsBuild = (outputType: OutputType) => {
  * @returns The import statements as an array of strings.
  */
 export const createComponentEventTypeImports = (
-    componentTagName: string,
     events: readonly ComponentCompilerEvent[],
     options: {
         componentCorePackage: string;
@@ -137,21 +136,19 @@ export const createComponentEventTypeImports = (
         outputType: OutputType;
     },
 ) => {
-    const { componentCorePackage, customElementsDir } = options;
+    const { componentCorePackage } = options;
     const imports: string[] = [];
     const namedImports: Set<string> = new Set();
-    const isCustomElementsBuild = isOutputTypeCustomElementsBuild(options.outputType);
 
-    const importPathName = normalizePath(componentCorePackage) + (isCustomElementsBuild ? `/${customElementsDir}` : '');
+    const importPathName = normalizePath(componentCorePackage);
 
     events.forEach(event => {
         Object.entries(event.complexType.references).forEach(([typeName, refObject]) => {
             if (refObject.location === 'local' || refObject.location === 'import') {
-                const newTypeName = `I${componentTagName}${typeName}`;
                 // Prevents duplicate imports for the same type.
-                if (!namedImports.has(newTypeName)) {
-                    imports.push(`import type { ${typeName} as ${newTypeName} } from '${importPathName}';`);
-                    namedImports.add(newTypeName);
+                if (!namedImports.has(typeName)) {
+                    imports.push(`import type { ${typeName} } from '${importPathName}';`);
+                    namedImports.add(typeName);
                 }
             }
         });

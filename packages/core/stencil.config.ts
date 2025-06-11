@@ -33,6 +33,14 @@ export const config: Config = {
             outputType: 'standalone',
             directivesProxyFile: '../angular/src/lib/angular/components.ts',
             directivesArrayFile: '../angular/src/lib/angular/index.ts',
+            valueAccessorConfigs: [
+                {
+                    elementSelectors: ['pd-input'],
+                    event: 'pdChange',
+                    targetAttr: 'value',
+                    type: 'text',
+                },
+            ],
         }),
     ],
     testing: {

@@ -136,7 +136,6 @@ export class ${tagNameAsPascal} {
  * @returns The sanitized event type as a string.
  */
 const formatOutputType = (componentClassName: string, event: ComponentCompilerEvent) => {
-    const prefix = `I${componentClassName}`;
     /**
      * The original attribute contains the original type defined by the devs.
      * This regexp normalizes the reference, by removing linebreaks,
@@ -146,28 +145,8 @@ const formatOutputType = (componentClassName: string, event: ComponentCompilerEv
         .filter(([_, refObject]) => refObject.location === 'local' || refObject.location === 'import')
         .reduce(
             (type, [src, dst]) => {
-                let renamedType = type;
-                if (!type.startsWith(prefix)) {
-                    if (type.startsWith('{') && type.endsWith('}')) {
-                        /**
-                         * If the type starts with { and ends with }, it is an inline type.
-                         * For example, `{ a: string }`.
-                         * We don't need to rename these types, so we return the original type.
-                         */
-                        renamedType = type;
-                    } else {
-                        /**
-                         * If the type does not start with { and end with }, it is a reference type.
-                         * For example, `MyType`.
-                         * We need to rename these types, so we prepend the prefix.
-                         */
-                        renamedType = `I${componentClassName}${type}`;
-                    }
-                }
-
                 return (
-                    renamedType
-                        .replace(new RegExp(`^${src}$`, 'g'), `${dst}`)
+                    type
                         // Capture all instances of the `src` field surrounded by non-word characters on each side and join them.
                         .replace(new RegExp(`([^\\w])${src}([^\\w])`, 'g'), (v, p1, p2) => {
                             if (dst?.location === 'import') {
@@ -176,13 +155,13 @@ const formatOutputType = (componentClassName: string, event: ComponentCompilerEv
                                  * For example, remapping a type like `EventEmitter<CustomEvent<MyEvent<T>>>` to
                                  * `EventEmitter<CustomEvent<IMyComponentMyEvent<IMyComponentT>>>`.
                                  */
-                                return [p1, `I${componentClassName}${v.substring(1, v.length - 1)}`, p2].join('');
+                                return [p1, `${v.substring(1, v.length - 1)}`, p2].join('');
                             }
                             return [p1, dst, p2].join('');
                         })
                         // Capture all instances that contain sub types, e.g. `IMyComponent.SomeMoreComplexType.SubType`.
                         .replace(new RegExp(`^${src}(.\\w+)+$`, 'g'), (type: string) => {
-                            return `I${componentClassName}${src}.${type.split('.').slice(1).join('.')}`;
+                            return `${src}.${type.split('.').slice(1).join('.')}`;
                         })
                 );
             },
@@ -225,7 +204,7 @@ export const createComponentTypeDefinition = (
 ) => {
     const publicEvents = events.filter(ev => !ev.internal);
 
-    const eventTypeImports = createComponentEventTypeImports(tagNameAsPascal, publicEvents, {
+    const eventTypeImports = createComponentEventTypeImports(publicEvents, {
         componentCorePackage,
         customElementsDir,
         outputType,

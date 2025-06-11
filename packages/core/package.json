@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste-components/core",
-    "version": "0.0.4",
+    "version": "0.0.12",
     "description": "Stencil Component Starter",
     "main": "dist/index.cjs.js",
     "module": "dist/index.js",
@@ -19,9 +19,9 @@
             "require": "./components/index.cjs",
             "types": "./components/index.d.ts"
         },
-        "./components/pd-alert.js": {
-            "import": "./components/pd-alert.js",
-            "types": "./components/pd-alert.d.ts"
+        "./components/*.js": {
+            "import": "./components/*.js",
+            "types": "./components/*.d.ts"
         },
         "./styles/*.css": {
             "import": "./dist/parlamentsdienstecore/*.css"
