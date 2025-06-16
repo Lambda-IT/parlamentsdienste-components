@@ -68,6 +68,12 @@ var styles = /* @__PURE__ */ new Map();
 var HYDRATED_STYLE_ID = "sty-id";
 var SLOT_FB_CSS = "slot-fb{display:contents}slot-fb[hidden]{display:none}";
 var XLINK_NS = "http://www.w3.org/1999/xlink";
+var FORM_ASSOCIATED_CUSTOM_ELEMENT_CALLBACKS = [
+  "formAssociatedCallback",
+  "formResetCallback",
+  "formDisabledCallback",
+  "formStateRestoreCallback"
+];
 var win = typeof window !== "undefined" ? window : {};
 var H = win.HTMLElement || class {
 };
@@ -80,6 +86,23 @@ var plt = {
   rel: (el, eventName, listener, opts) => el.removeEventListener(eventName, listener, opts),
   ce: (eventName, opts) => new CustomEvent(eventName, opts)
 };
+var supportsListenerOptions = /* @__PURE__ */ (() => {
+  var _a;
+  let supportsListenerOptions2 = false;
+  try {
+    (_a = win.document) == null ? void 0 : _a.addEventListener(
+      "e",
+      null,
+      Object.defineProperty({}, "passive", {
+        get() {
+          supportsListenerOptions2 = true;
+        }
+      })
+    );
+  } catch (e) {
+  }
+  return supportsListenerOptions2;
+})();
 var promiseResolve = (v) => Promise.resolve(v);
 var supportsConstructableStylesheets = /* @__PURE__ */ (() => {
   try {
@@ -1009,6 +1032,26 @@ var setValue = (ref, propName, newVal, cmpMeta) => {
 var proxyComponent = (Cstr, cmpMeta, flags) => {
   var _a, _b;
   const prototype = Cstr.prototype;
+  if (cmpMeta.$flags$ & 64 /* formAssociated */ && flags & 1 /* isElementConstructor */) {
+    FORM_ASSOCIATED_CUSTOM_ELEMENT_CALLBACKS.forEach((cbName) => {
+      const originalFormAssociatedCallback = prototype[cbName];
+      Object.defineProperty(prototype, cbName, {
+        value(...args) {
+          const hostRef = getHostRef(this);
+          const instance = this;
+          if (!instance) {
+            hostRef.$onReadyPromise$.then((asyncInstance) => {
+              const cb = asyncInstance[cbName];
+              typeof cb === "function" && cb.call(asyncInstance, ...args);
+            });
+          } else {
+            const cb = originalFormAssociatedCallback;
+            typeof cb === "function" && cb.call(instance, ...args);
+          }
+        }
+      });
+    });
+  }
   if (cmpMeta.$members$ || (cmpMeta.$watchers$ || Cstr.watchers)) {
     if (Cstr.watchers && !cmpMeta.$watchers$) {
       cmpMeta.$watchers$ = Cstr.watchers;
@@ -1165,6 +1208,7 @@ var connectedCallback = (elm) => {
         initializeComponent(elm, hostRef, cmpMeta);
       }
     } else {
+      addHostEventListeners(elm, hostRef, cmpMeta.$listeners$);
       if (hostRef == null ? void 0 : hostRef.$lazyInstance$) ; else if (hostRef == null ? void 0 : hostRef.$onReadyPromise$) {
         hostRef.$onReadyPromise$.then(() => fireConnectedCallback());
       }
@@ -1174,7 +1218,13 @@ var connectedCallback = (elm) => {
 };
 var disconnectedCallback = async (elm) => {
   if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
-    getHostRef(elm);
+    const hostRef = getHostRef(elm);
+    {
+      if (hostRef.$rmListeners$) {
+        hostRef.$rmListeners$.map((rmListener) => rmListener());
+        hostRef.$rmListeners$ = void 0;
+      }
+    }
   }
   if (rootAppliedStyles.has(elm)) {
     rootAppliedStyles.delete(elm);
@@ -1192,6 +1242,9 @@ var proxyCustomElement = (Cstr, compactMeta) => {
     cmpMeta.$members$ = compactMeta[2];
   }
   {
+    cmpMeta.$listeners$ = compactMeta[3];
+  }
+  {
     cmpMeta.$watchers$ = Cstr.$watchers$;
   }
   const originalConnectedCallback = Cstr.prototype.connectedCallback;
@@ -1203,7 +1256,8 @@ var proxyCustomElement = (Cstr, compactMeta) => {
     },
     connectedCallback() {
       if (!this.__hasHostListenerAttached) {
-        getHostRef(this);
+        const hostRef = getHostRef(this);
+        addHostEventListeners(this, hostRef, cmpMeta.$listeners$);
         this.__hasHostListenerAttached = true;
       }
       connectedCallback(this);
@@ -1234,8 +1288,32 @@ var proxyCustomElement = (Cstr, compactMeta) => {
     }
   });
   Cstr.is = cmpMeta.$tagName$;
-  return proxyComponent(Cstr, cmpMeta);
+  return proxyComponent(Cstr, cmpMeta, 1 /* isElementConstructor */ | 2 /* proxyState */);
 };
+var addHostEventListeners = (elm, hostRef, listeners, attachParentListeners) => {
+  if (listeners && win.document) {
+    listeners.map(([flags, name, method]) => {
+      const target = elm;
+      const handler = hostListenerProxy(hostRef, method);
+      const opts = hostListenerOpts(flags);
+      plt.ael(target, name, handler, opts);
+      (hostRef.$rmListeners$ = hostRef.$rmListeners$ || []).push(() => plt.rel(target, name, handler, opts));
+    });
+  }
+};
+var hostListenerProxy = (hostRef, methodName) => (ev) => {
+  try {
+    {
+      hostRef.$hostElement$[methodName](ev);
+    }
+  } catch (e) {
+    consoleError(e, hostRef.$hostElement$);
+  }
+};
+var hostListenerOpts = (flags) => supportsListenerOptions ? {
+  passive: (flags & 1 /* Passive */) !== 0,
+  capture: (flags & 2 /* Capture */) !== 0
+} : (flags & 2 /* Capture */) !== 0;
 
 // src/runtime/nonce.ts
 var setNonce = (nonce) => plt.$nonce$ = nonce;

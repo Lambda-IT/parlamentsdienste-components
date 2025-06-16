@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/html-vite';
+import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 // import { withActions } from '@storybook/addon-actions/decorator';
 
 const defaultArgs = {
@@ -12,7 +12,7 @@ const defaultArgs = {
 
 type alertArgs = typeof defaultArgs;
 
-const defaultArgTypes = {
+const argTypes: ArgTypes = {
     actionTarget: { control: { type: 'select', labels: { '': '-' } }, options: ['', '_blank'] },
     color: {
         control: { type: 'select' },
@@ -27,7 +27,8 @@ const meta: Meta<alertArgs> = {
             handles: ['pd-closed', 'pd-action', 'pd-collapsed'],
         },
     },
-    // decorators: [withActions],
+    args: defaultArgs,
+    argTypes,
 };
 
 export default meta;
@@ -57,6 +58,4 @@ const basic = (args: alertArgs) => `
 
 export const Basic: StoryObj<alertArgs> = {
     render: basic,
-    args: defaultArgs,
-    // argTypes: defaultArgTypes,
 };

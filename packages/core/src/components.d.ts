@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { InputChangeEventDetail, TextFieldTypes } from "./types";
-export { InputChangeEventDetail, TextFieldTypes } from "./types";
+import { InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+export { InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
 export namespace Components {
     interface PdAlert {
         /**
@@ -45,6 +45,48 @@ export namespace Components {
           * Hide alert icon
          */
         "hideIcon": boolean;
+    }
+    interface PdButton {
+        /**
+          * Color schema used for the button
+         */
+        "color": PdButtonColor;
+        /**
+          * Sets button to disbaled state
+         */
+        "disabled": boolean;
+        /**
+          * Sets button to 100% width
+         */
+        "fullWidth": boolean;
+        /**
+          * Set href to create a link button
+         */
+        "href": string;
+        /**
+          * Sets the position of the icon
+         */
+        "iconLocation": PdIconLocation;
+        /**
+          * Use outline schema
+         */
+        "outline": boolean;
+        /**
+          * Set href to create a link button
+         */
+        "showAsLink": boolean;
+        /**
+          * Button size
+         */
+        "size": PdButtonSize;
+        /**
+          * Sets target for link button e.g. '_blank'
+         */
+        "target": string;
+        /**
+          * Sets button type |button|submit|reset|
+         */
+        "type": PdButtonType;
     }
     interface PdInput {
         /**
@@ -189,6 +231,12 @@ declare global {
         prototype: HTMLPdAlertElement;
         new (): HTMLPdAlertElement;
     };
+    interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {
+    }
+    var HTMLPdButtonElement: {
+        prototype: HTMLPdButtonElement;
+        new (): HTMLPdButtonElement;
+    };
     interface HTMLPdInputElementEventMap {
         "pd-input": KeyboardEvent;
         "pd-change": InputChangeEventDetail;
@@ -211,6 +259,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
+        "pd-button": HTMLPdButtonElement;
         "pd-input": HTMLPdInputElement;
     }
 }
@@ -264,6 +313,48 @@ declare namespace LocalJSX {
           * Emitted when inner content is expanded/collapsed.
          */
         "onPd-collapsed"?: (event: PdAlertCustomEvent<boolean>) => void;
+    }
+    interface PdButton {
+        /**
+          * Color schema used for the button
+         */
+        "color"?: PdButtonColor;
+        /**
+          * Sets button to disbaled state
+         */
+        "disabled"?: boolean;
+        /**
+          * Sets button to 100% width
+         */
+        "fullWidth"?: boolean;
+        /**
+          * Set href to create a link button
+         */
+        "href"?: string;
+        /**
+          * Sets the position of the icon
+         */
+        "iconLocation"?: PdIconLocation;
+        /**
+          * Use outline schema
+         */
+        "outline"?: boolean;
+        /**
+          * Set href to create a link button
+         */
+        "showAsLink"?: boolean;
+        /**
+          * Button size
+         */
+        "size"?: PdButtonSize;
+        /**
+          * Sets target for link button e.g. '_blank'
+         */
+        "target"?: string;
+        /**
+          * Sets button type |button|submit|reset|
+         */
+        "type"?: PdButtonType;
     }
     interface PdInput {
         /**
@@ -393,6 +484,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
+        "pd-button": PdButton;
         "pd-input": PdInput;
     }
 }
@@ -401,6 +493,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
+            "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
         }
     }

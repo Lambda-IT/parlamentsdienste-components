@@ -7,6 +7,7 @@ import { ProxyCmp, proxyOutputs } from './../generated/angular-component-lib/uti
 import type { Components } from '@parlamentsdienste-components/core';
 
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
+import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
@@ -48,6 +49,31 @@ export declare interface PdAlert extends Components.PdAlert {
 
 
 @ProxyCmp({
+  defineCustomElementFn: definePdButton,
+  inputs: ['color', 'disabled', 'fullWidth', 'href', 'iconLocation', 'outline', 'showAsLink', 'size', 'target', 'type']
+})
+@Component({
+  selector: 'pd-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'disabled', 'fullWidth', 'href', 'iconLocation', 'outline', 'showAsLink', 'size', 'target', 'type'],
+  outputs: [],
+  standalone: true
+})
+export class PdButton {
+  protected el: HTMLPdButtonElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface PdButton extends Components.PdButton {}
+
+
+@ProxyCmp({
   defineCustomElementFn: definePdInput,
   inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearInput', 'clearOnEdit', 'disabled', 'error', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'value', 'verticalAdjust', 'viewOnly'],
   methods: ['setFocus']
@@ -71,7 +97,7 @@ export class PdInput {
 }
 
 
-import type { InputChangeEventDetail as IPdInputInputChangeEventDetail } from '@parlamentsdienste-components/core/components';
+import type { InputChangeEventDetail } from '@parlamentsdienste-components/core';
 
 export declare interface PdInput extends Components.PdInput {
   /**
@@ -81,7 +107,7 @@ export declare interface PdInput extends Components.PdInput {
   /**
    * Emitted when the value has changed.
    */
-  'pd-change': EventEmitter<CustomEvent<IPdInputInputChangeEventDetail>>;
+  'pd-change': EventEmitter<CustomEvent<InputChangeEventDetail>>;
   /**
    * Emitted when the input loses focus.
    */
