@@ -26,7 +26,7 @@ const meta: Meta = {
 export default meta;
 
 const events = ['click'];
-addEventlisteners('pd-button', events, { isCustomEvent: false });
+addEventlisteners('pd-button', events, { eventType: 'PointerEvent' });
 
 ///////////////////////////////////////////////////////////////////////////
 
