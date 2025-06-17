@@ -25,6 +25,9 @@
         },
         "./styles/*.css": {
             "import": "./dist/parlamentsdienstecore/*.css"
+        },
+        "./utils": {
+            "import": "./src/utils/index.ts"
         }
     },
     "repository": {

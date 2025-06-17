@@ -45,6 +45,19 @@
 | `--pd-alert-expandable-color`            | text color of expanded content       |
 
 
+## Dependencies
+
+### Depends on
+
+- [pd-icon](../pd-icon)
+
+### Graph
+```mermaid
+graph TD;
+  pd-alert --> pd-icon
+  style pd-alert fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

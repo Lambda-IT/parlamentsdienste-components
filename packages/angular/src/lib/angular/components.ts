@@ -8,6 +8,7 @@ import type { Components } from '@parlamentsdienste-components/core';
 
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
+import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
@@ -71,6 +72,31 @@ export class PdButton {
 
 
 export declare interface PdButton extends Components.PdButton {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdIcon,
+  inputs: ['flip', 'iconDescription', 'iconTitle', 'lazy', 'name', 'rotate', 'size', 'spin', 'spinReverse', 'src']
+})
+@Component({
+  selector: 'pd-icon',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['flip', 'iconDescription', 'iconTitle', 'lazy', 'name', 'rotate', 'size', 'spin', 'spinReverse', 'src'],
+  outputs: [],
+  standalone: true
+})
+export class PdIcon {
+  protected el: HTMLPdIconElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface PdIcon extends Components.PdIcon {}
 
 
 @ProxyCmp({

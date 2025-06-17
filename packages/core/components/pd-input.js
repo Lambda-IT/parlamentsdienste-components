@@ -175,7 +175,7 @@ const Input = /*@__PURE__*/ proxyCustomElement(class Input extends H {
     }
     render() {
         const value = this.getValue();
-        return (h(Host, { key: '83cdcc62b8c84638ceb20d493c5431cda9a39ccd' }, h("label", { key: '48b857862ef06b23fa90106a14146ee10389aaa0', class: "pd-input-label" }, this.label ? (h("div", { class: {
+        return (h(Host, { key: 'a3ac8bedb592655219b7f6e82f9a2a36e3813700' }, h("label", { key: '2bd8670e091896560f3f205e28e55f4e00315da0', class: "pd-input-label" }, this.label ? (h("div", { class: {
                 'pd-input-label-text': true,
                 'pd-input-label-viewonly': this.viewOnly,
             }, "data-test": "pd-input-label" }, this.label)) : (''), !this.viewOnly ? (h("input", { class: {

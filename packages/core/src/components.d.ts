@@ -88,6 +88,48 @@ export namespace Components {
          */
         "type": PdButtonType;
     }
+    interface PdIcon {
+        /**
+          * Flip in X/Y direction
+         */
+        "flip": 'x' | 'y' | 'xy';
+        /**
+          * description tag in svg for accessability
+         */
+        "iconDescription": string;
+        /**
+          * title tag in svg for accessability
+         */
+        "iconTitle": string;
+        /**
+          * Icon will be loaded lazily when it is visible
+         */
+        "lazy": boolean;
+        /**
+          * Name of an icon from the provided gallery
+         */
+        "name"?: string;
+        /**
+          * Rotation in 'deg'
+         */
+        "rotate": number;
+        /**
+          * Size of the icon in 'rem'
+         */
+        "size"?: number;
+        /**
+          * Spin animation in ms per rotation
+         */
+        "spin": number;
+        /**
+          * change animation direction
+         */
+        "spinReverse": boolean;
+        /**
+          * Specifies the `src` url of an SVG file to use.
+         */
+        "src"?: string;
+    }
     interface PdInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -237,6 +279,12 @@ declare global {
         prototype: HTMLPdButtonElement;
         new (): HTMLPdButtonElement;
     };
+    interface HTMLPdIconElement extends Components.PdIcon, HTMLStencilElement {
+    }
+    var HTMLPdIconElement: {
+        prototype: HTMLPdIconElement;
+        new (): HTMLPdIconElement;
+    };
     interface HTMLPdInputElementEventMap {
         "pd-input": KeyboardEvent;
         "pd-change": InputChangeEventDetail;
@@ -260,6 +308,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-button": HTMLPdButtonElement;
+        "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
     }
 }
@@ -355,6 +404,48 @@ declare namespace LocalJSX {
           * Sets button type |button|submit|reset|
          */
         "type"?: PdButtonType;
+    }
+    interface PdIcon {
+        /**
+          * Flip in X/Y direction
+         */
+        "flip"?: 'x' | 'y' | 'xy';
+        /**
+          * description tag in svg for accessability
+         */
+        "iconDescription"?: string;
+        /**
+          * title tag in svg for accessability
+         */
+        "iconTitle"?: string;
+        /**
+          * Icon will be loaded lazily when it is visible
+         */
+        "lazy"?: boolean;
+        /**
+          * Name of an icon from the provided gallery
+         */
+        "name"?: string;
+        /**
+          * Rotation in 'deg'
+         */
+        "rotate"?: number;
+        /**
+          * Size of the icon in 'rem'
+         */
+        "size"?: number;
+        /**
+          * Spin animation in ms per rotation
+         */
+        "spin"?: number;
+        /**
+          * change animation direction
+         */
+        "spinReverse"?: boolean;
+        /**
+          * Specifies the `src` url of an SVG file to use.
+         */
+        "src"?: string;
     }
     interface PdInput {
         /**
@@ -485,6 +576,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-button": PdButton;
+        "pd-icon": PdIcon;
         "pd-input": PdInput;
     }
 }
@@ -494,6 +586,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
+            "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
         }
     }

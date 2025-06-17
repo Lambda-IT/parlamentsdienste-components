@@ -1,4 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
+import { d as defineCustomElement$2 } from './p-Cp-GlTgC.js';
 
 const collapse = (element) => {
     // remove this event listener so it only gets triggered once
@@ -152,11 +153,16 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["pd-alert"];
+    const components = ["pd-alert", "pd-icon"];
     components.forEach(tagName => { switch (tagName) {
         case "pd-alert":
             if (!customElements.get(tagName)) {
                 customElements.define(tagName, Alert);
+            }
+            break;
+        case "pd-icon":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
             }
             break;
     } });

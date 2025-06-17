@@ -6,6 +6,16 @@ const config = {
         name: '@storybook/html-vite',
         options: {},
     },
-    staticDirs: [{ from: '../node_modules/@parlamentsdienste-components/core/src/assets/fonts', to: '/assets/fonts' }],
+    staticDirs: [
+        {
+            from: '../node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets/fonts',
+            to: '/assets/fonts',
+        },
+        {
+            from: '../node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets-icon',
+            to: '/assets-icon',
+        },
+        // { from: '../dist/parlamentsdienstecore/assets-animation', to: '/assets/assets-animation' },
+    ],
 };
 export default config;
