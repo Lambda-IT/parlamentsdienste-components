@@ -21,15 +21,20 @@ import { defineCustomElement as definePdInput } from '@parlamentsdienste-compone
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon'],
   outputs: ['pd-closed', 'pd-action', 'pd-collapsed'],
-  standalone: true
+  
+  standalone: true,
+  
 })
 export class PdAlert {
-  protected el: HTMLPdAlertElement;
+  protected nativeEl: HTMLPdAlertElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
     c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pd-closed', 'pd-action', 'pd-collapsed']);
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-closed', 'pd-action', 'pd-collapsed']);
   }
+
+  
 }
 
 
@@ -60,14 +65,19 @@ export declare interface PdAlert extends Components.PdAlert {
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['color', 'disabled', 'fullWidth', 'href', 'iconLocation', 'outline', 'showAsLink', 'size', 'target', 'type'],
   outputs: [],
-  standalone: true
+  
+  standalone: true,
+  
 })
 export class PdButton {
-  protected el: HTMLPdButtonElement;
+  protected nativeEl: HTMLPdButtonElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
     c.detach();
-    this.el = r.nativeElement;
+    this.nativeEl = r.nativeElement;
   }
+
+  
 }
 
 
@@ -85,21 +95,29 @@ export declare interface PdButton extends Components.PdButton {}
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['flip', 'iconDescription', 'iconTitle', 'lazy', 'name', 'rotate', 'size', 'spin', 'spinReverse', 'src'],
   outputs: [],
-  standalone: true
+  
+  standalone: true,
+  
 })
 export class PdIcon {
-  protected el: HTMLPdIconElement;
+  protected nativeEl: HTMLPdIconElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
     c.detach();
-    this.el = r.nativeElement;
+    this.nativeEl = r.nativeElement;
   }
+
+  
 }
 
 
 export declare interface PdIcon extends Components.PdIcon {}
 
 
-@ProxyCmp({
+import { forwardRef, HostListener } from '@angular/core';
+           import { NG_VALUE_ACCESSOR } from '@angular/forms';
+           import { ValueAccessor } from './value-accessor';
+           @ProxyCmp({
   defineCustomElementFn: definePdInput,
   inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearInput', 'clearOnEdit', 'disabled', 'error', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'value', 'verticalAdjust', 'viewOnly'],
   methods: ['setFocus']
@@ -111,15 +129,23 @@ export declare interface PdIcon extends Components.PdIcon {}
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearInput', 'clearOnEdit', 'disabled', 'error', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'value', 'verticalAdjust', 'viewOnly'],
   outputs: ['pd-input', 'pd-change', 'pd-blur', 'pd-focus'],
-  standalone: true
+  
+  standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdInput), multi: true }],
 })
-export class PdInput {
-  protected el: HTMLPdInputElement;
+export class PdInput extends ValueAccessor{
+  protected nativeEl: HTMLPdInputElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    super(r);
     c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['pd-input', 'pd-change', 'pd-blur', 'pd-focus']);
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-blur', 'pd-focus']);
   }
+
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail.value);
+        }
 }
 
 

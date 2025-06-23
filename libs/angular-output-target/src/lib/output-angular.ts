@@ -1,20 +1,20 @@
 import type { CompilerCtx, ComponentCompilerMeta, ComponentCompilerProperty, Config } from '@stencil/core/internal';
-import type { OutputTargetAngular, PackageJSON } from './types';
-import {
-    relativeImport,
-    normalizePath,
-    sortBy,
-    readPackageJson,
-    dashToPascalCase,
-    createImportStatement,
-    isOutputTypeCustomElementsBuild,
-    OutputTypes,
-} from './utils';
+import { dirname, join } from 'path';
 import { createAngularComponentDefinition, createComponentTypeDefinition } from './generate-angular-component';
 import { generateAngularDirectivesFile } from './generate-angular-directives-file';
-import generateValueAccessors from './generate-value-accessors';
 import { generateAngularModuleForComponent } from './generate-angular-modules';
-import { dirname, join } from 'path';
+import generateValueAccessors from './generate-value-accessors';
+import type { OutputTargetAngular, PackageJSON } from './types';
+import {
+    createImportStatement,
+    dashToPascalCase,
+    isOutputTypeCustomElementsBuild,
+    normalizePath,
+    OutputTypes,
+    readPackageJson,
+    relativeImport,
+    sortBy,
+} from './utils';
 
 export async function angularDirectiveProxyOutput(
     compilerCtx: CompilerCtx,
@@ -192,6 +192,7 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
             isCustomElementsBuild,
             isStandaloneBuild,
             inlineComponentProps,
+            outputTarget.valueAccessorConfigs,
         );
         const moduleDefinition = generateAngularModuleForComponent(cmpMeta.tagName);
         const componentTypeDefinition = createComponentTypeDefinition(

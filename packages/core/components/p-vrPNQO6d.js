@@ -9,7 +9,7 @@ function getCustomScriptUrl() {
 }
 function getURL(path) {
     const scriptUrl = getCustomScriptUrl();
-    return !!scriptUrl ? new URL(path, scriptUrl).href : getAssetPath(path);
+    return scriptUrl ? new URL(path, scriptUrl).href : getAssetPath(path);
 }
 
 const iconContent = new Map();
@@ -218,6 +218,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Icon as I, defineCustomElement as d };
-//# sourceMappingURL=p-Cp-GlTgC.js.map
+//# sourceMappingURL=p-vrPNQO6d.js.map
 
-//# sourceMappingURL=p-Cp-GlTgC.js.map
+//# sourceMappingURL=p-vrPNQO6d.js.map

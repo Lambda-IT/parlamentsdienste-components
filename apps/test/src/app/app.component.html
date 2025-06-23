@@ -1,1 +1,18 @@
-<my-component [first]="'Perfect'" (outWrapper)="runThis($event)"></my-component>
+<pd-alert>asdf</pd-alert>
+<!-- <pd-input [ngModel]="myVar" (ngModelChange)="modelChange($event)"></pd-input> -->
+<hr />
+<pd-input [label]="'hey'" [(ngModel)]="myVar"></pd-input>
+<!-- <button (click)="asdf()">sdfgdfg</button> -->
+<hr />
+<pd-button>this is a button</pd-button>
+<hr />
+<pd-input></pd-input>
+<hr />
+<hr />
+<div style="border: 1px solid gray; padding: 2rem">
+    <pd-icon [size]="'1'" [name]="'press'"></pd-icon>
+    <pd-icon size="2" name="press"></pd-icon>
+    <pd-icon size="3" name="press"></pd-icon>
+</div>
+<hr />
+<app-value-accessor [(ngModel)]="forValueAccessorComp"></app-value-accessor>

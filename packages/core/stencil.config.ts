@@ -41,6 +41,7 @@ export const config: Config = {
                     type: 'text',
                 },
             ],
+            // excludeComponents: ['pd-input'],
         }),
     ],
     testing: {

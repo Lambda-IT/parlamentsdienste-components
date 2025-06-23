@@ -13,5 +13,5 @@ export function getCustomScriptUrl(): string {
 
 export function getURL(path: string): string {
     const scriptUrl = getCustomScriptUrl();
-    return !!scriptUrl ? new URL(path, scriptUrl).href : getAssetPath(path);
+    return scriptUrl ? new URL(path, scriptUrl).href : getAssetPath(path);
 }

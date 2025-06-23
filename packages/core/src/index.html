@@ -20,5 +20,14 @@
             <pd-icon size="2" name="press"></pd-icon>
             <pd-icon size="3" name="press"></pd-icon>
         </div>
+        <script>
+            const inputEl = document.querySelector('pd-input');
+            inputEl.addEventListener('click', e => {
+                console.log(e);
+            });
+            inputEl.addEventListener('pd-change', e => {
+                console.log(e);
+            });
+        </script>
     </body>
 </html>

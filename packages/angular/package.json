@@ -6,10 +6,11 @@
         "vite": "^6.0.0",
         "@analogjs/vite-plugin-angular": "~1.14.1",
         "@nx/vite": "21.1.2",
-        "rxjs": "~7.8.0"
+        "rxjs": "~7.8.0",
+        "@angular/forms": "~19.2.0"
     },
     "dependencies": {
-        "@parlamentsdienste-components/core": "0.0.4"
+        "@parlamentsdienste-components/core": "0.0.12"
     },
     "sideEffects": false
 }

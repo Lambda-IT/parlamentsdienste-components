@@ -1,7 +1,7 @@
 import type { CompilerJsDoc, ComponentCompilerEvent, ComponentCompilerProperty } from '@stencil/core/internal';
 
+import type { OutputType, ValueAccessorConfig } from './types';
 import { createComponentEventTypeImports, dashToPascalCase, formatToQuotedList } from './utils';
-import type { OutputType } from './types';
 
 /**
  * Creates a property declaration.
@@ -53,7 +53,13 @@ export const createAngularComponentDefinition = (
     includeImportCustomElements = false,
     standalone = false,
     inlineComponentProps: readonly ComponentCompilerProperty[] = [],
+    valueAccessorConfigs: ValueAccessorConfig[] = [],
 ) => {
+    const isComponentWithValueAccessor = valueAccessorConfigs.some(config => {
+        const selectors = Array.isArray(config.elementSelectors) ? config.elementSelectors : [config.elementSelectors];
+        return selectors.includes(tagName);
+    });
+
     const tagNameAsPascal = dashToPascalCase(tagName);
 
     const hasInputs = inputs.length > 0;
@@ -93,9 +99,17 @@ export const createAngularComponentDefinition = (
         createPropertyDeclaration(m, `Components.${tagNameAsPascal}['${m.name}']`, true),
     );
 
-    const propertiesDeclarationText = [`protected el: HTML${tagNameAsPascal}Element;`, ...propertyDeclarations].join(
-        '\n  ',
-    );
+    const propertiesDeclarationText = [
+        `protected nativeEl: HTML${tagNameAsPascal}Element;`,
+        ...propertyDeclarations,
+    ].join('\n  ');
+
+    const valueAccessorImports = isComponentWithValueAccessor
+        ? `import { forwardRef, HostListener } from '@angular/core';
+           import { NG_VALUE_ACCESSOR } from '@angular/forms';
+           import { ValueAccessor } from './value-accessor';
+           `
+        : '';
 
     /**
      * Notes on the generated output:
@@ -104,25 +118,43 @@ export const createAngularComponentDefinition = (
      * uses the inputs property to define the inputs of the component instead of
      * having to use the @Input decorator (and manually define the type and default value).
      */
-    const output = `@ProxyCmp({${proxyCmpOptions.join(',')}\n})
+    const output =
+        valueAccessorImports +
+        `@ProxyCmp({${proxyCmpOptions.join(',')}\n})
 @Component({
   selector: '${tagName}',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [${formattedInputs}],
-  outputs: [${formattedOutputs}],${standaloneOption}
+  outputs: [${formattedOutputs}],
+  ${standaloneOption},
+  ${
+      isComponentWithValueAccessor
+          ? `providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${tagNameAsPascal}), multi: true }],`
+          : ''
+  }
 })
-export class ${tagNameAsPascal} {
+export class ${tagNameAsPascal} ${isComponentWithValueAccessor ? 'extends ValueAccessor' : ''}{
   ${propertiesDeclarationText}
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    ${isComponentWithValueAccessor ? 'super(r);' : ''}
     c.detach();
-    this.el = r.nativeElement;${
+    this.nativeEl = r.nativeElement;${
         hasOutputs
             ? `
-    proxyOutputs(this, this.el, [${formattedOutputs}]);`
+    proxyOutputs(this, this.nativeEl, [${formattedOutputs}]);`
             : ''
     }
+  }
+
+  ${
+      isComponentWithValueAccessor
+          ? `@HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail.value);
+        }`
+          : ''
   }
 }`;
 
