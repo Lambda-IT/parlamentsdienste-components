@@ -8,20 +8,30 @@
     "collection": "dist/collection/collection-manifest.json",
     "collection:main": "dist/collection/index.js",
     "unpkg": "dist/core/core.esm.js",
+    "typesVersions": {
+        "*": {
+            "loader": [
+                "loader/index.d.ts"
+            ],
+            "components": [
+                "components/index.d.ts"
+            ],
+            "components/*.js": [
+                "components/*.d.ts"
+            ]
+        }
+    },
     "exports": {
         "./loader": {
             "import": "./loader/index.js",
-            "require": "./loader/index.cjs",
-            "types": "./loader/index.d.ts"
+            "require": "./loader/index.cjs"
         },
         "./components": {
             "import": "./components/index.js",
-            "require": "./components/index.cjs",
-            "types": "./components/index.d.ts"
+            "require": "./components/index.cjs"
         },
         "./components/*.js": {
-            "import": "./components/*.js",
-            "types": "./components/*.d.ts"
+            "import": "./components/*.js"
         },
         "./styles/*.css": {
             "import": "./dist/parlamentsdienstecore/*.css"
