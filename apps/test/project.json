@@ -25,11 +25,6 @@
                         "glob": "**/*",
                         "input": "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets",
                         "output": "assets"
-                    },
-                    {
-                        "glob": "**/*",
-                        "input": "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets-icon",
-                        "output": "assets-icon"
                     }
                 ],
                 "styles": [

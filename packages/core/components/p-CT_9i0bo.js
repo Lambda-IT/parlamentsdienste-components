@@ -124,7 +124,7 @@ const Icon = /*@__PURE__*/ proxyCustomElement(class Icon extends H {
     }
     loadIcon() {
         if (this.isVisible) {
-            const url = this.src || (this.name ? getURL(`./assets-icon/icon_${this.name}.svg`) : null);
+            const url = this.src || (this.name ? getURL(`./assets/icons/icon_${this.name}.svg`) : null);
             if (url) {
                 if (iconContent.has(url)) {
                     // sync if it's already loaded
@@ -146,14 +146,14 @@ const Icon = /*@__PURE__*/ proxyCustomElement(class Icon extends H {
         const flipY = this.flip?.includes('y') ? 'scaleY(-1)' : undefined;
         const rotate = this.rotate ? `rotate(${this.rotate}deg` : undefined;
         const transformStyle = [flipX, flipY, rotate].filter(x => x !== undefined).join(' ');
-        return (h(Host, { key: 'd4266250466f39ab9b02a7caa3db64da2fd6e3a4', role: "img", class: {
+        return (h(Host, { key: '495c98f8c798f16b756583f39f18835f9f31f20e', role: "img", class: {
                 spin: !!this.spin,
             }, style: {
                 fontSize: this.size ? `${this.size}rem` : null,
                 transform: transformStyle ?? null,
                 animationDuration: this.spin ? `${this.spin}ms` : null,
                 animationName: this.spinReverse ? `spin-reverse` : null,
-            } }, h("div", { key: '9f94f1837ff05a3c4b3166b686bdf4b4c4bf1664', class: "pd-icon-inner", ref: textarea => (this.wrapperElement = textarea) })));
+            } }, h("div", { key: 'c186a0395c83eda381384d8368b502ac8d54207f', class: "pd-icon-inner", ref: textarea => (this.wrapperElement = textarea) })));
     }
     appendSVGContent(svgContent, appendElement) {
         if (appendElement.hasChildNodes())
@@ -181,7 +181,7 @@ const Icon = /*@__PURE__*/ proxyCustomElement(class Icon extends H {
             parent.removeChild(parent.firstChild);
         }
     }
-    static get assetsDirs() { return ["assets-icon"]; }
+    static get assetsDirs() { return ["assets/icons"]; }
     static get watchers() { return {
         "src": ["loadIcon"],
         "name": ["loadIcon"]
@@ -218,6 +218,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Icon as I, defineCustomElement as d };
-//# sourceMappingURL=p-vrPNQO6d.js.map
+//# sourceMappingURL=p-CT_9i0bo.js.map
 
-//# sourceMappingURL=p-vrPNQO6d.js.map
+//# sourceMappingURL=p-CT_9i0bo.js.map

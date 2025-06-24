@@ -7,6 +7,7 @@
         "build:core": "npx nx run core:build",
         "build:angular": "npx nx run angular:build",
         "build:angular-output-target": "npx nx run angular:build",
+        "build:storybook": "npx nx run docs:build",
         "start:angular": "npx nx run test:serve",
         "start:core": "npx nx run core:start",
         "start:storybook": "npx nx run docs:start",

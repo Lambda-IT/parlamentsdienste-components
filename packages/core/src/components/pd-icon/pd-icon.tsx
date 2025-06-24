@@ -5,7 +5,7 @@ import { getSvgContent, getURL, iconContent } from '../../utils';
     tag: 'pd-icon',
     styleUrl: 'pd-icon.scss',
     shadow: true,
-    assetsDirs: ['assets-icon'],
+    assetsDirs: ['assets/icons'],
 })
 export class Icon implements ComponentInterface {
     private io?: IntersectionObserver;
@@ -105,7 +105,7 @@ export class Icon implements ComponentInterface {
     @Watch('name')
     loadIcon() {
         if (this.isVisible) {
-            const url = this.src || (this.name ? getURL(`./assets-icon/icon_${this.name}.svg`) : null);
+            const url = this.src || (this.name ? getURL(`./assets/icons/icon_${this.name}.svg`) : null);
             if (url) {
                 if (iconContent.has(url)) {
                     // sync if it's already loaded
@@ -140,8 +140,7 @@ export class Icon implements ComponentInterface {
                     transform: transformStyle ?? null,
                     animationDuration: this.spin ? `${this.spin}ms` : null,
                     animationName: this.spinReverse ? `spin-reverse` : null,
-                }}
-            >
+                }}>
                 <div class="pd-icon-inner" ref={textarea => (this.wrapperElement = textarea)}></div>
             </Host>
         );

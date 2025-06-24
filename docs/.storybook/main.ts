@@ -8,12 +8,8 @@ const config = {
     },
     staticDirs: [
         {
-            from: '../node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets/fonts',
-            to: '/assets/fonts',
-        },
-        {
-            from: '../node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets-icon',
-            to: '/assets-icon',
+            from: '../node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets',
+            to: '/assets',
         },
         // { from: '../dist/parlamentsdienstecore/assets-animation', to: '/assets/assets-animation' },
     ],

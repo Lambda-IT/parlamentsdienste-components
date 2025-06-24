@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste-components/angular",
-    "version": "0.0.4",
+    "version": "0.0.1",
     "peerDependencies": {
         "@angular/core": "^19.2.0",
         "vite": "^6.0.0",
@@ -10,7 +10,7 @@
         "@angular/forms": "~19.2.0"
     },
     "dependencies": {
-        "@parlamentsdienste-components/core": "0.0.12"
+        "@parlamentsdienste-components/core": "0.0.1"
     },
     "sideEffects": false
 }
