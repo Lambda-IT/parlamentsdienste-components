@@ -10,24 +10,89 @@
 
         <link href="./build/typography.css" rel="stylesheet" />
         <link href="./build/parlamentsdienstecore.css" rel="stylesheet" />
+        <style>
+            .wrapper {
+                max-width: 30rem;
+                margin: auto;
+                margin-top: 5rem;
+            }
+        </style>
     </head>
     <body>
-        <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
-        <pd-alert>Primary alert</pd-alert>
-        <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
-        <div style="border: 1px solid gray; padding: 2rem">
-            <pd-icon size="1" name="press"></pd-icon>
-            <pd-icon size="2" name="press"></pd-icon>
-            <pd-icon size="3" name="press"></pd-icon>
+        <div class="wrapper">
+            <pd-alert>Primary alert</pd-alert>
+            <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
+            <div style="border: 1px solid gray; padding: 2rem">
+                <pd-icon size="1" name="press"></pd-icon>
+                <pd-icon size="2" name="press"></pd-icon>
+                <pd-icon size="3" name="press"></pd-icon>
+            </div>
+
+            <span>Combobox (multiselect)</span>
+            <pd-combobox
+                placeholder="search..."
+                class="pd-combobox-items"
+                label="Label"
+                id="pd-combobox-2"
+                multiselect></pd-combobox>
+            <pd-combobox
+                placeholder="search..."
+                class="pd-combobox-items"
+                label="Label"
+                multiselect
+                disabled></pd-combobox>
+            <pd-combobox
+                placeholder="search..."
+                class="pd-combobox-items"
+                label="Label"
+                multiselect
+                readonly></pd-combobox>
+            <pd-combobox
+                placeholder="search..."
+                class="pd-combobox-items"
+                label="Label"
+                multiselect
+                error></pd-combobox>
+            <pd-combobox
+                id="supibox"
+                multiselect
+                view-only
+                placeholder="search..."
+                class="pd-combobox-items"
+                label="Label"></pd-combobox>
+
+            <span>Combobox (selectable)</span>
+            <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-3"></pd-combobox>
+            <pd-combobox class="pd-combobox-items" selectable label="Label" disabled></pd-combobox>
+            <pd-combobox class="pd-combobox-items" selectable label="Label" readonly selectable></pd-combobox>
+            <pd-combobox class="pd-combobox-items" selectable label="Label" error selectable></pd-combobox>
+            <pd-combobox view-only class="pd-combobox-items" selectable label="Label"></pd-combobox>
         </div>
+
         <script>
-            const inputEl = document.querySelector('pd-input');
-            inputEl.addEventListener('click', e => {
-                console.log(e);
-            });
-            inputEl.addEventListener('pd-change', e => {
-                console.log(e);
-            });
+            const pdComboBox1 = document.getElementById('pd-combobox-1');
+            const pdComboBox2 = document.getElementById('pd-combobox-2');
+            const pdComboBox3 = document.getElementById('pd-combobox-3');
+            const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
+
+            for (let pdComboBoxItem of pdComboBoxItems) {
+                pdComboBoxItem.items = [
+                    { id: '1', label: 'Dropdown Link 01AAA', value: 'a1' },
+                    { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+                    { id: '3', label: 'Dropdown Link 03', value: 'a3' },
+                    { id: '4', label: 'Dropdown Link 04A', value: 'a4', selected: true },
+                    {
+                        id: '5',
+                        label: 'Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 ',
+                        value: 'a5',
+                    },
+                    { id: '6', label: 'Preselected', value: 'a6' },
+                    { id: '7', label: 'some more 1', value: 'a7' },
+                    { id: '8', label: 'some more 2', value: 'a8' },
+                    { id: '9', label: 'some other 3', value: 'a9' },
+                    { id: '10', label: 'some other 4', value: 'a10' },
+                ];
+            }
         </script>
     </body>
 </html>

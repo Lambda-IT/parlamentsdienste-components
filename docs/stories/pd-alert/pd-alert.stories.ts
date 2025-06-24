@@ -22,11 +22,6 @@ const argTypes: ArgTypes = {
 
 const meta: Meta<alertArgs> = {
     title: 'Dialogs/Alert',
-    parameters: {
-        actions: {
-            handles: ['pd-closed', 'pd-action', 'pd-collapsed'],
-        },
-    },
     args: defaultArgs,
     argTypes,
 };

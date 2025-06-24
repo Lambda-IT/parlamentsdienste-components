@@ -8,6 +8,10 @@ import type { Components } from '@parlamentsdienste-components/core';
 
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
+import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
+import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
+import { defineCustomElement as definePdCombobox } from '@parlamentsdienste-components/core/components/pd-combobox.js';
+import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 @ProxyCmp({
@@ -82,6 +86,166 @@ export class PdButton {
 
 
 export declare interface PdButton extends Components.PdButton {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdCheckbox,
+  inputs: ['checked', 'disabled', 'error', 'isIndeterminate', 'name', 'readonly', 'required', 'text', 'value', 'verticalAdjust']
+})
+@Component({
+  selector: 'pd-checkbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['checked', 'disabled', 'error', 'isIndeterminate', 'name', 'readonly', 'required', 'text', 'value', 'verticalAdjust'],
+  outputs: ['pd-checked'],
+  
+  standalone: true,
+  
+})
+export class PdCheckbox {
+  protected nativeEl: HTMLPdCheckboxElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-checked']);
+  }
+
+  
+}
+
+
+export declare interface PdCheckbox extends Components.PdCheckbox {
+
+  'pd-checked': EventEmitter<CustomEvent<boolean>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdChip,
+  inputs: ['checked', 'disabled', 'readonly', 'type']
+})
+@Component({
+  selector: 'pd-chip',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['checked', 'disabled', 'readonly', 'type'],
+  outputs: ['pd-remove-chip', 'pd-check-chip'],
+  
+  standalone: true,
+  
+})
+export class PdChip {
+  protected nativeEl: HTMLPdChipElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-remove-chip', 'pd-check-chip']);
+  }
+
+  
+}
+
+
+export declare interface PdChip extends Components.PdChip {
+  /**
+   * Event for clicking the cross to remove a chip
+   */
+  'pd-remove-chip': EventEmitter<CustomEvent<any>>;
+  /**
+   * Event for check chip
+   */
+  'pd-check-chip': EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdCombobox,
+  inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'size', 'value', 'verticalAdjust', 'viewOnly'],
+  methods: ['setSelectedIndex', 'reset', 'setOpen', 'setFocus']
+})
+@Component({
+  selector: 'pd-combobox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'size', 'value', 'verticalAdjust', 'viewOnly'],
+  outputs: ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus'],
+  
+  standalone: true,
+  
+})
+export class PdCombobox {
+  protected nativeEl: HTMLPdComboboxElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus']);
+  }
+
+  
+}
+
+
+import type { InputChangeEventDetail } from '@parlamentsdienste-components/core';
+import type { ComboboxItem } from '@parlamentsdienste-components/core';
+
+export declare interface PdCombobox extends Components.PdCombobox {
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  'pd-input': EventEmitter<CustomEvent<InputChangeEventDetail>>;
+  /**
+   * Emitted when the value has changed.
+   */
+  'pd-change': EventEmitter<CustomEvent<ComboboxItem | ComboboxItem[]>>;
+  /**
+   * Emitted when a combobox request occurred.
+   */
+  'pd-combobox': EventEmitter<CustomEvent<ComboboxItem | ComboboxItem[]>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  'pd-blur': EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the input has focus.
+   */
+  'pd-focus': EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdDropdownItem,
+  inputs: ['highlight', 'iconName', 'iconSrc', 'multiselect', 'selected', 'value']
+})
+@Component({
+  selector: 'pd-dropdown-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['highlight', 'iconName', 'iconSrc', 'multiselect', 'selected', 'value'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdDropdownItem {
+  protected nativeEl: HTMLPdDropdownItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdDropdownItem extends Components.PdDropdownItem {}
 
 
 @ProxyCmp({

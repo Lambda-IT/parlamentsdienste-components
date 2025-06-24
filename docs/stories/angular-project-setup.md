@@ -10,7 +10,7 @@
     - install the core library first
     - install the angular wrapper library
 
-3. To add fonts and icons add these two objects to the `angular.json` assets array:
+3. To add fonts and icons add this objectsto the `angular.json` assets array:
 
     ```json
         "assets": [
@@ -19,11 +19,6 @@
                 "input": "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets",
                 "output": "assets"
               },
-              {
-                "glob": "**/*",
-                "input": "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets-icon",
-                "output": "assets-icon"
-              }
         ]
     ```
 

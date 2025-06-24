@@ -916,8 +916,10 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
     }
   }
 };
+var renderingRef = null;
 var callRender = (hostRef, instance, elm, isInitialLoad) => {
   try {
+    renderingRef = instance;
     instance = instance.render() ;
     {
       hostRef.$flags$ &= -17 /* isQueuedForUpdate */;
@@ -935,8 +937,10 @@ var callRender = (hostRef, instance, elm, isInitialLoad) => {
   } catch (e) {
     consoleError(e, hostRef.$hostElement$);
   }
+  renderingRef = null;
   return null;
 };
+var getRenderingRef = () => renderingRef;
 var postUpdateComponent = (hostRef) => {
   const tagName = hostRef.$cmpMeta$.$tagName$;
   const elm = hostRef.$hostElement$;
@@ -970,6 +974,16 @@ var postUpdateComponent = (hostRef) => {
       nextTick(() => scheduleUpdate(hostRef, false));
     }
     hostRef.$flags$ &= -517;
+  }
+};
+var forceUpdate = (ref) => {
+  {
+    const hostRef = getHostRef(ref);
+    const isConnected = hostRef.$hostElement$.isConnected;
+    if (isConnected && (hostRef.$flags$ & (2 /* hasRendered */ | 16 /* isQueuedForUpdate */)) === 2 /* hasRendered */) {
+      scheduleUpdate(hostRef, false);
+    }
+    return isConnected;
   }
 };
 var appDidLoad = (who) => {
@@ -1293,7 +1307,7 @@ var proxyCustomElement = (Cstr, compactMeta) => {
 var addHostEventListeners = (elm, hostRef, listeners, attachParentListeners) => {
   if (listeners && win.document) {
     listeners.map(([flags, name, method]) => {
-      const target = elm;
+      const target = getHostListenerTarget(win.document, elm, flags) ;
       const handler = hostListenerProxy(hostRef, method);
       const opts = hostListenerOpts(flags);
       plt.ael(target, name, handler, opts);
@@ -1309,6 +1323,12 @@ var hostListenerProxy = (hostRef, methodName) => (ev) => {
   } catch (e) {
     consoleError(e, hostRef.$hostElement$);
   }
+};
+var getHostListenerTarget = (doc, elm, flags) => {
+  if (flags & 16 /* TargetBody */) {
+    return doc.body;
+  }
+  return elm;
 };
 var hostListenerOpts = (flags) => supportsListenerOptions ? {
   passive: (flags & 1 /* Passive */) !== 0,
@@ -1329,7 +1349,7 @@ function render(vnode, container) {
   renderVdom(ref, vnode);
 }
 
-export { H, Host as a, createEvent as c, getAssetPath, h, proxyCustomElement as p, render, setAssetPath, setNonce, setPlatformOptions };
+export { H, Host as a, createEvent as c, forceUpdate as f, getRenderingRef as g, getAssetPath, h, proxyCustomElement as p, render, setAssetPath, setNonce, setPlatformOptions };
 //# sourceMappingURL=index.js.map
 
 //# sourceMappingURL=index.js.map

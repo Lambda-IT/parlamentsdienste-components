@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
-export { InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+import { ChipType, ComboboxItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+export { ChipType, ComboboxItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
 export namespace Components {
     interface PdAlert {
         /**
@@ -87,6 +87,186 @@ export namespace Components {
           * Sets button type |button|submit|reset|
          */
         "type": PdButtonType;
+    }
+    interface PdCheckbox {
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked": boolean;
+        /**
+          * Sets checkbox to disabled state
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * indeterminate state
+         */
+        "isIndeterminate": boolean;
+        /**
+          * checkbox name
+         */
+        "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Checkbox description text
+         */
+        "text": string;
+        /**
+          * value of checkbox
+         */
+        "value": boolean;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
+    }
+    interface PdChip {
+        /**
+          * Sets chip to checked state
+         */
+        "checked": boolean;
+        /**
+          * Sets chip to disabled state
+         */
+        "disabled": boolean;
+        /**
+          * Sets chip to readonly state
+         */
+        "readonly": boolean;
+        /**
+          * Sets chip type |text|toggle|filter|
+         */
+        "type": ChipType;
+    }
+    interface PdCombobox {
+        /**
+          * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+         */
+        "disableFilter": boolean;
+        /**
+          * If `true`, the button to deselect all selected items will not be shown.
+         */
+        "disableMultiselectCounter": boolean;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": ComboboxItem;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * Show matching parts in results as highlighted
+         */
+        "highlight"?: boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Values shown as combobox items
+         */
+        "items": ComboboxItem[];
+        /**
+          * combobox box label
+         */
+        "label"?: string;
+        /**
+          * If `true`, the combobox can select multiple items.
+         */
+        "multiselect": boolean;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Reset the selection of the dropdown
+         */
+        "reset": () => Promise<void>;
+        /**
+          * If `true`, the combobox get a selected state like a dropdown.
+         */
+        "selectable": boolean;
+        /**
+          * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Set the open-close state of the dropdown
+         */
+        "setOpen": (open?: boolean) => Promise<void>;
+        /**
+          * Set a preselected entry by index
+         */
+        "setSelectedIndex": (index: number) => Promise<void>;
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
+          * The value of the input.
+         */
+        "value"?: string;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
+        /**
+          * If `true`, the combobox is replaced with a simple text
+         */
+        "viewOnly": boolean;
+    }
+    interface PdDropdownItem {
+        /**
+          * Find an highlight this text in value
+         */
+        "highlight"?: string | number;
+        /**
+          * Displays an item from the provided gallery
+         */
+        "iconName"?: string;
+        /**
+          * Specifies the `src` url of an SVG file to use as icon.
+         */
+        "iconSrc"?: string;
+        /**
+          * If `true`, the item displays a checkbox (for multiselect comboboxes).
+         */
+        "multiselect": boolean;
+        /**
+          * Sets this item to selected
+         */
+        "selected": boolean;
+        /**
+          * Value for this item
+         */
+        "value": string;
     }
     interface PdIcon {
         /**
@@ -249,6 +429,18 @@ export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdAlertElement;
 }
+export interface PdCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdCheckboxElement;
+}
+export interface PdChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdChipElement;
+}
+export interface PdComboboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdComboboxElement;
+}
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
@@ -279,6 +471,68 @@ declare global {
         prototype: HTMLPdButtonElement;
         new (): HTMLPdButtonElement;
     };
+    interface HTMLPdCheckboxElementEventMap {
+        "pd-checked": boolean;
+    }
+    interface HTMLPdCheckboxElement extends Components.PdCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdCheckboxElementEventMap>(type: K, listener: (this: HTMLPdCheckboxElement, ev: PdCheckboxCustomEvent<HTMLPdCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdCheckboxElementEventMap>(type: K, listener: (this: HTMLPdCheckboxElement, ev: PdCheckboxCustomEvent<HTMLPdCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdCheckboxElement: {
+        prototype: HTMLPdCheckboxElement;
+        new (): HTMLPdCheckboxElement;
+    };
+    interface HTMLPdChipElementEventMap {
+        "pd-remove-chip": any;
+        "pd-check-chip": any;
+    }
+    interface HTMLPdChipElement extends Components.PdChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdChipElementEventMap>(type: K, listener: (this: HTMLPdChipElement, ev: PdChipCustomEvent<HTMLPdChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdChipElementEventMap>(type: K, listener: (this: HTMLPdChipElement, ev: PdChipCustomEvent<HTMLPdChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdChipElement: {
+        prototype: HTMLPdChipElement;
+        new (): HTMLPdChipElement;
+    };
+    interface HTMLPdComboboxElementEventMap {
+        "pd-input": InputChangeEventDetail;
+        "pd-change": ComboboxItem | ComboboxItem[];
+        "pd-combobox": ComboboxItem | ComboboxItem[];
+        "pd-blur": void;
+        "pd-focus": void;
+    }
+    interface HTMLPdComboboxElement extends Components.PdCombobox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdComboboxElementEventMap>(type: K, listener: (this: HTMLPdComboboxElement, ev: PdComboboxCustomEvent<HTMLPdComboboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdComboboxElementEventMap>(type: K, listener: (this: HTMLPdComboboxElement, ev: PdComboboxCustomEvent<HTMLPdComboboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdComboboxElement: {
+        prototype: HTMLPdComboboxElement;
+        new (): HTMLPdComboboxElement;
+    };
+    interface HTMLPdDropdownItemElement extends Components.PdDropdownItem, HTMLStencilElement {
+    }
+    var HTMLPdDropdownItemElement: {
+        prototype: HTMLPdDropdownItemElement;
+        new (): HTMLPdDropdownItemElement;
+    };
     interface HTMLPdIconElement extends Components.PdIcon, HTMLStencilElement {
     }
     var HTMLPdIconElement: {
@@ -308,6 +562,10 @@ declare global {
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-button": HTMLPdButtonElement;
+        "pd-checkbox": HTMLPdCheckboxElement;
+        "pd-chip": HTMLPdChipElement;
+        "pd-combobox": HTMLPdComboboxElement;
+        "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
     }
@@ -404,6 +662,199 @@ declare namespace LocalJSX {
           * Sets button type |button|submit|reset|
          */
         "type"?: PdButtonType;
+    }
+    interface PdCheckbox {
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked"?: boolean;
+        /**
+          * Sets checkbox to disabled state
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * indeterminate state
+         */
+        "isIndeterminate"?: boolean;
+        /**
+          * checkbox name
+         */
+        "name"?: string;
+        "onPd-checked"?: (event: PdCheckboxCustomEvent<boolean>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Checkbox description text
+         */
+        "text"?: string;
+        /**
+          * value of checkbox
+         */
+        "value"?: boolean;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
+    }
+    interface PdChip {
+        /**
+          * Sets chip to checked state
+         */
+        "checked"?: boolean;
+        /**
+          * Sets chip to disabled state
+         */
+        "disabled"?: boolean;
+        /**
+          * Event for check chip
+         */
+        "onPd-check-chip"?: (event: PdChipCustomEvent<any>) => void;
+        /**
+          * Event for clicking the cross to remove a chip
+         */
+        "onPd-remove-chip"?: (event: PdChipCustomEvent<any>) => void;
+        /**
+          * Sets chip to readonly state
+         */
+        "readonly"?: boolean;
+        /**
+          * Sets chip type |text|toggle|filter|
+         */
+        "type"?: ChipType;
+    }
+    interface PdCombobox {
+        /**
+          * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+         */
+        "disableFilter"?: boolean;
+        /**
+          * If `true`, the button to deselect all selected items will not be shown.
+         */
+        "disableMultiselectCounter"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: ComboboxItem;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * Show matching parts in results as highlighted
+         */
+        "highlight"?: boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Values shown as combobox items
+         */
+        "items"?: ComboboxItem[];
+        /**
+          * combobox box label
+         */
+        "label"?: string;
+        /**
+          * If `true`, the combobox can select multiple items.
+         */
+        "multiselect"?: boolean;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onPd-blur"?: (event: PdComboboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-change"?: (event: PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>) => void;
+        /**
+          * Emitted when a combobox request occurred.
+         */
+        "onPd-combobox"?: (event: PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onPd-focus"?: (event: PdComboboxCustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPd-input"?: (event: PdComboboxCustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * If `true`, the combobox get a selected state like a dropdown.
+         */
+        "selectable"?: boolean;
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
+          * The value of the input.
+         */
+        "value"?: string;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
+        /**
+          * If `true`, the combobox is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
+    }
+    interface PdDropdownItem {
+        /**
+          * Find an highlight this text in value
+         */
+        "highlight"?: string | number;
+        /**
+          * Displays an item from the provided gallery
+         */
+        "iconName"?: string;
+        /**
+          * Specifies the `src` url of an SVG file to use as icon.
+         */
+        "iconSrc"?: string;
+        /**
+          * If `true`, the item displays a checkbox (for multiselect comboboxes).
+         */
+        "multiselect"?: boolean;
+        /**
+          * Sets this item to selected
+         */
+        "selected"?: boolean;
+        /**
+          * Value for this item
+         */
+        "value"?: string;
     }
     interface PdIcon {
         /**
@@ -576,6 +1027,10 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-button": PdButton;
+        "pd-checkbox": PdCheckbox;
+        "pd-chip": PdChip;
+        "pd-combobox": PdCombobox;
+        "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
     }
@@ -586,6 +1041,10 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
+            "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
+            "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
+            "pd-combobox": LocalJSX.PdCombobox & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;
+            "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
         }

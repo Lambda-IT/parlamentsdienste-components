@@ -1,0 +1,298 @@
+@include resetControlFonts;
+
+:host {
+    display: flex;
+    position: relative;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
+/**
+ * @prop --pd-checkbox-vertical-adjust: top margin of label
+ */
+.pd-combobox-label {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--pd-combobox-vertical-adjust, inherit);
+    width: 100%;
+    max-width: 100%;
+
+    .pd-combobox-label-text {
+        font-size: 00.875rem;
+        padding-bottom: 0.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pd-combobox-input-wrapper {
+        display: flex;
+        position: relative;
+    }
+
+    .pd-combobox-input {
+        flex: 1 1 auto;
+        width: 100%;
+        padding: 0.625em 0.875rem;
+        padding-right: 3rem;
+        padding-left: 3rem;
+        border-radius: 0.25rem;
+        border: 0.125rem solid setcolor(primary, enabled);
+        transition-property: padding-left;
+        transition-duration: 0.1s;
+
+        &:focus-visible {
+            background-color: $yellow-1;
+            color: $blue-whale;
+
+            & .pd-combobox-icon {
+                fill: $blue-whale;
+            }
+        }
+
+        &.pd-combobox-input-with-multiselect-counter {
+            padding-left: 8rem;
+        }
+    }
+
+    .pd-combobox-icon {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 0.125rem);
+        top: 1px; // misaligned icon
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        fill: setcolor(primary, enabledOutlineContrast);
+
+        &.left {
+            left: 0.65rem;
+        }
+
+        &.right {
+            right: 0.25rem;
+        }
+
+        &.pd-combobox-multiselect-counter {
+            left: 3.5rem;
+        }
+    }
+
+    &:hover {
+        .pd-combobox-input {
+            border-color: setcolor(primary, hover);
+        }
+        .pd-combobox-icon {
+            fill: setcolor(primary, hoverOutlineContrast);
+        }
+    }
+
+    &.pd-combobox-disabled {
+        .pd-combobox-input {
+            font-style: italic;
+            border-color: setcolor(primary, disabled);
+            background-color: $white;
+        }
+
+        .pd-combobox-icon {
+            fill: setcolor(primary, disabled);
+            cursor: default;
+        }
+    }
+
+    &.pd-combobox-readonly {
+        pointer-events: none;
+        .pd-combobox-input {
+            border-color: setcolor(primary, readonly);
+            background-color: setcolor(primary, readonly);
+            color: setcolor(primary, readonlyContrast);
+
+            &:focus-visible {
+                background-color: $yellow-1;
+            }
+        }
+
+        .pd-combobox-icon {
+            fill: setcolor(primary, readonlyContrast);
+        }
+    }
+
+    &.pd-combobox-error {
+        .pd-combobox-input {
+            border-color: $input-error-border;
+            background: $red-3;
+            color: setcolor(danger, enabledContrast);
+
+            &:focus-visible {
+                background-color: $yellow-1;
+            }
+        }
+
+        .pd-combobox-icon {
+            fill: setcolor(danger, enabledContrast);
+        }
+    }
+
+    &.pd-combobox-item-selected {
+        .pd-combobox-icon {
+            fill: setcolor(primary, enabledContrast);
+        }
+
+        .pd-combobox-input {
+            font-weight: 700;
+            padding-left: 0.875rem;
+            background-color: setcolor(primary, enabled);
+            color: $white;
+
+            &:focus-visible {
+                background-color: $focus;
+                border-color: $focus;
+                color: $blue-whale;
+
+                & ~ .pd-combobox-icon {
+                    fill: $blue-whale;
+                }
+            }
+
+            &.pd-combobox-input-with-icon {
+                padding-left: 3rem;
+            }
+        }
+
+        &:hover {
+            .pd-combobox-input {
+                color: setcolor(primary, hoverContrast);
+                background-color: setcolor(primary, hover);
+                border-color: setcolor(primary, hover);
+
+                &:active:enabled {
+                    ~ .pd-combobox-icon {
+                        fill: setcolor(primary, pressedContrast);
+                    }
+                }
+
+                &:focus-visible {
+                    ~ .pd-combobox-icon {
+                        fill: setcolor(primary, hoverContrast);
+                    }
+                }
+            }
+        }
+
+        &:active {
+            .pd-combobox-input {
+                color: setcolor(primary, pressedContrast);
+                background-color: setcolor(primary, pressed);
+                border-color: setcolor(primary, pressed);
+            }
+            .pd-combobox-icon {
+                fill: setcolor(primary, pressedContrast);
+            }
+        }
+
+        &.pd-combobox-disabled {
+            pointer-events: none;
+            .pd-combobox-input {
+                color: setcolor(primary, disabledContrast);
+                background-color: setcolor(primary, disabled);
+                border-color: setcolor(primary, disabled);
+                font-weight: 500;
+            }
+            .pd-combobox-icon {
+                fill: setcolor(primary, disabledContrast);
+                cursor: default;
+            }
+        }
+
+        &.pd-combobox-readonly {
+            pointer-events: none;
+            .pd-combobox-input {
+                color: setcolor(primary, readonlyContrast);
+                background-color: setcolor(primary, readonly);
+                border-color: setcolor(primary, readonly);
+                font-weight: 500;
+                &:focus-visible {
+                    background-color: $focus;
+                    border-color: $focus;
+                }
+            }
+            .pd-combobox-icon {
+                fill: setcolor(primary, readonlyContrast);
+            }
+        }
+
+        &.pd-combobox-error {
+            .pd-combobox-input {
+                border-color: setcolor(danger, enabled);
+                background: setcolor(danger, enabled);
+                color: setcolor(danger, enabledContrast);
+                font-weight: 700;
+                &:focus-visible {
+                    background-color: $focus;
+                    border-color: $focus;
+                }
+            }
+
+            .pd-combobox-icon {
+                fill: setcolor(danger, enabledContrast);
+            }
+
+            &:hover {
+                .pd-combobox-input {
+                    color: setcolor(danger, hoverContrast);
+                    background-color: setcolor(danger, hover);
+                    border-color: setcolor(danger, hover);
+
+                    &:focus-visible:active {
+                        ~ .pd-combobox-icon {
+                            fill: setcolor(danger, pressedContrast);
+                        }
+                    }
+                }
+                .pd-combobox-icon {
+                    fill: setcolor(danger, hoverContrast);
+                }
+            }
+
+            &:active {
+                .pd-combobox-input {
+                    color: setcolor(danger, pressedContrast);
+                    background-color: setcolor(danger, pressed);
+                    border-color: setcolor(danger, pressed);
+                }
+                .pd-combobox-icon {
+                    fill: setcolor(danger, pressedContrast);
+                }
+            }
+        }
+    }
+}
+
+.pd-combobox-dropdown {
+    background-color: $white;
+    z-index: 100;
+    width: 100%;
+    border: 0.125rem solid setcolor(primary, enabled);
+    border-radius: 0.25rem;
+    overflow-y: auto;
+    max-height: calc(3em * 5 + 0.25rem);
+}
+
+.pd-combobox-viewonly {
+    display: block;
+    margin: 0;
+    padding: 0.125rem 0 0.75rem 0;
+}
+
+.pd-combobox-label-viewonly {
+    font-weight: 700;
+}

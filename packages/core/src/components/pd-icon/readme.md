@@ -74,11 +74,17 @@ If you want to host assets sepearate to the library, a custom base path can be s
 ### Used by
 
  - [pd-alert](../pd-alert)
+ - [pd-chip](../pd-chip)
+ - [pd-combobox](../pd-combobox)
+ - [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-alert --> pd-icon
+  pd-chip --> pd-icon
+  pd-combobox --> pd-icon
+  pd-dropdown-item --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
