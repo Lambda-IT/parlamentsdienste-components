@@ -1,10 +1,11 @@
-/** @type { import('@storybook/html-vite').Preview } */
+import { Preview } from '@storybook/html-vite';
+
 import { defineCustomElements } from '@parlamentsdienste-components/core/loader';
 import '@parlamentsdienste-components/core/styles/parlamentsdienstecore.css';
 import '@parlamentsdienste-components/core/styles/typography.css';
 defineCustomElements();
 
-const preview = {
+const preview: Preview = {
     parameters: {
         controls: {
             matchers: {
@@ -13,6 +14,7 @@ const preview = {
             },
         },
     },
+    // tags: ['autodocs'],
 };
 
 export default preview;

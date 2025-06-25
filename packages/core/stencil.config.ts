@@ -1,6 +1,8 @@
 import { angularOutputTarget } from '@parlamentsdienste-components/angular-output-target';
 import { Config } from '@stencil/core';
+import { JsonDocs } from '@stencil/core/internal';
 import { sass } from '@stencil/sass';
+import { mdxGenerator } from './utils/markdown';
 
 export const config: Config = {
     namespace: 'ParlamentsdiensteCore',
@@ -43,6 +45,13 @@ export const config: Config = {
             ],
             // excludeComponents: ['pd-input'],
         }),
+        {
+            type: 'docs-readme',
+        },
+        {
+            type: 'docs-custom',
+            generator: (docs: JsonDocs) => mdxGenerator(docs),
+        },
     ],
     testing: {
         browserHeadless: 'shell',

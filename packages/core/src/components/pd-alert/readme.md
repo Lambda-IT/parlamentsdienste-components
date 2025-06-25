@@ -1,7 +1,5 @@
 # pd-alert
 
-
-
 <!-- Auto Generated Below -->
 
 
