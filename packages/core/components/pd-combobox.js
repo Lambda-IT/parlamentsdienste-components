@@ -2035,6 +2035,16 @@ function selectedHasIcon(state) {
 const pdComboboxCss = "input,textarea,a,button{font:1rem/1.5rem Avenir;letter-spacing:0.19px;margin:0}button,[type=button],[type=reset],[type=submit]{appearance:none}:host{display:flex;position:relative}*,::before,::after{box-sizing:border-box;appearance:none;outline:none}.pd-combobox-label{flex:1 1 auto;display:flex;flex-direction:column;margin-top:var(--pd-combobox-vertical-adjust, inherit);width:100%;max-width:100%}.pd-combobox-label .pd-combobox-label-text{font-size:0.875rem;padding-bottom:0.25rem;overflow:hidden;text-overflow:ellipsis}.pd-combobox-label .pd-combobox-input-wrapper{display:flex;position:relative}.pd-combobox-label .pd-combobox-input{flex:1 1 auto;width:100%;padding:0.625em 0.875rem;padding-right:3rem;padding-left:3rem;border-radius:0.25rem;border:0.125rem solid #0b7285;transition-property:padding-left;transition-duration:0.1s}.pd-combobox-label .pd-combobox-input:focus-visible{background-color:#fff3bf;color:#033840}.pd-combobox-label .pd-combobox-input:focus-visible .pd-combobox-icon{fill:#033840}.pd-combobox-label .pd-combobox-input.pd-combobox-input-with-multiselect-counter{padding-left:8rem}.pd-combobox-label .pd-combobox-icon{position:absolute;display:flex;align-items:center;justify-content:center;height:calc(100% - 0.125rem);top:1px;border:none;padding:0;background-color:transparent;cursor:pointer;fill:#0b7285}.pd-combobox-label .pd-combobox-icon.left{left:0.65rem}.pd-combobox-label .pd-combobox-icon.right{right:0.25rem}.pd-combobox-label .pd-combobox-icon.pd-combobox-multiselect-counter{left:3.5rem}.pd-combobox-label:hover .pd-combobox-input{border-color:#15aabf}.pd-combobox-label:hover .pd-combobox-icon{fill:#15aabf}.pd-combobox-label.pd-combobox-disabled .pd-combobox-input{font-style:italic;border-color:#cfcfcf;background-color:#ffffff}.pd-combobox-label.pd-combobox-disabled .pd-combobox-icon{fill:#cfcfcf;cursor:default}.pd-combobox-label.pd-combobox-readonly{pointer-events:none}.pd-combobox-label.pd-combobox-readonly .pd-combobox-input{border-color:#e5e8eb;background-color:#e5e8eb;color:#0b0b0b}.pd-combobox-label.pd-combobox-readonly .pd-combobox-input:focus-visible{background-color:#fff3bf}.pd-combobox-label.pd-combobox-readonly .pd-combobox-icon{fill:#0b0b0b}.pd-combobox-label.pd-combobox-error .pd-combobox-input{border-color:#b33529;background:#ffa8a8;color:#0b0b0b}.pd-combobox-label.pd-combobox-error .pd-combobox-input:focus-visible{background-color:#fff3bf}.pd-combobox-label.pd-combobox-error .pd-combobox-icon{fill:#0b0b0b}.pd-combobox-label.pd-combobox-item-selected .pd-combobox-icon{fill:#ffffff}.pd-combobox-label.pd-combobox-item-selected .pd-combobox-input{font-weight:700;padding-left:0.875rem;background-color:#0b7285;color:#ffffff}.pd-combobox-label.pd-combobox-item-selected .pd-combobox-input:focus-visible{background-color:#ffec99;border-color:#ffec99;color:#033840}.pd-combobox-label.pd-combobox-item-selected .pd-combobox-input:focus-visible~.pd-combobox-icon{fill:#033840}.pd-combobox-label.pd-combobox-item-selected .pd-combobox-input.pd-combobox-input-with-icon{padding-left:3rem}.pd-combobox-label.pd-combobox-item-selected:hover .pd-combobox-input{color:#ffffff;background-color:#15aabf;border-color:#15aabf}.pd-combobox-label.pd-combobox-item-selected:hover .pd-combobox-input:active:enabled~.pd-combobox-icon{fill:#033840}.pd-combobox-label.pd-combobox-item-selected:hover .pd-combobox-input:focus-visible~.pd-combobox-icon{fill:#ffffff}.pd-combobox-label.pd-combobox-item-selected:active .pd-combobox-input{color:#033840;background-color:#66d9e8;border-color:#66d9e8}.pd-combobox-label.pd-combobox-item-selected:active .pd-combobox-icon{fill:#033840}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-disabled{pointer-events:none}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-disabled .pd-combobox-input{color:#0b0b0b;background-color:#cfcfcf;border-color:#cfcfcf;font-weight:500}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-disabled .pd-combobox-icon{fill:#0b0b0b;cursor:default}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-readonly{pointer-events:none}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-readonly .pd-combobox-input{color:#0b0b0b;background-color:#e5e8eb;border-color:#e5e8eb;font-weight:500}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-readonly .pd-combobox-input:focus-visible{background-color:#ffec99;border-color:#ffec99}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-readonly .pd-combobox-icon{fill:#0b0b0b}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error .pd-combobox-input{border-color:#fa5252;background:#fa5252;color:#0b0b0b;font-weight:700}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error .pd-combobox-input:focus-visible{background-color:#ffec99;border-color:#ffec99}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error .pd-combobox-icon{fill:#0b0b0b}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error:hover .pd-combobox-input{color:#ffffff;background-color:#c92a2a;border-color:#c92a2a}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error:hover .pd-combobox-input:focus-visible:active~.pd-combobox-icon{fill:#c92a2a}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error:hover .pd-combobox-icon{fill:#ffffff}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error:active .pd-combobox-input{color:#c92a2a;background-color:#ffa8a8;border-color:#ffa8a8}.pd-combobox-label.pd-combobox-item-selected.pd-combobox-error:active .pd-combobox-icon{fill:#c92a2a}.pd-combobox-dropdown{background-color:#ffffff;z-index:100;width:100%;border:0.125rem solid #0b7285;border-radius:0.25rem;overflow-y:auto;max-height:calc(15em + 0.25rem)}.pd-combobox-viewonly{display:block;margin:0;padding:0.125rem 0 0.75rem 0}.pd-combobox-label-viewonly{font-weight:700}";
 
 const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.__attachShadow();
+        this.pdInput = createEvent(this, "pd-input");
+        this.pdChange = createEvent(this, "pd-change");
+        this.pdCombobox = createEvent(this, "pd-combobox");
+        this.pdBlur = createEvent(this, "pd-blur");
+        this.pdFocus = createEvent(this, "pd-focus");
+    }
     nativeInput;
     menuElement;
     wrapperElement;
@@ -2203,15 +2213,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             closeDropdown(this.state);
         }
     }
-    constructor() {
-        super();
-        this.__registerHost();
-        this.__attachShadow();
-        this.pdInput = createEvent(this, "pd-input");
-        this.pdChange = createEvent(this, "pd-change");
-        this.pdCombobox = createEvent(this, "pd-combobox");
-        this.pdBlur = createEvent(this, "pd-blur");
-        this.pdFocus = createEvent(this, "pd-focus");
+    componentWillLoad() {
         /* **************************************************
          ***                 Initial State                 ***
          ****************************************************/
@@ -2241,9 +2243,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
                 this.selectItem(selectedItem, null, false);
             }
         }
-    }
-    componentWillLoad() {
-        // this.items = [...this.items];
     }
     componentDidLoad() {
         this._viewOnly = this.viewOnly;
@@ -2454,7 +2453,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '783253d829b9a6579e348e3896cb72f48c544831', role: "combobox" }, h("label", { key: '0919240e633cc1cef70eb3f9158d55714dd00fa5', class: {
+        return (h(Host, { key: '8add06457a5b377ba7ac841bad5d169a685405f8', role: "combobox" }, h("label", { key: '34ffd48ce3fb319fc9dfda8c4c1832b91002b24f', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,

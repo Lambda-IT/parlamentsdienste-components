@@ -236,7 +236,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    constructor() {
+    public componentWillLoad() {
         /* **************************************************
          ***                 Initial State                 ***
          ****************************************************/
@@ -269,11 +269,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             }
         }
     }
-
-    public componentWillLoad() {
-        // this.items = [...this.items];
-    }
-
     public componentDidLoad() {
         this._viewOnly = this.viewOnly;
         if (!this._viewOnly) this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);

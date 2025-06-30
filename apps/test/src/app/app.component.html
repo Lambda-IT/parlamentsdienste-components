@@ -1,7 +1,16 @@
 <div class="wrapper">
     <pd-alert>asdf</pd-alert>
-    <!-- <pd-input [ngModel]="myVar" (ngModelChange)="modelChange($event)"></pd-input> -->
+    <pd-input [ngModel]="myVar" (ngModelChange)="modelChange($event)" (pd-change)="($event)"></pd-input>
     <hr />
+    <!-- <pd-combobox [items]="comboboxItems"></pd-combobox> -->
+    <pd-combobox
+        placeholder="search..."
+        class="pd-combobox-items"
+        [label]="label()"
+        id="pd-combobox-2"
+        [items]="comboboxItems"
+        multiselect></pd-combobox>
+    item: <pd-dropdown-item value="test"></pd-dropdown-item>
     <pd-input [label]="'hey'" [(ngModel)]="myVar"></pd-input>
     <!-- <button (click)="asdf()">sdfgdfg</button> -->
     <hr />

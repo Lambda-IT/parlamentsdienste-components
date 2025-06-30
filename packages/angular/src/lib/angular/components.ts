@@ -191,22 +191,22 @@ export class PdCombobox {
 }
 
 
-import type { InputChangeEventDetail } from '@parlamentsdienste-components/core';
-import type { ComboboxItem } from '@parlamentsdienste-components/core';
+import type { InputChangeEventDetail as IPdComboboxInputChangeEventDetail } from '@parlamentsdienste-components/core';
+import type { ComboboxItem as IPdComboboxComboboxItem } from '@parlamentsdienste-components/core';
 
 export declare interface PdCombobox extends Components.PdCombobox {
   /**
    * Emitted when a keyboard input occurred.
    */
-  'pd-input': EventEmitter<CustomEvent<InputChangeEventDetail>>;
+  'pd-input': EventEmitter<CustomEvent<IPdComboboxInputChangeEventDetail>>;
   /**
    * Emitted when the value has changed.
    */
-  'pd-change': EventEmitter<CustomEvent<ComboboxItem | ComboboxItem[]>>;
+  'pd-change': EventEmitter<CustomEvent<IPdComboboxComboboxItem | IPdComboboxComboboxItem[]>>;
   /**
    * Emitted when a combobox request occurred.
    */
-  'pd-combobox': EventEmitter<CustomEvent<ComboboxItem | ComboboxItem[]>>;
+  'pd-combobox': EventEmitter<CustomEvent<IPdComboboxComboboxItem | IPdComboboxComboboxItem[]>>;
   /**
    * Emitted when the input loses focus.
    */
@@ -313,7 +313,7 @@ export class PdInput extends ValueAccessor{
 }
 
 
-import type { InputChangeEventDetail } from '@parlamentsdienste-components/core';
+import type { InputChangeEventDetail as IPdInputInputChangeEventDetail } from '@parlamentsdienste-components/core';
 
 export declare interface PdInput extends Components.PdInput {
   /**
@@ -323,7 +323,7 @@ export declare interface PdInput extends Components.PdInput {
   /**
    * Emitted when the value has changed.
    */
-  'pd-change': EventEmitter<CustomEvent<InputChangeEventDetail>>;
+  'pd-change': EventEmitter<CustomEvent<IPdInputInputChangeEventDetail>>;
   /**
    * Emitted when the input loses focus.
    */
