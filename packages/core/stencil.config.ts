@@ -42,6 +42,12 @@ export const config: Config = {
                     targetAttr: 'value',
                     type: 'text',
                 },
+                {
+                    elementSelectors: ['pd-checkbox'],
+                    event: 'pdChecked',
+                    targetAttr: 'value',
+                    type: 'boolean',
+                },
             ],
             // excludeComponents: ['pd-input'],
         }),

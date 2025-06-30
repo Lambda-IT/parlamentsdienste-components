@@ -55,10 +55,15 @@ export const createAngularComponentDefinition = (
     inlineComponentProps: readonly ComponentCompilerProperty[] = [],
     valueAccessorConfigs: ValueAccessorConfig[] = [],
 ) => {
-    const isComponentWithValueAccessor = valueAccessorConfigs.some(config => {
+    const valueAccessorConfig = valueAccessorConfigs.find(config => {
         const selectors = Array.isArray(config.elementSelectors) ? config.elementSelectors : [config.elementSelectors];
         return selectors.includes(tagName);
     });
+
+    const valueAccessor = {
+        isComponentWithValueAccessor: Boolean(valueAccessorConfig),
+        config: valueAccessorConfig,
+    };
 
     const tagNameAsPascal = dashToPascalCase(tagName);
 
@@ -104,13 +109,6 @@ export const createAngularComponentDefinition = (
         ...propertyDeclarations,
     ].join('\n  ');
 
-    const valueAccessorImports = isComponentWithValueAccessor
-        ? `import { forwardRef, HostListener } from '@angular/core';
-           import { NG_VALUE_ACCESSOR } from '@angular/forms';
-           import { ValueAccessor } from './value-accessor';
-           `
-        : '';
-
     /**
      * Notes on the generated output:
      * - We disable @angular-eslint/no-inputs-metadata-property, so that
@@ -119,7 +117,7 @@ export const createAngularComponentDefinition = (
      * having to use the @Input decorator (and manually define the type and default value).
      */
     const output =
-        valueAccessorImports +
+        // valueAccessorImports +
         `@ProxyCmp({${proxyCmpOptions.join(',')}\n})
 @Component({
   selector: '${tagName}',
@@ -130,15 +128,15 @@ export const createAngularComponentDefinition = (
   outputs: [${formattedOutputs}],
   ${standaloneOption},
   ${
-      isComponentWithValueAccessor
+      valueAccessor.isComponentWithValueAccessor
           ? `providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${tagNameAsPascal}), multi: true }],`
           : ''
   }
 })
-export class ${tagNameAsPascal} ${isComponentWithValueAccessor ? 'extends ValueAccessor' : ''}{
+export class ${tagNameAsPascal} ${valueAccessor.isComponentWithValueAccessor ? 'extends ValueAccessor' : ''}{
   ${propertiesDeclarationText}
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    ${isComponentWithValueAccessor ? 'super(r);' : ''}
+    ${valueAccessor.isComponentWithValueAccessor ? 'super(r);' : ''}
     c.detach();
     this.nativeEl = r.nativeElement;${
         hasOutputs
@@ -149,8 +147,8 @@ export class ${tagNameAsPascal} ${isComponentWithValueAccessor ? 'extends ValueA
   }
 
   ${
-      isComponentWithValueAccessor
-          ? `@HostListener('pd-change', ['$event'])
+      valueAccessor.isComponentWithValueAccessor
+          ? `@HostListener('${valueAccessor.config?.event}', ['$event'])
         handleInput(event: any): void {
             this.handleChangeEvent(event.detail.value);
         }`

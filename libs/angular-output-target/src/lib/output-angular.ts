@@ -122,6 +122,14 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
 
     let sourceImports = '';
 
+    const valueAccessorImports =
+        outputTarget.valueAccessorConfigs && outputTarget.valueAccessorConfigs.length > 0
+            ? `import { forwardRef, HostListener } from '@angular/core';
+                   import { NG_VALUE_ACCESSOR } from '@angular/forms';
+                   import { ValueAccessor } from './value-accessor';
+             `
+            : '';
+
     /**
      * Build an array of Custom Elements build imports and namespace them
      * so that they do not conflict with the Angular wrapper names. For example,
@@ -184,6 +192,7 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
          * 2. Optionally the @NgModule decorated class (if includeSingleComponentAngularModules is true)
          * 3. The component interface (using declaration merging for types).
          */
+
         const componentDefinition = createAngularComponentDefinition(
             cmpMeta.tagName,
             inputs,
@@ -210,7 +219,7 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
         proxyFileOutput.push(componentTypeDefinition, '\n');
     }
 
-    const final: string[] = [imports, typeImports, sourceImports, ...proxyFileOutput];
+    const final: string[] = [imports, typeImports, valueAccessorImports, sourceImports, ...proxyFileOutput];
 
     return final.join('\n') + '\n';
 }

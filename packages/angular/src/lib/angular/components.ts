@@ -6,6 +6,10 @@ import { ProxyCmp, proxyOutputs } from './../generated/angular-component-lib/uti
 
 import type { Components } from '@parlamentsdienste-components/core';
 
+import { forwardRef, HostListener } from '@angular/core';
+                   import { NG_VALUE_ACCESSOR } from '@angular/forms';
+                   import { ValueAccessor } from './value-accessor';
+             
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
@@ -101,18 +105,21 @@ export declare interface PdButton extends Components.PdButton {}
   outputs: ['pd-checked'],
   
   standalone: true,
-  
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdCheckbox), multi: true }],
 })
-export class PdCheckbox {
+export class PdCheckbox extends ValueAccessor{
   protected nativeEl: HTMLPdCheckboxElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    
+    super(r);
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-checked']);
   }
 
-  
+  @HostListener('pdChecked', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail.value);
+        }
 }
 
 
@@ -278,10 +285,7 @@ export class PdIcon {
 export declare interface PdIcon extends Components.PdIcon {}
 
 
-import { forwardRef, HostListener } from '@angular/core';
-           import { NG_VALUE_ACCESSOR } from '@angular/forms';
-           import { ValueAccessor } from './value-accessor';
-           @ProxyCmp({
+@ProxyCmp({
   defineCustomElementFn: definePdInput,
   inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'clearInput', 'clearOnEdit', 'disabled', 'error', 'inputmode', 'label', 'max', 'maxlength', 'min', 'minlength', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'size', 'step', 'type', 'value', 'verticalAdjust', 'viewOnly'],
   methods: ['setFocus']
@@ -306,7 +310,7 @@ export class PdInput extends ValueAccessor{
     proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-blur', 'pd-focus']);
   }
 
-  @HostListener('pd-change', ['$event'])
+  @HostListener('pdChange', ['$event'])
         handleInput(event: any): void {
             this.handleChangeEvent(event.detail.value);
         }
