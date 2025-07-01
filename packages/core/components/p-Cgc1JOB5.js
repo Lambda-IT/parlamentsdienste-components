@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
-import { d as defineCustomElement$1 } from './p-CzrHd0bv.js';
+import { d as defineCustomElement$1 } from './p-Dc3vwJAQ.js';
 
 const pdChipCss = "input,textarea,a,button{font:1rem/1.5rem Avenir;letter-spacing:0.19px;margin:0}button,[type=button],[type=reset],[type=submit]{appearance:none}:host{display:inline-block;vertical-align:bottom}*,::before,::after{box-sizing:border-box;appearance:none;outline:none}.pd-chip{display:flex;align-items:center;border-radius:2rem;padding:0.25rem 0.75rem;position:relative;cursor:pointer;border:none;background-color:#e3e0e0;color:#000;font-weight:700}.pd-chip.pd-chip-checked{background-color:#66d9e8;color:#033840}.pd-chip.pd-chip-checked .pd-chip-icon{fill:#033840}.pd-chip:hover:enabled{background-color:#15aabf;color:#ffffff}.pd-chip:hover:enabled .pd-chip-icon{fill:#ffffff}.pd-chip:disabled{background-color:#cfcfcf;color:#0b0b0b;font-weight:500;font-style:italic;cursor:default}.pd-chip:disabled .pd-chip-icon{fill:#0b0b0b}.pd-chip:active:enabled{background-color:#0b7285;color:#ffffff}.pd-chip:active:enabled .pd-chip-icon{fill:#ffffff}.pd-chip.pd-chip-readonly{pointer-events:none;background-color:#dee2e6;border-color:#dee2e6;color:#0b0b0b;font-weight:500;cursor:default}.pd-chip:focus-visible{background-color:#ffec99;color:#033840}.pd-chip:focus-visible .pd-chip-icon{fill:#033840}.pd-chip-icon-left,.pd-chip-icon-right{display:flex;align-items:center}.pd-chip-icon-left{margin-right:0.375rem}.pd-chip-icon-right{margin-left:0.375rem}.pd-chip-remove{cursor:pointer;appearance:none;background-color:transparent;padding:0;margin:0;border:none;margin-left:0.375rem}.pd-chip-remove:focus-visible{background-color:#ffec99;color:#033840;fill:#033840}";
 
@@ -89,6 +89,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Chip as C, defineCustomElement as d };
-//# sourceMappingURL=p-CjoNoNlA.js.map
+//# sourceMappingURL=p-Cgc1JOB5.js.map
 
-//# sourceMappingURL=p-CjoNoNlA.js.map
+//# sourceMappingURL=p-Cgc1JOB5.js.map

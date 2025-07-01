@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$2 } from './p-CzrHd0bv.js';
+import { d as defineCustomElement$2 } from './p-Dc3vwJAQ.js';
 
 var HOOKS = [
     "onChange",

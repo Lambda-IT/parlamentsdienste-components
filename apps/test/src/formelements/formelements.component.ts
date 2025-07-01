@@ -11,7 +11,6 @@ import {
     PdInput,
 } from '@parlamentsdienste-components/angular';
 // import { setAssetPath } from '@parlamentsdienste-components/core/components';
-import { ValueAccessorComponent } from '../valueAccessor/valueAccessor.component';
 
 console.log('AppComponent initialized');
 @Component({
@@ -19,7 +18,6 @@ console.log('AppComponent initialized');
         PdAlert,
         PdInput,
         FormsModule,
-        ValueAccessorComponent,
         PdIcon,
         PdButton,
         PdButton,

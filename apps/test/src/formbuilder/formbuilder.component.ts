@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PdButton, PdCheckbox, PdDatepicker, PdInput } from '@parlamentsdienste-components/angular';
+import { PdButton, PdCheckbox, PdDatepicker, PdDropdown, PdInput } from '@parlamentsdienste-components/angular';
 
 @Component({
     selector: 'app-formbuilder',
     templateUrl: './formbuilder.component.html',
     styleUrls: ['./formbuilder.component.css'],
-    imports: [CommonModule, PdInput, FormsModule, PdButton, PdCheckbox, ReactiveFormsModule, PdDatepicker],
+    imports: [CommonModule, PdInput, FormsModule, PdButton, PdCheckbox, ReactiveFormsModule, PdDatepicker, PdDropdown],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormbuilderComponent {
@@ -17,6 +17,19 @@ export class FormbuilderComponent {
         checkbox: new FormControl(true),
         date: new FormControl('2025-07-23'),
     });
+
+    items = [
+        {
+            id: '1',
+            label: 'Mitteilungen und Verschiedenes',
+            value: 'a1',
+        },
+        {
+            id: '2',
+            label: 'Pa.Iv. Semadeni. Fakultatives',
+            value: 'a2',
+        },
+    ];
 
     constructor() {
         this.testForm.valueChanges.subscribe(value => {

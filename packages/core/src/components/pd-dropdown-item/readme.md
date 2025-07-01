@@ -22,6 +22,7 @@
 ### Used by
 
  - [pd-combobox](../pd-combobox)
+ - [pd-dropdown](../pd-dropdown)
 
 ### Depends on
 
@@ -34,6 +35,7 @@ graph TD;
   pd-dropdown-item --> pd-checkbox
   pd-dropdown-item --> pd-icon
   pd-combobox --> pd-dropdown-item
+  pd-dropdown --> pd-dropdown-item
   style pd-dropdown-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

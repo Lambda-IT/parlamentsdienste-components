@@ -16,6 +16,7 @@ import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
 import { defineCustomElement as definePdCombobox } from '@parlamentsdienste-components/core/components/pd-combobox.js';
 import { defineCustomElement as definePdDatepicker } from '@parlamentsdienste-components/core/components/pd-datepicker.js';
+import { defineCustomElement as definePdDropdown } from '@parlamentsdienste-components/core/components/pd-dropdown.js';
 import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
@@ -274,6 +275,43 @@ export declare interface PdDatepicker extends Components.PdDatepicker {
   'pd-ready': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string }>>;
 
   'pd-value-update': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string; }>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdDropdown,
+  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'error', 'itemCount', 'items', 'label', 'placeholder', 'readonly', 'required', 'textWrap', 'verticalAdjust', 'viewOnly'],
+  methods: ['setSelectedIndex', 'reset']
+})
+@Component({
+  selector: 'pd-dropdown',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'error', 'itemCount', 'items', 'label', 'placeholder', 'readonly', 'required', 'textWrap', 'verticalAdjust', 'viewOnly'],
+  outputs: ['pd-change'],
+  
+  standalone: true,
+  
+})
+export class PdDropdown {
+  protected nativeEl: HTMLPdDropdownElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-change']);
+  }
+
+  
+}
+
+
+import type { DropdownItem as IPdDropdownDropdownItem } from '@parlamentsdienste-components/core';
+
+export declare interface PdDropdown extends Components.PdDropdown {
+
+  'pd-change': EventEmitter<CustomEvent<IPdDropdownDropdownItem>>;
 }
 
 

@@ -77,6 +77,7 @@ If you want to host assets sepearate to the library, a custom base path can be s
  - [pd-chip](../pd-chip)
  - [pd-combobox](../pd-combobox)
  - [pd-datepicker](../pd-datepicker)
+ - [pd-dropdown](../pd-dropdown)
  - [pd-dropdown-item](../pd-dropdown-item)
 
 ### Graph
@@ -86,6 +87,7 @@ graph TD;
   pd-chip --> pd-icon
   pd-combobox --> pd-icon
   pd-datepicker --> pd-icon
+  pd-dropdown --> pd-icon
   pd-dropdown-item --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

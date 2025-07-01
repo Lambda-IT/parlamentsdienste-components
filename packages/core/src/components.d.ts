@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -326,6 +326,68 @@ export namespace Components {
          */
         "verticalAdjust": boolean;
     }
+    interface PdDropdown {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": DropdownItem;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items": DropdownItem[];
+        /**
+          * Dropdown box label
+         */
+        "label"?: string;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Reset the selection of the dropdown
+         */
+        "reset": () => Promise<void>;
+        /**
+          * Set a preselected entry by index
+         */
+        "setSelectedIndex": (index: number) => Promise<void>;
+        /**
+          * Selected item text wrap on words
+         */
+        "textWrap": TextWrap;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
+        /**
+          * If `true`, the dropdown is replaced with a simple text
+         */
+        "viewOnly": boolean;
+    }
     interface PdDropdownItem {
         /**
           * Find an highlight this text in value
@@ -563,6 +625,10 @@ export interface PdDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdDatepickerElement;
 }
+export interface PdDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdDropdownElement;
+}
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
@@ -678,6 +744,23 @@ declare global {
         prototype: HTMLPdDatepickerElement;
         new (): HTMLPdDatepickerElement;
     };
+    interface HTMLPdDropdownElementEventMap {
+        "pd-change": DropdownItem;
+    }
+    interface HTMLPdDropdownElement extends Components.PdDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdDropdownElementEventMap>(type: K, listener: (this: HTMLPdDropdownElement, ev: PdDropdownCustomEvent<HTMLPdDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdDropdownElementEventMap>(type: K, listener: (this: HTMLPdDropdownElement, ev: PdDropdownCustomEvent<HTMLPdDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdDropdownElement: {
+        prototype: HTMLPdDropdownElement;
+        new (): HTMLPdDropdownElement;
+    };
     interface HTMLPdDropdownItemElement extends Components.PdDropdownItem, HTMLStencilElement {
     }
     var HTMLPdDropdownItemElement: {
@@ -723,6 +806,7 @@ declare global {
         "pd-chip": HTMLPdChipElement;
         "pd-combobox": HTMLPdComboboxElement;
         "pd-datepicker": HTMLPdDatepickerElement;
+        "pd-dropdown": HTMLPdDropdownElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
@@ -1056,6 +1140,61 @@ declare namespace LocalJSX {
          */
         "verticalAdjust"?: boolean;
     }
+    interface PdDropdown {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: DropdownItem;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items"?: DropdownItem[];
+        /**
+          * Dropdown box label
+         */
+        "label"?: string;
+        "onPd-change"?: (event: PdDropdownCustomEvent<DropdownItem>) => void;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Selected item text wrap on words
+         */
+        "textWrap"?: TextWrap;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
+        /**
+          * If `true`, the dropdown is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
+    }
     interface PdDropdownItem {
         /**
           * Find an highlight this text in value
@@ -1291,6 +1430,7 @@ declare namespace LocalJSX {
         "pd-chip": PdChip;
         "pd-combobox": PdCombobox;
         "pd-datepicker": PdDatepicker;
+        "pd-dropdown": PdDropdown;
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
@@ -1307,6 +1447,7 @@ declare module "@stencil/core" {
             "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
             "pd-combobox": LocalJSX.PdCombobox & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;
             "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
+            "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
