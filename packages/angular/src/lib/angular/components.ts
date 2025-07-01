@@ -116,9 +116,9 @@ export class PdCheckbox extends ValueAccessor{
     proxyOutputs(this, this.nativeEl, ['pd-checked']);
   }
 
-  @HostListener('pdChecked', ['$event'])
+  @HostListener('pd-checked', ['$event'])
         handleInput(event: any): void {
-            this.handleChangeEvent(event.detail.value);
+            this.handleChangeEvent(event.detail);
         }
 }
 
@@ -310,9 +310,9 @@ export class PdInput extends ValueAccessor{
     proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-blur', 'pd-focus']);
   }
 
-  @HostListener('pdChange', ['$event'])
+  @HostListener('pd-change', ['$event'])
         handleInput(event: any): void {
-            this.handleChangeEvent(event.detail.value);
+            this.handleChangeEvent(event.detail);
         }
 }
 

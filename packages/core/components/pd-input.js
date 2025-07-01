@@ -144,7 +144,8 @@ const Input = /*@__PURE__*/ proxyCustomElement(class Input extends H {
      * Update the native input element when the value changes
      */
     valueChanged() {
-        this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        // this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        this.pdChange.emit(this.value == null ? this.value : this.value.toString());
     }
     /**
      * Sets focus on the specified `pd-input`. Use this method instead of the global
@@ -175,7 +176,7 @@ const Input = /*@__PURE__*/ proxyCustomElement(class Input extends H {
     }
     render() {
         const value = this.getValue();
-        return (h(Host, { key: 'a403322405ad7747a65c5cda4d2ffa8355562421' }, h("label", { key: '61d082211f040af14584f1a9ff7e00d8637a5a67', class: "pd-input-label" }, this.label ? (h("div", { class: {
+        return (h(Host, { key: '926b101a75a9f07e101322e54ee56f5e70235a5a' }, h("label", { key: '9aefcb069dd5a2ba2fbbc7515f1e6ff72a0d6879', class: "pd-input-label" }, this.label ? (h("div", { class: {
                 'pd-input-label-text': true,
                 'pd-input-label-viewonly': this.viewOnly,
             }, "data-test": "pd-input-label" }, this.label)) : (''), !this.viewOnly ? (h("input", { class: {

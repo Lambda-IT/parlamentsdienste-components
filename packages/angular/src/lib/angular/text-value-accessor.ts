@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'pd-input',
   host: {
-    '(pdChange)': 'handleChangeEvent($event.target.value)'
+    '(pd-change)': 'handleChangeEvent($event.target.value)'
   },
   providers: [
     {

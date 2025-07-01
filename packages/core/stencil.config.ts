@@ -38,13 +38,13 @@ export const config: Config = {
             valueAccessorConfigs: [
                 {
                     elementSelectors: ['pd-input'],
-                    event: 'pdChange',
+                    event: 'pd-change',
                     targetAttr: 'value',
                     type: 'text',
                 },
                 {
                     elementSelectors: ['pd-checkbox'],
-                    event: 'pdChecked',
+                    event: 'pd-checked',
                     targetAttr: 'value',
                     type: 'boolean',
                 },

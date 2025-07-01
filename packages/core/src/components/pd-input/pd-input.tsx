@@ -172,7 +172,8 @@ export class Input implements ComponentInterface {
      */
     @Watch('value')
     protected valueChanged() {
-        this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        // this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+        this.pdChange.emit(this.value == null ? this.value : this.value.toString());
     }
 
     /**

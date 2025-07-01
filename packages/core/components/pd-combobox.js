@@ -2403,7 +2403,8 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     onInput = (ev) => {
         const input = ev.target;
         this.state.inputValue = input?.value ?? '';
-        this.pdInput.emit({ value: this.state.inputValue });
+        // this.pdInput.emit({ value: this.state.inputValue });
+        this.pdInput.emit(this.state.inputValue);
         this.filterItems();
         if (isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
             this.state.currentNavigatedIndex = -1;
@@ -2453,7 +2454,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '8add06457a5b377ba7ac841bad5d169a685405f8', role: "combobox" }, h("label", { key: '34ffd48ce3fb319fc9dfda8c4c1832b91002b24f', class: {
+        return (h(Host, { key: '920f2cf1c4e56176a62869e5a90a1d17f870a44b', role: "combobox" }, h("label", { key: '663ae3ca0a3e40d91514986d519cf3aed2426d3e', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,

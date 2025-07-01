@@ -60,11 +60,11 @@ To add an icon to the label of the dropdownitem use the iconName (for the suppor
 | `disableMultiselectCounter` | `disable-multiselect-counter` | If `true`, the button to deselect all selected items will not be shown.                                                    | `boolean`        | `false`                                                             |
 | `disabled`                  | `disabled`                    | If `true`, the user cannot interact with the input.                                                                        | `boolean`        | `false`                                                             |
 | `emptyItem`                 | `empty-item`                  | Enable selection of an empty item                                                                                          | `boolean`        | `false`                                                             |
-| `emptyItemData`             | `empty-item-data`             | Data used for the empty item                                                                                               | `ComboboxItem`   | `{         id: '0',         label: '-',         value: null,     }` |
+| `emptyItemData`             | `empty-item-data`             | Data used for the empty item                                                                                               | `DropdownItem`   | `{         id: '0',         label: '-',         value: null,     }` |
 | `error`                     | `error`                       | Shows error state                                                                                                          | `boolean`        | `false`                                                             |
 | `highlight`                 | `highlight`                   | Show matching parts in results as highlighted                                                                              | `boolean`        | `true`                                                              |
 | `itemCount`                 | `item-count`                  | Items visible in dropdown                                                                                                  | `number`         | `5`                                                                 |
-| `items`                     | `items`                       | Values shown as combobox items                                                                                             | `ComboboxItem[]` | `[]`                                                                |
+| `items`                     | `items`                       | Values shown as combobox items                                                                                             | `DropdownItem[]` | `[]`                                                                |
 | `label`                     | `label`                       | combobox box label                                                                                                         | `string`         | `undefined`                                                         |
 | `multiselect`               | `multiselect`                 | If `true`, the combobox can select multiple items.                                                                         | `boolean`        | `false`                                                             |
 | `placeholder`               | `placeholder`                 | Instructional text that shows before the input has a value.                                                                | `string`         | `undefined`                                                         |
@@ -82,10 +82,10 @@ To add an icon to the label of the dropdownitem use the iconName (for the suppor
 | Event         | Description                               | Type                                          |
 | ------------- | ----------------------------------------- | --------------------------------------------- |
 | `pd-blur`     | Emitted when the input loses focus.       | `CustomEvent<void>`                           |
-| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<ComboboxItem \| ComboboxItem[]>` |
-| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<ComboboxItem \| ComboboxItem[]>` |
+| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<DropdownItem \| DropdownItem[]>` |
+| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<DropdownItem \| DropdownItem[]>` |
 | `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                           |
-| `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<InputChangeEventDetail>`         |
+| `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<number \| string>`               |
 
 
 ## Methods

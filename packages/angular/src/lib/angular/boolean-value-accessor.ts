@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'pd-checkbox',
   host: {
-    '(pdChecked)': 'handleChangeEvent($event.target.value)'
+    '(pd-checked)': 'handleChangeEvent($event.target.value)'
   },
   providers: [
     {

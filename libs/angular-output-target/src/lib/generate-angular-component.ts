@@ -150,7 +150,7 @@ export class ${tagNameAsPascal} ${valueAccessor.isComponentWithValueAccessor ? '
       valueAccessor.isComponentWithValueAccessor
           ? `@HostListener('${valueAccessor.config?.event}', ['$event'])
         handleInput(event: any): void {
-            this.handleChangeEvent(event.detail.value);
+            this.handleChangeEvent(event.detail);
         }`
           : ''
   }

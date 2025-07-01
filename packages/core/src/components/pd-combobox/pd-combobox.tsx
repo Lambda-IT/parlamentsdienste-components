@@ -454,7 +454,8 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;
         this.state.inputValue = input?.value ?? '';
-        this.pdInput.emit({ value: this.state.inputValue });
+        // this.pdInput.emit({ value: this.state.inputValue });
+        this.pdInput.emit(this.state.inputValue);
 
         this.filterItems();
 
