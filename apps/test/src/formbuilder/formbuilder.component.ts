@@ -6,6 +6,7 @@ import {
     PdButton,
     PdCheckbox,
     PdCombobox,
+    PdDatepicker,
     PdDropdownItem,
     PdIcon,
     PdInput,
@@ -26,11 +27,16 @@ import {
         PdDropdownItem,
         PdCheckbox,
         ReactiveFormsModule,
+        PdDatepicker,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormbuilderComponent {
-    testForm = new FormGroup({ name: new FormControl('1234'), checkbox: new FormControl(false) });
+    testForm = new FormGroup({
+        name: new FormControl('1234'),
+        checkbox: new FormControl(true),
+        date: new FormControl('2025-07-23'),
+    });
 
     constructor() {
         this.testForm.valueChanges.subscribe(value => {

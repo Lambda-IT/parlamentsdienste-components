@@ -48,6 +48,12 @@ export const config: Config = {
                     targetAttr: 'value',
                     type: 'boolean',
                 },
+                {
+                    elementSelectors: ['pd-datepicker'],
+                    event: 'pd-change',
+                    targetAttr: 'date',
+                    type: 'text',
+                },
             ],
             // excludeComponents: ['pd-input'],
         }),

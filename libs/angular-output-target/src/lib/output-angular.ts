@@ -3,7 +3,6 @@ import { dirname, join } from 'path';
 import { createAngularComponentDefinition, createComponentTypeDefinition } from './generate-angular-component';
 import { generateAngularDirectivesFile } from './generate-angular-directives-file';
 import { generateAngularModuleForComponent } from './generate-angular-modules';
-import generateValueAccessors from './generate-value-accessors';
 import type { OutputTargetAngular, PackageJSON } from './types';
 import {
     createImportStatement,
@@ -32,7 +31,7 @@ export async function angularDirectiveProxyOutput(
         compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText),
         copyResources(config, outputTarget),
         generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget),
-        generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
+        // generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
     ]);
 }
 

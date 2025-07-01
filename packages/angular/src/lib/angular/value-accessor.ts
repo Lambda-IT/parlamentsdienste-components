@@ -1,39 +1,49 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
+const INPUTMAP: Record<string, string> = {
+    'pd-input': 'value',
+    'pd-checkbox': 'checked',
+    'pd-datepicker': 'date',
+};
+
 @Directive({})
 export class ValueAccessor implements ControlValueAccessor {
+    private onChange: (value: any) => void = () => {
+        /**/
+    };
+    private onTouched: () => void = () => {
+        /**/
+    };
+    protected lastValue: any;
 
-  private onChange: (value: any) => void = () => {/**/};
-  private onTouched: () => void = () => {/**/};
-  protected lastValue: any;
+    constructor(protected el: ElementRef) {}
 
-  constructor(protected el: ElementRef) {}
-
-  writeValue(value: any) {
-    this.el.nativeElement.value = this.lastValue = value == null ? '' : value;
-  }
-
-  handleChangeEvent(value: any) {
-    if (value !== this.lastValue) {
-      this.lastValue = value;
-      this.onChange(value);
+    writeValue(value: any) {
+        const component = this.el.nativeElement.tagName.toLowerCase();
+        this.el.nativeElement[INPUTMAP[component]] = this.lastValue = value == null ? '' : value;
     }
-  }
 
-  @HostListener('focusout')
-  _handleBlurEvent() {
-    this.onTouched();
-  }
+    handleChangeEvent(value: any) {
+        if (value !== this.lastValue) {
+            this.lastValue = value;
+            this.onChange(value);
+        }
+    }
 
-  registerOnChange(fn: (value: any) => void) {
-    this.onChange = fn;
-  }
-  registerOnTouched(fn: () => void) {
-    this.onTouched = fn;
-  }
+    @HostListener('focusout')
+    _handleBlurEvent() {
+        this.onTouched();
+    }
 
-  setDisabledState(isDisabled: boolean) {
-    this.el.nativeElement.disabled = isDisabled;
-  }
+    registerOnChange(fn: (value: any) => void) {
+        this.onChange = fn;
+    }
+    registerOnTouched(fn: () => void) {
+        this.onTouched = fn;
+    }
+
+    setDisabledState(isDisabled: boolean) {
+        this.el.nativeElement.disabled = isDisabled;
+    }
 }

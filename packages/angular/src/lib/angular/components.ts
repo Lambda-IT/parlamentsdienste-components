@@ -241,18 +241,21 @@ export declare interface PdCombobox extends Components.PdCombobox {
   outputs: ['pd-change', 'pd-open', 'pd-close', 'pd-month-change', 'pd-year-change', 'pd-ready', 'pd-value-update'],
   
   standalone: true,
-  
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdDatepicker), multi: true }],
 })
-export class PdDatepicker {
+export class PdDatepicker extends ValueAccessor{
   protected nativeEl: HTMLPdDatepickerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    
+    super(r);
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-change', 'pd-open', 'pd-close', 'pd-month-change', 'pd-year-change', 'pd-ready', 'pd-value-update']);
   }
 
-  
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail);
+        }
 }
 
 
