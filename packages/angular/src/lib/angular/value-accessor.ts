@@ -1,5 +1,6 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { AfterViewInit, Directive, ElementRef, HostListener, inject, Injector, OnDestroy } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 const INPUTMAP: Record<string, string> = {
     'pd-input': 'value',
@@ -8,7 +9,7 @@ const INPUTMAP: Record<string, string> = {
 };
 
 @Directive({})
-export class ValueAccessor implements ControlValueAccessor {
+export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private onChange: (value: any) => void = () => {
         /**/
     };
@@ -16,6 +17,9 @@ export class ValueAccessor implements ControlValueAccessor {
         /**/
     };
     protected lastValue: any;
+    ngControl: any;
+    private statusChanges?: Subscription;
+    protected injector = inject(Injector);
 
     constructor(protected el: ElementRef) {}
 
@@ -45,5 +49,44 @@ export class ValueAccessor implements ControlValueAccessor {
 
     setDisabledState(isDisabled: boolean) {
         this.el.nativeElement.disabled = isDisabled;
+    }
+
+    onStatusChange() {
+        if (!this.ngControl) {
+            this.initializeNgControl();
+        }
+        if (!this.ngControl) {
+            return;
+        }
+        const { dirty, touched, invalid } = this.ngControl;
+        this.el.nativeElement.error = invalid;
+    }
+
+    initializeNgControl() {
+        try {
+            this.ngControl = this.injector.get<NgControl>(NgControl);
+        } catch {
+            return;
+        }
+    }
+    ngAfterViewInit(): void {
+        this.initializeNgControl();
+
+        if (!this.ngControl) {
+            return;
+        }
+
+        // Listen for changes in validity, disabled, or pending states
+        if (this.ngControl.statusChanges) {
+            this.statusChanges = this.ngControl.statusChanges.subscribe(() => {
+                this.onStatusChange();
+            });
+        }
+    }
+
+    ngOnDestroy(): void {
+        if (this.statusChanges) {
+            this.statusChanges.unsubscribe();
+        }
     }
 }

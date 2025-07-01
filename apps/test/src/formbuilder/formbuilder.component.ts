@@ -26,7 +26,7 @@ export class FormbuilderComponent {
 
     buttonClicked() {
         console.log('Button clicked');
-        console.log(this.testForm.get('name')?.disable());
+        this.testForm.get('name')?.disable();
         // this.testForm.get('name2')!.invalid = true;
     }
 }
