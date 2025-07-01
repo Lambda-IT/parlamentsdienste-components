@@ -6,7 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ChipType, ComboboxItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+import { DateOption, Options } from "flatpickr/dist/types/options";
 export { ChipType, ComboboxItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes } from "./types";
+export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
         /**
@@ -242,6 +244,88 @@ export namespace Components {
          */
         "viewOnly": boolean;
     }
+    interface PdDatepicker {
+        /**
+          * Initializes the datepicker again without setting a date. Needed for example in Vue's KeepAlive, when the Instance was destroyed and needs to be re-initialized.
+         */
+        "activate": () => Promise<void>;
+        /**
+          * Allow manual input
+         */
+        "allowInput": boolean;
+        /**
+          * Resets the selected dates (if any) and clears the input.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Closes the calendar.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Set the configuration for the datepicker (only applied at instantiation) Check out https://flatpickr.js.org/options for further documentation about this config
+         */
+        "config": Partial<Options>;
+        /**
+          * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
+         */
+        "date": DateOption | DateOption[];
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * Hides the clear icon
+         */
+        "hideClearIcon"?: boolean;
+        /**
+          * If `true`, a calendar icon is shown at the end of the input.
+         */
+        "icon": boolean;
+        /**
+          * datepicker box label
+         */
+        "label"?: string;
+        /**
+          * Shows/opens the calendar.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets a config option to value, redrawing the calendar and updating the current view, if necessary. Check out https://flatpickr.js.org/options or https://flatpickr.js.org/instance-methods-properties-elements/#setoption-value for further documentation about this config
+         */
+        "set": (option: any, value?: any) => Promise<void>;
+        /**
+          * Sets the current selected date(s) to date, which can be a date string, a Date, or anArray of the Dates. Optionally, pass true as the second argument to force any onChange events to fire. And if you’re passing a date string with a format other than your dateFormat, provide a dateStrFormat e.g. "m/d/Y"
+         */
+        "setDate": (date: DateOption | DateOption[], triggerChange?: boolean, format?: string) => Promise<void>;
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
+          * Shows/opens the calendar if its closed, hides/closes it otherwise.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
+    }
     interface PdDropdownItem {
         /**
           * Find an highlight this text in value
@@ -475,6 +559,10 @@ export interface PdComboboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdComboboxElement;
 }
+export interface PdDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdDatepickerElement;
+}
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
@@ -561,6 +649,35 @@ declare global {
         prototype: HTMLPdComboboxElement;
         new (): HTMLPdComboboxElement;
     };
+    interface HTMLPdDatepickerElementEventMap {
+        "pd-change": { selectedDates: Date[]; dateStr: string };
+        "pd-open": { selectedDates: Date[]; dateStr: string };
+        "pd-close": { selectedDates: Date[]; dateStr: string };
+        "pd-month-change": {
+        selectedDates: Date[];
+        dateStr: string;
+    };
+        "pd-year-change": { selectedDates: Date[]; dateStr: string };
+        "pd-ready": { selectedDates: Date[]; dateStr: string };
+        "pd-value-update": {
+        selectedDates: Date[];
+        dateStr: string;
+    };
+    }
+    interface HTMLPdDatepickerElement extends Components.PdDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdDatepickerElementEventMap>(type: K, listener: (this: HTMLPdDatepickerElement, ev: PdDatepickerCustomEvent<HTMLPdDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdDatepickerElementEventMap>(type: K, listener: (this: HTMLPdDatepickerElement, ev: PdDatepickerCustomEvent<HTMLPdDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdDatepickerElement: {
+        prototype: HTMLPdDatepickerElement;
+        new (): HTMLPdDatepickerElement;
+    };
     interface HTMLPdDropdownItemElement extends Components.PdDropdownItem, HTMLStencilElement {
     }
     var HTMLPdDropdownItemElement: {
@@ -605,6 +722,7 @@ declare global {
         "pd-checkbox": HTMLPdCheckboxElement;
         "pd-chip": HTMLPdChipElement;
         "pd-combobox": HTMLPdComboboxElement;
+        "pd-datepicker": HTMLPdDatepickerElement;
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
@@ -871,6 +989,73 @@ declare namespace LocalJSX {
          */
         "viewOnly"?: boolean;
     }
+    interface PdDatepicker {
+        /**
+          * Allow manual input
+         */
+        "allowInput"?: boolean;
+        /**
+          * Set the configuration for the datepicker (only applied at instantiation) Check out https://flatpickr.js.org/options for further documentation about this config
+         */
+        "config"?: Partial<Options>;
+        /**
+          * Sets the current selected date(s), which can be a date string (using current dateFormat), a Date, or anArray of the Dates.
+         */
+        "date"?: DateOption | DateOption[];
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * Hides the clear icon
+         */
+        "hideClearIcon"?: boolean;
+        /**
+          * If `true`, a calendar icon is shown at the end of the input.
+         */
+        "icon"?: boolean;
+        /**
+          * datepicker box label
+         */
+        "label"?: string;
+        "onPd-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-close"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-month-change"?: (event: PdDatepickerCustomEvent<{
+        selectedDates: Date[];
+        dateStr: string;
+    }>) => void;
+        "onPd-open"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-ready"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        "onPd-value-update"?: (event: PdDatepickerCustomEvent<{
+        selectedDates: Date[];
+        dateStr: string;
+    }>) => void;
+        "onPd-year-change"?: (event: PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Input tag size (check pd-input 'size' for more info)
+         */
+        "size"?: number;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
+    }
     interface PdDropdownItem {
         /**
           * Find an highlight this text in value
@@ -1105,6 +1290,7 @@ declare namespace LocalJSX {
         "pd-checkbox": PdCheckbox;
         "pd-chip": PdChip;
         "pd-combobox": PdCombobox;
+        "pd-datepicker": PdDatepicker;
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
@@ -1120,6 +1306,7 @@ declare module "@stencil/core" {
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
             "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
             "pd-combobox": LocalJSX.PdCombobox & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;
+            "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;

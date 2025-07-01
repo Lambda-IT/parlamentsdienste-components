@@ -7,6 +7,7 @@ export const DIRECTIVES = [
   d.PdCheckbox,
   d.PdChip,
   d.PdCombobox,
+  d.PdDatepicker,
   d.PdDropdownItem,
   d.PdIcon,
   d.PdInput,

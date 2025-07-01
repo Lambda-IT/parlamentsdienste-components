@@ -15,6 +15,7 @@ import { defineCustomElement as definePdButton } from '@parlamentsdienste-compon
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
 import { defineCustomElement as definePdCombobox } from '@parlamentsdienste-components/core/components/pd-combobox.js';
+import { defineCustomElement as definePdDatepicker } from '@parlamentsdienste-components/core/components/pd-datepicker.js';
 import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
@@ -223,6 +224,53 @@ export declare interface PdCombobox extends Components.PdCombobox {
    * Emitted when the input has focus.
    */
   'pd-focus': EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdDatepicker,
+  inputs: ['allowInput', 'config', 'date', 'disabled', 'error', 'hideClearIcon', 'icon', 'label', 'placeholder', 'readonly', 'required', 'size', 'verticalAdjust'],
+  methods: ['set', 'clear', 'close', 'open', 'toggle', 'activate', 'setDate']
+})
+@Component({
+  selector: 'pd-datepicker',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['allowInput', 'config', 'date', 'disabled', 'error', 'hideClearIcon', 'icon', 'label', 'placeholder', 'readonly', 'required', 'size', 'verticalAdjust'],
+  outputs: ['pd-change', 'pd-open', 'pd-close', 'pd-month-change', 'pd-year-change', 'pd-ready', 'pd-value-update'],
+  
+  standalone: true,
+  
+})
+export class PdDatepicker {
+  protected nativeEl: HTMLPdDatepickerElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-change', 'pd-open', 'pd-close', 'pd-month-change', 'pd-year-change', 'pd-ready', 'pd-value-update']);
+  }
+
+  
+}
+
+
+export declare interface PdDatepicker extends Components.PdDatepicker {
+
+  'pd-change': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string }>>;
+
+  'pd-open': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string }>>;
+
+  'pd-close': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string }>>;
+
+  'pd-month-change': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string; }>>;
+
+  'pd-year-change': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string }>>;
+
+  'pd-ready': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string }>>;
+
+  'pd-value-update': EventEmitter<CustomEvent<{ selectedDates: Date[]; dateStr: string; }>>;
 }
 
 

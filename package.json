@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
-        "build:all": "npx nx run-many -t build",
+        "build:all": "npx nx reset && rm -f -r .angular && npx nx run-many -t build",
         "build:core": "npx nx run core:build",
         "build:angular": "npx nx run angular:build",
         "build:angular-output-target": "npx nx run angular:build",
@@ -77,6 +77,7 @@
         "@parlamentsdienste-components/angular": "0.0.1",
         "@parlamentsdienste-components/core": "0.0.1",
         "@popperjs/core": "^2.11.8",
+        "flatpickr": "^4.6.13",
         "rxjs": "~7.8.0",
         "zone.js": "~0.15.0"
     }

@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
-import { d as defineCustomElement$2 } from './p-CGgTmFwB.js';
+import { d as defineCustomElement$2 } from './p-CzrHd0bv.js';
 
 const collapse = (element) => {
     // remove this event listener so it only gets triggered once

@@ -38,6 +38,9 @@ importers:
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
+      flatpickr:
+        specifier: ^4.6.13
+        version: 4.6.13
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2

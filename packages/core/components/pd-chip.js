@@ -1,4 +1,4 @@
-import { C as Chip, d as defineCustomElement$1 } from './p-CrKKp3ux.js';
+import { C as Chip, d as defineCustomElement$1 } from './p-CjoNoNlA.js';
 
 const PdChip = Chip;
 const defineCustomElement = defineCustomElement$1;
