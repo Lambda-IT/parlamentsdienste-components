@@ -280,7 +280,7 @@ export declare interface PdDatepicker extends Components.PdDatepicker {
 
 @ProxyCmp({
   defineCustomElementFn: definePdDropdown,
-  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'error', 'itemCount', 'items', 'label', 'placeholder', 'readonly', 'required', 'textWrap', 'verticalAdjust', 'viewOnly'],
+  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'error', 'itemCount', 'items', 'label', 'placeholder', 'readonly', 'required', 'selected', 'textWrap', 'verticalAdjust', 'viewOnly'],
   methods: ['setSelectedIndex', 'reset']
 })
 @Component({
@@ -288,7 +288,7 @@ export declare interface PdDatepicker extends Components.PdDatepicker {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'error', 'itemCount', 'items', 'label', 'placeholder', 'readonly', 'required', 'textWrap', 'verticalAdjust', 'viewOnly'],
+  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'error', 'itemCount', 'items', 'label', 'placeholder', 'readonly', 'required', 'selected', 'textWrap', 'verticalAdjust', 'viewOnly'],
   outputs: ['pd-change'],
   
   standalone: true,

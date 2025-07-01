@@ -28,6 +28,10 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
      */
     items = [];
     /**
+     * Preselected item
+     */
+    selected = null;
+    /**
      * Items visible in dropdown
      */
     itemCount = 5;
@@ -82,8 +86,8 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
      */
     async setSelectedIndex(index) {
         if (index >= 0 && index < this.items.length) {
-            this.items[index] = { ...this.items[index], selected: true };
             this.selectedItem = this.items[index];
+            this.sanitizeInternalItems(this.items[index].id);
         }
     }
     /**
@@ -95,6 +99,13 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
     viewOnlyChanged(viewOnly) {
         if (viewOnly && this.popper)
             this.popper.destroy();
+    }
+    selectedChanged(newItem) {
+        const itemToSelect = this.items.find(i => i.id === newItem.id) || null;
+        if (itemToSelect) {
+            this.selectedItem = itemToSelect;
+            this.sanitizeInternalItems(itemToSelect.id);
+        }
     }
     handleClick(ev) {
         if (!ev.composedPath().includes(this.element))
@@ -154,16 +165,30 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
     inputTime = 0;
     selectItem(item, closeDropdown = false) {
         this.selectedItem = item;
+        this.sanitizeInternalItems(item.id);
         if (closeDropdown)
             this.open = false;
         this.pdChange.emit(item);
+    }
+    sanitizeInternalItems(selectedId) {
+        this.items.forEach(item => {
+            delete item.selected;
+        });
+        const index = this.items.findIndex(i => i.id === selectedId);
+        this.items[index] = { ...this.items[index], selected: true };
     }
     toggleDropdown = () => {
         if (!this.disabled && !this.readonly && !this.viewOnly)
             this.open = !this.open;
     };
     componentWillLoad() {
-        this.selectedItem = this.items.find(item => item.selected);
+        if (this.selected) {
+            this.sanitizeInternalItems(this.selected.id);
+            this.selectedItem = this.items.find(item => item.id === this.selected.id);
+        }
+        else {
+            this.selectedItem = this.items.find(item => item.selected);
+        }
     }
     componentDidLoad() {
         this._viewOnly = this.viewOnly;
@@ -196,7 +221,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         });
     }
     render() {
-        return (h(Host, { key: 'd556e348be60ff2a203663630d501489adffe42b' }, h("label", { key: '05c6b485e301172571a0f5873efa4af5aa8c53d8', class: {
+        return (h(Host, { key: '14a172a8b4ba6fbc7247e28c76533ce35f403972' }, h("label", { key: 'c869aa8c33ab9e88c5fb71a129cfcb184a023ab4', class: {
                 'pd-dropdown-label': true,
                 'pd-dropdown-disabled': this.disabled,
             }, onClick: this.toggleDropdown, "data-test": "pd-dropdown-label" }, this.renderLabel()), !this.viewOnly ? (h("div", { class: {
@@ -229,12 +254,14 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
     }
     static get assetsDirs() { return ["assets-dropdown"]; }
     static get watchers() { return {
-        "viewOnly": ["viewOnlyChanged"]
+        "viewOnly": ["viewOnlyChanged"],
+        "selected": ["selectedChanged"]
     }; }
     static get style() { return pdDropdownCss; }
 }, [1, "pd-dropdown", {
         "placeholder": [1],
         "items": [16],
+        "selected": [16],
         "itemCount": [2, "item-count"],
         "emptyItem": [4, "empty-item"],
         "emptyItemData": [16, "empty-item-data"],
@@ -251,7 +278,8 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         "setSelectedIndex": [64],
         "reset": [64]
     }, [[16, "click", "handleClick"], [0, "keydown", "handleKeyDown"]], {
-        "viewOnly": ["viewOnlyChanged"]
+        "viewOnly": ["viewOnlyChanged"],
+        "selected": ["selectedChanged"]
     }]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
