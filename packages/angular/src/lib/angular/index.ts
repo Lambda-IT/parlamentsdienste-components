@@ -9,5 +9,6 @@ export const DIRECTIVES = [
   d.PdCombobox,
   d.PdDropdownItem,
   d.PdIcon,
-  d.PdInput
+  d.PdInput,
+  d.PdRadio
 ];

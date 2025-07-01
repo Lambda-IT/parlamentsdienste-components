@@ -18,6 +18,7 @@ import { defineCustomElement as definePdCombobox } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
+import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
   inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon']
@@ -337,5 +338,35 @@ export declare interface PdInput extends Components.PdInput {
    */
   'pd-focus': EventEmitter<CustomEvent<void>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdRadio,
+  inputs: ['checked', 'disabled', 'error', 'label', 'name', 'readonly', 'value', 'verticalAdjust']
+})
+@Component({
+  selector: 'pd-radio',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['checked', 'disabled', 'error', 'label', 'name', 'readonly', 'value', 'verticalAdjust'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdRadio {
+  protected nativeEl: HTMLPdRadioElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdRadio extends Components.PdRadio {}
 
 

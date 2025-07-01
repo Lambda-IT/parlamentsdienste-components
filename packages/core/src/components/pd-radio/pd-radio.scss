@@ -1,0 +1,211 @@
+pd-radio {
+    display: block;
+}
+
+:host {
+    display: inline-block;
+}
+
+/**
+ * @prop --pd-radio-vertical-adjust: top margin of label
+ */
+.pd-radio-label {
+    display: flex;
+    align-items: center;
+    margin: 0.375rem 0;
+    margin-top: var(--pd-radio-vertical-adjust, inherit);
+
+    .pd-radio-input {
+        @include visually-hidden;
+
+        & + .pd-radio-inner {
+            cursor: pointer;
+            position: relative;
+            width: 1.25rem;
+            min-width: 1.25rem;
+            height: 1.25rem;
+
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            &:before {
+                background-color: transparent;
+            }
+
+            &:after {
+                border: 0.125em solid setcolor(primary, enabled);
+                border-radius: 100%;
+            }
+        }
+
+        &:hover:enabled {
+            & + .pd-radio-inner {
+                &:after {
+                    border-color: setcolor(primary, hover);
+                }
+            }
+        }
+
+        &:active:enabled {
+            & + .pd-radio-inner {
+                &:after {
+                    border-color: setcolor(primary, pressed);
+                }
+            }
+        }
+
+        &:focus-visible:enabled {
+            & + .pd-radio-inner {
+                &:after {
+                    border-color: setcolor(primary, enabled);
+                    border-width: 0.125rem;
+                }
+                &:before {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    border-radius: 100%;
+                    background-color: $focus;
+                }
+            }
+        }
+
+        &:disabled {
+            & + .pd-radio-inner {
+                cursor: default;
+                &:after {
+                    border-color: setcolor(primary, disabled);
+                }
+            }
+
+            & ~ .pd-radio-text {
+                font-style: italic;
+            }
+        }
+
+        &:checked {
+            & + .pd-radio-inner {
+                &:after {
+                    border: 0.375rem solid setcolor(primary, enabled);
+                }
+            }
+
+            &:hover:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(primary, hover);
+                    }
+                }
+            }
+
+            &:active:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(primary, pressed);
+                    }
+                }
+            }
+
+            &:focus-visible:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: $focus;
+                        border-width: 0.375rem;
+                    }
+                    &:before {
+                        width: 0.625em;
+                        height: 0.625em;
+                        margin: 0.3em;
+                        background-color: setcolor(primary, enabled);
+                    }
+                }
+            }
+
+            &:disabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(primary, disabled);
+                    }
+                }
+            }
+        }
+    }
+
+    &.pd-radio-readonly {
+        pointer-events: none;
+        cursor: default;
+
+        & > .pd-radio-input {
+            & + .pd-radio-inner {
+                &:after {
+                    background-color: setcolor(primary, readonly);
+                    border: none;
+                }
+            }
+
+            &:checked {
+                & + .pd-radio-inner {
+                    &:after {
+                        content: '';
+                        border: 0.375em solid setcolor(primary, readonly);
+                        background-color: $pd-black;
+                    }
+                }
+            }
+
+            & ~ .pd-radio-text {
+                font-style: normal;
+            }
+        }
+    }
+
+    &.pd-radio-error {
+        & > .pd-radio-input {
+            & + .pd-radio-inner {
+                &:before {
+                    background-color: transparent;
+                }
+                &:after {
+                    border-color: setcolor(danger, enabled);
+                }
+            }
+
+            &:hover:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(danger, hover);
+                    }
+                }
+            }
+
+            &:active:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: setcolor(danger, pressed);
+                    }
+                }
+            }
+
+            &:focus-visible:enabled {
+                & + .pd-radio-inner {
+                    &:after {
+                        border-color: $focus;
+                    }
+                }
+            }
+        }
+    }
+
+    .pd-radio-text {
+        padding-left: 0.625em;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

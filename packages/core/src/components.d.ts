@@ -424,6 +424,40 @@ export namespace Components {
          */
         "viewOnly": boolean;
     }
+    interface PdRadio {
+        /**
+          * Checks radio
+         */
+        "checked": boolean;
+        /**
+          * Sets radio to disabled state
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * Label used by radio
+         */
+        "label"?: string;
+        /**
+          * Name of radio. Used to group radios together
+         */
+        "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * Value of radio
+         */
+        "value"?: any;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust": boolean;
+    }
 }
 export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -559,6 +593,12 @@ declare global {
         prototype: HTMLPdInputElement;
         new (): HTMLPdInputElement;
     };
+    interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {
+    }
+    var HTMLPdRadioElement: {
+        prototype: HTMLPdRadioElement;
+        new (): HTMLPdRadioElement;
+    };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-button": HTMLPdButtonElement;
@@ -568,6 +608,7 @@ declare global {
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
+        "pd-radio": HTMLPdRadioElement;
     }
 }
 declare namespace LocalJSX {
@@ -1024,6 +1065,40 @@ declare namespace LocalJSX {
          */
         "viewOnly"?: boolean;
     }
+    interface PdRadio {
+        /**
+          * Checks radio
+         */
+        "checked"?: boolean;
+        /**
+          * Sets radio to disabled state
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * Label used by radio
+         */
+        "label"?: string;
+        /**
+          * Name of radio. Used to group radios together
+         */
+        "name"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * Value of radio
+         */
+        "value"?: any;
+        /**
+          * Default vertical adjustment for inline forms
+         */
+        "verticalAdjust"?: boolean;
+    }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-button": PdButton;
@@ -1033,6 +1108,7 @@ declare namespace LocalJSX {
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
+        "pd-radio": PdRadio;
     }
 }
 export { LocalJSX as JSX };
@@ -1047,6 +1123,7 @@ declare module "@stencil/core" {
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+            "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
         }
     }
 }
