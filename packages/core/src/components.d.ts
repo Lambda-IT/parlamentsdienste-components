@@ -372,6 +372,10 @@ export namespace Components {
          */
         "reset": () => Promise<void>;
         /**
+          * Preselected item
+         */
+        "selected": Pick<DropdownItem, 'id' | 'value'> | null;
+        /**
           * Set a preselected entry by index
          */
         "setSelectedIndex": (index: number) => Promise<void>;
@@ -1182,6 +1186,10 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Preselected item
+         */
+        "selected"?: Pick<DropdownItem, 'id' | 'value'> | null;
         /**
           * Selected item text wrap on words
          */

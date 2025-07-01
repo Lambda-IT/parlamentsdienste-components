@@ -45,6 +45,11 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() items: DropdownItem[] = [];
 
     /**
+     * Preselected item
+     */
+    @Prop() selected: Pick<DropdownItem, 'id' | 'value'> | null = null;
+
+    /**
      * Items visible in dropdown
      */
     @Prop() itemCount: number = 5;
@@ -112,8 +117,8 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Method()
     async setSelectedIndex(index: number) {
         if (index >= 0 && index < this.items.length) {
-            this.items[index] = { ...this.items[index], selected: true };
             this.selectedItem = this.items[index];
+            this.sanitizeInternalItems(this.items[index].id);
         }
     }
 
@@ -128,6 +133,15 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Watch('viewOnly')
     public viewOnlyChanged(viewOnly) {
         if (viewOnly && this.popper) this.popper.destroy();
+    }
+
+    @Watch('selected')
+    public selectedChanged(newItem) {
+        const itemToSelect = this.items.find(i => i.id === newItem.id) || null;
+        if (itemToSelect) {
+            this.selectedItem = itemToSelect;
+            this.sanitizeInternalItems(itemToSelect.id);
+        }
     }
 
     @Listen('click', { target: 'body' })
@@ -193,8 +207,19 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
         this.selectedItem = item;
+
+        this.sanitizeInternalItems(item.id);
+
         if (closeDropdown) this.open = false;
         this.pdChange.emit(item);
+    }
+
+    sanitizeInternalItems(selectedId) {
+        this.items.forEach(item => {
+            delete item.selected;
+        });
+        const index = this.items.findIndex(i => i.id === selectedId);
+        this.items[index] = { ...this.items[index], selected: true };
     }
 
     private toggleDropdown = () => {
@@ -202,7 +227,12 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     };
 
     public componentWillLoad() {
-        this.selectedItem = this.items.find(item => item.selected);
+        if (this.selected) {
+            this.sanitizeInternalItems(this.selected.id);
+            this.selectedItem = this.items.find(item => item.id === this.selected.id);
+        } else {
+            this.selectedItem = this.items.find(item => item.selected);
+        }
     }
 
     public componentDidLoad() {
@@ -217,7 +247,9 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         }
 
         if (!this.open) return;
-        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll('pd-dropdown-item') as NodeListOf<HTMLPdDropdownItemElement>;
+        const dropdownItemNodes = this.element.shadowRoot.querySelectorAll(
+            'pd-dropdown-item',
+        ) as NodeListOf<HTMLPdDropdownItemElement>;
         this.scrollToSelected(dropdownItemNodes, this.menuElement);
         this.popper.forceUpdate();
     }
@@ -245,8 +277,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                         'pd-dropdown-disabled': this.disabled,
                     }}
                     onClick={this.toggleDropdown}
-                    data-test="pd-dropdown-label"
-                >
+                    data-test="pd-dropdown-label">
                     {this.renderLabel()}
                 </label>
                 {!this.viewOnly ? (
@@ -256,8 +287,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                             'pd-dropdown-readonly': this.readonly,
                             'pd-dropdown-error': this.error,
                         }}
-                        style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}
-                    >
+                        style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}>
                         <button
                             ref={el => (this.buttonElement = el)}
                             class="pd-dropdown-button"
@@ -266,15 +296,17 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                             aria-expanded={`${this.open}`}
                             onClick={this.toggleDropdown}
                             disabled={this.disabled || this.readonly}
-                            data-test="pd-dropdown-button"
-                        >
+                            data-test="pd-dropdown-button">
                             <span
                                 class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
-                                data-test="pd-dropdown-text"
-                            >
+                                data-test="pd-dropdown-text">
                                 {this.selectedItem?.label || this.placeholder}
                             </span>
-                            <pd-icon class="pd-dropdown-caret" name="dropdown" rotate={this.open ? 180 : 0} size={2.4}></pd-icon>
+                            <pd-icon
+                                class="pd-dropdown-caret"
+                                name="dropdown"
+                                rotate={this.open ? 180 : 0}
+                                size={2.4}></pd-icon>
                         </button>
                         {this.renderDropDown()}
                     </div>
@@ -294,8 +326,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                     display: this.open ? 'block' : 'none',
                     maxHeight: `calc(3em * ${this.itemCount} + 0.25em)`,
                 }}
-                tabIndex={-1}
-            >
+                tabIndex={-1}>
                 {this.renderEmptyItem()}
                 {this.renderDropDownItems()}
             </div>
@@ -308,8 +339,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 value={item.label}
                 selected={item.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(item, true)}
-                data-test={`pd-dropdown-item-${i}`}
-            ></pd-dropdown-item>
+                data-test={`pd-dropdown-item-${i}`}></pd-dropdown-item>
         ));
     }
 
@@ -320,8 +350,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 value={this.emptyItemData.label}
                 selected={this.emptyItemData.id === this.selectedItem?.id || false}
                 onClick={() => this.selectItem(this.emptyItemData, true)}
-                data-test={`pd-dropdown-item-empty`}
-            ></pd-dropdown-item>
+                data-test={`pd-dropdown-item-empty`}></pd-dropdown-item>
         );
     }
 
@@ -333,8 +362,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                 class={{
                     'pd-dropdown-label-text': true,
                     'pd-dropdown-label-viewonly': this.viewOnly,
-                }}
-            >
+                }}>
                 {this.label}
             </span>
         );
