@@ -1,10 +1,11 @@
 <div class="wrapper">
     <form [formGroup]="testForm">
-        <pd-input formControlName="name"></pd-input>
+        <pd-input formControlName="name" [error]="testForm.get('name')?.invalid"></pd-input>
+        <pd-input formControlName="name2"></pd-input>
         <!-- <input id="name" type="text" formControlName="name" /> -->
         <pd-checkbox formControlName="checkbox" label="Checkbox"></pd-checkbox>
         <pd-datepicker label="Label" formControlName="date"></pd-datepicker>
 
-        <pd-button>test</pd-button>
+        <pd-button (click)="buttonClicked()">test</pd-button>
     </form>
 </div>
