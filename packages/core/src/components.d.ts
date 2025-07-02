@@ -372,7 +372,7 @@ export namespace Components {
          */
         "reset": () => Promise<void>;
         /**
-          * Preselected item
+          * To select an item by prop. Needs to be an object with an id property, a string or a number.
          */
         "selected": DropdownItemSelect;
         /**
@@ -608,6 +608,28 @@ export namespace Components {
          */
         "verticalAdjust": boolean;
     }
+    interface PdRadioGroup {
+        /**
+          * If `true`, the user cannot interact with the radio buttons.
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * Name of the radio-group. Used to group radios together
+         */
+        "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * Value of the radio-group. Used to set the value of the selected radio
+         */
+        "value": string;
+    }
 }
 export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -636,6 +658,10 @@ export interface PdDropdownCustomEvent<T> extends CustomEvent<T> {
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
+}
+export interface PdRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdRadioGroupElement;
 }
 declare global {
     interface HTMLPdAlertElementEventMap {
@@ -803,6 +829,23 @@ declare global {
         prototype: HTMLPdRadioElement;
         new (): HTMLPdRadioElement;
     };
+    interface HTMLPdRadioGroupElementEventMap {
+        "pd-change": string;
+    }
+    interface HTMLPdRadioGroupElement extends Components.PdRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdRadioGroupElementEventMap>(type: K, listener: (this: HTMLPdRadioGroupElement, ev: PdRadioGroupCustomEvent<HTMLPdRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdRadioGroupElementEventMap>(type: K, listener: (this: HTMLPdRadioGroupElement, ev: PdRadioGroupCustomEvent<HTMLPdRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdRadioGroupElement: {
+        prototype: HTMLPdRadioGroupElement;
+        new (): HTMLPdRadioGroupElement;
+    };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-button": HTMLPdButtonElement;
@@ -815,6 +858,7 @@ declare global {
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
         "pd-radio": HTMLPdRadioElement;
+        "pd-radio-group": HTMLPdRadioGroupElement;
     }
 }
 declare namespace LocalJSX {
@@ -1187,7 +1231,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Preselected item
+          * To select an item by prop. Needs to be an object with an id property, a string or a number.
          */
         "selected"?: DropdownItemSelect;
         /**
@@ -1431,6 +1475,29 @@ declare namespace LocalJSX {
          */
         "verticalAdjust"?: boolean;
     }
+    interface PdRadioGroup {
+        /**
+          * If `true`, the user cannot interact with the radio buttons.
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * Name of the radio-group. Used to group radios together
+         */
+        "name"?: string;
+        "onPd-change"?: (event: PdRadioGroupCustomEvent<string>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * Value of the radio-group. Used to set the value of the selected radio
+         */
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-button": PdButton;
@@ -1443,6 +1510,7 @@ declare namespace LocalJSX {
         "pd-icon": PdIcon;
         "pd-input": PdInput;
         "pd-radio": PdRadio;
+        "pd-radio-group": PdRadioGroup;
     }
 }
 export { LocalJSX as JSX };
@@ -1460,6 +1528,7 @@ declare module "@stencil/core" {
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
+            "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
         }
     }
 }

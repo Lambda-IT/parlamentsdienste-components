@@ -20,7 +20,17 @@
     </head>
     <body>
         <div class="wrapper">
-            <pd-alert>Primary alert</pd-alert>
+            <h1 style="margin-bottom: 5rem">Parlamentsdienste Core Components</h1>
+
+            <div style="margin-bottom: 5rem">
+                <pd-radio-group name="radio-group-1" value="3">
+                    <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
+                    <pd-radio value="2" label="Radio 2"></pd-radio>
+                    <pd-radio value="3" label="Radio 3"></pd-radio>
+                </pd-radio-group>
+            </div>
+
+            <!-- <pd-alert>Primary alert</pd-alert>
             <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
             <div style="border: 1px solid gray; padding: 2rem">
                 <pd-icon size="1" name="press"></pd-icon>
@@ -34,7 +44,7 @@
                 class="pd-combobox-items"
                 label="Label"
                 id="pd-combobox-1"
-                multiselect></pd-combobox>
+                multiselect></pd-combobox> -->
             <!-- <pd-combobox
                 placeholder="search..."
                 class="pd-combobox-items"
@@ -93,6 +103,16 @@
                     { id: '10', label: 'some other 4', value: 'a10' },
                 ];
             }
+
+            const radiogroup = document.getElementsByTagName('pd-radio-group')[0];
+            radiogroup.addEventListener('pd-change', event => {
+                console.log('🔥 Radio group changed:', event.detail);
+            });
+            setTimeout(() => {
+                // radiogroup.error = true;
+                // radiogroup.disabled = true;
+                // radiogroup.readonly = true;
+            }, 1000);
         </script>
     </body>
 </html>

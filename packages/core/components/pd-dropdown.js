@@ -28,11 +28,9 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
      */
     items = [];
     /**
-     * Preselected item
+     * To select an item by prop. Needs to be an object with an id property, a string or a number.
      */
-    // @Prop() selected: Pick<DropdownItem, 'id' | 'value'> | null = null;
     selected;
-    // @Prop() selected: { id: string };
     /**
      * Items visible in dropdown
      */
@@ -103,6 +101,8 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
             this.popper.destroy();
     }
     selectedChanged(newItem) {
+        const asdf = newItem;
+        console.log('🚀 ~ asdf:', asdf);
         const selectedId = this.getIdfromSelectedProp();
         if (!selectedId)
             return;
@@ -245,7 +245,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         });
     }
     render() {
-        return (h(Host, { key: 'b6f7171a8557f3f2f56349ec2321adcf6cc572d7' }, h("label", { key: '3617180b8e9d8ed03a9aea10696d01bd8ea9116b', class: {
+        return (h(Host, { key: 'bbfd519327d5a1c18ba756bd3e243f09d0c4bb19' }, h("label", { key: 'd45aded9c06aa2ee72bde8b5609f2a8b610187af', class: {
                 'pd-dropdown-label': true,
                 'pd-dropdown-disabled': this.disabled,
             }, onClick: this.toggleDropdown, "data-test": "pd-dropdown-label" }, this.renderLabel()), !this.viewOnly ? (h("div", { class: {

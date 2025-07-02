@@ -12,5 +12,6 @@ export const DIRECTIVES = [
   d.PdDropdownItem,
   d.PdIcon,
   d.PdInput,
-  d.PdRadio
+  d.PdRadio,
+  d.PdRadioGroup
 ];

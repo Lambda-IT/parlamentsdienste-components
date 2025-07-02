@@ -136,7 +136,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     @Watch('selected')
-    public selectedChanged(newItem: unknown) {
+    public selectedChanged() {
         const selectedId = this.getIdfromSelectedProp();
         if (!selectedId) return;
         const itemToSelect = this.items.find(i => i.id === selectedId) || null;

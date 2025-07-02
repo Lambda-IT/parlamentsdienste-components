@@ -21,6 +21,7 @@ import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
+import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
   inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon']
@@ -460,5 +461,42 @@ export class PdRadio {
 
 
 export declare interface PdRadio extends Components.PdRadio {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdRadioGroup,
+  inputs: ['disabled', 'error', 'name', 'readonly', 'value']
+})
+@Component({
+  selector: 'pd-radio-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'error', 'name', 'readonly', 'value'],
+  outputs: ['pd-change'],
+  
+  standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdRadioGroup), multi: true }],
+})
+export class PdRadioGroup extends ValueAccessor{
+  protected nativeEl: HTMLPdRadioGroupElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    super(r);
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-change']);
+  }
+
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail);
+        }
+}
+
+
+export declare interface PdRadioGroup extends Components.PdRadioGroup {
+
+  'pd-change': EventEmitter<CustomEvent<string>>;
+}
 
 

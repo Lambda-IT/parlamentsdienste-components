@@ -819,10 +819,17 @@ var insertBefore = (parent, newNode, reference) => {
 };
 var renderVdom = (hostRef, renderFnResults, isInitialLoad = false) => {
   const hostElm = hostRef.$hostElement$;
+  const cmpMeta = hostRef.$cmpMeta$;
   const oldVNode = hostRef.$vnode$ || newVNode(null, null);
   const isHostElement = isHost(renderFnResults);
   const rootVnode = isHostElement ? renderFnResults : h(null, null, renderFnResults);
   hostTagName = hostElm.tagName;
+  if (cmpMeta.$attrsToReflect$) {
+    rootVnode.$attrs$ = rootVnode.$attrs$ || {};
+    cmpMeta.$attrsToReflect$.map(
+      ([propName, attribute]) => rootVnode.$attrs$[attribute] = hostElm[propName]
+    );
+  }
   if (isInitialLoad && rootVnode.$attrs$) {
     for (const key of Object.keys(rootVnode.$attrs$)) {
       if (hostElm.hasAttribute(key) && !["key", "ref", "style", "class"].includes(key)) {
@@ -1145,8 +1152,12 @@ var proxyComponent = (Cstr, cmpMeta, flags) => {
         /* @__PURE__ */ new Set([
           ...Object.keys((_b = cmpMeta.$watchers$) != null ? _b : {}),
           ...members.filter(([_, m]) => m[0] & 15 /* HasAttribute */).map(([propName, m]) => {
+            var _a2;
             const attrName = m[1] || propName;
             attrNameToPropName.set(attrName, propName);
+            if (m[0] & 512 /* ReflectAttr */) {
+              (_a2 = cmpMeta.$attrsToReflect$) == null ? void 0 : _a2.push([propName, attrName]);
+            }
             return attrName;
           })
         ])
@@ -1261,6 +1272,9 @@ var proxyCustomElement = (Cstr, compactMeta) => {
   {
     cmpMeta.$watchers$ = Cstr.$watchers$;
   }
+  {
+    cmpMeta.$attrsToReflect$ = [];
+  }
   const originalConnectedCallback = Cstr.prototype.connectedCallback;
   const originalDisconnectedCallback = Cstr.prototype.disconnectedCallback;
   Object.assign(Cstr.prototype, {
@@ -1343,7 +1357,12 @@ var setPlatformOptions = (opts) => Object.assign(plt, opts);
 
 // src/runtime/render.ts
 function render(vnode, container) {
+  const cmpMeta = {
+    $flags$: 0,
+    $tagName$: container.tagName
+  };
   const ref = {
+    $cmpMeta$: cmpMeta,
     $hostElement$: container
   };
   renderVdom(ref, vnode);

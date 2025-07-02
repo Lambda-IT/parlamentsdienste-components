@@ -42,18 +42,18 @@ const Radio = /*@__PURE__*/ proxyCustomElement(class Radio extends H {
     error = false;
     render() {
         const { name, value, label, checked } = this;
-        return (h(Host, { key: '06a23072fcdaed21607b682f04d737aa1b0d131e', role: "radio", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false' }, h("label", { key: 'e78bbac78fe8d21d938a7e1167ada7c8c32d67d4', class: {
+        return (h(Host, { key: '56c49b6372839f2b5630e41c378f174a3f7e2dbd', role: "radio", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false' }, h("label", { key: '2efab7e764e76bb2d099ece514fd5f917a7d255d', class: {
                 'pd-radio-label': true,
                 'pd-radio-readonly': this.readonly,
                 'pd-radio-error': this.error,
-            }, style: this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}, "data-test": "pd-radio-label" }, h("input", { key: '7ce266a2f7efda2877247322b0b863a6741bb905', class: "pd-radio-input", type: "radio", checked: checked, name: name, value: value, disabled: this.disabled || this.readonly }), h("div", { key: 'f4c6e6ad0376860433135b45185e9b436a4c5eda', class: "pd-radio-inner" }), h("div", { key: 'f7d63c54b9bfb856b9a486acf6d320025878820c', class: "pd-radio-text", "data-test": "pd-radio-text" }, label))));
+            }, style: this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}, "data-test": "pd-radio-label" }, h("input", { key: '73f629ba53ddcd88ad42f58a4dbba5662a7a89cd', class: "pd-radio-input", type: "radio", checked: checked, name: name, value: value, disabled: this.disabled || this.readonly }), h("div", { key: 'e7f7d2cea497ffe5dea563c44ca191f497408bb5', class: "pd-radio-inner" }), h("div", { key: 'e74096796433f668cd1681244168dec2c300e390', class: "pd-radio-text", "data-test": "pd-radio-text" }, label))));
     }
     static get style() { return pdRadioCss; }
 }, [0, "pd-radio", {
         "checked": [4],
         "value": [8],
         "label": [1],
-        "name": [1],
+        "name": [513],
         "disabled": [4],
         "readonly": [4],
         "verticalAdjust": [4, "vertical-adjust"],
