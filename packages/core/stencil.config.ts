@@ -36,8 +36,11 @@ export const config: Config = {
             directivesProxyFile: '../angular/src/lib/angular/components.ts',
             directivesArrayFile: '../angular/src/lib/angular/index.ts',
             valueAccessorConfigs: [
+                // ℹ️ there is a INPUTMAP in the value-accessor.ts file, who maps the input property to the output event of the components
+                // Don't forget to update the INPUTMAP if you add a new component
+                // --> packages/angular/src/lib/angular/value-accessor.ts
                 {
-                    elementSelectors: ['pd-input'],
+                    elementSelectors: ['pd-input', 'pd-radio-group'],
                     event: 'pd-change',
                     targetAttr: 'value',
                     type: 'text',

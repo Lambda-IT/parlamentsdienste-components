@@ -6,7 +6,11 @@
         <pd-checkbox formControlName="checkbox" label="Checkbox"></pd-checkbox>
         <pd-datepicker label="Label" formControlName="date"></pd-datepicker>
         <pd-dropdown label="Label" empty-item [items]="items" formControlName="dropdown"></pd-dropdown>
-
+        <pd-radio-group name="radio-group-1" formControlName="radio">
+            <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
+            <pd-radio value="2" label="Radio 2"></pd-radio>
+            <pd-radio value="3" label="Radio 3"></pd-radio>
+        </pd-radio-group>
         <pd-button (click)="buttonClicked()">test</pd-button>
     </form>
 </div>

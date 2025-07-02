@@ -26,7 +26,7 @@ export class Radio implements ComponentInterface {
     /**
      * Name of radio. Used to group radios together
      */
-    @Prop() name: string = '';
+    @Prop({ reflect: true }) name: string = '';
 
     /**
      * Sets radio to disabled state
@@ -52,7 +52,10 @@ export class Radio implements ComponentInterface {
         const { name, value, label, checked } = this;
 
         return (
-            <Host role="radio" aria-checked={this.checked ? 'true' : 'false'} aria-disabled={this.disabled ? 'true' : 'false'}>
+            <Host
+                role="radio"
+                aria-checked={this.checked ? 'true' : 'false'}
+                aria-disabled={this.disabled ? 'true' : 'false'}>
                 <label
                     class={{
                         'pd-radio-label': true,
@@ -60,9 +63,15 @@ export class Radio implements ComponentInterface {
                         'pd-radio-error': this.error,
                     }}
                     style={this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}}
-                    data-test="pd-radio-label"
-                >
-                    <input class="pd-radio-input" type="radio" checked={checked} name={name} value={value} disabled={this.disabled || this.readonly} />
+                    data-test="pd-radio-label">
+                    <input
+                        class="pd-radio-input"
+                        type="radio"
+                        checked={checked}
+                        name={name}
+                        value={value}
+                        disabled={this.disabled || this.readonly}
+                    />
                     <div class="pd-radio-inner"></div>
                     <div class="pd-radio-text" data-test="pd-radio-text">
                         {label}
