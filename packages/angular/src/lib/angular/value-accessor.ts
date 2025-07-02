@@ -19,11 +19,10 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
         /**/
     };
     protected lastValue: any;
-    ngControl: any;
+    ngControl!: NgControl;
     private statusChanges?: Subscription;
     protected injector = inject(Injector);
-
-    constructor(protected el: ElementRef) {}
+    protected el = inject(ElementRef);
 
     writeValue(value: any) {
         const component = this.el.nativeElement.tagName.toLowerCase();
@@ -66,7 +65,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
 
     initializeNgControl() {
         try {
-            this.ngControl = this.injector.get<NgControl>(NgControl);
+            this.ngControl = this.injector.get(NgControl);
         } catch {
             return;
         }

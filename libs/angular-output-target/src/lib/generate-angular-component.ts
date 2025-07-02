@@ -136,7 +136,7 @@ export const createAngularComponentDefinition = (
 export class ${tagNameAsPascal} ${valueAccessor.isComponentWithValueAccessor ? 'extends ValueAccessor' : ''}{
   ${propertiesDeclarationText}
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    ${valueAccessor.isComponentWithValueAccessor ? 'super(r);' : ''}
+    ${valueAccessor.isComponentWithValueAccessor ? 'super();' : ''}
     c.detach();
     this.nativeEl = r.nativeElement;${
         hasOutputs

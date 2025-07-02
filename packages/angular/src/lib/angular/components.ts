@@ -114,7 +114,7 @@ export declare interface PdButton extends Components.PdButton {}
 export class PdCheckbox extends ValueAccessor{
   protected nativeEl: HTMLPdCheckboxElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    super(r);
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-checked']);
@@ -175,7 +175,7 @@ export declare interface PdChip extends Components.PdChip {
 
 @ProxyCmp({
   defineCustomElementFn: definePdCombobox,
-  inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'size', 'value', 'verticalAdjust', 'viewOnly'],
+  inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'selected', 'size', 'value', 'verticalAdjust', 'viewOnly'],
   methods: ['setSelectedIndex', 'reset', 'setOpen', 'setFocus']
 })
 @Component({
@@ -183,7 +183,7 @@ export declare interface PdChip extends Components.PdChip {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'size', 'value', 'verticalAdjust', 'viewOnly'],
+  inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'selected', 'size', 'value', 'verticalAdjust', 'viewOnly'],
   outputs: ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus'],
   
   standalone: true,
@@ -248,7 +248,7 @@ export declare interface PdCombobox extends Components.PdCombobox {
 export class PdDatepicker extends ValueAccessor{
   protected nativeEl: HTMLPdDatepickerElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    super(r);
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-change', 'pd-open', 'pd-close', 'pd-month-change', 'pd-year-change', 'pd-ready', 'pd-value-update']);
@@ -298,7 +298,7 @@ export declare interface PdDatepicker extends Components.PdDatepicker {
 export class PdDropdown extends ValueAccessor{
   protected nativeEl: HTMLPdDropdownElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    super(r);
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-change']);
@@ -398,7 +398,7 @@ export declare interface PdIcon extends Components.PdIcon {}
 export class PdInput extends ValueAccessor{
   protected nativeEl: HTMLPdInputElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    super(r);
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-blur', 'pd-focus']);
@@ -481,7 +481,7 @@ export declare interface PdRadio extends Components.PdRadio {}
 export class PdRadioGroup extends ValueAccessor{
   protected nativeEl: HTMLPdRadioGroupElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    super(r);
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-change']);
