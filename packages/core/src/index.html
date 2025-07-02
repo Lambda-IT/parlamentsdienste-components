@@ -22,13 +22,14 @@
         <div class="wrapper">
             <h1 style="margin-bottom: 5rem">Parlamentsdienste Core Components</h1>
 
-            <div style="margin-bottom: 5rem">
+            <!-- <div style="margin-bottom: 5rem">
                 <pd-radio-group name="radio-group-1" value="3">
                     <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
                     <pd-radio value="2" label="Radio 2"></pd-radio>
                     <pd-radio value="3" label="Radio 3"></pd-radio>
                 </pd-radio-group>
-            </div>
+            </div> -->
+            <pd-dropdown id="pd-dropdown-1"></pd-dropdown>
 
             <!-- <pd-alert>Primary alert</pd-alert>
             <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
@@ -80,32 +81,37 @@
         </div>
 
         <script>
+            const items = [
+                { id: '1', label: 'Dropdown Link 01AAA', value: 'a1' },
+                { id: '2', label: 'Dropdown Link 02', value: 'a2' },
+                { id: '3', label: 'Dropdown Link 03', value: 'a3' },
+                { id: '4', label: 'Dropdown Link 04A', value: 'a4', selected: true },
+                {
+                    id: '5',
+                    label: 'Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 ',
+                    value: 'a5',
+                },
+                { id: '6', label: 'Preselected', value: 'a6' },
+                { id: '7', label: 'some more 1', value: 'a7' },
+                { id: '8', label: 'some more 2', value: 'a8' },
+                { id: '9', label: 'some other 3', value: 'a9' },
+                { id: '10', label: 'some other 4', value: 'a10' },
+            ];
+
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
             const pdComboBox3 = document.getElementById('pd-combobox-3');
             const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
 
             for (let pdComboBoxItem of pdComboBoxItems) {
-                pdComboBoxItem.items = [
-                    { id: '1', label: 'Dropdown Link 01AAA', value: 'a1' },
-                    { id: '2', label: 'Dropdown Link 02', value: 'a2' },
-                    { id: '3', label: 'Dropdown Link 03', value: 'a3' },
-                    { id: '4', label: 'Dropdown Link 04A', value: 'a4', selected: true },
-                    {
-                        id: '5',
-                        label: 'Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 Dropdown Link 05 ',
-                        value: 'a5',
-                    },
-                    { id: '6', label: 'Preselected', value: 'a6' },
-                    { id: '7', label: 'some more 1', value: 'a7' },
-                    { id: '8', label: 'some more 2', value: 'a8' },
-                    { id: '9', label: 'some other 3', value: 'a9' },
-                    { id: '10', label: 'some other 4', value: 'a10' },
-                ];
+                pdComboBoxItem.items = items;
             }
 
+            const pdDropdown1 = document.getElementById('pd-dropdown-1');
+            pdDropdown1.items = items;
+
             const radiogroup = document.getElementsByTagName('pd-radio-group')[0];
-            radiogroup.addEventListener('pd-change', event => {
+            radiogroup?.addEventListener('pd-change', event => {
                 console.log('🔥 Radio group changed:', event.detail);
             });
             setTimeout(() => {

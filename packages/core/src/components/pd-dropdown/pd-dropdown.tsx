@@ -171,7 +171,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
                     this.open = true;
                     break;
                 }
-                const currentIndex = this.items.findIndex(item => item === this.selectedItem);
+                const currentIndex = this.items.findIndex(item => item.id === this.selectedItem.id);
                 const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = this.items[nextIndex];
                 if (nextItem !== this.selectedItem) this.selectItem(nextItem);
@@ -179,7 +179,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                const currentIndex = this.items.findIndex(item => item === this.selectedItem);
+                const currentIndex = this.items.findIndex(item => item.id === this.selectedItem.id);
                 const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
                 const previousItem = this.items[previousIndex];
                 if (previousItem !== this.selectedItem) this.selectItem(previousItem);
