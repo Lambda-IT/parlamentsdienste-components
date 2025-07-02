@@ -67,6 +67,9 @@ export interface DropdownItem {
     iconName?: string;
     iconSrc?: string;
 }
+
+export type DropdownItemSelect = (Pick<DropdownItem, 'id'> & Partial<Omit<DropdownItem, 'id'>>) | string | number;
+
 export interface SortDropdownItem {
     id: string;
     label: string;

@@ -16,7 +16,7 @@ import {
     State,
     Watch,
 } from '@stencil/core';
-import { DropdownItem, TextWrap } from '../../types';
+import { DropdownItem, DropdownItemSelect, TextWrap } from '../../types';
 
 @Component({
     tag: 'pd-dropdown',
@@ -45,9 +45,9 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     @Prop() items: DropdownItem[] = [];
 
     /**
-     * Preselected item
+     * To select an item by prop. Needs to be an object with an id property, a string or a number.
      */
-    @Prop() selected: Pick<DropdownItem, 'id' | 'value'> | null = null;
+    @Prop() selected: DropdownItemSelect;
 
     /**
      * Items visible in dropdown
@@ -136,8 +136,10 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     @Watch('selected')
-    public selectedChanged(newItem) {
-        const itemToSelect = this.items.find(i => i.id === newItem.id) || null;
+    public selectedChanged(newItem: unknown) {
+        const selectedId = this.getIdfromSelectedProp();
+        if (!selectedId) return;
+        const itemToSelect = this.items.find(i => i.id === selectedId) || null;
         if (itemToSelect) {
             this.selectedItem = itemToSelect;
             this.sanitizeInternalItems(itemToSelect.id);
@@ -222,14 +224,36 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         this.items[index] = { ...this.items[index], selected: true };
     }
 
+    getIdfromSelectedProp(): string | null {
+        if (stringNumberCheck(this.selected)) {
+            return this.selected.toString();
+        }
+        if (objectCheck(this.selected)) {
+            return this.selected.id.toString();
+        }
+
+        console.error('pd-combobox: Invalid selected prop type. Expected string, number, or object with id property.');
+        return null;
+
+        function stringNumberCheck(val: unknown): val is string | number {
+            return (typeof val === 'string' && val !== '') || typeof val === 'number';
+        }
+
+        function objectCheck(val: unknown): val is { id: string | number } {
+            return typeof val === 'object' && val !== null && 'id' in val && stringNumberCheck(val.id);
+        }
+    }
+
     private toggleDropdown = () => {
         if (!this.disabled && !this.readonly && !this.viewOnly) this.open = !this.open;
     };
 
     public componentWillLoad() {
         if (this.selected) {
-            this.sanitizeInternalItems(this.selected.id);
-            this.selectedItem = this.items.find(item => item.id === this.selected.id);
+            const selectedId = this.getIdfromSelectedProp();
+            if (!selectedId) return;
+            this.selectedItem = this.items.find(item => item.id === selectedId);
+            this.sanitizeInternalItems(this.selectedItem.id);
         } else {
             this.selectedItem = this.items.find(item => item.selected);
         }
