@@ -216,6 +216,10 @@ export namespace Components {
          */
         "selectable": boolean;
         /**
+          * To select an item by prop. Needs to be an object with an id property, a string or a number.
+         */
+        "selected": DropdownItemSelect | DropdownItemSelect[];
+        /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
@@ -1104,6 +1108,10 @@ declare namespace LocalJSX {
           * If `true`, the combobox get a selected state like a dropdown.
          */
         "selectable"?: boolean;
+        /**
+          * To select an item by prop. Needs to be an object with an id property, a string or a number.
+         */
+        "selected"?: DropdownItemSelect | DropdownItemSelect[];
         /**
           * Input tag size (check pd-input 'size' for more info)
          */

@@ -195,6 +195,46 @@ const createStore = (defaultState, shouldUpdate) => {
     return map;
 };
 
+function getIdsfromSelectedProp(newSelected, multiselect) {
+    if (!newSelected)
+        return null;
+    const ids = (function () {
+        if (isStringOrNumber(newSelected)) {
+            return [newSelected.toString()];
+        }
+        if (Array.isArray(newSelected)) {
+            if (newSelected.every(item => isStringOrNumber(item))) {
+                return newSelected.map(item => item.toString());
+            }
+            if (newSelected.every(item => IsObjectWithId(item))) {
+                return newSelected.map(item => item.id.toString());
+            }
+        }
+        if (IsObjectWithId(newSelected)) {
+            return [newSelected.id.toString()];
+        }
+        return null;
+    })();
+    if (!ids || ids.length === 0) {
+        console.error('pd-combobox: Invalid selected prop type. Expected string, number or object with id property or an Array of those types when multiselect is enabled.');
+        return null;
+    }
+    if (multiselect) {
+        return ids;
+    }
+    if (ids.length > 1) {
+        console.warn('pd-combobox: Trying to select multiple items when multiselect is not enabled. Using the first item.');
+        return [ids[0]];
+    }
+    return null;
+    function isStringOrNumber(val) {
+        return (typeof val === 'string' && val !== '') || typeof val === 'number';
+    }
+    function IsObjectWithId(val) {
+        return typeof val === 'object' && val !== null && 'id' in val && isStringOrNumber(val.id);
+    }
+}
+
 function isUserNavigating(state) {
     return state.open && state.currentNavigatedIndex > -1;
 }
@@ -267,6 +307,10 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
      * Values shown as combobox items
      */
     items = [];
+    /**
+     * To select an item by prop. Needs to be an object with an id property, a string or a number.
+     */
+    selected;
     /**
      * Enable selection of an empty item
      */
@@ -417,6 +461,16 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
                 this.selectItem(selectedItem, null, false);
             }
         }
+    }
+    selectedChanged(newSelected) {
+        const selectedIds = getIdsfromSelectedProp(newSelected, this.multiselect);
+        console.log('🚀 ~ selectedIds:', selectedIds);
+        // if (!selectedIds) return;
+        // const itemToSelect = this.items.find(i => i.id === selectedId) || null;
+        // if (itemToSelect) {
+        //     this.selectedItem = itemToSelect;
+        //     this.sanitizeInternalItems(itemToSelect.id);
+        // }
     }
     handleClickOutside(ev) {
         if (!this.state.open)
@@ -666,7 +720,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '920f2cf1c4e56176a62869e5a90a1d17f870a44b', role: "combobox" }, h("label", { key: '663ae3ca0a3e40d91514986d519cf3aed2426d3e', class: {
+        return (h(Host, { key: '42d75e672d8df00b358b1351e6c3b0dcd044d596', role: "combobox" }, h("label", { key: 'b0ce9cc5c77df57575ef9055f6f0d29cdbc1cc25', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
@@ -701,11 +755,13 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     static get assetsDirs() { return ["assets-combobox"]; }
     static get watchers() { return {
         "viewOnly": ["viewOnlyChanged"],
-        "items": ["itemsChanged"]
+        "items": ["itemsChanged"],
+        "selected": ["selectedChanged"]
     }; }
     static get style() { return pdComboboxCss; }
 }, [1, "pd-combobox", {
         "items": [1040],
+        "selected": [8],
         "emptyItem": [4, "empty-item"],
         "emptyItemData": [16, "empty-item-data"],
         "disabled": [4],
@@ -730,7 +786,8 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         "setFocus": [64]
     }, [[16, "click", "handleClickOutside"], [0, "keydown", "handleKeyDown"]], {
         "viewOnly": ["viewOnlyChanged"],
-        "items": ["itemsChanged"]
+        "items": ["itemsChanged"],
+        "selected": ["selectedChanged"]
     }]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {

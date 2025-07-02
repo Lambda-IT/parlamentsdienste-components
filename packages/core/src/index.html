@@ -22,6 +22,16 @@
         <div class="wrapper">
             <h1 style="margin-bottom: 5rem">Parlamentsdienste Core Components</h1>
 
+            <span style="margin-bottom: 5rem">Combobox (multiselect)</span>
+            <pd-combobox
+                placeholder="search..."
+                class="pd-combobox-items"
+                label="Label"
+                id="pd-combobox-1"
+                multiselect></pd-combobox>
+            <span style="margin-bottom: 5rem; margin-top: 8rem">Combobox (selectable)</span>
+            <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-3"></pd-combobox>
+
             <!-- <div style="margin-bottom: 5rem">
                 <pd-radio-group name="radio-group-1" value="3">
                     <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
@@ -29,7 +39,7 @@
                     <pd-radio value="3" label="Radio 3"></pd-radio>
                 </pd-radio-group>
             </div> -->
-            <pd-dropdown id="pd-dropdown-1"></pd-dropdown>
+            <!-- <pd-dropdown id="pd-dropdown-1"></pd-dropdown> -->
 
             <!-- <pd-alert>Primary alert</pd-alert>
             <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
@@ -45,8 +55,8 @@
                 class="pd-combobox-items"
                 label="Label"
                 id="pd-combobox-1"
-                multiselect></pd-combobox> -->
-            <!-- <pd-combobox
+                multiselect></pd-combobox>
+             <pd-combobox
                 placeholder="search..."
                 class="pd-combobox-items"
                 label="Label"
@@ -108,7 +118,7 @@
             }
 
             const pdDropdown1 = document.getElementById('pd-dropdown-1');
-            pdDropdown1.items = items;
+            // pdDropdown1.items = items;
 
             const radiogroup = document.getElementsByTagName('pd-radio-group')[0];
             radiogroup?.addEventListener('pd-change', event => {

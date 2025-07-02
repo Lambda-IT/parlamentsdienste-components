@@ -17,7 +17,8 @@ import {
 } from '@stencil/core';
 import { createStore } from '@stencil/store';
 
-import { ComboboxItem, InputChangeEventDetail } from '../../types';
+import { ComboboxItem, DropdownItemSelect, InputChangeEventDetail } from '../../types';
+import { getIdsfromSelectedProp } from './pd-combobox.helper';
 import * as S from './pd-combobox.store';
 
 @Component({
@@ -39,6 +40,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
      * Values shown as combobox items
      */
     @Prop({ mutable: true }) items: ComboboxItem[] = [];
+
+    /**
+     * To select an item by prop. Needs to be an object with an id property, a string or a number.
+     */
+    @Prop() selected: DropdownItemSelect | DropdownItemSelect[];
 
     /**
      * Enable selection of an empty item
@@ -228,6 +234,18 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
+    @Watch('selected')
+    public selectedChanged(newSelected: unknown) {
+        const selectedIds = getIdsfromSelectedProp(newSelected, this.multiselect);
+        console.log('🚀 ~ selectedIds:', selectedIds);
+        // if (!selectedIds) return;
+        // const itemToSelect = this.items.find(i => i.id === selectedId) || null;
+        // if (itemToSelect) {
+        //     this.selectedItem = itemToSelect;
+        //     this.sanitizeInternalItems(itemToSelect.id);
+        // }
+    }
+
     @Listen('click', { target: 'body' })
     handleClickOutside(ev: MouseEvent) {
         if (!this.state.open) return;
@@ -269,6 +287,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             }
         }
     }
+
     public componentDidLoad() {
         this._viewOnly = this.viewOnly;
         if (!this._viewOnly) this.popper = this.createMenuPopper(this.wrapperElement, this.menuElement);
