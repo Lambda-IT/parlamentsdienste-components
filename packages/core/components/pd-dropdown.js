@@ -100,9 +100,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         if (viewOnly && this.popper)
             this.popper.destroy();
     }
-    selectedChanged(newItem) {
-        const asdf = newItem;
-        console.log('🚀 ~ asdf:', asdf);
+    selectedChanged() {
         const selectedId = this.getIdfromSelectedProp();
         if (!selectedId)
             return;
@@ -134,7 +132,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
                     this.open = true;
                     break;
                 }
-                const currentIndex = this.items.findIndex(item => item === this.selectedItem);
+                const currentIndex = this.items.findIndex(item => item.id === this.selectedItem.id);
                 const nextIndex = currentIndex >= this.items.length - 1 ? currentIndex : currentIndex + 1;
                 const nextItem = this.items[nextIndex];
                 if (nextItem !== this.selectedItem)
@@ -143,7 +141,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
             }
             case 'ArrowUp': {
                 ev.preventDefault();
-                const currentIndex = this.items.findIndex(item => item === this.selectedItem);
+                const currentIndex = this.items.findIndex(item => item.id === this.selectedItem.id);
                 const previousIndex = currentIndex <= 0 ? currentIndex : currentIndex - 1;
                 const previousItem = this.items[previousIndex];
                 if (previousItem !== this.selectedItem)
@@ -245,7 +243,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         });
     }
     render() {
-        return (h(Host, { key: 'bbfd519327d5a1c18ba756bd3e243f09d0c4bb19' }, h("label", { key: 'd45aded9c06aa2ee72bde8b5609f2a8b610187af', class: {
+        return (h(Host, { key: 'a84b95f806bc300f6ee80f7384fa2ae7aceb8a76' }, h("label", { key: 'addabf3640e7e3eebc62ac4ab9d6f72ff34288b5', class: {
                 'pd-dropdown-label': true,
                 'pd-dropdown-disabled': this.disabled,
             }, onClick: this.toggleDropdown, "data-test": "pd-dropdown-label" }, this.renderLabel()), !this.viewOnly ? (h("div", { class: {
