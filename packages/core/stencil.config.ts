@@ -54,6 +54,12 @@ export const config: Config = {
                     targetAttr: 'date',
                     type: 'text',
                 },
+                {
+                    elementSelectors: ['pd-dropdown'],
+                    event: 'pd-change',
+                    targetAttr: 'selected',
+                    type: 'text',
+                },
             ],
             // excludeComponents: ['pd-input'],
         }),

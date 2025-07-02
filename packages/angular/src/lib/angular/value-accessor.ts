@@ -6,6 +6,7 @@ const INPUTMAP: Record<string, string> = {
     'pd-input': 'value',
     'pd-checkbox': 'checked',
     'pd-datepicker': 'date',
+    'pd-dropdown': 'selected',
 };
 
 @Directive({})

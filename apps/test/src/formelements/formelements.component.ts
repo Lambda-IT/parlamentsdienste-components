@@ -12,7 +12,6 @@ import {
 } from '@parlamentsdienste-components/angular';
 // import { setAssetPath } from '@parlamentsdienste-components/core/components';
 
-console.log('AppComponent initialized');
 @Component({
     imports: [
         PdAlert,

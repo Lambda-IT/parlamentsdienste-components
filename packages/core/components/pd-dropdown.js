@@ -30,7 +30,9 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
     /**
      * Preselected item
      */
-    selected = null;
+    // @Prop() selected: Pick<DropdownItem, 'id' | 'value'> | null = null;
+    selected;
+    // @Prop() selected: { id: string };
     /**
      * Items visible in dropdown
      */
@@ -101,7 +103,10 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
             this.popper.destroy();
     }
     selectedChanged(newItem) {
-        const itemToSelect = this.items.find(i => i.id === newItem.id) || null;
+        const selectedId = this.getIdfromSelectedProp();
+        if (!selectedId)
+            return;
+        const itemToSelect = this.items.find(i => i.id === selectedId) || null;
         if (itemToSelect) {
             this.selectedItem = itemToSelect;
             this.sanitizeInternalItems(itemToSelect.id);
@@ -177,14 +182,33 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         const index = this.items.findIndex(i => i.id === selectedId);
         this.items[index] = { ...this.items[index], selected: true };
     }
+    getIdfromSelectedProp() {
+        if (stringNumberCheck(this.selected)) {
+            return this.selected.toString();
+        }
+        if (objectCheck(this.selected)) {
+            return this.selected.id.toString();
+        }
+        console.error('pd-combobox: Invalid selected prop type. Expected string, number, or object with id property.');
+        return null;
+        function stringNumberCheck(val) {
+            return (typeof val === 'string' && val !== '') || typeof val === 'number';
+        }
+        function objectCheck(val) {
+            return typeof val === 'object' && val !== null && 'id' in val && stringNumberCheck(val.id);
+        }
+    }
     toggleDropdown = () => {
         if (!this.disabled && !this.readonly && !this.viewOnly)
             this.open = !this.open;
     };
     componentWillLoad() {
         if (this.selected) {
-            this.sanitizeInternalItems(this.selected.id);
-            this.selectedItem = this.items.find(item => item.id === this.selected.id);
+            const selectedId = this.getIdfromSelectedProp();
+            if (!selectedId)
+                return;
+            this.selectedItem = this.items.find(item => item.id === selectedId);
+            this.sanitizeInternalItems(this.selectedItem.id);
         }
         else {
             this.selectedItem = this.items.find(item => item.selected);
@@ -221,7 +245,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         });
     }
     render() {
-        return (h(Host, { key: '14a172a8b4ba6fbc7247e28c76533ce35f403972' }, h("label", { key: 'c869aa8c33ab9e88c5fb71a129cfcb184a023ab4', class: {
+        return (h(Host, { key: 'b6f7171a8557f3f2f56349ec2321adcf6cc572d7' }, h("label", { key: '3617180b8e9d8ed03a9aea10696d01bd8ea9116b', class: {
                 'pd-dropdown-label': true,
                 'pd-dropdown-disabled': this.disabled,
             }, onClick: this.toggleDropdown, "data-test": "pd-dropdown-label" }, this.renderLabel()), !this.viewOnly ? (h("div", { class: {
@@ -261,7 +285,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
 }, [1, "pd-dropdown", {
         "placeholder": [1],
         "items": [16],
-        "selected": [16],
+        "selected": [8],
         "itemCount": [2, "item-count"],
         "emptyItem": [4, "empty-item"],
         "emptyItemData": [16, "empty-item-data"],

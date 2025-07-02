@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, DropdownItemSelect, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, DropdownItemSelect, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -374,7 +374,7 @@ export namespace Components {
         /**
           * Preselected item
          */
-        "selected": Pick<DropdownItem, 'id' | 'value'> | null;
+        "selected": DropdownItemSelect;
         /**
           * Set a preselected entry by index
          */
@@ -1189,7 +1189,7 @@ declare namespace LocalJSX {
         /**
           * Preselected item
          */
-        "selected"?: Pick<DropdownItem, 'id' | 'value'> | null;
+        "selected"?: DropdownItemSelect;
         /**
           * Selected item text wrap on words
          */

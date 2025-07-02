@@ -292,18 +292,21 @@ export declare interface PdDatepicker extends Components.PdDatepicker {
   outputs: ['pd-change'],
   
   standalone: true,
-  
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdDropdown), multi: true }],
 })
-export class PdDropdown {
+export class PdDropdown extends ValueAccessor{
   protected nativeEl: HTMLPdDropdownElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    
+    super(r);
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-change']);
   }
 
-  
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail);
+        }
 }
 
 

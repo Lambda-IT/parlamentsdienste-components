@@ -5,7 +5,7 @@
         <!-- <input id="name" type="text" formControlName="name" /> -->
         <pd-checkbox formControlName="checkbox" label="Checkbox"></pd-checkbox>
         <pd-datepicker label="Label" formControlName="date"></pd-datepicker>
-        <pd-dropdown label="Label" empty-item [items]="items"></pd-dropdown>
+        <pd-dropdown label="Label" empty-item [items]="items" formControlName="dropdown"></pd-dropdown>
 
         <pd-button (click)="buttonClicked()">test</pd-button>
     </form>
