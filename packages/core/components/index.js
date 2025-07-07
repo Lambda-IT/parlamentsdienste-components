@@ -146,6 +146,7 @@ var flush = () => {
   }
 };
 var nextTick = (cb) => promiseResolve().then(cb);
+var readTask = /* @__PURE__ */ queueTask(queueDomReads, false);
 var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
 
 // src/runtime/asset-path.ts
@@ -1368,7 +1369,7 @@ function render(vnode, container) {
   renderVdom(ref, vnode);
 }
 
-export { H, Host as a, createEvent as c, forceUpdate as f, getRenderingRef as g, getAssetPath, h, proxyCustomElement as p, render, setAssetPath, setNonce, setPlatformOptions };
+export { H, Host as a, createEvent as c, forceUpdate as f, getRenderingRef as g, getAssetPath, h, proxyCustomElement as p, readTask as r, render, setAssetPath, setNonce, setPlatformOptions };
 //# sourceMappingURL=index.js.map
 
 //# sourceMappingURL=index.js.map

@@ -1,0 +1,90 @@
+@include resetControlFonts;
+
+:host {
+    display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
+.pd-textarea-label {
+    width: 100%;
+    margin-bottom: 0;
+    max-width: 100%;
+
+    .pd-textarea-label-text {
+        padding-bottom: 0.25rem;
+        font-size: 0.875rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/**
+ * @prop --pd-input-vertical-adjust: top margin of textarea
+ */
+.pd-textarea {
+    display: block;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.25rem;
+    border: 0.125rem solid setcolor(primary, enabled);
+    width: 100%;
+    margin-top: var(--pd-input-vertical-adjust, inherit);
+
+    &:hover:enabled {
+        border-color: setcolor(primary, hover);
+    }
+
+    &:disabled {
+        border-color: setcolor(primary, disabled);
+        background-color: transparent;
+        font-style: italic;
+        color: setcolor(primary, disabledContrast);
+    }
+
+    &:focus-visible:enabled {
+        background: $yellow-1;
+    }
+
+    &.pd-textarea-readonly {
+        background-color: $gray-3;
+        border-color: $gray-3;
+
+        &:hover:enabled,
+        &:disabled,
+        &:focus-visible:enabled {
+            border-color: $gray-3;
+            cursor: default;
+            background-color: $gray-3;
+        }
+    }
+
+    &.pd-textarea-error {
+        border-color: $input-error-border;
+        background: $red-3;
+
+        &:hover:enabled {
+            border-color: setcolor(danger, hover);
+        }
+    }
+
+    &.pd-textarea-autogrow {
+        resize: none;
+        overflow-x: hidden; // fixes issue with height (1 row) in Firefox
+    }
+}
+
+.pd-textarea-label-viewonly {
+    font-weight: 700;
+}
+
+.pd-textarea-viewonly {
+    display: block;
+    margin: 0;
+    padding: 0.125rem 0 0.75rem 0;
+}

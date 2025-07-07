@@ -195,6 +195,21 @@ const createStore = (defaultState, shouldUpdate) => {
     return map;
 };
 
+/**
+ * Extracts an array of string IDs from the `selected` prop for the combobox component.
+ *
+ * Accepts a value that can be:
+ * - a string or number (single selection)
+ * - an object with an `id` property (single selection)
+ * - an array of strings, numbers, or objects with an `id` property (multi-selection)
+ *
+ * If `multiselect` is false and multiple IDs are found, only the first is returned and a warning is logged.
+ * If the input is invalid, logs an error and returns null.
+ *
+ * @param newSelected - The value of the selected prop (string, number, object with id, or array of these)
+ * @param multiselect - Whether multiple selections are allowed
+ * @returns An array of string IDs, or null if input is invalid
+ */
 function getIdsfromSelectedProp(newSelected, multiselect) {
     if (!newSelected)
         return null;

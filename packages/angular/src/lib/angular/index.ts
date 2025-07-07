@@ -13,5 +13,6 @@ export const DIRECTIVES = [
   d.PdIcon,
   d.PdInput,
   d.PdRadio,
-  d.PdRadioGroup
+  d.PdRadioGroup,
+  d.PdTextarea
 ];

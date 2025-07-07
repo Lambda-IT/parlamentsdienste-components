@@ -634,6 +634,88 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdTextarea {
+        /**
+          * If `true`, the element height will increase based on the value.
+         */
+        "autoGrow": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize": string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
+        "label"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * Sets focus on the native `textarea` in `pd-textarea`. Use this method instead of the global `textarea.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string;
+        /**
+          * If `true`, the textarea is replaced with a simple text
+         */
+        "viewOnly": boolean;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
 }
 export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -666,6 +748,10 @@ export interface PdInputCustomEvent<T> extends CustomEvent<T> {
 export interface PdRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdRadioGroupElement;
+}
+export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTextareaElement;
 }
 declare global {
     interface HTMLPdAlertElementEventMap {
@@ -850,6 +936,26 @@ declare global {
         prototype: HTMLPdRadioGroupElement;
         new (): HTMLPdRadioGroupElement;
     };
+    interface HTMLPdTextareaElementEventMap {
+        "pd-change": any;
+        "pd-input": KeyboardEvent;
+        "pd-blur": FocusEvent;
+        "pd-focus": FocusEvent;
+    }
+    interface HTMLPdTextareaElement extends Components.PdTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdTextareaElementEventMap>(type: K, listener: (this: HTMLPdTextareaElement, ev: PdTextareaCustomEvent<HTMLPdTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdTextareaElementEventMap>(type: K, listener: (this: HTMLPdTextareaElement, ev: PdTextareaCustomEvent<HTMLPdTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdTextareaElement: {
+        prototype: HTMLPdTextareaElement;
+        new (): HTMLPdTextareaElement;
+    };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-button": HTMLPdButtonElement;
@@ -863,6 +969,7 @@ declare global {
         "pd-input": HTMLPdInputElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
+        "pd-textarea": HTMLPdTextareaElement;
     }
 }
 declare namespace LocalJSX {
@@ -1506,6 +1613,100 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PdTextarea {
+        /**
+          * If `true`, the element height will increase based on the value.
+         */
+        "autoGrow"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * Label text
+         */
+        "label"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onPd-blur"?: (event: PdTextareaCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onPd-change"?: (event: PdTextareaCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onPd-focus"?: (event: PdTextareaCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onPd-input"?: (event: PdTextareaCustomEvent<KeyboardEvent>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string;
+        /**
+          * If `true`, the textarea is replaced with a simple text
+         */
+        "viewOnly"?: boolean;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-button": PdButton;
@@ -1519,6 +1720,7 @@ declare namespace LocalJSX {
         "pd-input": PdInput;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
+        "pd-textarea": PdTextarea;
     }
 }
 export { LocalJSX as JSX };
@@ -1537,6 +1739,7 @@ declare module "@stencil/core" {
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
+            "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
         }
     }
 }
