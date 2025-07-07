@@ -10,6 +10,7 @@ import {
     PdInput,
     PdRadio,
     PdRadioGroup,
+    PdTextarea,
 } from '@parlamentsdienste-components/angular';
 
 @Component({
@@ -28,6 +29,7 @@ import {
         PdRadioGroup,
         PdRadio,
         PdCombobox,
+        PdTextarea,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -76,6 +78,7 @@ export class FormbuilderComponent {
         comboboxSelectable: new FormControl('2'),
         date: new FormControl('2025-07-23'),
         radio: new FormControl('2'),
+        textarea: new FormControl('start Text textarea'),
     });
 
     constructor() {
@@ -88,10 +91,14 @@ export class FormbuilderComponent {
             // this.testForm.get('dropdown')?.setValue(2);
             this.testForm.patchValue({
                 dropdown: 2,
+                combobox: ['1', '2'],
+                textarea: 'new text',
+                name: 'new input',
+                name2: 'new name2',
             });
-            this.testForm.get('radio')?.disable();
-        }, 1000);
-        // setTimeout(() => {
+            // this.testForm.get('radio')?.disable();
+        }, 2000);
+        // // setTimeout(() => {
         //     // this.testForm.get('dropdown')?.setValue(3);
         //     this.testForm.patchValue({
         //         radio: '3',

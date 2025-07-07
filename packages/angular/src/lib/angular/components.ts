@@ -518,18 +518,21 @@ export declare interface PdRadioGroup extends Components.PdRadioGroup {
   outputs: ['pd-change', 'pd-input', 'pd-blur', 'pd-focus'],
   
   standalone: true,
-  
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdTextarea), multi: true }],
 })
-export class PdTextarea {
+export class PdTextarea extends ValueAccessor{
   protected nativeEl: HTMLPdTextareaElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-change', 'pd-input', 'pd-blur', 'pd-focus']);
   }
 
-  
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail);
+        }
 }
 
 

@@ -1,4 +1,16 @@
-import { Component, ComponentDidLoad, ComponentInterface, Event, EventEmitter, h, Host, Method, Prop, readTask, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentDidLoad,
+    ComponentInterface,
+    Event,
+    EventEmitter,
+    h,
+    Host,
+    Method,
+    Prop,
+    readTask,
+    Watch,
+} from '@stencil/core';
 
 @Component({
     tag: 'pd-textarea',
@@ -118,7 +130,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
             nativeInput.value = value;
         }
         this.runAutoGrow();
-        this.pdChange.emit({ value });
+        this.pdChange.emit(value);
     }
 
     /**
@@ -160,7 +172,9 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
         const nativeInput = this.nativeInput;
         if (nativeInput && this.autoGrow) {
             readTask(() => {
-                const borderWidth = parseFloat(window.getComputedStyle(nativeInput, null).getPropertyValue('border-width'));
+                const borderWidth = parseFloat(
+                    window.getComputedStyle(nativeInput, null).getPropertyValue('border-width'),
+                );
                 nativeInput.style.height = 'auto';
                 nativeInput.style.height = nativeInput.scrollHeight + 2 * borderWidth + 'px';
             });
@@ -198,8 +212,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
                                 'pd-textarea-label-text': true,
                                 'pd-textarea-label-viewonly': this.viewOnly,
                             }}
-                            data-test="pd-textarea-label"
-                        >
+                            data-test="pd-textarea-label">
                             {this.label}
                         </div>
                     ) : (
@@ -232,8 +245,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
                             onBlur={this.onBlur}
                             onFocus={this.onFocus}
                             data-test="pd-textarea"
-                            tabIndex={this.readonly ? -1 : undefined}
-                        >
+                            tabIndex={this.readonly ? -1 : undefined}>
                             {value}
                         </textarea>
                     ) : (
