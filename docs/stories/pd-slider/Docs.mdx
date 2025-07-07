@@ -1,0 +1,12 @@
+import { Meta, Title, Subtitle, Description, ArgTypes, Primary, Markdown, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as pdsliderStories from './pd-slider.stories';
+
+<Meta of={pdsliderStories} />
+
+<Title />
+<Primary />
+<h3>Controls</h3>
+<Controls />
+<h3>Events</h3>
+<table><thead><tr><th>Event</th><th>Description</th><th>Type</th></tr></thead><tbody><tr><td>pd-change</td><td>Emitted when slider has been released.</td><td>`CustomEvent<InputChangeEventDetail>`</td></tr><tr><td>pd-input</td><td>Emitted when the value has changed.</td><td>`CustomEvent<InputChangeEventDetail>`</td></tr></tbody></table>
+<Stories />

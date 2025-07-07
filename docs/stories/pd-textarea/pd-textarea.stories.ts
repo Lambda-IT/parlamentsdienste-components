@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html-vite';
+import { addEventlisteners } from '../utils/eventListeners';
 
 const defaultArgs = {
     label: 'Label',
@@ -23,6 +24,9 @@ const meta: Meta<TextareaArgs> = {
 export default meta;
 
 ///////////////////////////////////////////////////////////////////////////
+
+const events = ['pd-change', 'pd-input', 'pd-focus', 'pd-blur'];
+addEventlisteners('pd-textarea', events);
 
 const textarea = (args: TextareaArgs) => {
     return `

@@ -14,5 +14,6 @@ export const DIRECTIVES = [
   d.PdInput,
   d.PdRadio,
   d.PdRadioGroup,
+  d.PdSlider,
   d.PdTextarea
 ];

@@ -33,7 +33,7 @@ export default meta;
 ///////////////////////////////////////////////////////////////////////////
 
 const events = ['pd-change'];
-addEventlisteners('pd-input', events);
+addEventlisteners('pd-dropdown', events);
 
 const dropdown = (args: DropdownArgs) => {
     const pdDropdown = document.createElement('pd-dropdown') as HTMLPdDropdownElement;

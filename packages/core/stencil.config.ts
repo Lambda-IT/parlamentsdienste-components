@@ -40,7 +40,7 @@ export const config: Config = {
                 // Don't forget to update the INPUTMAP if you add a new component
                 // --> packages/angular/src/lib/angular/value-accessor.ts
                 {
-                    elementSelectors: ['pd-input', 'pd-radio-group', 'pd-textarea'],
+                    elementSelectors: ['pd-input', 'pd-radio-group', 'pd-textarea', 'pd-slider'],
                     event: 'pd-change',
                     targetAttr: 'value',
                     type: 'text',

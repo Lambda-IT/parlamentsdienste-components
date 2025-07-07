@@ -10,6 +10,7 @@ const INPUTMAP: Record<string, string> = {
     'pd-combobox': 'selected',
     'pd-radio-group': 'value',
     'pd-textarea': 'value',
+    'pd-slider': 'value',
 };
 
 @Directive({})

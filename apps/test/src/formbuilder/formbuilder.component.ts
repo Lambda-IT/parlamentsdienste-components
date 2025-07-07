@@ -10,8 +10,15 @@ import {
     PdInput,
     PdRadio,
     PdRadioGroup,
+    PdSlider,
     PdTextarea,
 } from '@parlamentsdienste-components/angular';
+
+// Custom validator function
+import { AbstractControl } from '@angular/forms';
+function lessThanSeventy(control: AbstractControl) {
+    return control.value < 70 ? null : { tooHigh: true };
+}
 
 @Component({
     selector: 'app-formbuilder',
@@ -30,6 +37,7 @@ import {
         PdRadio,
         PdCombobox,
         PdTextarea,
+        PdSlider,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -78,7 +86,8 @@ export class FormbuilderComponent {
         comboboxSelectable: new FormControl('2'),
         date: new FormControl('2025-07-23'),
         radio: new FormControl('2'),
-        textarea: new FormControl('start Text textarea'),
+        textarea: new FormControl('start Text textarea', Validators.maxLength(20)),
+        slider: new FormControl(50, lessThanSeventy),
     });
 
     constructor() {
@@ -95,15 +104,12 @@ export class FormbuilderComponent {
                 textarea: 'new text',
                 name: 'new input',
                 name2: 'new name2',
+                slider: 60,
             });
-            // this.testForm.get('radio')?.disable();
+
+            // this.testForm.get('slider')?.disable();
+            // this.testForm.get('textarea')?.disable();
         }, 2000);
-        // // setTimeout(() => {
-        //     // this.testForm.get('dropdown')?.setValue(3);
-        //     this.testForm.patchValue({
-        //         radio: '3',
-        //     });
-        // }, 2000);
     }
 
     buttonClicked() {

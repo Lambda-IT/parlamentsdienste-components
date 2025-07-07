@@ -22,6 +22,7 @@ import { defineCustomElement as definePdIcon } from '@parlamentsdienste-componen
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
+import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
@@ -501,6 +502,51 @@ export class PdRadioGroup extends ValueAccessor{
 export declare interface PdRadioGroup extends Components.PdRadioGroup {
 
   'pd-change': EventEmitter<CustomEvent<string>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdSlider,
+  inputs: ['disabled', 'error', 'max', 'min', 'name', 'readonly', 'step', 'value']
+})
+@Component({
+  selector: 'pd-slider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'error', 'max', 'min', 'name', 'readonly', 'step', 'value'],
+  outputs: ['pd-input', 'pd-change'],
+  
+  standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdSlider), multi: true }],
+})
+export class PdSlider extends ValueAccessor{
+  protected nativeEl: HTMLPdSliderElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    super();
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change']);
+  }
+
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail);
+        }
+}
+
+
+import type { InputChangeEventDetail as IPdSliderInputChangeEventDetail } from '@parlamentsdienste-components/core';
+
+export declare interface PdSlider extends Components.PdSlider {
+  /**
+   * Emitted when the value has changed.
+   */
+  'pd-input': EventEmitter<CustomEvent<IPdSliderInputChangeEventDetail>>;
+  /**
+   * Emitted when slider has been released.
+   */
+  'pd-change': EventEmitter<CustomEvent<IPdSliderInputChangeEventDetail>>;
 }
 
 

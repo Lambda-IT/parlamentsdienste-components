@@ -634,6 +634,40 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdSlider {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Shows error state
+         */
+        "error": boolean;
+        /**
+          * max value
+         */
+        "max": number;
+        /**
+          * min value
+         */
+        "min": number;
+        /**
+          * slider name
+         */
+        "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * value steps
+         */
+        "step": number;
+        /**
+          * slider value
+         */
+        "value"?: number;
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -748,6 +782,10 @@ export interface PdInputCustomEvent<T> extends CustomEvent<T> {
 export interface PdRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdRadioGroupElement;
+}
+export interface PdSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdSliderElement;
 }
 export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -936,6 +974,24 @@ declare global {
         prototype: HTMLPdRadioGroupElement;
         new (): HTMLPdRadioGroupElement;
     };
+    interface HTMLPdSliderElementEventMap {
+        "pd-input": InputChangeEventDetail;
+        "pd-change": InputChangeEventDetail;
+    }
+    interface HTMLPdSliderElement extends Components.PdSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdSliderElementEventMap>(type: K, listener: (this: HTMLPdSliderElement, ev: PdSliderCustomEvent<HTMLPdSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdSliderElementEventMap>(type: K, listener: (this: HTMLPdSliderElement, ev: PdSliderCustomEvent<HTMLPdSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdSliderElement: {
+        prototype: HTMLPdSliderElement;
+        new (): HTMLPdSliderElement;
+    };
     interface HTMLPdTextareaElementEventMap {
         "pd-change": any;
         "pd-input": KeyboardEvent;
@@ -969,6 +1025,7 @@ declare global {
         "pd-input": HTMLPdInputElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
+        "pd-slider": HTMLPdSliderElement;
         "pd-textarea": HTMLPdTextareaElement;
     }
 }
@@ -1613,6 +1670,48 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PdSlider {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Shows error state
+         */
+        "error"?: boolean;
+        /**
+          * max value
+         */
+        "max"?: number;
+        /**
+          * min value
+         */
+        "min"?: number;
+        /**
+          * slider name
+         */
+        "name"?: string;
+        /**
+          * Emitted when slider has been released.
+         */
+        "onPd-change"?: (event: PdSliderCustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-input"?: (event: PdSliderCustomEvent<InputChangeEventDetail>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * value steps
+         */
+        "step"?: number;
+        /**
+          * slider value
+         */
+        "value"?: number;
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1720,6 +1819,7 @@ declare namespace LocalJSX {
         "pd-input": PdInput;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
+        "pd-slider": PdSlider;
         "pd-textarea": PdTextarea;
     }
 }
@@ -1739,6 +1839,7 @@ declare module "@stencil/core" {
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
+            "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
         }
     }
