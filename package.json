@@ -43,6 +43,7 @@
         "@nx/workspace": "21.1.2",
         "@schematics/angular": "~19.2.0",
         "@stencil/core": "^4.31.0",
+        "@stencil/react-output-target": "^1.1.1",
         "@swc-node/register": "~1.9.1",
         "@swc/core": "~1.5.7",
         "@swc/helpers": "~0.5.11",

@@ -1,6 +1,7 @@
 import { angularOutputTarget } from '@parlamentsdienste-components/angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs } from '@stencil/core/internal';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { mdxGenerator } from './utils/markdown';
 
@@ -65,6 +66,10 @@ export const config: Config = {
                 },
             ],
             // excludeComponents: ['pd-input'],
+        }),
+        reactOutputTarget({
+            // Relative path to where the React components will be generated
+            outDir: '../react/src/generated',
         }),
         {
             type: 'docs-readme',
