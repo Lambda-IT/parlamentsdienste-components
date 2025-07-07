@@ -265,8 +265,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         });
         this.state = state;
 
-        console.log('Combobox component will load', this.state.filteredItems);
-
         onChange('selectedItem', () => {
             this.pdChange.emit(this.state.selectedItem);
         });
