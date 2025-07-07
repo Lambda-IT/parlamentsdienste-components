@@ -32,6 +32,17 @@
                 "buildDepsTargetName": "build-deps",
                 "watchDepsTargetName": "watch-deps"
             }
+        },
+        {
+            "plugin": "@nx/react/router-plugin",
+            "options": {
+                "buildTargetName": "build",
+                "devTargetName": "dev",
+                "startTargetName": "start",
+                "watchDepsTargetName": "watch-deps",
+                "buildDepsTargetName": "build-deps",
+                "typecheckTargetName": "typecheck"
+            }
         }
     ],
     "targetDefaults": {
@@ -64,6 +75,11 @@
             "linter": "eslint",
             "style": "scss",
             "unitTestRunner": "none"
+        },
+        "@nx/react": {
+            "library": {
+                "unitTestRunner": "none"
+            }
         }
     }
 }
