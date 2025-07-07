@@ -236,14 +236,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Watch('selected')
     public selectedChanged(newSelected: unknown) {
-        const selectedIds = getIdsfromSelectedProp(newSelected, this.multiselect);
-        console.log('🚀 ~ selectedIds:', selectedIds);
-        // if (!selectedIds) return;
-        // const itemToSelect = this.items.find(i => i.id === selectedId) || null;
-        // if (itemToSelect) {
-        //     this.selectedItem = itemToSelect;
-        //     this.sanitizeInternalItems(itemToSelect.id);
-        // }
+        const itemsToSelect = getIdsfromSelectedProp(newSelected, this.multiselect);
+        if (!itemsToSelect) return;
+
+        this.state.items = this.validateItems(this.state.items);
+        this.state.filteredItems = this.state.items;
     }
 
     @Listen('click', { target: 'body' })
@@ -277,7 +274,11 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         });
 
         if (!this.multiselect) {
-            let selectedItem = this.state.items.find(item => item.selected) ?? null;
+            const idFromSelectedProp = getIdsfromSelectedProp(this.selected, this.multiselect);
+            let selectedItem =
+                this.selected && idFromSelectedProp
+                    ? this.state.items.find(item => item.id === idFromSelectedProp[0]) ?? null
+                    : this.state.items.find(item => item.selected) ?? null;
             //If there is an input value, we want to see if it matches an item
             if (this.state.inputValue) {
                 selectedItem = this.state.items.filter(i => i.label === this.state.inputValue).shift();
@@ -325,10 +326,26 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     private validateItems(items: any) {
         if (!Array.isArray(items)) return;
 
-        const _items =
-            !this.multiselect && !this.selectable ? items.map(item => ({ ...item, selected: false })) : items;
+        // const _items =
+        //     !this.multiselect && !this.selectable ? items.map(item => ({ ...item, selected: false })) : items;
+        const emptyItem = this.emptyItem ? [this.emptyItemData] : [];
 
-        return [...(this.emptyItem ? [this.emptyItemData] : []), ..._items];
+        if (!this.multiselect && !this.selectable) {
+            const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
+            return [...emptyItem, ...allItemsUnselected];
+        }
+
+        if (this.selected) {
+            const selectedIds = getIdsfromSelectedProp(this.selected, this.multiselect);
+            if (!selectedIds) return;
+            const itemsWithSelected = items.map(item => ({
+                ...item,
+                selected: selectedIds.includes(item.id.toString()),
+            }));
+            return [...emptyItem, ...itemsWithSelected];
+        }
+
+        return [...emptyItem, ...items];
     }
 
     @Listen('keydown')

@@ -7,6 +7,7 @@ const INPUTMAP: Record<string, string> = {
     'pd-checkbox': 'checked',
     'pd-datepicker': 'date',
     'pd-dropdown': 'selected',
+    'pd-combobox': 'selected',
     'pd-radio-group': 'value',
 };
 

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import {
     PdButton,
     PdCheckbox,
+    PdCombobox,
     PdDatepicker,
     PdDropdown,
     PdInput,
@@ -26,6 +27,7 @@ import {
         PdDropdown,
         PdRadioGroup,
         PdRadio,
+        PdCombobox,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -46,6 +48,21 @@ export class FormbuilderComponent {
             label: 'Obligatorisches',
             value: 'a3',
         },
+        {
+            id: '4',
+            label: 'Anfrage',
+            value: 'a4',
+        },
+        {
+            id: '5',
+            label: 'Interpellation',
+            value: 'a5',
+        },
+        {
+            id: '6',
+            label: 'Motion',
+            value: 'a6',
+        },
     ];
 
     selectedItem = this.items[0];
@@ -55,6 +72,8 @@ export class FormbuilderComponent {
         name2: new FormControl('asdf'),
         checkbox: new FormControl(true),
         dropdown: new FormControl(1),
+        combobox: new FormControl(['1', '2']),
+        comboboxSelectable: new FormControl('2'),
         date: new FormControl('2025-07-23'),
         radio: new FormControl('2'),
     });

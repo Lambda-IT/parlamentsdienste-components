@@ -187,18 +187,21 @@ export declare interface PdChip extends Components.PdChip {
   outputs: ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus'],
   
   standalone: true,
-  
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdCombobox), multi: true }],
 })
-export class PdCombobox {
+export class PdCombobox extends ValueAccessor{
   protected nativeEl: HTMLPdComboboxElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    
+    super();
     c.detach();
     this.nativeEl = r.nativeElement;
     proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus']);
   }
 
-  
+  @HostListener('pd-change', ['$event'])
+        handleInput(event: any): void {
+            this.handleChangeEvent(event.detail);
+        }
 }
 
 

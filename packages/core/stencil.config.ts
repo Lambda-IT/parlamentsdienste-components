@@ -58,7 +58,7 @@ export const config: Config = {
                     type: 'text',
                 },
                 {
-                    elementSelectors: ['pd-dropdown'],
+                    elementSelectors: ['pd-dropdown', 'pd-combobox'],
                     event: 'pd-change',
                     targetAttr: 'selected',
                     type: 'text',

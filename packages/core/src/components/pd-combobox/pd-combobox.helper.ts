@@ -40,6 +40,10 @@ export function getIdsfromSelectedProp(newSelected: unknown, multiselect: boolea
         return [ids[0]];
     }
 
+    if (ids.length === 1) {
+        return ids;
+    }
+
     return null;
 
     function isStringOrNumber(val: unknown): val is string | number {

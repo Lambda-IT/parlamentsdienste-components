@@ -1,11 +1,17 @@
 <div class="wrapper">
     <form [formGroup]="testForm">
-        <pd-input formControlName="name"></pd-input>
+        <pd-input #myInput formControlName="name"></pd-input>
         <pd-input formControlName="name2"></pd-input>
-        <!-- <input id="name" type="text" formControlName="name" /> -->
+        <pd-combobox
+            label="Label"
+            formControlName="combobox"
+            [items]="items"
+            [emptyItem]="true"
+            [multiselect]="true"></pd-combobox>
+        <pd-combobox label="Label" formControlName="comboboxSelectable" [items]="items" selectable></pd-combobox>
         <pd-checkbox formControlName="checkbox" label="Checkbox"></pd-checkbox>
         <pd-datepicker label="Label" formControlName="date"></pd-datepicker>
-        <pd-dropdown label="Label" empty-item [items]="items" formControlName="dropdown"></pd-dropdown>
+        <pd-dropdown #myDropdown label="Label" empty-item [items]="items" formControlName="dropdown"></pd-dropdown>
         <pd-radio-group name="radio-group-1" formControlName="radio">
             <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
             <pd-radio value="2" label="Radio 2"></pd-radio>

@@ -226,6 +226,9 @@ function getIdsfromSelectedProp(newSelected, multiselect) {
         console.warn('pd-combobox: Trying to select multiple items when multiselect is not enabled. Using the first item.');
         return [ids[0]];
     }
+    if (ids.length === 1) {
+        return ids;
+    }
     return null;
     function isStringOrNumber(val) {
         return (typeof val === 'string' && val !== '') || typeof val === 'number';
@@ -463,14 +466,11 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         }
     }
     selectedChanged(newSelected) {
-        const selectedIds = getIdsfromSelectedProp(newSelected, this.multiselect);
-        console.log('🚀 ~ selectedIds:', selectedIds);
-        // if (!selectedIds) return;
-        // const itemToSelect = this.items.find(i => i.id === selectedId) || null;
-        // if (itemToSelect) {
-        //     this.selectedItem = itemToSelect;
-        //     this.sanitizeInternalItems(itemToSelect.id);
-        // }
+        const itemsToSelect = getIdsfromSelectedProp(newSelected, this.multiselect);
+        if (!itemsToSelect)
+            return;
+        this.state.items = this.validateItems(this.state.items);
+        this.state.filteredItems = this.state.items;
     }
     handleClickOutside(ev) {
         if (!this.state.open)
@@ -500,7 +500,10 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
                 this.pdChange.emit(this.state.items.filter(item => item.selected));
         });
         if (!this.multiselect) {
-            let selectedItem = this.state.items.find(item => item.selected) ?? null;
+            const idFromSelectedProp = getIdsfromSelectedProp(this.selected, this.multiselect);
+            let selectedItem = this.selected && idFromSelectedProp
+                ? this.state.items.find(item => item.id === idFromSelectedProp[0]) ?? null
+                : this.state.items.find(item => item.selected) ?? null;
             //If there is an input value, we want to see if it matches an item
             if (this.state.inputValue) {
                 selectedItem = this.state.items.filter(i => i.label === this.state.inputValue).shift();
@@ -540,8 +543,24 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     validateItems(items) {
         if (!Array.isArray(items))
             return;
-        const _items = !this.multiselect && !this.selectable ? items.map(item => ({ ...item, selected: false })) : items;
-        return [...(this.emptyItem ? [this.emptyItemData] : []), ..._items];
+        // const _items =
+        //     !this.multiselect && !this.selectable ? items.map(item => ({ ...item, selected: false })) : items;
+        const emptyItem = this.emptyItem ? [this.emptyItemData] : [];
+        if (!this.multiselect && !this.selectable) {
+            const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
+            return [...emptyItem, ...allItemsUnselected];
+        }
+        if (this.selected) {
+            const selectedIds = getIdsfromSelectedProp(this.selected, this.multiselect);
+            if (!selectedIds)
+                return;
+            const itemsWithSelected = items.map(item => ({
+                ...item,
+                selected: selectedIds.includes(item.id.toString()),
+            }));
+            return [...emptyItem, ...itemsWithSelected];
+        }
+        return [...emptyItem, ...items];
     }
     handleKeyDown(ev) {
         if (this.readonly || this.disabled)
@@ -720,7 +739,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '42d75e672d8df00b358b1351e6c3b0dcd044d596', role: "combobox" }, h("label", { key: 'b0ce9cc5c77df57575ef9055f6f0d29cdbc1cc25', class: {
+        return (h(Host, { key: '527edd93228cd3f68d812eeae0eb5400f36d9de5', role: "combobox" }, h("label", { key: 'a45cad79545d994f692bae834968423c8839918a', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,

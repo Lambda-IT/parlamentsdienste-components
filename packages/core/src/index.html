@@ -30,8 +30,9 @@
                 id="pd-combobox-1"
                 multiselect></pd-combobox>
             <span style="margin-bottom: 5rem; margin-top: 8rem">Combobox (selectable)</span>
-            <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-3"></pd-combobox>
+            <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-2"></pd-combobox>
 
+            <pd-combobox class="pd-combobox-items" label="Label" id="pd-combobox-3"></pd-combobox>
             <!-- <div style="margin-bottom: 5rem">
                 <pd-radio-group name="radio-group-1" value="3">
                     <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
@@ -83,7 +84,6 @@
                 label="Label"></pd-combobox>
 
             <span>Combobox (selectable)</span>
-            <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-3"></pd-combobox>
             <pd-combobox class="pd-combobox-items" selectable label="Label" disabled></pd-combobox>
             <pd-combobox class="pd-combobox-items" selectable label="Label" readonly selectable></pd-combobox>
             <pd-combobox class="pd-combobox-items" selectable label="Label" error selectable></pd-combobox>
@@ -111,11 +111,30 @@
             const pdComboBox1 = document.getElementById('pd-combobox-1');
             const pdComboBox2 = document.getElementById('pd-combobox-2');
             const pdComboBox3 = document.getElementById('pd-combobox-3');
-            const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
+            // const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
 
-            for (let pdComboBoxItem of pdComboBoxItems) {
-                pdComboBoxItem.items = items;
-            }
+            // for (let pdComboBoxItem of pdComboBoxItems) {
+            //     pdComboBoxItem.items = items;
+            // }
+
+            pdComboBox1.items = items;
+            pdComboBox2.items = items;
+            pdComboBox3.items = items;
+
+            // pdComboBox1.selected = items.slice(0, 2);
+            pdComboBox1.selected = [2, 6];
+            pdComboBox2.selected = items[8];
+            pdComboBox3.selected = items[4];
+
+            pdComboBox1.addEventListener('pd-change', event => {
+                console.log('🔥 Combobox 1 changed:', event.detail);
+            });
+            pdComboBox2.addEventListener('pd-change', event => {
+                console.log('🔥 Combobox 2 changed:', event.detail);
+            });
+            pdComboBox3.addEventListener('pd-change', event => {
+                console.log('🔥 Combobox 3 changed:', event.detail);
+            });
 
             const pdDropdown1 = document.getElementById('pd-dropdown-1');
             // pdDropdown1.items = items;
@@ -125,10 +144,8 @@
                 console.log('🔥 Radio group changed:', event.detail);
             });
             setTimeout(() => {
-                // radiogroup.error = true;
-                // radiogroup.disabled = true;
-                // radiogroup.readonly = true;
-            }, 1000);
+                pdComboBox1.selected = [1, 3, 4];
+            }, 3000);
         </script>
     </body>
 </html>
