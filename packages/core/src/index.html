@@ -28,6 +28,7 @@
                 class="pd-combobox-items"
                 label="Label"
                 id="pd-combobox-1"
+                empty-item
                 multiselect></pd-combobox>
             <span style="margin-bottom: 5rem; margin-top: 8rem">Combobox (selectable)</span>
             <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-2"></pd-combobox>
@@ -121,8 +122,8 @@
             pdComboBox2.items = items;
             pdComboBox3.items = items;
 
-            // pdComboBox1.selected = items.slice(0, 2);
-            pdComboBox1.selected = [2, 6];
+            pdComboBox1.selected = items.slice(0, 2);
+            // pdComboBox1.selected = [2, 6];
             pdComboBox2.selected = items[8];
             pdComboBox3.selected = items[4];
 
@@ -145,7 +146,7 @@
             });
             setTimeout(() => {
                 pdComboBox1.selected = [1, 3, 4];
-            }, 3000);
+            }, 1000);
         </script>
     </body>
 </html>

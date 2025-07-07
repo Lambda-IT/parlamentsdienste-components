@@ -507,6 +507,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             currentNavigatedIndex: -1, // -1 = user is not navigating
         });
         this.state = state;
+        console.log('Combobox component will load', this.state.filteredItems);
         onChange('selectedItem', () => {
             this.pdChange.emit(this.state.selectedItem);
         });
@@ -558,9 +559,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     validateItems(items) {
         if (!Array.isArray(items))
             return;
-        // const _items =
-        //     !this.multiselect && !this.selectable ? items.map(item => ({ ...item, selected: false })) : items;
-        const emptyItem = this.emptyItem ? [this.emptyItemData] : [];
+        const emptyItem = this.emptyItem && items[0] !== this.emptyItemData ? [this.emptyItemData] : [];
         if (!this.multiselect && !this.selectable) {
             const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
             return [...emptyItem, ...allItemsUnselected];
@@ -754,7 +753,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '527edd93228cd3f68d812eeae0eb5400f36d9de5', role: "combobox" }, h("label", { key: 'a45cad79545d994f692bae834968423c8839918a', class: {
+        return (h(Host, { key: 'f99a78a0d9be2fbcda64d28b9db6e7419a090e34', role: "combobox" }, h("label", { key: '29a3164256983f2edeaaf73f4c50b42d8d8d89a4', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
@@ -774,9 +773,14 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         return (h("div", { ref: input => (this.menuElement = input), class: "pd-combobox-dropdown", style: {
                 display: this.state.open ? 'block' : 'none',
                 maxHeight: `calc(3rem * ${this.itemCount} + 0.25rem)`,
-            } }, this.state.filteredItems.map((comboboxItem, i) => (h("pd-dropdown-item", { "data-test": `pd-combobox-item-${i}`, selected: this.multiselect ? comboboxItem.selected : comboboxItem.id === this.state.selectedItem?.id, multiselect: this.multiselect, value: comboboxItem.label ?? '', iconName: comboboxItem.iconName || null, iconSrc: comboboxItem.iconSrc || null, highlight: this.highlight ? this.state.inputValue : '', onClick: ev => this.selectItemByClick(comboboxItem, ev), class: {
-                'pd-dropdown-current-navigating-item': i === this.state.currentNavigatedIndex,
-            } })))));
+            } }, this.state.filteredItems.map((comboboxItem, i) => {
+            // console.log('rendering combobox item', comboboxItem, i);
+            return (h("pd-dropdown-item", { "data-test": `pd-combobox-item-${i}`, selected: this.multiselect
+                    ? comboboxItem.selected
+                    : comboboxItem.id === this.state.selectedItem?.id, multiselect: this.multiselect, value: comboboxItem.label ?? '', iconName: comboboxItem.iconName || null, iconSrc: comboboxItem.iconSrc || null, highlight: this.highlight ? this.state.inputValue : '', onClick: ev => this.selectItemByClick(comboboxItem, ev), class: {
+                    'pd-dropdown-current-navigating-item': i === this.state.currentNavigatedIndex,
+                } }));
+        })));
     }
     renderLabel() {
         if (!this.label)
