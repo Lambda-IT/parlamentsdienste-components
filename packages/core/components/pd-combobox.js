@@ -507,7 +507,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             currentNavigatedIndex: -1, // -1 = user is not navigating
         });
         this.state = state;
-        console.log('Combobox component will load', this.state.filteredItems);
         onChange('selectedItem', () => {
             this.pdChange.emit(this.state.selectedItem);
         });
@@ -753,7 +752,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: 'f99a78a0d9be2fbcda64d28b9db6e7419a090e34', role: "combobox" }, h("label", { key: '29a3164256983f2edeaaf73f4c50b42d8d8d89a4', class: {
+        return (h(Host, { key: 'b2267ae91daae09c999b9333beed3053fc0b01a2', role: "combobox" }, h("label", { key: '8eac7aff59455958f152d0bd11d4a0ad331b183c', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
