@@ -299,7 +299,14 @@ importers:
         specifier: ^24.3.0
         version: 24.9.0(typescript@5.8.3)
 
-  packages/react: {}
+  packages/react:
+    dependencies:
+      '@parlamentsdienste-components/core':
+        specifier: 0.0.1
+        version: link:../core
+      '@stencil/react-output-target':
+        specifier: ^1.1.1
+        version: 1.1.1(@stencil/core@4.31.0)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
 packages:
 
@@ -11642,6 +11649,10 @@ snapshots:
     dependencies:
       '@types/react': 19.0.0
 
+  '@lit/react@1.0.7(@types/react@19.1.6)':
+    dependencies:
+      '@types/react': 19.1.6
+
   '@lmdb/lmdb-darwin-arm64@3.2.6':
     optional: true
 
@@ -13539,6 +13550,18 @@ snapshots:
       html-react-parser: 5.2.5(@types/react@19.0.0)(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
+      react-style-stringify: 1.2.0
+      ts-morph: 22.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+
+  '@stencil/react-output-target@1.1.1(@stencil/core@4.31.0)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@lit/react': 1.0.7(@types/react@19.1.6)
+      '@stencil/core': 4.31.0
+      html-react-parser: 5.2.5(@types/react@19.1.6)(react@19.1.0)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
       react-style-stringify: 1.2.0
       ts-morph: 22.0.0
     transitivePeerDependencies:
@@ -16244,6 +16267,16 @@ snapshots:
       style-to-js: 1.1.16
     optionalDependencies:
       '@types/react': 19.0.0
+
+  html-react-parser@5.2.5(@types/react@19.1.6)(react@19.1.0):
+    dependencies:
+      domhandler: 5.0.3
+      html-dom-parser: 5.1.1
+      react: 19.1.0
+      react-property: 2.0.2
+      style-to-js: 1.1.16
+    optionalDependencies:
+      '@types/react': 19.1.6
 
   htmlparser2@10.0.0:
     dependencies:

@@ -11,6 +11,7 @@
         }
     },
     "dependencies": {
-        "@parlamentsdienste-components/core": "0.0.1"
+        "@parlamentsdienste-components/core": "0.0.1",
+        "@stencil/react-output-target": "^1.1.1"
     }
 }
