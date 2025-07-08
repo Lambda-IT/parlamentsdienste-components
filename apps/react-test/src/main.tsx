@@ -5,9 +5,7 @@ import * as ReactDOM from 'react-dom/client';
 import App from './app/app';
 // ...existing code...
 
-import { setAssetPath } from '@parlamentsdienste-components/core/components';
-
-setAssetPath('http://localhost:4200');
+// setAssetPath('http://localhost:4201');
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
