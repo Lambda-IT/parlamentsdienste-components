@@ -72,7 +72,7 @@ const Button = /*@__PURE__*/ proxyCustomElement(class Button extends H {
         const TagType = href ? 'a' : 'button';
         const role = 'button';
         const typeAttrs = TagType === 'button' ? { type, role } : { href, target };
-        return (h(Host, { key: '3b9ed9d415caf2c30ef706fca16939461df73adf', class: { 'pd-button-fullwidth': this.fullWidth } }, h(TagType, { key: 'a7b2e0295f51b6e43433d7739874ddea1c73059a', ...typeAttrs, disabled: disabled, class: {
+        return (h(Host, { key: '512d7cccf0d0f01e3cfcc59edacfef35347de6ce', class: { 'pd-button-fullwidth': this.fullWidth } }, h(TagType, { key: 'fec0785d1cef8d907a9a8f1ba616c6b4c37506da', ...typeAttrs, disabled: disabled, class: {
                 'pd-button': TagType === 'button' && !this.showAsLink,
                 'pd-link': this.showAsLink ? true : TagType !== 'button',
                 [`pd-button-${this.color}`]: true,

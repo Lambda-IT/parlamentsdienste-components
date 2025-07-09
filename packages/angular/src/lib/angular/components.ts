@@ -11,6 +11,7 @@ import { forwardRef, HostListener } from '@angular/core';
                    import { ValueAccessor } from './value-accessor';
              
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
+import { defineCustomElement as definePdAnimation } from '@parlamentsdienste-components/core/components/pd-animation.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
@@ -66,6 +67,36 @@ export declare interface PdAlert extends Components.PdAlert {
    */
   'pd-collapsed': EventEmitter<CustomEvent<boolean>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdAnimation,
+  inputs: ['name']
+})
+@Component({
+  selector: 'pd-animation',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['name'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdAnimation {
+  protected nativeEl: HTMLPdAnimationElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdAnimation extends Components.PdAnimation {}
 
 
 @ProxyCmp({

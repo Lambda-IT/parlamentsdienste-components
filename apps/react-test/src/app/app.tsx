@@ -1,4 +1,4 @@
-import { PdButton, PdCombobox, PdInput } from '@parlamentsdienste-components/react';
+import { PdAnimation, PdButton, PdCombobox, PdInput } from '@parlamentsdienste-components/react';
 import { useRef, useState } from 'react';
 import './app.css';
 
@@ -57,6 +57,7 @@ export function App() {
             <PdButton onClick={() => alert(inputRef.current?.value)}>Show Value</PdButton>
             <hr />
             <PdCombobox label="test combo" items={comboItems} multiselect selected={selectedItems}></PdCombobox>
+            <PdAnimation name="under-construction"></PdAnimation>
         </div>
     );
 }

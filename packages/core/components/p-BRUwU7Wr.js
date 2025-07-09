@@ -1,16 +1,5 @@
-import { getAssetPath, p as proxyCustomElement, H, h, a as Host } from './index.js';
-
-let customScriptUrl = null;
-function getCustomScriptUrl() {
-    if (!customScriptUrl) {
-        customScriptUrl = document.querySelector('meta[name="parlamentsdienste-base-path"]')?.getAttribute('content');
-    }
-    return customScriptUrl;
-}
-function getURL(path) {
-    const scriptUrl = getCustomScriptUrl();
-    return scriptUrl ? new URL(path, scriptUrl).href : getAssetPath(path);
-}
+import { p as proxyCustomElement, H, h, a as Host } from './index.js';
+import { g as getURL } from './p-CjSBDARv.js';
 
 const iconContent = new Map();
 const requests = new Map();
@@ -146,14 +135,14 @@ const Icon = /*@__PURE__*/ proxyCustomElement(class Icon extends H {
         const flipY = this.flip?.includes('y') ? 'scaleY(-1)' : undefined;
         const rotate = this.rotate ? `rotate(${this.rotate}deg` : undefined;
         const transformStyle = [flipX, flipY, rotate].filter(x => x !== undefined).join(' ');
-        return (h(Host, { key: 'c0a609b97c8317ee01d5942bdb957ef50782d0ff', role: "img", class: {
+        return (h(Host, { key: '2d09b8333fff39f039fcf4fe2ed5007859e2c388', role: "img", class: {
                 spin: !!this.spin,
             }, style: {
                 fontSize: this.size ? `${this.size}rem` : null,
                 transform: transformStyle ?? null,
                 animationDuration: this.spin ? `${this.spin}ms` : null,
                 animationName: this.spinReverse ? `spin-reverse` : null,
-            } }, h("div", { key: '9994a4adff3906523445fb4a34e89f07d4662b02', class: "pd-icon-inner", ref: textarea => (this.wrapperElement = textarea) })));
+            } }, h("div", { key: '6d9a112372919522abc407c377401ccaa0930619', class: "pd-icon-inner", ref: textarea => (this.wrapperElement = textarea) })));
     }
     appendSVGContent(svgContent, appendElement) {
         if (appendElement.hasChildNodes())
@@ -218,6 +207,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Icon as I, defineCustomElement as d };
-//# sourceMappingURL=p-Dc3vwJAQ.js.map
+//# sourceMappingURL=p-BRUwU7Wr.js.map
 
-//# sourceMappingURL=p-Dc3vwJAQ.js.map
+//# sourceMappingURL=p-BRUwU7Wr.js.map

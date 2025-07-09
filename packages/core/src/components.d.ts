@@ -48,6 +48,12 @@ export namespace Components {
          */
         "hideIcon": boolean;
     }
+    interface PdAnimation {
+        /**
+          * Name of an icon from the provided gallery
+         */
+        "name": '404' | 'access-denied' | 'error' | 'under-construction';
+    }
     interface PdButton {
         /**
           * Color schema used for the button
@@ -811,6 +817,12 @@ declare global {
         prototype: HTMLPdAlertElement;
         new (): HTMLPdAlertElement;
     };
+    interface HTMLPdAnimationElement extends Components.PdAnimation, HTMLStencilElement {
+    }
+    var HTMLPdAnimationElement: {
+        prototype: HTMLPdAnimationElement;
+        new (): HTMLPdAnimationElement;
+    };
     interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {
     }
     var HTMLPdButtonElement: {
@@ -1014,6 +1026,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
+        "pd-animation": HTMLPdAnimationElement;
         "pd-button": HTMLPdButtonElement;
         "pd-checkbox": HTMLPdCheckboxElement;
         "pd-chip": HTMLPdChipElement;
@@ -1079,6 +1092,12 @@ declare namespace LocalJSX {
           * Emitted when inner content is expanded/collapsed.
          */
         "onPd-collapsed"?: (event: PdAlertCustomEvent<boolean>) => void;
+    }
+    interface PdAnimation {
+        /**
+          * Name of an icon from the provided gallery
+         */
+        "name"?: '404' | 'access-denied' | 'error' | 'under-construction';
     }
     interface PdButton {
         /**
@@ -1808,6 +1827,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
+        "pd-animation": PdAnimation;
         "pd-button": PdButton;
         "pd-checkbox": PdCheckbox;
         "pd-chip": PdChip;
@@ -1828,6 +1848,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
+            "pd-animation": LocalJSX.PdAnimation & JSXBase.HTMLAttributes<HTMLPdAnimationElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
             "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;

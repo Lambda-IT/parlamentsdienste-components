@@ -9,6 +9,7 @@
 
 import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSliderCustomEvent, type PdTextareaCustomEvent } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
+import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdButton as PdButtonElement, defineCustomElement as definePdButton } from "@parlamentsdienste-components/core/components/pd-button.js";
 import { PdCheckbox as PdCheckboxElement, defineCustomElement as definePdCheckbox } from "@parlamentsdienste-components/core/components/pd-checkbox.js";
 import { PdChip as PdChipElement, defineCustomElement as definePdChip } from "@parlamentsdienste-components/core/components/pd-chip.js";
@@ -43,6 +44,17 @@ export const PdAlert: StencilReactComponent<PdAlertElement, PdAlertEvents> = /*@
         onPdCollapsed: 'pd-collapsed'
     } as PdAlertEvents,
     defineCustomElement: definePdAlert
+});
+
+export type PdAnimationEvents = NonNullable<unknown>;
+
+export const PdAnimation: StencilReactComponent<PdAnimationElement, PdAnimationEvents> = /*@__PURE__*/ createComponent<PdAnimationElement, PdAnimationEvents>({
+    tagName: 'pd-animation',
+    elementClass: PdAnimationElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdAnimationEvents,
+    defineCustomElement: definePdAnimation
 });
 
 export type PdButtonEvents = NonNullable<unknown>;

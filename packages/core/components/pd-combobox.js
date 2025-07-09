@@ -1,8 +1,8 @@
 import { g as getRenderingRef, f as forceUpdate, p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$5 } from './p-5FWjR2L-.js';
-import { d as defineCustomElement$4 } from './p-Cgc1JOB5.js';
-import { d as defineCustomElement$3 } from './p-B890ZVNx.js';
-import { d as defineCustomElement$2 } from './p-Dc3vwJAQ.js';
+import { d as defineCustomElement$5 } from './p-vOTrkory.js';
+import { d as defineCustomElement$4 } from './p-N4wq9D63.js';
+import { d as defineCustomElement$3 } from './p-D4zO_mx5.js';
+import { d as defineCustomElement$2 } from './p-BRUwU7Wr.js';
 import { c as createPopper } from './p-BfP9ezJQ.js';
 
 const appendToMap = (map, propName, value) => {
@@ -752,7 +752,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: 'b2267ae91daae09c999b9333beed3053fc0b01a2', role: "combobox" }, h("label", { key: '8eac7aff59455958f152d0bd11d4a0ad331b183c', class: {
+        return (h(Host, { key: 'f1832f621c756ecf36572586c5690fdbaff95fe5', role: "combobox" }, h("label", { key: '7ef5d4dce235453d7bbc17bac549bab41c96096b', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,

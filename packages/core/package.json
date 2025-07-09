@@ -57,6 +57,7 @@
         "generate": "stencil generate"
     },
     "dependencies": {
+        "@lottiefiles/lottie-player": "^2.0.12",
         "@popperjs/core": "^2.11.8",
         "@stencil/sass": "3.0.7",
         "@stencil/store": "^2.1.3",

@@ -3,6 +3,7 @@ import * as d from './components';
 
 export const DIRECTIVES = [
   d.PdAlert,
+  d.PdAnimation,
   d.PdButton,
   d.PdCheckbox,
   d.PdChip,

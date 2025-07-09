@@ -1,4 +1,4 @@
-import { D as DropdownItem, d as defineCustomElement$1 } from './p-B890ZVNx.js';
+import { D as DropdownItem, d as defineCustomElement$1 } from './p-D4zO_mx5.js';
 
 const PdDropdownItem = DropdownItem;
 const defineCustomElement = defineCustomElement$1;

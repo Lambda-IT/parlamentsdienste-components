@@ -56,14 +56,14 @@ const Checkbox = /*@__PURE__*/ proxyCustomElement(class Checkbox extends H {
         this.pdChecked.emit(this.value);
     };
     render() {
-        return (h(Host, { key: 'c6a552676ac0137e99d8d71e6189e6081064d162', role: "checkbox", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false' }, h("label", { key: 'b4a61dba0833c712ef75aa208c312cabad9f7a42', class: {
+        return (h(Host, { key: 'd8552ce82ce483b6de3fbae3b9ab06468ff7692d', role: "checkbox", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false' }, h("label", { key: '35d9c27c436f4ed4954eefcc7003abb8bb8833f4', class: {
                 'pd-checkbox-label': true,
                 'pd-checkbox-readonly': this.readonly,
                 'pd-checkbox-error': this.error,
-            }, style: this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}, "data-test": "pd-checkbox-label" }, h("input", { key: '379e8b0475d64bad59a2d4fde6baa2cce853602d', class: "pd-checkbox-input", type: "Checkbox", checked: this.checked, disabled: this.disabled || this.readonly, required: this.required, value: `${this.value}`, name: this.name, onClick: this.onClick }), h("div", { key: 'fc941db765d0cd8b91bfcdcf3970308b58faa625', class: {
+            }, style: this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}, "data-test": "pd-checkbox-label" }, h("input", { key: 'fb2ca00cd8f8d63c1865beb0ad4d32e7fe7e8f4b', class: "pd-checkbox-input", type: "Checkbox", checked: this.checked, disabled: this.disabled || this.readonly, required: this.required, value: `${this.value}`, name: this.name, onClick: this.onClick }), h("div", { key: '0efe8127afb265de45d31a3723dd6a37cd973846', class: {
                 'pd-checkbox-inner': true,
                 'pd-checkbox-checked': this.checked || this.isIndeterminate,
-            } }, h("div", { key: 'f619cdf16282f475910c646e040825c4c40c0583', class: { 'pd-checkbox-checkmark': this.checked && !this.isIndeterminate } }), h("div", { key: 'c457850fb0498fbb25620f6ca433f71b8c52072a', class: { 'pd-checkbox-indeterminate': this.isIndeterminate } })), h("div", { key: '567339a92fd173ffb88e4d1a41465126e65e96ee', class: "pd-checkbox-text", "data-test": "pd-checkbox-text" }, this.text))));
+            } }, h("div", { key: '706bf0959e69b0cd29be5fe6d757907255cf4bd4', class: { 'pd-checkbox-checkmark': this.checked && !this.isIndeterminate } }), h("div", { key: 'aa8c6b19ef03fa17f4c91109d8648f635dae4c3d', class: { 'pd-checkbox-indeterminate': this.isIndeterminate } })), h("div", { key: 'acb122c198decb5fba764f9769cffeffb7ad0b94', class: "pd-checkbox-text", "data-test": "pd-checkbox-text" }, this.text))));
     }
     static get style() { return pdCheckboxCss; }
 }, [1, "pd-checkbox", {
@@ -94,6 +94,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Checkbox as C, defineCustomElement as d };
-//# sourceMappingURL=p-5FWjR2L-.js.map
+//# sourceMappingURL=p-vOTrkory.js.map
 
-//# sourceMappingURL=p-5FWjR2L-.js.map
+//# sourceMappingURL=p-vOTrkory.js.map
