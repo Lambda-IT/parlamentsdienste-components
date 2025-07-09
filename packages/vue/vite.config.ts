@@ -39,7 +39,6 @@ export default defineConfig(() => ({
         },
         rollupOptions: {
             external: id => {
-                console.log('External check for:', id);
                 return ['@parlamentsdienste-components/core'].some(pkg => id === pkg || id.startsWith(`${pkg}/`));
             },
         },

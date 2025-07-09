@@ -40,7 +40,6 @@ export default defineConfig(() => ({
         rollupOptions: {
             // External packages that should not be bundled into your library.
             external: id => {
-                console.log('External check for:', id);
                 return ['react', 'react-dom', 'react/jsx-runtime', '@parlamentsdienste-components/core'].some(
                     pkg => id === pkg || id.startsWith(`${pkg}/`),
                 );

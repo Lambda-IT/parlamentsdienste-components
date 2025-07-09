@@ -1,10 +1,48 @@
-import { angularOutputTarget } from '@parlamentsdienste-components/angular-output-target';
+import { angularOutputTarget, ValueAccessorConfig } from '@parlamentsdienste-components/angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs } from '@stencil/core/internal';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
-import { vueOutputTarget } from '@stencil/vue-output-target';
+import { ComponentModelConfig, vueOutputTarget } from '@stencil/vue-output-target';
 import { mdxGenerator } from './utils/markdown';
+
+const angularValueAccessorConfigs: ValueAccessorConfig[] = [
+    // ℹ️ there is a INPUTMAP in the value-accessor.ts file, who maps the input property to the output event of the components
+    // Don't forget to update the INPUTMAP if you add a new component
+    // --> packages/angular/src/lib/angular/value-accessor.ts
+    {
+        elementSelectors: ['pd-input', 'pd-radio-group', 'pd-textarea', 'pd-slider'],
+        event: 'pd-change',
+        targetAttr: 'value',
+        type: 'text',
+    },
+    {
+        elementSelectors: ['pd-checkbox'],
+        event: 'pd-checked',
+        targetAttr: 'value',
+        type: 'boolean',
+    },
+    {
+        elementSelectors: ['pd-datepicker'],
+        event: 'pd-change',
+        targetAttr: 'date',
+        type: 'text',
+    },
+    {
+        elementSelectors: ['pd-dropdown', 'pd-combobox'],
+        event: 'pd-change',
+        targetAttr: 'selected',
+        type: 'text',
+    },
+];
+
+const vueComponentModels: ComponentModelConfig[] = [
+    ...angularValueAccessorConfigs.map(cfg => ({
+        elements: cfg.elementSelectors,
+        event: cfg.event,
+        targetAttr: cfg.targetAttr,
+    })),
+];
 
 export const config: Config = {
     namespace: 'ParlamentsdiensteCore',
@@ -37,36 +75,7 @@ export const config: Config = {
             outputType: 'standalone',
             directivesProxyFile: '../angular/src/lib/angular/components.ts',
             directivesArrayFile: '../angular/src/lib/angular/index.ts',
-            valueAccessorConfigs: [
-                // ℹ️ there is a INPUTMAP in the value-accessor.ts file, who maps the input property to the output event of the components
-                // Don't forget to update the INPUTMAP if you add a new component
-                // --> packages/angular/src/lib/angular/value-accessor.ts
-                {
-                    elementSelectors: ['pd-input', 'pd-radio-group', 'pd-textarea', 'pd-slider'],
-                    event: 'pd-change',
-                    targetAttr: 'value',
-                    type: 'text',
-                },
-                {
-                    elementSelectors: ['pd-checkbox'],
-                    event: 'pd-checked',
-                    targetAttr: 'value',
-                    type: 'boolean',
-                },
-                {
-                    elementSelectors: ['pd-datepicker'],
-                    event: 'pd-change',
-                    targetAttr: 'date',
-                    type: 'text',
-                },
-                {
-                    elementSelectors: ['pd-dropdown', 'pd-combobox'],
-                    event: 'pd-change',
-                    targetAttr: 'selected',
-                    type: 'text',
-                },
-            ],
-            // excludeComponents: ['pd-input'],
+            valueAccessorConfigs: angularValueAccessorConfigs,
         }),
         reactOutputTarget({
             // Relative path to where the React components will be generated
@@ -86,7 +95,7 @@ export const config: Config = {
             componentCorePackage: '@parlamentsdienste-components/core',
             //   hydrateModule: 'component-library/hydrate',
             proxiesFile: '../vue/src/generated/components.ts',
-            //   componentModels: vueComponentModels,
+            componentModels: vueComponentModels,
         }),
     ],
     testing: {
