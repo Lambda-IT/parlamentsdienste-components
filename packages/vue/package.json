@@ -1,0 +1,17 @@
+{
+    "name": "@parlamentsdienste-components/vue",
+    "version": "0.0.1",
+    "main": "./index.js",
+    "types": "./index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.mjs",
+            "require": "./index.js"
+        }
+    },
+    "dependencies": {
+        "@parlamentsdienste-components/core": "0.0.1",
+        "@stencil/vue-output-target": "^0.10.8"
+    }
+}

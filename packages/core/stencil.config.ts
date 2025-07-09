@@ -3,6 +3,7 @@ import { Config } from '@stencil/core';
 import { JsonDocs } from '@stencil/core/internal';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { mdxGenerator } from './utils/markdown';
 
 export const config: Config = {
@@ -78,6 +79,15 @@ export const config: Config = {
             type: 'docs-custom',
             generator: (docs: JsonDocs) => mdxGenerator(docs),
         },
+        vueOutputTarget({
+            includeImportCustomElements: true,
+            includePolyfills: false,
+            includeDefineCustomElements: false,
+            componentCorePackage: '@parlamentsdienste-components/core',
+            //   hydrateModule: 'component-library/hydrate',
+            proxiesFile: '../vue/src/generated/components.ts',
+            //   componentModels: vueComponentModels,
+        }),
     ],
     testing: {
         browserHeadless: 'shell',

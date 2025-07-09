@@ -19,7 +19,8 @@
             "@parlamentsdienste-components/angular-output-target": ["libs/angular-output-target/src/index.ts"],
             "@parlamentsdienste-components/core": ["packages/core/src/index.ts"],
             "@parlamentsdienste-components/dist": ["dist/packages/angular/index.d.ts"],
-            "@parlamentsdienste-components/react": ["packages/react/src/index.ts"]
+            "@parlamentsdienste-components/react": ["packages/react/src/index.ts"],
+            "@parlamentsdienste-components/vue": ["packages/vue/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
