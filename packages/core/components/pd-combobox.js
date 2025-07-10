@@ -427,7 +427,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         this.state.filteredItems = this.state.items;
     }
     handleClickOutside(ev) {
-        console.log('click outside', ev.target, this.element, this.state.open);
         if (!this.state.open)
             return;
         if (ev.target !== this.element && this.state) {
@@ -454,12 +453,10 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         onChange('items', () => {
             if (this.multiselect) {
                 const selectedItems = this.state.items.filter(item => item.selected);
-                // this.selected = selectedItems;
                 this.pdChange.emit(selectedItems);
             }
             else {
                 const selectedItem = this.state.items.find(item => item.selected) ?? null;
-                // this.selected = selectedItem;
                 this.pdChange.emit(selectedItem);
             }
         });
@@ -708,7 +705,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '0c9caa8e4c7c0562c0677b9e6e0d2877a29b8344', role: "combobox" }, h("label", { key: '3a6abeae96fb74cdbc0718fa7b4420c227b697ca', class: {
+        return (h(Host, { key: '92261630498f9830821d287ef43e4b8b3a2eb943', role: "combobox" }, h("label", { key: '82305d1497d9f1f58e11800b25450afb0072ebfd', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
