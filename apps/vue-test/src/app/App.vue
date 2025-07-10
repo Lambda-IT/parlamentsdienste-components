@@ -121,5 +121,5 @@ export default defineComponent({
     <hr />
     <PdSlider v-model="sliderValue" :min="0" :max="100" />
     <hr />
-    <PdDropdown v-model.lazy="dropDownValue" :items="comboItems" />
+    <PdDropdown v-model="dropDownValue" :items="comboItems" />
 </template>

@@ -30,7 +30,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
     /**
      * To select an item by prop. Needs to be an object with an id property, a string or a number.
      */
-    selected;
+    selected = null;
     /**
      * Items visible in dropdown
      */
@@ -100,15 +100,8 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         if (viewOnly && this.popper)
             this.popper.destroy();
     }
-    selectedChanged() {
-        const selectedId = this.getIdfromSelectedProp();
-        if (!selectedId)
-            return;
-        const itemToSelect = this.items.find(i => i.id === selectedId) || null;
-        if (itemToSelect) {
-            this.selectedItem = itemToSelect;
-            this.sanitizeInternalItems(itemToSelect.id);
-        }
+    selectedChanged(newSelected) {
+        this.selectedItem = newSelected;
     }
     handleClick(ev) {
         if (!ev.composedPath().includes(this.element))
@@ -168,6 +161,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
     inputTime = 0;
     selectItem(item, closeDropdown = false) {
         this.selectedItem = item;
+        this.selected = item; // Update the selected prop
         this.sanitizeInternalItems(item.id);
         if (closeDropdown)
             this.open = false;
@@ -180,37 +174,12 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         const index = this.items.findIndex(i => i.id === selectedId);
         this.items[index] = { ...this.items[index], selected: true };
     }
-    getIdfromSelectedProp() {
-        if (stringNumberCheck(this.selected)) {
-            return this.selected.toString();
-        }
-        if (objectCheck(this.selected)) {
-            return this.selected.id.toString();
-        }
-        console.error('pd-combobox: Invalid selected prop type. Expected string, number, or object with id property.');
-        return null;
-        function stringNumberCheck(val) {
-            return (typeof val === 'string' && val !== '') || typeof val === 'number';
-        }
-        function objectCheck(val) {
-            return typeof val === 'object' && val !== null && 'id' in val && stringNumberCheck(val.id);
-        }
-    }
     toggleDropdown = () => {
         if (!this.disabled && !this.readonly && !this.viewOnly)
             this.open = !this.open;
     };
     componentWillLoad() {
-        if (this.selected) {
-            const selectedId = this.getIdfromSelectedProp();
-            if (!selectedId)
-                return;
-            this.selectedItem = this.items.find(item => item.id === selectedId);
-            this.sanitizeInternalItems(this.selectedItem.id);
-        }
-        else {
-            this.selectedItem = this.items.find(item => item.selected);
-        }
+        this.selectedItem = this.selected ? this.selected : this.items.find(item => item.selected) || null;
     }
     componentDidLoad() {
         this._viewOnly = this.viewOnly;
@@ -243,7 +212,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
         });
     }
     render() {
-        return (h(Host, { key: '56983a363ef412065396a63593648d2a09932c59' }, h("label", { key: '307753dca8816ae48f2c5d5e1d4eb26caa92ca50', class: {
+        return (h(Host, { key: '62663be3efd6795147e24e43820e8f08f4cd3aeb' }, h("label", { key: '1ca1b6886926ce794fcdd31af56e54b2336616bd', class: {
                 'pd-dropdown-label': true,
                 'pd-dropdown-disabled': this.disabled,
             }, onClick: this.toggleDropdown, "data-test": "pd-dropdown-label" }, this.renderLabel()), !this.viewOnly ? (h("div", { class: {
@@ -283,7 +252,7 @@ const Dropdown = /*@__PURE__*/ proxyCustomElement(class Dropdown extends H {
 }, [1, "pd-dropdown", {
         "placeholder": [1],
         "items": [16],
-        "selected": [8],
+        "selected": [1040],
         "itemCount": [2, "item-count"],
         "emptyItem": [4, "empty-item"],
         "emptyItemData": [16, "empty-item-data"],

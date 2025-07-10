@@ -16,7 +16,7 @@ import {
     State,
     Watch,
 } from '@stencil/core';
-import { DropdownItem, DropdownItemSelect, TextWrap } from '../../types';
+import { DropdownItem, TextWrap } from '../../types';
 
 @Component({
     tag: 'pd-dropdown',
@@ -47,7 +47,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * To select an item by prop. Needs to be an object with an id property, a string or a number.
      */
-    @Prop() selected: DropdownItemSelect;
+    @Prop({ mutable: true }) selected: DropdownItem = null;
 
     /**
      * Items visible in dropdown
@@ -136,14 +136,8 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     @Watch('selected')
-    public selectedChanged() {
-        const selectedId = this.getIdfromSelectedProp();
-        if (!selectedId) return;
-        const itemToSelect = this.items.find(i => i.id === selectedId) || null;
-        if (itemToSelect) {
-            this.selectedItem = itemToSelect;
-            this.sanitizeInternalItems(itemToSelect.id);
-        }
+    public selectedChanged(newSelected: DropdownItem) {
+        this.selectedItem = newSelected;
     }
 
     @Listen('click', { target: 'body' })
@@ -209,6 +203,7 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     private selectItem(item: DropdownItem, closeDropdown: boolean = false) {
         this.selectedItem = item;
+        this.selected = item; // Update the selected prop
 
         this.sanitizeInternalItems(item.id);
 
@@ -224,39 +219,12 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
         this.items[index] = { ...this.items[index], selected: true };
     }
 
-    getIdfromSelectedProp(): string | null {
-        if (stringNumberCheck(this.selected)) {
-            return this.selected.toString();
-        }
-        if (objectCheck(this.selected)) {
-            return this.selected.id.toString();
-        }
-
-        console.error('pd-combobox: Invalid selected prop type. Expected string, number, or object with id property.');
-        return null;
-
-        function stringNumberCheck(val: unknown): val is string | number {
-            return (typeof val === 'string' && val !== '') || typeof val === 'number';
-        }
-
-        function objectCheck(val: unknown): val is { id: string | number } {
-            return typeof val === 'object' && val !== null && 'id' in val && stringNumberCheck(val.id);
-        }
-    }
-
     private toggleDropdown = () => {
         if (!this.disabled && !this.readonly && !this.viewOnly) this.open = !this.open;
     };
 
     public componentWillLoad() {
-        if (this.selected) {
-            const selectedId = this.getIdfromSelectedProp();
-            if (!selectedId) return;
-            this.selectedItem = this.items.find(item => item.id === selectedId);
-            this.sanitizeInternalItems(this.selectedItem.id);
-        } else {
-            this.selectedItem = this.items.find(item => item.selected);
-        }
+        this.selectedItem = this.selected ? this.selected : this.items.find(item => item.selected) || null;
     }
 
     public componentDidLoad() {
