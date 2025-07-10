@@ -115,9 +115,9 @@ export default defineComponent({
     <PdAlert>test</PdAlert>
     <PdInput :value="inputValue" @pd-change="handleChange" />
     <PdInput v-model="twoWayBinding" />
-    <PdCombobox :items="comboItems" @pd-change="comboChange" multiselect />
+    <!-- <PdCombobox :items="comboItems" @pd-change="comboChange" multiselect /> -->
     <hr />
-    <PdCombobox :items="comboItems" v-model.lazy="selectedItems" multiselect />
+    <PdCombobox :items="comboItems" v-model="selectedItems" multiselect />
     <hr />
     <PdSlider v-model="sliderValue" :min="0" :max="100" />
     <hr />

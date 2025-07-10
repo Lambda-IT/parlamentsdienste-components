@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, unknown as DropdownItemSelect, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, unknown as DropdownItemSelect, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -222,9 +222,9 @@ export namespace Components {
          */
         "selectable": boolean;
         /**
-          * To select an item by prop. Needs to be an object with an id property, a string or a number.
+          * To select an item by prop. This prop is used for the two-way binding.
          */
-        "selected": DropdownItemSelect | DropdownItemSelect[];
+        "selected": ComboboxItem | ComboboxItem[] | null;
         /**
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
@@ -1292,9 +1292,9 @@ declare namespace LocalJSX {
          */
         "selectable"?: boolean;
         /**
-          * To select an item by prop. Needs to be an object with an id property, a string or a number.
+          * To select an item by prop. This prop is used for the two-way binding.
          */
-        "selected"?: DropdownItemSelect | DropdownItemSelect[];
+        "selected"?: ComboboxItem | ComboboxItem[] | null;
         /**
           * Input tag size (check pd-input 'size' for more info)
          */

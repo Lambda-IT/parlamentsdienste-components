@@ -17,8 +17,8 @@ import {
 } from '@stencil/core';
 import { createStore } from '@stencil/store';
 
-import { ComboboxItem, DropdownItemSelect, InputChangeEventDetail } from '../../types';
-import { getIdsfromSelectedProp } from './pd-combobox.helper';
+import { ComboboxItem, InputChangeEventDetail } from '../../types';
+
 import * as S from './pd-combobox.store';
 
 @Component({
@@ -42,9 +42,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     @Prop({ mutable: true }) items: ComboboxItem[] = [];
 
     /**
-     * To select an item by prop. Needs to be an object with an id property, a string or a number.
+     * To select an item by prop. This prop is used for the two-way binding.
      */
-    @Prop() selected: DropdownItemSelect | DropdownItemSelect[];
+    @Prop({ mutable: true }) selected: ComboboxItem | ComboboxItem[] | null = null;
 
     /**
      * Enable selection of an empty item
@@ -235,15 +235,12 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     @Watch('selected')
-    public selectedChanged(newSelected: unknown) {
-        const itemsToSelect = getIdsfromSelectedProp(newSelected, this.multiselect);
-        if (!itemsToSelect) return;
-
+    public selectedChanged() {
         this.state.items = this.validateItems(this.state.items);
         this.state.filteredItems = this.state.items;
     }
 
-    @Listen('click', { target: 'body' })
+    @Listen('click', { target: 'document' })
     handleClickOutside(ev: MouseEvent) {
         if (!this.state.open) return;
         if (ev.target !== this.element && this.state) {
@@ -266,25 +263,27 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.state = state;
 
         onChange('selectedItem', () => {
+            this.selected = this.state.selectedItem;
             this.pdChange.emit(this.state.selectedItem);
         });
 
         onChange('items', () => {
-            if (this.multiselect) this.pdChange.emit(this.state.items.filter(item => item.selected));
+            if (this.multiselect) {
+                const selectedItems = this.state.items.filter(item => item.selected);
+                this.pdChange.emit(selectedItems);
+            } else {
+                const selectedItem = this.state.items.find(item => item.selected) ?? null;
+                this.pdChange.emit(selectedItem);
+            }
         });
 
-        if (!this.multiselect) {
-            const idFromSelectedProp = getIdsfromSelectedProp(this.selected, this.multiselect);
-            let selectedItem =
-                this.selected && idFromSelectedProp
-                    ? this.state.items.find(item => item.id === idFromSelectedProp[0]) ?? null
-                    : this.state.items.find(item => item.selected) ?? null;
-            //If there is an input value, we want to see if it matches an item
-            if (this.state.inputValue) {
-                selectedItem = this.state.items.filter(i => i.label === this.state.inputValue).shift();
-            }
-            if (selectedItem) {
-                this.selectItem(selectedItem, null, false);
+        if (!this.multiselect && this.selected) {
+            const idsFromSelectedProp = this.getIdsfromSelectedProp(this.selected);
+            if (idsFromSelectedProp && idsFromSelectedProp.length > 0) {
+                const selectedItem = this.state.items.find(item => item.id === idsFromSelectedProp[0]) ?? null;
+                if (selectedItem) {
+                    this.selectItem(selectedItem, null, false);
+                }
             }
         }
     }
@@ -323,6 +322,16 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.menuElement.scrollTop = scrollY;
     }
 
+    private getIdsfromSelectedProp(selected: ComboboxItem | ComboboxItem[]): string[] | null {
+        if (!selected) return null;
+
+        if (Array.isArray(selected)) {
+            return selected.map(item => item.id.toString());
+        }
+
+        return [selected.id.toString()];
+    }
+
     private validateItems(items: any) {
         if (!Array.isArray(items)) return;
 
@@ -334,7 +343,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
 
         if (this.selected) {
-            const selectedIds = getIdsfromSelectedProp(this.selected, this.multiselect);
+            const selectedIds = this.getIdsfromSelectedProp(this.selected);
             if (!selectedIds) return;
             const itemsWithSelected = items.map(item => ({
                 ...item,
@@ -408,6 +417,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.state.filteredItems = this.state.filteredItems.map(item =>
                 item.id === comboboxItem.id ? comboboxItem : item,
             );
+            this.selected = this.state.items.filter(item => item.selected);
 
             if (emitPdCombobox) {
                 this.pdCombobox.emit(this.state.items.filter(item => item.selected));
@@ -422,7 +432,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         if (this.selectable) {
             this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === comboboxItem.id }));
             this.state.filteredItems = this.state.items;
-
+            this.selected = comboboxItem;
             S.closeDropdown(this.state);
         }
 
@@ -465,6 +475,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     }
 
     private deselectAllItems() {
+        this.selected = [];
         this.state.items = this.state.items.map(item => ({ ...item, selected: false }));
         this.state.filteredItems = this.state.items;
         this.pdCombobox.emit(null);

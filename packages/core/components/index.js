@@ -1340,6 +1340,9 @@ var hostListenerProxy = (hostRef, methodName) => (ev) => {
   }
 };
 var getHostListenerTarget = (doc, elm, flags) => {
+  if (flags & 4 /* TargetDocument */) {
+    return doc;
+  }
   if (flags & 16 /* TargetBody */) {
     return doc.body;
   }

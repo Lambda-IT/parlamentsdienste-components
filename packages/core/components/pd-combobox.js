@@ -195,64 +195,6 @@ const createStore = (defaultState, shouldUpdate) => {
     return map;
 };
 
-/**
- * Extracts an array of string IDs from the `selected` prop for the combobox component.
- *
- * Accepts a value that can be:
- * - a string or number (single selection)
- * - an object with an `id` property (single selection)
- * - an array of strings, numbers, or objects with an `id` property (multi-selection)
- *
- * If `multiselect` is false and multiple IDs are found, only the first is returned and a warning is logged.
- * If the input is invalid, logs an error and returns null.
- *
- * @param newSelected - The value of the selected prop (string, number, object with id, or array of these)
- * @param multiselect - Whether multiple selections are allowed
- * @returns An array of string IDs, or null if input is invalid
- */
-function getIdsfromSelectedProp(newSelected, multiselect) {
-    if (!newSelected)
-        return null;
-    const ids = (function () {
-        if (isStringOrNumber(newSelected)) {
-            return [newSelected.toString()];
-        }
-        if (Array.isArray(newSelected)) {
-            if (newSelected.every(item => isStringOrNumber(item))) {
-                return newSelected.map(item => item.toString());
-            }
-            if (newSelected.every(item => IsObjectWithId(item))) {
-                return newSelected.map(item => item.id.toString());
-            }
-        }
-        if (IsObjectWithId(newSelected)) {
-            return [newSelected.id.toString()];
-        }
-        return null;
-    })();
-    if (!ids || ids.length === 0) {
-        console.error('pd-combobox: Invalid selected prop type. Expected string, number or object with id property or an Array of those types when multiselect is enabled.');
-        return null;
-    }
-    if (multiselect) {
-        return ids;
-    }
-    if (ids.length > 1) {
-        console.warn('pd-combobox: Trying to select multiple items when multiselect is not enabled. Using the first item.');
-        return [ids[0]];
-    }
-    if (ids.length === 1) {
-        return ids;
-    }
-    return null;
-    function isStringOrNumber(val) {
-        return (typeof val === 'string' && val !== '') || typeof val === 'number';
-    }
-    function IsObjectWithId(val) {
-        return typeof val === 'object' && val !== null && 'id' in val && isStringOrNumber(val.id);
-    }
-}
-
 function isUserNavigating(state) {
     return state.open && state.currentNavigatedIndex > -1;
 }
@@ -326,9 +268,9 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
      */
     items = [];
     /**
-     * To select an item by prop. Needs to be an object with an id property, a string or a number.
+     * To select an item by prop. This prop is used for the two-way binding.
      */
-    selected;
+    selected = null;
     /**
      * Enable selection of an empty item
      */
@@ -480,14 +422,12 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             }
         }
     }
-    selectedChanged(newSelected) {
-        const itemsToSelect = getIdsfromSelectedProp(newSelected, this.multiselect);
-        if (!itemsToSelect)
-            return;
+    selectedChanged() {
         this.state.items = this.validateItems(this.state.items);
         this.state.filteredItems = this.state.items;
     }
     handleClickOutside(ev) {
+        console.log('click outside', ev.target, this.element, this.state.open);
         if (!this.state.open)
             return;
         if (ev.target !== this.element && this.state) {
@@ -508,23 +448,28 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         });
         this.state = state;
         onChange('selectedItem', () => {
+            this.selected = this.state.selectedItem;
             this.pdChange.emit(this.state.selectedItem);
         });
         onChange('items', () => {
-            if (this.multiselect)
-                this.pdChange.emit(this.state.items.filter(item => item.selected));
-        });
-        if (!this.multiselect) {
-            const idFromSelectedProp = getIdsfromSelectedProp(this.selected, this.multiselect);
-            let selectedItem = this.selected && idFromSelectedProp
-                ? this.state.items.find(item => item.id === idFromSelectedProp[0]) ?? null
-                : this.state.items.find(item => item.selected) ?? null;
-            //If there is an input value, we want to see if it matches an item
-            if (this.state.inputValue) {
-                selectedItem = this.state.items.filter(i => i.label === this.state.inputValue).shift();
+            if (this.multiselect) {
+                const selectedItems = this.state.items.filter(item => item.selected);
+                // this.selected = selectedItems;
+                this.pdChange.emit(selectedItems);
             }
-            if (selectedItem) {
-                this.selectItem(selectedItem, null, false);
+            else {
+                const selectedItem = this.state.items.find(item => item.selected) ?? null;
+                // this.selected = selectedItem;
+                this.pdChange.emit(selectedItem);
+            }
+        });
+        if (!this.multiselect && this.selected) {
+            const idsFromSelectedProp = this.getIdsfromSelectedProp(this.selected);
+            if (idsFromSelectedProp && idsFromSelectedProp.length > 0) {
+                const selectedItem = this.state.items.find(item => item.id === idsFromSelectedProp[0]) ?? null;
+                if (selectedItem) {
+                    this.selectItem(selectedItem, null, false);
+                }
             }
         }
     }
@@ -555,6 +500,14 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         const scrollY = index * itemHeight - (Math.ceil(this.itemCount / 2) - 1) * itemHeight;
         this.menuElement.scrollTop = scrollY;
     }
+    getIdsfromSelectedProp(selected) {
+        if (!selected)
+            return null;
+        if (Array.isArray(selected)) {
+            return selected.map(item => item.id.toString());
+        }
+        return [selected.id.toString()];
+    }
     validateItems(items) {
         if (!Array.isArray(items))
             return;
@@ -564,7 +517,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             return [...emptyItem, ...allItemsUnselected];
         }
         if (this.selected) {
-            const selectedIds = getIdsfromSelectedProp(this.selected, this.multiselect);
+            const selectedIds = this.getIdsfromSelectedProp(this.selected);
             if (!selectedIds)
                 return;
             const itemsWithSelected = items.map(item => ({
@@ -634,6 +587,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             comboboxItem.selected = !comboboxItem.selected;
             this.state.items = this.state.items.map(item => (item.id === comboboxItem.id ? comboboxItem : item));
             this.state.filteredItems = this.state.filteredItems.map(item => item.id === comboboxItem.id ? comboboxItem : item);
+            this.selected = this.state.items.filter(item => item.selected);
             if (emitPdCombobox) {
                 this.pdCombobox.emit(this.state.items.filter(item => item.selected));
             }
@@ -645,6 +599,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         if (this.selectable) {
             this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === comboboxItem.id }));
             this.state.filteredItems = this.state.items;
+            this.selected = comboboxItem;
             closeDropdown(this.state);
         }
         if (emitPdCombobox)
@@ -681,6 +636,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         this.setFocus();
     }
     deselectAllItems() {
+        this.selected = [];
         this.state.items = this.state.items.map(item => ({ ...item, selected: false }));
         this.state.filteredItems = this.state.items;
         this.pdCombobox.emit(null);
@@ -752,7 +708,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: 'f1832f621c756ecf36572586c5690fdbaff95fe5', role: "combobox" }, h("label", { key: '7ef5d4dce235453d7bbc17bac549bab41c96096b', class: {
+        return (h(Host, { key: '0c9caa8e4c7c0562c0677b9e6e0d2877a29b8344', role: "combobox" }, h("label", { key: '3a6abeae96fb74cdbc0718fa7b4420c227b697ca', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
@@ -798,7 +754,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     static get style() { return pdComboboxCss; }
 }, [1, "pd-combobox", {
         "items": [1040],
-        "selected": [8],
+        "selected": [1040],
         "emptyItem": [4, "empty-item"],
         "emptyItemData": [16, "empty-item-data"],
         "disabled": [4],
@@ -821,7 +777,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         "reset": [64],
         "setOpen": [64],
         "setFocus": [64]
-    }, [[16, "click", "handleClickOutside"], [0, "keydown", "handleKeyDown"]], {
+    }, [[4, "click", "handleClickOutside"], [0, "keydown", "handleKeyDown"]], {
         "viewOnly": ["viewOnlyChanged"],
         "items": ["itemsChanged"],
         "selected": ["selectedChanged"]
