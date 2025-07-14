@@ -42,11 +42,11 @@ const Radio = /*@__PURE__*/ proxyCustomElement(class Radio extends H {
     error = false;
     render() {
         const { name, value, label, checked } = this;
-        return (h(Host, { key: '0f194777b6a34e68ea2e6b5bd01cc10fe7c294fe', role: "radio", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false' }, h("label", { key: '616ba11bf39a6039176bcc42b545205305736c9e', class: {
+        return (h(Host, { key: 'bc52b9ed690119e19748ed6b12380d08cbb40d63', role: "radio", "aria-checked": this.checked ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false' }, h("label", { key: 'cf1de10b224833effd0c882e1c4b17f89a3a7897', class: {
                 'pd-radio-label': true,
                 'pd-radio-readonly': this.readonly,
                 'pd-radio-error': this.error,
-            }, style: this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}, "data-test": "pd-radio-label" }, h("input", { key: '19dcab45836a2fede3ce999726224f5a19241c18', class: "pd-radio-input", type: "radio", checked: checked, name: name, value: value, disabled: this.disabled || this.readonly }), h("div", { key: 'e294595290780600f23cd78c6b51c1d656233c60', class: "pd-radio-inner" }), h("div", { key: '2f2fcf0bb7dd1657ea4e909c31225d4986b4ca4d', class: "pd-radio-text", "data-test": "pd-radio-text" }, label))));
+            }, style: this.verticalAdjust ? { '--pd-radio-vertical-adjust': '2.3rem' } : {}, "data-test": "pd-radio-label" }, h("input", { key: '4fb98fa6616510889dba167a6c8b0a8577fb8f12', class: "pd-radio-input", type: "radio", checked: checked, name: name, value: value, disabled: this.disabled || this.readonly }), h("div", { key: 'f9223bc71abe1660c15b2e94a7a80e76d554cc40', class: "pd-radio-inner" }), h("div", { key: '62f5cac3f89798cbb7133e71518234f16b2644f8', class: "pd-radio-text", "data-test": "pd-radio-text" }, label))));
     }
     static get style() { return pdRadioCss; }
 }, [0, "pd-radio", {

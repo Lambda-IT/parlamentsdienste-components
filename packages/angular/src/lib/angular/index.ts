@@ -22,6 +22,7 @@ export const DIRECTIVES = [
   d.PdMenu,
   d.PdMenuItem,
   d.PdModal,
+  d.PdNavbar,
   d.PdRadio,
   d.PdRadioGroup,
   d.PdSlider,

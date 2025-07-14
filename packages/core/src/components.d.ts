@@ -694,6 +694,9 @@ export namespace Components {
          */
         "config": PdModalConfig;
     }
+    interface PdNavbar {
+        "mobileBreakpoint": number;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -906,6 +909,10 @@ export interface PdListItemExpandableCustomEvent<T> extends CustomEvent<T> {
 export interface PdModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdModalElement;
+}
+export interface PdNavbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdNavbarElement;
 }
 export interface PdRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1178,6 +1185,23 @@ declare global {
         prototype: HTMLPdModalElement;
         new (): HTMLPdModalElement;
     };
+    interface HTMLPdNavbarElementEventMap {
+        "pd-menu": void;
+    }
+    interface HTMLPdNavbarElement extends Components.PdNavbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdNavbarElementEventMap>(type: K, listener: (this: HTMLPdNavbarElement, ev: PdNavbarCustomEvent<HTMLPdNavbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdNavbarElementEventMap>(type: K, listener: (this: HTMLPdNavbarElement, ev: PdNavbarCustomEvent<HTMLPdNavbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdNavbarElement: {
+        prototype: HTMLPdNavbarElement;
+        new (): HTMLPdNavbarElement;
+    };
     interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {
     }
     var HTMLPdRadioElement: {
@@ -1260,6 +1284,7 @@ declare global {
         "pd-menu": HTMLPdMenuElement;
         "pd-menu-item": HTMLPdMenuItemElement;
         "pd-modal": HTMLPdModalElement;
+        "pd-navbar": HTMLPdNavbarElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-slider": HTMLPdSliderElement;
@@ -1991,6 +2016,10 @@ declare namespace LocalJSX {
          */
         "onPd-escape"?: (event: PdModalCustomEvent<void>) => void;
     }
+    interface PdNavbar {
+        "mobileBreakpoint"?: number;
+        "onPd-menu"?: (event: PdNavbarCustomEvent<void>) => void;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -2205,6 +2234,7 @@ declare namespace LocalJSX {
         "pd-menu": PdMenu;
         "pd-menu-item": PdMenuItem;
         "pd-modal": PdModal;
+        "pd-navbar": PdNavbar;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
         "pd-slider": PdSlider;
@@ -2235,6 +2265,7 @@ declare module "@stencil/core" {
             "pd-menu": LocalJSX.PdMenu & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
             "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
+            "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;

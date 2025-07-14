@@ -30,6 +30,7 @@ import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdi
 import { defineCustomElement as definePdMenu } from '@parlamentsdienste-components/core/components/pd-menu.js';
 import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-components/core/components/pd-menu-item.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
+import { defineCustomElement as definePdNavbar } from '@parlamentsdienste-components/core/components/pd-navbar.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -784,6 +785,40 @@ export declare interface PdModal extends Components.PdModal {
    * Event that will be executed when the escape button was clicked
    */
   'pd-escape': EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdNavbar,
+  inputs: ['mobileBreakpoint']
+})
+@Component({
+  selector: 'pd-navbar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['mobileBreakpoint'],
+  outputs: ['pd-menu'],
+  
+  standalone: true,
+  
+})
+export class PdNavbar {
+  protected nativeEl: HTMLPdNavbarElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-menu']);
+  }
+
+  
+}
+
+
+export declare interface PdNavbar extends Components.PdNavbar {
+
+  'pd-menu': EventEmitter<CustomEvent<void>>;
 }
 
 

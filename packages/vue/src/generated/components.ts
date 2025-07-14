@@ -25,6 +25,7 @@ import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdi
 import { defineCustomElement as definePdMenu } from '@parlamentsdienste-components/core/components/pd-menu.js';
 import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-components/core/components/pd-menu-item.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
+import { defineCustomElement as definePdNavbar } from '@parlamentsdienste-components/core/components/pd-navbar.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -330,6 +331,14 @@ export const PdModal: StencilVueComponent<JSX.PdModal> = /*@__PURE__*/ defineCon
   'pd-closed',
   'pd-backdrop',
   'pd-escape'
+]);
+
+
+export const PdNavbar: StencilVueComponent<JSX.PdNavbar> = /*@__PURE__*/ defineContainer<JSX.PdNavbar>('pd-navbar', definePdNavbar, [
+  'mobileBreakpoint',
+  'pd-menu'
+], [
+  'pd-menu'
 ]);
 
 

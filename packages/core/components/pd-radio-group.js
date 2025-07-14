@@ -80,7 +80,7 @@ const PdRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class PdRadioGroup exten
         });
     }
     render() {
-        return (h(Host, { key: 'a4bfa9ef1eb0ff9e387ce63d3c032b004e0f2a1f' }, h("slot", { key: '7535dfe540576c3b24039971aaab8c2d8889e841' })));
+        return (h(Host, { key: 'b6cfaeeff17d0431b296ebb3c4e345eee5bdb91b' }, h("slot", { key: '5735fcf08e1705a193160eb8921417b5427fda5e' })));
     }
     static get watchers() { return {
         "value": ["valueChanged"],
