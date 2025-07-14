@@ -24,6 +24,7 @@
  - [pd-combobox](../pd-combobox)
  - [pd-dropdown](../pd-dropdown)
  - [pd-search](../pd-search)
+ - [pd-sort](../pd-sort)
 
 ### Depends on
 
@@ -38,6 +39,7 @@ graph TD;
   pd-combobox --> pd-dropdown-item
   pd-dropdown --> pd-dropdown-item
   pd-search --> pd-dropdown-item
+  pd-sort --> pd-dropdown-item
   style pd-dropdown-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

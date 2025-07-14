@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -918,6 +918,52 @@ export namespace Components {
          */
         "value"?: number;
     }
+    interface PdSort {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem": boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData": SortDropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount": number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items": SortDropdownItem[];
+        /**
+          * Label
+         */
+        "label": string;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder": string;
+        /**
+          * Reset the selection of the dropdown
+         */
+        "reset": () => Promise<void>;
+        /**
+          * Enables the revert item at the bottom of the dropdown
+         */
+        "reverseItem": boolean;
+        /**
+          * Data used for the reverse item at the bottom of the dropdown
+         */
+        "reverseItemData": SortRevertItem;
+        /**
+          * Set a preselected entry by index
+         */
+        "setSelectedIndex": (index: number) => Promise<void>;
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1064,6 +1110,10 @@ export interface PdSearchCustomEvent<T> extends CustomEvent<T> {
 export interface PdSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdSliderElement;
+}
+export interface PdSortCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdSortElement;
 }
 export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1483,6 +1533,24 @@ declare global {
         prototype: HTMLPdSliderElement;
         new (): HTMLPdSliderElement;
     };
+    interface HTMLPdSortElementEventMap {
+        "pd-change": SortDropdownItem;
+        "pd-reverse": SortDropdownItem;
+    }
+    interface HTMLPdSortElement extends Components.PdSort, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdSortElementEventMap>(type: K, listener: (this: HTMLPdSortElement, ev: PdSortCustomEvent<HTMLPdSortElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdSortElementEventMap>(type: K, listener: (this: HTMLPdSortElement, ev: PdSortCustomEvent<HTMLPdSortElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdSortElement: {
+        prototype: HTMLPdSortElement;
+        new (): HTMLPdSortElement;
+    };
     interface HTMLPdTextareaElementEventMap {
         "pd-change": any;
         "pd-input": KeyboardEvent;
@@ -1538,6 +1606,7 @@ declare global {
         "pd-sidebar-item": HTMLPdSidebarItemElement;
         "pd-skeleton": HTMLPdSkeletonElement;
         "pd-slider": HTMLPdSliderElement;
+        "pd-sort": HTMLPdSortElement;
         "pd-textarea": HTMLPdTextareaElement;
     }
 }
@@ -2523,6 +2592,46 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface PdSort {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Enable selection of an empty item
+         */
+        "emptyItem"?: boolean;
+        /**
+          * Data used for the empty item
+         */
+        "emptyItemData"?: SortDropdownItem;
+        /**
+          * Items visible in dropdown
+         */
+        "itemCount"?: number;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items"?: SortDropdownItem[];
+        /**
+          * Label
+         */
+        "label"?: string;
+        "onPd-change"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
+        "onPd-reverse"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
+        /**
+          * Placeholder when no item is selected
+         */
+        "placeholder"?: string;
+        /**
+          * Enables the revert item at the bottom of the dropdown
+         */
+        "reverseItem"?: boolean;
+        /**
+          * Data used for the reverse item at the bottom of the dropdown
+         */
+        "reverseItemData"?: SortRevertItem;
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -2652,6 +2761,7 @@ declare namespace LocalJSX {
         "pd-sidebar-item": PdSidebarItem;
         "pd-skeleton": PdSkeleton;
         "pd-slider": PdSlider;
+        "pd-sort": PdSort;
         "pd-textarea": PdTextarea;
     }
 }
@@ -2693,6 +2803,7 @@ declare module "@stencil/core" {
             "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
             "pd-skeleton": LocalJSX.PdSkeleton & JSXBase.HTMLAttributes<HTMLPdSkeletonElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
+            "pd-sort": LocalJSX.PdSort & JSXBase.HTMLAttributes<HTMLPdSortElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
         }
     }

@@ -36,5 +36,6 @@ export const DIRECTIVES = [
   d.PdSidebarItem,
   d.PdSkeleton,
   d.PdSlider,
+  d.PdSort,
   d.PdTextarea
 ];

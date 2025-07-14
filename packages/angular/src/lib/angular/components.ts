@@ -44,6 +44,7 @@ import { defineCustomElement as definePdSidebar } from '@parlamentsdienste-compo
 import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste-components/core/components/pd-sidebar-item.js';
 import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste-components/core/components/pd-skeleton.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
+import { defineCustomElement as definePdSort } from '@parlamentsdienste-components/core/components/pd-sort.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
@@ -1275,6 +1276,45 @@ export declare interface PdSlider extends Components.PdSlider {
    * Emitted when slider has been released.
    */
   'pd-change': EventEmitter<CustomEvent<IPdSliderInputChangeEventDetail>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdSort,
+  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'itemCount', 'items', 'label', 'placeholder', 'reverseItem', 'reverseItemData'],
+  methods: ['setSelectedIndex', 'reset']
+})
+@Component({
+  selector: 'pd-sort',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'emptyItem', 'emptyItemData', 'itemCount', 'items', 'label', 'placeholder', 'reverseItem', 'reverseItemData'],
+  outputs: ['pd-change', 'pd-reverse'],
+  
+  standalone: true,
+  
+})
+export class PdSort {
+  protected nativeEl: HTMLPdSortElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-change', 'pd-reverse']);
+  }
+
+  
+}
+
+
+import type { SortDropdownItem as IPdSortSortDropdownItem } from '@parlamentsdienste-components/core';
+
+export declare interface PdSort extends Components.PdSort {
+
+  'pd-change': EventEmitter<CustomEvent<IPdSortSortDropdownItem>>;
+
+  'pd-reverse': EventEmitter<CustomEvent<IPdSortSortDropdownItem>>;
 }
 
 

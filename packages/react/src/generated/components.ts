@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdTextareaCustomEvent } from "@parlamentsdienste-components/core";
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTextareaCustomEvent, type SortDropdownItem } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
@@ -42,6 +42,7 @@ import { PdSidebarItem as PdSidebarItemElement, defineCustomElement as definePdS
 import { PdSidebar as PdSidebarElement, defineCustomElement as definePdSidebar } from "@parlamentsdienste-components/core/components/pd-sidebar.js";
 import { PdSkeleton as PdSkeletonElement, defineCustomElement as definePdSkeleton } from "@parlamentsdienste-components/core/components/pd-skeleton.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
+import { PdSort as PdSortElement, defineCustomElement as definePdSort } from "@parlamentsdienste-components/core/components/pd-sort.js";
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
@@ -515,6 +516,23 @@ export const PdSlider: StencilReactComponent<PdSliderElement, PdSliderEvents> = 
         onPdChange: 'pd-change'
     } as PdSliderEvents,
     defineCustomElement: definePdSlider
+});
+
+export type PdSortEvents = {
+    onPdChange: EventName<PdSortCustomEvent<SortDropdownItem>>,
+    onPdReverse: EventName<PdSortCustomEvent<SortDropdownItem>>
+};
+
+export const PdSort: StencilReactComponent<PdSortElement, PdSortEvents> = /*@__PURE__*/ createComponent<PdSortElement, PdSortEvents>({
+    tagName: 'pd-sort',
+    elementClass: PdSortElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onPdChange: 'pd-change',
+        onPdReverse: 'pd-reverse'
+    } as PdSortEvents,
+    defineCustomElement: definePdSort
 });
 
 export type PdTextareaEvents = {

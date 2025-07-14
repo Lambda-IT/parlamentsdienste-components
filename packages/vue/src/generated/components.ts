@@ -39,6 +39,7 @@ import { defineCustomElement as definePdSidebar } from '@parlamentsdienste-compo
 import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste-components/core/components/pd-sidebar-item.js';
 import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste-components/core/components/pd-skeleton.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
+import { defineCustomElement as definePdSort } from '@parlamentsdienste-components/core/components/pd-sort.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 
 
@@ -475,6 +476,24 @@ export const PdSlider: StencilVueComponent<JSX.PdSlider, JSX.PdSlider["value"]> 
   'pd-change'
 ],
 'value', 'pd-change');
+
+
+export const PdSort: StencilVueComponent<JSX.PdSort> = /*@__PURE__*/ defineContainer<JSX.PdSort>('pd-sort', definePdSort, [
+  'placeholder',
+  'items',
+  'itemCount',
+  'emptyItem',
+  'emptyItemData',
+  'reverseItem',
+  'reverseItemData',
+  'disabled',
+  'label',
+  'pd-change',
+  'pd-reverse'
+], [
+  'pd-change',
+  'pd-reverse'
+]);
 
 
 export const PdTextarea: StencilVueComponent<JSX.PdTextarea, JSX.PdTextarea["value"]> = /*@__PURE__*/ defineContainer<JSX.PdTextarea, JSX.PdTextarea["value"]>('pd-textarea', definePdTextarea, [
