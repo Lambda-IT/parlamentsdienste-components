@@ -161,7 +161,7 @@ const Textarea = /*@__PURE__*/ proxyCustomElement(class Textarea extends H {
     };
     render() {
         const value = this.getValue();
-        return (h(Host, { key: 'e5a2e11d088a40edbf3b75dad58755b32261f700' }, h("label", { key: '5ff35499830f3110bcc333b585229f9d129a8769', class: "pd-textarea-label" }, this.label ? (h("div", { class: {
+        return (h(Host, { key: '649680379b1c4baeb6052c8530dac4699ff2abde' }, h("label", { key: 'a61c255cf973852ef311fe0f561ec2e15ba079af', class: "pd-textarea-label" }, this.label ? (h("div", { class: {
                 'pd-textarea-label-text': true,
                 'pd-textarea-label-viewonly': this.viewOnly,
             }, "data-test": "pd-textarea-label" }, this.label)) : (''), !this.viewOnly ? (h("textarea", { class: {

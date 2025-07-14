@@ -592,6 +592,16 @@ export namespace Components {
          */
         "viewOnly": boolean;
     }
+    interface PdLabel {
+        /**
+          * Background or dot color depending on hasDot
+         */
+        "color": string | undefined;
+        /**
+          * Switch between background and dot color mode
+         */
+        "hasDot": boolean;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -1008,6 +1018,12 @@ declare global {
         prototype: HTMLPdInputElement;
         new (): HTMLPdInputElement;
     };
+    interface HTMLPdLabelElement extends Components.PdLabel, HTMLStencilElement {
+    }
+    var HTMLPdLabelElement: {
+        prototype: HTMLPdLabelElement;
+        new (): HTMLPdLabelElement;
+    };
     interface HTMLPdModalElementEventMap {
         "pd-closed": void;
         "pd-backdrop": void;
@@ -1102,6 +1118,7 @@ declare global {
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
+        "pd-label": HTMLPdLabelElement;
         "pd-modal": HTMLPdModalElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
@@ -1708,6 +1725,16 @@ declare namespace LocalJSX {
          */
         "viewOnly"?: boolean;
     }
+    interface PdLabel {
+        /**
+          * Background or dot color depending on hasDot
+         */
+        "color"?: string | undefined;
+        /**
+          * Switch between background and dot color mode
+         */
+        "hasDot"?: boolean;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -1933,6 +1960,7 @@ declare namespace LocalJSX {
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
+        "pd-label": PdLabel;
         "pd-modal": PdModal;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
@@ -1957,6 +1985,7 @@ declare module "@stencil/core" {
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+            "pd-label": LocalJSX.PdLabel & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;

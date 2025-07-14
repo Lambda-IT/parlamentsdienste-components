@@ -21,6 +21,7 @@ import { PdDropdownItem as PdDropdownItemElement, defineCustomElement as defineP
 import { PdDropdown as PdDropdownElement, defineCustomElement as definePdDropdown } from "@parlamentsdienste-components/core/components/pd-dropdown.js";
 import { PdIcon as PdIconElement, defineCustomElement as definePdIcon } from "@parlamentsdienste-components/core/components/pd-icon.js";
 import { PdInput as PdInputElement, defineCustomElement as definePdInput } from "@parlamentsdienste-components/core/components/pd-input.js";
+import { PdLabel as PdLabelElement, defineCustomElement as definePdLabel } from "@parlamentsdienste-components/core/components/pd-label.js";
 import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste-components/core/components/pd-modal.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
@@ -229,6 +230,17 @@ export const PdInput: StencilReactComponent<PdInputElement, PdInputEvents> = /*@
         onPdFocus: 'pd-focus'
     } as PdInputEvents,
     defineCustomElement: definePdInput
+});
+
+export type PdLabelEvents = NonNullable<unknown>;
+
+export const PdLabel: StencilReactComponent<PdLabelElement, PdLabelEvents> = /*@__PURE__*/ createComponent<PdLabelElement, PdLabelEvents>({
+    tagName: 'pd-label',
+    elementClass: PdLabelElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdLabelEvents,
+    defineCustomElement: definePdLabel
 });
 
 export type PdModalEvents = {

@@ -18,6 +18,7 @@ import { defineCustomElement as definePdDropdown } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
+import { defineCustomElement as definePdLabel } from '@parlamentsdienste-components/core/components/pd-label.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
@@ -260,6 +261,12 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
   'pd-focus'
 ],
 'value', 'pd-change');
+
+
+export const PdLabel: StencilVueComponent<JSX.PdLabel> = /*@__PURE__*/ defineContainer<JSX.PdLabel>('pd-label', definePdLabel, [
+  'hasDot',
+  'color'
+]);
 
 
 export const PdModal: StencilVueComponent<JSX.PdModal> = /*@__PURE__*/ defineContainer<JSX.PdModal>('pd-modal', definePdModal, [
