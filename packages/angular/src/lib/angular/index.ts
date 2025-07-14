@@ -6,6 +6,7 @@ export const DIRECTIVES = [
   d.PdAnimation,
   d.PdBackdrop,
   d.PdButton,
+  d.PdButtonGroup,
   d.PdCheckbox,
   d.PdChip,
   d.PdCombobox,

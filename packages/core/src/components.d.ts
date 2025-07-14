@@ -102,6 +102,8 @@ export namespace Components {
          */
         "type": PdButtonType;
     }
+    interface PdButtonGroup {
+    }
     interface PdCheckbox {
         /**
           * Sets check state of the checkbox true/false
@@ -866,6 +868,12 @@ declare global {
         prototype: HTMLPdButtonElement;
         new (): HTMLPdButtonElement;
     };
+    interface HTMLPdButtonGroupElement extends Components.PdButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPdButtonGroupElement: {
+        prototype: HTMLPdButtonGroupElement;
+        new (): HTMLPdButtonGroupElement;
+    };
     interface HTMLPdCheckboxElementEventMap {
         "pd-checked": boolean;
     }
@@ -1085,6 +1093,7 @@ declare global {
         "pd-animation": HTMLPdAnimationElement;
         "pd-backdrop": HTMLPdBackdropElement;
         "pd-button": HTMLPdButtonElement;
+        "pd-button-group": HTMLPdButtonGroupElement;
         "pd-checkbox": HTMLPdCheckboxElement;
         "pd-chip": HTMLPdChipElement;
         "pd-combobox": HTMLPdComboboxElement;
@@ -1205,6 +1214,8 @@ declare namespace LocalJSX {
           * Sets button type |button|submit|reset|
          */
         "type"?: PdButtonType;
+    }
+    interface PdButtonGroup {
     }
     interface PdCheckbox {
         /**
@@ -1913,6 +1924,7 @@ declare namespace LocalJSX {
         "pd-animation": PdAnimation;
         "pd-backdrop": PdBackdrop;
         "pd-button": PdButton;
+        "pd-button-group": PdButtonGroup;
         "pd-checkbox": PdCheckbox;
         "pd-chip": PdChip;
         "pd-combobox": PdCombobox;
@@ -1936,6 +1948,7 @@ declare module "@stencil/core" {
             "pd-animation": LocalJSX.PdAnimation & JSXBase.HTMLAttributes<HTMLPdAnimationElement>;
             "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
+            "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
             "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
             "pd-combobox": LocalJSX.PdCombobox & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;

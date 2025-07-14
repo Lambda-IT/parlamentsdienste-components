@@ -9,6 +9,7 @@ import { defineCustomElement as definePdAlert } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdAnimation } from '@parlamentsdienste-components/core/components/pd-animation.js';
 import { defineCustomElement as definePdBackdrop } from '@parlamentsdienste-components/core/components/pd-backdrop.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
+import { defineCustomElement as definePdButtonGroup } from '@parlamentsdienste-components/core/components/pd-button-group.js';
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
 import { defineCustomElement as definePdCombobox } from '@parlamentsdienste-components/core/components/pd-combobox.js';
@@ -69,6 +70,9 @@ export const PdButton: StencilVueComponent<JSX.PdButton> = /*@__PURE__*/ defineC
   'target',
   'iconLocation'
 ]);
+
+
+export const PdButtonGroup: StencilVueComponent<JSX.PdButtonGroup> = /*@__PURE__*/ defineContainer<JSX.PdButtonGroup>('pd-button-group', definePdButtonGroup);
 
 
 export const PdCheckbox: StencilVueComponent<JSX.PdCheckbox, JSX.PdCheckbox["value"]> = /*@__PURE__*/ defineContainer<JSX.PdCheckbox, JSX.PdCheckbox["value"]>('pd-checkbox', definePdCheckbox, [

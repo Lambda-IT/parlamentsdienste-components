@@ -1,0 +1,17 @@
+:host {
+    display: inline-flex;
+    vertical-align: bottom;
+}
+
+::slotted(pd-button) {
+    --pd-button-right-radius: 0;
+    --pd-button-left-radius: 0;
+}
+
+::slotted(pd-button:first-child) {
+    --pd-button-left-radius: 0.25rem;
+}
+
+::slotted(pd-button:last-child) {
+    --pd-button-right-radius: 0.25rem;
+}

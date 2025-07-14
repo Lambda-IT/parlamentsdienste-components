@@ -11,6 +11,7 @@ import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
+import { PdButtonGroup as PdButtonGroupElement, defineCustomElement as definePdButtonGroup } from "@parlamentsdienste-components/core/components/pd-button-group.js";
 import { PdButton as PdButtonElement, defineCustomElement as definePdButton } from "@parlamentsdienste-components/core/components/pd-button.js";
 import { PdCheckbox as PdCheckboxElement, defineCustomElement as definePdCheckbox } from "@parlamentsdienste-components/core/components/pd-checkbox.js";
 import { PdChip as PdChipElement, defineCustomElement as definePdChip } from "@parlamentsdienste-components/core/components/pd-chip.js";
@@ -79,6 +80,17 @@ export const PdButton: StencilReactComponent<PdButtonElement, PdButtonEvents> = 
     react: React,
     events: {} as PdButtonEvents,
     defineCustomElement: definePdButton
+});
+
+export type PdButtonGroupEvents = NonNullable<unknown>;
+
+export const PdButtonGroup: StencilReactComponent<PdButtonGroupElement, PdButtonGroupEvents> = /*@__PURE__*/ createComponent<PdButtonGroupElement, PdButtonGroupEvents>({
+    tagName: 'pd-button-group',
+    elementClass: PdButtonGroupElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdButtonGroupEvents,
+    defineCustomElement: definePdButtonGroup
 });
 
 export type PdCheckboxEvents = { onPdChecked: EventName<CustomEvent<boolean>> };

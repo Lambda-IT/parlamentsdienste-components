@@ -14,6 +14,7 @@ import { defineCustomElement as definePdAlert } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdAnimation } from '@parlamentsdienste-components/core/components/pd-animation.js';
 import { defineCustomElement as definePdBackdrop } from '@parlamentsdienste-components/core/components/pd-backdrop.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
+import { defineCustomElement as definePdButtonGroup } from '@parlamentsdienste-components/core/components/pd-button-group.js';
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
 import { defineCustomElement as definePdCombobox } from '@parlamentsdienste-components/core/components/pd-combobox.js';
@@ -163,6 +164,35 @@ export class PdButton {
 
 
 export declare interface PdButton extends Components.PdButton {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdButtonGroup
+})
+@Component({
+  selector: 'pd-button-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdButtonGroup {
+  protected nativeEl: HTMLPdButtonGroupElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdButtonGroup extends Components.PdButtonGroup {}
 
 
 @ProxyCmp({

@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, h, a as Host } from './index.js';
-import { d as defineCustomElement$2 } from './p-DRxP9nbr.js';
-import { d as defineCustomElement$1 } from './p-BY6sf1aF.js';
+import { d as defineCustomElement$2 } from './p-CiZ4Y22d.js';
+import { d as defineCustomElement$1 } from './p-CGp-npjr.js';
 
 const pdDropdownItemCss = "input,textarea,a,button{font:1rem/1.5rem Avenir;letter-spacing:0.19px;margin:0}button,[type=button],[type=reset],[type=submit]{appearance:none}:host{display:block}*,::before,::after{box-sizing:border-box;outline:none}:host(.pd-dropdown-current-navigating-item){background-color:#ffec99;color:#0b0b0b}.pd-dropdown-item{width:100%;padding:0.75rem 0.825rem;display:flex;align-items:center;cursor:pointer;height:3rem}.pd-dropdown-item:hover{background-color:#ffec99;color:#0b0b0b}.pd-dropdown-item:active{background-color:#66d9e8;color:#033840}.pd-dropdown-item strong{font-weight:bold}.pd-dropdown-item span{white-space:pre;overflow-x:hidden;text-overflow:ellipsis}.pd-dropdown-item.pd-dropdown-item-selected{background-color:#e5e8eb;color:#0b0b0b}.pd-dropdown-item.pd-dropdown-item-selected:hover{background-color:#ffec99;color:#0b0b0b}.pd-dropdown-item.pd-dropdown-item-selected:active{background-color:#66d9e8;color:#033840}.pd-dropdown-item .pd-dropdown-item-icon{margin-left:-0.25rem;margin-right:0.25rem;flex:0 0 2rem}";
 
@@ -36,7 +36,7 @@ const DropdownItem = /*@__PURE__*/ proxyCustomElement(class DropdownItem extends
      */
     iconSrc;
     render() {
-        return (h(Host, { key: '57d65fe9d3b04b0d84cdbb2cb2d704effb5460a0' }, h("div", { key: 'cd3d906e8835958ffb5a7b22bb52ba274ca44973', class: { 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected && !this.multiselect } }, this.multiselect ? h("pd-checkbox", { checked: this.selected }) : null, this.iconName || this.iconSrc ? (h("span", { class: "pd-dropdown-item-icon" }, h("pd-icon", { name: this.iconName ?? null, src: this.iconSrc ?? null, size: 2 }))) : (''), h("span", { key: '78081fca58a9735b68087cc2c6c339f2345778bc', innerHTML: this.strong(this.value, this.highlight?.toString()), "data-test": "pd-dropdown-item-text" }))));
+        return (h(Host, { key: 'cc45c4fb9b96db350a3157ade5edf0079b94725b' }, h("div", { key: 'd98e3f46aceac7a805b90811ac324cd38c1418ac', class: { 'pd-dropdown-item': true, 'pd-dropdown-item-selected': this.selected && !this.multiselect } }, this.multiselect ? h("pd-checkbox", { checked: this.selected }) : null, this.iconName || this.iconSrc ? (h("span", { class: "pd-dropdown-item-icon" }, h("pd-icon", { name: this.iconName ?? null, src: this.iconSrc ?? null, size: 2 }))) : (''), h("span", { key: '36e5a8c70ec72e9026bc6dc8371ca5aeeda45633', innerHTML: this.strong(this.value, this.highlight?.toString()), "data-test": "pd-dropdown-item-text" }))));
     }
     escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -82,6 +82,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { DropdownItem as D, defineCustomElement as d };
-//# sourceMappingURL=p-CjsDO0-9.js.map
+//# sourceMappingURL=p-DdjZSDbb.js.map
 
-//# sourceMappingURL=p-CjsDO0-9.js.map
+//# sourceMappingURL=p-DdjZSDbb.js.map

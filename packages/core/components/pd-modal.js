@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { d as defineCustomElement$3 } from './p-D45Ufw2y.js';
-import { d as defineCustomElement$2 } from './p-BY6sf1aF.js';
+import { d as defineCustomElement$2 } from './p-CGp-npjr.js';
 
 /**
  * Traverses the slots of the open shadowroots and returns all children matching the query.
@@ -335,9 +335,9 @@ const Modal = /*@__PURE__*/ proxyCustomElement(class Modal extends H {
         this.pdClosed.emit();
     }
     render() {
-        return (h(Host, { key: 'ce19bf5f8670bf66bdb137ece2578672e58d2efe', style: {
+        return (h(Host, { key: '13e86892e84064f8d6d314302258acbfa1239def', style: {
                 zIndex: this.config?.zIndex ?? null,
-            } }, h("focus-trap", { key: '5743a091856bfa4499705f287b8c2d6ff17c16f1' }, h("pd-backdrop", { key: '24a54b29c99b7eb1f8ec52a56e7f3491cda55b4a', visible: this.config?.backdropVisible ?? false }), h("div", { key: 'b8e26fa07f63daaca545e87bfd657458af922fc6', tabindex: "0", role: "dialog", class: "pd-modal-wrapper" }, h("div", { key: '517ecdc8cca12ba74d65b79cb107f9846e34f0d4', class: "pd-modal-header" }, h("span", { key: '88480cc0ca38d32e1ce46c677bfe47885f8d6186', class: "pd-modal-title", "data-test": "pd-modal-title" }, this.config?.title), h("button", { key: '57aadf13a10d2bdc328ebaacbd815e98f4769b96', class: "pd-modal-close", onClick: () => this.closeModal(), "data-test": "pd-modal-close" }, h("pd-icon", { key: '3c0bc659115eb52ae48c32fb6cb5c33507ea8c76', name: "close", size: 2 }))), h("div", { key: 'b4b4adabe1d5892ba1cf386cc47af7f4094baa61', class: "pd-modal-content" }, h("slot", { key: '3ee73b05331bb7c849b65f96604beb0b7458d06b' })), h("div", { key: '9cc3824bba3891239050a1674a54ea3e7b7c1265', class: "pd-modal-footer" }, h("slot", { key: '17e9e89cd5d404d3c1c7f05fbf2f2eb4b5993011', name: "footer" }))))));
+            } }, h("focus-trap", { key: '139443d4c782094c30a52e19b0ee09ef3cf94980' }, h("pd-backdrop", { key: 'e742e47e769e91ce90b35f3a1d5e0e8d6a410c45', visible: this.config?.backdropVisible ?? false }), h("div", { key: '2ffcb5455f2fd1e71b3b6b1453c3e6332fbd3a93', tabindex: "0", role: "dialog", class: "pd-modal-wrapper" }, h("div", { key: 'abc23ac468f08ac054f31b592d3938603622bbc4', class: "pd-modal-header" }, h("span", { key: '1a06d96a1ee01497885e7ba01c79ce0d4577fbb0', class: "pd-modal-title", "data-test": "pd-modal-title" }, this.config?.title), h("button", { key: '996cbff240c12da73d5a7d5ecbe3805faa734024', class: "pd-modal-close", onClick: () => this.closeModal(), "data-test": "pd-modal-close" }, h("pd-icon", { key: 'd3b0295e52b26d87077f3472d4d4689ab6992af5', name: "close", size: 2 }))), h("div", { key: 'a972751ed782d9208b674e5715703bdedb5d9484', class: "pd-modal-content" }, h("slot", { key: '0dfc3f0b7fab09346fc1d628b8d9dc697c8fce4b' })), h("div", { key: 'e0a24ba8aab7d8db6ee5fbbd47cf08fdf276cdfa', class: "pd-modal-footer" }, h("slot", { key: '0140c0f46b18eada9449541177ebb754437df8ca', name: "footer" }))))));
     }
     static get style() { return pdModalCss; }
 }, [1, "pd-modal", {
