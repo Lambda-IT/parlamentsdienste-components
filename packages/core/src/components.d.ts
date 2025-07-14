@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableSelectedStatus, PdTableStyle, SelectedEvent, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableSelectedStatus, PdTableStyle, SelectedEvent, SortDropdownItem, SortRevertItem, TabValue, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableSelectedStatus, PdTableStyle, SelectedEvent, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableSelectedStatus, PdTableStyle, SelectedEvent, SortDropdownItem, SortRevertItem, TabValue, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -1046,6 +1046,16 @@ export namespace Components {
          */
         "value": string;
     }
+    interface PdTabs {
+        /**
+          * Light mode
+         */
+        "light": boolean;
+        /**
+          * List of tab texts
+         */
+        "tabs": TabValue[];
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1204,6 +1214,10 @@ export interface PdTableCustomEvent<T> extends CustomEvent<T> {
 export interface PdTableFilterCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdTableFilterElement;
+}
+export interface PdTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTabsElement;
 }
 export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1684,6 +1698,23 @@ declare global {
         prototype: HTMLPdTableFilterElement;
         new (): HTMLPdTableFilterElement;
     };
+    interface HTMLPdTabsElementEventMap {
+        "pd-change": TabValue;
+    }
+    interface HTMLPdTabsElement extends Components.PdTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdTabsElementEventMap>(type: K, listener: (this: HTMLPdTabsElement, ev: PdTabsCustomEvent<HTMLPdTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdTabsElementEventMap>(type: K, listener: (this: HTMLPdTabsElement, ev: PdTabsCustomEvent<HTMLPdTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdTabsElement: {
+        prototype: HTMLPdTabsElement;
+        new (): HTMLPdTabsElement;
+    };
     interface HTMLPdTextareaElementEventMap {
         "pd-change": any;
         "pd-input": KeyboardEvent;
@@ -1742,6 +1773,7 @@ declare global {
         "pd-sort": HTMLPdSortElement;
         "pd-table": HTMLPdTableElement;
         "pd-table-filter": HTMLPdTableFilterElement;
+        "pd-tabs": HTMLPdTabsElement;
         "pd-textarea": HTMLPdTextareaElement;
     }
 }
@@ -2888,6 +2920,20 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PdTabs {
+        /**
+          * Light mode
+         */
+        "light"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-change"?: (event: PdTabsCustomEvent<TabValue>) => void;
+        /**
+          * List of tab texts
+         */
+        "tabs"?: TabValue[];
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -3020,6 +3066,7 @@ declare namespace LocalJSX {
         "pd-sort": PdSort;
         "pd-table": PdTable;
         "pd-table-filter": PdTableFilter;
+        "pd-tabs": PdTabs;
         "pd-textarea": PdTextarea;
     }
 }
@@ -3064,6 +3111,7 @@ declare module "@stencil/core" {
             "pd-sort": LocalJSX.PdSort & JSXBase.HTMLAttributes<HTMLPdSortElement>;
             "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
+            "pd-tabs": LocalJSX.PdTabs & JSXBase.HTMLAttributes<HTMLPdTabsElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
         }
     }

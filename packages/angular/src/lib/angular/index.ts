@@ -39,5 +39,6 @@ export const DIRECTIVES = [
   d.PdSort,
   d.PdTable,
   d.PdTableFilter,
+  d.PdTabs,
   d.PdTextarea
 ];

@@ -47,6 +47,7 @@ import { defineCustomElement as definePdSlider } from '@parlamentsdienste-compon
 import { defineCustomElement as definePdSort } from '@parlamentsdienste-components/core/components/pd-sort.js';
 import { defineCustomElement as definePdTable } from '@parlamentsdienste-components/core/components/pd-table.js';
 import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste-components/core/components/pd-table-filter.js';
+import { defineCustomElement as definePdTabs } from '@parlamentsdienste-components/core/components/pd-tabs.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
@@ -1429,6 +1430,44 @@ export declare interface PdTableFilter extends Components.PdTableFilter {
    * Emitted when filter input value changed.
    */
   'pd-filter-input': EventEmitter<CustomEvent<string>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdTabs,
+  inputs: ['light', 'tabs']
+})
+@Component({
+  selector: 'pd-tabs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['light', 'tabs'],
+  outputs: ['pd-change'],
+  
+  standalone: true,
+  
+})
+export class PdTabs {
+  protected nativeEl: HTMLPdTabsElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-change']);
+  }
+
+  
+}
+
+
+import type { TabValue as IPdTabsTabValue } from '@parlamentsdienste-components/core';
+
+export declare interface PdTabs extends Components.PdTabs {
+  /**
+   * Emitted when the value has changed.
+   */
+  'pd-change': EventEmitter<CustomEvent<IPdTabsTabValue>>;
 }
 
 

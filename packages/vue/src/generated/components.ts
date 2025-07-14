@@ -42,6 +42,7 @@ import { defineCustomElement as definePdSlider } from '@parlamentsdienste-compon
 import { defineCustomElement as definePdSort } from '@parlamentsdienste-components/core/components/pd-sort.js';
 import { defineCustomElement as definePdTable } from '@parlamentsdienste-components/core/components/pd-table.js';
 import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste-components/core/components/pd-table-filter.js';
+import { defineCustomElement as definePdTabs } from '@parlamentsdienste-components/core/components/pd-tabs.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 
 
@@ -546,6 +547,15 @@ export const PdTableFilter: StencilVueComponent<JSX.PdTableFilter> = /*@__PURE__
   'pd-confirm',
   'pd-close',
   'pd-filter-input'
+]);
+
+
+export const PdTabs: StencilVueComponent<JSX.PdTabs> = /*@__PURE__*/ defineContainer<JSX.PdTabs>('pd-tabs', definePdTabs, [
+  'tabs',
+  'light',
+  'pd-change'
+], [
+  'pd-change'
 ]);
 
 

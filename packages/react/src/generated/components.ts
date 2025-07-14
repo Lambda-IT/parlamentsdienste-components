@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTextareaCustomEvent, type SelectedEvent, type SortDropdownItem } from "@parlamentsdienste-components/core";
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
@@ -45,6 +45,7 @@ import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } fr
 import { PdSort as PdSortElement, defineCustomElement as definePdSort } from "@parlamentsdienste-components/core/components/pd-sort.js";
 import { PdTableFilter as PdTableFilterElement, defineCustomElement as definePdTableFilter } from "@parlamentsdienste-components/core/components/pd-table-filter.js";
 import { PdTable as PdTableElement, defineCustomElement as definePdTable } from "@parlamentsdienste-components/core/components/pd-table.js";
+import { PdTabs as PdTabsElement, defineCustomElement as definePdTabs } from "@parlamentsdienste-components/core/components/pd-tabs.js";
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
@@ -583,6 +584,17 @@ export const PdTableFilter: StencilReactComponent<PdTableFilterElement, PdTableF
         onPdFilterInput: 'pd-filter-input'
     } as PdTableFilterEvents,
     defineCustomElement: definePdTableFilter
+});
+
+export type PdTabsEvents = { onPdChange: EventName<PdTabsCustomEvent<TabValue>> };
+
+export const PdTabs: StencilReactComponent<PdTabsElement, PdTabsEvents> = /*@__PURE__*/ createComponent<PdTabsElement, PdTabsEvents>({
+    tagName: 'pd-tabs',
+    elementClass: PdTabsElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onPdChange: 'pd-change' } as PdTabsEvents,
+    defineCustomElement: definePdTabs
 });
 
 export type PdTextareaEvents = {
