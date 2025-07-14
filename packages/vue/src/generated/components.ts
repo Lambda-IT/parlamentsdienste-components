@@ -35,6 +35,9 @@ import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste-c
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSearch } from '@parlamentsdienste-components/core/components/pd-search.js';
+import { defineCustomElement as definePdSidebar } from '@parlamentsdienste-components/core/components/pd-sidebar.js';
+import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste-components/core/components/pd-sidebar-item.js';
+import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste-components/core/components/pd-skeleton.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 
@@ -433,6 +436,26 @@ export const PdSearch: StencilVueComponent<JSX.PdSearch> = /*@__PURE__*/ defineC
   'pd-search',
   'pd-blur',
   'pd-focus'
+]);
+
+
+export const PdSidebar: StencilVueComponent<JSX.PdSidebar> = /*@__PURE__*/ defineContainer<JSX.PdSidebar>('pd-sidebar', definePdSidebar);
+
+
+export const PdSidebarItem: StencilVueComponent<JSX.PdSidebarItem> = /*@__PURE__*/ defineContainer<JSX.PdSidebarItem>('pd-sidebar-item', definePdSidebarItem, [
+  'text',
+  'active',
+  'href',
+  'icon',
+  'iconName',
+  'size',
+  'target'
+]);
+
+
+export const PdSkeleton: StencilVueComponent<JSX.PdSkeleton> = /*@__PURE__*/ defineContainer<JSX.PdSkeleton>('pd-skeleton', definePdSkeleton, [
+  'height',
+  'width'
 ]);
 
 

@@ -38,6 +38,9 @@ import { PdProgressBar as PdProgressBarElement, defineCustomElement as definePdP
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
 import { PdSearch as PdSearchElement, defineCustomElement as definePdSearch } from "@parlamentsdienste-components/core/components/pd-search.js";
+import { PdSidebarItem as PdSidebarItemElement, defineCustomElement as definePdSidebarItem } from "@parlamentsdienste-components/core/components/pd-sidebar-item.js";
+import { PdSidebar as PdSidebarElement, defineCustomElement as definePdSidebar } from "@parlamentsdienste-components/core/components/pd-sidebar.js";
+import { PdSkeleton as PdSkeletonElement, defineCustomElement as definePdSkeleton } from "@parlamentsdienste-components/core/components/pd-skeleton.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
@@ -462,6 +465,39 @@ export const PdSearch: StencilReactComponent<PdSearchElement, PdSearchEvents> = 
         onPdFocus: 'pd-focus'
     } as PdSearchEvents,
     defineCustomElement: definePdSearch
+});
+
+export type PdSidebarEvents = NonNullable<unknown>;
+
+export const PdSidebar: StencilReactComponent<PdSidebarElement, PdSidebarEvents> = /*@__PURE__*/ createComponent<PdSidebarElement, PdSidebarEvents>({
+    tagName: 'pd-sidebar',
+    elementClass: PdSidebarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdSidebarEvents,
+    defineCustomElement: definePdSidebar
+});
+
+export type PdSidebarItemEvents = NonNullable<unknown>;
+
+export const PdSidebarItem: StencilReactComponent<PdSidebarItemElement, PdSidebarItemEvents> = /*@__PURE__*/ createComponent<PdSidebarItemElement, PdSidebarItemEvents>({
+    tagName: 'pd-sidebar-item',
+    elementClass: PdSidebarItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdSidebarItemEvents,
+    defineCustomElement: definePdSidebarItem
+});
+
+export type PdSkeletonEvents = NonNullable<unknown>;
+
+export const PdSkeleton: StencilReactComponent<PdSkeletonElement, PdSkeletonEvents> = /*@__PURE__*/ createComponent<PdSkeletonElement, PdSkeletonEvents>({
+    tagName: 'pd-skeleton',
+    elementClass: PdSkeletonElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdSkeletonEvents,
+    defineCustomElement: definePdSkeleton
 });
 
 export type PdSliderEvents = {

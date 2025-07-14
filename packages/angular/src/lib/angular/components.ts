@@ -40,6 +40,9 @@ import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste-c
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSearch } from '@parlamentsdienste-components/core/components/pd-search.js';
+import { defineCustomElement as definePdSidebar } from '@parlamentsdienste-components/core/components/pd-sidebar.js';
+import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste-components/core/components/pd-sidebar-item.js';
+import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste-components/core/components/pd-skeleton.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 @ProxyCmp({
@@ -1139,6 +1142,95 @@ export declare interface PdSearch extends Components.PdSearch {
    */
   'pd-focus': EventEmitter<CustomEvent<void>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdSidebar
+})
+@Component({
+  selector: 'pd-sidebar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdSidebar {
+  protected nativeEl: HTMLPdSidebarElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdSidebar extends Components.PdSidebar {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdSidebarItem,
+  inputs: ['active', 'href', 'icon', 'iconName', 'size', 'target', 'text']
+})
+@Component({
+  selector: 'pd-sidebar-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['active', 'href', 'icon', 'iconName', 'size', 'target', 'text'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdSidebarItem {
+  protected nativeEl: HTMLPdSidebarItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdSidebarItem extends Components.PdSidebarItem {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdSkeleton,
+  inputs: ['height', 'width']
+})
+@Component({
+  selector: 'pd-skeleton',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['height', 'width'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdSkeleton {
+  protected nativeEl: HTMLPdSkeletonElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdSkeleton extends Components.PdSkeleton {}
 
 
 @ProxyCmp({

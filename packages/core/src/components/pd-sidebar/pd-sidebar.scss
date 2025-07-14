@@ -1,0 +1,15 @@
+:host {
+    background-color: $bon-jour;
+    display: flex;
+    flex-direction: column;
+    width: 5.5rem;
+    height: 100%;
+    align-items: center;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}

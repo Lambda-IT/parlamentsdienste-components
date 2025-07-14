@@ -32,6 +32,9 @@ export const DIRECTIVES = [
   d.PdRadio,
   d.PdRadioGroup,
   d.PdSearch,
+  d.PdSidebar,
+  d.PdSidebarItem,
+  d.PdSkeleton,
   d.PdSlider,
   d.PdTextarea
 ];

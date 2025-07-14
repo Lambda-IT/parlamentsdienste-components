@@ -842,6 +842,48 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface PdSidebar {
+    }
+    interface PdSidebarItem {
+        /**
+          * show an item as active
+         */
+        "active": boolean;
+        /**
+          * Set href to create a link button
+         */
+        "href": string;
+        /**
+          * Path to an svg asset
+         */
+        "icon": string;
+        /**
+          * Name of an icon from the library
+         */
+        "iconName": string;
+        /**
+          * Icon size
+         */
+        "size": number;
+        /**
+          * Sets target for link button e.g. '_blank'
+         */
+        "target": string;
+        /**
+          * Item text
+         */
+        "text": string;
+    }
+    interface PdSkeleton {
+        /**
+          * Sets the height of the skeleton loader
+         */
+        "height": string;
+        /**
+          * Sets the widht of the skeleton loader
+         */
+        "width": string;
+    }
     interface PdSlider {
         /**
           * If `true`, the user cannot interact with the input.
@@ -1405,6 +1447,24 @@ declare global {
         prototype: HTMLPdSearchElement;
         new (): HTMLPdSearchElement;
     };
+    interface HTMLPdSidebarElement extends Components.PdSidebar, HTMLStencilElement {
+    }
+    var HTMLPdSidebarElement: {
+        prototype: HTMLPdSidebarElement;
+        new (): HTMLPdSidebarElement;
+    };
+    interface HTMLPdSidebarItemElement extends Components.PdSidebarItem, HTMLStencilElement {
+    }
+    var HTMLPdSidebarItemElement: {
+        prototype: HTMLPdSidebarItemElement;
+        new (): HTMLPdSidebarItemElement;
+    };
+    interface HTMLPdSkeletonElement extends Components.PdSkeleton, HTMLStencilElement {
+    }
+    var HTMLPdSkeletonElement: {
+        prototype: HTMLPdSkeletonElement;
+        new (): HTMLPdSkeletonElement;
+    };
     interface HTMLPdSliderElementEventMap {
         "pd-input": InputChangeEventDetail;
         "pd-change": InputChangeEventDetail;
@@ -1474,6 +1534,9 @@ declare global {
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-search": HTMLPdSearchElement;
+        "pd-sidebar": HTMLPdSidebarElement;
+        "pd-sidebar-item": HTMLPdSidebarItemElement;
+        "pd-skeleton": HTMLPdSkeletonElement;
         "pd-slider": HTMLPdSliderElement;
         "pd-textarea": HTMLPdTextareaElement;
     }
@@ -2376,6 +2439,48 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface PdSidebar {
+    }
+    interface PdSidebarItem {
+        /**
+          * show an item as active
+         */
+        "active"?: boolean;
+        /**
+          * Set href to create a link button
+         */
+        "href"?: string;
+        /**
+          * Path to an svg asset
+         */
+        "icon"?: string;
+        /**
+          * Name of an icon from the library
+         */
+        "iconName"?: string;
+        /**
+          * Icon size
+         */
+        "size"?: number;
+        /**
+          * Sets target for link button e.g. '_blank'
+         */
+        "target"?: string;
+        /**
+          * Item text
+         */
+        "text"?: string;
+    }
+    interface PdSkeleton {
+        /**
+          * Sets the height of the skeleton loader
+         */
+        "height"?: string;
+        /**
+          * Sets the widht of the skeleton loader
+         */
+        "width"?: string;
+    }
     interface PdSlider {
         /**
           * If `true`, the user cannot interact with the input.
@@ -2543,6 +2648,9 @@ declare namespace LocalJSX {
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
         "pd-search": PdSearch;
+        "pd-sidebar": PdSidebar;
+        "pd-sidebar-item": PdSidebarItem;
+        "pd-skeleton": PdSkeleton;
         "pd-slider": PdSlider;
         "pd-textarea": PdTextarea;
     }
@@ -2581,6 +2689,9 @@ declare module "@stencil/core" {
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
+            "pd-sidebar": LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
+            "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
+            "pd-skeleton": LocalJSX.PdSkeleton & JSXBase.HTMLAttributes<HTMLPdSkeletonElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
         }
