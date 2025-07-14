@@ -1,8 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-
-const now = (ev) => {
-    return ev.timeStamp || Date.now();
-};
+import { n as now } from './p-BSH2m8vG.js';
 
 const pdBackdropCss = ":host{background-color:transparent;display:block;opacity:0.2;position:fixed;top:0;bottom:0;right:0;left:0}:host(.pd-backdrop-visible){background-color:#0b0b0b;cursor:pointer}*,::before,::after{box-sizing:border-box;outline:none}";
 
@@ -58,6 +55,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Backdrop as B, defineCustomElement as d };
-//# sourceMappingURL=p-D45Ufw2y.js.map
+//# sourceMappingURL=p-DVJMuUig.js.map
 
-//# sourceMappingURL=p-D45Ufw2y.js.map
+//# sourceMappingURL=p-DVJMuUig.js.map

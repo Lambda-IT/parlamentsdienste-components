@@ -34,6 +34,7 @@ import { PdPanelContent as PdPanelContentElement, defineCustomElement as defineP
 import { PdPanelFooter as PdPanelFooterElement, defineCustomElement as definePdPanelFooter } from "@parlamentsdienste-components/core/components/pd-panel-footer.js";
 import { PdPanelHeader as PdPanelHeaderElement, defineCustomElement as definePdPanelHeader } from "@parlamentsdienste-components/core/components/pd-panel-header.js";
 import { PdPanel as PdPanelElement, defineCustomElement as definePdPanel } from "@parlamentsdienste-components/core/components/pd-panel.js";
+import { PdProgressBar as PdProgressBarElement, defineCustomElement as definePdProgressBar } from "@parlamentsdienste-components/core/components/pd-progress-bar.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
@@ -404,6 +405,17 @@ export const PdPanelHeader: StencilReactComponent<PdPanelHeaderElement, PdPanelH
     react: React,
     events: { onPdHover: 'pd-hover' } as PdPanelHeaderEvents,
     defineCustomElement: definePdPanelHeader
+});
+
+export type PdProgressBarEvents = NonNullable<unknown>;
+
+export const PdProgressBar: StencilReactComponent<PdProgressBarElement, PdProgressBarEvents> = /*@__PURE__*/ createComponent<PdProgressBarElement, PdProgressBarEvents>({
+    tagName: 'pd-progress-bar',
+    elementClass: PdProgressBarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdProgressBarEvents,
+    defineCustomElement: definePdProgressBar
 });
 
 export type PdRadioEvents = NonNullable<unknown>;

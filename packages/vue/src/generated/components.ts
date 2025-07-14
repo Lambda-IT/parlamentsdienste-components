@@ -31,6 +31,7 @@ import { defineCustomElement as definePdPanel } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste-components/core/components/pd-panel-content.js';
 import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste-components/core/components/pd-panel-footer.js';
 import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste-components/core/components/pd-panel-header.js';
+import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste-components/core/components/pd-progress-bar.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -375,6 +376,15 @@ export const PdPanelHeader: StencilVueComponent<JSX.PdPanelHeader> = /*@__PURE__
   'pd-hover'
 ], [
   'pd-hover'
+]);
+
+
+export const PdProgressBar: StencilVueComponent<JSX.PdProgressBar> = /*@__PURE__*/ defineContainer<JSX.PdProgressBar>('pd-progress-bar', definePdProgressBar, [
+  'color',
+  'value',
+  'label',
+  'decimals',
+  'striped'
 ]);
 
 

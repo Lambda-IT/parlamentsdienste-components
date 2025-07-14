@@ -36,6 +36,7 @@ import { defineCustomElement as definePdPanel } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste-components/core/components/pd-panel-content.js';
 import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste-components/core/components/pd-panel-footer.js';
 import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste-components/core/components/pd-panel-header.js';
+import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste-components/core/components/pd-progress-bar.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -985,6 +986,36 @@ export declare interface PdPanelHeader extends Components.PdPanelHeader {
    */
   'pd-hover': EventEmitter<CustomEvent<boolean>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdProgressBar,
+  inputs: ['color', 'decimals', 'label', 'striped', 'value']
+})
+@Component({
+  selector: 'pd-progress-bar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'decimals', 'label', 'striped', 'value'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdProgressBar {
+  protected nativeEl: HTMLPdProgressBarElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdProgressBar extends Components.PdProgressBar {}
 
 
 @ProxyCmp({

@@ -730,6 +730,28 @@ export namespace Components {
     interface PdPanelHeader {
         "setCollapsed": (collapsed: boolean) => Promise<void>;
     }
+    interface PdProgressBar {
+        /**
+          * status color of progress-bar
+         */
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info';
+        /**
+          * decimals of value
+         */
+        "decimals": number;
+        /**
+          * description of progress-bar
+         */
+        "label": boolean;
+        /**
+          * show striped version of progress-bar
+         */
+        "striped": boolean;
+        /**
+          * current value of progress bar 0.0 to 1.0
+         */
+        "value": number;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -1295,6 +1317,12 @@ declare global {
         prototype: HTMLPdPanelHeaderElement;
         new (): HTMLPdPanelHeaderElement;
     };
+    interface HTMLPdProgressBarElement extends Components.PdProgressBar, HTMLStencilElement {
+    }
+    var HTMLPdProgressBarElement: {
+        prototype: HTMLPdProgressBarElement;
+        new (): HTMLPdProgressBarElement;
+    };
     interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {
     }
     var HTMLPdRadioElement: {
@@ -1383,6 +1411,7 @@ declare global {
         "pd-panel-content": HTMLPdPanelContentElement;
         "pd-panel-footer": HTMLPdPanelFooterElement;
         "pd-panel-header": HTMLPdPanelHeaderElement;
+        "pd-progress-bar": HTMLPdProgressBarElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-slider": HTMLPdSliderElement;
@@ -2158,6 +2187,28 @@ declare namespace LocalJSX {
          */
         "onPd-hover"?: (event: PdPanelHeaderCustomEvent<boolean>) => void;
     }
+    interface PdProgressBar {
+        /**
+          * status color of progress-bar
+         */
+        "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info';
+        /**
+          * decimals of value
+         */
+        "decimals"?: number;
+        /**
+          * description of progress-bar
+         */
+        "label"?: boolean;
+        /**
+          * show striped version of progress-bar
+         */
+        "striped"?: boolean;
+        /**
+          * current value of progress bar 0.0 to 1.0
+         */
+        "value"?: number;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -2378,6 +2429,7 @@ declare namespace LocalJSX {
         "pd-panel-content": PdPanelContent;
         "pd-panel-footer": PdPanelFooter;
         "pd-panel-header": PdPanelHeader;
+        "pd-progress-bar": PdProgressBar;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
         "pd-slider": PdSlider;
@@ -2414,6 +2466,7 @@ declare module "@stencil/core" {
             "pd-panel-content": LocalJSX.PdPanelContent & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
             "pd-panel-footer": LocalJSX.PdPanelFooter & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;
             "pd-panel-header": LocalJSX.PdPanelHeader & JSXBase.HTMLAttributes<HTMLPdPanelHeaderElement>;
+            "pd-progress-bar": LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;

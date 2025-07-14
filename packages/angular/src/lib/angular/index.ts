@@ -28,6 +28,7 @@ export const DIRECTIVES = [
   d.PdPanelContent,
   d.PdPanelFooter,
   d.PdPanelHeader,
+  d.PdProgressBar,
   d.PdRadio,
   d.PdRadioGroup,
   d.PdSlider,
