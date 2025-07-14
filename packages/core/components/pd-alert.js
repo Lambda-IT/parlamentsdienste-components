@@ -1,38 +1,6 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
+import { e as expand, c as collapse } from './p-DJsl1pvl.js';
 import { d as defineCustomElement$2 } from './p-CGp-npjr.js';
-
-const collapse = (element) => {
-    // remove this event listener so it only gets triggered once
-    if (element.trDone)
-        element.removeEventListener('transitionend', element.trDone);
-    // get current height of element
-    var sectionHeight = element.scrollHeight;
-    // remove transition from element
-    var elementTransition = element.style.transition;
-    element.style.transition = '';
-    element.style.overflow = 'hidden';
-    // in next frame, set height from auto to actual height of element and add transition again
-    requestAnimationFrame(function () {
-        element.style.height = sectionHeight + 'px';
-        element.style.transition = elementTransition;
-        // now set height to 0 and start transition
-        requestAnimationFrame(function () {
-            element.style.height = '0';
-        });
-    });
-};
-const expand = (element) => {
-    // get expanded height of element
-    var sectionHeight = element.scrollHeight;
-    // set height to expanded
-    element.style.height = sectionHeight + 'px';
-    // wait for transition to end
-    element.addEventListener('transitionend', (element.trDone = function transitionDone() {
-        // set height back to auto when transition is done
-        element.style.height = null;
-        element.style.overflow = 'visible';
-    }));
-};
 
 const pdAlertCss = "input,textarea,a,button{font:1rem/1.5rem Avenir;letter-spacing:0.19px;margin:0}button,[type=button],[type=reset],[type=submit]{appearance:none}:host{display:block}*,::before,::after{box-sizing:border-box;outline:none}.pd-alert{border-radius:0.25rem;border-width:0.25rem;border-style:solid;font-weight:700}.pd-alert .pd-alert-top-section{display:flex;flex-wrap:nowrap;flex-direction:row;padding:0.625rem 1rem}.pd-alert .pd-alert-top-section .pd-alert-message-action{width:100%;display:flex;flex-wrap:wrap;flex-direction:row;justify-content:space-between;column-gap:1rem}.pd-alert .pd-alert-top-section .pd-alert-icon{margin:-0.5rem 0.5rem -0.5rem -0.5rem;width:2.5rem;min-width:2.5rem;align-self:center}.pd-alert .pd-alert-top-section .pd-alert-close-button{cursor:pointer;appearance:none;background-color:transparent;padding:0;margin:0;border:none;margin-left:0.625rem}.pd-alert .pd-alert-top-section .pd-alert-close-button:focus-visible{background-color:#ffec99;color:#033840;fill:#033840}.pd-alert .pd-alert-top-section .pd-alert-close-button:focus-visible .pd-alert-action-cancel{background-color:#ffec99;color:#033840;fill:#033840}.pd-alert.pd-alert-primary{background-color:#0b7285;border-color:#0b7285;color:#ffffff;fill:#ffffff}.pd-alert.pd-alert-primary .pd-alert-action-text{color:#ffffff}.pd-alert.pd-alert-primary .pd-alert-action-cancel:hover{fill:#15aabf}.pd-alert.pd-alert-primary .pd-alert-action-cancel:active{fill:#66d9e8}.pd-alert.pd-alert-danger{background-color:#fa5252;border-color:#fa5252;color:#0b0b0b;fill:#0b0b0b}.pd-alert.pd-alert-danger .pd-alert-action-text{color:#0b0b0b}.pd-alert.pd-alert-danger .pd-alert-action-cancel:hover{fill:#c92a2a}.pd-alert.pd-alert-danger .pd-alert-action-cancel:active{fill:#ffa8a8}.pd-alert.pd-alert-warning{background-color:#fab005;border-color:#fab005;color:#0b0b0b;fill:#0b0b0b}.pd-alert.pd-alert-warning .pd-alert-action-text{color:#0b0b0b}.pd-alert.pd-alert-warning .pd-alert-action-cancel:hover{fill:#df7900}.pd-alert.pd-alert-warning .pd-alert-action-cancel:active{fill:#ffe066}.pd-alert.pd-alert-info{background-color:#4dadf7;border-color:#4dadf7;color:#0b0b0b;fill:#0b0b0b}.pd-alert.pd-alert-info .pd-alert-action-text{color:#0b0b0b}.pd-alert.pd-alert-info .pd-alert-action-cancel:hover{fill:#1864ab}.pd-alert.pd-alert-info .pd-alert-action-cancel:active{fill:#74c0fc}.pd-alert.pd-alert-success{background-color:#82c91e;border-color:#82c91e;color:#0b0b0b;fill:#0b0b0b}.pd-alert.pd-alert-success .pd-alert-action-text{color:#0b0b0b}.pd-alert.pd-alert-success .pd-alert-action-cancel:hover{fill:#5c940d}.pd-alert.pd-alert-success .pd-alert-action-cancel:active{fill:#c0eb75}.pd-alert.pd-alert-dark{background-color:#343a40;border-color:#343a40;color:#ffffff;fill:#ffffff}.pd-alert.pd-alert-dark .pd-alert-action-text{color:#ffffff}.pd-alert.pd-alert-dark .pd-alert-action-cancel:hover{fill:#bababa}.pd-alert.pd-alert-dark .pd-alert-action-cancel:active{fill:#dee2e6}.pd-alert.pd-alert-light{background-color:#f8f9fa;border-color:#f8f9fa;color:#0b0b0b;fill:#0b0b0b}.pd-alert.pd-alert-light .pd-alert-action-text{color:#0b0b0b}.pd-alert.pd-alert-light .pd-alert-action-cancel:hover{fill:#dee2e6}.pd-alert.pd-alert-light .pd-alert-action-cancel:active{fill:#dee2e6}.pd-alert-action-text{padding:0;cursor:pointer;font-weight:700 !important;background-color:transparent;border:none;text-decoration:underline;text-align:left}.pd-alert-action-text:focus-visible{background-color:#ffec99;color:#033840;fill:#033840}.pd-alert-action-cancel{cursor:pointer;margin:-0.5rem -0.5rem -0.5rem 0.5rem;transform:translateY(-0.25rem)}.pd-alert-action-cancel:hover{fill:#e3e0e0}.pd-alert-expandable-content-wrapper{background-color:var(--pd-alert-expandable-background-color, #ffffff);color:var(--pd-alert-expandable-color, #000);font-weight:400;transition:height 0.3s ease-in-out;height:auto}.pd-alert-expandable-content-wrapper .pd-alert-expandable-content{padding:1rem}";
 

@@ -19,6 +19,9 @@ import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 import { defineCustomElement as definePdLabel } from '@parlamentsdienste-components/core/components/pd-label.js';
+import { defineCustomElement as definePdList } from '@parlamentsdienste-components/core/components/pd-list.js';
+import { defineCustomElement as definePdListItem } from '@parlamentsdienste-components/core/components/pd-list-item.js';
+import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdienste-components/core/components/pd-list-item-expandable.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
@@ -266,6 +269,38 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
 export const PdLabel: StencilVueComponent<JSX.PdLabel> = /*@__PURE__*/ defineContainer<JSX.PdLabel>('pd-label', definePdLabel, [
   'hasDot',
   'color'
+]);
+
+
+export const PdList: StencilVueComponent<JSX.PdList> = /*@__PURE__*/ defineContainer<JSX.PdList>('pd-list', definePdList);
+
+
+export const PdListItem: StencilVueComponent<JSX.PdListItem> = /*@__PURE__*/ defineContainer<JSX.PdListItem>('pd-list-item', definePdListItem, [
+  'status'
+]);
+
+
+export const PdListItemExpandable: StencilVueComponent<JSX.PdListItemExpandable> = /*@__PURE__*/ defineContainer<JSX.PdListItemExpandable>('pd-list-item-expandable', definePdListItemExpandable, [
+  'status',
+  'collapsed',
+  'checkbox',
+  'edit',
+  'expand',
+  'menu',
+  'expandable',
+  'checked',
+  'contentClick',
+  'pd-edit',
+  'pd-expand',
+  'pd-selected',
+  'pd-collapsed',
+  'pd-content-click'
+], [
+  'pd-edit',
+  'pd-expand',
+  'pd-selected',
+  'pd-collapsed',
+  'pd-content-click'
 ]);
 
 

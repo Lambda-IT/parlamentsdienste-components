@@ -24,6 +24,9 @@ import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
 import { defineCustomElement as definePdLabel } from '@parlamentsdienste-components/core/components/pd-label.js';
+import { defineCustomElement as definePdList } from '@parlamentsdienste-components/core/components/pd-list.js';
+import { defineCustomElement as definePdListItem } from '@parlamentsdienste-components/core/components/pd-list-item.js';
+import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdienste-components/core/components/pd-list-item-expandable.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
@@ -564,6 +567,117 @@ export class PdLabel {
 
 
 export declare interface PdLabel extends Components.PdLabel {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdList
+})
+@Component({
+  selector: 'pd-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdList {
+  protected nativeEl: HTMLPdListElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdList extends Components.PdList {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdListItem,
+  inputs: ['status']
+})
+@Component({
+  selector: 'pd-list-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['status'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdListItem {
+  protected nativeEl: HTMLPdListItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdListItem extends Components.PdListItem {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdListItemExpandable,
+  inputs: ['checkbox', 'checked', 'collapsed', 'contentClick', 'edit', 'expand', 'expandable', 'menu', 'status']
+})
+@Component({
+  selector: 'pd-list-item-expandable',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['checkbox', 'checked', 'collapsed', 'contentClick', 'edit', 'expand', 'expandable', 'menu', 'status'],
+  outputs: ['pd-edit', 'pd-expand', 'pd-selected', 'pd-collapsed', 'pd-content-click'],
+  
+  standalone: true,
+  
+})
+export class PdListItemExpandable {
+  protected nativeEl: HTMLPdListItemExpandableElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-edit', 'pd-expand', 'pd-selected', 'pd-collapsed', 'pd-content-click']);
+  }
+
+  
+}
+
+
+export declare interface PdListItemExpandable extends Components.PdListItemExpandable {
+  /**
+   * Edit button click event
+   */
+  'pd-edit': EventEmitter<CustomEvent<void>>;
+  /**
+   * Expand button click event
+   */
+  'pd-expand': EventEmitter<CustomEvent<void>>;
+  /**
+   * Checkbox selected event
+   */
+  'pd-selected': EventEmitter<CustomEvent<boolean>>;
+  /**
+   * Inner content collapsed/expanded
+   */
+  'pd-collapsed': EventEmitter<CustomEvent<boolean>>;
+  /**
+   * Event on content click (content-click has to be set)
+   */
+  'pd-content-click': EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({

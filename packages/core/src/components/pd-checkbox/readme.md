@@ -59,11 +59,13 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 ### Used by
 
  - [pd-dropdown-item](../pd-dropdown-item)
+ - [pd-list-item-expandable](../pd-list-item-expandable)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-dropdown-item --> pd-checkbox
+  pd-list-item-expandable --> pd-checkbox
   style pd-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

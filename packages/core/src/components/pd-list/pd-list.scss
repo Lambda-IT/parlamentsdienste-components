@@ -1,0 +1,17 @@
+/**
+ * @prop --pd-list-border-color: Bottom border color of a list item
+ * @prop --pd-list-content-padding: Padding around list items
+ */
+pd-list {
+    display: flex;
+    flex-direction: column;
+    padding: var(--pd-list-content-padding, 0);
+
+    pd-list-item {
+        border-bottom: 0.125rem solid var(--pd-list-border-color, $gray-3);
+    }
+
+    pd-list-item:last-child {
+        border-bottom: none;
+    }
+}

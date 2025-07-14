@@ -1,0 +1,101 @@
+/**
+ * @prop --pd-list-item-background: Background color of list item
+ * @prop --pd-list-item-padding: Padding around the list item
+*/
+
+:host {
+    background-color: var(--pd-list-item-background, transparent);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    --negative-icon-margin: -0.5rem 0.25rem -0.5rem -0.5rem;
+
+    .pd-list-item-expandable-header {
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        transition: background-color 0.15s ease-in-out;
+        align-items: center;
+        padding: var(--pd-list-item-padding, 0.75rem 1rem);
+
+        &.pd-list-item-expandable-selected {
+            background-color: $cyan-0;
+        }
+
+        /**
+     * @prop --pd-list-item-content-hover: Background color for content hover effect
+     */
+        &.pd-content-hover {
+            background-color: var(--pd-list-item-content-hover, $gray-3);
+            cursor: pointer;
+        }
+    }
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+        appearance: none;
+        outline: none;
+    }
+
+    .pd-list-item-expandable-checkbox {
+        --pd-checkbox-text-padding-left: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-right: 0.875rem;
+    }
+
+    .pd-list-item-expandable-status {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: var(--negative-icon-margin);
+    }
+
+    .pd-list-item-expandable-content {
+        flex: 1 1 auto;
+        grid-column: 3 / span 1;
+    }
+
+    .pd-list-item-expandable-additional-content-wrapper {
+        transition: height 0.3s ease-in-out;
+        height: auto;
+
+        .pd-list-item-expandable-additional-content {
+            padding: var(--pd-list-item-padding, 0.75rem 1rem);
+        }
+    }
+
+    .pd-list-item-expandable-actions {
+        display: flex;
+        margin: var(--negative-icon-margin);
+        margin-left: 1rem;
+
+        .pd-list-item-expandable-expand,
+        .pd-list-item-expandable-edit {
+            background-color: transparent;
+            border: none;
+            fill: setcolor(primary, enabled);
+            cursor: pointer;
+            padding: 0 0 0 0.125rem;
+            margin: 0;
+
+            &:hover {
+                fill: setcolor(primary, hover);
+            }
+
+            &:focus-visible {
+                @include focus;
+            }
+
+            &:active {
+                fill: setcolor(primary, pressed);
+            }
+        }
+
+        .pd-list-item-expandable-menu {
+            --pd-menu-horizontal-padding: 0;
+        }
+    }
+}

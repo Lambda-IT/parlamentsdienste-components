@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdStatus, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdStatus, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -602,6 +602,52 @@ export namespace Components {
          */
         "hasDot": boolean;
     }
+    interface PdList {
+    }
+    interface PdListItem {
+        /**
+          * Status icon for list item
+         */
+        "status": PdStatus;
+    }
+    interface PdListItemExpandable {
+        /**
+          * Shows edit button
+         */
+        "checkbox": boolean;
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked": boolean;
+        /**
+          * Expands / collapses the inner content of the list item
+         */
+        "collapsed": boolean;
+        /**
+          * Adds content click event and style to item
+         */
+        "contentClick": boolean;
+        /**
+          * Shows edit button
+         */
+        "edit": boolean;
+        /**
+          * Shows expand button with simple event (no expandable inner content)
+         */
+        "expand": boolean;
+        /**
+          * Shows expand (toggle) button for expandable inner content
+         */
+        "expandable": boolean;
+        /**
+          * Shows menu button
+         */
+        "menu": boolean;
+        /**
+          * Status icon for list item
+         */
+        "status": PdStatus;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -812,6 +858,10 @@ export interface PdDropdownCustomEvent<T> extends CustomEvent<T> {
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
+}
+export interface PdListItemExpandableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdListItemExpandableElement;
 }
 export interface PdModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1024,6 +1074,39 @@ declare global {
         prototype: HTMLPdLabelElement;
         new (): HTMLPdLabelElement;
     };
+    interface HTMLPdListElement extends Components.PdList, HTMLStencilElement {
+    }
+    var HTMLPdListElement: {
+        prototype: HTMLPdListElement;
+        new (): HTMLPdListElement;
+    };
+    interface HTMLPdListItemElement extends Components.PdListItem, HTMLStencilElement {
+    }
+    var HTMLPdListItemElement: {
+        prototype: HTMLPdListItemElement;
+        new (): HTMLPdListItemElement;
+    };
+    interface HTMLPdListItemExpandableElementEventMap {
+        "pd-edit": void;
+        "pd-expand": void;
+        "pd-selected": boolean;
+        "pd-collapsed": boolean;
+        "pd-content-click": void;
+    }
+    interface HTMLPdListItemExpandableElement extends Components.PdListItemExpandable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdListItemExpandableElementEventMap>(type: K, listener: (this: HTMLPdListItemExpandableElement, ev: PdListItemExpandableCustomEvent<HTMLPdListItemExpandableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdListItemExpandableElementEventMap>(type: K, listener: (this: HTMLPdListItemExpandableElement, ev: PdListItemExpandableCustomEvent<HTMLPdListItemExpandableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdListItemExpandableElement: {
+        prototype: HTMLPdListItemExpandableElement;
+        new (): HTMLPdListItemExpandableElement;
+    };
     interface HTMLPdModalElementEventMap {
         "pd-closed": void;
         "pd-backdrop": void;
@@ -1119,6 +1202,9 @@ declare global {
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
         "pd-label": HTMLPdLabelElement;
+        "pd-list": HTMLPdListElement;
+        "pd-list-item": HTMLPdListItemElement;
+        "pd-list-item-expandable": HTMLPdListItemExpandableElement;
         "pd-modal": HTMLPdModalElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
@@ -1735,6 +1821,72 @@ declare namespace LocalJSX {
          */
         "hasDot"?: boolean;
     }
+    interface PdList {
+    }
+    interface PdListItem {
+        /**
+          * Status icon for list item
+         */
+        "status"?: PdStatus;
+    }
+    interface PdListItemExpandable {
+        /**
+          * Shows edit button
+         */
+        "checkbox"?: boolean;
+        /**
+          * Sets check state of the checkbox true/false
+         */
+        "checked"?: boolean;
+        /**
+          * Expands / collapses the inner content of the list item
+         */
+        "collapsed"?: boolean;
+        /**
+          * Adds content click event and style to item
+         */
+        "contentClick"?: boolean;
+        /**
+          * Shows edit button
+         */
+        "edit"?: boolean;
+        /**
+          * Shows expand button with simple event (no expandable inner content)
+         */
+        "expand"?: boolean;
+        /**
+          * Shows expand (toggle) button for expandable inner content
+         */
+        "expandable"?: boolean;
+        /**
+          * Shows menu button
+         */
+        "menu"?: boolean;
+        /**
+          * Inner content collapsed/expanded
+         */
+        "onPd-collapsed"?: (event: PdListItemExpandableCustomEvent<boolean>) => void;
+        /**
+          * Event on content click (content-click has to be set)
+         */
+        "onPd-content-click"?: (event: PdListItemExpandableCustomEvent<void>) => void;
+        /**
+          * Edit button click event
+         */
+        "onPd-edit"?: (event: PdListItemExpandableCustomEvent<void>) => void;
+        /**
+          * Expand button click event
+         */
+        "onPd-expand"?: (event: PdListItemExpandableCustomEvent<void>) => void;
+        /**
+          * Checkbox selected event
+         */
+        "onPd-selected"?: (event: PdListItemExpandableCustomEvent<boolean>) => void;
+        /**
+          * Status icon for list item
+         */
+        "status"?: PdStatus;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -1961,6 +2113,9 @@ declare namespace LocalJSX {
         "pd-icon": PdIcon;
         "pd-input": PdInput;
         "pd-label": PdLabel;
+        "pd-list": PdList;
+        "pd-list-item": PdListItem;
+        "pd-list-item-expandable": PdListItemExpandable;
         "pd-modal": PdModal;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
@@ -1986,6 +2141,9 @@ declare module "@stencil/core" {
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
             "pd-label": LocalJSX.PdLabel & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
+            "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
+            "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
+            "pd-list-item-expandable": LocalJSX.PdListItemExpandable & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;

@@ -22,6 +22,9 @@ import { PdDropdown as PdDropdownElement, defineCustomElement as definePdDropdow
 import { PdIcon as PdIconElement, defineCustomElement as definePdIcon } from "@parlamentsdienste-components/core/components/pd-icon.js";
 import { PdInput as PdInputElement, defineCustomElement as definePdInput } from "@parlamentsdienste-components/core/components/pd-input.js";
 import { PdLabel as PdLabelElement, defineCustomElement as definePdLabel } from "@parlamentsdienste-components/core/components/pd-label.js";
+import { PdListItemExpandable as PdListItemExpandableElement, defineCustomElement as definePdListItemExpandable } from "@parlamentsdienste-components/core/components/pd-list-item-expandable.js";
+import { PdListItem as PdListItemElement, defineCustomElement as definePdListItem } from "@parlamentsdienste-components/core/components/pd-list-item.js";
+import { PdList as PdListElement, defineCustomElement as definePdList } from "@parlamentsdienste-components/core/components/pd-list.js";
 import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste-components/core/components/pd-modal.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
@@ -241,6 +244,51 @@ export const PdLabel: StencilReactComponent<PdLabelElement, PdLabelEvents> = /*@
     react: React,
     events: {} as PdLabelEvents,
     defineCustomElement: definePdLabel
+});
+
+export type PdListEvents = NonNullable<unknown>;
+
+export const PdList: StencilReactComponent<PdListElement, PdListEvents> = /*@__PURE__*/ createComponent<PdListElement, PdListEvents>({
+    tagName: 'pd-list',
+    elementClass: PdListElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdListEvents,
+    defineCustomElement: definePdList
+});
+
+export type PdListItemEvents = NonNullable<unknown>;
+
+export const PdListItem: StencilReactComponent<PdListItemElement, PdListItemEvents> = /*@__PURE__*/ createComponent<PdListItemElement, PdListItemEvents>({
+    tagName: 'pd-list-item',
+    elementClass: PdListItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdListItemEvents,
+    defineCustomElement: definePdListItem
+});
+
+export type PdListItemExpandableEvents = {
+    onPdEdit: EventName<CustomEvent<void>>,
+    onPdExpand: EventName<CustomEvent<void>>,
+    onPdSelected: EventName<CustomEvent<boolean>>,
+    onPdCollapsed: EventName<CustomEvent<boolean>>,
+    onPdContentClick: EventName<CustomEvent<void>>
+};
+
+export const PdListItemExpandable: StencilReactComponent<PdListItemExpandableElement, PdListItemExpandableEvents> = /*@__PURE__*/ createComponent<PdListItemExpandableElement, PdListItemExpandableEvents>({
+    tagName: 'pd-list-item-expandable',
+    elementClass: PdListItemExpandableElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onPdEdit: 'pd-edit',
+        onPdExpand: 'pd-expand',
+        onPdSelected: 'pd-selected',
+        onPdCollapsed: 'pd-collapsed',
+        onPdContentClick: 'pd-content-click'
+    } as PdListItemExpandableEvents,
+    defineCustomElement: definePdListItemExpandable
 });
 
 export type PdModalEvents = {
