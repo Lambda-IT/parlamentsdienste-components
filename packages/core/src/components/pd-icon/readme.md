@@ -79,6 +79,7 @@ If you want to host assets sepearate to the library, a custom base path can be s
  - [pd-datepicker](../pd-datepicker)
  - [pd-dropdown](../pd-dropdown)
  - [pd-dropdown-item](../pd-dropdown-item)
+ - [pd-modal](../pd-modal)
 
 ### Graph
 ```mermaid
@@ -89,6 +90,7 @@ graph TD;
   pd-datepicker --> pd-icon
   pd-dropdown --> pd-icon
   pd-dropdown-item --> pd-icon
+  pd-modal --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

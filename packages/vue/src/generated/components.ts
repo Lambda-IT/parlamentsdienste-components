@@ -7,6 +7,7 @@ import type { JSX } from '@parlamentsdienste-components/core';
 
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
 import { defineCustomElement as definePdAnimation } from '@parlamentsdienste-components/core/components/pd-animation.js';
+import { defineCustomElement as definePdBackdrop } from '@parlamentsdienste-components/core/components/pd-backdrop.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
@@ -16,6 +17,7 @@ import { defineCustomElement as definePdDropdown } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
+import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -44,6 +46,14 @@ export const PdAlert: StencilVueComponent<JSX.PdAlert> = /*@__PURE__*/ defineCon
 
 export const PdAnimation: StencilVueComponent<JSX.PdAnimation> = /*@__PURE__*/ defineContainer<JSX.PdAnimation>('pd-animation', definePdAnimation, [
   'name'
+]);
+
+
+export const PdBackdrop: StencilVueComponent<JSX.PdBackdrop> = /*@__PURE__*/ defineContainer<JSX.PdBackdrop>('pd-backdrop', definePdBackdrop, [
+  'visible',
+  'pd-tap'
+], [
+  'pd-tap'
 ]);
 
 
@@ -246,6 +256,18 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
   'pd-focus'
 ],
 'value', 'pd-change');
+
+
+export const PdModal: StencilVueComponent<JSX.PdModal> = /*@__PURE__*/ defineContainer<JSX.PdModal>('pd-modal', definePdModal, [
+  'config',
+  'pd-closed',
+  'pd-backdrop',
+  'pd-escape'
+], [
+  'pd-closed',
+  'pd-backdrop',
+  'pd-escape'
+]);
 
 
 export const PdRadio: StencilVueComponent<JSX.PdRadio> = /*@__PURE__*/ defineContainer<JSX.PdRadio>('pd-radio', definePdRadio, [

@@ -22,7 +22,9 @@
         <div class="wrapper">
             <h1 style="margin-bottom: 5rem">Parlamentsdienste Core Components</h1>
 
-            <span style="margin-bottom: 5rem">Combobox (multiselect)</span>
+            <pd-button id="open-modal-button">Open Modal</pd-button>
+
+            <!-- <span style="margin-bottom: 5rem">Combobox (multiselect)</span>
             <pd-combobox
                 placeholder="search..."
                 class="pd-combobox-items"
@@ -33,9 +35,9 @@
             <span style="margin-bottom: 5rem; margin-top: 8rem">Combobox (selectable)</span>
             <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-2"></pd-combobox>
 
-            <pd-combobox class="pd-combobox-items" label="Label" id="pd-combobox-3"></pd-combobox>
+            <pd-combobox class="pd-combobox-items" label="Label" id="pd-combobox-3"></pd-combobox> -->
 
-            <pd-animation name="under-construction"></pd-animation>
+            <!-- <pd-animation name="under-construction"></pd-animation> -->
             <!-- <div style="margin-bottom: 5rem">
                 <pd-radio-group name="radio-group-1" value="3">
                     <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
@@ -94,6 +96,30 @@
         </div>
 
         <script>
+            const openModalButton = document.getElementById('open-modal-button');
+            openModalButton.addEventListener('click', presentModal);
+
+            function presentModal() {
+                console.log('presentModal called');
+                // create the modal with the `modal-page` component
+                const modal = document.createElement('pd-modal');
+
+                modal.config = {
+                    // component: 'user-content',
+                    title: 'Modal Title',
+                    backdropVisible: true,
+                };
+
+                modal.innerHTML = `
+                <p>Modal Content</p>
+                <div slot="footer">
+                    <pd-button outline>Cancel</pd-button>
+                    <pd-button>Save</pd-button>
+                </div>`;
+
+                document.body.appendChild(modal);
+            }
+
             const items = [
                 { id: '1', label: 'Dropdown Link 01AAA', value: 'a1' },
                 { id: '2', label: 'Dropdown Link 02', value: 'a2' },
@@ -111,44 +137,44 @@
                 { id: '10', label: 'some other 4', value: 'a10' },
             ];
 
-            const pdComboBox1 = document.getElementById('pd-combobox-1');
-            const pdComboBox2 = document.getElementById('pd-combobox-2');
-            const pdComboBox3 = document.getElementById('pd-combobox-3');
-            // const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
+            // const pdComboBox1 = document.getElementById('pd-combobox-1');
+            // const pdComboBox2 = document.getElementById('pd-combobox-2');
+            // const pdComboBox3 = document.getElementById('pd-combobox-3');
+            // // const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
 
-            // for (let pdComboBoxItem of pdComboBoxItems) {
-            //     pdComboBoxItem.items = items;
-            // }
+            // // for (let pdComboBoxItem of pdComboBoxItems) {
+            // //     pdComboBoxItem.items = items;
+            // // }
 
-            pdComboBox1.items = items;
-            pdComboBox2.items = items;
-            pdComboBox3.items = items;
+            // pdComboBox1.items = items;
+            // pdComboBox2.items = items;
+            // pdComboBox3.items = items;
 
-            pdComboBox1.selected = items.slice(0, 2);
-            // pdComboBox1.selected = [2, 6];
-            pdComboBox2.selected = items[8];
-            pdComboBox3.selected = items[4];
+            // pdComboBox1.selected = items.slice(0, 2);
+            // // pdComboBox1.selected = [2, 6];
+            // pdComboBox2.selected = items[8];
+            // pdComboBox3.selected = items[4];
 
-            pdComboBox1.addEventListener('pd-change', event => {
-                console.log('🔥 Combobox 1 changed:', event.detail);
-            });
-            pdComboBox2.addEventListener('pd-change', event => {
-                console.log('🔥 Combobox 2 changed:', event.detail);
-            });
-            pdComboBox3.addEventListener('pd-change', event => {
-                console.log('🔥 Combobox 3 changed:', event.detail);
-            });
+            // pdComboBox1.addEventListener('pd-change', event => {
+            //     console.log('🔥 Combobox 1 changed:', event.detail);
+            // });
+            // pdComboBox2.addEventListener('pd-change', event => {
+            //     console.log('🔥 Combobox 2 changed:', event.detail);
+            // });
+            // pdComboBox3.addEventListener('pd-change', event => {
+            //     console.log('🔥 Combobox 3 changed:', event.detail);
+            // });
 
-            const pdDropdown1 = document.getElementById('pd-dropdown-1');
-            // pdDropdown1.items = items;
+            // const pdDropdown1 = document.getElementById('pd-dropdown-1');
+            // // pdDropdown1.items = items;
 
-            const radiogroup = document.getElementsByTagName('pd-radio-group')[0];
-            radiogroup?.addEventListener('pd-change', event => {
-                console.log('🔥 Radio group changed:', event.detail);
-            });
-            setTimeout(() => {
-                pdComboBox1.selected = [1, 3, 4];
-            }, 1000);
+            // const radiogroup = document.getElementsByTagName('pd-radio-group')[0];
+            // radiogroup?.addEventListener('pd-change', event => {
+            //     console.log('🔥 Radio group changed:', event.detail);
+            // });
+            // setTimeout(() => {
+            //     pdComboBox1.selected = [1, 3, 4];
+            // }, 1000);
         </script>
     </body>
 </html>

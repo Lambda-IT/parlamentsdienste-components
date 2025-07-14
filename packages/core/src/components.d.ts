@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -53,6 +53,12 @@ export namespace Components {
           * Name of an icon from the provided gallery
          */
         "name": '404' | 'access-denied' | 'error' | 'under-construction';
+    }
+    interface PdBackdrop {
+        /**
+          * Invisible backdrop when set to false
+         */
+        "visible": boolean;
     }
     interface PdButton {
         /**
@@ -584,6 +590,12 @@ export namespace Components {
          */
         "viewOnly": boolean;
     }
+    interface PdModal {
+        /**
+          * Configuration properties
+         */
+        "config": PdModalConfig;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -761,6 +773,10 @@ export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdAlertElement;
 }
+export interface PdBackdropCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdBackdropElement;
+}
 export interface PdCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdCheckboxElement;
@@ -784,6 +800,10 @@ export interface PdDropdownCustomEvent<T> extends CustomEvent<T> {
 export interface PdInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdInputElement;
+}
+export interface PdModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdModalElement;
 }
 export interface PdRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -822,6 +842,23 @@ declare global {
     var HTMLPdAnimationElement: {
         prototype: HTMLPdAnimationElement;
         new (): HTMLPdAnimationElement;
+    };
+    interface HTMLPdBackdropElementEventMap {
+        "pd-tap": void;
+    }
+    interface HTMLPdBackdropElement extends Components.PdBackdrop, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdBackdropElementEventMap>(type: K, listener: (this: HTMLPdBackdropElement, ev: PdBackdropCustomEvent<HTMLPdBackdropElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdBackdropElementEventMap>(type: K, listener: (this: HTMLPdBackdropElement, ev: PdBackdropCustomEvent<HTMLPdBackdropElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdBackdropElement: {
+        prototype: HTMLPdBackdropElement;
+        new (): HTMLPdBackdropElement;
     };
     interface HTMLPdButtonElement extends Components.PdButton, HTMLStencilElement {
     }
@@ -963,6 +1000,25 @@ declare global {
         prototype: HTMLPdInputElement;
         new (): HTMLPdInputElement;
     };
+    interface HTMLPdModalElementEventMap {
+        "pd-closed": void;
+        "pd-backdrop": void;
+        "pd-escape": void;
+    }
+    interface HTMLPdModalElement extends Components.PdModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdModalElementEventMap>(type: K, listener: (this: HTMLPdModalElement, ev: PdModalCustomEvent<HTMLPdModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdModalElementEventMap>(type: K, listener: (this: HTMLPdModalElement, ev: PdModalCustomEvent<HTMLPdModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdModalElement: {
+        prototype: HTMLPdModalElement;
+        new (): HTMLPdModalElement;
+    };
     interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {
     }
     var HTMLPdRadioElement: {
@@ -1027,6 +1083,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-animation": HTMLPdAnimationElement;
+        "pd-backdrop": HTMLPdBackdropElement;
         "pd-button": HTMLPdButtonElement;
         "pd-checkbox": HTMLPdCheckboxElement;
         "pd-chip": HTMLPdChipElement;
@@ -1036,6 +1093,7 @@ declare global {
         "pd-dropdown-item": HTMLPdDropdownItemElement;
         "pd-icon": HTMLPdIconElement;
         "pd-input": HTMLPdInputElement;
+        "pd-modal": HTMLPdModalElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-slider": HTMLPdSliderElement;
@@ -1098,6 +1156,13 @@ declare namespace LocalJSX {
           * Name of an icon from the provided gallery
          */
         "name"?: '404' | 'access-denied' | 'error' | 'under-construction';
+    }
+    interface PdBackdrop {
+        "onPd-tap"?: (event: PdBackdropCustomEvent<void>) => void;
+        /**
+          * Invisible backdrop when set to false
+         */
+        "visible"?: boolean;
     }
     interface PdButton {
         /**
@@ -1632,6 +1697,24 @@ declare namespace LocalJSX {
          */
         "viewOnly"?: boolean;
     }
+    interface PdModal {
+        /**
+          * Configuration properties
+         */
+        "config"?: PdModalConfig;
+        /**
+          * Event that will be executed when the modal backdrop is clicked
+         */
+        "onPd-backdrop"?: (event: PdModalCustomEvent<void>) => void;
+        /**
+          * Event that will be executed when the is closed
+         */
+        "onPd-closed"?: (event: PdModalCustomEvent<void>) => void;
+        /**
+          * Event that will be executed when the escape button was clicked
+         */
+        "onPd-escape"?: (event: PdModalCustomEvent<void>) => void;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -1828,6 +1911,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-animation": PdAnimation;
+        "pd-backdrop": PdBackdrop;
         "pd-button": PdButton;
         "pd-checkbox": PdCheckbox;
         "pd-chip": PdChip;
@@ -1837,6 +1921,7 @@ declare namespace LocalJSX {
         "pd-dropdown-item": PdDropdownItem;
         "pd-icon": PdIcon;
         "pd-input": PdInput;
+        "pd-modal": PdModal;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
         "pd-slider": PdSlider;
@@ -1849,6 +1934,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
             "pd-animation": LocalJSX.PdAnimation & JSXBase.HTMLAttributes<HTMLPdAnimationElement>;
+            "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
             "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
             "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
             "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
@@ -1858,6 +1944,7 @@ declare module "@stencil/core" {
             "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
             "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
             "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+            "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;

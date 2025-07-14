@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$2 } from './p-BRUwU7Wr.js';
+import { d as defineCustomElement$2 } from './p-BY6sf1aF.js';
 
 var HOOKS = [
     "onChange",
@@ -2729,13 +2729,13 @@ const Datepicker = /*@__PURE__*/ proxyCustomElement(class Datepicker extends H {
         }
     }
     render() {
-        return (h(Host, { key: 'e1137e6bc610e73a9d1f2fce77f0cd7dbc173b0e' }, h("label", { key: '83648e80b84e9d751422aec327beaa27ab25c1d0', class: {
+        return (h(Host, { key: 'c659bb9568eb83a6a5bea1c4108c322ce0587be0' }, h("label", { key: 'f40d2d6bb598163667f10350d5dd9fc46747253a', class: {
                 'pd-datepicker-label': true,
                 'pd-datepicker-disabled': this.disabled,
                 'pd-datepicker-readonly': this.readonly,
                 'pd-datepicker-error': this.error,
                 'pd-datepicker-allowinput': this.allowInput,
-            }, style: this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {} }, this.renderLabel(), h("div", { key: 'bbf6316588cf411e3a197d9514309de68f9ee6d1', ref: el => (this.contentWrapperElement = el), class: "wrapper" }, h("input", { key: '75eea50794d7dc281147589713cd6ffac9ae67e4', ref: el => (this.dateInputField = el), "data-test": "pd-datepicker-input", class: {
+            }, style: this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {} }, this.renderLabel(), h("div", { key: '735740f56bf420208c76720c2542fa2ec7f3d9f3', ref: el => (this.contentWrapperElement = el), class: "wrapper" }, h("input", { key: '8ac9fa7dbdd925ec32cf33c60f73ddce79799737', ref: el => (this.dateInputField = el), "data-test": "pd-datepicker-input", class: {
                 'pd-datepicker-input': true,
                 'pd-datepicker-disabled': this.disabled,
                 'pd-datepicker-readonly': this.readonly,

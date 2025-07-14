@@ -135,14 +135,14 @@ const Icon = /*@__PURE__*/ proxyCustomElement(class Icon extends H {
         const flipY = this.flip?.includes('y') ? 'scaleY(-1)' : undefined;
         const rotate = this.rotate ? `rotate(${this.rotate}deg` : undefined;
         const transformStyle = [flipX, flipY, rotate].filter(x => x !== undefined).join(' ');
-        return (h(Host, { key: '2d09b8333fff39f039fcf4fe2ed5007859e2c388', role: "img", class: {
+        return (h(Host, { key: '20933983e1c147646d93a79081b55271d2bb846a', role: "img", class: {
                 spin: !!this.spin,
             }, style: {
                 fontSize: this.size ? `${this.size}rem` : null,
                 transform: transformStyle ?? null,
                 animationDuration: this.spin ? `${this.spin}ms` : null,
                 animationName: this.spinReverse ? `spin-reverse` : null,
-            } }, h("div", { key: '6d9a112372919522abc407c377401ccaa0930619', class: "pd-icon-inner", ref: textarea => (this.wrapperElement = textarea) })));
+            } }, h("div", { key: '49b451e00f117520f64693c2f3187d8e25c766f5', class: "pd-icon-inner", ref: textarea => (this.wrapperElement = textarea) })));
     }
     appendSVGContent(svgContent, appendElement) {
         if (appendElement.hasChildNodes())
@@ -207,6 +207,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { Icon as I, defineCustomElement as d };
-//# sourceMappingURL=p-BRUwU7Wr.js.map
+//# sourceMappingURL=p-BY6sf1aF.js.map
 
-//# sourceMappingURL=p-BRUwU7Wr.js.map
+//# sourceMappingURL=p-BY6sf1aF.js.map

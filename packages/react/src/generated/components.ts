@@ -10,6 +10,7 @@
 import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSliderCustomEvent, type PdTextareaCustomEvent } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
+import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
 import { PdButton as PdButtonElement, defineCustomElement as definePdButton } from "@parlamentsdienste-components/core/components/pd-button.js";
 import { PdCheckbox as PdCheckboxElement, defineCustomElement as definePdCheckbox } from "@parlamentsdienste-components/core/components/pd-checkbox.js";
 import { PdChip as PdChipElement, defineCustomElement as definePdChip } from "@parlamentsdienste-components/core/components/pd-chip.js";
@@ -19,6 +20,7 @@ import { PdDropdownItem as PdDropdownItemElement, defineCustomElement as defineP
 import { PdDropdown as PdDropdownElement, defineCustomElement as definePdDropdown } from "@parlamentsdienste-components/core/components/pd-dropdown.js";
 import { PdIcon as PdIconElement, defineCustomElement as definePdIcon } from "@parlamentsdienste-components/core/components/pd-icon.js";
 import { PdInput as PdInputElement, defineCustomElement as definePdInput } from "@parlamentsdienste-components/core/components/pd-input.js";
+import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste-components/core/components/pd-modal.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
@@ -55,6 +57,17 @@ export const PdAnimation: StencilReactComponent<PdAnimationElement, PdAnimationE
     react: React,
     events: {} as PdAnimationEvents,
     defineCustomElement: definePdAnimation
+});
+
+export type PdBackdropEvents = { onPdTap: EventName<CustomEvent<void>> };
+
+export const PdBackdrop: StencilReactComponent<PdBackdropElement, PdBackdropEvents> = /*@__PURE__*/ createComponent<PdBackdropElement, PdBackdropEvents>({
+    tagName: 'pd-backdrop',
+    elementClass: PdBackdropElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onPdTap: 'pd-tap' } as PdBackdropEvents,
+    defineCustomElement: definePdBackdrop
 });
 
 export type PdButtonEvents = NonNullable<unknown>;
@@ -204,6 +217,25 @@ export const PdInput: StencilReactComponent<PdInputElement, PdInputEvents> = /*@
         onPdFocus: 'pd-focus'
     } as PdInputEvents,
     defineCustomElement: definePdInput
+});
+
+export type PdModalEvents = {
+    onPdClosed: EventName<CustomEvent<void>>,
+    onPdBackdrop: EventName<CustomEvent<void>>,
+    onPdEscape: EventName<CustomEvent<void>>
+};
+
+export const PdModal: StencilReactComponent<PdModalElement, PdModalEvents> = /*@__PURE__*/ createComponent<PdModalElement, PdModalEvents>({
+    tagName: 'pd-modal',
+    elementClass: PdModalElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onPdClosed: 'pd-closed',
+        onPdBackdrop: 'pd-backdrop',
+        onPdEscape: 'pd-escape'
+    } as PdModalEvents,
+    defineCustomElement: definePdModal
 });
 
 export type PdRadioEvents = NonNullable<unknown>;

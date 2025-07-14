@@ -1,0 +1,80 @@
+:host {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+}
+
+/**
+ * @prop --pd-modal-min-width: min-width of modal
+ * @prop --pd-modal-max-width: max-width of modal
+ * @prop --pd-modal-min-height: min-height of modal
+ * @prop --pd-modal-max-height: max-height of modal
+ * @prop --pd-modal-width: width of modal
+ * @prop --pd-modal-height: height of modal
+ */
+.pd-modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px rgba($color: $pd-black, $alpha: 0.45);
+    z-index: 10;
+    padding: 1.25rem;
+    position: relative;
+    border-radius: 0.25rem;
+    width: var(--pd-modal-width, unset);
+    height: var(--pd-modal-height, unset);
+    min-width: var(--pd-modal-min-width, unset);
+    max-width: var(--pd-modal-max-width, unset);
+    min-height: var(--pd-modal-min-height, unset);
+    max-height: var(--pd-modal-max-height, unset);
+}
+
+.pd-modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.875rem;
+
+    .pd-modal-title {
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pd-modal-close {
+        @include invisibleButton;
+        fill: setcolor(primary, enabled);
+        margin-top: -0.475rem;
+        margin-right: -0.475rem;
+        margin-left: 0.5rem;
+
+        &:hover {
+            fill: setcolor(primary, hover);
+        }
+
+        &:active {
+            fill: setcolor(primary, pressed);
+        }
+    }
+}
+
+.pd-modal-content {
+    flex: 1 1 auto;
+}
+
+.pd-modal-footer {
+    text-align: right;
+}

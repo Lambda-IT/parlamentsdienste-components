@@ -4,6 +4,7 @@ import * as d from './components';
 export const DIRECTIVES = [
   d.PdAlert,
   d.PdAnimation,
+  d.PdBackdrop,
   d.PdButton,
   d.PdCheckbox,
   d.PdChip,
@@ -13,6 +14,7 @@ export const DIRECTIVES = [
   d.PdDropdownItem,
   d.PdIcon,
   d.PdInput,
+  d.PdModal,
   d.PdRadio,
   d.PdRadioGroup,
   d.PdSlider,

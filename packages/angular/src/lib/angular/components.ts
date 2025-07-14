@@ -12,6 +12,7 @@ import { forwardRef, HostListener } from '@angular/core';
              
 import { defineCustomElement as definePdAlert } from '@parlamentsdienste-components/core/components/pd-alert.js';
 import { defineCustomElement as definePdAnimation } from '@parlamentsdienste-components/core/components/pd-animation.js';
+import { defineCustomElement as definePdBackdrop } from '@parlamentsdienste-components/core/components/pd-backdrop.js';
 import { defineCustomElement as definePdButton } from '@parlamentsdienste-components/core/components/pd-button.js';
 import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste-components/core/components/pd-checkbox.js';
 import { defineCustomElement as definePdChip } from '@parlamentsdienste-components/core/components/pd-chip.js';
@@ -21,6 +22,7 @@ import { defineCustomElement as definePdDropdown } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste-components/core/components/pd-dropdown-item.js';
 import { defineCustomElement as definePdIcon } from '@parlamentsdienste-components/core/components/pd-icon.js';
 import { defineCustomElement as definePdInput } from '@parlamentsdienste-components/core/components/pd-input.js';
+import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -97,6 +99,40 @@ export class PdAnimation {
 
 
 export declare interface PdAnimation extends Components.PdAnimation {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdBackdrop,
+  inputs: ['visible']
+})
+@Component({
+  selector: 'pd-backdrop',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['visible'],
+  outputs: ['pd-tap'],
+  
+  standalone: true,
+  
+})
+export class PdBackdrop {
+  protected nativeEl: HTMLPdBackdropElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-tap']);
+  }
+
+  
+}
+
+
+export declare interface PdBackdrop extends Components.PdBackdrop {
+
+  'pd-tap': EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({
@@ -466,6 +502,50 @@ export declare interface PdInput extends Components.PdInput {
    * Emitted when the input has focus.
    */
   'pd-focus': EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdModal,
+  inputs: ['config']
+})
+@Component({
+  selector: 'pd-modal',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['config'],
+  outputs: ['pd-closed', 'pd-backdrop', 'pd-escape'],
+  
+  standalone: true,
+  
+})
+export class PdModal {
+  protected nativeEl: HTMLPdModalElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-closed', 'pd-backdrop', 'pd-escape']);
+  }
+
+  
+}
+
+
+export declare interface PdModal extends Components.PdModal {
+  /**
+   * Event that will be executed when the is closed
+   */
+  'pd-closed': EventEmitter<CustomEvent<void>>;
+  /**
+   * Event that will be executed when the modal backdrop is clicked
+   */
+  'pd-backdrop': EventEmitter<CustomEvent<void>>;
+  /**
+   * Event that will be executed when the escape button was clicked
+   */
+  'pd-escape': EventEmitter<CustomEvent<void>>;
 }
 
 
