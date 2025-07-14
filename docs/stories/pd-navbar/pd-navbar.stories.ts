@@ -15,7 +15,7 @@ const meta: Meta<NavbarArgs> = {
 export default meta;
 
 const events = ['pd-closed', 'pd-backdrop', 'pd-escape'];
-addEventlisteners('pd-modal', events);
+addEventlisteners('pd-navbar', events);
 
 ///////////////////////////////////////////////////////////////////////////
 

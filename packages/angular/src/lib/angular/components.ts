@@ -32,6 +32,10 @@ import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdNavbar } from '@parlamentsdienste-components/core/components/pd-navbar.js';
 import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste-components/core/components/pd-navbar-item.js';
+import { defineCustomElement as definePdPanel } from '@parlamentsdienste-components/core/components/pd-panel.js';
+import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste-components/core/components/pd-panel-content.js';
+import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste-components/core/components/pd-panel-footer.js';
+import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste-components/core/components/pd-panel-header.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -851,6 +855,136 @@ export class PdNavbarItem {
 
 
 export declare interface PdNavbarItem extends Components.PdNavbarItem {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdPanel,
+  inputs: ['collapsed', 'collapsible', 'subpanel']
+})
+@Component({
+  selector: 'pd-panel',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['collapsed', 'collapsible', 'subpanel'],
+  outputs: ['pd-collapsed'],
+  
+  standalone: true,
+  
+})
+export class PdPanel {
+  protected nativeEl: HTMLPdPanelElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-collapsed']);
+  }
+
+  
+}
+
+
+export declare interface PdPanel extends Components.PdPanel {
+  /**
+   * Emitted when the value has changed.
+   */
+  'pd-collapsed': EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdPanelContent
+})
+@Component({
+  selector: 'pd-panel-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdPanelContent {
+  protected nativeEl: HTMLPdPanelContentElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdPanelContent extends Components.PdPanelContent {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdPanelFooter
+})
+@Component({
+  selector: 'pd-panel-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdPanelFooter {
+  protected nativeEl: HTMLPdPanelFooterElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdPanelFooter extends Components.PdPanelFooter {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdPanelHeader,
+  methods: ['setCollapsed']
+})
+@Component({
+  selector: 'pd-panel-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+  outputs: ['pd-hover'],
+  
+  standalone: true,
+  
+})
+export class PdPanelHeader {
+  protected nativeEl: HTMLPdPanelHeaderElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-hover']);
+  }
+
+  
+}
+
+
+export declare interface PdPanelHeader extends Components.PdPanelHeader {
+  /**
+   * Used for panel hover stylings
+   */
+  'pd-hover': EventEmitter<CustomEvent<boolean>>;
+}
 
 
 @ProxyCmp({

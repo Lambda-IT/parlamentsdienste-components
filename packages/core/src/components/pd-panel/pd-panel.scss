@@ -1,0 +1,38 @@
+/**
+ * @prop --pd-panel-background: Background color of panel
+ * @prop --pd-panel-subpanel-margin: margin of subpanel. Can be used to separate and indent subpanels
+ */
+:host {
+    display: block;
+    background-color: var(--pd-panel-background, $white);
+    border-radius: 0.25rem;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pd-panel-content-wrapper {
+    transition: height 0.3s ease-in-out;
+    height: auto;
+}
+
+/** Subpanel **/
+
+:host(.pd-panel-subpanel) {
+    border-top: 0.125rem solid $gray-6;
+    border-radius: 0;
+    margin: var(--pd-panel-subpanel-margin, 0);
+    --pd-panel-content-padding: 0.5rem 0 1rem 0;
+}
+
+:host(.pd-panel-subpanel.pd-panel-content-collapsed) {
+    border-bottom: 0.125rem solid $gray-6;
+}
+
+:host(.pd-panel-subpanel.pd-panel-hover) {
+    border-color: $black;
+}

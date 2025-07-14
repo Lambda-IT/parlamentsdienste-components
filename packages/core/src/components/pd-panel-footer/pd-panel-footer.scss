@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    align-items: center;
+    border-top: 0.125em solid $gray-3;
+    padding: 0 1rem;
+    min-height: 3em;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}

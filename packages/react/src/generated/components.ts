@@ -30,6 +30,10 @@ import { PdMenu as PdMenuElement, defineCustomElement as definePdMenu } from "@p
 import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste-components/core/components/pd-modal.js";
 import { PdNavbarItem as PdNavbarItemElement, defineCustomElement as definePdNavbarItem } from "@parlamentsdienste-components/core/components/pd-navbar-item.js";
 import { PdNavbar as PdNavbarElement, defineCustomElement as definePdNavbar } from "@parlamentsdienste-components/core/components/pd-navbar.js";
+import { PdPanelContent as PdPanelContentElement, defineCustomElement as definePdPanelContent } from "@parlamentsdienste-components/core/components/pd-panel-content.js";
+import { PdPanelFooter as PdPanelFooterElement, defineCustomElement as definePdPanelFooter } from "@parlamentsdienste-components/core/components/pd-panel-footer.js";
+import { PdPanelHeader as PdPanelHeaderElement, defineCustomElement as definePdPanelHeader } from "@parlamentsdienste-components/core/components/pd-panel-header.js";
+import { PdPanel as PdPanelElement, defineCustomElement as definePdPanel } from "@parlamentsdienste-components/core/components/pd-panel.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
@@ -356,6 +360,50 @@ export const PdNavbarItem: StencilReactComponent<PdNavbarItemElement, PdNavbarIt
     react: React,
     events: {} as PdNavbarItemEvents,
     defineCustomElement: definePdNavbarItem
+});
+
+export type PdPanelEvents = { onPdCollapsed: EventName<CustomEvent<any>> };
+
+export const PdPanel: StencilReactComponent<PdPanelElement, PdPanelEvents> = /*@__PURE__*/ createComponent<PdPanelElement, PdPanelEvents>({
+    tagName: 'pd-panel',
+    elementClass: PdPanelElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onPdCollapsed: 'pd-collapsed' } as PdPanelEvents,
+    defineCustomElement: definePdPanel
+});
+
+export type PdPanelContentEvents = NonNullable<unknown>;
+
+export const PdPanelContent: StencilReactComponent<PdPanelContentElement, PdPanelContentEvents> = /*@__PURE__*/ createComponent<PdPanelContentElement, PdPanelContentEvents>({
+    tagName: 'pd-panel-content',
+    elementClass: PdPanelContentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdPanelContentEvents,
+    defineCustomElement: definePdPanelContent
+});
+
+export type PdPanelFooterEvents = NonNullable<unknown>;
+
+export const PdPanelFooter: StencilReactComponent<PdPanelFooterElement, PdPanelFooterEvents> = /*@__PURE__*/ createComponent<PdPanelFooterElement, PdPanelFooterEvents>({
+    tagName: 'pd-panel-footer',
+    elementClass: PdPanelFooterElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdPanelFooterEvents,
+    defineCustomElement: definePdPanelFooter
+});
+
+export type PdPanelHeaderEvents = { onPdHover: EventName<CustomEvent<boolean>> };
+
+export const PdPanelHeader: StencilReactComponent<PdPanelHeaderElement, PdPanelHeaderEvents> = /*@__PURE__*/ createComponent<PdPanelHeaderElement, PdPanelHeaderEvents>({
+    tagName: 'pd-panel-header',
+    elementClass: PdPanelHeaderElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onPdHover: 'pd-hover' } as PdPanelHeaderEvents,
+    defineCustomElement: definePdPanelHeader
 });
 
 export type PdRadioEvents = NonNullable<unknown>;

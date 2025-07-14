@@ -72,7 +72,7 @@ const Slider = /*@__PURE__*/ proxyCustomElement(class Slider extends H {
         this.sliderValue = this.value || 0;
     }
     render() {
-        return (h(Host, { key: '52e9e3a49309031989c36fa644963fe3f9d3e5f0' }, h("input", { key: 'e00961e3b04dad46a26b97471370865cce383cf0', class: {
+        return (h(Host, { key: '6c45e0486f32847597bbb44e447623fbce25c0df' }, h("input", { key: '8607a2c413cb66bd4145e7724de869284647fde6', class: {
                 'pd-slider': true,
                 'pd-slider-disabled': this.disabled,
                 'pd-slider-readonly': this.readonly,

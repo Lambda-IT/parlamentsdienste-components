@@ -27,6 +27,10 @@ import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-comp
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdNavbar } from '@parlamentsdienste-components/core/components/pd-navbar.js';
 import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste-components/core/components/pd-navbar-item.js';
+import { defineCustomElement as definePdPanel } from '@parlamentsdienste-components/core/components/pd-panel.js';
+import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste-components/core/components/pd-panel-content.js';
+import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste-components/core/components/pd-panel-footer.js';
+import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste-components/core/components/pd-panel-header.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -348,6 +352,29 @@ export const PdNavbarItem: StencilVueComponent<JSX.PdNavbarItem> = /*@__PURE__*/
   'enabled',
   'href',
   'target'
+]);
+
+
+export const PdPanel: StencilVueComponent<JSX.PdPanel> = /*@__PURE__*/ defineContainer<JSX.PdPanel>('pd-panel', definePdPanel, [
+  'collapsed',
+  'collapsible',
+  'subpanel',
+  'pd-collapsed'
+], [
+  'pd-collapsed'
+]);
+
+
+export const PdPanelContent: StencilVueComponent<JSX.PdPanelContent> = /*@__PURE__*/ defineContainer<JSX.PdPanelContent>('pd-panel-content', definePdPanelContent);
+
+
+export const PdPanelFooter: StencilVueComponent<JSX.PdPanelFooter> = /*@__PURE__*/ defineContainer<JSX.PdPanelFooter>('pd-panel-footer', definePdPanelFooter);
+
+
+export const PdPanelHeader: StencilVueComponent<JSX.PdPanelHeader> = /*@__PURE__*/ defineContainer<JSX.PdPanelHeader>('pd-panel-header', definePdPanelHeader, [
+  'pd-hover'
+], [
+  'pd-hover'
 ]);
 
 

@@ -709,6 +709,27 @@ export namespace Components {
         "target": string;
         "text": string;
     }
+    interface PdPanel {
+        /**
+          * Expands / collapses the panel content
+         */
+        "collapsed": boolean;
+        /**
+          * Show/hide collapse button
+         */
+        "collapsible": boolean;
+        /**
+          * Use as a subpanel
+         */
+        "subpanel": boolean;
+    }
+    interface PdPanelContent {
+    }
+    interface PdPanelFooter {
+    }
+    interface PdPanelHeader {
+        "setCollapsed": (collapsed: boolean) => Promise<void>;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -925,6 +946,14 @@ export interface PdModalCustomEvent<T> extends CustomEvent<T> {
 export interface PdNavbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdNavbarElement;
+}
+export interface PdPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdPanelElement;
+}
+export interface PdPanelHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdPanelHeaderElement;
 }
 export interface PdRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1220,6 +1249,52 @@ declare global {
         prototype: HTMLPdNavbarItemElement;
         new (): HTMLPdNavbarItemElement;
     };
+    interface HTMLPdPanelElementEventMap {
+        "pd-collapsed": any;
+    }
+    interface HTMLPdPanelElement extends Components.PdPanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdPanelElementEventMap>(type: K, listener: (this: HTMLPdPanelElement, ev: PdPanelCustomEvent<HTMLPdPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdPanelElementEventMap>(type: K, listener: (this: HTMLPdPanelElement, ev: PdPanelCustomEvent<HTMLPdPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdPanelElement: {
+        prototype: HTMLPdPanelElement;
+        new (): HTMLPdPanelElement;
+    };
+    interface HTMLPdPanelContentElement extends Components.PdPanelContent, HTMLStencilElement {
+    }
+    var HTMLPdPanelContentElement: {
+        prototype: HTMLPdPanelContentElement;
+        new (): HTMLPdPanelContentElement;
+    };
+    interface HTMLPdPanelFooterElement extends Components.PdPanelFooter, HTMLStencilElement {
+    }
+    var HTMLPdPanelFooterElement: {
+        prototype: HTMLPdPanelFooterElement;
+        new (): HTMLPdPanelFooterElement;
+    };
+    interface HTMLPdPanelHeaderElementEventMap {
+        "pd-hover": boolean;
+    }
+    interface HTMLPdPanelHeaderElement extends Components.PdPanelHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdPanelHeaderElementEventMap>(type: K, listener: (this: HTMLPdPanelHeaderElement, ev: PdPanelHeaderCustomEvent<HTMLPdPanelHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdPanelHeaderElementEventMap>(type: K, listener: (this: HTMLPdPanelHeaderElement, ev: PdPanelHeaderCustomEvent<HTMLPdPanelHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdPanelHeaderElement: {
+        prototype: HTMLPdPanelHeaderElement;
+        new (): HTMLPdPanelHeaderElement;
+    };
     interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {
     }
     var HTMLPdRadioElement: {
@@ -1304,6 +1379,10 @@ declare global {
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
+        "pd-panel": HTMLPdPanelElement;
+        "pd-panel-content": HTMLPdPanelContentElement;
+        "pd-panel-footer": HTMLPdPanelFooterElement;
+        "pd-panel-header": HTMLPdPanelHeaderElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-slider": HTMLPdSliderElement;
@@ -2051,6 +2130,34 @@ declare namespace LocalJSX {
         "target"?: string;
         "text"?: string;
     }
+    interface PdPanel {
+        /**
+          * Expands / collapses the panel content
+         */
+        "collapsed"?: boolean;
+        /**
+          * Show/hide collapse button
+         */
+        "collapsible"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onPd-collapsed"?: (event: PdPanelCustomEvent<any>) => void;
+        /**
+          * Use as a subpanel
+         */
+        "subpanel"?: boolean;
+    }
+    interface PdPanelContent {
+    }
+    interface PdPanelFooter {
+    }
+    interface PdPanelHeader {
+        /**
+          * Used for panel hover stylings
+         */
+        "onPd-hover"?: (event: PdPanelHeaderCustomEvent<boolean>) => void;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -2267,6 +2374,10 @@ declare namespace LocalJSX {
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
         "pd-navbar-item": PdNavbarItem;
+        "pd-panel": PdPanel;
+        "pd-panel-content": PdPanelContent;
+        "pd-panel-footer": PdPanelFooter;
+        "pd-panel-header": PdPanelHeader;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
         "pd-slider": PdSlider;
@@ -2299,6 +2410,10 @@ declare module "@stencil/core" {
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
+            "pd-panel": LocalJSX.PdPanel & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
+            "pd-panel-content": LocalJSX.PdPanelContent & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
+            "pd-panel-footer": LocalJSX.PdPanelFooter & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;
+            "pd-panel-header": LocalJSX.PdPanelHeader & JSXBase.HTMLAttributes<HTMLPdPanelHeaderElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
