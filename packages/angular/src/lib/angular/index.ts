@@ -37,5 +37,7 @@ export const DIRECTIVES = [
   d.PdSkeleton,
   d.PdSlider,
   d.PdSort,
+  d.PdTable,
+  d.PdTableFilter,
   d.PdTextarea
 ];

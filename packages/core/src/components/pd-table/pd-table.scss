@@ -1,0 +1,221 @@
+@include resetControlFonts;
+
+:host {
+    display: block;
+    flex: 1;
+
+    --pd-menu-label-weight: 700;
+    --pd-menu-label-color: black;
+    --pd-dropdown-vertical-padding: 0.125rem;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pd-table {
+    display: flex;
+
+    .pd-table-horizontal-scroll {
+        overflow: auto;
+
+        .pd-table-row,
+        .pd-table-header-row {
+            overflow: visible;
+        }
+    }
+}
+
+.pd-table-header-row {
+    display: flex;
+    flex-direction: row;
+    height: 3em;
+    color: $white;
+    overflow: hidden;
+
+    .pd-table-header-cell {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.625em;
+
+        .pd-table-header-cell-text {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            span {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        .pd-table-header-cell-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .pd-table-filter-icon {
+            cursor: pointer;
+        }
+
+        &.pd-table-sortable {
+            user-select: none;
+            cursor: pointer;
+        }
+
+        &.pd-table-dark {
+            background-color: $blue-whale;
+            border-bottom: 0.125em solid $blue-whale;
+            border-top: 0.125em solid $blue-whale;
+            fill: $white;
+            --pd-checkbox-background-color: white;
+
+            &.pd-table-sortable {
+                &:hover {
+                    background-color: $cyan-9;
+                }
+
+                &:active {
+                    background-color: $cyan-6;
+                }
+            }
+        }
+
+        &.pd-table-light {
+            border-bottom: 0.125em solid $blue-whale;
+            border-top: 0.125em solid $blue-whale;
+            color: $pd-black;
+
+            &.pd-table-sortable {
+                &:hover {
+                    background-color: $gray-3;
+                }
+
+                &:active {
+                    background-color: $cyan-6;
+                }
+            }
+        }
+
+        &.pd-table-gray {
+            background-color: $gray-3;
+            border-bottom: 0.125em solid $gray-3;
+            border-top: 0.125em solid $gray-3;
+            color: $pd-black;
+
+            &.pd-table-sortable {
+                &:hover {
+                    background-color: $bon-jour;
+                }
+
+                &:active {
+                    background-color: $cyan-6;
+                }
+            }
+        }
+    }
+}
+
+.pd-table-body {
+    .pd-table-row {
+        display: flex;
+        flex-direction: row;
+        height: 3em;
+        overflow: hidden;
+
+        &:last-child {
+            .pd-table-cell {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.pd-table-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.625em;
+    border-bottom: 0.125em solid $gray-3;
+    background: transparent;
+
+    .pd-table-action-btn {
+        @include invisibleButton;
+        margin: 0 0.25rem;
+        fill: setcolor(primary, enabled);
+        cursor: pointer;
+
+        &:hover {
+            fill: setcolor(primary, hover);
+        }
+
+        &:hover:active {
+            fill: setcolor(primary, pressed);
+        }
+    }
+
+    span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+.pd-table-cell-bold {
+    font-weight: 700;
+}
+
+.pd-table-filter {
+    @include invisibleButton;
+}
+
+.pd-table-filter-clear {
+    display: flex;
+    fill: $white;
+    align-items: center;
+    padding: 0.1rem;
+    margin-left: 0.2rem;
+    background-color: $cyan-9;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+
+    &:focus-visible {
+        background-color: $focus;
+        fill: $blue-whale;
+    }
+
+    .pd-table-filter-clear-button {
+        @include invisibleButton;
+        display: flex;
+        align-items: center;
+        color: $white;
+    }
+}
+
+.pd-table-filter-hidden {
+    display: none;
+}
+
+.pd-table-footer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+
+    pd-pagination {
+        margin-right: 1rem;
+    }
+
+    &.pd-table-paging-location-left {
+        justify-content: flex-start;
+    }
+
+    &.pd-table-paging-location-right {
+        justify-content: flex-end;
+    }
+}

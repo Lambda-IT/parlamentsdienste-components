@@ -1,3 +1,4 @@
+import { SortDropdownItem } from '@parlamentsdienste-components/core';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 import { addEventlisteners } from '../utils/eventListeners';
 
@@ -8,7 +9,7 @@ const defaultArgs = {
         { id: '3', label: 'Änderungsdatum', value: 'changedAt', sort: 'asc' },
         { id: '4', label: 'Erstellungsdatum', value: 'createdAt', sort: 'asc' },
         { id: '6', label: 'Author/in', value: 'author', sort: 'asc' },
-    ],
+    ] as SortDropdownItem[],
     disabled: false,
     reverseItem: true,
     reverseItemData: { label: 'Sort. Umkehren', selected: false },

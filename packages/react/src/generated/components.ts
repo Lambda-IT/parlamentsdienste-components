@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTextareaCustomEvent, type SortDropdownItem } from "@parlamentsdienste-components/core";
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTextareaCustomEvent, type SelectedEvent, type SortDropdownItem } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
@@ -43,6 +43,8 @@ import { PdSidebar as PdSidebarElement, defineCustomElement as definePdSidebar }
 import { PdSkeleton as PdSkeletonElement, defineCustomElement as definePdSkeleton } from "@parlamentsdienste-components/core/components/pd-skeleton.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
 import { PdSort as PdSortElement, defineCustomElement as definePdSort } from "@parlamentsdienste-components/core/components/pd-sort.js";
+import { PdTableFilter as PdTableFilterElement, defineCustomElement as definePdTableFilter } from "@parlamentsdienste-components/core/components/pd-table-filter.js";
+import { PdTable as PdTableElement, defineCustomElement as definePdTable } from "@parlamentsdienste-components/core/components/pd-table.js";
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
@@ -533,6 +535,54 @@ export const PdSort: StencilReactComponent<PdSortElement, PdSortEvents> = /*@__P
         onPdReverse: 'pd-reverse'
     } as PdSortEvents,
     defineCustomElement: definePdSort
+});
+
+export type PdTableEvents = {
+    onPdSelected: EventName<PdTableCustomEvent<SelectedEvent>>,
+    onPdEdit: EventName<CustomEvent<any>>,
+    onPdView: EventName<CustomEvent<any>>,
+    onPdDelete: EventName<CustomEvent<any>>,
+    onPdClickedRow: EventName<CustomEvent<any>>,
+    onPdSort: EventName<CustomEvent<{}>>,
+    onPdFilterChange: EventName<CustomEvent<{}>>,
+    onPdFilterInput: EventName<CustomEvent<string>>
+};
+
+export const PdTable: StencilReactComponent<PdTableElement, PdTableEvents> = /*@__PURE__*/ createComponent<PdTableElement, PdTableEvents>({
+    tagName: 'pd-table',
+    elementClass: PdTableElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onPdSelected: 'pd-selected',
+        onPdEdit: 'pd-edit',
+        onPdView: 'pd-view',
+        onPdDelete: 'pd-delete',
+        onPdClickedRow: 'pd-clicked-row',
+        onPdSort: 'pd-sort',
+        onPdFilterChange: 'pd-filter-change',
+        onPdFilterInput: 'pd-filter-input'
+    } as PdTableEvents,
+    defineCustomElement: definePdTable
+});
+
+export type PdTableFilterEvents = {
+    onPdConfirm: EventName<CustomEvent<string>>,
+    onPdClose: EventName<CustomEvent<void>>,
+    onPdFilterInput: EventName<CustomEvent<string>>
+};
+
+export const PdTableFilter: StencilReactComponent<PdTableFilterElement, PdTableFilterEvents> = /*@__PURE__*/ createComponent<PdTableFilterElement, PdTableFilterEvents>({
+    tagName: 'pd-table-filter',
+    elementClass: PdTableFilterElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onPdConfirm: 'pd-confirm',
+        onPdClose: 'pd-close',
+        onPdFilterInput: 'pd-filter-input'
+    } as PdTableFilterEvents,
+    defineCustomElement: definePdTableFilter
 });
 
 export type PdTextareaEvents = {

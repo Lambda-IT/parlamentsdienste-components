@@ -47,6 +47,8 @@ export interface PdTableRow {
     _id: number;
 }
 
+export type PdTableSelectedStatus = 'all' | 'none' | 'indeterminate';
+
 export interface PdButtonCell {
     width: number;
     minWidth: number;

@@ -45,6 +45,8 @@ import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste-c
 import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste-components/core/components/pd-skeleton.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdSort } from '@parlamentsdienste-components/core/components/pd-sort.js';
+import { defineCustomElement as definePdTable } from '@parlamentsdienste-components/core/components/pd-table.js';
+import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste-components/core/components/pd-table-filter.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
@@ -1315,6 +1317,118 @@ export declare interface PdSort extends Components.PdSort {
   'pd-change': EventEmitter<CustomEvent<IPdSortSortDropdownItem>>;
 
   'pd-reverse': EventEmitter<CustomEvent<IPdSortSortDropdownItem>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdTable,
+  inputs: ['columns', 'disabled', 'externalRowHandling', 'headerHeight', 'headerStyle', 'iconConfig', 'menuLabel', 'minWidth', 'pageSizes', 'paging', 'pagingLocation', 'readonly', 'rowHeight', 'rows', 'selectable', 'selectedStatus', 'showActionColumn', 'showStatus'],
+  methods: ['unselectAll', 'refresh']
+})
+@Component({
+  selector: 'pd-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['columns', 'disabled', 'externalRowHandling', 'headerHeight', 'headerStyle', 'iconConfig', 'menuLabel', 'minWidth', 'pageSizes', 'paging', 'pagingLocation', 'readonly', 'rowHeight', 'rows', 'selectable', 'selectedStatus', 'showActionColumn', 'showStatus'],
+  outputs: ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete', 'pd-clicked-row', 'pd-sort', 'pd-filter-change', 'pd-filter-input'],
+  
+  standalone: true,
+  
+})
+export class PdTable {
+  protected nativeEl: HTMLPdTableElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-selected', 'pd-edit', 'pd-view', 'pd-delete', 'pd-clicked-row', 'pd-sort', 'pd-filter-change', 'pd-filter-input']);
+  }
+
+  
+}
+
+
+import type { SelectedEvent as IPdTableSelectedEvent } from '@parlamentsdienste-components/core';
+
+export declare interface PdTable extends Components.PdTable {
+  /**
+   * Triggers when one or all rows get selected
+   */
+  'pd-selected': EventEmitter<CustomEvent<IPdTableSelectedEvent>>;
+  /**
+   * Triggers an event when the edit icon was clicked
+   */
+  'pd-edit': EventEmitter<CustomEvent<any>>;
+  /**
+   * Triggers an event when the view icon was clicked
+   */
+  'pd-view': EventEmitter<CustomEvent<any>>;
+  /**
+   * Triggers an event when the delete icon was clicked
+   */
+  'pd-delete': EventEmitter<CustomEvent<any>>;
+  /**
+   * Triggers an event when row was clicked
+   */
+  'pd-clicked-row': EventEmitter<CustomEvent<any>>;
+  /**
+   * Gets emitted when a column gets sorted
+   */
+  'pd-sort': EventEmitter<CustomEvent<{}>>;
+  /**
+   * Gets emitted when the filter changes
+   */
+  'pd-filter-change': EventEmitter<CustomEvent<{}>>;
+  /**
+   * Gets emitted when the filter input changes
+   */
+  'pd-filter-input': EventEmitter<CustomEvent<string>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdTableFilter,
+  inputs: ['value'],
+  methods: ['reset', 'setValue', 'focusInput']
+})
+@Component({
+  selector: 'pd-table-filter',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['value'],
+  outputs: ['pd-confirm', 'pd-close', 'pd-filter-input'],
+  
+  standalone: true,
+  
+})
+export class PdTableFilter {
+  protected nativeEl: HTMLPdTableFilterElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-confirm', 'pd-close', 'pd-filter-input']);
+  }
+
+  
+}
+
+
+export declare interface PdTableFilter extends Components.PdTableFilter {
+  /**
+   * Emitted when filter is confirmed.
+   */
+  'pd-confirm': EventEmitter<CustomEvent<string>>;
+  /**
+   * Emitted when filter is confirmed.
+   */
+  'pd-close': EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when filter input value changed.
+   */
+  'pd-filter-input': EventEmitter<CustomEvent<string>>;
 }
 
 

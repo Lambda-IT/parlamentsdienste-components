@@ -83,6 +83,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [pd-list-item-expandable](../pd-list-item-expandable)
+ - [pd-table](../pd-table)
 
 ### Depends on
 
@@ -93,6 +94,7 @@ Type: `Promise<void>`
 graph TD;
   pd-menu --> pd-icon
   pd-list-item-expandable --> pd-menu
+  pd-table --> pd-menu
   style pd-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableSelectedStatus, PdTableStyle, SelectedEvent, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdColumn, PdIconLocation, PdModalConfig, PdPagingLocation, PdPlacement, PdStatus, PdTableIconConfiguration, PdTableRow, PdTableSelectedStatus, PdTableStyle, SelectedEvent, SortDropdownItem, SortRevertItem, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -964,6 +964,88 @@ export namespace Components {
          */
         "setSelectedIndex": (index: number) => Promise<void>;
     }
+    interface PdTable {
+        /**
+          * A definition for each column of the table
+         */
+        "columns": PdColumn[];
+        /**
+          * Sets selectable rows to disabled
+         */
+        "disabled": boolean;
+        /**
+          * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+         */
+        "externalRowHandling": boolean;
+        /**
+          * Height of header cells
+         */
+        "headerHeight": string;
+        /**
+          * The table style
+         */
+        "headerStyle": PdTableStyle;
+        /**
+          * The configuration for the last column, the icon column
+         */
+        "iconConfig"?: PdTableIconConfiguration;
+        "menuLabel": string;
+        /**
+          * The minimum width the table should take
+         */
+        "minWidth": string;
+        /**
+          * Available Page sizes for paging
+         */
+        "pageSizes": DropdownItem[];
+        /**
+          * Enables paging
+         */
+        "paging": boolean;
+        /**
+          * Location of paging element
+         */
+        "pagingLocation": PdPagingLocation;
+        /**
+          * Sets selectable rows to readonly
+         */
+        "readonly": boolean;
+        "refresh": () => Promise<void>;
+        /**
+          * Height of rows
+         */
+        "rowHeight": string;
+        /**
+          * The data definition for each row to display
+         */
+        "rows": PdTableRow[];
+        /**
+          * Make rows selectable with a checkbox
+         */
+        "selectable": boolean;
+        /**
+          * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+         */
+        "selectedStatus": PdTableSelectedStatus;
+        /**
+          * Show button column and context menu
+         */
+        "showActionColumn": boolean;
+        /**
+          * Allow to render a status icon per row
+         */
+        "showStatus": boolean;
+        "unselectAll": () => Promise<void>;
+    }
+    interface PdTableFilter {
+        "focusInput": () => Promise<void>;
+        "reset": () => Promise<void>;
+        "setValue": (value: string) => Promise<void>;
+        /**
+          * filter value
+         */
+        "value": string;
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1114,6 +1196,14 @@ export interface PdSliderCustomEvent<T> extends CustomEvent<T> {
 export interface PdSortCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdSortElement;
+}
+export interface PdTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTableElement;
+}
+export interface PdTableFilterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdTableFilterElement;
 }
 export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1551,6 +1641,49 @@ declare global {
         prototype: HTMLPdSortElement;
         new (): HTMLPdSortElement;
     };
+    interface HTMLPdTableElementEventMap {
+        "pd-selected": SelectedEvent;
+        "pd-edit": any;
+        "pd-view": any;
+        "pd-delete": any;
+        "pd-clicked-row": any;
+        "pd-sort": {};
+        "pd-filter-change": {};
+        "pd-filter-input": string;
+    }
+    interface HTMLPdTableElement extends Components.PdTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdTableElementEventMap>(type: K, listener: (this: HTMLPdTableElement, ev: PdTableCustomEvent<HTMLPdTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdTableElementEventMap>(type: K, listener: (this: HTMLPdTableElement, ev: PdTableCustomEvent<HTMLPdTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdTableElement: {
+        prototype: HTMLPdTableElement;
+        new (): HTMLPdTableElement;
+    };
+    interface HTMLPdTableFilterElementEventMap {
+        "pd-confirm": string;
+        "pd-close": void;
+        "pd-filter-input": string;
+    }
+    interface HTMLPdTableFilterElement extends Components.PdTableFilter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdTableFilterElementEventMap>(type: K, listener: (this: HTMLPdTableFilterElement, ev: PdTableFilterCustomEvent<HTMLPdTableFilterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdTableFilterElementEventMap>(type: K, listener: (this: HTMLPdTableFilterElement, ev: PdTableFilterCustomEvent<HTMLPdTableFilterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdTableFilterElement: {
+        prototype: HTMLPdTableFilterElement;
+        new (): HTMLPdTableFilterElement;
+    };
     interface HTMLPdTextareaElementEventMap {
         "pd-change": any;
         "pd-input": KeyboardEvent;
@@ -1607,6 +1740,8 @@ declare global {
         "pd-skeleton": HTMLPdSkeletonElement;
         "pd-slider": HTMLPdSliderElement;
         "pd-sort": HTMLPdSortElement;
+        "pd-table": HTMLPdTableElement;
+        "pd-table-filter": HTMLPdTableFilterElement;
         "pd-textarea": HTMLPdTextareaElement;
     }
 }
@@ -2632,6 +2767,127 @@ declare namespace LocalJSX {
          */
         "reverseItemData"?: SortRevertItem;
     }
+    interface PdTable {
+        /**
+          * A definition for each column of the table
+         */
+        "columns"?: PdColumn[];
+        /**
+          * Sets selectable rows to disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+         */
+        "externalRowHandling"?: boolean;
+        /**
+          * Height of header cells
+         */
+        "headerHeight"?: string;
+        /**
+          * The table style
+         */
+        "headerStyle"?: PdTableStyle;
+        /**
+          * The configuration for the last column, the icon column
+         */
+        "iconConfig"?: PdTableIconConfiguration;
+        "menuLabel"?: string;
+        /**
+          * The minimum width the table should take
+         */
+        "minWidth"?: string;
+        /**
+          * Triggers an event when row was clicked
+         */
+        "onPd-clicked-row"?: (event: PdTableCustomEvent<any>) => void;
+        /**
+          * Triggers an event when the delete icon was clicked
+         */
+        "onPd-delete"?: (event: PdTableCustomEvent<any>) => void;
+        /**
+          * Triggers an event when the edit icon was clicked
+         */
+        "onPd-edit"?: (event: PdTableCustomEvent<any>) => void;
+        /**
+          * Gets emitted when the filter changes
+         */
+        "onPd-filter-change"?: (event: PdTableCustomEvent<{}>) => void;
+        /**
+          * Gets emitted when the filter input changes
+         */
+        "onPd-filter-input"?: (event: PdTableCustomEvent<string>) => void;
+        /**
+          * Triggers when one or all rows get selected
+         */
+        "onPd-selected"?: (event: PdTableCustomEvent<SelectedEvent>) => void;
+        /**
+          * Gets emitted when a column gets sorted
+         */
+        "onPd-sort"?: (event: PdTableCustomEvent<{}>) => void;
+        /**
+          * Triggers an event when the view icon was clicked
+         */
+        "onPd-view"?: (event: PdTableCustomEvent<any>) => void;
+        /**
+          * Available Page sizes for paging
+         */
+        "pageSizes"?: DropdownItem[];
+        /**
+          * Enables paging
+         */
+        "paging"?: boolean;
+        /**
+          * Location of paging element
+         */
+        "pagingLocation"?: PdPagingLocation;
+        /**
+          * Sets selectable rows to readonly
+         */
+        "readonly"?: boolean;
+        /**
+          * Height of rows
+         */
+        "rowHeight"?: string;
+        /**
+          * The data definition for each row to display
+         */
+        "rows"?: PdTableRow[];
+        /**
+          * Make rows selectable with a checkbox
+         */
+        "selectable"?: boolean;
+        /**
+          * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+         */
+        "selectedStatus"?: PdTableSelectedStatus;
+        /**
+          * Show button column and context menu
+         */
+        "showActionColumn"?: boolean;
+        /**
+          * Allow to render a status icon per row
+         */
+        "showStatus"?: boolean;
+    }
+    interface PdTableFilter {
+        /**
+          * Emitted when filter is confirmed.
+         */
+        "onPd-close"?: (event: PdTableFilterCustomEvent<void>) => void;
+        /**
+          * Emitted when filter is confirmed.
+         */
+        "onPd-confirm"?: (event: PdTableFilterCustomEvent<string>) => void;
+        /**
+          * Emitted when filter input value changed.
+         */
+        "onPd-filter-input"?: (event: PdTableFilterCustomEvent<string>) => void;
+        /**
+          * filter value
+         */
+        "value"?: string;
+    }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -2762,6 +3018,8 @@ declare namespace LocalJSX {
         "pd-skeleton": PdSkeleton;
         "pd-slider": PdSlider;
         "pd-sort": PdSort;
+        "pd-table": PdTable;
+        "pd-table-filter": PdTableFilter;
         "pd-textarea": PdTextarea;
     }
 }
@@ -2804,6 +3062,8 @@ declare module "@stencil/core" {
             "pd-skeleton": LocalJSX.PdSkeleton & JSXBase.HTMLAttributes<HTMLPdSkeletonElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
             "pd-sort": LocalJSX.PdSort & JSXBase.HTMLAttributes<HTMLPdSortElement>;
+            "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
+            "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
         }
     }

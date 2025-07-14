@@ -40,6 +40,8 @@ import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste-c
 import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste-components/core/components/pd-skeleton.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdSort } from '@parlamentsdienste-components/core/components/pd-sort.js';
+import { defineCustomElement as definePdTable } from '@parlamentsdienste-components/core/components/pd-table.js';
+import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste-components/core/components/pd-table-filter.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 
 
@@ -493,6 +495,57 @@ export const PdSort: StencilVueComponent<JSX.PdSort> = /*@__PURE__*/ defineConta
 ], [
   'pd-change',
   'pd-reverse'
+]);
+
+
+export const PdTable: StencilVueComponent<JSX.PdTable> = /*@__PURE__*/ defineContainer<JSX.PdTable>('pd-table', definePdTable, [
+  'headerHeight',
+  'rowHeight',
+  'minWidth',
+  'headerStyle',
+  'columns',
+  'rows',
+  'iconConfig',
+  'showActionColumn',
+  'selectable',
+  'disabled',
+  'readonly',
+  'showStatus',
+  'menuLabel',
+  'paging',
+  'pageSizes',
+  'pagingLocation',
+  'externalRowHandling',
+  'selectedStatus',
+  'pd-selected',
+  'pd-edit',
+  'pd-view',
+  'pd-delete',
+  'pd-clicked-row',
+  'pd-sort',
+  'pd-filter-change',
+  'pd-filter-input'
+], [
+  'pd-selected',
+  'pd-edit',
+  'pd-view',
+  'pd-delete',
+  'pd-clicked-row',
+  'pd-sort',
+  'pd-filter-change',
+  'pd-filter-input'
+]);
+
+
+export const PdTableFilter: StencilVueComponent<JSX.PdTableFilter> = /*@__PURE__*/ defineContainer<JSX.PdTableFilter>('pd-table-filter', definePdTableFilter, [
+  'value',
+  'pd-confirm',
+  'pd-close',
+  'pd-filter-input'
+], [
+  'pd-confirm',
+  'pd-close',
+  'pd-filter-input'
 ]);
 
 
