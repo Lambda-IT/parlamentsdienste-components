@@ -31,6 +31,7 @@ export const DIRECTIVES = [
   d.PdProgressBar,
   d.PdRadio,
   d.PdRadioGroup,
+  d.PdSearch,
   d.PdSlider,
   d.PdTextarea
 ];

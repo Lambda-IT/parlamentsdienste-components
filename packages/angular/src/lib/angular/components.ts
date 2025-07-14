@@ -39,6 +39,7 @@ import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste-c
 import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste-components/core/components/pd-progress-bar.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
+import { defineCustomElement as definePdSearch } from '@parlamentsdienste-components/core/components/pd-search.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 @ProxyCmp({
@@ -1082,6 +1083,61 @@ export class PdRadioGroup extends ValueAccessor{
 export declare interface PdRadioGroup extends Components.PdRadioGroup {
 
   'pd-change': EventEmitter<CustomEvent<string>>;
+}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdSearch,
+  inputs: ['disabled', 'highlight', 'label', 'placeholder', 'results', 'size', 'value'],
+  methods: ['setFocus']
+})
+@Component({
+  selector: 'pd-search',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'highlight', 'label', 'placeholder', 'results', 'size', 'value'],
+  outputs: ['pd-input', 'pd-change', 'pd-search', 'pd-blur', 'pd-focus'],
+  
+  standalone: true,
+  
+})
+export class PdSearch {
+  protected nativeEl: HTMLPdSearchElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-search', 'pd-blur', 'pd-focus']);
+  }
+
+  
+}
+
+
+import type { InputChangeEventDetail as IPdSearchInputChangeEventDetail } from '@parlamentsdienste-components/core';
+
+export declare interface PdSearch extends Components.PdSearch {
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  'pd-input': EventEmitter<CustomEvent<IPdSearchInputChangeEventDetail>>;
+  /**
+   * Emitted when the value has changed.
+   */
+  'pd-change': EventEmitter<CustomEvent<IPdSearchInputChangeEventDetail>>;
+  /**
+   * Emitted when a search request occurred.
+   */
+  'pd-search': EventEmitter<CustomEvent<IPdSearchInputChangeEventDetail>>;
+  /**
+   * Emitted when the input loses focus.
+   */
+  'pd-blur': EventEmitter<CustomEvent<void>>;
+  /**
+   * Emitted when the input has focus.
+   */
+  'pd-focus': EventEmitter<CustomEvent<void>>;
 }
 
 

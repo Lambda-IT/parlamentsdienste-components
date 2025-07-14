@@ -85,6 +85,7 @@ If you want to host assets sepearate to the library, a custom base path can be s
  - [pd-modal](../pd-modal)
  - [pd-navbar](../pd-navbar)
  - [pd-panel-header](../pd-panel-header)
+ - [pd-search](../pd-search)
 
 ### Graph
 ```mermaid
@@ -101,6 +102,7 @@ graph TD;
   pd-modal --> pd-icon
   pd-navbar --> pd-icon
   pd-panel-header --> pd-icon
+  pd-search --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

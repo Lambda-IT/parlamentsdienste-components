@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSliderCustomEvent, type PdTextareaCustomEvent } from "@parlamentsdienste-components/core";
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdTextareaCustomEvent } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
@@ -37,6 +37,7 @@ import { PdPanel as PdPanelElement, defineCustomElement as definePdPanel } from 
 import { PdProgressBar as PdProgressBarElement, defineCustomElement as definePdProgressBar } from "@parlamentsdienste-components/core/components/pd-progress-bar.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
+import { PdSearch as PdSearchElement, defineCustomElement as definePdSearch } from "@parlamentsdienste-components/core/components/pd-search.js";
 import { PdSlider as PdSliderElement, defineCustomElement as definePdSlider } from "@parlamentsdienste-components/core/components/pd-slider.js";
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
@@ -438,6 +439,29 @@ export const PdRadioGroup: StencilReactComponent<PdRadioGroupElement, PdRadioGro
     react: React,
     events: { onPdChange: 'pd-change' } as PdRadioGroupEvents,
     defineCustomElement: definePdRadioGroup
+});
+
+export type PdSearchEvents = {
+    onPdInput: EventName<PdSearchCustomEvent<InputChangeEventDetail>>,
+    onPdChange: EventName<PdSearchCustomEvent<InputChangeEventDetail>>,
+    onPdSearch: EventName<PdSearchCustomEvent<InputChangeEventDetail>>,
+    onPdBlur: EventName<CustomEvent<void>>,
+    onPdFocus: EventName<CustomEvent<void>>
+};
+
+export const PdSearch: StencilReactComponent<PdSearchElement, PdSearchEvents> = /*@__PURE__*/ createComponent<PdSearchElement, PdSearchEvents>({
+    tagName: 'pd-search',
+    elementClass: PdSearchElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onPdInput: 'pd-input',
+        onPdChange: 'pd-change',
+        onPdSearch: 'pd-search',
+        onPdBlur: 'pd-blur',
+        onPdFocus: 'pd-focus'
+    } as PdSearchEvents,
+    defineCustomElement: definePdSearch
 });
 
 export type PdSliderEvents = {

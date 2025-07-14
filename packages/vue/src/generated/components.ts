@@ -34,6 +34,7 @@ import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste-c
 import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste-components/core/components/pd-progress-bar.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
+import { defineCustomElement as definePdSearch } from '@parlamentsdienste-components/core/components/pd-search.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 
@@ -411,6 +412,28 @@ export const PdRadioGroup: StencilVueComponent<JSX.PdRadioGroup, JSX.PdRadioGrou
   'pd-change'
 ],
 'value', 'pd-change');
+
+
+export const PdSearch: StencilVueComponent<JSX.PdSearch> = /*@__PURE__*/ defineContainer<JSX.PdSearch>('pd-search', definePdSearch, [
+  'results',
+  'disabled',
+  'placeholder',
+  'value',
+  'label',
+  'highlight',
+  'size',
+  'pd-input',
+  'pd-change',
+  'pd-search',
+  'pd-blur',
+  'pd-focus'
+], [
+  'pd-input',
+  'pd-change',
+  'pd-search',
+  'pd-blur',
+  'pd-focus'
+]);
 
 
 export const PdSlider: StencilVueComponent<JSX.PdSlider, JSX.PdSlider["value"]> = /*@__PURE__*/ defineContainer<JSX.PdSlider, JSX.PdSlider["value"]>('pd-slider', definePdSlider, [

@@ -6,4 +6,4 @@ Added for the valueaccessor. can be an dropdown item object (but only needs an i
 
 ## BREAKING: changed output event for `pd-input` and `pd-textarea` and `pd-slider`
 
-`pd-input`, `pd-textarea` and `pd-slider` are now emitting the value directly with the `pd-change` event. Before the value was wrapped in an object with a `value` property. This is now consistent with the other components like `pd-dropdown`, `pd-combobox`, etc.This was necessary to make the angular valueaccessor work correctly.
+`pd-input`, `pd-textarea`, `pd-search` and `pd-slider` are now emitting the value directly with the `pd-change` (also `pd-input`, `pd-search` in `pd-search`) event. Before the value was wrapped in an object with a `value` property. This is now consistent with the other components like `pd-dropdown`, `pd-combobox`, etc.This was necessary to make the angular valueaccessor work correctly.
