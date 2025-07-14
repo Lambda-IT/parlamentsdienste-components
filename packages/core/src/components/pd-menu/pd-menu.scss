@@ -1,0 +1,133 @@
+@include resetControlFonts;
+
+:host {
+    display: block;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+/**
+ * @prop --pd-menu-max-width: Max width for
+ * @prop --pd-menu-vertical-padding: Possibility to change inner height of the dropdown
+ * @prop --pd-menu-horizontal-padding: Possibility to change inner width of the dropdown
+ * @prop --pd-menu-label-color: Possibility to change color of label and icon
+ * @prop --pd-menu-label-weight: Possibility to change the label font-weight
+ */
+.pd-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    .pd-menu-label {
+        color: var(--pd-menu-label-color, setcolor(primary, enabled));
+        font-weight: var(--pd-menu-label-weight, 400);
+        size: 1rem;
+        line-height: 2.375rem;
+        padding-right: var(--pd-menu-horizontal-padding, 0.4em);
+    }
+
+    .pd-menu-button {
+        @include invisibleButton;
+        padding-top: var(--pd-menu-vertical-padding, 0.2em);
+        padding-bottom: var(--pd-menu-vertical-padding, 0.2em);
+        padding-left: 0;
+        padding-right: var(--pd-menu-horizontal-padding, 0.4em);
+        display: flex;
+        align-items: center;
+
+        &.pd-menu-large {
+            --pd-menu-vertical-padding: 0.5em;
+        }
+
+        &.pd-menu-small {
+            --pd-menu-vertical-padding: 0;
+        }
+
+        &:hover {
+            .pd-menu-label {
+                color: setcolor(primary, hover);
+            }
+
+            .pd-menu-icon {
+                fill: setcolor(primary, hover);
+            }
+        }
+
+        &:focus-visible {
+            background-color: $focus;
+            .pd-menu-label {
+                color: $blue-whale;
+            }
+            .pd-menu-icon {
+                fill: $blue-whale;
+            }
+        }
+
+        &:active {
+            .pd-menu-label {
+                color: setcolor(primary, pressed);
+            }
+
+            .pd-menu-icon {
+                fill: setcolor(primary, pressed);
+            }
+        }
+
+        .pd-menu-icon {
+            fill: var(--pd-menu-label-color, setcolor(primary, enabled));
+        }
+    }
+
+    &.pd-menu-inverted {
+        .pd-menu-button {
+            .pd-menu-label {
+                color: $white;
+            }
+            .pd-menu-icon {
+                fill: $white;
+            }
+
+            &:hover {
+                .pd-menu-label {
+                    color: setcolor(dark, hover);
+                }
+                .pd-menu-icon {
+                    fill: setcolor(dark, hover);
+                }
+            }
+            &:active {
+                .pd-menu-label {
+                    color: setcolor(dark, pressed);
+                }
+                .pd-menu-icon {
+                    fill: setcolor(dark, pressed);
+                }
+            }
+
+            &:focus-visible {
+                background-color: $focus;
+                .pd-menu-label {
+                    color: $blue-whale;
+                }
+                .pd-menu-icon {
+                    fill: $blue-whale;
+                }
+            }
+        }
+    }
+}
+
+.pd-menu-content {
+    background-color: $white;
+    z-index: 99;
+    min-width: 250px;
+    width: max-content;
+    max-width: var(--pd-menu-max-width, undefined);
+    overflow: auto;
+    box-shadow: 0px 0px 8px $gray-6;
+}

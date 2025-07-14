@@ -27,6 +27,8 @@ import { defineCustomElement as definePdLabel } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdList } from '@parlamentsdienste-components/core/components/pd-list.js';
 import { defineCustomElement as definePdListItem } from '@parlamentsdienste-components/core/components/pd-list-item.js';
 import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdienste-components/core/components/pd-list-item-expandable.js';
+import { defineCustomElement as definePdMenu } from '@parlamentsdienste-components/core/components/pd-menu.js';
+import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-components/core/components/pd-menu-item.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
@@ -678,6 +680,67 @@ export declare interface PdListItemExpandable extends Components.PdListItemExpan
    */
   'pd-content-click': EventEmitter<CustomEvent<void>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdMenu,
+  inputs: ['invertColor', 'items', 'label', 'placement', 'size'],
+  methods: ['open', 'close']
+})
+@Component({
+  selector: 'pd-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['invertColor', 'items', 'label', 'placement', 'size'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdMenu {
+  protected nativeEl: HTMLPdMenuElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdMenu extends Components.PdMenu {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdMenuItem,
+  inputs: ['disabled', 'text']
+})
+@Component({
+  selector: 'pd-menu-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'text'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdMenuItem {
+  protected nativeEl: HTMLPdMenuItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdMenuItem extends Components.PdMenuItem {}
 
 
 @ProxyCmp({

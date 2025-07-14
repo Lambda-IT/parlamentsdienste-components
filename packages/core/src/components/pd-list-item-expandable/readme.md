@@ -83,13 +83,16 @@
 ### Depends on
 
 - [pd-icon](../pd-icon)
+- [pd-menu](../pd-menu)
 - [pd-checkbox](../pd-checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
   pd-list-item-expandable --> pd-icon
+  pd-list-item-expandable --> pd-menu
   pd-list-item-expandable --> pd-checkbox
+  pd-menu --> pd-icon
   style pd-list-item-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

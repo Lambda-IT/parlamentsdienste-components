@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdStatus, TextFieldTypes, TextWrap } from "./types";
+import { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, TextFieldTypes, TextWrap } from "./types";
 import { DateOption, Options } from "flatpickr/dist/types/options";
-export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdStatus, TextFieldTypes, TextWrap } from "./types";
+export { ChipType, ComboboxItem, DropdownItem, InputChangeEventDetail, PdButtonColor, PdButtonSize, PdButtonType, PdIconLocation, PdModalConfig, PdPlacement, PdStatus, TextFieldTypes, TextWrap } from "./types";
 export { DateOption, Options } from "flatpickr/dist/types/options";
 export namespace Components {
     interface PdAlert {
@@ -648,6 +648,46 @@ export namespace Components {
          */
         "status": PdStatus;
     }
+    interface PdMenu {
+        /**
+          * Close menu
+         */
+        "close": () => Promise<void>;
+        /**
+          * Switch dark colors to bright font color
+         */
+        "invertColor": boolean;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items": any[];
+        /**
+          * Label nearby to the dot menu icon
+         */
+        "label": string;
+        /**
+          * Open menu
+         */
+        "open": () => Promise<void>;
+        /**
+          * Prefered placement of menu dropdown
+         */
+        "placement": PdPlacement;
+        /**
+          * Menu size
+         */
+        "size": PdButtonSize;
+    }
+    interface PdMenuItem {
+        /**
+          * Sets item to disbaled state
+         */
+        "disabled": boolean;
+        /**
+          * Text for this item
+         */
+        "text": string;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -1107,6 +1147,18 @@ declare global {
         prototype: HTMLPdListItemExpandableElement;
         new (): HTMLPdListItemExpandableElement;
     };
+    interface HTMLPdMenuElement extends Components.PdMenu, HTMLStencilElement {
+    }
+    var HTMLPdMenuElement: {
+        prototype: HTMLPdMenuElement;
+        new (): HTMLPdMenuElement;
+    };
+    interface HTMLPdMenuItemElement extends Components.PdMenuItem, HTMLStencilElement {
+    }
+    var HTMLPdMenuItemElement: {
+        prototype: HTMLPdMenuItemElement;
+        new (): HTMLPdMenuItemElement;
+    };
     interface HTMLPdModalElementEventMap {
         "pd-closed": void;
         "pd-backdrop": void;
@@ -1205,6 +1257,8 @@ declare global {
         "pd-list": HTMLPdListElement;
         "pd-list-item": HTMLPdListItemElement;
         "pd-list-item-expandable": HTMLPdListItemExpandableElement;
+        "pd-menu": HTMLPdMenuElement;
+        "pd-menu-item": HTMLPdMenuItemElement;
         "pd-modal": HTMLPdModalElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
@@ -1887,6 +1941,38 @@ declare namespace LocalJSX {
          */
         "status"?: PdStatus;
     }
+    interface PdMenu {
+        /**
+          * Switch dark colors to bright font color
+         */
+        "invertColor"?: boolean;
+        /**
+          * Items to display and select in dropdown
+         */
+        "items"?: any[];
+        /**
+          * Label nearby to the dot menu icon
+         */
+        "label"?: string;
+        /**
+          * Prefered placement of menu dropdown
+         */
+        "placement"?: PdPlacement;
+        /**
+          * Menu size
+         */
+        "size"?: PdButtonSize;
+    }
+    interface PdMenuItem {
+        /**
+          * Sets item to disbaled state
+         */
+        "disabled"?: boolean;
+        /**
+          * Text for this item
+         */
+        "text"?: string;
+    }
     interface PdModal {
         /**
           * Configuration properties
@@ -2116,6 +2202,8 @@ declare namespace LocalJSX {
         "pd-list": PdList;
         "pd-list-item": PdListItem;
         "pd-list-item-expandable": PdListItemExpandable;
+        "pd-menu": PdMenu;
+        "pd-menu-item": PdMenuItem;
         "pd-modal": PdModal;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
@@ -2144,6 +2232,8 @@ declare module "@stencil/core" {
             "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
             "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
             "pd-list-item-expandable": LocalJSX.PdListItemExpandable & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;
+            "pd-menu": LocalJSX.PdMenu & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
+            "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;

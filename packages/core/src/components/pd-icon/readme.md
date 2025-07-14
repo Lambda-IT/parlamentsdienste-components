@@ -81,6 +81,7 @@ If you want to host assets sepearate to the library, a custom base path can be s
  - [pd-dropdown-item](../pd-dropdown-item)
  - [pd-list-item](../pd-list-item)
  - [pd-list-item-expandable](../pd-list-item-expandable)
+ - [pd-menu](../pd-menu)
  - [pd-modal](../pd-modal)
 
 ### Graph
@@ -94,6 +95,7 @@ graph TD;
   pd-dropdown-item --> pd-icon
   pd-list-item --> pd-icon
   pd-list-item-expandable --> pd-icon
+  pd-menu --> pd-icon
   pd-modal --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -1,7 +1,8 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { c as collapse, e as expand } from './p-DJsl1pvl.js';
-import { d as defineCustomElement$3 } from './p-CiZ4Y22d.js';
-import { d as defineCustomElement$2 } from './p-CGp-npjr.js';
+import { d as defineCustomElement$4 } from './p-CiZ4Y22d.js';
+import { d as defineCustomElement$3 } from './p-CGp-npjr.js';
+import { d as defineCustomElement$2 } from './p-DQDubugP.js';
 
 const pdListItemExpandableCss = ":host{background-color:var(--pd-list-item-background, transparent);border-radius:0.25rem;overflow:hidden;--negative-icon-margin:-0.5rem 0.25rem -0.5rem -0.5rem}:host .pd-list-item-expandable-header{display:grid;grid-template-columns:auto auto 1fr auto;transition:background-color 0.15s ease-in-out;align-items:center;padding:var(--pd-list-item-padding, 0.75rem 1rem);}:host .pd-list-item-expandable-header.pd-list-item-expandable-selected{background-color:#e3fafc}:host .pd-list-item-expandable-header.pd-content-hover{background-color:var(--pd-list-item-content-hover, #dee2e6);cursor:pointer}:host *,:host ::before,:host ::after{box-sizing:border-box;appearance:none;outline:none}:host .pd-list-item-expandable-checkbox{--pd-checkbox-text-padding-left:0;display:flex;align-items:center;height:100%;padding-right:0.875rem}:host .pd-list-item-expandable-status{height:100%;display:flex;justify-content:center;align-items:center;margin:var(--negative-icon-margin)}:host .pd-list-item-expandable-content{flex:1 1 auto;grid-column:3/span 1}:host .pd-list-item-expandable-additional-content-wrapper{transition:height 0.3s ease-in-out;height:auto}:host .pd-list-item-expandable-additional-content-wrapper .pd-list-item-expandable-additional-content{padding:var(--pd-list-item-padding, 0.75rem 1rem)}:host .pd-list-item-expandable-actions{display:flex;margin:var(--negative-icon-margin);margin-left:1rem}:host .pd-list-item-expandable-actions .pd-list-item-expandable-expand,:host .pd-list-item-expandable-actions .pd-list-item-expandable-edit{background-color:transparent;border:none;fill:#0b7285;cursor:pointer;padding:0 0 0 0.125rem;margin:0}:host .pd-list-item-expandable-actions .pd-list-item-expandable-expand:hover,:host .pd-list-item-expandable-actions .pd-list-item-expandable-edit:hover{fill:#15aabf}:host .pd-list-item-expandable-actions .pd-list-item-expandable-expand:focus-visible,:host .pd-list-item-expandable-actions .pd-list-item-expandable-edit:focus-visible{background-color:#ffec99;color:#033840;fill:#033840}:host .pd-list-item-expandable-actions .pd-list-item-expandable-expand:active,:host .pd-list-item-expandable-actions .pd-list-item-expandable-edit:active{fill:#66d9e8}:host .pd-list-item-expandable-actions .pd-list-item-expandable-menu{--pd-menu-horizontal-padding:0}";
 
@@ -148,7 +149,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["pd-list-item-expandable", "pd-checkbox", "pd-icon"];
+    const components = ["pd-list-item-expandable", "pd-checkbox", "pd-icon", "pd-menu"];
     components.forEach(tagName => { switch (tagName) {
         case "pd-list-item-expandable":
             if (!customElements.get(tagName)) {
@@ -157,10 +158,15 @@ function defineCustomElement$1() {
             break;
         case "pd-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$3();
+                defineCustomElement$4();
             }
             break;
         case "pd-icon":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "pd-menu":
             if (!customElements.get(tagName)) {
                 defineCustomElement$2();
             }

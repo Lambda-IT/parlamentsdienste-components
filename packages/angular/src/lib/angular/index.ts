@@ -19,6 +19,8 @@ export const DIRECTIVES = [
   d.PdList,
   d.PdListItem,
   d.PdListItemExpandable,
+  d.PdMenu,
+  d.PdMenuItem,
   d.PdModal,
   d.PdRadio,
   d.PdRadioGroup,

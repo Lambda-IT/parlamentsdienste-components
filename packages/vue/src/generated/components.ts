@@ -22,6 +22,8 @@ import { defineCustomElement as definePdLabel } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdList } from '@parlamentsdienste-components/core/components/pd-list.js';
 import { defineCustomElement as definePdListItem } from '@parlamentsdienste-components/core/components/pd-list-item.js';
 import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdienste-components/core/components/pd-list-item-expandable.js';
+import { defineCustomElement as definePdMenu } from '@parlamentsdienste-components/core/components/pd-menu.js';
+import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-components/core/components/pd-menu-item.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
@@ -301,6 +303,21 @@ export const PdListItemExpandable: StencilVueComponent<JSX.PdListItemExpandable>
   'pd-selected',
   'pd-collapsed',
   'pd-content-click'
+]);
+
+
+export const PdMenu: StencilVueComponent<JSX.PdMenu> = /*@__PURE__*/ defineContainer<JSX.PdMenu>('pd-menu', definePdMenu, [
+  'label',
+  'invertColor',
+  'size',
+  'items',
+  'placement'
+]);
+
+
+export const PdMenuItem: StencilVueComponent<JSX.PdMenuItem> = /*@__PURE__*/ defineContainer<JSX.PdMenuItem>('pd-menu-item', definePdMenuItem, [
+  'text',
+  'disabled'
 ]);
 
 

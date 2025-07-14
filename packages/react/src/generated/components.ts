@@ -25,6 +25,8 @@ import { PdLabel as PdLabelElement, defineCustomElement as definePdLabel } from 
 import { PdListItemExpandable as PdListItemExpandableElement, defineCustomElement as definePdListItemExpandable } from "@parlamentsdienste-components/core/components/pd-list-item-expandable.js";
 import { PdListItem as PdListItemElement, defineCustomElement as definePdListItem } from "@parlamentsdienste-components/core/components/pd-list-item.js";
 import { PdList as PdListElement, defineCustomElement as definePdList } from "@parlamentsdienste-components/core/components/pd-list.js";
+import { PdMenuItem as PdMenuItemElement, defineCustomElement as definePdMenuItem } from "@parlamentsdienste-components/core/components/pd-menu-item.js";
+import { PdMenu as PdMenuElement, defineCustomElement as definePdMenu } from "@parlamentsdienste-components/core/components/pd-menu.js";
 import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste-components/core/components/pd-modal.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
@@ -289,6 +291,28 @@ export const PdListItemExpandable: StencilReactComponent<PdListItemExpandableEle
         onPdContentClick: 'pd-content-click'
     } as PdListItemExpandableEvents,
     defineCustomElement: definePdListItemExpandable
+});
+
+export type PdMenuEvents = NonNullable<unknown>;
+
+export const PdMenu: StencilReactComponent<PdMenuElement, PdMenuEvents> = /*@__PURE__*/ createComponent<PdMenuElement, PdMenuEvents>({
+    tagName: 'pd-menu',
+    elementClass: PdMenuElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdMenuEvents,
+    defineCustomElement: definePdMenu
+});
+
+export type PdMenuItemEvents = NonNullable<unknown>;
+
+export const PdMenuItem: StencilReactComponent<PdMenuItemElement, PdMenuItemEvents> = /*@__PURE__*/ createComponent<PdMenuItemElement, PdMenuItemEvents>({
+    tagName: 'pd-menu-item',
+    elementClass: PdMenuItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdMenuItemEvents,
+    defineCustomElement: definePdMenuItem
 });
 
 export type PdModalEvents = {
