@@ -28,6 +28,7 @@ import { PdList as PdListElement, defineCustomElement as definePdList } from "@p
 import { PdMenuItem as PdMenuItemElement, defineCustomElement as definePdMenuItem } from "@parlamentsdienste-components/core/components/pd-menu-item.js";
 import { PdMenu as PdMenuElement, defineCustomElement as definePdMenu } from "@parlamentsdienste-components/core/components/pd-menu.js";
 import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste-components/core/components/pd-modal.js";
+import { PdNavbarItem as PdNavbarItemElement, defineCustomElement as definePdNavbarItem } from "@parlamentsdienste-components/core/components/pd-navbar-item.js";
 import { PdNavbar as PdNavbarElement, defineCustomElement as definePdNavbar } from "@parlamentsdienste-components/core/components/pd-navbar.js";
 import { PdRadioGroup as PdRadioGroupElement, defineCustomElement as definePdRadioGroup } from "@parlamentsdienste-components/core/components/pd-radio-group.js";
 import { PdRadio as PdRadioElement, defineCustomElement as definePdRadio } from "@parlamentsdienste-components/core/components/pd-radio.js";
@@ -344,6 +345,17 @@ export const PdNavbar: StencilReactComponent<PdNavbarElement, PdNavbarEvents> = 
     react: React,
     events: { onPdMenu: 'pd-menu' } as PdNavbarEvents,
     defineCustomElement: definePdNavbar
+});
+
+export type PdNavbarItemEvents = NonNullable<unknown>;
+
+export const PdNavbarItem: StencilReactComponent<PdNavbarItemElement, PdNavbarItemEvents> = /*@__PURE__*/ createComponent<PdNavbarItemElement, PdNavbarItemEvents>({
+    tagName: 'pd-navbar-item',
+    elementClass: PdNavbarItemElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdNavbarItemEvents,
+    defineCustomElement: definePdNavbarItem
 });
 
 export type PdRadioEvents = NonNullable<unknown>;

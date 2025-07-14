@@ -26,6 +26,7 @@ import { defineCustomElement as definePdMenu } from '@parlamentsdienste-componen
 import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-components/core/components/pd-menu-item.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdNavbar } from '@parlamentsdienste-components/core/components/pd-navbar.js';
+import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste-components/core/components/pd-navbar-item.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -339,6 +340,14 @@ export const PdNavbar: StencilVueComponent<JSX.PdNavbar> = /*@__PURE__*/ defineC
   'pd-menu'
 ], [
   'pd-menu'
+]);
+
+
+export const PdNavbarItem: StencilVueComponent<JSX.PdNavbarItem> = /*@__PURE__*/ defineContainer<JSX.PdNavbarItem>('pd-navbar-item', definePdNavbarItem, [
+  'text',
+  'enabled',
+  'href',
+  'target'
 ]);
 
 

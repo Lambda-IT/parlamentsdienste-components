@@ -697,6 +697,18 @@ export namespace Components {
     interface PdNavbar {
         "mobileBreakpoint": number;
     }
+    interface PdNavbarItem {
+        "enabled": boolean;
+        /**
+          * Set href to create a link button
+         */
+        "href": string;
+        /**
+          * Sets target for link button e.g. '_blank'
+         */
+        "target": string;
+        "text": string;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -1202,6 +1214,12 @@ declare global {
         prototype: HTMLPdNavbarElement;
         new (): HTMLPdNavbarElement;
     };
+    interface HTMLPdNavbarItemElement extends Components.PdNavbarItem, HTMLStencilElement {
+    }
+    var HTMLPdNavbarItemElement: {
+        prototype: HTMLPdNavbarItemElement;
+        new (): HTMLPdNavbarItemElement;
+    };
     interface HTMLPdRadioElement extends Components.PdRadio, HTMLStencilElement {
     }
     var HTMLPdRadioElement: {
@@ -1285,6 +1303,7 @@ declare global {
         "pd-menu-item": HTMLPdMenuItemElement;
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
+        "pd-navbar-item": HTMLPdNavbarItemElement;
         "pd-radio": HTMLPdRadioElement;
         "pd-radio-group": HTMLPdRadioGroupElement;
         "pd-slider": HTMLPdSliderElement;
@@ -2020,6 +2039,18 @@ declare namespace LocalJSX {
         "mobileBreakpoint"?: number;
         "onPd-menu"?: (event: PdNavbarCustomEvent<void>) => void;
     }
+    interface PdNavbarItem {
+        "enabled"?: boolean;
+        /**
+          * Set href to create a link button
+         */
+        "href"?: string;
+        /**
+          * Sets target for link button e.g. '_blank'
+         */
+        "target"?: string;
+        "text"?: string;
+    }
     interface PdRadio {
         /**
           * Checks radio
@@ -2235,6 +2266,7 @@ declare namespace LocalJSX {
         "pd-menu-item": PdMenuItem;
         "pd-modal": PdModal;
         "pd-navbar": PdNavbar;
+        "pd-navbar-item": PdNavbarItem;
         "pd-radio": PdRadio;
         "pd-radio-group": PdRadioGroup;
         "pd-slider": PdSlider;
@@ -2266,6 +2298,7 @@ declare module "@stencil/core" {
             "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
             "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
+            "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
             "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
             "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
             "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;

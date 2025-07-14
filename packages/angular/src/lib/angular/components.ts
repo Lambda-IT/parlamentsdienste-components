@@ -31,6 +31,7 @@ import { defineCustomElement as definePdMenu } from '@parlamentsdienste-componen
 import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste-components/core/components/pd-menu-item.js';
 import { defineCustomElement as definePdModal } from '@parlamentsdienste-components/core/components/pd-modal.js';
 import { defineCustomElement as definePdNavbar } from '@parlamentsdienste-components/core/components/pd-navbar.js';
+import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste-components/core/components/pd-navbar-item.js';
 import { defineCustomElement as definePdRadio } from '@parlamentsdienste-components/core/components/pd-radio.js';
 import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste-components/core/components/pd-radio-group.js';
 import { defineCustomElement as definePdSlider } from '@parlamentsdienste-components/core/components/pd-slider.js';
@@ -820,6 +821,36 @@ export declare interface PdNavbar extends Components.PdNavbar {
 
   'pd-menu': EventEmitter<CustomEvent<void>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdNavbarItem,
+  inputs: ['enabled', 'href', 'target', 'text']
+})
+@Component({
+  selector: 'pd-navbar-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['enabled', 'href', 'target', 'text'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdNavbarItem {
+  protected nativeEl: HTMLPdNavbarItemElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdNavbarItem extends Components.PdNavbarItem {}
 
 
 @ProxyCmp({
