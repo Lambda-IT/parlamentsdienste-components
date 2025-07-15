@@ -51,6 +51,7 @@ import { defineCustomElement as definePdTabs } from '@parlamentsdienste-componen
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 import { defineCustomElement as definePdTimeline } from '@parlamentsdienste-components/core/components/pd-timeline.js';
 import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste-components/core/components/pd-timeline-date.js';
+import { defineCustomElement as definePdToast } from '@parlamentsdienste-components/core/components/pd-toast.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
   inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon']
@@ -1583,5 +1584,41 @@ export class PdTimelineDate {
 
 
 export declare interface PdTimelineDate extends Components.PdTimelineDate {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdToast,
+  inputs: ['header', 'info', 'size']
+})
+@Component({
+  selector: 'pd-toast',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['header', 'info', 'size'],
+  outputs: ['pd-closed'],
+  
+  standalone: true,
+  
+})
+export class PdToast {
+  protected nativeEl: HTMLPdToastElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+    proxyOutputs(this, this.nativeEl, ['pd-closed']);
+  }
+
+  
+}
+
+
+export declare interface PdToast extends Components.PdToast {
+  /**
+   * When closing the toast using the close icon
+   */
+  'pd-closed': EventEmitter<CustomEvent<any>>;
+}
 
 

@@ -49,6 +49,7 @@ import { PdTabs as PdTabsElement, defineCustomElement as definePdTabs } from "@p
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
 import { PdTimelineDate as PdTimelineDateElement, defineCustomElement as definePdTimelineDate } from "@parlamentsdienste-components/core/components/pd-timeline-date.js";
 import { PdTimeline as PdTimelineElement, defineCustomElement as definePdTimeline } from "@parlamentsdienste-components/core/components/pd-timeline.js";
+import { PdToast as PdToastElement, defineCustomElement as definePdToast } from "@parlamentsdienste-components/core/components/pd-toast.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
@@ -640,4 +641,15 @@ export const PdTimelineDate: StencilReactComponent<PdTimelineDateElement, PdTime
     react: React,
     events: {} as PdTimelineDateEvents,
     defineCustomElement: definePdTimelineDate
+});
+
+export type PdToastEvents = { onPdClosed: EventName<CustomEvent<any>> };
+
+export const PdToast: StencilReactComponent<PdToastElement, PdToastEvents> = /*@__PURE__*/ createComponent<PdToastElement, PdToastEvents>({
+    tagName: 'pd-toast',
+    elementClass: PdToastElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onPdClosed: 'pd-closed' } as PdToastEvents,
+    defineCustomElement: definePdToast
 });

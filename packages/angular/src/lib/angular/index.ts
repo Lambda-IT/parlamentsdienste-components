@@ -42,5 +42,6 @@ export const DIRECTIVES = [
   d.PdTabs,
   d.PdTextarea,
   d.PdTimeline,
-  d.PdTimelineDate
+  d.PdTimelineDate,
+  d.PdToast
 ];

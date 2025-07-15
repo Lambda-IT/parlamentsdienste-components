@@ -90,6 +90,7 @@ If you want to host assets sepearate to the library, a custom base path can be s
  - [pd-sort](../pd-sort)
  - [pd-table](../pd-table)
  - [pd-table-filter](../pd-table-filter)
+ - [pd-toast](../pd-toast)
 
 ### Graph
 ```mermaid
@@ -111,6 +112,7 @@ graph TD;
   pd-sort --> pd-icon
   pd-table --> pd-icon
   pd-table-filter --> pd-icon
+  pd-toast --> pd-icon
   style pd-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

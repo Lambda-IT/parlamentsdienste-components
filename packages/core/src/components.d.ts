@@ -1166,6 +1166,20 @@ export namespace Components {
          */
         "target": string;
     }
+    interface PdToast {
+        /**
+          * The Toast title
+         */
+        "header": string;
+        /**
+          * Additional toast information (e.g. 11 minutes ago)
+         */
+        "info": string;
+        /**
+          * Changes max-with of the toast
+         */
+        "size": 'small' | 'large';
+    }
 }
 export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1250,6 +1264,10 @@ export interface PdTabsCustomEvent<T> extends CustomEvent<T> {
 export interface PdTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdTextareaElement;
+}
+export interface PdToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdToastElement;
 }
 declare global {
     interface HTMLPdAlertElementEventMap {
@@ -1775,6 +1793,23 @@ declare global {
         prototype: HTMLPdTimelineDateElement;
         new (): HTMLPdTimelineDateElement;
     };
+    interface HTMLPdToastElementEventMap {
+        "pd-closed": any;
+    }
+    interface HTMLPdToastElement extends Components.PdToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdToastElementEventMap>(type: K, listener: (this: HTMLPdToastElement, ev: PdToastCustomEvent<HTMLPdToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdToastElementEventMap>(type: K, listener: (this: HTMLPdToastElement, ev: PdToastCustomEvent<HTMLPdToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdToastElement: {
+        prototype: HTMLPdToastElement;
+        new (): HTMLPdToastElement;
+    };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-animation": HTMLPdAnimationElement;
@@ -1817,6 +1852,7 @@ declare global {
         "pd-textarea": HTMLPdTextareaElement;
         "pd-timeline": HTMLPdTimelineElement;
         "pd-timeline-date": HTMLPdTimelineDateElement;
+        "pd-toast": HTMLPdToastElement;
     }
 }
 declare namespace LocalJSX {
@@ -3098,6 +3134,24 @@ declare namespace LocalJSX {
          */
         "target"?: string;
     }
+    interface PdToast {
+        /**
+          * The Toast title
+         */
+        "header"?: string;
+        /**
+          * Additional toast information (e.g. 11 minutes ago)
+         */
+        "info"?: string;
+        /**
+          * When closing the toast using the close icon
+         */
+        "onPd-closed"?: (event: PdToastCustomEvent<any>) => void;
+        /**
+          * Changes max-with of the toast
+         */
+        "size"?: 'small' | 'large';
+    }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-animation": PdAnimation;
@@ -3140,6 +3194,7 @@ declare namespace LocalJSX {
         "pd-textarea": PdTextarea;
         "pd-timeline": PdTimeline;
         "pd-timeline-date": PdTimelineDate;
+        "pd-toast": PdToast;
     }
 }
 export { LocalJSX as JSX };
@@ -3187,6 +3242,7 @@ declare module "@stencil/core" {
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
             "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
             "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
+            "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }
     }
 }

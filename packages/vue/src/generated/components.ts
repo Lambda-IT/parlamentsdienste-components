@@ -46,6 +46,7 @@ import { defineCustomElement as definePdTabs } from '@parlamentsdienste-componen
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
 import { defineCustomElement as definePdTimeline } from '@parlamentsdienste-components/core/components/pd-timeline.js';
 import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste-components/core/components/pd-timeline-date.js';
+import { defineCustomElement as definePdToast } from '@parlamentsdienste-components/core/components/pd-toast.js';
 
 
 export const PdAlert: StencilVueComponent<JSX.PdAlert> = /*@__PURE__*/ defineContainer<JSX.PdAlert>('pd-alert', definePdAlert, [
@@ -605,5 +606,15 @@ export const PdTimelineDate: StencilVueComponent<JSX.PdTimelineDate> = /*@__PURE
   'href',
   'target',
   'date'
+]);
+
+
+export const PdToast: StencilVueComponent<JSX.PdToast> = /*@__PURE__*/ defineContainer<JSX.PdToast>('pd-toast', definePdToast, [
+  'header',
+  'info',
+  'size',
+  'pd-closed'
+], [
+  'pd-closed'
 ]);
 
