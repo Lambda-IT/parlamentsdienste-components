@@ -1138,6 +1138,34 @@ export namespace Components {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface PdTimeline {
+        /**
+          * Adds rounded bottom of the date line to indicate that the timeline ends here
+         */
+        "end": boolean;
+        /**
+          * Adds rounded top of the date line to indicate that the timeline starts here
+         */
+        "start": boolean;
+    }
+    interface PdTimelineDate {
+        /**
+          * Timeline date
+         */
+        "date": string;
+        /**
+          * Header text
+         */
+        "header": string;
+        /**
+          * Header link location
+         */
+        "href": string;
+        /**
+          * Header link target
+         */
+        "target": string;
+    }
 }
 export interface PdAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1735,6 +1763,18 @@ declare global {
         prototype: HTMLPdTextareaElement;
         new (): HTMLPdTextareaElement;
     };
+    interface HTMLPdTimelineElement extends Components.PdTimeline, HTMLStencilElement {
+    }
+    var HTMLPdTimelineElement: {
+        prototype: HTMLPdTimelineElement;
+        new (): HTMLPdTimelineElement;
+    };
+    interface HTMLPdTimelineDateElement extends Components.PdTimelineDate, HTMLStencilElement {
+    }
+    var HTMLPdTimelineDateElement: {
+        prototype: HTMLPdTimelineDateElement;
+        new (): HTMLPdTimelineDateElement;
+    };
     interface HTMLElementTagNameMap {
         "pd-alert": HTMLPdAlertElement;
         "pd-animation": HTMLPdAnimationElement;
@@ -1775,6 +1815,8 @@ declare global {
         "pd-table-filter": HTMLPdTableFilterElement;
         "pd-tabs": HTMLPdTabsElement;
         "pd-textarea": HTMLPdTextareaElement;
+        "pd-timeline": HTMLPdTimelineElement;
+        "pd-timeline-date": HTMLPdTimelineDateElement;
     }
 }
 declare namespace LocalJSX {
@@ -3028,6 +3070,34 @@ declare namespace LocalJSX {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface PdTimeline {
+        /**
+          * Adds rounded bottom of the date line to indicate that the timeline ends here
+         */
+        "end"?: boolean;
+        /**
+          * Adds rounded top of the date line to indicate that the timeline starts here
+         */
+        "start"?: boolean;
+    }
+    interface PdTimelineDate {
+        /**
+          * Timeline date
+         */
+        "date"?: string;
+        /**
+          * Header text
+         */
+        "header"?: string;
+        /**
+          * Header link location
+         */
+        "href"?: string;
+        /**
+          * Header link target
+         */
+        "target"?: string;
+    }
     interface IntrinsicElements {
         "pd-alert": PdAlert;
         "pd-animation": PdAnimation;
@@ -3068,6 +3138,8 @@ declare namespace LocalJSX {
         "pd-table-filter": PdTableFilter;
         "pd-tabs": PdTabs;
         "pd-textarea": PdTextarea;
+        "pd-timeline": PdTimeline;
+        "pd-timeline-date": PdTimelineDate;
     }
 }
 export { LocalJSX as JSX };
@@ -3113,6 +3185,8 @@ declare module "@stencil/core" {
             "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
             "pd-tabs": LocalJSX.PdTabs & JSXBase.HTMLAttributes<HTMLPdTabsElement>;
             "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
+            "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
+            "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
         }
     }
 }

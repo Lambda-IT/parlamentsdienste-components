@@ -44,6 +44,8 @@ import { defineCustomElement as definePdTable } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste-components/core/components/pd-table-filter.js';
 import { defineCustomElement as definePdTabs } from '@parlamentsdienste-components/core/components/pd-tabs.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
+import { defineCustomElement as definePdTimeline } from '@parlamentsdienste-components/core/components/pd-timeline.js';
+import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste-components/core/components/pd-timeline-date.js';
 
 
 export const PdAlert: StencilVueComponent<JSX.PdAlert> = /*@__PURE__*/ defineContainer<JSX.PdAlert>('pd-alert', definePdAlert, [
@@ -590,4 +592,18 @@ export const PdTextarea: StencilVueComponent<JSX.PdTextarea, JSX.PdTextarea["val
   'pd-focus'
 ],
 'value', 'pd-change');
+
+
+export const PdTimeline: StencilVueComponent<JSX.PdTimeline> = /*@__PURE__*/ defineContainer<JSX.PdTimeline>('pd-timeline', definePdTimeline, [
+  'start',
+  'end'
+]);
+
+
+export const PdTimelineDate: StencilVueComponent<JSX.PdTimelineDate> = /*@__PURE__*/ defineContainer<JSX.PdTimelineDate>('pd-timeline-date', definePdTimelineDate, [
+  'header',
+  'href',
+  'target',
+  'date'
+]);
 

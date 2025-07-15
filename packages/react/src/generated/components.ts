@@ -47,6 +47,8 @@ import { PdTableFilter as PdTableFilterElement, defineCustomElement as definePdT
 import { PdTable as PdTableElement, defineCustomElement as definePdTable } from "@parlamentsdienste-components/core/components/pd-table.js";
 import { PdTabs as PdTabsElement, defineCustomElement as definePdTabs } from "@parlamentsdienste-components/core/components/pd-tabs.js";
 import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextarea } from "@parlamentsdienste-components/core/components/pd-textarea.js";
+import { PdTimelineDate as PdTimelineDateElement, defineCustomElement as definePdTimelineDate } from "@parlamentsdienste-components/core/components/pd-timeline-date.js";
+import { PdTimeline as PdTimelineElement, defineCustomElement as definePdTimeline } from "@parlamentsdienste-components/core/components/pd-timeline.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
@@ -616,4 +618,26 @@ export const PdTextarea: StencilReactComponent<PdTextareaElement, PdTextareaEven
         onPdFocus: 'pd-focus'
     } as PdTextareaEvents,
     defineCustomElement: definePdTextarea
+});
+
+export type PdTimelineEvents = NonNullable<unknown>;
+
+export const PdTimeline: StencilReactComponent<PdTimelineElement, PdTimelineEvents> = /*@__PURE__*/ createComponent<PdTimelineElement, PdTimelineEvents>({
+    tagName: 'pd-timeline',
+    elementClass: PdTimelineElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdTimelineEvents,
+    defineCustomElement: definePdTimeline
+});
+
+export type PdTimelineDateEvents = NonNullable<unknown>;
+
+export const PdTimelineDate: StencilReactComponent<PdTimelineDateElement, PdTimelineDateEvents> = /*@__PURE__*/ createComponent<PdTimelineDateElement, PdTimelineDateEvents>({
+    tagName: 'pd-timeline-date',
+    elementClass: PdTimelineDateElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as PdTimelineDateEvents,
+    defineCustomElement: definePdTimelineDate
 });

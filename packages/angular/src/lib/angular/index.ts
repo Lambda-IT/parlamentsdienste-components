@@ -40,5 +40,7 @@ export const DIRECTIVES = [
   d.PdTable,
   d.PdTableFilter,
   d.PdTabs,
-  d.PdTextarea
+  d.PdTextarea,
+  d.PdTimeline,
+  d.PdTimelineDate
 ];

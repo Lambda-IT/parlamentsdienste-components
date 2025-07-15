@@ -49,6 +49,8 @@ import { defineCustomElement as definePdTable } from '@parlamentsdienste-compone
 import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste-components/core/components/pd-table-filter.js';
 import { defineCustomElement as definePdTabs } from '@parlamentsdienste-components/core/components/pd-tabs.js';
 import { defineCustomElement as definePdTextarea } from '@parlamentsdienste-components/core/components/pd-textarea.js';
+import { defineCustomElement as definePdTimeline } from '@parlamentsdienste-components/core/components/pd-timeline.js';
+import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste-components/core/components/pd-timeline-date.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
   inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon']
@@ -1521,5 +1523,65 @@ export declare interface PdTextarea extends Components.PdTextarea {
    */
   'pd-focus': EventEmitter<CustomEvent<FocusEvent>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdTimeline,
+  inputs: ['end', 'start']
+})
+@Component({
+  selector: 'pd-timeline',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['end', 'start'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdTimeline {
+  protected nativeEl: HTMLPdTimelineElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdTimeline extends Components.PdTimeline {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: definePdTimelineDate,
+  inputs: ['date', 'header', 'href', 'target']
+})
+@Component({
+  selector: 'pd-timeline-date',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['date', 'header', 'href', 'target'],
+  outputs: [],
+  
+  standalone: true,
+  
+})
+export class PdTimelineDate {
+  protected nativeEl: HTMLPdTimelineDateElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    
+    c.detach();
+    this.nativeEl = r.nativeElement;
+  }
+
+  
+}
+
+
+export declare interface PdTimelineDate extends Components.PdTimelineDate {}
 
 
