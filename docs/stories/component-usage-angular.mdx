@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Angular/Angular Component Usage" />
+
+# Component Usage Angular
+
+<br />
+<br />
+
+## Normal Property Binding
+
+```typescript
+import { PdInput } from '@parlamentsdienste-components/angular';
+
+@Component({
+    selector: 'demo-property-binding',
+    template: ` <pd-input [value]="inputValue" (pd-change)="onChange($event)" placeholder="Type something..." /> `,
+    standalone: true,
+    imports: [PdInput],
+})
+export class DemoPropertyBindingComponent {
+    inputValue = 'Hello World';
+    onChange(event: any) {
+        this.inputValue = event.target.value;
+    }
+}
+```
+
+## ngModel (Template-driven Forms)
+
+```typescript
+import { PdInput } from '@parlamentsdienste-components/angular';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+    selector: 'demo-ng-model',
+    template: ` <pd-input [(ngModel)]="twoWayBinding" placeholder="Type something..." /> `,
+    standalone: true,
+    imports: [PdInput, FormsModule],
+})
+export class DemoNgModelComponent {
+    twoWayBinding = 'two-way binding';
+}
+```
+
+## Reactive Forms
+
+```typescript
+import { PdInput } from '@parlamentsdienste-components/angular';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+@Component({
+    selector: 'demo-reactive-forms',
+    template: `
+        <form [formGroup]="testForm">
+            <pd-input formControlName="firstname" placeholder="Firstname (min 3 chars)" />
+            <pd-input formControlName="lastname" placeholder="Lastname" />
+            <button (click)="buttonClicked()">Show Value</button>
+        </form>
+    `,
+    standalone: true,
+    imports: [PdInput, ReactiveFormsModule],
+})
+export class DemoReactiveFormsComponent {
+    testForm = new FormGroup({
+        firstname: new FormControl('John', Validators.minLength(3)),
+        lastname: new FormControl('Doe'),
+    });
+
+    buttonClicked() {
+        console.log('Button clicked');
+        console.log(this.testForm.value);
+    }
+}
+```

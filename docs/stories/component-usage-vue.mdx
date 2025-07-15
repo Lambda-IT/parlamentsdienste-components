@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Vue/Vue Component Usage" />
+
+# Component Usage Vue
+
+<br />
+<br />
+
+## Property binding
+
+```typescript
+import { PdInput } from "@parlamentsdienste-components/vue";
+
+<template>
+    <PdInput :value="inputValue" @pd-change="handleChange" />
+</template>
+```
+
+## Two-way binding
+
+```typescript
+import { PdInput } from '@parlamentsdienste-components/vue';
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+    name: 'MyComponent',
+    components: { PdInput },
+    setup() {
+        const twoWayBinding = ref('two-way binding');
+        return { twoWayBinding };
+    },
+});
+<template>
+    <PdInput v-model="twoWayBinding" />
+</template>;
+```

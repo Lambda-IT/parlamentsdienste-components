@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/React/React Component Usage" />
+
+# Component Usage React
+
+<br />
+<br />
+
+## Controlled Input
+
+```jsx
+import { PdInput } from '@parlamentsdienste-components/react';
+import { useState } from 'react';
+
+function ControlledInputDemo() {
+    const [inputValue, setInputValue] = useState('Hello World');
+    return <PdInput value={inputValue} placeholder="Type something..." onInput={e => setInputValue(e.target.value)} />;
+}
+```
+
+## Uncontrolled Input with Ref
+
+```jsx
+import { PdInput } from '@parlamentsdienste-components/react';
+import { useRef } from 'react';
+
+function UncontrolledInputDemo() {
+    const inputRef = useRef(null);
+    return (
+        <>
+            <PdInput placeholder="Type something..." value="test" ref={inputRef} />
+            <button
+                onClick={() => {
+                    alert(inputRef.current?.value);
+                }}>
+                Show Value
+            </button>
+        </>
+    );
+}
+```
+
+## Combobox Example
+
+```jsx
+import { PdCombobox } from '@parlamentsdienste-components/react';
+
+const comboItems = [
+    { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
+    { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
+    { id: '3', label: 'Obligatorisches', value: 'a3' },
+    { id: '4', label: 'Anfrage', value: 'a4' },
+    { id: '5', label: 'Interpellation', value: 'a5' },
+    { id: '6', label: 'Motion', value: 'a6' },
+];
+
+function ComboboxDemo() {
+    return <PdCombobox label="test combo" items={comboItems} multiselect selected={comboItems.slice(1, 3)} />;
+}
+```
