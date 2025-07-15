@@ -12,3 +12,8 @@ Added for the valueaccessor. can be an dropdown item object (but only needs an i
 
 -   pd-table: type for `rows`property is `PdTableRow[]` but thats not really what the input needs to be.
     -   Maybe check the other properties as well.
+
+# Follow-up's?
+
+-   card component (only css) doenst look good
+-   inline styles aren't good documented
