@@ -153,6 +153,11 @@ export class Input implements ComponentInterface {
     @Prop() showCharacterCount: boolean = false;
 
     /**
+     * Shows a text/hint addition to the character count.
+     */
+    @Prop() characterCountText?: string;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
@@ -196,8 +201,24 @@ export class Input implements ComponentInterface {
         if (input) {
             this.value = input.value || '';
         }
-        console.log('pd-input', this.value);
+
         this.pdInput.emit(ev as KeyboardEvent);
+    };
+
+    private characterCountRef?: HTMLDivElement;
+
+    private onKeyDown = (event: KeyboardEvent) => {
+        if ((!this.showCharacterCount || !this.maxlength) && this.type === 'text') return;
+
+        const isCharacter = /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]$/u.test(event.key);
+        if (!isCharacter) return;
+
+        if ((this.value as string).length + 1 > this.maxlength && this.characterCountRef) {
+            this.characterCountRef.classList.remove('flash-red');
+            // Force reflow to restart animation
+            void this.characterCountRef.offsetWidth;
+            this.characterCountRef.classList.add('flash-red');
+        }
     };
 
     private onBlur = () => {
@@ -264,16 +285,15 @@ export class Input implements ComponentInterface {
                                 onInput={this.onInput}
                                 onBlur={this.onBlur}
                                 onFocus={this.onFocus}
-                                // onKeyUp={e => {
-                                //     console.log('pd-input keyup', e.key);
-                                // }}
+                                onKeyDown={this.onKeyDown}
                                 style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
                                 data-test="pd-input"
                                 tabIndex={this.readonly ? -1 : undefined}
                             />
                             {this.showCharacterCount && (
-                                <div class="character-count">
+                                <div class="character-count" ref={el => (this.characterCountRef = el as HTMLDivElement)}>
                                     <span class="pd-input-character-count">
+                                        {this.characterCountText && this.characterCountText + ': '}
                                         {value.length}
                                         {this.maxlength && `/${this.maxlength}`}
                                     </span>

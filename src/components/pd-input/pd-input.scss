@@ -94,16 +94,18 @@
 }
 
 .character-count.flash-red {
-    animation: flash-red 2s;
-    color: $input-error-border !important;
+    animation: flash-red 1.5s;
 }
 
 @keyframes flash-red {
     0% {
-        color: $input-error-border;
+        color: $gray-9;
     }
-    80% {
-        color: $input-error-border;
+    20% {
+        color: $red;
+    }
+    60% {
+        color: $red;
     }
     100% {
         color: $gray-9;

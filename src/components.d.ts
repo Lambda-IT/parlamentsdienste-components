@@ -492,6 +492,10 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
+          * Shows a text/hint addition to the character count.
+         */
+        "characterCountText"?: string;
+        /**
           * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
          */
         "clearInput": boolean;
@@ -2337,6 +2341,10 @@ declare namespace LocalJSX {
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus"?: boolean;
+        /**
+          * Shows a text/hint addition to the character count.
+         */
+        "characterCountText"?: string;
         /**
           * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
          */

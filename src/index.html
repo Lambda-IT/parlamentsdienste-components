@@ -281,16 +281,17 @@
                         <span>View-Only</span>
 
                         <span>Inputs</span>
-                        <pd-input label="Label" value="Text" placeholder="placeholder" id="pd-input-0"></pd-input>
+                        <pd-input
+                            label="Label"
+                            value="Text"
+                            placeholder="placeholder"
+                            show-character-count
+                            character-count-text="Max 10 characters"
+                            maxlength="10"
+                            id="pd-input-0"
+                        ></pd-input>
                         <pd-input label="Label" value="Text" disabled placeholder="placeholder"></pd-input>
                         <pd-input label="Label" value="Text" readonly placeholder="placeholder" id="pd-input-1"></pd-input>
-                        <pd-input label="Label" value="Text" placeholder="placeholder" error></pd-input>
-                        <pd-input view-only label="Label" value="Text" placeholder="placeholder" error></pd-input>
-
-                        <span>Inputs (character count)</span>
-                        <pd-input label="Label" value="Text" maxlength="10" show-character-count></pd-input>
-                        <pd-input label="Label" value="Text" disabled placeholder="placeholder"></pd-input>
-                        <pd-input label="Label" value="Text" readonly placeholder="placeholder"></pd-input>
                         <pd-input label="Label" value="Text" placeholder="placeholder" error></pd-input>
                         <pd-input view-only label="Label" value="Text" placeholder="placeholder" error></pd-input>
 
