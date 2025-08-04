@@ -560,6 +560,10 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
+          * Shows the character count below the input.
+         */
+        "showCharacterCount": boolean;
+        /**
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */
         "size"?: number;
@@ -2413,6 +2417,10 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Shows the character count below the input.
+         */
+        "showCharacterCount"?: boolean;
         /**
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */

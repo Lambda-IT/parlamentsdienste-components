@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, Fragment, h, Host, Method, Prop, Watch } from '@stencil/core';
 import { InputChangeEventDetail, TextFieldTypes } from '../../types';
 
 @Component({
@@ -148,6 +148,11 @@ export class Input implements ComponentInterface {
     @Prop() verticalAdjust: boolean = false;
 
     /**
+     * Shows the character count below the input.
+     */
+    @Prop() showCharacterCount: boolean = false;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
@@ -191,6 +196,7 @@ export class Input implements ComponentInterface {
         if (input) {
             this.value = input.value || '';
         }
+        console.log('pd-input', this.value);
         this.pdInput.emit(ev as KeyboardEvent);
     };
 
@@ -201,8 +207,6 @@ export class Input implements ComponentInterface {
     private onFocus = () => {
         this.pdFocus.emit();
     };
-
-    private onKeydown = () => {};
 
     private getValue(): string {
         return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
@@ -228,42 +232,54 @@ export class Input implements ComponentInterface {
                         ''
                     )}
                     {!this.viewOnly ? (
-                        <input
-                            class={{
-                                'pd-input': true,
-                                'pd-input-readonly': this.readonly,
-                                'pd-input-error': this.error,
-                            }}
-                            ref={input => (this.nativeInput = input)}
-                            disabled={this.disabled}
-                            accept={this.accept}
-                            autoCapitalize={this.autocapitalize}
-                            autoComplete={this.autocomplete}
-                            autoCorrect={this.autocorrect}
-                            autoFocus={this.autofocus}
-                            inputMode={this.inputmode}
-                            min={this.min}
-                            max={this.max}
-                            minLength={this.minlength}
-                            maxLength={this.maxlength}
-                            multiple={this.multiple}
-                            name={this.name}
-                            pattern={this.pattern}
-                            placeholder={this.placeholder || ''}
-                            readonly={this.readonly}
-                            required={this.required}
-                            step={this.step}
-                            size={this.size}
-                            type={this.type}
-                            value={value}
-                            onInput={this.onInput}
-                            onBlur={this.onBlur}
-                            onFocus={this.onFocus}
-                            onKeyDown={this.onKeydown}
-                            style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
-                            data-test="pd-input"
-                            tabIndex={this.readonly ? -1 : undefined}
-                        />
+                        <Fragment>
+                            <input
+                                class={{
+                                    'pd-input': true,
+                                    'pd-input-readonly': this.readonly,
+                                    'pd-input-error': this.error,
+                                }}
+                                ref={input => (this.nativeInput = input)}
+                                disabled={this.disabled}
+                                accept={this.accept}
+                                autoCapitalize={this.autocapitalize}
+                                autoComplete={this.autocomplete}
+                                autoCorrect={this.autocorrect}
+                                autoFocus={this.autofocus}
+                                inputMode={this.inputmode}
+                                min={this.min}
+                                max={this.max}
+                                minLength={this.minlength}
+                                maxLength={this.maxlength}
+                                multiple={this.multiple}
+                                name={this.name}
+                                pattern={this.pattern}
+                                placeholder={this.placeholder || ''}
+                                readonly={this.readonly}
+                                required={this.required}
+                                step={this.step}
+                                size={this.size}
+                                type={this.type}
+                                value={value}
+                                onInput={this.onInput}
+                                onBlur={this.onBlur}
+                                onFocus={this.onFocus}
+                                // onKeyUp={e => {
+                                //     console.log('pd-input keyup', e.key);
+                                // }}
+                                style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
+                                data-test="pd-input"
+                                tabIndex={this.readonly ? -1 : undefined}
+                            />
+                            {this.showCharacterCount && (
+                                <div class="character-count">
+                                    <span class="pd-input-character-count">
+                                        {value.length}
+                                        {this.maxlength && `/${this.maxlength}`}
+                                    </span>
+                                </div>
+                            )}
+                        </Fragment>
                     ) : (
                         <p class="pd-input-viewonly">{this.value}</p>
                     )}

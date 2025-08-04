@@ -83,3 +83,29 @@
     margin: 0;
     padding: 0.125rem 0 0.75rem 0;
 }
+
+.character-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: $gray-9;
+    margin-top: 0.15rem;
+    margin-right: 0.15rem;
+    transition: color 0.2s;
+}
+
+.character-count.flash-red {
+    animation: flash-red 2s;
+    color: $input-error-border !important;
+}
+
+@keyframes flash-red {
+    0% {
+        color: $input-error-border;
+    }
+    80% {
+        color: $input-error-border;
+    }
+    100% {
+        color: $gray-9;
+    }
+}
