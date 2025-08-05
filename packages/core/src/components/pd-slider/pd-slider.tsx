@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
-import { InputChangeEventDetail } from '../../types';
 
 @Component({
     tag: 'pd-slider',
@@ -57,12 +56,12 @@ export class Slider implements ComponentInterface {
     /**
      * Emitted when the value has changed.
      */
-    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<number>;
 
     /**
      * Emitted when slider has been released.
      */
-    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<InputChangeEventDetail>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<number>;
 
     private onInput = (ev: Event) => {
         const input = ev.target as HTMLInputElement | null;

@@ -1271,17 +1271,15 @@ export class PdSlider extends ValueAccessor{
 }
 
 
-import type { InputChangeEventDetail as IPdSliderInputChangeEventDetail } from '@parlamentsdienste-components/core';
-
 export declare interface PdSlider extends Components.PdSlider {
   /**
    * Emitted when the value has changed.
    */
-  'pd-input': EventEmitter<CustomEvent<IPdSliderInputChangeEventDetail>>;
+  'pd-input': EventEmitter<CustomEvent<number>>;
   /**
    * Emitted when slider has been released.
    */
-  'pd-change': EventEmitter<CustomEvent<IPdSliderInputChangeEventDetail>>;
+  'pd-change': EventEmitter<CustomEvent<number>>;
 }
 
 
@@ -1510,7 +1508,7 @@ export declare interface PdTextarea extends Components.PdTextarea {
   /**
    * Emitted when the input value has changed.
    */
-  'pd-change': EventEmitter<CustomEvent<any>>;
+  'pd-change': EventEmitter<CustomEvent<string>>;
   /**
    * Emitted when a keyboard input occurred.
    */

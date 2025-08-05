@@ -39,10 +39,10 @@
 
 ## Events
 
-| Event       | Description                            | Type                            |
-| ----------- | -------------------------------------- | ------------------------------- |
-| `pd-change` | Emitted when slider has been released. | `CustomEvent<number \| string>` |
-| `pd-input`  | Emitted when the value has changed.    | `CustomEvent<number \| string>` |
+| Event       | Description                            | Type                  |
+| ----------- | -------------------------------------- | --------------------- |
+| `pd-change` | Emitted when slider has been released. | `CustomEvent<number>` |
+| `pd-input`  | Emitted when the value has changed.    | `CustomEvent<number>` |
 
 
 ----------------------------------------------

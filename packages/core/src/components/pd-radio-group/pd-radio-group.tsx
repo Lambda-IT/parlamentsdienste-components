@@ -43,7 +43,6 @@ export class PdRadioGroup {
         this.radios.forEach((radio: HTMLPdRadioElement) => {
             if (radio.value === newValue) {
                 radio.checked = true;
-                this.pdChange.emit(radio.value);
             } else {
                 radio.checked = false;
             }
@@ -86,7 +85,6 @@ export class PdRadioGroup {
 
             if (this.value && radio.value === this.value) {
                 radio.checked = true;
-                this.pdChange.emit(radio.value);
             } else {
                 radio.checked = false;
             }

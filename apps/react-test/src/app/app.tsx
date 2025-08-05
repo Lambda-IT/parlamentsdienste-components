@@ -1,5 +1,14 @@
-import { PdAnimation, PdButton, PdCombobox, PdInput } from '@parlamentsdienste-components/react';
-import { useRef, useState } from 'react';
+import {
+    PdCheckbox,
+    PdDatepicker,
+    PdDropdown,
+    PdInput,
+    PdRadio,
+    PdRadioGroup,
+    PdSlider,
+    PdTextarea,
+} from '@parlamentsdienste-components/react';
+import { useState } from 'react';
 import './app.css';
 
 const comboItems = [
@@ -36,23 +45,64 @@ const comboItems = [
 ];
 
 export function App() {
-    const [inputValue, setInputValue] = useState('Hello World');
+    const [formState, setFormState] = useState({
+        inputValue: 'Hello World',
+        checkboxValue: true,
+        dateValue: '2023-01-01',
+        dropdownValue: comboItems[0],
+        radioGroupValue: '2',
+        sliderValue: 70,
+        textareaValue: 'This is a controlled textarea',
+    });
     const [selectedItems, setSelectedItems] = useState<typeof comboItems>(comboItems.slice(1, 3));
-    const inputRef = useRef<HTMLPdInputElement>(null);
+    // const inputRef = useRef<HTMLPdInputElement>(null);
 
-    console.log('App component rendered with inputValue:', inputValue);
+    console.log('App component rendered with formState:', formState);
 
     return (
         <div className="wrapper">
             <h1>Welcome to React Test!</h1>
-
             <h2>Controlled Input</h2>
             <PdInput
-                value={inputValue}
+                value={formState.inputValue}
                 placeholder="Type something..."
-                onInput={e => setInputValue((e.target as HTMLInputElement).value)}
+                onInput={e => setFormState({ ...formState, inputValue: (e.target as HTMLInputElement).value })}
             />
-            <h2>Uncontrolled Input</h2>
+            <PdCheckbox
+                checked={formState.checkboxValue}
+                onPdChecked={e => {
+                    setFormState({ ...formState, checkboxValue: e.detail });
+                }}></PdCheckbox>
+            //DATEPICKER TODO: fix pdchange output for 2way binding
+            <PdDatepicker
+                date={formState.dateValue}
+                onPdChange={e => {
+                    console.log(e);
+                    // setFormState({ ...formState, dateValue: e.detail });
+                }}></PdDatepicker>
+            <PdDropdown
+                items={comboItems}
+                selected={formState.dropdownValue}
+                onPdChange={e => {
+                    setFormState({ ...formState, dropdownValue: e.detail as (typeof comboItems)[0] });
+                }}></PdDropdown>
+            <PdRadioGroup
+                name="my-radio-group"
+                value={formState.radioGroupValue}
+                onPdChange={e => setFormState({ ...formState, radioGroupValue: e.detail })}>
+                <PdRadio value="1" label="value1"></PdRadio>
+                <PdRadio value="2" label="value2"></PdRadio>
+                <PdRadio value="3" label="value3"></PdRadio>
+            </PdRadioGroup>
+            <PdSlider
+                value={formState.sliderValue}
+                onPdChange={e => {
+                    setFormState({ ...formState, sliderValue: e.detail });
+                }}></PdSlider>
+            <PdTextarea
+                value={formState.textareaValue}
+                onPdChange={e => setFormState({ ...formState, textareaValue: e.detail })}></PdTextarea>
+            {/* <h2>Uncontrolled Input</h2>
             <PdInput placeholder="Type something..." value="test" ref={inputRef} />
             <PdButton onClick={() => alert(inputRef.current?.value)}>Show Value</PdButton>
             <hr />
@@ -65,7 +115,7 @@ export function App() {
                     console.log(e);
                     setSelectedItems(e.detail as typeof comboItems);
                 }}></PdCombobox>
-            <PdAnimation name="under-construction"></PdAnimation>
+            <PdAnimation name="under-construction"></PdAnimation> */}
         </div>
     );
 }

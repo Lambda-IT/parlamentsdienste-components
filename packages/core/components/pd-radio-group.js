@@ -38,7 +38,6 @@ const PdRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class PdRadioGroup exten
         this.radios.forEach((radio) => {
             if (radio.value === newValue) {
                 radio.checked = true;
-                this.pdChange.emit(radio.value);
             }
             else {
                 radio.checked = false;
@@ -72,7 +71,6 @@ const PdRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class PdRadioGroup exten
             radio.name = this.name;
             if (this.value && radio.value === this.value) {
                 radio.checked = true;
-                this.pdChange.emit(radio.value);
             }
             else {
                 radio.checked = false;
@@ -80,7 +78,7 @@ const PdRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class PdRadioGroup exten
         });
     }
     render() {
-        return (h(Host, { key: '8576372bdd2f3b31ebcfd088580c716dddc2018e' }, h("slot", { key: 'a8089ea2f635eeee06c9f8cfd393b96ab2cef240' })));
+        return (h(Host, { key: 'cc82071027256357706eb50d45d1f80636e4d701' }, h("slot", { key: '358b762c927b8cedc484b51a6644b4ee9d14796e' })));
     }
     static get watchers() { return {
         "value": ["valueChanged"],

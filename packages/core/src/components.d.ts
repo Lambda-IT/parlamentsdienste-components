@@ -1666,8 +1666,8 @@ declare global {
         new (): HTMLPdSkeletonElement;
     };
     interface HTMLPdSliderElementEventMap {
-        "pd-input": InputChangeEventDetail;
-        "pd-change": InputChangeEventDetail;
+        "pd-input": number;
+        "pd-change": number;
     }
     interface HTMLPdSliderElement extends Components.PdSlider, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPdSliderElementEventMap>(type: K, listener: (this: HTMLPdSliderElement, ev: PdSliderCustomEvent<HTMLPdSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1762,7 +1762,7 @@ declare global {
         new (): HTMLPdTabsElement;
     };
     interface HTMLPdTextareaElementEventMap {
-        "pd-change": any;
+        "pd-change": string;
         "pd-input": KeyboardEvent;
         "pd-blur": FocusEvent;
         "pd-focus": FocusEvent;
@@ -2819,11 +2819,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when slider has been released.
          */
-        "onPd-change"?: (event: PdSliderCustomEvent<InputChangeEventDetail>) => void;
+        "onPd-change"?: (event: PdSliderCustomEvent<number>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onPd-input"?: (event: PdSliderCustomEvent<InputChangeEventDetail>) => void;
+        "onPd-input"?: (event: PdSliderCustomEvent<number>) => void;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -3064,7 +3064,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onPd-change"?: (event: PdTextareaCustomEvent<any>) => void;
+        "onPd-change"?: (event: PdTextareaCustomEvent<string>) => void;
         /**
           * Emitted when the input has focus.
          */

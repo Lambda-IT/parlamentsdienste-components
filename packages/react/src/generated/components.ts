@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste-components/core";
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste-components/core";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste-components/core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste-components/core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste-components/core/components/pd-backdrop.js";
@@ -508,8 +508,8 @@ export const PdSkeleton: StencilReactComponent<PdSkeletonElement, PdSkeletonEven
 });
 
 export type PdSliderEvents = {
-    onPdInput: EventName<PdSliderCustomEvent<InputChangeEventDetail>>,
-    onPdChange: EventName<PdSliderCustomEvent<InputChangeEventDetail>>
+    onPdInput: EventName<CustomEvent<number>>,
+    onPdChange: EventName<CustomEvent<number>>
 };
 
 export const PdSlider: StencilReactComponent<PdSliderElement, PdSliderEvents> = /*@__PURE__*/ createComponent<PdSliderElement, PdSliderEvents>({
@@ -601,7 +601,7 @@ export const PdTabs: StencilReactComponent<PdTabsElement, PdTabsEvents> = /*@__P
 });
 
 export type PdTextareaEvents = {
-    onPdChange: EventName<CustomEvent<any>>,
+    onPdChange: EventName<CustomEvent<string>>,
     onPdInput: EventName<PdTextareaCustomEvent<KeyboardEvent>>,
     onPdBlur: EventName<PdTextareaCustomEvent<FocusEvent>>,
     onPdFocus: EventName<PdTextareaCustomEvent<FocusEvent>>

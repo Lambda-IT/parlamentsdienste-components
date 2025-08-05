@@ -136,7 +136,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
     /**
      * Emitted when the input value has changed.
      */
-    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<any>;
+    @Event({ eventName: 'pd-change' }) pdChange!: EventEmitter<string>;
 
     /**
      * Emitted when a keyboard input occurred.
