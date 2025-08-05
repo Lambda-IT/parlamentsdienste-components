@@ -13,10 +13,9 @@ const config: StorybookConfig = {
             to: '/assets',
         },
         {
-            from: '../node_modules/@parlamentsdienste-components/core/dist/esm',
+            from: '../node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore',
             to: '/assets',
         },
-        // { from: '../dist/parlamentsdienstecore/assets-animation', to: '/assets/assets-animation' },
     ],
 };
 export default config;
