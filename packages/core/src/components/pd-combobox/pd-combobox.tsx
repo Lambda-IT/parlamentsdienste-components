@@ -335,7 +335,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     private validateItems(items: any) {
         if (!Array.isArray(items)) return;
 
-        const emptyItem = this.emptyItem && items[0] !== this.emptyItemData ? [this.emptyItemData] : [];
+        const emptyItem = this.emptyItem && items[0].id !== this.emptyItemData.id ? [this.emptyItemData] : [];
 
         if (!this.multiselect && !this.selectable) {
             const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
@@ -667,7 +667,6 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     maxHeight: `calc(3rem * ${this.itemCount} + 0.25rem)`,
                 }}>
                 {this.state.filteredItems.map((comboboxItem, i) => {
-                    // console.log('rendering combobox item', comboboxItem, i);
                     return (
                         <pd-dropdown-item
                             data-test={`pd-combobox-item-${i}`}

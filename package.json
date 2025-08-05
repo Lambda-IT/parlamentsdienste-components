@@ -6,12 +6,12 @@
         "build:all": "npx nx reset && rm -f -r .angular && npx nx run-many -t build",
         "build:core": "npx nx run core:build",
         "build:angular": "npx nx run angular:build",
-        "build:angular-output-target": "npx nx run angular:build",
+        "build:angular-output-target": "npx nx run angular-output-target:build",
         "build:storybook": "npx nx run docs:build",
-        "start:angular": "npx nx run test:serve",
         "start:core": "npx nx run core:start",
         "start:storybook": "npx nx run docs:start",
-        "start:testapp": "npx nx run test:serve"
+        "start:angular": "npx nx run angular-test:serve",
+        "start:react": "npx nx run react-test:serve"
     },
     "private": true,
     "workspaces": [

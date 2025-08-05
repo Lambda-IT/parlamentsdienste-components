@@ -37,7 +37,7 @@ const comboItems = [
 
 export function App() {
     const [inputValue, setInputValue] = useState('Hello World');
-    const [selectedItems, setSelectedItems] = useState<number[]>([1, 4]);
+    const [selectedItems, setSelectedItems] = useState<typeof comboItems>(comboItems.slice(1, 3));
     const inputRef = useRef<HTMLPdInputElement>(null);
 
     console.log('App component rendered with inputValue:', inputValue);
@@ -56,7 +56,15 @@ export function App() {
             <PdInput placeholder="Type something..." value="test" ref={inputRef} />
             <PdButton onClick={() => alert(inputRef.current?.value)}>Show Value</PdButton>
             <hr />
-            <PdCombobox label="test combo" items={comboItems} multiselect selected={selectedItems}></PdCombobox>
+            <PdCombobox
+                label="test combo"
+                items={comboItems}
+                multiselect
+                selected={selectedItems}
+                onPdChange={e => {
+                    console.log(e);
+                    setSelectedItems(e.detail as typeof comboItems);
+                }}></PdCombobox>
             <PdAnimation name="under-construction"></PdAnimation>
         </div>
     );

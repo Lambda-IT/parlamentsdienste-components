@@ -319,7 +319,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     validateItems(items) {
         if (!Array.isArray(items))
             return;
-        const emptyItem = this.emptyItem && items[0] !== this.emptyItemData ? [this.emptyItemData] : [];
+        const emptyItem = this.emptyItem && items[0].id !== this.emptyItemData.id ? [this.emptyItemData] : [];
         if (!this.multiselect && !this.selectable) {
             const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
             return [...emptyItem, ...allItemsUnselected];
@@ -516,7 +516,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: 'c5731b7fd7ec90cf593d4a3b8c132cfd2469f68a', role: "combobox" }, h("label", { key: '79d0b9cd9e499aa589695302105d9b9f9405085f', class: {
+        return (h(Host, { key: '29432cd107e7f35e7f36f6a84c208f994618a5f5', role: "combobox" }, h("label", { key: 'a622b691c1de393dd95feff2a6ca4330ae7e8d5b', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
@@ -537,7 +537,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
                 display: this.state.open ? 'block' : 'none',
                 maxHeight: `calc(3rem * ${this.itemCount} + 0.25rem)`,
             } }, this.state.filteredItems.map((comboboxItem, i) => {
-            // console.log('rendering combobox item', comboboxItem, i);
             return (h("pd-dropdown-item", { "data-test": `pd-combobox-item-${i}`, selected: this.multiselect
                     ? comboboxItem.selected
                     : comboboxItem.id === this.state.selectedItem?.id, multiselect: this.multiselect, value: comboboxItem.label ?? '', iconName: comboboxItem.iconName || null, iconSrc: comboboxItem.iconSrc || null, highlight: this.highlight ? this.state.inputValue : '', onClick: ev => this.selectItemByClick(comboboxItem, ev), class: {
