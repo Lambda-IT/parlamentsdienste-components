@@ -22,16 +22,18 @@
         <div class="wrapper">
             <h1 style="margin-bottom: 5rem">Parlamentsdienste Core Components</h1>
 
-            <pd-button id="open-modal-button">Open Modal</pd-button>
+            <!-- <pd-button id="open-modal-button">Open Modal</pd-button> -->
 
-            <!-- <span style="margin-bottom: 5rem">Combobox (multiselect)</span>
+            <!-- <span style="margin-bottom: 5rem">Combobox (multiselect)</span> -->
             <pd-combobox
                 placeholder="search..."
                 class="pd-combobox-items"
                 label="Label"
                 id="pd-combobox-1"
                 empty-item
-                multiselect></pd-combobox>
+                selectable></pd-combobox>
+
+            <!--
             <span style="margin-bottom: 5rem; margin-top: 8rem">Combobox (selectable)</span>
             <pd-combobox class="pd-combobox-items" selectable label="Label" id="pd-combobox-2"></pd-combobox>
 
@@ -96,29 +98,29 @@
         </div>
 
         <script>
-            const openModalButton = document.getElementById('open-modal-button');
-            openModalButton.addEventListener('click', presentModal);
+            // const openModalButton = document.getElementById('open-modal-button');
+            // openModalButton.addEventListener('click', presentModal);
 
-            function presentModal() {
-                console.log('presentModal called');
-                // create the modal with the `modal-page` component
-                const modal = document.createElement('pd-modal');
+            // function presentModal() {
+            //     console.log('presentModal called');
+            // // create the modal with the `modal-page` component
+            //     const modal = document.createElement('pd-modal');
 
-                modal.config = {
-                    // component: 'user-content',
-                    title: 'Modal Title',
-                    backdropVisible: true,
-                };
+            //     modal.config = {
+            //         // component: 'user-content',
+            //         title: 'Modal Title',
+            //         backdropVisible: true,
+            //     };
 
-                modal.innerHTML = `
-                <p>Modal Content</p>
-                <div slot="footer">
-                    <pd-button outline>Cancel</pd-button>
-                    <pd-button>Save</pd-button>
-                </div>`;
+            //     modal.innerHTML = `
+            //     <p>Modal Content</p>
+            //     <div slot="footer">
+            //         <pd-button outline>Cancel</pd-button>
+            //         <pd-button>Save</pd-button>
+            //     </div>`;
 
-                document.body.appendChild(modal);
-            }
+            //     document.body.appendChild(modal);
+            // }
 
             const items = [
                 { id: '1', label: 'Dropdown Link 01AAA', value: 'a1' },
@@ -137,7 +139,7 @@
                 { id: '10', label: 'some other 4', value: 'a10' },
             ];
 
-            // const pdComboBox1 = document.getElementById('pd-combobox-1');
+            const pdComboBox1 = document.getElementById('pd-combobox-1');
             // const pdComboBox2 = document.getElementById('pd-combobox-2');
             // const pdComboBox3 = document.getElementById('pd-combobox-3');
             // // const pdComboBoxItems = document.getElementsByClassName('pd-combobox-items');
@@ -146,7 +148,9 @@
             // //     pdComboBoxItem.items = items;
             // // }
 
-            // pdComboBox1.items = items;
+            pdComboBox1.items = items;
+            pdComboBox1.selected = items[9];
+            x;
             // pdComboBox2.items = items;
             // pdComboBox3.items = items;
 
@@ -155,9 +159,9 @@
             // pdComboBox2.selected = items[8];
             // pdComboBox3.selected = items[4];
 
-            // pdComboBox1.addEventListener('pd-change', event => {
-            //     console.log('🔥 Combobox 1 changed:', event.detail);
-            // });
+            pdComboBox1.addEventListener('pd-change', event => {
+                console.log('🔥 Combobox 1 changed:', event.detail);
+            });
             // pdComboBox2.addEventListener('pd-change', event => {
             //     console.log('🔥 Combobox 2 changed:', event.detail);
             // });
@@ -173,8 +177,16 @@
             //     console.log('🔥 Radio group changed:', event.detail);
             // });
             // setTimeout(() => {
-            //     pdComboBox1.selected = [1, 3, 4];
-            // }, 1000);
+            //     pdComboBox1.selected = items[0];
+            //     // pdComboBox1.items = items.slice(0, 4);
+            // }, 1200);
+            // setTimeout(() => {
+            //     pdComboBox1.items = items.concat([
+            //         { id: '11', label: 'New Item 1', value: 'a11' },
+            //         { id: '12', label: 'New Item 2', value: 'a12' },
+            //     ]);
+            //     // pdComboBox1.items = items.slice(0, 4);
+            // }, 3000);
         </script>
     </body>
 </html>

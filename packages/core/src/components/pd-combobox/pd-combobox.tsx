@@ -169,13 +169,13 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
     /**
      * Set a preselected entry by index
      */
-    @Method()
-    async setSelectedIndex(index: number) {
-        if (index >= 0 && index < this.state.items.length) {
-            this.state.items[index] = { ...this.state.items[index], selected: true };
-            this.selectItem(this.state.items[index], null, false);
-        }
-    }
+    // @Method()
+    // async setSelectedIndex(index: number) {
+    //     if (index >= 0 && index < this.state.items.length) {
+    //         this.state.items[index] = { ...this.state.items[index], selected: true };
+    //         this.selectItem(this.state.items[index], null, false);
+    //     }
+    // }
 
     /**
      * Reset the selection of the dropdown
@@ -214,30 +214,27 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     @Watch('items')
     itemsChanged(items: any) {
-        this.state.items = this.validateItems(items);
+        console.debug('pd-combobox: items changed', items);
 
+        this.state.items = this.validateItems(items);
         this.state.filteredItems = this.state.items;
 
         this.filterItems();
 
         if (this.selectable) {
             const selectedItem = this.state.items.find(item => item.selected) ?? null;
-
-            //if this condition is true the user is typing and we dont want to interupt such a behaviour
-            if (this.state.inputValue !== '' && this.state.inputValue !== this.state.selectedItem?.label) {
-                //we just want so set the state (used for styling)
-                this.state.selectedItem = selectedItem;
-            } else if (selectedItem) {
-                // really select it (set label to selected)
-                this.selectItem(selectedItem, null, false);
-            }
+            this.selectItem(selectedItem, false);
         }
     }
 
     @Watch('selected')
-    public selectedChanged() {
-        this.state.items = this.validateItems(this.state.items);
-        this.state.filteredItems = this.state.items;
+    public selectedChanged(newSelected: ComboboxItem | ComboboxItem[] | null) {
+        if (!newSelected) return;
+
+        console.debug('🚀🚀🚀 pd-combobox: selected changed', newSelected);
+        if (this.selectable && !Array.isArray(newSelected)) this.selectItem(newSelected, false);
+        // this.state.items = this.validateItems(this.state.items);
+        // this.state.filteredItems = this.state.items;
     }
 
     @Listen('click', { target: 'document' })
@@ -252,7 +249,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         /* **************************************************
          ***                 Initial State                 ***
          ****************************************************/
-        const { state, onChange } = createStore<S.ComboboxState>({
+        const { state } = createStore<S.ComboboxState>({
             items: this.validateItems(this.items),
             filteredItems: this.validateItems(this.items),
             open: false,
@@ -262,30 +259,39 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         });
         this.state = state;
 
-        onChange('selectedItem', () => {
-            this.selected = this.state.selectedItem;
-            this.pdChange.emit(this.state.selectedItem);
-        });
-
-        onChange('items', () => {
-            if (this.multiselect) {
-                const selectedItems = this.state.items.filter(item => item.selected);
-                this.pdChange.emit(selectedItems);
-            } else {
-                const selectedItem = this.state.items.find(item => item.selected) ?? null;
-                this.pdChange.emit(selectedItem);
-            }
-        });
-
-        if (!this.multiselect && this.selected) {
-            const idsFromSelectedProp = this.getIdsfromSelectedProp(this.selected);
-            if (idsFromSelectedProp && idsFromSelectedProp.length > 0) {
-                const selectedItem = this.state.items.find(item => item.id === idsFromSelectedProp[0]) ?? null;
-                if (selectedItem) {
-                    this.selectItem(selectedItem, null, false);
-                }
+        if (this.selectable) {
+            const selectedItemFromItemsArray = this.state.items.find(item => item.selected) ?? null;
+            const selectedItemFromSelectedProp = this.getItemFromSelectedProp();
+            const selectedItem = selectedItemFromSelectedProp || selectedItemFromItemsArray;
+            if (selectedItem) {
+                this.selectItem(selectedItem, false);
             }
         }
+
+        // onChange('selectedItem', () => {
+        //     // this.selected = this.state.selectedItem;
+        //     this.pdChange.emit(this.state.selectedItem);
+        // });
+
+        // onChange('items', () => {
+        //     if (this.multiselect) {
+        //         const selectedItems = this.state.items.filter(item => item.selected);
+        //         this.pdChange.emit(selectedItems);
+        //     } else {
+        //         const selectedItem = this.state.items.find(item => item.selected) ?? null;
+        //         this.pdChange.emit(selectedItem);
+        //     }
+        // });
+
+        // if (!this.multiselect && this.selected) {
+        //     const idsFromSelectedProp = this.getIdsfromSelectedProp(this.selected);
+        //     if (idsFromSelectedProp && idsFromSelectedProp.length > 0) {
+        //         const selectedItem = this.state.items.find(item => item.id === idsFromSelectedProp[0]) ?? null;
+        //         if (selectedItem) {
+        //             this.selectItem(selectedItem, null, false);
+        //         }
+        //     }
+        // }
     }
 
     public componentDidLoad() {
@@ -322,35 +328,46 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         this.menuElement.scrollTop = scrollY;
     }
 
-    private getIdsfromSelectedProp(selected: ComboboxItem | ComboboxItem[]): string[] | null {
-        if (!selected) return null;
+    // private getIdsfromSelectedProp(selected: ComboboxItem | ComboboxItem[]): string[] | null {
+    //     if (!selected) return null;
 
-        if (Array.isArray(selected)) {
-            return selected.map(item => item.id.toString());
+    //     if (Array.isArray(selected)) {
+    //         return selected.map(item => item.id.toString());
+    //     }
+
+    //     return [selected.id.toString()];
+    // }
+
+    private getItemFromSelectedProp(): ComboboxItem | null {
+        if (!this.selected) return null;
+        if (Array.isArray(this.selected)) {
+            return this.selected[0] || null;
         }
-
-        return [selected.id.toString()];
+        return this.selected;
     }
 
     private validateItems(items: any) {
-        if (!Array.isArray(items)) return;
+        if (!Array.isArray(items)) {
+            console.error('pd-combobox: items prop must be an array');
+            return [];
+        }
 
         const emptyItem = this.emptyItem && items[0].id !== this.emptyItemData.id ? [this.emptyItemData] : [];
 
-        if (!this.multiselect && !this.selectable) {
-            const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
-            return [...emptyItem, ...allItemsUnselected];
-        }
+        // if (!this.multiselect && !this.selectable) {
+        //     const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
+        //     return [...emptyItem, ...allItemsUnselected];
+        // }
 
-        if (this.selected) {
-            const selectedIds = this.getIdsfromSelectedProp(this.selected);
-            if (!selectedIds) return;
-            const itemsWithSelected = items.map(item => ({
-                ...item,
-                selected: selectedIds.includes(item.id.toString()),
-            }));
-            return [...emptyItem, ...itemsWithSelected];
-        }
+        // if (this.selected) {
+        //     const selectedIds = this.getIdsfromSelectedProp(this.selected);
+        //     if (!selectedIds) return;
+        //     const itemsWithSelected = items.map(item => ({
+        //         ...item,
+        //         selected: selectedIds.includes(item.id.toString()),
+        //     }));
+        //     return [...emptyItem, ...itemsWithSelected];
+        // }
 
         return [...emptyItem, ...items];
     }
@@ -375,9 +392,9 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     this.escape();
                     S.closeDropdown(this.state);
                 } else {
-                    if (this.selectable && this.state.selectedItem) {
-                        this.pdCombobox.emit(null);
-                    }
+                    // if (this.selectable && this.state.selectedItem) {
+                    //     this.pdCombobox.emit(null);
+                    // }
                     this.resetCombobox();
                     this.setFocus();
                 }
@@ -408,68 +425,69 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
         }
     }
 
-    private selectItem(comboboxItem: ComboboxItem, ev?: Event, emitPdCombobox = true) {
-        if (ev) ev.preventDefault();
+    private selectItem(itemToSelect: ComboboxItem, emit = true) {
+        // if (this.multiselect) {
+        //     comboboxItem.selected = !comboboxItem.selected;
+        //     this.state.items = this.state.items.map(item => (item.id === comboboxItem.id ? comboboxItem : item));
+        //     this.state.filteredItems = this.state.filteredItems.map(item =>
+        //         item.id === comboboxItem.id ? comboboxItem : item,
+        //     );
+        //     this.selected = this.state.items.filter(item => item.selected);
+        //     if (emitPdCombobox) {
+        //         this.pdCombobox.emit(this.state.items.filter(item => item.selected));
+        //     }
+        //     this.setFocus();
+        //     return;
+        // }
 
-        if (this.multiselect) {
-            comboboxItem.selected = !comboboxItem.selected;
-            this.state.items = this.state.items.map(item => (item.id === comboboxItem.id ? comboboxItem : item));
-            this.state.filteredItems = this.state.filteredItems.map(item =>
-                item.id === comboboxItem.id ? comboboxItem : item,
-            );
-            this.selected = this.state.items.filter(item => item.selected);
+        this.state.inputValue = itemToSelect.label;
+        this.state.selectedItem = itemToSelect;
+        this.selected = itemToSelect; // Because of the vue two-way binding, this prop needs to ne in sync with the output (pdChange)
 
-            if (emitPdCombobox) {
-                this.pdCombobox.emit(this.state.items.filter(item => item.selected));
-            }
-            this.setFocus();
-            return;
+        // if (this.selectable) {
+        this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === itemToSelect.id }));
+        this.state.filteredItems = this.state.items;
+        S.closeDropdown(this.state);
+        // }
+
+        if (emit) {
+            this.pdChange.emit(this.state.selectedItem);
         }
+        //     if (emitPdCombobox) this.pdCombobox.emit(this.state.selectedItem);
 
-        this.state.inputValue = comboboxItem.label;
-        this.state.selectedItem = comboboxItem;
-
-        if (this.selectable) {
-            this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === comboboxItem.id }));
-            this.state.filteredItems = this.state.items;
-            this.selected = comboboxItem;
-            S.closeDropdown(this.state);
-        }
-
-        if (emitPdCombobox) this.pdCombobox.emit(this.state.selectedItem);
-
-        if (!this.selectable) this.resetCombobox();
+        //     if (!this.selectable) this.resetCombobox();
     }
 
     private selectItemByClick(comboboxItem: ComboboxItem, ev: MouseEvent) {
         ev.preventDefault();
         this.selectItem(comboboxItem);
-
-        if (this.multiselect) {
-            this.state.currentNavigatedIndex = -1;
-            return;
-        }
-
+        // if (this.multiselect) {
+        //     this.state.currentNavigatedIndex = -1;
+        //     return;
+        // }
         if (this.selectable) {
             S.closeDropdown(this.state);
             return;
         }
-
         this.resetCombobox();
     }
 
-    private resetCombobox = (ev?: Event) => {
-        if (ev) ev.preventDefault();
+    private resetCombobox = () => {
         this.state.filteredItems = this.state.items;
         this.state.inputValue = '';
         this.state.selectedItem = null;
+        if (this.selectable) {
+            this.selected = null;
+            this.pdChange.emit(null);
+        }
+
         S.closeDropdown(this.state);
     };
 
     private clearValueWithIconClick() {
-        if (this.selectable && this.state.selectedItem) {
-            this.pdCombobox.emit(null);
-        }
+        // if (this.selectable && this.state.selectedItem) {
+        //     this.pdCombobox.emit(null);
+        // }
         this.resetCombobox();
         this.setFocus();
     }

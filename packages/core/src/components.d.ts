@@ -242,10 +242,6 @@ export namespace Components {
          */
         "setOpen": (open?: boolean) => Promise<void>;
         /**
-          * Set a preselected entry by index
-         */
-        "setSelectedIndex": (index: number) => Promise<void>;
-        /**
           * Input tag size (check pd-input 'size' for more info)
          */
         "size"?: number;

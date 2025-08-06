@@ -128,22 +128,6 @@ Type: `Promise<void>`
 
 
 
-### `setSelectedIndex(index: number) => Promise<void>`
-
-Set a preselected entry by index
-
-#### Parameters
-
-| Name    | Type     | Description |
-| ------- | -------- | ----------- |
-| `index` | `number` |             |
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 
 ## CSS Custom Properties
 

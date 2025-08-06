@@ -299,7 +299,7 @@ export declare interface PdChip extends Components.PdChip {
 @ProxyCmp({
   defineCustomElementFn: definePdCombobox,
   inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'selected', 'size', 'value', 'verticalAdjust', 'viewOnly'],
-  methods: ['setSelectedIndex', 'reset', 'setOpen', 'setFocus']
+  methods: ['reset', 'setOpen', 'setFocus']
 })
 @Component({
   selector: 'pd-combobox',

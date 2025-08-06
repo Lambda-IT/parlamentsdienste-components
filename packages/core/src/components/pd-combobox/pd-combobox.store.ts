@@ -13,7 +13,12 @@ export function isUserNavigating(state: ComboboxState): boolean {
     return state.open && state.currentNavigatedIndex > -1;
 }
 
-export function openDropdownOrCloseWhenNotAllowed(state: ComboboxState, disabled: boolean, viewOnly: boolean, readOnly: boolean) {
+export function openDropdownOrCloseWhenNotAllowed(
+    state: ComboboxState,
+    disabled: boolean,
+    viewOnly: boolean,
+    readOnly: boolean,
+) {
     if (isAllowOpen(state, disabled, viewOnly, readOnly)) {
         state.open = true;
         return;
