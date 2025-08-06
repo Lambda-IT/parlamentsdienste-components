@@ -30,6 +30,7 @@
                 class="pd-combobox-items"
                 label="Label"
                 id="pd-combobox-1"
+                multiselect
                 empty-item></pd-combobox>
 
             <!--
@@ -148,7 +149,7 @@
             // // }
 
             pdComboBox1.items = items;
-            pdComboBox1.selected = items[9];
+            pdComboBox1.selected = [items[2], items[4]];
 
             // pdComboBox2.items = items;
             // pdComboBox3.items = items;
@@ -176,16 +177,15 @@
             //     console.log('🔥 Radio group changed:', event.detail);
             // });
             // setTimeout(() => {
-            //     pdComboBox1.selected = items[0];
-            //     // pdComboBox1.items = items.slice(0, 4);
-            // }, 1200);
-            // setTimeout(() => {
-            //     pdComboBox1.items = items.concat([
-            //         { id: '11', label: 'New Item 1', value: 'a11' },
+            //     // pdComboBox1.selected = items[0];
+            //     pdComboBox1.items = items.slice(0, 4).concat([
+            //         { id: '11', label: 'New Item 1', value: 'a11', selected: true },
             //         { id: '12', label: 'New Item 2', value: 'a12' },
             //     ]);
-            //     // pdComboBox1.items = items.slice(0, 4);
-            // }, 3000);
+            // }, 1200);
+            // setTimeout(() => {
+            //     pdComboBox1.selected = items.slice(0, 2);
+            // }, 5000);
         </script>
     </body>
 </html>

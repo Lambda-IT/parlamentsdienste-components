@@ -299,7 +299,7 @@ export declare interface PdChip extends Components.PdChip {
 @ProxyCmp({
   defineCustomElementFn: definePdCombobox,
   inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'selected', 'size', 'value', 'verticalAdjust', 'viewOnly'],
-  methods: ['reset', 'setOpen', 'setFocus']
+  methods: ['setSelectedIndex', 'reset', 'setOpen', 'setFocus']
 })
 @Component({
   selector: 'pd-combobox',
@@ -307,7 +307,7 @@ export declare interface PdChip extends Components.PdChip {
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disableFilter', 'disableMultiselectCounter', 'disabled', 'emptyItem', 'emptyItemData', 'error', 'highlight', 'itemCount', 'items', 'label', 'multiselect', 'placeholder', 'readonly', 'required', 'selectable', 'selected', 'size', 'value', 'verticalAdjust', 'viewOnly'],
-  outputs: ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus'],
+  outputs: ['pd-input', 'pd-change', 'pd-blur', 'pd-focus'],
   
   standalone: true,
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PdCombobox), multi: true }],
@@ -318,7 +318,7 @@ export class PdCombobox extends ValueAccessor{
     super();
     c.detach();
     this.nativeEl = r.nativeElement;
-    proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-combobox', 'pd-blur', 'pd-focus']);
+    proxyOutputs(this, this.nativeEl, ['pd-input', 'pd-change', 'pd-blur', 'pd-focus']);
   }
 
   @HostListener('pd-change', ['$event'])
@@ -340,10 +340,6 @@ export declare interface PdCombobox extends Components.PdCombobox {
    * Emitted when the value has changed.
    */
   'pd-change': EventEmitter<CustomEvent<IPdComboboxComboboxItem | IPdComboboxComboboxItem[]>>;
-  /**
-   * Emitted when a combobox request occurred.
-   */
-  'pd-combobox': EventEmitter<CustomEvent<IPdComboboxComboboxItem | IPdComboboxComboboxItem[]>>;
   /**
    * Emitted when the input loses focus.
    */

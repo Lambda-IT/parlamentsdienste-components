@@ -54,39 +54,38 @@ To add an icon to the label of the dropdownitem use the iconName (for the suppor
 
 ## Properties
 
-| Property                    | Attribute                     | Description                                                                                                                | Type                             | Default                                                             |
-| --------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------- |
-| `disableFilter`             | `disable-filter`              | If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches) | `boolean`                        | `false`                                                             |
-| `disableMultiselectCounter` | `disable-multiselect-counter` | If `true`, the button to deselect all selected items will not be shown.                                                    | `boolean`                        | `false`                                                             |
-| `disabled`                  | `disabled`                    | If `true`, the user cannot interact with the input.                                                                        | `boolean`                        | `false`                                                             |
-| `emptyItem`                 | `empty-item`                  | Enable selection of an empty item                                                                                          | `boolean`                        | `false`                                                             |
-| `emptyItemData`             | `empty-item-data`             | Data used for the empty item                                                                                               | `DropdownItem`                   | `{         id: '0',         label: '-',         value: null,     }` |
-| `error`                     | `error`                       | Shows error state                                                                                                          | `boolean`                        | `false`                                                             |
-| `highlight`                 | `highlight`                   | Show matching parts in results as highlighted                                                                              | `boolean`                        | `true`                                                              |
-| `itemCount`                 | `item-count`                  | Items visible in dropdown                                                                                                  | `number`                         | `5`                                                                 |
-| `items`                     | `items`                       | Values shown as combobox items                                                                                             | `DropdownItem[]`                 | `[]`                                                                |
-| `label`                     | `label`                       | combobox box label                                                                                                         | `string`                         | `undefined`                                                         |
-| `multiselect`               | `multiselect`                 | If `true`, the combobox can select multiple items.                                                                         | `boolean`                        | `false`                                                             |
-| `placeholder`               | `placeholder`                 | Instructional text that shows before the input has a value.                                                                | `string`                         | `undefined`                                                         |
-| `readonly`                  | `readonly`                    | If `true`, the user cannot modify the value.                                                                               | `boolean`                        | `false`                                                             |
-| `required`                  | `required`                    | If `true`, the user must fill in a value before submitting a form.                                                         | `boolean`                        | `false`                                                             |
-| `selectable`                | `selectable`                  | If `true`, the combobox get a selected state like a dropdown.                                                              | `boolean`                        | `false`                                                             |
-| `selected`                  | `selected`                    | To select an item by prop. This prop is used for the two-way binding.                                                      | `DropdownItem \| DropdownItem[]` | `null`                                                              |
-| `size`                      | `size`                        | Input tag size (check pd-input 'size' for more info)                                                                       | `number`                         | `1`                                                                 |
-| `value`                     | `value`                       | The value of the input.                                                                                                    | `string`                         | `''`                                                                |
-| `verticalAdjust`            | `vertical-adjust`             | Default vertical adjustment for inline forms                                                                               | `boolean`                        | `false`                                                             |
-| `viewOnly`                  | `view-only`                   | If `true`, the combobox is replaced with a simple text                                                                     | `boolean`                        | `false`                                                             |
+| Property                    | Attribute                     | Description                                                                                                                | Type                             | Default                                                                     |
+| --------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------- |
+| `disableFilter`             | `disable-filter`              | If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches) | `boolean`                        | `false`                                                                     |
+| `disableMultiselectCounter` | `disable-multiselect-counter` | If `true`, the button to deselect all selected items will not be shown.                                                    | `boolean`                        | `false`                                                                     |
+| `disabled`                  | `disabled`                    | If `true`, the user cannot interact with the input.                                                                        | `boolean`                        | `false`                                                                     |
+| `emptyItem`                 | `empty-item`                  | Enable selection of an empty item                                                                                          | `boolean`                        | `false`                                                                     |
+| `emptyItemData`             | `empty-item-data`             | Data used for the empty item                                                                                               | `DropdownItem`                   | `{         id: 'emptyitem',         label: '-',         value: null,     }` |
+| `error`                     | `error`                       | Shows error state                                                                                                          | `boolean`                        | `false`                                                                     |
+| `highlight`                 | `highlight`                   | Show matching parts in results as highlighted                                                                              | `boolean`                        | `true`                                                                      |
+| `itemCount`                 | `item-count`                  | Items visible in dropdown                                                                                                  | `number`                         | `5`                                                                         |
+| `items`                     | `items`                       | Values shown as combobox items                                                                                             | `DropdownItem[]`                 | `[]`                                                                        |
+| `label`                     | `label`                       | combobox box label                                                                                                         | `string`                         | `undefined`                                                                 |
+| `multiselect`               | `multiselect`                 | If `true`, the combobox can select multiple items.                                                                         | `boolean`                        | `false`                                                                     |
+| `placeholder`               | `placeholder`                 | Instructional text that shows before the input has a value.                                                                | `string`                         | `undefined`                                                                 |
+| `readonly`                  | `readonly`                    | If `true`, the user cannot modify the value.                                                                               | `boolean`                        | `false`                                                                     |
+| `required`                  | `required`                    | If `true`, the user must fill in a value before submitting a form.                                                         | `boolean`                        | `false`                                                                     |
+| `selectable`                | `selectable`                  | If `true`, the combobox get a selected state like a dropdown.                                                              | `boolean`                        | `false`                                                                     |
+| `selected`                  | `selected`                    | To select an item by prop. This prop is used for the two-way binding.                                                      | `DropdownItem \| DropdownItem[]` | `null`                                                                      |
+| `size`                      | `size`                        | Input tag size (check pd-input 'size' for more info)                                                                       | `number`                         | `1`                                                                         |
+| `value`                     | `value`                       | The value of the input.                                                                                                    | `string`                         | `''`                                                                        |
+| `verticalAdjust`            | `vertical-adjust`             | Default vertical adjustment for inline forms                                                                               | `boolean`                        | `false`                                                                     |
+| `viewOnly`                  | `view-only`                   | If `true`, the combobox is replaced with a simple text                                                                     | `boolean`                        | `false`                                                                     |
 
 
 ## Events
 
-| Event         | Description                               | Type                                          |
-| ------------- | ----------------------------------------- | --------------------------------------------- |
-| `pd-blur`     | Emitted when the input loses focus.       | `CustomEvent<void>`                           |
-| `pd-change`   | Emitted when the value has changed.       | `CustomEvent<DropdownItem \| DropdownItem[]>` |
-| `pd-combobox` | Emitted when a combobox request occurred. | `CustomEvent<DropdownItem \| DropdownItem[]>` |
-| `pd-focus`    | Emitted when the input has focus.         | `CustomEvent<void>`                           |
-| `pd-input`    | Emitted when a keyboard input occurred.   | `CustomEvent<number \| string>`               |
+| Event       | Description                             | Type                                          |
+| ----------- | --------------------------------------- | --------------------------------------------- |
+| `pd-blur`   | Emitted when the input loses focus.     | `CustomEvent<void>`                           |
+| `pd-change` | Emitted when the value has changed.     | `CustomEvent<DropdownItem \| DropdownItem[]>` |
+| `pd-focus`  | Emitted when the input has focus.       | `CustomEvent<void>`                           |
+| `pd-input`  | Emitted when a keyboard input occurred. | `CustomEvent<number \| string>`               |
 
 
 ## Methods
@@ -121,6 +120,22 @@ Set the open-close state of the dropdown
 | Name   | Type      | Description |
 | ------ | --------- | ----------- |
 | `open` | `boolean` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setSelectedIndex(index: number) => Promise<void>`
+
+Set a preselected entry by index
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `index` | `number` |             |
 
 #### Returns
 

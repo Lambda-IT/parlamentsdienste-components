@@ -153,13 +153,11 @@ export const PdCombobox: StencilVueComponent<JSX.PdCombobox, JSX.PdCombobox["sel
   'disableFilter',
   'pd-input',
   'pd-change',
-  'pd-combobox',
   'pd-blur',
   'pd-focus'
 ], [
   'pd-input',
   'pd-change',
-  'pd-combobox',
   'pd-blur',
   'pd-focus'
 ],
