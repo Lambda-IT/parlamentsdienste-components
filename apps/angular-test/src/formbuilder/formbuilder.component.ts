@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
     PdButton,
     PdCheckbox,
@@ -78,17 +78,17 @@ export class FormbuilderComponent {
     selectedItem = this.items[0];
 
     testForm = new FormGroup({
-        // name: new FormControl('1234', Validators.minLength(3)),
-        // name2: new FormControl('asdf'),
-        // checkbox: new FormControl(true),
-        // dropdown: new FormControl(1),
+        name: new FormControl('1234', Validators.minLength(3)),
+        name2: new FormControl('asdf'),
+        checkbox: new FormControl(true),
+        dropdown: new FormControl(1),
         combobox: new FormControl(this.items.slice(0, 2)),
-        // combobox: new FormControl(),
-        // comboboxSelectable: new FormControl(this.items[2]),
-        // date: new FormControl('2025-07-23'),
-        // radio: new FormControl('2'),
-        // textarea: new FormControl('start Text textarea', Validators.maxLength(20)),
-        // slider: new FormControl(50, lessThanSeventy),
+
+        comboboxSelectable: new FormControl(this.items[2]),
+        date: new FormControl('2025-07-23'),
+        radio: new FormControl('2'),
+        textarea: new FormControl('start Text textarea', Validators.maxLength(20)),
+        slider: new FormControl(50, lessThanSeventy),
     });
 
     constructor() {

@@ -13,7 +13,8 @@
         "start:core": "npx nx run core:start",
         "start:storybook": "npx nx run docs:start",
         "start:angular": "npx nx run angular-test:serve",
-        "start:react": "npx nx run react-test:serve"
+        "start:react": "npx nx run react-test:serve",
+        "start:vue": "npx nx run vue-test:serve"
     },
     "private": true,
     "workspaces": [

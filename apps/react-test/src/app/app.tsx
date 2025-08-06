@@ -73,13 +73,14 @@ export function App() {
                 onPdChecked={e => {
                     setFormState({ ...formState, checkboxValue: e.detail });
                 }}></PdCheckbox>
-            //DATEPICKER TODO: fix pdchange output for 2way binding
+
             <PdDatepicker
                 date={formState.dateValue}
                 onPdChange={e => {
                     console.log(e);
                     // setFormState({ ...formState, dateValue: e.detail });
-                }}></PdDatepicker>
+                }}
+                config={{ mode: 'time' }}></PdDatepicker>
             <PdDropdown
                 items={comboItems}
                 selected={formState.dropdownValue}
