@@ -1,0 +1,39 @@
+name: website build
+
+on:
+    # push:
+    #   branches:
+    #     - main
+    workflow_dispatch:
+        inputs:
+            tag:
+                description: 'Container Tag'
+                default: 'dev'
+
+concurrency: deploy-${{ github.ref }}
+
+env:
+    DOCKER_CONFIG: $HOME/.docker
+    STORYBOOK_IMAGE: lambda-it/parlamentsdienste-components/storybook
+    TAG: ${{ github.event.inputs.tag || 'dev' }}
+    REGISTRY: ghcr.io
+
+jobs:
+    # ------------------------------------------------------------
+    build-storybook:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print GITHUB_TOKEN
+              run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}"
+
+            # - uses: actions/checkout@v4
+
+            # - name: Build Storybook
+            #   id: build-storybook
+            #   uses: ./.github/actions/build-storybook
+            #   with:
+            #     image: ${{ env.STORYBOOK_IMAGE }}
+            #     tag: ${{ env.TAG }}
+            #     # dockerfile-args:
+            #     registry: ${{ env.REGISTRY }}
+            #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
