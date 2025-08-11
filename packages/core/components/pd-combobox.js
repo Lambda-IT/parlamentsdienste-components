@@ -64,7 +64,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         this.__attachShadow();
         this.pdInput = createEvent(this, "pd-input");
         this.pdChange = createEvent(this, "pd-change");
-        this.pdCombobox = createEvent(this, "pd-combobox");
         this.pdBlur = createEvent(this, "pd-blur");
         this.pdFocus = createEvent(this, "pd-focus");
     }
@@ -90,7 +89,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
      * Data used for the empty item
      */
     emptyItemData = {
-        id: '0',
+        id: 'emptyitem',
         label: '-',
         value: null,
     };
@@ -168,10 +167,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
      */
     pdChange;
     /**
-     * Emitted when a combobox request occurred.
-     */
-    pdCombobox;
-    /**
      * Emitted when the input loses focus.
      */
     pdBlur;
@@ -185,7 +180,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     async setSelectedIndex(index) {
         if (index >= 0 && index < this.state.items.length) {
             this.state.items[index] = { ...this.state.items[index], selected: true };
-            this.selectItem(this.state.items[index], null, false);
+            this.selectItem(this.state.items[index], false);
         }
     }
     /**
@@ -222,20 +217,25 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         this.filterItems();
         if (this.selectable) {
             const selectedItem = this.state.items.find(item => item.selected) ?? null;
-            //if this condition is true the user is typing and we dont want to interupt such a behaviour
-            if (this.state.inputValue !== '' && this.state.inputValue !== this.state.selectedItem?.label) {
-                //we just want so set the state (used for styling)
-                this.state.selectedItem = selectedItem;
-            }
-            else if (selectedItem) {
-                // really select it (set label to selected)
-                this.selectItem(selectedItem, null, false);
-            }
+            this.selectItem(selectedItem, false);
+        }
+        if (this.multiselect) {
+            this.selected = this.state.items.filter(item => item.selected);
         }
     }
-    selectedChanged() {
-        this.state.items = this.validateItems(this.state.items);
-        this.state.filteredItems = this.state.items;
+    selectedChanged(newSelected) {
+        if (!newSelected)
+            return;
+        if (this.selectable && !Array.isArray(newSelected)) {
+            this.selectItem(newSelected, false);
+        }
+        if (this.multiselect && Array.isArray(newSelected)) {
+            this.state.items = this.state.items.map(item => ({
+                ...item,
+                selected: newSelected.some(selectedItem => selectedItem.id === item.id),
+            }));
+            this.state.filteredItems = this.state.items;
+        }
     }
     handleClickOutside(ev) {
         if (!this.state.open)
@@ -245,10 +245,13 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         }
     }
     componentWillLoad() {
+        if (this.multiselect && this.selectable) {
+            console.warn('pd-combobox: multiselect and selectable are mutually exclusive. Please use only one of them.');
+        }
         /* **************************************************
          ***                 Initial State                 ***
          ****************************************************/
-        const { state, onChange } = createStore({
+        const { state } = createStore({
             items: this.validateItems(this.items),
             filteredItems: this.validateItems(this.items),
             open: false,
@@ -257,28 +260,24 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             currentNavigatedIndex: -1, // -1 = user is not navigating
         });
         this.state = state;
-        onChange('selectedItem', () => {
-            this.selected = this.state.selectedItem;
-            this.pdChange.emit(this.state.selectedItem);
-        });
-        onChange('items', () => {
-            if (this.multiselect) {
-                const selectedItems = this.state.items.filter(item => item.selected);
-                this.pdChange.emit(selectedItems);
+        if (this.selectable) {
+            const selectedItemFromItemsArray = this.state.items.find(item => item.selected) ?? null;
+            const selectedItemFromSelectedProp = this.getItemFromSelectedProp();
+            const selectedItem = selectedItemFromSelectedProp || selectedItemFromItemsArray;
+            if (selectedItem) {
+                this.selectItem(selectedItem, false);
             }
-            else {
-                const selectedItem = this.state.items.find(item => item.selected) ?? null;
-                this.pdChange.emit(selectedItem);
-            }
-        });
-        if (!this.multiselect && this.selected) {
-            const idsFromSelectedProp = this.getIdsfromSelectedProp(this.selected);
-            if (idsFromSelectedProp && idsFromSelectedProp.length > 0) {
-                const selectedItem = this.state.items.find(item => item.id === idsFromSelectedProp[0]) ?? null;
-                if (selectedItem) {
-                    this.selectItem(selectedItem, null, false);
-                }
-            }
+        }
+        if (this.multiselect) {
+            const selectedItemsFromItemsArray = this.state.items.filter(item => item.selected);
+            const selectedItemsFromSelectedProp = Array.isArray(this.selected) ? this.selected : [];
+            const selectedItems = selectedItemsFromSelectedProp.length > 0 ? selectedItemsFromSelectedProp : selectedItemsFromItemsArray;
+            this.state.items = this.state.items.map(item => ({
+                ...item,
+                selected: selectedItems.some(selectedItem => selectedItem.id === item.id),
+            }));
+            this.state.filteredItems = this.state.items;
+            this.selected = this.state.items.filter(item => item.selected);
         }
     }
     componentDidLoad() {
@@ -308,32 +307,20 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         const scrollY = index * itemHeight - (Math.ceil(this.itemCount / 2) - 1) * itemHeight;
         this.menuElement.scrollTop = scrollY;
     }
-    getIdsfromSelectedProp(selected) {
-        if (!selected)
+    getItemFromSelectedProp() {
+        if (!this.selected)
             return null;
-        if (Array.isArray(selected)) {
-            return selected.map(item => item.id.toString());
+        if (Array.isArray(this.selected)) {
+            return this.selected[0] || null;
         }
-        return [selected.id.toString()];
+        return this.selected;
     }
     validateItems(items) {
-        if (!Array.isArray(items))
-            return;
+        if (!Array.isArray(items)) {
+            console.error('pd-combobox: items prop must be an array');
+            return [];
+        }
         const emptyItem = this.emptyItem && items[0].id !== this.emptyItemData.id ? [this.emptyItemData] : [];
-        if (!this.multiselect && !this.selectable) {
-            const allItemsUnselected = items.map(item => ({ ...item, selected: false }));
-            return [...emptyItem, ...allItemsUnselected];
-        }
-        if (this.selected) {
-            const selectedIds = this.getIdsfromSelectedProp(this.selected);
-            if (!selectedIds)
-                return;
-            const itemsWithSelected = items.map(item => ({
-                ...item,
-                selected: selectedIds.includes(item.id.toString()),
-            }));
-            return [...emptyItem, ...itemsWithSelected];
-        }
         return [...emptyItem, ...items];
     }
     handleKeyDown(ev) {
@@ -356,7 +343,8 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
                 }
                 else {
                     if (this.selectable && this.state.selectedItem) {
-                        this.pdCombobox.emit(null);
+                        this.selected = null;
+                        this.pdChange.emit(null);
                     }
                     this.resetCombobox();
                     this.setFocus();
@@ -388,30 +376,29 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             }
         }
     }
-    selectItem(comboboxItem, ev, emitPdCombobox = true) {
-        if (ev)
-            ev.preventDefault();
+    selectItem(itemToSelect, emit = true) {
         if (this.multiselect) {
-            comboboxItem.selected = !comboboxItem.selected;
-            this.state.items = this.state.items.map(item => (item.id === comboboxItem.id ? comboboxItem : item));
-            this.state.filteredItems = this.state.filteredItems.map(item => item.id === comboboxItem.id ? comboboxItem : item);
-            this.selected = this.state.items.filter(item => item.selected);
-            if (emitPdCombobox) {
-                this.pdCombobox.emit(this.state.items.filter(item => item.selected));
+            itemToSelect.selected = !itemToSelect.selected;
+            this.state.items = this.state.items.map(item => (item.id === itemToSelect.id ? itemToSelect : item));
+            this.state.filteredItems = this.state.filteredItems.map(item => item.id === itemToSelect.id ? itemToSelect : item);
+            this.selected = this.state.items.filter(item => item.selected); // Because of the vue two-way binding, this prop needs to be in sync with the output (pdChange)
+            if (emit) {
+                this.pdChange.emit(this.state.items.filter(item => item.selected));
             }
             this.setFocus();
             return;
         }
-        this.state.inputValue = comboboxItem.label;
-        this.state.selectedItem = comboboxItem;
+        this.state.inputValue = itemToSelect.label;
+        this.state.selectedItem = itemToSelect;
+        this.selected = itemToSelect; // Because of the vue two-way binding, this prop needs to be in sync with the output (pdChange)
         if (this.selectable) {
-            this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === comboboxItem.id }));
+            this.state.items = this.state.items.map(item => ({ ...item, selected: item.id === itemToSelect.id }));
             this.state.filteredItems = this.state.items;
-            this.selected = comboboxItem;
             closeDropdown(this.state);
         }
-        if (emitPdCombobox)
-            this.pdCombobox.emit(this.state.selectedItem);
+        if (emit) {
+            this.pdChange.emit(this.state.selectedItem);
+        }
         if (!this.selectable)
             this.resetCombobox();
     }
@@ -428,26 +415,25 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
         }
         this.resetCombobox();
     }
-    resetCombobox = (ev) => {
-        if (ev)
-            ev.preventDefault();
+    resetCombobox = () => {
         this.state.filteredItems = this.state.items;
         this.state.inputValue = '';
         this.state.selectedItem = null;
+        if (this.selectable) {
+            this.selected = null;
+            this.pdChange.emit(null);
+        }
         closeDropdown(this.state);
     };
     clearValueWithIconClick() {
-        if (this.selectable && this.state.selectedItem) {
-            this.pdCombobox.emit(null);
-        }
         this.resetCombobox();
         this.setFocus();
     }
     deselectAllItems() {
-        this.selected = [];
         this.state.items = this.state.items.map(item => ({ ...item, selected: false }));
         this.state.filteredItems = this.state.items;
-        this.pdCombobox.emit(null);
+        this.selected = null;
+        this.pdChange.emit(null);
     }
     onInputClick = () => {
         if (this.state.open === true) {
@@ -465,7 +451,6 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
     onInput = (ev) => {
         const input = ev.target;
         this.state.inputValue = input?.value ?? '';
-        // this.pdInput.emit({ value: this.state.inputValue });
         this.pdInput.emit(this.state.inputValue);
         this.filterItems();
         if (isAllowOpen(this.state, this.disabled, this.viewOnly, this.readonly)) {
@@ -516,7 +501,7 @@ const Combobox = /*@__PURE__*/ proxyCustomElement(class Combobox extends H {
             !this.disableMultiselectCounter &&
             !this.error &&
             this.state.items.filter(item => item.selected).length > 0;
-        return (h(Host, { key: '29432cd107e7f35e7f36f6a84c208f994618a5f5', role: "combobox" }, h("label", { key: 'a622b691c1de393dd95feff2a6ca4330ae7e8d5b', class: {
+        return (h(Host, { key: '7e71ea6a1a687e99853386dd8a37fa635df4fb65', role: "combobox" }, h("label", { key: '781b8cb0e790f068e66969f75eae589ea75e34e8', class: {
                 'pd-combobox-label': true,
                 'pd-combobox-disabled': this.disabled,
                 'pd-combobox-readonly': this.readonly,
