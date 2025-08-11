@@ -1,4 +1,4 @@
-name: website build
+name: storybook build
 
 on:
     # push:
