@@ -1,5 +1,6 @@
 import {
     PdCheckbox,
+    PdCombobox,
     PdDatepicker,
     PdDropdown,
     PdInput,
@@ -53,8 +54,8 @@ export function App() {
         radioGroupValue: '2',
         sliderValue: 70,
         textareaValue: 'This is a controlled textarea',
+        comboValue: [comboItems[3], comboItems[4]],
     });
-    const [selectedItems, setSelectedItems] = useState<typeof comboItems>(comboItems.slice(1, 3));
     // const inputRef = useRef<HTMLPdInputElement>(null);
 
     console.log('App component rendered with formState:', formState);
@@ -63,6 +64,14 @@ export function App() {
         <div className="wrapper">
             <h1>Welcome to React Test!</h1>
             <h2>Controlled Input</h2>
+
+            <PdCombobox
+                items={comboItems}
+                onPdChange={e => {
+                    setFormState({ ...formState, comboValue: e.detail as typeof comboItems });
+                }}
+                multiselect
+                selected={formState.comboValue}></PdCombobox>
             <PdInput
                 value={formState.inputValue}
                 placeholder="Type something..."
@@ -73,7 +82,6 @@ export function App() {
                 onPdChecked={e => {
                     setFormState({ ...formState, checkboxValue: e.detail });
                 }}></PdCheckbox>
-
             <PdDatepicker
                 date={formState.dateValue}
                 onPdChange={e => {

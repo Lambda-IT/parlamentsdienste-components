@@ -148,7 +148,6 @@ export const PdChip: StencilReactComponent<PdChipElement, PdChipEvents> = /*@__P
 export type PdComboboxEvents = {
     onPdInput: EventName<PdComboboxCustomEvent<InputChangeEventDetail>>,
     onPdChange: EventName<PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>>,
-    onPdCombobox: EventName<PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>>,
     onPdBlur: EventName<CustomEvent<void>>,
     onPdFocus: EventName<CustomEvent<void>>
 };
@@ -161,7 +160,6 @@ export const PdCombobox: StencilReactComponent<PdComboboxElement, PdComboboxEven
     events: {
         onPdInput: 'pd-input',
         onPdChange: 'pd-change',
-        onPdCombobox: 'pd-combobox',
         onPdBlur: 'pd-blur',
         onPdFocus: 'pd-focus'
     } as PdComboboxEvents,

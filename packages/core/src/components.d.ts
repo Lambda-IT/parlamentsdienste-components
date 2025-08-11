@@ -1362,7 +1362,6 @@ declare global {
     interface HTMLPdComboboxElementEventMap {
         "pd-input": InputChangeEventDetail;
         "pd-change": ComboboxItem | ComboboxItem[];
-        "pd-combobox": ComboboxItem | ComboboxItem[];
         "pd-blur": void;
         "pd-focus": void;
     }
@@ -2085,10 +2084,6 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onPd-change"?: (event: PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>) => void;
-        /**
-          * Emitted when a combobox request occurred.
-         */
-        "onPd-combobox"?: (event: PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>) => void;
         /**
           * Emitted when the input has focus.
          */
