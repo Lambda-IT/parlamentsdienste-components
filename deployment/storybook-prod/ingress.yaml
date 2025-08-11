@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: parlamentsdienste-components-storybook
+    namespace: parlamentsdienste-components
+    labels:
+        app: parlamentsdienste-components-storybook
+        project: parlamentsdienste-components
+        env: prod
+    annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+        cert-manager.io/cluster-issuer: lambda-le
+spec:
+    rules:
+        - host: parlamentsdienste-components.bgs.lambda-it.ch
+          http:
+              paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: parlamentsdienste-components-storybook
+                            port:
+                                number: 80
+    tls:
+        - hosts:
+              - parlamentsdienste-components.bgs.lambda-it.ch
+          secretName: parlamentsdienste-components-tls
+    ingressClassName: nginx
