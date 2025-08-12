@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: parlamentsdienste-components-storybook
+    name: parlamentsdienste-components-storybook-service
     namespace: parlamentsdienste-components
     labels:
         app: parlamentsdienste-components-storybook
@@ -15,4 +15,4 @@ spec:
     ports:
         - protocol: TCP
           port: 8080
-          targetPort: 80
+          targetPort: 8080

@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: parlamentsdienste-components-storybook
+    name: parlamentsdienste-components-storybook-ingress
     namespace: parlamentsdienste-components
     labels:
         app: parlamentsdienste-components-storybook
@@ -19,9 +19,9 @@ spec:
                     pathType: Prefix
                     backend:
                         service:
-                            name: parlamentsdienste-components-storybook
+                            name: parlamentsdienste-components-storybook-service
                             port:
-                                number: 80
+                                number: 8080
     tls:
         - hosts:
               - parlamentsdienste-components.bgs.lambda-it.ch

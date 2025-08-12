@@ -14,21 +14,21 @@ spec:
     selector:
         matchLabels:
             app: parlamentsdienste-components-storybook
-            env: prod
             project: parlamentsdienste-components
+            env: prod
     template:
         metadata:
             labels:
                 app: parlamentsdienste-components-storybook
-                env: prod
                 project: parlamentsdienste-components
+                env: prod
         spec:
             containers:
                 - name: parlamentsdienste-components-storybook-prod
                   image: ghcr.io/lambda-it/parlamentsdienste-components/storybook:dev
                   imagePullPolicy: Always
                   ports:
-                      - containerPort: 80
+                      - containerPort: 8080
                   resources:
                       requests:
                           memory: '16Mi'
