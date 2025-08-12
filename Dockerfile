@@ -11,9 +11,7 @@ RUN npm run build:storybook
 FROM nginx:mainline-alpine AS middlestep
 
 LABEL maintainer=support@lambda-it.ch \
-    org.opencontainers.image.source=https://github.com/lambda-it/parlamentsdienste-components
-
-
+    org.opencontainers.image.source=https://github.com/Lambda-IT/parlamentsdienste-components
 
 WORKDIR /usr/share/nginx/html
 
