@@ -1,6 +1,7 @@
 {
     "name": "@parlamentsdienste-components/vue",
-    "version": "0.0.1",
+    "version": "4.0.0",
+    "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
     "main": "./index.js",
     "types": "./index.d.ts",
     "exports": {

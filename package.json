@@ -1,7 +1,8 @@
 {
     "name": "@parlamentsdienste-components/source",
-    "version": "0.0.0",
+    "version": "4.0.0",
     "license": "MIT",
+    "description": "Component Library for Swiss Parliamentary Services",
     "scripts": {
         "build:all": "npx nx reset && rm -f -r .angular && npx nx run-many -t build",
         "build:core": "npx nx run core:build",
