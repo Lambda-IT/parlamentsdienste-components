@@ -12,9 +12,9 @@ describe('pd-sidebar-item', () => {
             <mock:shadow-root>
               <button class="pd-sidebar-item">
                 <div class="pd-sidebar-icon">
-                  <pd-icon size="2"></pd-icon>
+                  <pd-icon data-test="pd-sidebar-item-icon" size="2"></pd-icon>
                 </div>
-                <div class="pd-sidebar-text"></div>
+                <div class="pd-sidebar-text" data-test="pd-sidebar-item-text"></div>
               </button>
             </mock:shadow-root>
           </pd-sidebar-item>

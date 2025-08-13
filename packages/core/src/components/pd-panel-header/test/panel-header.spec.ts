@@ -7,7 +7,7 @@ describe('pd-panel-header', () => {
             components: [PanelHeader],
             html: `<pd-panel-header></pd-panel-header>`,
         });
-                expect(page.root).toEqualHtml(`
+        expect(page.root).toEqualHtml(`
                     <pd-panel-header>
                         <mock:shadow-root>
                             <div class="pd-panel-header-content">

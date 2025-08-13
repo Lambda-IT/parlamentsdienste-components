@@ -8,13 +8,13 @@ describe('pd-progress-bar', () => {
             html: `<pd-progress-bar></pd-progress-bar>`,
         });
         expect(page.root).toEqualHtml(`
-          <pd-progress-bar>
-            <mock:shadow-root>
-                <div class="pd-progress-bar-background">
-                    <div class="pd-progress-bar pd-progress-bar-primary" style="width: 0%;"></div>
-                </div>
-            </mock:shadow-root>
-          </pd-progress-bar>
-        `);
+                    <pd-progress-bar>
+                        <mock:shadow-root>
+                                <div class="pd-progress-bar-background">
+                                        <div class="pd-progress-bar pd-progress-bar-primary" data-test="pd-progress-bar" style="width: 0%;"></div>
+                                </div>
+                        </mock:shadow-root>
+                    </pd-progress-bar>
+                `);
     });
 });

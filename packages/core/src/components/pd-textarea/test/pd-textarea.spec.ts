@@ -11,8 +11,8 @@ describe('pd-textarea', () => {
             <pd-textarea>
                 <mock:shadow-root>
                     <label class="pd-textarea-label">
-                        <textarea autocapitalize="none" class="pd-textarea" placeholder="">
-                    </textarea>
+                        <textarea autocapitalize="none" class="pd-textarea" placeholder="" data-test="pd-textarea" rows="1"></textarea>
+                    </label>
                 </mock:shadow-root>
             </pd-textarea>
         `);

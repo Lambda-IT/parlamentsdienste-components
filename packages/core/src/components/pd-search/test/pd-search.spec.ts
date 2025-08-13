@@ -10,13 +10,13 @@ describe('pd-search', () => {
         expect(page.root).toEqualHtml(`
           <pd-search role="search">
             <mock:shadow-root>
-              <label class="pd-search-label">
+              <label class="pd-search-label" data-test="pd-search-label">
                 <div class="pd-search-input-wrapper">
-                  <input class="pd-search-input" placeholder="" value="">
-                  <button class="pd-search-clear" tabindex="-1">
+                  <input class="pd-search-input" data-test="pd-search-input" placeholder="" size="1" value="">
+                  <button class="pd-search-clear" data-test="pd-search-reset" tabindex="-1">
                     <pd-icon class="pd-search-clear-icon" name="cancel" size="2.4"></pd-icon>
                   </button>
-                  <button class="pd-search-button" tabindex="-1">
+                  <button class="pd-search-button" data-test="pd-search-enter" tabindex="-1">
                     <pd-icon class="pd-search-button-icon" name="search" size="2.4"></pd-icon>
                   </button>
                 </div>
