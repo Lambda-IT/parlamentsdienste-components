@@ -1,5 +1,5 @@
-import { Checkbox } from '../pd-checkbox';
 import { newSpecPage } from '@stencil/core/testing';
+import { Checkbox } from '../pd-checkbox';
 
 describe('pd-checkbox', () => {
     it('renders', async () => {
@@ -10,12 +10,13 @@ describe('pd-checkbox', () => {
         expect(page.root).toEqualHtml(`
             <pd-checkbox aria-checked="false" aria-disabled="false" role="checkbox">
                 <mock:shadow-root>
-                    <label class="pd-checkbox-label">
+                    <label class="pd-checkbox-label" data-test="pd-checkbox-label">
                         <input class="pd-checkbox-input" type="Checkbox" value="false">
                         <div class="pd-checkbox-inner">
-                            <div class="pd-checkbox-checkmark"></div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div class="pd-checkbox-text"></div>
+                        <div class="pd-checkbox-text" data-test="pd-checkbox-text"></div>
                     </label>
                 </mock:shadow-root>
             </pd-checkbox>

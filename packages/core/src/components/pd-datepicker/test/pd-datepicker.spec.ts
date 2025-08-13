@@ -1,5 +1,5 @@
-import { Datepicker } from '../pd-datepicker';
 import { newSpecPage } from '@stencil/core/testing';
+import { Datepicker } from '../pd-datepicker';
 
 describe('pd-datepicker', () => {
     it('renders', async () => {
@@ -12,8 +12,8 @@ describe('pd-datepicker', () => {
                 <mock:shadow-root>
                     <label class="pd-datepicker-label">
                         <div class="wrapper">
-                            <pd-input class="pd-datepicker-input" data-input></pd-input>
-                            <pd-icon class="pd-datepicker-icon" name="calendar" size="2.4"></pd-icon>
+                            <input class="pd-datepicker-input" data-input data-test="pd-datepicker-input" size="1">
+                            <pd-icon class="calendar-icon pd-datepicker-icon" data-toggle name="calendar" size="2.4"></pd-icon>
                         </div>
                     </label>
                 </mock:shadow-root>

@@ -2,16 +2,19 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Label } from '../pd-label';
 
 describe('pd-label', () => {
-  it('renders', async () => {
-    const page = await newSpecPage({
-      components: [Label],
-      html: `<pd-label></pd-label>`,
-    });
-    expect(page.root).toEqualHtml(`
+    it('renders', async () => {
+        const page = await newSpecPage({
+            components: [Label],
+            html: `<pd-label></pd-label>`,
+        });
+        expect(page.root).toEqualHtml(`
             <pd-label>
                 <mock:shadow-root>
+                    <span class="pd-label">
+                        <slot></slot>
+                    </span>
                 </mock:shadow-root>
             </pd-label>
         `);
-  });
+    });
 });

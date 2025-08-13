@@ -1,5 +1,5 @@
-import { Input } from '../pd-input';
 import { newSpecPage } from '@stencil/core/testing';
+import { Input } from '../pd-input';
 
 describe('pd-input', () => {
     it('renders', async () => {
@@ -11,7 +11,7 @@ describe('pd-input', () => {
             <pd-input>
                 <mock:shadow-root>
                 <label class="pd-input-label">
-                   <input autocapitalize="off" autocomplete="off" autocorrect="off" class="pd-input" placeholder="" type="text" value="">
+                   <input autocapitalize="off" autocomplete="off" autocorrect="off" class="pd-input" data-test="pd-input" placeholder="" size="1" type="text" value="">
                 </label>
                 </mock:shadow-root>
             </pd-input>
