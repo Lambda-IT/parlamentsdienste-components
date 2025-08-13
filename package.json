@@ -16,7 +16,8 @@
         "start:angular": "npx nx run angular-test:serve",
         "start:react": "npx nx run react-test:serve",
         "start:vue": "npx nx run vue-test:serve",
-        "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'"
+        "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'",
+        "update-versions": "npx tsx tools/update-versions.js"
     },
     "private": true,
     "workspaces": [
