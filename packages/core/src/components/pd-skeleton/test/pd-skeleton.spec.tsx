@@ -8,9 +8,9 @@ describe('pd-skeleton', () => {
       html: `<pd-skeleton></pd-skeleton>`,
     });
     expect(page.root).toEqualHtml(`
-      <pd-skeleton>
+      <pd-skeleton style="height: 32px; width: 100%;">
         <mock:shadow-root>
-          <slot></slot>
+          <div class="pd-skeleton-animation"></div>
         </mock:shadow-root>
       </pd-skeleton>
     `);

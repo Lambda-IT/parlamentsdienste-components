@@ -9,9 +9,7 @@ describe('pd-tabs', () => {
     });
     expect(page.root).toEqualHtml(`
       <pd-tabs>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
+        <mock:shadow-root></mock:shadow-root>
       </pd-tabs>
     `);
   });
