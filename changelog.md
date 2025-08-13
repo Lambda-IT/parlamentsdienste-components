@@ -683,6 +683,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   pd-input now uses a different design for the readonly mode
 -   pd-input label font decreased
 
+[4.0.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v4.0.0
 [3.0.12]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.12
 [3.0.11]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.11
 [3.0.10]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.10

@@ -7,6 +7,9 @@
     "main": "./dist/src/index.js",
     "types": "./dist/src/index.d.ts",
     "dependencies": {
-        "tslib": "^2.3.0"
+        "tslib": "^2.3.0",
+        "rxjs": "~7.8.0",
+        "@angular/core": "~19.2.0",
+        "@angular/forms": "~19.2.0"
     }
 }
