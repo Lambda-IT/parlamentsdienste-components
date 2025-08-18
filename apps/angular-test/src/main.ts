@@ -1,7 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
+import { AngularFormComponent } from './app/angular-form.component';
 import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppComponent, appConfig).catch((err) =>
-  console.error(err)
-);
+bootstrapApplication(AngularFormComponent, appConfig).catch(err => console.error(err));

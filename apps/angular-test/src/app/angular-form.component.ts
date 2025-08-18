@@ -21,9 +21,9 @@ function lessThanSeventy(control: AbstractControl) {
 }
 
 @Component({
-    selector: 'app-formbuilder',
-    templateUrl: './formbuilder.component.html',
-    styleUrls: ['./formbuilder.component.css'],
+    selector: 'app-root',
+    templateUrl: './angular-form.component.html',
+    styleUrls: ['./angular-form.component.css'],
     imports: [
         CommonModule,
         PdInput,
@@ -41,7 +41,7 @@ function lessThanSeventy(control: AbstractControl) {
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormbuilderComponent {
+export class AngularFormComponent {
     items = [
         {
             id: '1',
@@ -78,44 +78,35 @@ export class FormbuilderComponent {
     selectedItem = this.items[0];
 
     testForm = new FormGroup({
-        name: new FormControl('1234', Validators.minLength(3)),
-        name2: new FormControl('asdf'),
-        checkbox: new FormControl(true),
-        dropdown: new FormControl(1),
-        combobox: new FormControl(this.items.slice(0, 2)),
-
+        input: new FormControl('Some text...', Validators.minLength(3)),
+        dropdown: new FormControl(this.items[5]),
         comboboxSelectable: new FormControl(this.items[2]),
+        comboboxMultiselect: new FormControl(this.items.slice(0, 2)),
         date: new FormControl('2025-07-23'),
+        checkbox: new FormControl(true),
         radio: new FormControl('2'),
-        textarea: new FormControl('start Text textarea', Validators.maxLength(20)),
         slider: new FormControl(50, lessThanSeventy),
+        textarea: new FormControl('start Text textarea', Validators.maxLength(20)),
     });
 
     constructor() {
-        console.log('FormbuilderComponent loaded');
+        console.log('AngularFormComponent constructor');
         this.testForm.valueChanges.subscribe(value => {
-            // console.log('Form value changed:', (value.dropdown as unknown as DropdownItem).id);
             console.log('Form value changed:', value);
         });
-        // setTimeout(() => {
-        //     // this.testForm.get('dropdown')?.setValue(2);
-        //     this.testForm.patchValue({
-        //         dropdown: 2,
-        //         combobox: ['1', '2'],
-        //         textarea: 'new text',
-        //         name: 'new input',
-        //         name2: 'new name2',
-        //         slider: 60,
-        //     });
-
-        //     // this.testForm.get('slider')?.disable();
-        //     // this.testForm.get('textarea')?.disable();
-        // }, 2000);
+        setTimeout(() => {
+            this.testForm.patchValue({
+                dropdown: this.items[1],
+                comboboxMultiselect: this.items.slice(2, 4),
+                textarea: 'new text',
+                input: 'new input value',
+                slider: 60,
+            });
+        }, 2000);
     }
 
     buttonClicked() {
         console.log('Button clicked');
-        this.testForm.get('name')?.disable();
-        // this.testForm.get('name2')!.invalid = true;
+        this.testForm.get('input')?.disable();
     }
 }

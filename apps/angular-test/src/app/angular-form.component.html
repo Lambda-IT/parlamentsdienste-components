@@ -1,0 +1,29 @@
+<div class="wrapper">
+    <h1>Parlamentsdienste Components</h1>
+    <h2>Angular Test Page</h2>
+    <form [formGroup]="testForm">
+        <pd-input formControlName="input" label="pd-input"></pd-input>
+        <pd-dropdown label="pd-dropdown" empty-item [items]="items" formControlName="dropdown"></pd-dropdown>
+        <pd-combobox
+            label="pd-combobox selectable"
+            formControlName="comboboxSelectable"
+            [items]="items"
+            selectable></pd-combobox>
+        <pd-combobox
+            label="pd-combobox multiselect"
+            formControlName="comboboxMultiselect"
+            [items]="items"
+            [emptyItem]="true"
+            [multiselect]="true"></pd-combobox>
+        <pd-datepicker label="pd-datepicker" formControlName="date"></pd-datepicker>
+        <pd-checkbox formControlName="checkbox" text="pd-checkbox"></pd-checkbox>
+        <pd-radio-group name="radio-group-1" formControlName="radio">
+            <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
+            <pd-radio value="2" label="Radio 2"></pd-radio>
+            <pd-radio value="3" label="Radio 3"></pd-radio>
+        </pd-radio-group>
+        <pd-slider formControlName="slider"></pd-slider>
+        <pd-textarea label="pd-textarea" formControlName="textarea" auto-grow></pd-textarea>
+        <pd-button (click)="buttonClicked()">pd-button</pd-button>
+    </form>
+</div>

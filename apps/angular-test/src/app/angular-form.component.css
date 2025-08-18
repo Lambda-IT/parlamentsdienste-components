@@ -1,0 +1,19 @@
+.wrapper {
+    max-width: 25rem;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+h1 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+form > * {
+    margin-bottom: 01rem;
+}
