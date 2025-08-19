@@ -19,7 +19,7 @@ const angularValueAccessorConfigs: ValueAccessorConfig[] = [
     {
         elementSelectors: ['pd-checkbox'],
         event: 'pd-checked',
-        targetAttr: 'value',
+        targetAttr: 'checked',
         type: 'boolean',
     },
     {

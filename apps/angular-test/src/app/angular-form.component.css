@@ -1,7 +1,6 @@
 .wrapper {
     max-width: 25rem;
-    margin: auto;
-    margin-top: 5rem;
+    margin: 5rem auto;
 }
 
 h1 {

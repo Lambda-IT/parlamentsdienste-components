@@ -99,7 +99,7 @@ export const PdButton: StencilVueComponent<JSX.PdButton> = /*@__PURE__*/ defineC
 export const PdButtonGroup: StencilVueComponent<JSX.PdButtonGroup> = /*@__PURE__*/ defineContainer<JSX.PdButtonGroup>('pd-button-group', definePdButtonGroup);
 
 
-export const PdCheckbox: StencilVueComponent<JSX.PdCheckbox, JSX.PdCheckbox["value"]> = /*@__PURE__*/ defineContainer<JSX.PdCheckbox, JSX.PdCheckbox["value"]>('pd-checkbox', definePdCheckbox, [
+export const PdCheckbox: StencilVueComponent<JSX.PdCheckbox, JSX.PdCheckbox["checked"]> = /*@__PURE__*/ defineContainer<JSX.PdCheckbox, JSX.PdCheckbox["checked"]>('pd-checkbox', definePdCheckbox, [
   'text',
   'disabled',
   'readonly',
@@ -114,7 +114,7 @@ export const PdCheckbox: StencilVueComponent<JSX.PdCheckbox, JSX.PdCheckbox["val
 ], [
   'pd-checked'
 ],
-'value', 'pd-checked');
+'checked', 'pd-checked');
 
 
 export const PdChip: StencilVueComponent<JSX.PdChip> = /*@__PURE__*/ defineContainer<JSX.PdChip>('pd-chip', definePdChip, [

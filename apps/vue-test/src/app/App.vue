@@ -1,5 +1,17 @@
 <script lang="ts">
-import { PdAlert, PdCombobox, PdDropdown, PdInput, PdSlider } from '@parlamentsdienste-components/vue';
+import {
+    PdAlert,
+    PdButton,
+    PdCheckbox,
+    PdCombobox,
+    PdDatepicker,
+    PdDropdown,
+    PdInput,
+    PdRadio,
+    PdRadioGroup,
+    PdSlider,
+    PdTextarea,
+} from '@parlamentsdienste-components/vue';
 import { defineComponent, ref, toRaw, watch } from 'vue';
 
 const comboItems = [
@@ -37,89 +49,115 @@ const comboItems = [
 
 export default defineComponent({
     name: 'MyComponent',
-    components: { PdAlert, PdInput, PdCombobox, PdSlider, PdDropdown },
+    components: {
+        PdAlert,
+        PdInput,
+        PdCombobox,
+        PdSlider,
+        PdDropdown,
+        PdCheckbox,
+        PdRadioGroup,
+        PdRadio,
+        PdDatepicker,
+        PdTextarea,
+        PdButton,
+    },
     setup() {
-        const inputValue = ref('hello');
-        const twoWayBinding = ref('two-way binding');
-        const selectedItems = ref(comboItems.slice(0, 2)); // Initialize with first two items
-        const sliderValue = ref(50);
-        const dropDownValue = ref(comboItems[1]);
-
-        watch(
-            selectedItems,
-            newVal => {
-                console.log('selectedItems changed:', toRaw(newVal));
-            },
-            { deep: true },
-        );
-
-        watch(
-            sliderValue,
-            newVal => {
-                console.log('sliderValue changed:', toRaw(newVal));
-            },
-            { deep: true },
-        );
-
-        watch(
-            dropDownValue,
-            newVal => {
-                console.log('dropDownValue changed:', toRaw(newVal));
-            },
-            { deep: true },
-        );
-
-        watch(
-            twoWayBinding,
-            newVal => {
-                console.log('twoWayBinding changed:', toRaw(newVal));
-            },
-            { deep: true },
-        );
+        const input = ref('Some text...');
+        const inputDisabled = ref(false);
+        const dropdown = ref(comboItems[5]);
+        const comboboxSelectable = ref(comboItems[2]);
+        const comboboxMultiselect = ref(comboItems.slice(0, 2));
+        const date = ref('2025-07-23');
+        const checkbox = ref(true);
+        const radio = ref('3');
+        const slider = ref(50);
+        const textarea = ref('start Text textarea');
 
         setTimeout(() => {
-            twoWayBinding.value = 'changed after 2 seconds';
-            selectedItems.value = [comboItems[2]]; // Change selected items after 2 seconds
+            dropdown.value = comboItems[1];
+            comboboxMultiselect.value = comboItems.slice(2, 4);
+            textarea.value = 'new text';
+            input.value = 'new input value';
+            slider.value = 60;
         }, 2000);
 
-        // setInterval(() => {
-        //     console.log('🚀 ~ selected comboItems:', selectedItems.value);
-        // }, 1000);
+        // Watchers for all ref variables
+        watch(input, val => console.log('input changed:', toRaw(val)));
+        watch(dropdown, val => console.log('dropdown changed:', toRaw(val)));
+        watch(comboboxSelectable, val => console.log('comboboxSelectable changed:', toRaw(val)));
+        watch(comboboxMultiselect, val => console.log('comboboxMultiselect changed:', toRaw(val)));
+        watch(date, val => console.log('date changed:', toRaw(val)));
+        watch(checkbox, val => console.log('checkbox changed:', toRaw(val)));
+        watch(radio, val => console.log('radio changed:', toRaw(val)));
+        watch(slider, val => console.log('slider changed:', toRaw(val)));
+        watch(textarea, val => console.log('textarea changed:', toRaw(val)));
 
-        const handleChange = event => {
-            console.log('🚀 ~ event:', event);
-
-            // inputValue.value = event.detail?.value ?? event.target.value;
-        };
-
-        const comboChange = event => {
-            console.log('🚀 ~ comboChange event:', event);
+        const buttonClicked = () => {
+            console.log('Button clicked');
+            inputDisabled.value = true;
         };
 
         return {
-            inputValue,
-            twoWayBinding,
-            handleChange,
-            selectedItems,
+            input,
+            inputDisabled,
+            dropdown,
+            comboboxSelectable,
+            comboboxMultiselect,
+            date,
+            checkbox,
+            radio,
+            slider,
+            textarea,
             comboItems,
-            comboChange,
-            sliderValue,
-            dropDownValue,
+            buttonClicked,
         };
     },
 });
 </script>
 
 <template>
-    <h1>Hello World</h1>
-    <PdAlert>test</PdAlert>
-    <PdInput :value="inputValue" @pd-change="handleChange" />
-    <PdInput v-model="twoWayBinding" />
-    <!-- <PdCombobox :items="comboItems" @pd-change="comboChange" multiselect /> -->
-    <hr />
-    <PdCombobox :items="comboItems" v-model="selectedItems" multiselect />
-    <hr />
-    <PdSlider v-model="sliderValue" :min="0" :max="100" />
-    <hr />
-    <PdDropdown v-model="dropDownValue" :items="comboItems" />
+    <div class="wrapper">
+        <h1>Parlamentsdienste Components</h1>
+        <h2>Vue Test Page</h2>
+        <form @submit.prevent>
+            <PdInput label="pd-input" v-model="input" :disabled="inputDisabled" />
+            <PdDropdown label="pd-dropdown" empty-item :items="comboItems" v-model="dropdown" />
+            <PdCombobox label="pd-combobox selectable" :items="comboItems" selectable v-model="comboboxSelectable" />
+            <PdCombobox
+                label="pd-combobox multiselect"
+                :items="comboItems"
+                multiselect
+                empty-item
+                v-model="comboboxMultiselect" />
+            <PdDatepicker label="pd-datepicker" v-model="date" />
+            <PdCheckbox text="pd-checkbox" v-model="checkbox" />
+            <PdRadioGroup name="radio-group-1" v-model="radio">
+                <PdRadio value="1" label="Radio 1" name="tom" />
+                <PdRadio value="2" label="Radio 2" />
+                <PdRadio value="3" label="Radio 3" />
+            </PdRadioGroup>
+            <PdSlider v-model="slider" />
+            <PdTextarea label="pd-textarea" v-model="textarea" auto-grow />
+            <PdButton @click="buttonClicked">pd-button</PdButton>
+        </form>
+    </div>
 </template>
+
+<style scoped>
+.wrapper {
+    max-width: 25rem;
+    margin: 5rem auto;
+}
+h1 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+form > * {
+    margin-bottom: 1rem;
+}
+</style>

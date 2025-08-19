@@ -75,6 +75,7 @@ export class PdRadioGroup {
     radioChange(ev: InputEvent) {
         ev.stopPropagation();
         const target = ev.target as HTMLPdRadioElement;
+        this.value = target.value;
         this.pdChange.emit(target.value);
     }
 
