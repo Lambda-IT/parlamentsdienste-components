@@ -94,15 +94,15 @@ export class AngularFormComponent {
         this.testForm.valueChanges.subscribe(value => {
             console.log('Form value changed:', value);
         });
-        setTimeout(() => {
-            this.testForm.patchValue({
-                dropdown: this.items[1],
-                comboboxMultiselect: this.items.slice(2, 4),
-                textarea: 'new text',
-                input: 'new input value',
-                slider: 60,
-            });
-        }, 2000);
+        // setTimeout(() => {
+        //     this.testForm.patchValue({
+        //         dropdown: this.items[1],
+        //         comboboxMultiselect: this.items.slice(2, 4),
+        //         textarea: 'new text',
+        //         input: 'new input value',
+        //         slider: 60,
+        //     });
+        // }, 2000);
     }
 
     buttonClicked() {

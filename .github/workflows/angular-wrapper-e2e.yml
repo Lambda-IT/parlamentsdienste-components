@@ -1,4 +1,4 @@
-name: run stencil component tests
+name: angular wrapper e2e tests
 
 on:
     push:
@@ -22,7 +22,7 @@ jobs:
               run: npm install -g pnpm
             - name: Install dependencies
               run: pnpm install
-            - name: Build core lib
-              run: pnpm run build:core
+            - name: Build angular-wrapper lib
+              run: pnpm run build:angular
             - name: Run tests
-              run: pnpm run test:core
+              run: pnpm run test:angular

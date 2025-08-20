@@ -2,28 +2,35 @@
     <h1>Parlamentsdienste Components</h1>
     <h2>Angular Test Page</h2>
     <form [formGroup]="testForm">
-        <pd-input formControlName="input" label="pd-input"></pd-input>
-        <pd-dropdown label="pd-dropdown" empty-item [items]="items" formControlName="dropdown"></pd-dropdown>
+        <pd-input formControlName="input" label="pd-input" data-test="pd-input"></pd-input>
+        <pd-dropdown
+            label="pd-dropdown"
+            empty-item
+            [items]="items"
+            formControlName="dropdown"
+            data-test="pd-dropdown"></pd-dropdown>
         <pd-combobox
             label="pd-combobox selectable"
             formControlName="comboboxSelectable"
             [items]="items"
-            selectable></pd-combobox>
+            selectable
+            data-test="pd-combobox-selectable"></pd-combobox>
         <pd-combobox
             label="pd-combobox multiselect"
             formControlName="comboboxMultiselect"
             [items]="items"
             [emptyItem]="true"
-            [multiselect]="true"></pd-combobox>
-        <pd-datepicker label="pd-datepicker" formControlName="date"></pd-datepicker>
-        <pd-checkbox formControlName="checkbox" text="pd-checkbox"></pd-checkbox>
-        <pd-radio-group name="radio-group-1" formControlName="radio">
-            <pd-radio value="1" label="Radio 1" name="tom"></pd-radio>
-            <pd-radio value="2" label="Radio 2"></pd-radio>
-            <pd-radio value="3" label="Radio 3"></pd-radio>
+            [multiselect]="true"
+            data-test="pd-combobox-multiselect"></pd-combobox>
+        <pd-datepicker label="pd-datepicker" formControlName="date" data-test="pd-datepicker"></pd-datepicker>
+        <pd-checkbox formControlName="checkbox" text="pd-checkbox" data-test="pd-checkbox"></pd-checkbox>
+        <pd-radio-group name="radio-group-1" formControlName="radio" data-test="pd-radio-group">
+            <pd-radio value="1" label="Radio 1" name="tom" data-test="pd-radio-1"></pd-radio>
+            <pd-radio value="2" label="Radio 2" data-test="pd-radio-2"></pd-radio>
+            <pd-radio value="3" label="Radio 3" data-test="pd-radio-3"></pd-radio>
         </pd-radio-group>
-        <pd-slider formControlName="slider"></pd-slider>
-        <pd-textarea label="pd-textarea" formControlName="textarea" auto-grow></pd-textarea>
-        <pd-button (click)="buttonClicked()">pd-button</pd-button>
+        <pd-slider formControlName="slider" data-test="pd-slider"></pd-slider>
+        <pd-textarea label="pd-textarea" formControlName="textarea" auto-grow data-test="pd-textarea"></pd-textarea>
+        <pd-button (click)="buttonClicked()" data-test="pd-button">pd-button</pd-button>
     </form>
 </div>
