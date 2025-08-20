@@ -24,7 +24,9 @@ jobs:
               run: pnpm install
             - name: Build angular-wrapper lib
               run: pnpm run build:angular
-            - name: install playwright
-              run: pnpm exec playwright install
+            - name: install playwright (chromium only)
+              run: pnpm exec playwright install chromium
             - name: Run tests
               run: pnpm run test:angular
+            - name: Publish Test Summary Results
+              run: npx github-actions-ctrf ctrf/ctrf-report.json

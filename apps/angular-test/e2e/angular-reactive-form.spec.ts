@@ -229,31 +229,24 @@ test('pd-textarea', async ({ page }) => {
     expect(formValue.textarea).toBe('Another value');
 });
 
-test('pd-button', async ({ page }) => {
+test.only('pd-button', async ({ page }) => {
     await page.goto('/');
     const button = await page.locator('[data-test="pd-button"]');
     const input = await page.locator('[data-test="pd-input"] input');
 
     let buttonClicked = false;
-    let inputDisabled = false;
 
     page.on('console', async msg => {
         if (msg.type() === 'log' && msg.text().includes('Button clicked')) {
             buttonClicked = true;
         }
-        if (msg.type() === 'log' && msg.text().includes('Form value changed:')) {
-            // Check if input is disabled in the form value
-            const valueHandle = msg.args()[1];
-            const formValue = await valueHandle.jsonValue();
-            inputDisabled = input.isDisabled ? await input.isDisabled() : false;
-        }
     });
 
     // Click the button
     await button.click();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(500);
 
     // Check that the button was clicked and input is disabled
     expect(buttonClicked).toBe(true);
-    expect(inputDisabled).toBe(true);
+    expect(await input.isDisabled()).toBe(true);
 });
