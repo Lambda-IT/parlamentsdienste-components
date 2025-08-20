@@ -1,4 +1,4 @@
-name: react wrapper e2e tests
+name: wrapper e2e tests
 
 on:
     push:
@@ -22,9 +22,11 @@ jobs:
               run: npm install -g pnpm
             - name: Install dependencies
               run: pnpm install
-            - name: Build react-wrapper lib
-              run: pnpm run build:react
+            - name: Build angular-wrapper lib
+              run: pnpm run build:angular
             - name: install playwright (chromium only)
               run: pnpm exec playwright install chromium
-            - name: Run tests
+            - name: Run Angular Wrapper tests
+              run: pnpm run test:angular
+            - name: Run React Wrapper tests
               run: pnpm run test:react
