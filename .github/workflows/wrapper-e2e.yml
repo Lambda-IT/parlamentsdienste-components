@@ -47,3 +47,6 @@ jobs:
 
             - name: Run React Wrapper tests
               run: pnpm run test:react
+
+            - name: Run Vue Wrapper tests
+              run: pnpm run test:vue

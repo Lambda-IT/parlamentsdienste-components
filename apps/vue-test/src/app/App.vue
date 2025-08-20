@@ -74,13 +74,13 @@ export default defineComponent({
         const slider = ref(50);
         const textarea = ref('start Text textarea');
 
-        setTimeout(() => {
-            dropdown.value = comboItems[1];
-            comboboxMultiselect.value = comboItems.slice(2, 4);
-            textarea.value = 'new text';
-            input.value = 'new input value';
-            slider.value = 60;
-        }, 2000);
+        // setTimeout(() => {
+        //     dropdown.value = comboItems[1];
+        //     comboboxMultiselect.value = comboItems.slice(2, 4);
+        //     textarea.value = 'new text';
+        //     input.value = 'new input value';
+        //     slider.value = 60;
+        // }, 2000);
 
         // Watchers for all ref variables
         watch(input, val => console.log('input changed:', toRaw(val)));
@@ -121,25 +121,39 @@ export default defineComponent({
         <h1>Parlamentsdienste Components</h1>
         <h2>Vue Test Page</h2>
         <form @submit.prevent>
-            <PdInput label="pd-input" v-model="input" :disabled="inputDisabled" />
-            <PdDropdown label="pd-dropdown" empty-item :items="comboItems" v-model="dropdown" />
-            <PdCombobox label="pd-combobox selectable" :items="comboItems" selectable v-model="comboboxSelectable" />
+            <PdInput label="pd-input" v-model="input" :disabled="inputDisabled" data-test="pd-input" />
+            <PdDropdown label="pd-dropdown" empty-item :items="comboItems" v-model="dropdown" data-test="pd-dropdown" />
+            <PdCombobox
+                label="pd-combobox selectable"
+                :items="comboItems"
+                selectable
+                v-model="comboboxSelectable"
+                data-test="pd-combobox-selectable" />
             <PdCombobox
                 label="pd-combobox multiselect"
                 :items="comboItems"
                 multiselect
                 empty-item
-                v-model="comboboxMultiselect" />
-            <PdDatepicker label="pd-datepicker" v-model="date" />
-            <PdCheckbox text="pd-checkbox" v-model="checkbox" />
-            <PdRadioGroup name="radio-group-1" v-model="radio">
-                <PdRadio value="1" label="Radio 1" name="tom" />
-                <PdRadio value="2" label="Radio 2" />
-                <PdRadio value="3" label="Radio 3" />
+                v-model="comboboxMultiselect"
+                data-test="pd-combobox-multiselect" />
+            <!-- !!! PdDatepicker
+                Because the datepicker emits an object { selectedDates: Date[]; dateStr: string }
+                the vmodel is not quite compatible 
+                -->
+            <PdDatepicker
+                label="pd-datepicker"
+                v-model="date"
+                data-test="pd-datepicker"
+                @pd-change="(d:any) => {date = d.detail.dateStr}" />
+            <PdCheckbox text="pd-checkbox" v-model="checkbox" data-test="pd-checkbox" />
+            <PdRadioGroup name="radio-group-1" v-model="radio" data-test="pd-radio-group">
+                <PdRadio value="1" label="Radio 1" name="tom" data-test="pd-radio-1" />
+                <PdRadio value="2" label="Radio 2" data-test="pd-radio-2" />
+                <PdRadio value="3" label="Radio 3" data-test="pd-radio-3" />
             </PdRadioGroup>
-            <PdSlider v-model="slider" />
-            <PdTextarea label="pd-textarea" v-model="textarea" auto-grow />
-            <PdButton @click="buttonClicked">pd-button</PdButton>
+            <PdSlider v-model="slider" data-test="pd-slider" />
+            <PdTextarea label="pd-textarea" v-model="textarea" auto-grow data-test="pd-textarea" />
+            <PdButton @click="buttonClicked" data-test="pd-button">pd-button</PdButton>
         </form>
     </div>
 </template>
