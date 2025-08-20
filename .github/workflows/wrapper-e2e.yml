@@ -39,8 +39,8 @@ jobs:
             - name: install playwright (chromium only)
               run: pnpm exec playwright install chromium
 
-            - name: Build angular-wrapper lib
-              run: pnpm run build:angular
+            - name: Build All
+              run: pnpm run build:all
 
             - name: Run Angular Wrapper tests
               run: pnpm run test:angular
