@@ -24,5 +24,7 @@ jobs:
               run: pnpm install
             - name: Build angular-wrapper lib
               run: pnpm run build:angular
+            - name: install playwright
+              run: pnpm exec playwright install
             - name: Run tests
               run: pnpm run test:angular
