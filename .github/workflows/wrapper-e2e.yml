@@ -14,19 +14,33 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+
             - name: Set up Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '20'
+                  cache: 'pnpm'
+
             - name: Install pnpm
               run: npm install -g pnpm
+
             - name: Install dependencies
-              run: pnpm install
-            - name: Build angular-wrapper lib
-              run: pnpm run build:angular
+              run: pnpm install --frozen-lockfile
+
+            - name: Cache Playwright browsers
+              uses: actions/cache@v3
+              with:
+                  path: ~/.cache/ms-playwright
+                  key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
             - name: install playwright (chromium only)
               run: pnpm exec playwright install chromium
+
+            - name: Build angular-wrapper lib
+              run: pnpm run build:angular
+
             - name: Run Angular Wrapper tests
               run: pnpm run test:angular
+
             - name: Run React Wrapper tests
               run: pnpm run test:react
