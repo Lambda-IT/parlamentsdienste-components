@@ -1,3 +1,4 @@
+import { ComboboxItem, DropdownItem } from '@parlamentsdienste-components/core';
 import {
     PdButton,
     PdCheckbox,
@@ -13,7 +14,7 @@ import {
 import { useState } from 'react';
 import './app.css';
 
-const comboItems = [
+const comboItems: DropdownItem[] = [
     {
         id: '1',
         label: 'Mitteilungen und Verschiedenes',
@@ -65,12 +66,13 @@ export function App() {
     return (
         <div className="wrapper">
             <h1>Parlamentsdienste Components</h1>
-            <h2>Angular Test Page</h2>
+            <h2>React Test Page</h2>
             <form>
                 <PdInput
                     label="pd-input"
                     value={formState.input}
                     onInput={e => setFormState({ ...formState, input: (e.target as HTMLInputElement).value })}
+                    data-test="pd-input"
                 />
                 <PdDropdown
                     label="pd-dropdown"
@@ -78,13 +80,15 @@ export function App() {
                     items={comboItems}
                     selected={formState.dropdown}
                     onPdChange={e => setFormState({ ...formState, dropdown: e.detail })}
+                    data-test="pd-dropdown"
                 />
                 <PdCombobox
                     label="pd-combobox selectable"
                     items={comboItems}
                     selectable
                     selected={formState.comboboxSelectable}
-                    onPdChange={e => setFormState({ ...formState, comboboxSelectable: e.detail })}
+                    onPdChange={e => setFormState({ ...formState, comboboxSelectable: e.detail as ComboboxItem })}
+                    data-test="pd-combobox-selectable"
                 />
                 <PdCombobox
                     label="pd-combobox multiselect"
@@ -92,38 +96,48 @@ export function App() {
                     multiselect
                     emptyItem
                     selected={formState.comboboxMultiselect}
-                    onPdChange={e => setFormState({ ...formState, comboboxMultiselect: e.detail })}
+                    onPdChange={e => setFormState({ ...formState, comboboxMultiselect: e.detail as ComboboxItem[] })}
+                    data-test="pd-combobox-multiselect"
                 />
                 <PdDatepicker
                     label="pd-datepicker"
                     date={formState.date}
-                    onPdChange={e => setFormState({ ...formState, date: e.detail })}
+                    onPdChange={e => setFormState({ ...formState, date: e.detail.dateStr })}
+                    data-test="pd-datepicker"
                 />
                 <PdCheckbox
                     text="pd-checkbox"
                     checked={formState.checkbox}
                     onPdChecked={e => setFormState({ ...formState, checkbox: e.detail })}
+                    data-test="pd-checkbox"
                 />
                 <PdRadioGroup
                     name="radio-group-1"
                     value={formState.radio}
-                    onPdChange={e => setFormState({ ...formState, radio: e.detail })}>
-                    <PdRadio value="1" label="Radio 1" name="tom" />
-                    <PdRadio value="2" label="Radio 2" />
-                    <PdRadio value="3" label="Radio 3" />
+                    onPdChange={e => setFormState({ ...formState, radio: e.detail })}
+                    data-test="pd-radio-group">
+                    <PdRadio value="1" label="Radio 1" name="tom" data-test="pd-radio-1" />
+                    <PdRadio value="2" label="Radio 2" data-test="pd-radio-2" />
+                    <PdRadio value="3" label="Radio 3" data-test="pd-radio-3" />
                 </PdRadioGroup>
-                <PdSlider value={formState.slider} onPdChange={e => setFormState({ ...formState, slider: e.detail })} />
+                <PdSlider
+                    value={formState.slider}
+                    onPdChange={e => setFormState({ ...formState, slider: e.detail })}
+                    data-test="pd-slider"
+                />
                 <PdTextarea
                     label="pd-textarea"
                     value={formState.textarea}
                     autoGrow
                     onPdChange={e => setFormState({ ...formState, textarea: e.detail })}
+                    data-test="pd-textarea"
                 />
                 <PdButton
                     onClick={e => {
                         e.preventDefault();
                         setFormState({ ...formState, input: '' });
-                    }}>
+                    }}
+                    data-test="pd-button">
                     pd-button
                 </PdButton>
             </form>
