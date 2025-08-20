@@ -23,8 +23,10 @@
         "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'",
         "update-versions": "npx tsx tools/update-versions.js",
         "pack:core": "cd packages/core && npm pack && cd ../..",
-        "pack:angular": "cd packages/angular && npm pack && cd ../..",
-        "pack:react": "cd packages/react && npm pack && cd ../.."
+        "pack:angular": "cd packages/angular/dist && npm pack && cd ../../..",
+        "pack:react": "cd packages/react/dist && npm pack && cd ../../..",
+        "pack:vue": "cd packages/vue/dist && npm pack && cd ../../..",
+        "pack:all": "npm run pack:core && npm run pack:angular && npm run pack:react && npm run pack:vue"
     },
     "private": true,
     "workspaces": [
