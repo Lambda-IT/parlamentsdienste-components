@@ -1,4 +1,4 @@
-name: run stencil component tests
+name: stencil component tests
 
 on:
     push:
@@ -10,7 +10,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    test:
+    stencil-component-tests:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4

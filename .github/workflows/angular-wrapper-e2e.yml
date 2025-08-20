@@ -10,7 +10,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    test:
+    angular-test-app-e2e-tests:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
