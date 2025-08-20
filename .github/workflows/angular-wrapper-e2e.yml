@@ -28,5 +28,3 @@ jobs:
               run: pnpm exec playwright install chromium
             - name: Run tests
               run: pnpm run test:angular
-            - name: Publish Test Summary Results
-              run: npx github-actions-ctrf ctrf/ctrf-report.json
