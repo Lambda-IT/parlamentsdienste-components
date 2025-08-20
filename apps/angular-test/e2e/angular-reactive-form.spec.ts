@@ -229,7 +229,7 @@ test('pd-textarea', async ({ page }) => {
     expect(formValue.textarea).toBe('Another value');
 });
 
-test.only('pd-button', async ({ page }) => {
+test('pd-button', async ({ page }) => {
     await page.goto('/');
     const button = await page.locator('[data-test="pd-button"]');
     const input = await page.locator('[data-test="pd-input"] input');
