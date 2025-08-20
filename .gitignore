@@ -34,6 +34,7 @@ yarn-error.log
 testem.log
 /typings
 
+
 # System Files
 .DS_Store
 Thumbs.db
@@ -49,3 +50,5 @@ vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
 /docs/storybook-static
+
+*.tgz
