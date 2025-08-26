@@ -4,16 +4,39 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Project Setup React
 
-<br />
+Node Version: 22<br />
+React Version: 19
 
-1.  Start a new react project using vite, next.js, nx...
+1. Build the parlamentsdienste components library
 
-2.  Install the parlamentsdienste components library
+    ```bash
+    git clone https://github.com/Lambda-IT/parlamentsdienste-components.git
+    cd parlamentsdienste-components
+    # if you dont have it already: npm i -g pnpm
+    pnpm install
+    pnpm run build:all
+    pnpm run pack:all
+    ```
 
-    -   install the core library first `@parlamentsdienste-components/core`
-    -   install the react wrapper library `@parlamentsdienste-components/react`
+    The pack:all command will generate .tgz files:
 
-3.  Make shure the assets from the core library are served as static assets. If you use vite, you can use the `vite-plugin-static-copy` plugin in your `vite.config.ts`:
+    - for the core library: `packages/core/parlamentsdienstecore-components-core-<version>.tgz`
+    - for the angular wrapper library: `packages/angular/dist/parlamentsdienstecore-components-angular-<version>.tgz`
+    - for the react wrapper library: `packages/react/dist/parlamentsdienstecore-components-react-<version>.tgz`
+    - for the vue wrapper library: `packages/vue/dist/parlamentsdienstecore-components-vue-<version>.tgz`
+
+2. Start a new react project using vite, next.js, nx...
+
+3. Copy the core and the react wrapper .tgz files to your new react project folder and install them.
+   Install the core library first.
+
+    ```bash
+    cd my-react-app
+    npm install "parlamentsdienstecore-components-core-<version>.tgz" -f
+    npm install "parlamentsdienstecore-components-react-<version>.tgz" -f
+    ```
+
+4. Make shure the assets from the core library are served as static assets. If you use vite, you can use the `vite-plugin-static-copy` plugin in your `vite.config.ts`:
 
     ```typescript
     import { defineConfig } from 'vite';
@@ -45,14 +68,14 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
     Don't forget to call this script after updating the library to ensure the assets are up-to-date.
 
-4.  To add the base styles and fonts add these two lines to the main entry file (e.g. `main.tsx` or `layout.tsx`):
+5. To add the base styles and fonts add these two lines to the main entry file (e.g. `main.tsx` or `layout.tsx`):
 
     ```typescript
     import '@parlamentsdienste-components/core/styles/parlamentsdienstecore.css';
     import '@parlamentsdienste-components/core/styles/typography.css';
     ```
 
-5.  Call setAssetPath in your main entry file (e.g. `main.tsx` or `layout.tsx`) to set the asset path for the components:
+6. Call setAssetPath in your main entry file (e.g. `main.tsx` or `layout.tsx`) to set the asset path for the components:
 
     ```typescript
     import { setAssetPath } from '@parlamentsdienste-components/core/components';

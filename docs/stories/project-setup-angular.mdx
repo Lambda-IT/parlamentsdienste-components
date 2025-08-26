@@ -4,19 +4,45 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Project Setup Angular
 
+Node Version: 22<br />
+Angular Version: 19
+
 <br />
 
-1. Start a new angular project using the Angular CLI:
+1. Build the parlamentsdienste components library
+
+    ```bash
+    git clone https://github.com/Lambda-IT/parlamentsdienste-components.git
+    cd parlamentsdienste-components
+    # if you dont have it already: npm i -g pnpm
+    pnpm install
+    pnpm run build:all
+    pnpm run pack:all
+    ```
+
+    The pack:all command will generate .tgz files:
+
+    - for the core library: `packages/core/parlamentsdienstecore-components-core-<version>.tgz`
+    - for the angular wrapper library: `packages/angular/dist/parlamentsdienstecore-components-angular-<version>.tgz`
+    - for the react wrapper library: `packages/react/dist/parlamentsdienstecore-components-react-<version>.tgz`
+    - for the vue wrapper library: `packages/vue/dist/parlamentsdienstecore-components-vue-<version>.tgz`
+
+2. Start a new angular project using the Angular CLI:
+
     ```bash
     ng new my-angular-app
-    cd my-angular-app
     ```
-2. Install the parlamentsdienste components library
 
-    - install the core library first
-    - install the angular wrapper library
+3. Copy the core and the angular wrapper .tgz files to your new angular project folder and install them.
+   Install the core library first.
 
-3. To add fonts and icons add this objectsto the `angular.json` assets array:
+    ```bash
+    cd my-angular-app
+    npm install "parlamentsdienstecore-components-core-<version>.tgz" -f
+    npm install "parlamentsdienstecore-components-angular-<version>.tgz" -f
+    ```
+
+4. To add fonts and icons add this objectsto the `angular.json` assets array:
 
     ```json
         "assets": [
@@ -28,7 +54,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
         ]
     ```
 
-4. To add the base styles and fonts add these two lines to the `styles` array in `angular.json`:
+5. To add the base styles and fonts add these two lines to the `styles` array in `angular.json`:
 
     ```json
         "styles": [
@@ -37,7 +63,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
         ],
     ```
 
-5. Call setAssetPath in your app-initializer and set it to the baseUrl of your project
+6. Call setAssetPath in your app-initializer and set it to the baseUrl of your project
 
     ```typescript
     import { setAssetPath } from '@parlamentsdienste-components/core/components';

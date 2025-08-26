@@ -18,6 +18,15 @@ https://parlamentsdienste-components.bgs.lambda-it.ch/
 -   [React](https://react.dev)
 -   [Angular](https://angular.io)
 
+## pnpm
+
+Die Bibliothek verwendet pnpm als Paketmanager. Um die Abhängigkeiten zu installieren, führen Sie den folgenden Befehl aus:
+
+```bash
+npm install --global pnpm
+pnpm install
+```
+
 ## Lizenz
 
 Die vorliegende Bibliothek unterliegt der GNU AGPL 3 Lizenz.

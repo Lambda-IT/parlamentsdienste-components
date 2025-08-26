@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   New prop `selected` for `pd-dropdown` and `pd-combobox`.  
-    Added for the value accessor. Can be a dropdown item object (only needs an `id` prop) `{ id: '1', ... }`, or a string id `'asdf'`, or a number `1` to select an item.
+    Needed for the vue and angular value accessor (2-way-binding). Can be a dropdown-item object for pd-dropdown or an array of dropdown-item objects for pd-combobox to select items.
 
 ### BREAKING
 
