@@ -1,6 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import {
-    PdAlert,
     PdButton,
     PdCheckbox,
     PdCombobox,
@@ -12,7 +11,7 @@ import {
     PdSlider,
     PdTextarea,
 } from '@parlamentsdienste-components/vue';
-import { defineComponent, ref, toRaw, watch } from 'vue';
+import { ref, toRaw, watch } from 'vue';
 
 const comboItems = [
     {
@@ -47,73 +46,40 @@ const comboItems = [
     },
 ];
 
-export default defineComponent({
-    name: 'MyComponent',
-    components: {
-        PdAlert,
-        PdInput,
-        PdCombobox,
-        PdSlider,
-        PdDropdown,
-        PdCheckbox,
-        PdRadioGroup,
-        PdRadio,
-        PdDatepicker,
-        PdTextarea,
-        PdButton,
-    },
-    setup() {
-        const input = ref('Some text...');
-        const inputDisabled = ref(false);
-        const dropdown = ref(comboItems[5]);
-        const comboboxSelectable = ref(comboItems[2]);
-        const comboboxMultiselect = ref(comboItems.slice(0, 2));
-        const date = ref('2025-07-23');
-        const checkbox = ref(true);
-        const radio = ref('3');
-        const slider = ref(50);
-        const textarea = ref('start Text textarea');
+const input = ref('Some text...');
+const inputDisabled = ref(false);
+const dropdown = ref(comboItems[5]);
+const comboboxSelectable = ref(comboItems[2]);
+const comboboxMultiselect = ref(comboItems.slice(0, 2));
+const date = ref('2025-07-23');
+const checkbox = ref(true);
+const radio = ref('3');
+const slider = ref(50);
+const textarea = ref('start Text textarea');
 
-        // setTimeout(() => {
-        //     dropdown.value = comboItems[1];
-        //     comboboxMultiselect.value = comboItems.slice(2, 4);
-        //     textarea.value = 'new text';
-        //     input.value = 'new input value';
-        //     slider.value = 60;
-        // }, 2000);
+// setTimeout(() => {
+//     dropdown.value = comboItems[1];
+//     comboboxMultiselect.value = comboItems.slice(2, 4);
+//     textarea.value = 'new text';
+//     input.value = 'new input value';
+//     slider.value = 60;
+// }, 2000);
 
-        // Watchers for all ref variables
-        watch(input, val => console.log('input changed:', toRaw(val)));
-        watch(dropdown, val => console.log('dropdown changed:', toRaw(val)));
-        watch(comboboxSelectable, val => console.log('comboboxSelectable changed:', toRaw(val)));
-        watch(comboboxMultiselect, val => console.log('comboboxMultiselect changed:', toRaw(val)));
-        watch(date, val => console.log('date changed:', toRaw(val)));
-        watch(checkbox, val => console.log('checkbox changed:', toRaw(val)));
-        watch(radio, val => console.log('radio changed:', toRaw(val)));
-        watch(slider, val => console.log('slider changed:', toRaw(val)));
-        watch(textarea, val => console.log('textarea changed:', toRaw(val)));
+// Watchers for all ref variables
+watch(input, val => console.log('input changed:', toRaw(val)));
+watch(dropdown, val => console.log('dropdown changed:', toRaw(val)));
+watch(comboboxSelectable, val => console.log('comboboxSelectable changed:', toRaw(val)));
+watch(comboboxMultiselect, val => console.log('comboboxMultiselect changed:', toRaw(val)));
+watch(date, val => console.log('date changed:', toRaw(val)));
+watch(checkbox, val => console.log('checkbox changed:', toRaw(val)));
+watch(radio, val => console.log('radio changed:', toRaw(val)));
+watch(slider, val => console.log('slider changed:', toRaw(val)));
+watch(textarea, val => console.log('textarea changed:', toRaw(val)));
 
-        const buttonClicked = () => {
-            console.log('Button clicked');
-            inputDisabled.value = true;
-        };
-
-        return {
-            input,
-            inputDisabled,
-            dropdown,
-            comboboxSelectable,
-            comboboxMultiselect,
-            date,
-            checkbox,
-            radio,
-            slider,
-            textarea,
-            comboItems,
-            buttonClicked,
-        };
-    },
-});
+function buttonClicked() {
+    console.log('Button clicked');
+    inputDisabled.value = true;
+}
 </script>
 
 <template>
