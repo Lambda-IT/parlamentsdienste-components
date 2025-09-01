@@ -224,13 +224,20 @@ export class Input implements ComponentInterface {
         const isCharacter = /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]$/u.test(event.key);
         if (!isCharacter) return;
 
-        if ((this.value as string).length + 1 > this.maxlength && this.characterCountRef) {
+        console.log('key pressed', {
+            '(this.value as string).length': (this.value as string).length,
+            maxLength: this.maxlength,
+            characterCountRef: this.characterCountRef,
+            condition: (this.value as string).length + 1 > this.maxlength,
+        });
+
+        if ((this.value as string).length + 1 > this.maxlength) {
             this.characterCountRef.classList.remove('flash-red');
             this.nativeInput?.classList.remove('pd-input-character-count-error');
-            // Force reflow to restart animation
-            void this.characterCountRef.offsetWidth;
-            this.characterCountRef.classList.add('flash-red');
-            this.nativeInput?.classList.add('pd-input-character-count-error');
+            requestAnimationFrame(() => {
+                this.characterCountRef.classList.add('flash-red');
+                this.nativeInput?.classList.add('pd-input-character-count-error');
+            });
         }
     };
 

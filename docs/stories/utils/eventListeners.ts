@@ -30,7 +30,6 @@ export function addEventlisteners(
 ) {
     document.addEventListener('DOMContentLoaded', () => {
         const elements = document.querySelectorAll(elementTag);
-        console.log(elements);
         if (elements.length === 0) return;
 
         const { eventType = 'CustomEvent' } = options ?? {};
@@ -39,7 +38,6 @@ export function addEventlisteners(
         for (const el of elements) {
             for (const event of events) {
                 el.addEventListener(event, e => {
-                    console.log(e);
                     const newObj = { __eventType: eventType, __eventName: event };
 
                     for (const key in e) {
@@ -49,7 +47,6 @@ export function addEventlisteners(
                     }
                     action(event)(newObj);
                 });
-                console.log('added event', event);
             }
         }
     });

@@ -118,7 +118,7 @@
 
 @keyframes pd-input-charcount-error-animation {
     0% {
-        background: transparent;
+        background: $yellow-1;
     }
     20% {
         border-color: $input-error-border;
@@ -130,6 +130,6 @@
     }
     100% {
         border-color: setcolor(primary, enabled);
-        background: transparent;
+        background: $yellow-1;
     }
 }
