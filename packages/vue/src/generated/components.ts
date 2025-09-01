@@ -271,6 +271,8 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
   'label',
   'error',
   'verticalAdjust',
+  'showCharacterCount',
+  'characterCountText',
   'pd-input',
   'pd-change',
   'pd-blur',

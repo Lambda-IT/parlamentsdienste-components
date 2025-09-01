@@ -500,6 +500,10 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
+          * Shows a text/hint addition to the character count.
+         */
+        "characterCountText"?: string;
+        /**
           * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
          */
         "clearInput": boolean;
@@ -567,6 +571,10 @@ export namespace Components {
           * Sets focus on the specified `pd-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Shows the character count below the input.
+         */
+        "showCharacterCount": boolean;
         /**
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */
@@ -2345,6 +2353,10 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
+          * Shows a text/hint addition to the character count.
+         */
+        "characterCountText"?: string;
+        /**
           * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
          */
         "clearInput"?: boolean;
@@ -2424,6 +2436,10 @@ declare namespace LocalJSX {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
+        /**
+          * Shows the character count below the input.
+         */
+        "showCharacterCount"?: boolean;
         /**
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
          */

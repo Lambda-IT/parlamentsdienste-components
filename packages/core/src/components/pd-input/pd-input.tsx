@@ -1,4 +1,15 @@
-import { Component, ComponentInterface, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core';
+import {
+    Component,
+    ComponentInterface,
+    Event,
+    EventEmitter,
+    Fragment,
+    h,
+    Host,
+    Method,
+    Prop,
+    Watch,
+} from '@stencil/core';
 import { InputChangeEventDetail, TextFieldTypes } from '../../types';
 
 @Component({
@@ -148,6 +159,16 @@ export class Input implements ComponentInterface {
     @Prop() verticalAdjust: boolean = false;
 
     /**
+     * Shows the character count below the input.
+     */
+    @Prop() showCharacterCount: boolean = false;
+
+    /**
+     * Shows a text/hint addition to the character count.
+     */
+    @Prop() characterCountText?: string;
+
+    /**
      * Emitted when a keyboard input occurred.
      */
     @Event({ eventName: 'pd-input' }) pdInput!: EventEmitter<KeyboardEvent>;
@@ -172,7 +193,6 @@ export class Input implements ComponentInterface {
      */
     @Watch('value')
     protected valueChanged() {
-        // this.pdChange.emit({ value: this.value == null ? this.value : this.value.toString() });
         this.pdChange.emit(this.value == null ? this.value : this.value.toString());
     }
 
@@ -192,7 +212,26 @@ export class Input implements ComponentInterface {
         if (input) {
             this.value = input.value || '';
         }
+
         this.pdInput.emit(ev as KeyboardEvent);
+    };
+
+    private characterCountRef?: HTMLDivElement;
+
+    private onKeyDown = (event: KeyboardEvent) => {
+        if ((!this.showCharacterCount || !this.maxlength) && this.type === 'text') return;
+
+        const isCharacter = /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]$/u.test(event.key);
+        if (!isCharacter) return;
+
+        if ((this.value as string).length + 1 > this.maxlength && this.characterCountRef) {
+            this.characterCountRef.classList.remove('flash-red');
+            this.nativeInput?.classList.remove('pd-input-character-count-error');
+            // Force reflow to restart animation
+            void this.characterCountRef.offsetWidth;
+            this.characterCountRef.classList.add('flash-red');
+            this.nativeInput?.classList.add('pd-input-character-count-error');
+        }
     };
 
     private onBlur = () => {
@@ -202,8 +241,6 @@ export class Input implements ComponentInterface {
     private onFocus = () => {
         this.pdFocus.emit();
     };
-
-    private onKeydown = () => {};
 
     private getValue(): string {
         return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
@@ -228,42 +265,53 @@ export class Input implements ComponentInterface {
                         ''
                     )}
                     {!this.viewOnly ? (
-                        <input
-                            class={{
-                                'pd-input': true,
-                                'pd-input-readonly': this.readonly,
-                                'pd-input-error': this.error,
-                            }}
-                            ref={input => (this.nativeInput = input)}
-                            disabled={this.disabled}
-                            accept={this.accept}
-                            autoCapitalize={this.autocapitalize}
-                            autoComplete={this.autocomplete}
-                            autoCorrect={this.autocorrect}
-                            autoFocus={this.autofocus}
-                            inputMode={this.inputmode}
-                            min={this.min}
-                            max={this.max}
-                            minLength={this.minlength}
-                            maxLength={this.maxlength}
-                            multiple={this.multiple}
-                            name={this.name}
-                            pattern={this.pattern}
-                            placeholder={this.placeholder || ''}
-                            readonly={this.readonly}
-                            required={this.required}
-                            step={this.step}
-                            size={this.size}
-                            type={this.type}
-                            value={value}
-                            onInput={this.onInput}
-                            onBlur={this.onBlur}
-                            onFocus={this.onFocus}
-                            onKeyDown={this.onKeydown}
-                            style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
-                            data-test="pd-input"
-                            tabIndex={this.readonly ? -1 : undefined}
-                        />
+                        <Fragment>
+                            <input
+                                class={{
+                                    'pd-input': true,
+                                    'pd-input-readonly': this.readonly,
+                                    'pd-input-error': this.error,
+                                }}
+                                ref={input => (this.nativeInput = input)}
+                                disabled={this.disabled}
+                                accept={this.accept}
+                                autoCapitalize={this.autocapitalize}
+                                autoComplete={this.autocomplete}
+                                autoCorrect={this.autocorrect}
+                                autoFocus={this.autofocus}
+                                inputMode={this.inputmode}
+                                min={this.min}
+                                max={this.max}
+                                minLength={this.minlength}
+                                maxLength={this.maxlength}
+                                multiple={this.multiple}
+                                name={this.name}
+                                pattern={this.pattern}
+                                placeholder={this.placeholder || ''}
+                                readonly={this.readonly}
+                                required={this.required}
+                                step={this.step}
+                                size={this.size}
+                                type={this.type}
+                                value={value}
+                                onInput={this.onInput}
+                                onBlur={this.onBlur}
+                                onFocus={this.onFocus}
+                                onKeyDown={this.onKeyDown}
+                                style={this.verticalAdjust ? { '--pd-input-vertical-adjust': '1.5625rem' } : {}}
+                                data-test="pd-input"
+                                tabIndex={this.readonly ? -1 : undefined}
+                            />
+                            {this.showCharacterCount && (
+                                <div
+                                    class="pd-input-character-count"
+                                    ref={el => (this.characterCountRef = el as HTMLDivElement)}>
+                                    {this.characterCountText && this.characterCountText + ': '}
+                                    {value.length}
+                                    {this.maxlength && `/${this.maxlength}`}
+                                </div>
+                            )}
+                        </Fragment>
                     ) : (
                         <p class="pd-input-viewonly">{this.value}</p>
                     )}
