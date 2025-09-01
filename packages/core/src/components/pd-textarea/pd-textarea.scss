@@ -77,6 +77,10 @@
         resize: none;
         overflow-x: hidden; // fixes issue with height (1 row) in Firefox
     }
+
+    &.pd-textarea-character-count-error {
+        animation: pd-textarea-charcount-error-animation 1s;
+    }
 }
 
 .pd-textarea-label-viewonly {
@@ -87,4 +91,50 @@
     display: block;
     margin: 0;
     padding: 0.125rem 0 0.75rem 0;
+}
+
+.pd-textarea-character-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: $gray-9;
+    margin-top: 0.15rem;
+    margin-right: 0.15rem;
+    transition: color 0.2s;
+}
+
+.pd-textarea-character-count.flash-red {
+    animation: pd-textarea-charcount-flash-red 1s;
+}
+
+@keyframes pd-textarea-charcount-flash-red {
+    0% {
+        color: $gray-9;
+    }
+    20% {
+        color: $input-error-border;
+    }
+    60% {
+        color: $input-error-border;
+    }
+    100% {
+        color: $gray-9;
+    }
+}
+
+@keyframes pd-textarea-charcount-error-animation {
+    0% {
+        background: $yellow-1;
+    }
+    20% {
+        border-color: $input-error-border;
+        background: $red-3;
+    }
+    60% {
+        border-color: $input-error-border;
+        background: $red-3;
+    }
+    100% {
+        border-color: setcolor(primary, enabled);
+        background: $yellow-1;
+    }
 }

@@ -582,6 +582,8 @@ export const PdTextarea: StencilVueComponent<JSX.PdTextarea, JSX.PdTextarea["val
   'error',
   'autoGrow',
   'value',
+  'showCharacterCount',
+  'characterCountText',
   'pd-change',
   'pd-input',
   'pd-blur',

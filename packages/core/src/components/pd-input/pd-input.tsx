@@ -219,17 +219,10 @@ export class Input implements ComponentInterface {
     private characterCountRef?: HTMLDivElement;
 
     private onKeyDown = (event: KeyboardEvent) => {
-        if ((!this.showCharacterCount || !this.maxlength) && this.type === 'text') return;
+        if (!this.showCharacterCount || !this.maxlength) return;
 
         const isCharacter = /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]$/u.test(event.key);
         if (!isCharacter) return;
-
-        console.log('key pressed', {
-            '(this.value as string).length': (this.value as string).length,
-            maxLength: this.maxlength,
-            characterCountRef: this.characterCountRef,
-            condition: (this.value as string).length + 1 > this.maxlength,
-        });
 
         if ((this.value as string).length + 1 > this.maxlength) {
             this.characterCountRef.classList.remove('flash-red');

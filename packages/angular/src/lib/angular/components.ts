@@ -1470,7 +1470,7 @@ export declare interface PdTabs extends Components.PdTabs {
 
 @ProxyCmp({
   defineCustomElementFn: definePdTextarea,
-  inputs: ['autoGrow', 'autocapitalize', 'autofocus', 'cols', 'disabled', 'enterkeyhint', 'error', 'inputmode', 'label', 'maxlength', 'minlength', 'placeholder', 'readonly', 'required', 'rows', 'spellcheck', 'value', 'viewOnly', 'wrap'],
+  inputs: ['autoGrow', 'autocapitalize', 'autofocus', 'characterCountText', 'cols', 'disabled', 'enterkeyhint', 'error', 'inputmode', 'label', 'maxlength', 'minlength', 'placeholder', 'readonly', 'required', 'rows', 'showCharacterCount', 'spellcheck', 'value', 'viewOnly', 'wrap'],
   methods: ['setFocus']
 })
 @Component({
@@ -1478,7 +1478,7 @@ export declare interface PdTabs extends Components.PdTabs {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autoGrow', 'autocapitalize', 'autofocus', 'cols', 'disabled', 'enterkeyhint', 'error', 'inputmode', 'label', 'maxlength', 'minlength', 'placeholder', 'readonly', 'required', 'rows', 'spellcheck', 'value', 'viewOnly', 'wrap'],
+  inputs: ['autoGrow', 'autocapitalize', 'autofocus', 'characterCountText', 'cols', 'disabled', 'enterkeyhint', 'error', 'inputmode', 'label', 'maxlength', 'minlength', 'placeholder', 'readonly', 'required', 'rows', 'showCharacterCount', 'spellcheck', 'value', 'viewOnly', 'wrap'],
   outputs: ['pd-change', 'pd-input', 'pd-blur', 'pd-focus'],
   
   standalone: true,

@@ -6,6 +6,9 @@ const defaultArgs = {
     value: 'Text',
     helperText: 'Helper Text',
     placeholder: 'Placehoder',
+    showCharacterCount: false,
+    characterCountText: 'Max 100 characters',
+    maxLength: 0,
     disabled: false,
     readonly: false,
     viewonly: false,
@@ -35,6 +38,9 @@ const textarea = (args: TextareaArgs) => {
         placeholder="${args.placeholder}"
         helper-text="${args.helperText}"
         value="${args.value}"
+        ${args.showCharacterCount ? 'show-character-count' : ''}
+        ${args.characterCountText ? `character-count-text="${args.characterCountText}"` : ''}
+        ${args.maxLength ? `maxlength="${args.maxLength}"` : ''}
         ${args.disabled ? 'disabled' : ''}
         ${args.readonly ? 'readonly' : ''}
         ${args.viewonly ? 'view-only' : ''}

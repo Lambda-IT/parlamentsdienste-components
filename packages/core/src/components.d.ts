@@ -1078,6 +1078,10 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
+          * Shows a text/hint addition to the character count.
+         */
+        "characterCountText"?: string;
+        /**
           * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
@@ -1129,6 +1133,10 @@ export namespace Components {
           * Sets focus on the native `textarea` in `pd-textarea`. Use this method instead of the global `textarea.focus()`.
          */
         "setFocus": () => Promise<void>;
+        /**
+          * Shows the character count below the input.
+         */
+        "showCharacterCount": boolean;
         /**
           * If `true`, the element will have its spelling and grammar checked.
          */
@@ -3037,6 +3045,10 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
+          * Shows a text/hint addition to the character count.
+         */
+        "characterCountText"?: string;
+        /**
           * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
@@ -3100,6 +3112,10 @@ declare namespace LocalJSX {
           * The number of visible text lines for the control.
          */
         "rows"?: number;
+        /**
+          * Shows the character count below the input.
+         */
+        "showCharacterCount"?: boolean;
         /**
           * If `true`, the element will have its spelling and grammar checked.
          */

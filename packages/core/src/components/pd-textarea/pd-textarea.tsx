@@ -4,6 +4,7 @@ import {
     ComponentInterface,
     Event,
     EventEmitter,
+    Fragment,
     h,
     Host,
     Method,
@@ -120,6 +121,16 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
     @Prop({ mutable: true }) value?: string = '';
 
     /**
+     * Shows the character count below the input.
+     */
+    @Prop() showCharacterCount: boolean = false;
+
+    /**
+     * Shows a text/hint addition to the character count.
+     */
+    @Prop() characterCountText?: string;
+
+    /**
      * Update the native input element when the value changes
      */
     @Watch('value')
@@ -164,6 +175,8 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
         }
     }
 
+    private characterCountRef?: HTMLDivElement;
+
     public componentDidLoad() {
         requestAnimationFrame(() => this.runAutoGrow());
     }
@@ -190,6 +203,22 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
             this.value = this.nativeInput.value;
         }
         this.pdInput.emit(ev as KeyboardEvent);
+    };
+
+    private onKeyDown = (event: KeyboardEvent) => {
+        if (!this.showCharacterCount || !this.maxlength) return;
+
+        const isCharacter = /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]$/u.test(event.key);
+        if (!isCharacter) return;
+
+        if ((this.value as string).length + 1 > this.maxlength) {
+            this.characterCountRef.classList.remove('flash-red');
+            this.nativeInput?.classList.remove('pd-textarea-character-count-error');
+            requestAnimationFrame(() => {
+                this.characterCountRef.classList.add('flash-red');
+                this.nativeInput?.classList.add('pd-textarea-character-count-error');
+            });
+        }
     };
 
     private onFocus = (ev: FocusEvent) => {
@@ -219,35 +248,47 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
                         ''
                     )}
                     {!this.viewOnly ? (
-                        <textarea
-                            class={{
-                                'pd-textarea': true,
-                                'pd-textarea-readonly': this.readonly,
-                                'pd-textarea-error': this.error,
-                                'pd-textarea-autogrow': this.autoGrow,
-                            }}
-                            ref={textarea => (this.nativeInput = textarea)}
-                            autoCapitalize={this.autocapitalize}
-                            autoFocus={this.autofocus}
-                            enterKeyHint={this.enterkeyhint}
-                            inputMode={this.inputmode}
-                            disabled={this.disabled}
-                            maxLength={this.maxlength}
-                            minLength={this.minlength}
-                            placeholder={this.placeholder || ''}
-                            readOnly={this.readonly}
-                            required={this.required}
-                            spellcheck={this.spellcheck}
-                            cols={this.cols}
-                            rows={this.rows}
-                            wrap={this.wrap}
-                            onInput={this.onInput}
-                            onBlur={this.onBlur}
-                            onFocus={this.onFocus}
-                            data-test="pd-textarea"
-                            tabIndex={this.readonly ? -1 : undefined}>
-                            {value}
-                        </textarea>
+                        <Fragment>
+                            <textarea
+                                class={{
+                                    'pd-textarea': true,
+                                    'pd-textarea-readonly': this.readonly,
+                                    'pd-textarea-error': this.error,
+                                    'pd-textarea-autogrow': this.autoGrow,
+                                }}
+                                ref={textarea => (this.nativeInput = textarea)}
+                                autoCapitalize={this.autocapitalize}
+                                autoFocus={this.autofocus}
+                                enterKeyHint={this.enterkeyhint}
+                                inputMode={this.inputmode}
+                                disabled={this.disabled}
+                                maxLength={this.maxlength}
+                                minLength={this.minlength}
+                                placeholder={this.placeholder || ''}
+                                readOnly={this.readonly}
+                                required={this.required}
+                                spellcheck={this.spellcheck}
+                                cols={this.cols}
+                                rows={this.rows}
+                                wrap={this.wrap}
+                                onInput={this.onInput}
+                                onBlur={this.onBlur}
+                                onFocus={this.onFocus}
+                                onKeyDown={this.onKeyDown}
+                                data-test="pd-textarea"
+                                tabIndex={this.readonly ? -1 : undefined}>
+                                {value}
+                            </textarea>
+                            {this.showCharacterCount && (
+                                <div
+                                    class="pd-textarea-character-count"
+                                    ref={el => (this.characterCountRef = el as HTMLDivElement)}>
+                                    {this.characterCountText && this.characterCountText + ': '}
+                                    {value.length}
+                                    {this.maxlength && `/${this.maxlength}`}
+                                </div>
+                            )}
+                        </Fragment>
                     ) : (
                         <p class="pd-textarea-viewonly">{this.value}</p>
                     )}
