@@ -68,7 +68,7 @@
     },
     "devDependencies": {
         "@parlamentsdienste-components/angular-output-target": "0.0.1",
-        "@stencil/core": "^4.27.1",
+        "@stencil/core": "^4.31.0",
         "@stencil/vue-output-target": "^0.10.8",
         "@types/jest": "^29.5.14",
         "@types/node": "^22.13.5",
