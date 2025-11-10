@@ -10,7 +10,7 @@ import {
     PdRadioGroup,
     PdSlider,
     PdTextarea,
-} from '@parlamentsdienste-components/vue';
+} from '@parlamentsdienste/vue';
 import { ref, toRaw, watch } from 'vue';
 
 const comboItems = [

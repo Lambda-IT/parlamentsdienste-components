@@ -15,12 +15,12 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@parlamentsdienste-components/angular": ["packages/angular/src/index.ts"],
-            "@parlamentsdienste-components/angular-output-target": ["libs/angular-output-target/src/index.ts"],
-            "@parlamentsdienste-components/core": ["packages/core/src/index.ts"],
-            "@parlamentsdienste-components/dist": ["dist/packages/angular/index.d.ts"],
-            "@parlamentsdienste-components/react": ["packages/react/src/index.ts"],
-            "@parlamentsdienste-components/vue": ["packages/vue/src/index.ts"]
+            "@parlamentsdienste/angular": ["packages/angular/src/index.ts"],
+            "@parlamentsdienste/angular-output-target": ["libs/angular-output-target/src/index.ts"],
+            "@parlamentsdienste/core": ["packages/core/src/index.ts"],
+            "@parlamentsdienste/dist": ["dist/packages/angular/index.d.ts"],
+            "@parlamentsdienste/react": ["packages/react/src/index.ts"],
+            "@parlamentsdienste/vue": ["packages/vue/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

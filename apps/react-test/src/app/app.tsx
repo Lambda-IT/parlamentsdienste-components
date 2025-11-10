@@ -1,4 +1,4 @@
-import { ComboboxItem, DropdownItem } from '@parlamentsdienste-components/core';
+import { ComboboxItem, DropdownItem } from '@parlamentsdienste/core';
 import {
     PdButton,
     PdCheckbox,
@@ -10,7 +10,7 @@ import {
     PdRadioGroup,
     PdSlider,
     PdTextarea,
-} from '@parlamentsdienste-components/react';
+} from '@parlamentsdienste/react';
 import { useState } from 'react';
 import './app.css';
 

@@ -7,8 +7,8 @@
         "inlineSources": true,
         "types": [],
         "paths": {
-            "@parlamentsdienste-components/core/components": ["../asdf"],
-            "@parlamentsdienste-components/core/components/*": ["@parlamentsdienste-components/core/*"],
+            "@parlamentsdienste/core/components": ["../asdf"],
+            "@parlamentsdienste/core/components/*": ["@parlamentsdienste/core/*"],
             "@xyz/*": ["../xyz/src/*"]
         }
     },

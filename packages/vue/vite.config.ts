@@ -39,7 +39,7 @@ export default defineConfig(() => ({
         },
         rollupOptions: {
             external: id => {
-                return ['@parlamentsdienste-components/core', '@stencil/vue-output-target/runtime'].some(
+                return ['@parlamentsdienste/core', '@stencil/vue-output-target/runtime'].some(
                     pkg => id === pkg || id.startsWith(`${pkg}/`),
                 );
             },

@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste-components/angular",
+    "name": "@parlamentsdienste/angular",
     "version": "4.0.0",
     "description": "Component Library for Swiss Parliamentary Services - Angular-Wrapper Lib",
     "peerDependencies": {
@@ -8,7 +8,7 @@
         "rxjs": "^7.0.0 || ^8.0.0"
     },
     "dependencies": {
-        "@parlamentsdienste-components/core": "4.0.0"
+        "@parlamentsdienste/core": "4.0.0"
     },
     "sideEffects": false
 }

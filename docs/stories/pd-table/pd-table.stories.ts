@@ -4,7 +4,7 @@ import {
     PdTableIconConfiguration,
     PdTableRow,
     PdTableSelectedStatus,
-} from '@parlamentsdienste-components/core';
+} from '@parlamentsdienste/core';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 import { addEventlisteners } from '../utils/eventListeners';
 

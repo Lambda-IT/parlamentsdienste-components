@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste-components/source",
+    "name": "@parlamentsdienste/source",
     "version": "4.0.0",
     "license": "MIT",
     "description": "Component Library for Swiss Parliamentary Services",
@@ -111,7 +111,7 @@
         "zone.js": "~0.15.0"
     },
     "dependencies": {
-        "@parlamentsdienste-components/angular": "workspace:*",
-        "@parlamentsdienste-components/core": "workspace:*"
+        "@parlamentsdienste/angular": "workspace:*",
+        "@parlamentsdienste/core": "workspace:*"
     }
 }

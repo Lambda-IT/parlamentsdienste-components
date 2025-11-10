@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste-components/core",
+    "name": "@parlamentsdienste/core",
     "version": "4.0.0",
     "description": "Component Library for Swiss Parliamentary Services - Webcomponents Core Lib",
     "main": "dist/index.cjs.js",
@@ -67,7 +67,7 @@
         "flatpickr": "^4.6.13"
     },
     "devDependencies": {
-        "@parlamentsdienste-components/angular-output-target": "0.0.1",
+        "@parlamentsdienste/angular-output-target": "0.0.1",
         "@stencil/core": "^4.31.0",
         "@stencil/vue-output-target": "^0.10.8",
         "@types/jest": "^29.5.14",

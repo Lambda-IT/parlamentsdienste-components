@@ -1,4 +1,4 @@
-import { iconMap } from '@parlamentsdienste-components/core/utils';
+import { iconMap } from '@parlamentsdienste/core/utils';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 
 const meta: Meta = {

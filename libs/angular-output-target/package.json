@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste-components/angular-output-target",
+    "name": "@parlamentsdienste/angular-output-target",
     "version": "4.0.0",
     "description": "Modification of the Angular output target for Stencil components",
     "private": true,

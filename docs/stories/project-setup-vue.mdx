@@ -49,7 +49,7 @@ Vue Version: 3.5
             viteStaticCopy({
                 targets: [
                     {
-                        src: 'node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets',
+                        src: 'node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/assets',
                         dest: '.',
                     },
                 ],
@@ -62,7 +62,7 @@ Vue Version: 3.5
 
     ```json
     "scripts": {
-        "postinstall": "cp -R node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets public"
+        "postinstall": "cp -R node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/assets public"
     }
     ```
 
@@ -71,14 +71,14 @@ Vue Version: 3.5
 5. To add the base styles and fonts add these two lines to the main entry file (e.g. `main.ts`):
 
     ```typescript
-    import '@parlamentsdienste-components/core/styles/parlamentsdienstecore.css';
-    import '@parlamentsdienste-components/core/styles/typography.css';
+    import '@parlamentsdienste/core/styles/parlamentsdienstecore.css';
+    import '@parlamentsdienste/core/styles/typography.css';
     ```
 
 6. Call setAssetPath in your main entry file (e.g. `main.ts`) to set the asset path for the components:
 
     ```typescript
-    import { setAssetPath } from '@parlamentsdienste-components/core/components';
+    import { setAssetPath } from '@parlamentsdienste/core/components';
     setAssetPath('http://localhost:5173');
     createApp(App).mount('#app');
     ```

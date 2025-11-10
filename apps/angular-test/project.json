@@ -23,14 +23,14 @@
                     },
                     {
                         "glob": "**/*",
-                        "input": "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/assets",
+                        "input": "node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/assets",
                         "output": "assets"
                     }
                 ],
                 "styles": [
                     "apps/angular-test/src/styles.scss",
-                    "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/typography.css",
-                    "node_modules/@parlamentsdienste-components/core/dist/parlamentsdienstecore/parlamentsdienstecore.css"
+                    "node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/typography.css",
+                    "node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/parlamentsdienstecore.css"
                 ],
                 "scripts": []
             },

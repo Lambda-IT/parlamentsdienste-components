@@ -1,4 +1,4 @@
-import { angularOutputTarget, ValueAccessorConfig } from '@parlamentsdienste-components/angular-output-target';
+import { angularOutputTarget, ValueAccessorConfig } from '@parlamentsdienste/angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs } from '@stencil/core/internal';
 import { reactOutputTarget } from '@stencil/react-output-target';
@@ -71,7 +71,7 @@ export const config: Config = {
             copy: [{ src: 'styles/typography.css', dest: 'build/typography.css' }],
         },
         angularOutputTarget({
-            componentCorePackage: '@parlamentsdienste-components/core',
+            componentCorePackage: '@parlamentsdienste/core',
             outputType: 'standalone',
             directivesProxyFile: '../angular/src/lib/angular/components.ts',
             directivesArrayFile: '../angular/src/lib/angular/index.ts',
@@ -92,7 +92,7 @@ export const config: Config = {
             includeImportCustomElements: true,
             includePolyfills: false,
             includeDefineCustomElements: false,
-            componentCorePackage: '@parlamentsdienste-components/core',
+            componentCorePackage: '@parlamentsdienste/core',
             //   hydrateModule: 'component-library/hydrate',
             proxiesFile: '../vue/src/generated/components.ts',
             componentModels: vueComponentModels,

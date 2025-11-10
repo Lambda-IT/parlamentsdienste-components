@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste-components/vue",
+    "name": "@parlamentsdienste/vue",
     "version": "4.0.0",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
     "main": "./index.js",
@@ -12,7 +12,7 @@
         }
     },
     "dependencies": {
-        "@parlamentsdienste-components/core": "4.0.0",
+        "@parlamentsdienste/core": "4.0.0",
         "@stencil/vue-output-target": "^0.10.8"
     }
 }

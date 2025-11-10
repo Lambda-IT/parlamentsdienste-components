@@ -1,6 +1,6 @@
 // packages/vue-library/lib/plugin.ts
 
-import { applyPolyfills, defineCustomElements } from '@parlamentsdienste-components/core/loader';
+import { applyPolyfills, defineCustomElements } from '@parlamentsdienste/core/loader';
 import { Plugin } from 'vue';
 
 export const ComponentLibrary: Plugin = {

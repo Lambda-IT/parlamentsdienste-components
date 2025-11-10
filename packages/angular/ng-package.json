@@ -4,5 +4,5 @@
     "lib": {
         "entryFile": "src/index.ts"
     },
-    "allowedNonPeerDependencies": ["@parlamentsdienste-components/core"]
+    "allowedNonPeerDependencies": ["@parlamentsdienste/core"]
 }
