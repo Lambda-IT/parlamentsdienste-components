@@ -96,9 +96,7 @@
         "vite-plugin-dts": "~4.5.0",
         "vite-plugin-static-copy": "^3.1.0",
         "vitest": "^3.0.0",
-        "vue-tsc": "^2.2.8"
-    },
-    "dependencies": {
+        "vue-tsc": "^2.2.8",
         "@angular/common": "~19.2.0",
         "@angular/compiler": "~19.2.0",
         "@angular/core": "~19.2.0",
@@ -106,14 +104,14 @@
         "@angular/platform-browser": "~19.2.0",
         "@angular/platform-browser-dynamic": "~19.2.0",
         "@angular/router": "~19.2.0",
-        "@parlamentsdienste-components/angular": "0.0.1",
-        "@parlamentsdienste-components/core": "0.0.1",
-        "@popperjs/core": "^2.11.8",
-        "flatpickr": "^4.6.13",
         "react": "19.0.0",
         "react-dom": "19.0.0",
         "rxjs": "~7.8.0",
         "vue": "^3.5.13",
         "zone.js": "~0.15.0"
+    },
+    "dependencies": {
+        "@parlamentsdienste-components/angular": "workspace:*",
+        "@parlamentsdienste-components/core": "workspace:*"
     }
 }
