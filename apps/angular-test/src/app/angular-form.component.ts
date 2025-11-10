@@ -78,7 +78,7 @@ export class AngularFormComponent {
     selectedItem = this.items[0];
 
     testForm = new FormGroup({
-        input: new FormControl('Some text...', Validators.minLength(3)),
+        input: new FormControl('Some text...', [Validators.minLength(3)]),
         dropdown: new FormControl(this.items[5]),
         comboboxSelectable: new FormControl(this.items[2]),
         comboboxMultiselect: new FormControl(this.items.slice(0, 2)),
@@ -91,6 +91,7 @@ export class AngularFormComponent {
 
     constructor() {
         console.log('AngularFormComponent constructor');
+
         this.testForm.valueChanges.subscribe(value => {
             console.log('Form value changed:', value);
         });
