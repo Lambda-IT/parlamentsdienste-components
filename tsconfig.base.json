@@ -20,7 +20,7 @@
             "@parlamentsdienste/pdcomponents-core": ["packages/core/src/index.ts"],
             "@parlamentsdienste/dist": ["dist/packages/angular/index.d.ts"],
             "@parlamentsdienste/pdcomponents-react": ["packages/react/src/index.ts"],
-            "@parlamentsdienste/vue": ["packages/vue/src/index.ts"]
+            "@parlamentsdienste/pdcomponents-vue": ["packages/vue/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

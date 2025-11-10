@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste/vue",
+    "name": "@parlamentsdienste/pdcomponents-vue",
     "version": "4.0.0",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
     "main": "./index.js",
