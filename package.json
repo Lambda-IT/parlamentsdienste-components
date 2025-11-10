@@ -111,7 +111,7 @@
         "zone.js": "~0.15.0"
     },
     "dependencies": {
-        "@parlamentsdienste/angular": "workspace:*",
+        "@parlamentsdienste/pdcomponents-angular": "workspace:*",
         "@parlamentsdienste/pdcomponents-core": "workspace:*"
     }
 }

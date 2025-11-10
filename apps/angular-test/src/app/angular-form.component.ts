@@ -12,7 +12,7 @@ import {
     PdRadioGroup,
     PdSlider,
     PdTextarea,
-} from '@parlamentsdienste/angular';
+} from '@parlamentsdienste/pdcomponents-angular';
 
 // Custom validator function
 import { AbstractControl } from '@angular/forms';

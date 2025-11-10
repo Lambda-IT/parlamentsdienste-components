@@ -8,7 +8,7 @@ importers:
 
   .:
     dependencies:
-      '@parlamentsdienste/angular':
+      '@parlamentsdienste/pdcomponents-angular':
         specifier: workspace:*
         version: link:packages/angular
       '@parlamentsdienste/pdcomponents-core':
@@ -273,6 +273,9 @@ importers:
       '@angular/forms':
         specifier: ^19.0.0 || ^20.0.0
         version: 19.2.13(@angular/common@19.2.13(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.13(@angular/common@19.2.13(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
+      '@parlamentsdienste/pdcomponents-core':
+        specifier: 4.0.0
+        version: link:../core
       rxjs:
         specifier: ^7.0.0 || ^8.0.0
         version: 7.8.2

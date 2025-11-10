@@ -15,7 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@parlamentsdienste/angular": ["packages/angular/src/index.ts"],
+            "@parlamentsdienste/pdcomponents-angular": ["packages/angular/src/index.ts"],
             "@parlamentsdienste/angular-output-target": ["libs/angular-output-target/src/index.ts"],
             "@parlamentsdienste/pdcomponents-core": ["packages/core/src/index.ts"],
             "@parlamentsdienste/dist": ["dist/packages/angular/index.d.ts"],

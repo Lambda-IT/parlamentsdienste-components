@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste/angular",
+    "name": "@parlamentsdienste/pdcomponents-angular",
     "version": "4.0.0",
     "description": "Component Library for Swiss Parliamentary Services - Angular-Wrapper Lib",
     "peerDependencies": {
