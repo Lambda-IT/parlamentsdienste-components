@@ -1,4 +1,4 @@
-import { ComboboxItem, DropdownItem } from '@parlamentsdienste/core';
+import { ComboboxItem, DropdownItem } from '@parlamentsdienste/pdcomponents-core';
 import {
     PdButton,
     PdCheckbox,

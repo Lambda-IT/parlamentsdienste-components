@@ -23,7 +23,7 @@ export default defineConfig(() => ({
         viteStaticCopy({
             targets: [
                 {
-                    src: '../../node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/assets',
+                    src: '../../node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets',
                     dest: '.',
                 },
             ],

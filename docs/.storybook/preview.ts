@@ -1,7 +1,7 @@
 import { Preview } from '@storybook/html-vite';
 
-import '@parlamentsdienste/core/styles/parlamentsdienstecore.css';
-import '@parlamentsdienste/core/styles/typography.css';
+import '@parlamentsdienste/pdcomponents-core/styles/parlamentsdienstecore.css';
+import '@parlamentsdienste/pdcomponents-core/styles/typography.css';
 import 'https://unpkg.com/@popperjs/core@2';
 import 'https://unpkg.com/tippy.js@6';
 

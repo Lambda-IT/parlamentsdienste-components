@@ -1,4 +1,4 @@
-import { PdButtonSize, PdPlacement } from '@parlamentsdienste/core';
+import { PdButtonSize, PdPlacement } from '@parlamentsdienste/pdcomponents-core';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 
 const defaultArgs = {

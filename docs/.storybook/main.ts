@@ -9,11 +9,11 @@ const config: StorybookConfig = {
     },
     staticDirs: [
         {
-            from: '../node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/assets',
+            from: '../node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets',
             to: '/assets',
         },
         {
-            from: '../node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore',
+            from: '../node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore',
             to: '/assets',
         },
     ],

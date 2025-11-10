@@ -1,4 +1,4 @@
-import { SortDropdownItem } from '@parlamentsdienste/core';
+import { SortDropdownItem } from '@parlamentsdienste/pdcomponents-core';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 import { addEventlisteners } from '../utils/eventListeners';
 

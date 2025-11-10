@@ -71,7 +71,7 @@ export const config: Config = {
             copy: [{ src: 'styles/typography.css', dest: 'build/typography.css' }],
         },
         angularOutputTarget({
-            componentCorePackage: '@parlamentsdienste/core',
+            componentCorePackage: '@parlamentsdienste/pdcomponents-core',
             outputType: 'standalone',
             directivesProxyFile: '../angular/src/lib/angular/components.ts',
             directivesArrayFile: '../angular/src/lib/angular/index.ts',
@@ -92,7 +92,7 @@ export const config: Config = {
             includeImportCustomElements: true,
             includePolyfills: false,
             includeDefineCustomElements: false,
-            componentCorePackage: '@parlamentsdienste/core',
+            componentCorePackage: '@parlamentsdienste/pdcomponents-core',
             //   hydrateModule: 'component-library/hydrate',
             proxiesFile: '../vue/src/generated/components.ts',
             componentModels: vueComponentModels,

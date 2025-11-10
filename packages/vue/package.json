@@ -12,7 +12,7 @@
         }
     },
     "dependencies": {
-        "@parlamentsdienste/core": "4.0.0",
+        "@parlamentsdienste/pdcomponents-core": "4.0.0",
         "@stencil/vue-output-target": "^0.10.8"
     }
 }

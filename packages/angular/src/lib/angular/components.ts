@@ -4,54 +4,54 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 
 import { ProxyCmp, proxyOutputs } from './../generated/angular-component-lib/utils';
 
-import type { Components } from '@parlamentsdienste/core';
+import type { Components } from '@parlamentsdienste/pdcomponents-core';
 
 import { forwardRef, HostListener } from '@angular/core';
                    import { NG_VALUE_ACCESSOR } from '@angular/forms';
                    import { ValueAccessor } from './value-accessor';
              
-import { defineCustomElement as definePdAlert } from '@parlamentsdienste/core/components/pd-alert.js';
-import { defineCustomElement as definePdAnimation } from '@parlamentsdienste/core/components/pd-animation.js';
-import { defineCustomElement as definePdBackdrop } from '@parlamentsdienste/core/components/pd-backdrop.js';
-import { defineCustomElement as definePdButton } from '@parlamentsdienste/core/components/pd-button.js';
-import { defineCustomElement as definePdButtonGroup } from '@parlamentsdienste/core/components/pd-button-group.js';
-import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste/core/components/pd-checkbox.js';
-import { defineCustomElement as definePdChip } from '@parlamentsdienste/core/components/pd-chip.js';
-import { defineCustomElement as definePdCombobox } from '@parlamentsdienste/core/components/pd-combobox.js';
-import { defineCustomElement as definePdDatepicker } from '@parlamentsdienste/core/components/pd-datepicker.js';
-import { defineCustomElement as definePdDropdown } from '@parlamentsdienste/core/components/pd-dropdown.js';
-import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste/core/components/pd-dropdown-item.js';
-import { defineCustomElement as definePdIcon } from '@parlamentsdienste/core/components/pd-icon.js';
-import { defineCustomElement as definePdInput } from '@parlamentsdienste/core/components/pd-input.js';
-import { defineCustomElement as definePdLabel } from '@parlamentsdienste/core/components/pd-label.js';
-import { defineCustomElement as definePdList } from '@parlamentsdienste/core/components/pd-list.js';
-import { defineCustomElement as definePdListItem } from '@parlamentsdienste/core/components/pd-list-item.js';
-import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdienste/core/components/pd-list-item-expandable.js';
-import { defineCustomElement as definePdMenu } from '@parlamentsdienste/core/components/pd-menu.js';
-import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste/core/components/pd-menu-item.js';
-import { defineCustomElement as definePdModal } from '@parlamentsdienste/core/components/pd-modal.js';
-import { defineCustomElement as definePdNavbar } from '@parlamentsdienste/core/components/pd-navbar.js';
-import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste/core/components/pd-navbar-item.js';
-import { defineCustomElement as definePdPanel } from '@parlamentsdienste/core/components/pd-panel.js';
-import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste/core/components/pd-panel-content.js';
-import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste/core/components/pd-panel-footer.js';
-import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste/core/components/pd-panel-header.js';
-import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste/core/components/pd-progress-bar.js';
-import { defineCustomElement as definePdRadio } from '@parlamentsdienste/core/components/pd-radio.js';
-import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste/core/components/pd-radio-group.js';
-import { defineCustomElement as definePdSearch } from '@parlamentsdienste/core/components/pd-search.js';
-import { defineCustomElement as definePdSidebar } from '@parlamentsdienste/core/components/pd-sidebar.js';
-import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste/core/components/pd-sidebar-item.js';
-import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste/core/components/pd-skeleton.js';
-import { defineCustomElement as definePdSlider } from '@parlamentsdienste/core/components/pd-slider.js';
-import { defineCustomElement as definePdSort } from '@parlamentsdienste/core/components/pd-sort.js';
-import { defineCustomElement as definePdTable } from '@parlamentsdienste/core/components/pd-table.js';
-import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste/core/components/pd-table-filter.js';
-import { defineCustomElement as definePdTabs } from '@parlamentsdienste/core/components/pd-tabs.js';
-import { defineCustomElement as definePdTextarea } from '@parlamentsdienste/core/components/pd-textarea.js';
-import { defineCustomElement as definePdTimeline } from '@parlamentsdienste/core/components/pd-timeline.js';
-import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste/core/components/pd-timeline-date.js';
-import { defineCustomElement as definePdToast } from '@parlamentsdienste/core/components/pd-toast.js';
+import { defineCustomElement as definePdAlert } from '@parlamentsdienste/pdcomponents-core/components/pd-alert.js';
+import { defineCustomElement as definePdAnimation } from '@parlamentsdienste/pdcomponents-core/components/pd-animation.js';
+import { defineCustomElement as definePdBackdrop } from '@parlamentsdienste/pdcomponents-core/components/pd-backdrop.js';
+import { defineCustomElement as definePdButton } from '@parlamentsdienste/pdcomponents-core/components/pd-button.js';
+import { defineCustomElement as definePdButtonGroup } from '@parlamentsdienste/pdcomponents-core/components/pd-button-group.js';
+import { defineCustomElement as definePdCheckbox } from '@parlamentsdienste/pdcomponents-core/components/pd-checkbox.js';
+import { defineCustomElement as definePdChip } from '@parlamentsdienste/pdcomponents-core/components/pd-chip.js';
+import { defineCustomElement as definePdCombobox } from '@parlamentsdienste/pdcomponents-core/components/pd-combobox.js';
+import { defineCustomElement as definePdDatepicker } from '@parlamentsdienste/pdcomponents-core/components/pd-datepicker.js';
+import { defineCustomElement as definePdDropdown } from '@parlamentsdienste/pdcomponents-core/components/pd-dropdown.js';
+import { defineCustomElement as definePdDropdownItem } from '@parlamentsdienste/pdcomponents-core/components/pd-dropdown-item.js';
+import { defineCustomElement as definePdIcon } from '@parlamentsdienste/pdcomponents-core/components/pd-icon.js';
+import { defineCustomElement as definePdInput } from '@parlamentsdienste/pdcomponents-core/components/pd-input.js';
+import { defineCustomElement as definePdLabel } from '@parlamentsdienste/pdcomponents-core/components/pd-label.js';
+import { defineCustomElement as definePdList } from '@parlamentsdienste/pdcomponents-core/components/pd-list.js';
+import { defineCustomElement as definePdListItem } from '@parlamentsdienste/pdcomponents-core/components/pd-list-item.js';
+import { defineCustomElement as definePdListItemExpandable } from '@parlamentsdienste/pdcomponents-core/components/pd-list-item-expandable.js';
+import { defineCustomElement as definePdMenu } from '@parlamentsdienste/pdcomponents-core/components/pd-menu.js';
+import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste/pdcomponents-core/components/pd-menu-item.js';
+import { defineCustomElement as definePdModal } from '@parlamentsdienste/pdcomponents-core/components/pd-modal.js';
+import { defineCustomElement as definePdNavbar } from '@parlamentsdienste/pdcomponents-core/components/pd-navbar.js';
+import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste/pdcomponents-core/components/pd-navbar-item.js';
+import { defineCustomElement as definePdPanel } from '@parlamentsdienste/pdcomponents-core/components/pd-panel.js';
+import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste/pdcomponents-core/components/pd-panel-content.js';
+import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste/pdcomponents-core/components/pd-panel-footer.js';
+import { defineCustomElement as definePdPanelHeader } from '@parlamentsdienste/pdcomponents-core/components/pd-panel-header.js';
+import { defineCustomElement as definePdProgressBar } from '@parlamentsdienste/pdcomponents-core/components/pd-progress-bar.js';
+import { defineCustomElement as definePdRadio } from '@parlamentsdienste/pdcomponents-core/components/pd-radio.js';
+import { defineCustomElement as definePdRadioGroup } from '@parlamentsdienste/pdcomponents-core/components/pd-radio-group.js';
+import { defineCustomElement as definePdSearch } from '@parlamentsdienste/pdcomponents-core/components/pd-search.js';
+import { defineCustomElement as definePdSidebar } from '@parlamentsdienste/pdcomponents-core/components/pd-sidebar.js';
+import { defineCustomElement as definePdSidebarItem } from '@parlamentsdienste/pdcomponents-core/components/pd-sidebar-item.js';
+import { defineCustomElement as definePdSkeleton } from '@parlamentsdienste/pdcomponents-core/components/pd-skeleton.js';
+import { defineCustomElement as definePdSlider } from '@parlamentsdienste/pdcomponents-core/components/pd-slider.js';
+import { defineCustomElement as definePdSort } from '@parlamentsdienste/pdcomponents-core/components/pd-sort.js';
+import { defineCustomElement as definePdTable } from '@parlamentsdienste/pdcomponents-core/components/pd-table.js';
+import { defineCustomElement as definePdTableFilter } from '@parlamentsdienste/pdcomponents-core/components/pd-table-filter.js';
+import { defineCustomElement as definePdTabs } from '@parlamentsdienste/pdcomponents-core/components/pd-tabs.js';
+import { defineCustomElement as definePdTextarea } from '@parlamentsdienste/pdcomponents-core/components/pd-textarea.js';
+import { defineCustomElement as definePdTimeline } from '@parlamentsdienste/pdcomponents-core/components/pd-timeline.js';
+import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste/pdcomponents-core/components/pd-timeline-date.js';
+import { defineCustomElement as definePdToast } from '@parlamentsdienste/pdcomponents-core/components/pd-toast.js';
 @ProxyCmp({
   defineCustomElementFn: definePdAlert,
   inputs: ['actionHref', 'actionTarget', 'actionText', 'actionTextExpanded', 'closable', 'color', 'expandable', 'expanded', 'hideIcon']
@@ -328,8 +328,8 @@ export class PdCombobox extends ValueAccessor{
 }
 
 
-import type { InputChangeEventDetail as IPdComboboxInputChangeEventDetail } from '@parlamentsdienste/core';
-import type { ComboboxItem as IPdComboboxComboboxItem } from '@parlamentsdienste/core';
+import type { InputChangeEventDetail as IPdComboboxInputChangeEventDetail } from '@parlamentsdienste/pdcomponents-core';
+import type { ComboboxItem as IPdComboboxComboboxItem } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdCombobox extends Components.PdCombobox {
   /**
@@ -433,7 +433,7 @@ export class PdDropdown extends ValueAccessor{
 }
 
 
-import type { DropdownItem as IPdDropdownDropdownItem } from '@parlamentsdienste/core';
+import type { DropdownItem as IPdDropdownDropdownItem } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdDropdown extends Components.PdDropdown {
 
@@ -533,7 +533,7 @@ export class PdInput extends ValueAccessor{
 }
 
 
-import type { InputChangeEventDetail as IPdInputInputChangeEventDetail } from '@parlamentsdienste/core';
+import type { InputChangeEventDetail as IPdInputInputChangeEventDetail } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdInput extends Components.PdInput {
   /**
@@ -1121,7 +1121,7 @@ export class PdSearch {
 }
 
 
-import type { InputChangeEventDetail as IPdSearchInputChangeEventDetail } from '@parlamentsdienste/core';
+import type { InputChangeEventDetail as IPdSearchInputChangeEventDetail } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdSearch extends Components.PdSearch {
   /**
@@ -1308,7 +1308,7 @@ export class PdSort {
 }
 
 
-import type { SortDropdownItem as IPdSortSortDropdownItem } from '@parlamentsdienste/core';
+import type { SortDropdownItem as IPdSortSortDropdownItem } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdSort extends Components.PdSort {
 
@@ -1347,7 +1347,7 @@ export class PdTable {
 }
 
 
-import type { SelectedEvent as IPdTableSelectedEvent } from '@parlamentsdienste/core';
+import type { SelectedEvent as IPdTableSelectedEvent } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdTable extends Components.PdTable {
   /**
@@ -1458,7 +1458,7 @@ export class PdTabs {
 }
 
 
-import type { TabValue as IPdTabsTabValue } from '@parlamentsdienste/core';
+import type { TabValue as IPdTabsTabValue } from '@parlamentsdienste/pdcomponents-core';
 
 export declare interface PdTabs extends Components.PdTabs {
   /**

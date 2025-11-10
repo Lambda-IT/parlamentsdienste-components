@@ -112,6 +112,6 @@
     },
     "dependencies": {
         "@parlamentsdienste/angular": "workspace:*",
-        "@parlamentsdienste/core": "workspace:*"
+        "@parlamentsdienste/pdcomponents-core": "workspace:*"
     }
 }

@@ -11,7 +11,7 @@ importers:
       '@parlamentsdienste/angular':
         specifier: workspace:*
         version: link:packages/angular
-      '@parlamentsdienste/core':
+      '@parlamentsdienste/pdcomponents-core':
         specifier: workspace:*
         version: link:packages/core
     devDependencies:
@@ -237,7 +237,7 @@ importers:
 
   docs:
     devDependencies:
-      '@parlamentsdienste/core':
+      '@parlamentsdienste/pdcomponents-core':
         specifier: 4.0.0
         version: link:../packages/core
       '@storybook/addon-docs':
@@ -273,9 +273,6 @@ importers:
       '@angular/forms':
         specifier: ^19.0.0 || ^20.0.0
         version: 19.2.13(@angular/common@19.2.13(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.13(@angular/common@19.2.13(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
-      '@parlamentsdienste/core':
-        specifier: 4.0.0
-        version: link:../core
       rxjs:
         specifier: ^7.0.0 || ^8.0.0
         version: 7.8.2
@@ -334,7 +331,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@parlamentsdienste/core':
+      '@parlamentsdienste/pdcomponents-core':
         specifier: 4.0.0
         version: link:../core
       '@stencil/react-output-target':
@@ -343,7 +340,7 @@ importers:
 
   packages/vue:
     dependencies:
-      '@parlamentsdienste/core':
+      '@parlamentsdienste/pdcomponents-core':
         specifier: 4.0.0
         version: link:../core
       '@stencil/vue-output-target':

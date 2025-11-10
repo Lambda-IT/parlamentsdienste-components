@@ -8,7 +8,7 @@
         "rxjs": "^7.0.0 || ^8.0.0"
     },
     "dependencies": {
-        "@parlamentsdienste/core": "4.0.0"
+        "@parlamentsdienste/pdcomponents-core": "4.0.0"
     },
     "sideEffects": false
 }

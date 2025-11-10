@@ -48,7 +48,7 @@ Angular Version: 19
         "assets": [
               {
                 "glob": "**/*",
-                "input": "node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/assets",
+                "input": "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets",
                 "output": "assets"
               },
         ]
@@ -58,15 +58,15 @@ Angular Version: 19
 
     ```json
         "styles": [
-            "node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/typography.css",
-            "node_modules/@parlamentsdienste/core/dist/parlamentsdienstecore/parlamentsdienstecore.css"
+            "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/typography.css",
+            "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/parlamentsdienstecore.css"
         ],
     ```
 
 6. Call setAssetPath in your app-initializer and set it to the baseUrl of your project
 
     ```typescript
-    import { setAssetPath } from '@parlamentsdienste/core/components';
+    import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
 
     bootstrapApplication(AppComponent, {
         providers: [
