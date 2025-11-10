@@ -1,5 +1,5 @@
 {
-    "name": "@parlamentsdienste/react",
+    "name": "@parlamentsdienste/pdcomponents-react",
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
     "version": "4.0.0",
     "main": "./index.js",

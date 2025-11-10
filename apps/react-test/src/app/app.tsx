@@ -10,7 +10,7 @@ import {
     PdRadioGroup,
     PdSlider,
     PdTextarea,
-} from '@parlamentsdienste/react';
+} from '@parlamentsdienste/pdcomponents-react';
 import { useState } from 'react';
 import './app.css';
 
